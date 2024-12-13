@@ -83,7 +83,7 @@ final class DateTimeDiff extends Standard
     {
         $name = $input instanceof DateTimeInterface ? $input->format('c') : $input;
 
-        if (!$result->isSiblingCompatible()) {
+        if (!$result->allowsSubsequent()) {
             return $result
                 ->withNameIfMissing($name)
                 ->withChildren(
@@ -96,7 +96,7 @@ final class DateTimeDiff extends Standard
 
         return (new Result($result->isValid, $input, $this, $parameters, $template, id: $result->id))
             ->withPrefixedId('dateTimeDiff')
-            ->withNextSibling($result->withNameIfMissing($name));
+            ->withSubsequent($result->withNameIfMissing($name));
     }
 
     private function comparisonValue(DateTimeInterface $now, DateTimeInterface $compareTo): int|float

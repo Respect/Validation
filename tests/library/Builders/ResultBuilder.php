@@ -33,7 +33,7 @@ final class ResultBuilder
 
     private Rule $rule;
 
-    private ?Result $nextSibling = null;
+    private ?Result $subsequent = null;
 
     /** @var array<Result> */
     private array $children = [];
@@ -54,7 +54,7 @@ final class ResultBuilder
             $this->mode,
             $this->name,
             $this->id,
-            $this->nextSibling,
+            $this->subsequent,
             ...$this->children
         );
     }
@@ -132,9 +132,9 @@ final class ResultBuilder
         return $this;
     }
 
-    public function nextSibling(Result $build): self
+    public function subsequent(Result $build): self
     {
-        $this->nextSibling = $build;
+        $this->subsequent = $build;
 
         return $this;
     }

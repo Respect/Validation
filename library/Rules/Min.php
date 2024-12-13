@@ -27,6 +27,6 @@ final class Min extends FilteredNonEmptyArray
         $result = $this->rule->evaluate(min($input))->withPrefixedId('min');
         $template = $this->getName() === null ? self::TEMPLATE_STANDARD : self::TEMPLATE_NAMED;
 
-        return (new Result($result->isValid, $input, $this, [], $template, id: $result->id))->withNextSibling($result);
+        return (new Result($result->isValid, $input, $this, [], $template, id: $result->id))->withSubsequent($result);
     }
 }

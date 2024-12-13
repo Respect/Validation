@@ -26,11 +26,11 @@ run([
         v::dateTimeDiff('years', v::equals(2))->setTemplate('Wrapper with custom template'),
         '1 year ago',
     ],
-    'Not a sibling compatible' => [
+    'Without subsequent result' => [
         v::dateTimeDiff('years', v::primeNumber()->between(2, 5)),
         '1 year ago',
     ],
-    'Not a sibling compatible with templates' => [
+    'Without subsequent result with templates' => [
         v::dateTimeDiff('years', v::primeNumber()->between(2, 5)),
         '1 year ago',
         [
@@ -155,8 +155,8 @@ Wrapper with custom template
     'dateTimeDiffEquals' => 'Wrapper with custom template',
 ]
 
-Not a sibling compatible
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+Without subsequent result
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 The number of years between now and 1 year ago must be a prime number
 - All of the required rules must pass for 1 year ago
   - The number of years between now and 1 year ago must be a prime number
@@ -167,8 +167,8 @@ The number of years between now and 1 year ago must be a prime number
     'dateTimeDiffBetween' => 'The number of years between now and 1 year ago must be between 2 and 5',
 ]
 
-Not a sibling compatible with templates
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+Without subsequent result with templates
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 The number of years between now and 1 year ago must be a prime number
 - All of the required rules must pass for 1 year ago
   - The number of years between now and 1 year ago must be a prime number

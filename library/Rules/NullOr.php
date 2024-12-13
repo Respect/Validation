@@ -37,10 +37,10 @@ final class NullOr extends Wrapper
 
     private function enrichResult(Result $result): Result
     {
-        if ($result->isSiblingCompatible()) {
+        if ($result->allowsSubsequent()) {
             return $result
                 ->withPrefixedId('nullOr')
-                ->withNextSibling(new Result($result->isValid, $result->input, $this));
+                ->withSubsequent(new Result($result->isValid, $result->input, $this));
         }
 
         return $result->withChildren(...array_map(fn(Result $child) => $this->enrichResult($child), $result->children));

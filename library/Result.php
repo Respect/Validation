@@ -39,7 +39,7 @@ final class Result
         public readonly Mode $mode = Mode::DEFAULT,
         ?string $name = null,
         ?string $id = null,
-        public readonly ?Result $nextSibling = null,
+        public readonly ?Result $subsequent = null,
         Result ...$children,
     ) {
         $this->name = $rule->getName() ?? $name;
@@ -113,16 +113,16 @@ final class Result
         );
     }
 
-    public function withNextSibling(Result $nextSibling): self
+    public function withSubsequent(Result $subsequent): self
     {
-        return $this->clone(nextSibling: $nextSibling);
+        return $this->clone(subsequent: $subsequent);
     }
 
     public function withInvertedValidation(): self
     {
         return $this->clone(
             isValid: !$this->isValid,
-            nextSibling: $this->nextSibling?->withInvertedValidation(),
+            subsequent: $this->subsequent?->withInvertedValidation(),
             children: array_map(static fn (Result $child) => $child->withInvertedValidation(), $this->children),
         );
     }
@@ -132,14 +132,9 @@ final class Result
         return $this->clone(
             isValid: !$this->isValid,
             mode: $this->mode == Mode::DEFAULT ? Mode::INVERTED : Mode::DEFAULT,
-            nextSibling: $this->nextSibling?->withInvertedMode(),
+            subsequent: $this->subsequent?->withInvertedMode(),
             children: array_map(static fn (Result $child) => $child->withInvertedMode(), $this->children),
         );
-    }
-
-    public function withMode(Mode $mode): self
-    {
-        return $this->clone(mode: $mode);
     }
 
     public function hasCustomTemplate(): bool
@@ -162,18 +157,18 @@ final class Result
         return count($childrenAlwaysVisible) !== 1;
     }
 
-    public function isSiblingCompatible(): bool
+    public function allowsSubsequent(): bool
     {
         if ($this->children === [] && !$this->hasCustomTemplate()) {
             return true;
         }
 
-        $siblingCompatibleChildren = array_filter(
+        $childrenThatAllowSubsequent = array_filter(
             $this->children,
-            static fn (Result $child) => $child->isSiblingCompatible()
+            static fn (Result $child) => $child->allowsSubsequent()
         );
 
-        return count($siblingCompatibleChildren) === 1;
+        return count($childrenThatAllowSubsequent) === 1;
     }
 
     /**
@@ -186,7 +181,7 @@ final class Result
         ?Mode $mode = null,
         ?string $name = null,
         ?string $id = null,
-        ?Result $nextSibling = null,
+        ?Result $subsequent = null,
         ?array $children = null
     ): self {
         return new self(
@@ -198,7 +193,7 @@ final class Result
             $mode ?? $this->mode,
             $name ?? $this->name,
             $id ?? $this->id,
-            $nextSibling ?? $this->nextSibling,
+            $subsequent ?? $this->subsequent,
             ...($children ?? $this->children)
         );
     }

@@ -18,11 +18,11 @@ run([
         '',
         ['notUndefOrAlpha' => 'Should not be undefined or alpha'],
     ],
-    'Not a sibling compatible rule' => [
+    'Without subsequent result' => [
         v::undefOr(v::alpha()->stringType()),
         1234,
     ],
-    'Not a sibling compatible rule with templates' => [
+    'Without subsequent result with templates' => [
         v::undefOr(v::alpha()->stringType()),
         1234,
         [
@@ -113,8 +113,8 @@ Should not be undefined or alpha
     'notUndefOrAlpha' => 'Should not be undefined or alpha',
 ]
 
-Not a sibling compatible rule
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+Without subsequent result
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 1234 must contain only letters (a-z) or must be undefined
 - All of the required rules must pass for 1234
   - 1234 must contain only letters (a-z) or must be undefined
@@ -125,8 +125,8 @@ Not a sibling compatible rule
     'undefOrStringType' => '1234 must be a string or must be undefined',
 ]
 
-Not a sibling compatible rule with templates
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+Without subsequent result with templates
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Should be nul or alpha
 - All of the required rules must pass for 1234
   - Should be nul or alpha

@@ -29,12 +29,12 @@ final class Length extends Wrapper
         if (!$typeResult->isValid) {
             $result = $this->rule->evaluate($input);
 
-            return Result::failed($input, $this)->withNextSibling($result)->withId('length' . ucfirst($result->id));
+            return Result::failed($input, $this)->withSubsequent($result)->withId('length' . ucfirst($result->id));
         }
 
         $result = $this->rule->evaluate($this->extractLength($input))->withInput($input)->withPrefixedId('length');
 
-        return (new Result($result->isValid, $input, $this, id: $result->id))->withNextSibling($result);
+        return (new Result($result->isValid, $input, $this, id: $result->id))->withSubsequent($result);
     }
 
     /** @param array<mixed>|PhpCountable|string $input */

@@ -18,11 +18,11 @@ run([
         null,
         ['notNullOrAlpha' => 'Next to nifty null notations'],
     ],
-    'Not a sibling compatible rule' => [
+    'Without subsequent result' => [
         v::nullOr(v::alpha()->stringType()),
         1234,
     ],
-    'Not a sibling compatible rule with templates' => [
+    'Without subsequent result with templates' => [
         v::nullOr(v::alpha()->stringType()),
         1234,
         [
@@ -113,8 +113,8 @@ Next to nifty null notations
     'notNullOrAlpha' => 'Next to nifty null notations',
 ]
 
-Not a sibling compatible rule
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+Without subsequent result
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 1234 must contain only letters (a-z) or must be null
 - All of the required rules must pass for 1234
   - 1234 must contain only letters (a-z) or must be null
@@ -125,8 +125,8 @@ Not a sibling compatible rule
     'nullOrStringType' => '1234 must be a string or must be null',
 ]
 
-Not a sibling compatible rule with templates
-⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
+Without subsequent result with templates
+⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺
 Should be nul or alpha
 - All of the required rules must pass for 1234
   - Should be nul or alpha
