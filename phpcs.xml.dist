@@ -16,7 +16,11 @@
 
     <rule ref="Respect" />
     <rule ref="Generic.Files.LineLength.TooLong">
-        <exclude-pattern>tests/integration/</exclude-pattern>
+        <exclude-pattern>tests/feature/</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Functions.StaticClosure.ClosureNotStatic">
+        <exclude-pattern>tests/Pest.php</exclude-pattern>
+        <exclude-pattern>tests/feature</exclude-pattern>
     </rule>
     <rule ref="SlevomatCodingStandard.Attributes.AttributesOrder">
         <properties>
@@ -25,8 +29,5 @@
                 <element value="Respect\Validation\Message\Template" />
             </property>
         </properties>
-    </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes.DeclareStrictTypesMissing">
-        <exclude-pattern>tests/integration/</exclude-pattern>
     </rule>
 </ruleset>

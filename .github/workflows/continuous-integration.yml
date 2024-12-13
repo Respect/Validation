@@ -46,10 +46,10 @@ jobs:
         run: composer install --prefer-dist ${{ matrix.composer-extra-arguments }}
 
       - name: Run Unit Tests
-        run: ./vendor/phpunit/phpunit/phpunit --testsuite=unit
+        run: ./vendor/bin/phpunit --testsuite=unit
 
       - name: Run Integration Tests
-        run: ./vendor/phpunit/phpunit/phpunit --testsuite=integration
+        run: ./vendor/bin/pest --testsuite=feature --compact
 
   code-coverage:
     name: Code coverage
@@ -78,7 +78,7 @@ jobs:
         run: composer install --prefer-dist ${{ matrix.composer-extra-arguments }}
 
       - name: Generating Code Coverage Report
-        run: ./vendor/phpunit/phpunit/phpunit --coverage-clover=coverage.xml
+        run: ./vendor/bin/pest --compact --coverage-clover=coverage.xml
 
       - name: Send Code Coverage Report to Codecov.io
         uses: codecov/codecov-action@v5

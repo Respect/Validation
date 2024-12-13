@@ -15,6 +15,7 @@
         "sort-packages": true,
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
+            "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
         }
     },
@@ -29,6 +30,7 @@
         "malukenho/docheader": "^1.0",
         "mikey179/vfsstream": "^1.6",
         "nette/php-generator": "^4.1",
+        "pestphp/pest": "^2.36",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-deprecation-rules": "^2.0",
@@ -60,23 +62,20 @@
             "Respect\\Validation\\": "tests/unit/",
             "Respect\\Validation\\Test\\": "tests/library/"
         },
-        "files": [
-            "tests/integration/lib/aliases.php",
-            "tests/integration/lib/helpers.php"
-        ]
+        "files": ["tests/aliases.php"]
     },
     "scripts": {
         "docheader": "vendor/bin/docheader check library/ tests/",
         "phpcs": "vendor/bin/phpcs",
         "phpstan": "vendor/bin/phpstan analyze",
-        "phpunit": "vendor/bin/phpunit",
-        "phpunit-integration": "vendor/bin/phpunit --testsuite=integration",
-        "phpunit-unit": "vendor/bin/phpunit --testsuite=unit",
+        "phpunit": "vendor/bin/phpunit --testsuite=unit",
+        "pest": "vendor/bin/pest --testsuite=feature --compact",
         "qa": [
             "@docheader",
             "@phpcs",
             "@phpstan",
-            "@phpunit"
+            "@phpunit",
+            "@pest"
         ]
     }
 }

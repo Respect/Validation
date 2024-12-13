@@ -48,7 +48,7 @@ final class DeprecatedAttribute implements Transformer
 
             if ($name === 'property') {
                 trigger_error(
-                    $firstMessage . ' Use property() without it.',
+                    $firstMessage . ' Use property() instead.',
                     E_USER_DEPRECATED
                 );
             }

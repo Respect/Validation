@@ -52,7 +52,7 @@ final class DeprecatedKey implements Transformer
             if ($name === 'key') {
                 trigger_error(
                     'Calling key() with a third parameter has been deprecated, ' .
-                    'and will be not be allowed in the next major version. Use key() without it the third parameter.',
+                    'and will be not be allowed in the next major version. Use key() without the third parameter.',
                     E_USER_DEPRECATED
                 );
             }
