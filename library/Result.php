@@ -39,8 +39,8 @@ final class Result
         public readonly Mode $mode = Mode::DEFAULT,
         ?string $name = null,
         ?string $id = null,
+        public readonly string|int|null $path = null,
         public readonly ?Result $subsequent = null,
-        public readonly bool $unchangeableId = false,
         Result ...$children,
     ) {
         $this->name = $rule->getName() ?? $name;
@@ -76,21 +76,17 @@ final class Result
 
     public function withId(string $id): self
     {
-        if ($this->unchangeableId) {
-            return $this;
-        }
-
         return $this->clone(id: $id);
     }
 
-    public function withUnchangeableId(string $id): self
+    public function withPath(string|int $path): self
     {
-        return $this->clone(id: $id, unchangeableId: true);
+        return $this->clone(path: $path);
     }
 
-    public function withPrefixedId(string $prefix): self
+    public function withPrefix(string $prefix): self
     {
-        if ($this->id === $this->name || $this->unchangeableId) {
+        if ($this->id === $this->name || $this->path !== null) {
             return $this;
         }
 
@@ -176,8 +172,8 @@ final class Result
         ?Mode $mode = null,
         ?string $name = null,
         ?string $id = null,
+        string|int|null $path = null,
         ?Result $subsequent = null,
-        ?bool $unchangeableId = null,
         ?array $children = null
     ): self {
         return new self(
@@ -189,8 +185,8 @@ final class Result
             $mode ?? $this->mode,
             $name ?? $this->name,
             $id ?? $this->id,
+            $path ?? $this->path,
             $subsequent ?? $this->subsequent,
-            $unchangeableId ?? $this->unchangeableId,
             ...($children ?? $this->children)
         );
     }

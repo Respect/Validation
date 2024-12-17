@@ -66,5 +66,9 @@ test('Multiple attributes, one failed', expectAll(
     fn() => v::attributes()->assert(new WithAttributes('John Doe', 'john.doe@gmail.com', '22 years ago')),
     'birthdate must be a valid date in the format "2005-12-30"',
     '- birthdate must be a valid date in the format "2005-12-30"',
-    ['birthdate' => 'birthdate must be a valid date in the format "2005-12-30"']
+    [
+        'birthdate' => [
+            'date' => 'birthdate must be a valid date in the format "2005-12-30"',
+        ],
+    ]
 ));

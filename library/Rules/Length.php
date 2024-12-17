@@ -59,7 +59,7 @@ final class Length extends Wrapper
         }
 
         return (new Result($result->isValid, $input, $this, id: $result->id))
-            ->withPrefixedId('length')
+            ->withPrefix('length')
             ->withSubsequent($result->withInput($input));
     }
 

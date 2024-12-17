@@ -41,7 +41,7 @@ final class KeyOptional extends Wrapper implements KeyRelated
 
         return $this->rule
             ->evaluate($input[$this->key])
-            ->withUnchangeableId((string) $this->key)
+            ->withPath($this->key)
             ->withNameIfMissing($this->rule->getName() ?? (string) $this->key);
     }
 }

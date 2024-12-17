@@ -35,8 +35,6 @@ final class ResultBuilder
 
     private ?Result $subsequent = null;
 
-    private bool $unchangeableId = false;
-
     /** @var array<Result> */
     private array $children = [];
 
@@ -56,8 +54,8 @@ final class ResultBuilder
             $this->mode,
             $this->name,
             $this->id,
+            null,
             $this->subsequent,
-            $this->unchangeableId,
             ...$this->children
         );
     }

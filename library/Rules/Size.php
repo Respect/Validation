@@ -110,7 +110,7 @@ final class Size extends Wrapper
         $parameters = ['unit' => self::DATA_STORAGE_UNITS[$this->unit]['name']];
 
         return (new Result($result->isValid, $input, $this, $parameters, id: $result->id))
-            ->withPrefixedId('size')
+            ->withPrefix('size')
             ->withSubsequent($result->withInput($input));
     }
 }
