@@ -225,18 +225,18 @@ test('With array template and name, default', expectAll(
             ],
         ])
         ->assert(['a', 'b', 'c']),
-    'Wrapped must be an integer',
+    'First item should have been an integer',
     <<<'FULL_MESSAGE'
-    - Each item in Wrapped must be valid
-      - Wrapped must be an integer
-      - Wrapped must be an integer
-      - Wrapped must be an integer
+    - Here a sequence of items that did not pass the validation
+      - First item should have been an integer
+      - Second item should have been an integer
+      - Third item should have been an integer
     FULL_MESSAGE,
     [
-        '__root__' => 'Each item in Wrapped must be valid',
-        0 => 'Wrapped must be an integer',
-        1 => 'Wrapped must be an integer',
-        2 => 'Wrapped must be an integer',
+        '__root__' => 'Here a sequence of items that did not pass the validation',
+        0 => 'First item should have been an integer',
+        1 => 'Second item should have been an integer',
+        2 => 'Third item should have been an integer',
     ]
 ));
 
@@ -282,8 +282,17 @@ test('Multiple nested rules', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in `[["not_int": "wrong"], ["my_int": 2], "not an array"]` must be valid',
-        0 => 'my_int must be present',
-        1 => 'my_int must be an odd number',
+        0 => [
+            '__root__' => 'These rules must pass for `["not_int": "wrong"]`',
+            'my_int' => 'my_int must be present',
+        ],
+        1 => [
+            '__root__' => 'These rules must pass for `["my_int": 2]`',
+            'my_int' => [
+                '__root__' => 'These rules must pass for my_int',
+                'odd' => 'my_int must be an odd number',
+            ],
+        ],
         2 => [
             '__root__' => 'All the required rules must pass for "not an array"',
             'arrayType' => '"not an array" must be an array',

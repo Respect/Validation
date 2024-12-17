@@ -11,21 +11,30 @@ test('one rule / one failed', expectAll(
     fn() => v::keySet(v::key('foo', v::intType()))->assert(['foo' => 'string']),
     'foo must be an integer',
     '- foo must be an integer',
-    ['foo' => 'foo must be an integer']
+    [
+        '__root__' => '`["foo": "string"]` validation failed',
+        'foo' => 'foo must be an integer',
+    ]
 ));
 
 test('one rule / one missing key', expectAll(
     fn() => v::keySet(v::keyExists('foo'))->assert([]),
     'foo must be present',
     '- foo must be present',
-    ['foo' => 'foo must be present']
+    [
+        '__root__' => '`[]` contains missing keys',
+        'foo' => 'foo must be present',
+    ]
 ));
 
 test('one rule / one extra key', expectAll(
     fn() => v::keySet(v::keyExists('foo'))->assert(['foo' => 42, 'bar' => 'string']),
     'bar must not be present',
     '- bar must not be present',
-    ['bar' => 'bar must not be present']
+    [
+        '__root__' => '`["foo": 42, "bar": "string"]` contains extra keys',
+        'bar' => 'bar must not be present',
+    ]
 ));
 
 test('one rule / one extra key / one missing key', expectAll(
@@ -108,7 +117,10 @@ test('multiple rules / one failed', expectAll(
     fn() => v::keySet(v::keyExists('foo'), v::keyExists('bar'))->assert(['foo' => 42]),
     'bar must be present',
     '- bar must be present',
-    ['bar' => 'bar must be present']
+    [
+        '__root__' => '`["foo": 42]` contains missing keys',
+        'bar' => 'bar must be present',
+    ]
 ));
 
 test('multiple rules / all failed', expectAll(
@@ -133,7 +145,10 @@ test('multiple rules / one extra key', expectAll(
     )->assert(['foo' => 42, 'bar' => 'string', 'baz' => true]),
     'baz must not be present',
     '- baz must not be present',
-    ['baz' => 'baz must not be present']
+    [
+        '__root__' => '`["foo": 42, "bar": "string", "baz": true]` contains extra keys',
+        'baz' => 'baz must not be present',
+    ]
 ));
 
 test('multiple rules / one extra key / one missing', expectAll(

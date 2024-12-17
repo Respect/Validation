@@ -13,14 +13,20 @@ test('Default', expectAll(
     fn() => v::attributes()->assert(new WithAttributes('', 'john.doe@gmail.com', '2024-06-23')),
     'name must not be empty',
     '- name must not be empty',
-    ['name' => 'name must not be empty']
+    [
+        '__root__' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$email="john.doe@gmail.com" +$birthdate="2024-06-23" + ... }`',
+        'name' => 'name must not be empty',
+    ]
 ));
 
 test('Inverted', expectAll(
     fn() => v::attributes()->assert(new WithAttributes('John Doe', 'john.doe@gmail.com', '2024-06-23', '+1234567890')),
     'phone must be a valid telephone number or must be null',
     '- phone must be a valid telephone number or must be null',
-    ['phone' => 'phone must be a valid telephone number or must be null']
+    [
+        '__root__' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$email="john.doe@gmail.com" +$birthdate="2024- ... }`',
+        'phone' => 'phone must be a valid telephone number or must be null',
+    ]
 ));
 
 test('Not an object', expectAll(
@@ -34,7 +40,10 @@ test('Nullable', expectAll(
     fn() => v::attributes()->assert(new WithAttributes('John Doe', 'john.doe@gmail.com', '2024-06-23', 'not a phone number')),
     'phone must be a valid telephone number or must be null',
     '- phone must be a valid telephone number or must be null',
-    ['phone' => 'phone must be a valid telephone number or must be null']
+    [
+        '__root__' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$email="john.doe@gmail.com" +$birthdate="2024- ... }`',
+        'phone' => 'phone must be a valid telephone number or must be null',
+    ]
 ));
 
 test('Multiple attributes, all failed', expectAll(
@@ -66,5 +75,11 @@ test('Multiple attributes, one failed', expectAll(
     fn() => v::attributes()->assert(new WithAttributes('John Doe', 'john.doe@gmail.com', '22 years ago')),
     'birthdate must be a valid date in the format "2005-12-30"',
     '- birthdate must be a valid date in the format "2005-12-30"',
-    ['birthdate' => 'birthdate must be a valid date in the format "2005-12-30"']
+    [
+        '__root__' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$email="john.doe@gmail.com" +$birthdate="22 ye ... }`',
+        'birthdate' => [
+            '__root__' => 'These rules must pass for birthdate',
+            'date' => 'birthdate must be a valid date in the format "2005-12-30"',
+        ],
+    ]
 ));

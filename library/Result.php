@@ -40,7 +40,7 @@ final class Result
         ?string $name = null,
         ?string $id = null,
         public readonly ?Result $adjacent = null,
-        public readonly bool $unchangeableId = false,
+        public readonly string|int|null $path = null,
         Result ...$children,
     ) {
         $this->name = $rule->getName() ?? $name;
@@ -99,21 +99,17 @@ final class Result
 
     public function withId(string $id): self
     {
-        if ($this->unchangeableId) {
-            return $this;
-        }
-
         return $this->clone(id: $id);
     }
 
-    public function withUnchangeableId(string $id): self
+    public function withPath(string|int $path): self
     {
-        return $this->clone(id: $id, unchangeableId: true);
+        return $this->clone(path: $path);
     }
 
     public function withPrefix(string $prefix): self
     {
-        if ($this->id === $this->name || $this->unchangeableId) {
+        if ($this->id === $this->name || $this->path !== null) {
             return $this;
         }
 
@@ -200,7 +196,7 @@ final class Result
         ?string $name = null,
         ?string $id = null,
         ?Result $adjacent = null,
-        ?bool $unchangeableId = null,
+        string|int|null $path = null,
         ?array $children = null
     ): self {
         return new self(
@@ -213,7 +209,7 @@ final class Result
             $name ?? $this->name,
             $id ?? $this->id,
             $adjacent ?? $this->adjacent,
-            $unchangeableId ?? $this->unchangeableId,
+            $path ?? $this->path,
             ...($children ?? $this->children)
         );
     }

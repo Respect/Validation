@@ -39,14 +39,24 @@ test('https://github.com/Respect/Validation/issues/1469', expectAll(
         - product_title2 must not be present
     FULL_MESSAGE,
     [
+        '__root__' => 'These rules must pass for `["order_items": [["product_title": test(?string $description = null, ?Closure $closure = null): Pest\Support\Hig ... ]`',
         'keySet' => [
-            '__root__' => 'Each item in order_items must be valid',
-            0 => 'quantity must be an integer value',
-            1 => [
-                '__root__' => 'order_items contains both missing and extra keys',
-                'product_title' => 'product_title must be present',
-                'quantity' => 'quantity must be present',
-                'product_title2' => 'product_title2 must not be present',
+            '__root__' => '`["order_items": [["product_title": test(?string $description = null, ?Closure $closure = null): Pest\Support\Hig ... ]` validation failed',
+            'each' => [
+                '__root__' => 'Each item in order_items must be valid',
+                0 => [
+                    '__root__' => 'order_items validation failed',
+                    'quantity' => [
+                        '__root__' => 'These rules must pass for quantity',
+                        'intVal' => 'quantity must be an integer value',
+                    ],
+                ],
+                1 => [
+                    '__root__' => 'order_items contains both missing and extra keys',
+                    'product_title' => 'product_title must be present',
+                    'quantity' => 'quantity must be present',
+                    'product_title2' => 'product_title2 must not be present',
+                ],
             ],
         ],
     ]

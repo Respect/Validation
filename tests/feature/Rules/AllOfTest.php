@@ -41,7 +41,10 @@ test('Wrapping "not"', expectAll(
     fn() => v::allOf(v::not(v::intType()), v::greaterThan(2))->assert(4),
     '4 must not be an integer',
     '- 4 must not be an integer',
-    ['notIntType' => '4 must not be an integer']
+    [
+        '__root__' => 'These rules must pass for 4',
+        'notIntType' => '4 must not be an integer',
+    ]
 ));
 
 test('With a single template', expectAll(
