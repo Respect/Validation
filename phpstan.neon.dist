@@ -23,21 +23,21 @@ parameters:
       path: tests/feature/Transformers/DeprecatedAgeTest.php
     - message: '/Call to an undefined static method Respect\\Validation\\Validator::attribute\(\)./'
       path: tests/feature/Transformers/DeprecatedAttributeTest.php
-    - message: '/Static method Respect\\Validation\\Mixins\\StaticValidator::key\(\) invoked with \d parameters?, 2 required/'
+    - message: '/Static method Respect\\Validation\\Mixins\\Builder::key\(\) invoked with \d parameters?, 2 required/'
       path: tests/feature/Transformers/DeprecatedKeyTest.php
     - message: '/Call to an undefined static method Respect\\Validation\\Validator::keyNested\(\)./'
       path: tests/feature/Transformers/DeprecatedKeyNestedTest.php
     - message: '/Call to an undefined static method Respect\\Validation\\Validator::keyValue\(\)./'
       path: tests/feature/Transformers/DeprecatedKeyValueTest.php
-    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::length\(\) expects Respect\\Validation\\Rule.+/'
+    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\Builder::length\(\) expects Respect\\Validation\\Rule.+/'
       path: tests/feature/Transformers/DeprecatedLengthTest.php
-    - message: '/Static method Respect\\Validation\\Mixins\\StaticValidator::length\(\) invoked with \d parameters, 1 required/'
+    - message: '/Static method Respect\\Validation\\Mixins\\Builder::length\(\) invoked with \d parameters, 1 required/'
       path: tests/feature/Transformers/DeprecatedLengthTest.php
-    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::max\(\) expects Respect\\Validation\\Rule.+/'
+    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\Builder::max\(\) expects Respect\\Validation\\Rule.+/'
       path: tests/feature/Transformers/DeprecatedMaxTest.php
-    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\StaticValidator::min\(\) expects Respect\\Validation\\Rule.+/'
+    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\Builder::min\(\) expects Respect\\Validation\\Rule.+/'
       path: tests/feature/Transformers/DeprecatedMinTest.php
-    - message: '/Parameter #(1|2) \$(unit|rule) of static method Respect\\Validation\\Mixins\\StaticValidator::size\(\) expects .+/'
+    - message: '/Parameter #(1|2) \$(unit|rule) of static method Respect\\Validation\\Mixins\\Builder::size\(\) expects .+/'
       path: tests/feature/Transformers/DeprecatedSizeTest.php
     - message: '/Call to an undefined static method Respect\\Validation\\Validator::type\(\)./'
       path: tests/feature/Transformers/DeprecatedTypeTest.php

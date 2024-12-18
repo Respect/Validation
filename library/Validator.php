@@ -12,7 +12,7 @@ namespace Respect\Validation;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Translator;
-use Respect\Validation\Mixins\StaticValidator;
+use Respect\Validation\Mixins\Builder;
 use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\Reducer;
 use Throwable;
@@ -22,7 +22,7 @@ use function is_callable;
 use function is_string;
 
 /**
- * @mixin StaticValidator
+ * @mixin Builder
  */
 final class Validator implements Rule
 {
