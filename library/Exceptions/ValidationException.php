@@ -11,6 +11,8 @@ namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
 
+use function realpath;
+
 final class ValidationException extends InvalidArgumentException implements Exception
 {
     /** @param array<string, mixed> $messages */
@@ -19,6 +21,10 @@ final class ValidationException extends InvalidArgumentException implements Exce
         private readonly string $fullMessage,
         private readonly array $messages,
     ) {
+        if (realpath($this->file) === realpath(__DIR__ . '/../Validator.php')) {
+            $this->file = $this->getTrace()[0]['file'] ?? $this->file;
+            $this->line = $this->getTrace()[0]['line'] ?? $this->line;
+        }
         parent::__construct($message);
     }
 
