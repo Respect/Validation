@@ -29,7 +29,7 @@ final class Validator implements Rule
     /** @var array<Rule> */
     private array $rules = [];
 
-    /** @var array<string, mixed> */
+    /** @var array<string|int, mixed> */
     private array $templates = [];
 
     private ?string $name = null;
@@ -65,7 +65,7 @@ final class Validator implements Rule
         return $this->evaluate($input)->isValid;
     }
 
-    /** @param array<string, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
+    /** @param array<string|int, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
     public function assert(mixed $input, array|string|Throwable|callable|null $template = null): void
     {
         $result = $this->evaluate($input);
@@ -99,7 +99,7 @@ final class Validator implements Rule
         throw $template($exception);
     }
 
-    /** @param array<string, mixed> $templates */
+    /** @param array<string|int, mixed> $templates */
     public function setTemplates(array $templates): self
     {
         $this->templates = $templates;

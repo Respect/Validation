@@ -14,12 +14,14 @@ use Respect\Validation\Result;
 
 use function array_filter;
 use function array_key_exists;
+use function array_merge;
 use function array_reduce;
 use function array_values;
 use function count;
 use function current;
 use function is_array;
 use function is_string;
+use function key;
 use function Respect\Stringifier\stringify;
 use function rtrim;
 use function sprintf;
@@ -35,7 +37,7 @@ final class StandardFormatter implements Formatter
     }
 
     /**
-     * @param array<string, mixed> $templates
+     * @param array<string|int, mixed> $templates
      */
     public function main(Result $result, array $templates, Translator $translator): string
     {
@@ -50,7 +52,7 @@ final class StandardFormatter implements Formatter
     }
 
     /**
-     * @param array<string, mixed> $templates
+     * @param array<string|int, mixed> $templates
      */
     public function full(
         Result $result,
@@ -91,9 +93,9 @@ final class StandardFormatter implements Formatter
     }
 
     /**
-     * @param array<string, mixed> $templates
+     * @param array<string|int, mixed> $templates
      *
-     * @return array<string, mixed>
+     * @return array<string|int, mixed>
      */
     public function array(Result $result, array $templates, Translator $translator): array
     {
@@ -101,22 +103,39 @@ final class StandardFormatter implements Formatter
         $deduplicatedChildren = $this->extractDeduplicatedChildren($result);
         if (count($deduplicatedChildren) === 0 || $this->isFinalTemplate($result, $selectedTemplates)) {
             return [
-                $result->id => $this->renderer->render($this->getTemplated($result, $selectedTemplates), $translator),
+                $result->path ?? $result->id => $this->renderer->render(
+                    $this->getTemplated($result, $selectedTemplates),
+                    $translator
+                ),
             ];
         }
 
         $messages = [];
         foreach ($deduplicatedChildren as $child) {
-            $messages[$child->id] = $this->array(
+            $childKey = $child->path ?? $child->id;
+
+            $messages[$childKey] = $this->array(
                 $child,
                 $this->selectTemplates($child, $selectedTemplates),
                 $translator
             );
-            if (count($messages[$child->id]) !== 1) {
+
+            if ($childKey == 'each' && is_array($messages['each'])) {
+                $messages = array_merge($messages, $messages['each']);
+                unset($messages['each']);
                 continue;
             }
 
-            $messages[$child->id] = current($messages[$child->id]);
+            if (count($messages[$childKey]) !== 1) {
+                continue;
+            }
+
+            $grantChildKey = key($messages[$childKey]);
+            if ($grantChildKey != $childKey) {
+                continue;
+            }
+
+            $messages[$grantChildKey] = current($messages[$grantChildKey]);
         }
 
         if (count($messages) > 1) {
@@ -165,56 +184,73 @@ final class StandardFormatter implements Formatter
         );
     }
 
-    /** @param array<string, mixed> $templates */
+    /** @param array<string|int, mixed> $templates */
     private function getTemplated(Result $result, array $templates): Result
     {
         if ($result->hasCustomTemplate()) {
             return $result;
         }
 
-        if (!isset($templates[$result->id]) && isset($templates['__root__'])) {
+        $keys = [$result->name, $result->path, $result->id];
+        foreach ($keys as $key) {
+            if (isset($templates[$key]) && is_string($templates[$key])) {
+                return $result->withTemplate($templates[$key]);
+            }
+        }
+
+        if (isset($templates['__root__'])) {
             return $result->withTemplate($templates['__root__']);
         }
 
-        if (!isset($templates[$result->id])) {
+        if (!isset($templates[$result->id]) && !isset($templates[$result->path]) && !isset($templates[$result->name])) {
             return $result;
         }
 
-        $template = $templates[$result->id];
-        if (is_string($template)) {
-            return $result->withTemplate($template);
-        }
-
         throw new ComponentException(
-            sprintf('Template for "%s" must be a string, %s given', $result->id, stringify($template))
+            sprintf(
+                'Template for "%s" must be a string, %s given',
+                $result->path ?? $result->name ?? $result->id,
+                stringify($templates)
+            )
         );
     }
 
     /**
-     * @param array<string, mixed> $templates
+     * @param array<string|int, mixed> $templates
      */
     private function isFinalTemplate(Result $result, array $templates): bool
     {
-        if (isset($templates[$result->id]) && is_string($templates[$result->id])) {
-            return true;
+        $keys = [$result->name, $result->path, $result->id];
+        foreach ($keys as $key) {
+            if (isset($templates[$key]) && is_string($templates[$key])) {
+                return true;
+            }
         }
 
         if (count($templates) !== 1) {
             return false;
         }
 
-        return isset($templates['__root__']) || isset($templates[$result->id]);
+        foreach ($keys as $key) {
+            if (isset($templates[$key])) {
+                return true;
+            }
+        }
+
+        return isset($templates['__root__']);
     }
 
     /**
-     * @param array<string, mixed> $templates
+     * @param array<string|int, mixed> $templates
      *
-     * @return array<string, mixed>
+     * @return array<string|int, mixed>
      */
-    private function selectTemplates(Result $message, array $templates): array
+    private function selectTemplates(Result $result, array $templates): array
     {
-        if (isset($templates[$message->id]) && is_array($templates[$message->id])) {
-            return $templates[$message->id];
+        foreach ([$result->name, $result->path, $result->id] as $key) {
+            if (isset($templates[$key]) && is_array($templates[$key])) {
+                return $templates[$key];
+            }
         }
 
         return $templates;
@@ -227,7 +263,7 @@ final class StandardFormatter implements Formatter
         $deduplicatedResults = [];
         $duplicateCounters = [];
         foreach ($result->children as $child) {
-            $id = $child->id;
+            $id = $child->path ?? $child->id;
             if (isset($duplicateCounters[$id])) {
                 $id .= '.' . ++$duplicateCounters[$id];
             } elseif (array_key_exists($id, $deduplicatedResults)) {
@@ -236,7 +272,7 @@ final class StandardFormatter implements Formatter
                 $duplicateCounters[$id] = 2;
                 $id .= '.2';
             }
-            $deduplicatedResults[$id] = $child->isValid ? null : $child->withId($id);
+            $deduplicatedResults[$id] = $child->isValid ? null : $child->withId((string) $id);
         }
 
         return array_values(array_filter($deduplicatedResults));

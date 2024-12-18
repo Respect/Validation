@@ -41,7 +41,7 @@ final class NullOr extends Wrapper
     {
         if ($result->allowsSubsequent()) {
             return $result
-                ->withPrefixedId('nullOr')
+                ->withPrefix('nullOr')
                 ->withSubsequent(new Result($result->isValid, $result->input, $this));
         }
 

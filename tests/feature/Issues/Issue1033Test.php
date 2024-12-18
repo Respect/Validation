@@ -18,8 +18,8 @@ test('https://github.com/Respect/Validation/issues/1033', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in `["A", "B", "B"]` must be valid',
-        'equals.1' => '"A" must be equal to 1',
-        'equals.2' => '"B" must be equal to 1',
-        'equals.3' => '"B" must be equal to 1',
+        0 => '"A" must be equal to 1',
+        1 => '"B" must be equal to 1',
+        2 => '"B" must be equal to 1',
     ]
 ));

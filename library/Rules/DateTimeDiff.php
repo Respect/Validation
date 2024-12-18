@@ -105,7 +105,7 @@ final class DateTimeDiff extends Standard
         $template = $now === 'now' ? self::TEMPLATE_STANDARD : self::TEMPLATE_CUSTOMIZED;
 
         return (new Result($result->isValid, $input, $this, $parameters, $template, id: $result->id))
-            ->withPrefixedId('dateTimeDiff')
+            ->withPrefix('dateTimeDiff')
             ->withSubsequent($result->withNameIfMissing($name));
     }
 

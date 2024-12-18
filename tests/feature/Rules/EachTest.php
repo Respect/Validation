@@ -32,9 +32,9 @@ test('Default', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in `["a", "b", "c"]` must be valid',
-        'intType.1' => '"a" must be an integer',
-        'intType.2' => '"b" must be an integer',
-        'intType.3' => '"c" must be an integer',
+        0 => '"a" must be an integer',
+        1 => '"b" must be an integer',
+        2 => '"c" must be an integer',
     ]
 ));
 
@@ -49,9 +49,9 @@ test('Inverted', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in `[1, 2, 3]` must be invalid',
-        'intType.1' => '1 must not be an integer',
-        'intType.2' => '2 must not be an integer',
-        'intType.3' => '3 must not be an integer',
+        0 => '1 must not be an integer',
+        1 => '2 must not be an integer',
+        2 => '3 must not be an integer',
     ]
 ));
 
@@ -80,9 +80,9 @@ test('With name, default', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in Wrapped must be valid',
-        'intType.1' => 'Wrapped must be an integer',
-        'intType.2' => 'Wrapped must be an integer',
-        'intType.3' => 'Wrapped must be an integer',
+        0 => 'Wrapped must be an integer',
+        1 => 'Wrapped must be an integer',
+        2 => 'Wrapped must be an integer',
     ]
 ));
 
@@ -97,9 +97,9 @@ test('With name, inverted', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in Wrapped must be invalid',
-        'intType.1' => 'Wrapped must not be an integer',
-        'intType.2' => 'Wrapped must not be an integer',
-        'intType.3' => 'Wrapped must not be an integer',
+        0 => 'Wrapped must not be an integer',
+        1 => 'Wrapped must not be an integer',
+        2 => 'Wrapped must not be an integer',
     ]
 ));
 
@@ -114,9 +114,9 @@ test('With wrapper name, default', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in Wrapper must be valid',
-        'intType.1' => 'Wrapper must be an integer',
-        'intType.2' => 'Wrapper must be an integer',
-        'intType.3' => 'Wrapper must be an integer',
+        0 => 'Wrapper must be an integer',
+        1 => 'Wrapper must be an integer',
+        2 => 'Wrapper must be an integer',
     ]
 ));
 
@@ -131,9 +131,9 @@ test('With wrapper name, inverted', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in Wrapper must be invalid',
-        'intType.1' => 'Wrapper must not be an integer',
-        'intType.2' => 'Wrapper must not be an integer',
-        'intType.3' => 'Wrapper must not be an integer',
+        0 => 'Wrapper must not be an integer',
+        1 => 'Wrapper must not be an integer',
+        2 => 'Wrapper must not be an integer',
     ]
 ));
 
@@ -148,9 +148,9 @@ test('With Not name, inverted', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in Not must be invalid',
-        'intType.1' => 'Not must not be an integer',
-        'intType.2' => 'Not must not be an integer',
-        'intType.3' => 'Not must not be an integer',
+        0 => 'Not must not be an integer',
+        1 => 'Not must not be an integer',
+        2 => 'Not must not be an integer',
     ]
 ));
 
@@ -192,9 +192,9 @@ test('With array template, default', expectAll(
         ->setTemplates([
             'each' => [
                 '__root__' => 'Here a sequence of items that did not pass the validation',
-                'intType.1' => 'First item should have been an integer',
-                'intType.2' => 'Second item should have been an integer',
-                'intType.3' => 'Third item should have been an integer',
+                0 => 'First item should have been an integer',
+                1 => 'Second item should have been an integer',
+                2 => 'Third item should have been an integer',
             ],
         ])
         ->assert(['a', 'b', 'c']),
@@ -207,9 +207,9 @@ test('With array template, default', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Here a sequence of items that did not pass the validation',
-        'intType.1' => 'First item should have been an integer',
-        'intType.2' => 'Second item should have been an integer',
-        'intType.3' => 'Third item should have been an integer',
+        0 => 'First item should have been an integer',
+        1 => 'Second item should have been an integer',
+        2 => 'Third item should have been an integer',
     ]
 ));
 
@@ -219,23 +219,23 @@ test('With array template and name, default', expectAll(
         ->setTemplates([
             'Wrapped' => [
                 '__root__' => 'Here a sequence of items that did not pass the validation',
-                'Wrapped.1' => 'First item should have been an integer',
-                'Wrapped.2' => 'Second item should have been an integer',
-                'Wrapped.3' => 'Third item should have been an integer',
+                0 => 'First item should have been an integer',
+                1 => 'Second item should have been an integer',
+                2 => 'Third item should have been an integer',
             ],
         ])
         ->assert(['a', 'b', 'c']),
-    'Wrapped must be an integer',
+    'First item should have been an integer',
     <<<'FULL_MESSAGE'
-    - Each item in Wrapped must be valid
-      - Wrapped must be an integer
-      - Wrapped must be an integer
-      - Wrapped must be an integer
+    - Here a sequence of items that did not pass the validation
+      - First item should have been an integer
+      - Second item should have been an integer
+      - Third item should have been an integer
     FULL_MESSAGE,
     [
-        '__root__' => 'Each item in Wrapped must be valid',
-        'intType.1' => 'Wrapped must be an integer',
-        'intType.2' => 'Wrapped must be an integer',
-        'intType.3' => 'Wrapped must be an integer',
+        '__root__' => 'Here a sequence of items that did not pass the validation',
+        0 => 'First item should have been an integer',
+        1 => 'Second item should have been an integer',
+        2 => 'Third item should have been an integer',
     ]
 ));

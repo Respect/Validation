@@ -26,9 +26,10 @@ final class Max extends FilteredNonEmptyArray
     /** @param non-empty-array<mixed> $input */
     protected function evaluateNonEmptyArray(array $input): Result
     {
-        $result = $this->rule->evaluate(max($input))->withPrefixedId('max');
+        $result = $this->rule->evaluate(max($input))->withPrefix('max');
         $template = $this->getName() === null ? self::TEMPLATE_STANDARD : self::TEMPLATE_NAMED;
 
-        return (new Result($result->isValid, $input, $this, [], $template, id: $result->id))->withSubsequent($result);
+        return (new Result($result->isValid, $input, $this, [], $template, id: $result->id))
+            ->withSubsequent($result);
     }
 }

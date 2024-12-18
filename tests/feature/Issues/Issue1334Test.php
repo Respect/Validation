@@ -35,15 +35,23 @@ test('https://github.com/Respect/Validation/issues/1334', expectAll(
         - street must be a string
     FULL_MESSAGE,
     [
-        'each' => [
-            '__root__' => 'Each item in `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]` must be valid',
-            'allOf.1' => [
-                '__root__' => 'These rules must pass for `["region": "Oregon", "country": "USA", "other": 123]`',
-                'street' => 'street must be present',
-                'other' => 'other must be a string or must be null',
+        '__root__' => 'These rules must pass for `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]`',
+        0 => [
+            '__root__' => 'These rules must pass for `["region": "Oregon", "country": "USA", "other": 123]`',
+            'street' => 'street must be present',
+            'other' => [
+                'nullOrStringType' => 'other must be a string or must be null',
             ],
-            'allOf.2' => 'street must not be empty',
-            'allOf.3' => 'street must be a string',
+        ],
+        1 => [
+            'street' => [
+                'notEmpty' => 'street must not be empty',
+            ],
+        ],
+        2 => [
+            'street' => [
+                'stringType' => 'street must be a string',
+            ],
         ],
     ]
 ));

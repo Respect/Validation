@@ -44,7 +44,7 @@ final class UndefOr extends Wrapper
     {
         if ($result->allowsSubsequent()) {
             return $result
-                ->withPrefixedId('undefOr')
+                ->withPrefix('undefOr')
                 ->withSubsequent(new Result($result->isValid, $result->input, $this));
         }
 
