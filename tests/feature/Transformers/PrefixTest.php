@@ -25,16 +25,16 @@ test('Length', expectAll(
 
 test('Max', expectAll(
     fn() => v::maxOdd()->assert([1, 2, 3, 4]),
-    'As the maximum of `[1, 2, 3, 4]`, 4 must be an odd number',
-    '- As the maximum of `[1, 2, 3, 4]`, 4 must be an odd number',
-    ['maxOdd' => 'As the maximum of `[1, 2, 3, 4]`, 4 must be an odd number']
+    'The maximum of `[1, 2, 3, 4]` must be an odd number',
+    '- The maximum of `[1, 2, 3, 4]` must be an odd number',
+    ['maxOdd' => 'The maximum of `[1, 2, 3, 4]` must be an odd number']
 ));
 
 test('Min', expectAll(
     fn() => v::minEven()->assert([1, 2, 3]),
-    'As the minimum from `[1, 2, 3]`, 1 must be an even number',
-    '- As the minimum from `[1, 2, 3]`, 1 must be an even number',
-    ['minEven' => 'As the minimum from `[1, 2, 3]`, 1 must be an even number']
+    'The minimum of `[1, 2, 3]` must be an even number',
+    '- The minimum of `[1, 2, 3]` must be an even number',
+    ['minEven' => 'The minimum of `[1, 2, 3]` must be an even number']
 ));
 
 test('Not', expectAll(

@@ -14,21 +14,33 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\FilteredNonEmptyArray;
 
+use function array_map;
 use function min;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
-#[Template('As the minimum from {{name}},', 'As the minimum from {{name}},')]
-#[Template('The minimum from', 'The minimum from', self::TEMPLATE_NAMED)]
+#[Template('The minimum of', 'The minimum of')]
 final class Min extends FilteredNonEmptyArray
 {
-    public const TEMPLATE_NAMED = '__named__';
-
     /** @param non-empty-array<mixed> $input */
     protected function evaluateNonEmptyArray(array $input): Result
     {
-        $result = $this->rule->evaluate(min($input))->withPrefixedId('min');
-        $template = $this->getName() === null ? self::TEMPLATE_STANDARD : self::TEMPLATE_NAMED;
+        $min = min($input);
 
-        return (new Result($result->isValid, $input, $this, [], $template, id: $result->id))->withSubsequent($result);
+        return $this->enrichResult($input, $this->rule->evaluate($min));
+    }
+
+    private function enrichResult(mixed $input, Result $result): Result
+    {
+        if (!$result->allowsSubsequent()) {
+            return $result
+                ->withInput($input)
+                ->withChildren(
+                    ...array_map(fn(Result $child) => $this->enrichResult($input, $child), $result->children)
+                );
+        }
+
+        return (new Result($result->isValid, $input, $this, id: $result->id))
+            ->withPrefixedId('min')
+            ->withSubsequent($result->withInput($input));
     }
 }

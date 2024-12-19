@@ -23,16 +23,16 @@ test('Empty', expectAll(
 
 test('Default', expectAll(
     fn() => v::max(v::negative())->assert([1, 2, 3]),
-    'As the maximum of `[1, 2, 3]`, 3 must be a negative number',
-    '- As the maximum of `[1, 2, 3]`, 3 must be a negative number',
-    ['maxNegative' => 'As the maximum of `[1, 2, 3]`, 3 must be a negative number']
+    'The maximum of `[1, 2, 3]` must be a negative number',
+    '- The maximum of `[1, 2, 3]` must be a negative number',
+    ['maxNegative' => 'The maximum of `[1, 2, 3]` must be a negative number']
 ));
 
 test('Inverted', expectAll(
     fn() => v::not(v::max(v::negative()))->assert([-3, -2, -1]),
-    'As the maximum of `[-3, -2, -1]`, -1 must not be a negative number',
-    '- As the maximum of `[-3, -2, -1]`, -1 must not be a negative number',
-    ['notMaxNegative' => 'As the maximum of `[-3, -2, -1]`, -1 must not be a negative number']
+    'The maximum of `[-3, -2, -1]` must not be a negative number',
+    '- The maximum of `[-3, -2, -1]` must not be a negative number',
+    ['notMaxNegative' => 'The maximum of `[-3, -2, -1]` must not be a negative number']
 ));
 
 test('With wrapped name, default', expectAll(
@@ -68,4 +68,19 @@ test('With template, default', expectAll(
     'The maximum of the value is not what we expect',
     '- The maximum of the value is not what we expect',
     ['maxNegative' => 'The maximum of the value is not what we expect']
+));
+
+test('Chained wrapped rule', expectAll(
+    fn() => v::max(v::between(5, 7)->odd())->assert([1, 2, 3, 4]),
+    'The maximum of `[1, 2, 3, 4]` must be between 5 and 7',
+    <<<'FULL_MESSAGE'
+    - All of the required rules must pass for `[1, 2, 3, 4]`
+      - The maximum of `[1, 2, 3, 4]` must be between 5 and 7
+      - The maximum of `[1, 2, 3, 4]` must be an odd number
+    FULL_MESSAGE,
+    [
+        '__root__' => 'All of the required rules must pass for `[1, 2, 3, 4]`',
+        'maxBetween' => 'The maximum of `[1, 2, 3, 4]` must be between 5 and 7',
+        'maxOdd' => 'The maximum of `[1, 2, 3, 4]` must be an odd number',
+    ]
 ));
