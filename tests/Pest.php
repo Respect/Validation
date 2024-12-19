@@ -17,6 +17,7 @@ function expectAll(Closure $callback, string $message, string $fullMessage, arra
 {
     // Normalize newlines in $fullMessage so OS differences don't cause false failures
     $fullMessage = preg_replace('/\R/u', PHP_EOL, $fullMessage);
+
     return function () use ($callback, $message, $fullMessage, $messages): void {
         try {
             $callback->call($this);
@@ -34,6 +35,7 @@ function expectAllToMatch(Closure $callback, string $message, string $fullMessag
 {
     // Normalize newlines in $fullMessage so OS differences don't cause false failures
     $fullMessage = preg_replace('/\R/u', PHP_EOL, $fullMessage);
+
     return function () use ($callback, $message, $fullMessage, $messages): void {
         try {
             $callback();
@@ -66,6 +68,7 @@ function expectFullMessage(Closure $callback, string $fullMessage): Closure
 {
     // Normalize newlines in $fullMessage so OS differences don't cause false failures
     $fullMessage = preg_replace('/\R/u', PHP_EOL, $fullMessage);
+    
     return function () use ($callback, $fullMessage): void {
         try {
             $callback();
