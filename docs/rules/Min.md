@@ -24,13 +24,6 @@ empty, the validation will fail.
 
 ### `Min::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-|------------|-------------------------------|
-| `default`  | As the minimum from {{name}}, |
-| `inverted` | As the minimum from {{name}}, |
-
-### `Min::TEMPLATE_NAMED`
-
 | Mode       | Template         |
 |------------|------------------|
 | `default`  | The minimum from |
