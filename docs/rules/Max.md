@@ -24,12 +24,6 @@ empty, the validation will fail.
 
 ### `Max::TEMPLATE_STANDARD`
 
-| Mode       | Template                    |
-|------------|-----------------------------|
-| `default`  | As the maximum of {{name}}, |
-| `inverted` | As the maximum of {{name}}, |
-
-### `Max::TEMPLATE_NAMED`
 
 | Mode       | Template       |
 |------------|----------------|

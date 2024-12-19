@@ -12,23 +12,18 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\FilteredNonEmptyArray;
+use Respect\Validation\Rules\Core\ArrayAggregateFunction;
 
 use function min;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
-#[Template('As the minimum from {{name}},', 'As the minimum from {{name}},')]
-#[Template('The minimum from', 'The minimum from', self::TEMPLATE_NAMED)]
-final class Min extends FilteredNonEmptyArray
+#[Template('The minimum from', 'The minimum from')]
+final class Min extends ArrayAggregateFunction
 {
-    public const TEMPLATE_NAMED = '__named__';
+    protected string $idPrefix = 'min';
 
-    /** @param non-empty-array<mixed> $input */
-    protected function evaluateNonEmptyArray(array $input): Result
+    protected function extractAggregate(array $input): mixed
     {
-        $result = $this->rule->evaluate(min($input))->withPrefixedId('min');
-        $template = $this->getName() === null ? self::TEMPLATE_STANDARD : self::TEMPLATE_NAMED;
-
-        return (new Result($result->isValid, $input, $this, [], $template, id: $result->id))->withSubsequent($result);
+        return min($input);
     }
 }

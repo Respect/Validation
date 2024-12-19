@@ -9,16 +9,16 @@ declare(strict_types=1);
 
 test('Default', expectAll(
     fn() => v::min(v::equals(1))->assert([2, 3]),
-    'As the minimum from `[2, 3]`, 2 must be equal to 1',
-    '- As the minimum from `[2, 3]`, 2 must be equal to 1',
-    ['minEquals' => 'As the minimum from `[2, 3]`, 2 must be equal to 1']
+    'The minimum from `[2, 3]` must be equal to 1',
+    '- The minimum from `[2, 3]` must be equal to 1',
+    ['minEquals' => 'The minimum from `[2, 3]` must be equal to 1']
 ));
 
 test('Inverted', expectAll(
     fn() => v::not(v::min(v::equals(1)))->assert([1, 2, 3]),
-    'As the minimum from `[1, 2, 3]`, 1 must not be equal to 1',
-    '- As the minimum from `[1, 2, 3]`, 1 must not be equal to 1',
-    ['notMinEquals' => 'As the minimum from `[1, 2, 3]`, 1 must not be equal to 1']
+    'The minimum from `[1, 2, 3]` must not be equal to 1',
+    '- The minimum from `[1, 2, 3]` must not be equal to 1',
+    ['notMinEquals' => 'The minimum from `[1, 2, 3]` must not be equal to 1']
 ));
 
 test('With template', expectAll(
@@ -33,4 +33,19 @@ test('With name', expectAll(
     'The minimum from Options must be equal to 1',
     '- The minimum from Options must be equal to 1',
     ['minEquals' => 'The minimum from Options must be equal to 1']
+));
+
+test('Chained wrapped rule', expectAll(
+    fn() => v::min(v::between(5, 7)->odd())->assert([2, 3, 4]),
+    'The minimum from `[2, 3, 4]` must be between 5 and 7',
+    <<<'FULL_MESSAGE'
+    - All of the required rules must pass for `[2, 3, 4]`
+      - The minimum from `[2, 3, 4]` must be between 5 and 7
+      - The minimum from `[2, 3, 4]` must be an odd number
+    FULL_MESSAGE,
+    [
+        '__root__' => 'All of the required rules must pass for `[2, 3, 4]`',
+        'minBetween' => 'The minimum from `[2, 3, 4]` must be between 5 and 7',
+        'minOdd' => 'The minimum from `[2, 3, 4]` must be an odd number',
+    ]
 ));

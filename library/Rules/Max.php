@@ -12,23 +12,18 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\FilteredNonEmptyArray;
+use Respect\Validation\Rules\Core\ArrayAggregateFunction;
 
 use function max;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
-#[Template('As the maximum of {{name}},', 'As the maximum of {{name}},')]
-#[Template('The maximum of', 'The maximum of', self::TEMPLATE_NAMED)]
-final class Max extends FilteredNonEmptyArray
+#[Template('The maximum of', 'The maximum of')]
+final class Max extends ArrayAggregateFunction
 {
-    public const TEMPLATE_NAMED = '__named__';
+    protected string $idPrefix = 'max';
 
-    /** @param non-empty-array<mixed> $input */
-    protected function evaluateNonEmptyArray(array $input): Result
+    protected function extractAggregate(array $input): mixed
     {
-        $result = $this->rule->evaluate(max($input))->withPrefixedId('max');
-        $template = $this->getName() === null ? self::TEMPLATE_STANDARD : self::TEMPLATE_NAMED;
-
-        return (new Result($result->isValid, $input, $this, [], $template, id: $result->id))->withSubsequent($result);
+        return max($input);
     }
 }
