@@ -9,20 +9,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Core;
 
-use Attribute;
-use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\FilteredNonEmptyArray;
 
 use function array_map;
 
 abstract class ArrayAggregateFunction extends FilteredNonEmptyArray
 {
     protected string $idPrefix;
-    
+
     /**
      * This function should extract the aggregate data from the input array
-     * 
+     *
      * @param non-empty-array<mixed> $input
      */
     abstract protected function extractAggregate(array $input): mixed;

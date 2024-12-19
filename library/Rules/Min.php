@@ -11,7 +11,6 @@ namespace Respect\Validation\Rules;
 
 use Attribute;
 use Respect\Validation\Message\Template;
-use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\ArrayAggregateFunction;
 
 use function min;
