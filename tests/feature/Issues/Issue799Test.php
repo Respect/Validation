@@ -20,12 +20,12 @@ test('https://github.com/Respect/Validation/issues/799 | #1', expectAll(
         ->assert($input),
     '1 must be an array value',
     <<<'FULL_MESSAGE'
-    - All of the required rules must pass for 1
+    - All the required rules must pass for 1
       - 1 must be an array value
       - scheme must be present
     FULL_MESSAGE,
     [
-        '__root__' => 'All of the required rules must pass for 1',
+        '__root__' => 'All the required rules must pass for 1',
         'arrayVal' => '1 must be an array value',
         'scheme' => 'scheme must be present',
     ]

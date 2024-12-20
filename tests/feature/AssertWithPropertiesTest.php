@@ -45,7 +45,7 @@ test('Scenario #1', expectFullMessage(
             ->assert($object);
     },
     <<<'FULL_MESSAGE'
-    - All of the required rules must pass for the given data
+    - All the required rules must pass for the given data
       - These rules must pass for mysql
         - host must be a string
       - These rules must pass for postgresql

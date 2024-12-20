@@ -81,12 +81,12 @@ test('Without subsequent result', expectAll(
     fn() => v::undefOr(v::alpha()->stringType())->assert(1234),
     '1234 must contain only letters (a-z) or must be undefined',
     <<<'FULL_MESSAGE'
-    - All of the required rules must pass for 1234
+    - All the required rules must pass for 1234
       - 1234 must contain only letters (a-z) or must be undefined
       - 1234 must be a string or must be undefined
     FULL_MESSAGE,
     [
-        '__root__' => 'All of the required rules must pass for 1234',
+        '__root__' => 'All the required rules must pass for 1234',
         'undefOrAlpha' => '1234 must contain only letters (a-z) or must be undefined',
         'undefOrStringType' => '1234 must be a string or must be undefined',
     ]
@@ -99,12 +99,12 @@ test('Without subsequent result with templates', expectAll(
     ]),
     'Should be nul or alpha',
     <<<'FULL_MESSAGE'
-    - All of the required rules must pass for 1234
+    - All the required rules must pass for 1234
       - Should be nul or alpha
       - Should be nul or string type
     FULL_MESSAGE,
     [
-        '__root__' => 'All of the required rules must pass for 1234',
+        '__root__' => 'All the required rules must pass for 1234',
         'undefOrAlpha' => 'Should be nul or alpha',
         'undefOrStringType' => 'Should be nul or string type',
     ]

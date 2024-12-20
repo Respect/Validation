@@ -42,14 +42,14 @@ test('https://github.com/Respect/Validation/issues/796', expectAll(
         ]),
     'host must be a string',
     <<<'FULL_MESSAGE'
-    - All of the required rules must pass for the given data
+    - All the required rules must pass for the given data
       - These rules must pass for mysql
         - host must be a string
       - These rules must pass for postgresql
         - user must be a string
     FULL_MESSAGE,
     [
-        '__root__' => 'All of the required rules must pass for the given data',
+        '__root__' => 'All the required rules must pass for the given data',
         'mysql' => 'host must be a string',
         'postgresql' => 'user must be a string',
     ]

@@ -19,10 +19,10 @@ v::allOf(v::intVal(), v::positive())->isValid(15); // true
 
 ### `AllOf::TEMPLATE_NONE`
 
-| Mode       | Template                                         |
-|------------|--------------------------------------------------|
-| `default`  | All of the required rules must pass for {{name}} |
-| `inverted` | None of these rules must pass for {{name}}       |
+| Mode       | Template                                      |
+|------------|-----------------------------------------------|
+| `default`  | All the required rules must pass for {{name}} |
+| `inverted` | None of these rules must pass for {{name}}    |
 
 ## Template placeholders
 

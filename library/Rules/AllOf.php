@@ -27,7 +27,7 @@ use function count;
     self::TEMPLATE_SOME,
 )]
 #[Template(
-    'All of the required rules must pass for {{name}}',
+    'All the required rules must pass for {{name}}',
     'None of these rules must pass for {{name}}',
     self::TEMPLATE_NONE,
 )]

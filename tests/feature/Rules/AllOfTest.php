@@ -11,12 +11,12 @@ test('Two rules', expectAll(
     fn() => v::allOf(v::intType(), v::negative())->assert('2'),
     '"2" must be an integer',
     <<<'FULL_MESSAGE'
-    - All of the required rules must pass for "2"
+    - All the required rules must pass for "2"
       - "2" must be an integer
       - "2" must be a negative number
     FULL_MESSAGE,
     [
-        '__root__' => 'All of the required rules must pass for "2"',
+        '__root__' => 'All the required rules must pass for "2"',
         'intType' => '"2" must be an integer',
         'negative' => '"2" must be a negative number',
     ]

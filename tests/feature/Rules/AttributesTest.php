@@ -41,20 +41,20 @@ test('Multiple attributes, all failed', expectAll(
     fn() => v::attributes()->assert(new WithAttributes('', 'not an email', 'not a date', 'not a phone number')),
     'name must not be empty',
     <<<'FULL_MESSAGE'
-    - All of the required rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$email="not an email" +$birthdate="not a date" +$phone ... }`
+    - All the required rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$email="not an email" +$birthdate="not a date" +$phone ... }`
       - name must not be empty
       - email must be a valid email address
-      - All of the required rules must pass for birthdate
+      - All the required rules must pass for birthdate
         - birthdate must be a valid date in the format "2005-12-30"
         - For comparison with now, birthdate must be a valid datetime
       - phone must be a valid telephone number or must be null
     FULL_MESSAGE,
     [
-        '__root__' => 'All of the required rules must pass for `Respect\\Validation\\Test\\Stubs\\WithAttributes { +$name="" +$email="not an email" +$birthdate="not a date" +$phone ... }`',
+        '__root__' => 'All the required rules must pass for `Respect\\Validation\\Test\\Stubs\\WithAttributes { +$name="" +$email="not an email" +$birthdate="not a date" +$phone ... }`',
         'name' => 'name must not be empty',
         'email' => 'email must be a valid email address',
         'birthdate' => [
-            '__root__' => 'All of the required rules must pass for birthdate',
+            '__root__' => 'All the required rules must pass for birthdate',
             'date' => 'birthdate must be a valid date in the format "2005-12-30"',
             'dateTimeDiffLessThanOrEqual' => 'For comparison with now, birthdate must be a valid datetime',
         ],

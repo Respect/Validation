@@ -28,10 +28,10 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
     <<<'FULL_MESSAGE'
     - Each item in `[["manufacturer": "Honda", "model": "Accord"], ["manufacturer": "Toyota", "model": "Rav4"], ["manufacturer": "Fo ... ]` must be valid
       - Only one of these rules must pass for `["manufacturer": "Ford", "model": "not real"]`
-        - All of the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`
+        - All the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`
           - manufacturer must be equal to "Honda"
           - model must be in `["Accord", "Fit"]`
-        - All of the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`
+        - All the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`
           - manufacturer must be equal to "Toyota"
           - model must be in `["Rav4", "Camry"]`
         - These rules must pass for `["manufacturer": "Ford", "model": "not real"]`
@@ -39,10 +39,10 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
       - Only one of these rules must pass for `["manufacturer": "Honda", "model": "not valid"]`
         - These rules must pass for `["manufacturer": "Honda", "model": "not valid"]`
           - model must be in `["Accord", "Fit"]`
-        - All of the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`
+        - All the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`
           - manufacturer must be equal to "Toyota"
           - model must be in `["Rav4", "Camry"]`
-        - All of the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`
+        - All the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`
           - manufacturer must be equal to "Ford"
           - model must be in `["F150", "Bronco"]`
     FULL_MESSAGE,
@@ -52,12 +52,12 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
             'oneOf.3' => [
                 '__root__' => 'Only one of these rules must pass for `["manufacturer": "Ford", "model": "not real"]`',
                 'allOf.1' => [
-                    '__root__' => 'All of the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`',
+                    '__root__' => 'All the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`',
                     'manufacturer' => 'manufacturer must be equal to "Honda"',
                     'model' => 'model must be in `["Accord", "Fit"]`',
                 ],
                 'allOf.2' => [
-                    '__root__' => 'All of the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`',
+                    '__root__' => 'All the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`',
                     'manufacturer' => 'manufacturer must be equal to "Toyota"',
                     'model' => 'model must be in `["Rav4", "Camry"]`',
                 ],
@@ -67,12 +67,12 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
                 '__root__' => 'Only one of these rules must pass for `["manufacturer": "Honda", "model": "not valid"]`',
                 'allOf.1' => 'model must be in `["Accord", "Fit"]`',
                 'allOf.2' => [
-                    '__root__' => 'All of the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`',
+                    '__root__' => 'All the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`',
                     'manufacturer' => 'manufacturer must be equal to "Toyota"',
                     'model' => 'model must be in `["Rav4", "Camry"]`',
                 ],
                 'allOf.3' => [
-                    '__root__' => 'All of the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`',
+                    '__root__' => 'All the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`',
                     'manufacturer' => 'manufacturer must be equal to "Ford"',
                     'model' => 'model must be in `["F150", "Bronco"]`',
                 ],
