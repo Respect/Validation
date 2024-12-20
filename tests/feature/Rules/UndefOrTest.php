@@ -77,7 +77,7 @@ test('Inverted undefined with template', expectAll(
     ['notUndefOrAlpha' => 'Should not be undefined or alpha']
 ));
 
-test('Without subsequent result', expectAll(
+test('Without adjacent result', expectAll(
     fn() => v::undefOr(v::alpha()->stringType())->assert(1234),
     '1234 must contain only letters (a-z) or must be undefined',
     <<<'FULL_MESSAGE'
@@ -92,7 +92,7 @@ test('Without subsequent result', expectAll(
     ]
 ));
 
-test('Without subsequent result with templates', expectAll(
+test('Without adjacent result with templates', expectAll(
     fn() => v::undefOr(v::alpha()->stringType())->assert(1234, [
         'undefOrAlpha' => 'Should be nul or alpha',
         'undefOrStringType' => 'Should be nul or string type',

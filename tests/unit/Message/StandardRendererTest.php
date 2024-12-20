@@ -340,14 +340,14 @@ final class StandardRendererTest extends TestCase
     }
 
     #[Test]
-    public function itShouldRenderResultWithItsSubsequentsWhenItHasNoCustomTemplate(): void
+    public function itShouldRenderResultWithItsAdjacentsWhenItHasNoCustomTemplate(): void
     {
         $renderer = new StandardRenderer(new TestingStringifier());
 
         $result = (new ResultBuilder())->template('__1st__')
-            ->subsequent(
+            ->adjacent(
                 (new ResultBuilder())->template('__2nd__')
-                    ->subsequent(
+                    ->adjacent(
                         (new ResultBuilder())->template('__3rd__')->build(),
                     )
                     ->build(),
@@ -360,12 +360,12 @@ final class StandardRendererTest extends TestCase
     }
 
     #[Test]
-    public function itShouldRenderResultWithoutItsSubsequentsWhenItHasCustomTemplate(): void
+    public function itShouldRenderResultWithoutItsAdjacentsWhenItHasCustomTemplate(): void
     {
         $template = 'Custom template';
 
         $result = (new ResultBuilder())->template($template)
-            ->subsequent((new ResultBuilder())->template('and this is a subsequent')->build())
+            ->adjacent((new ResultBuilder())->template('and this is a adjacent')->build())
             ->build();
 
         $renderer = new StandardRenderer(new TestingStringifier());

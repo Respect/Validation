@@ -20,7 +20,6 @@ use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Standard;
 use Throwable;
 
-use function array_map;
 use function in_array;
 use function ucfirst;
 
@@ -31,8 +30,8 @@ use function ucfirst;
     self::TEMPLATE_STANDARD
 )]
 #[Template(
-    'The number of {{type|trans}} between {{now|raw}} and',
-    'The number of {{type|trans}} between {{now|raw}} and',
+    'The number of {{type|trans}} between {{now}} and',
+    'The number of {{type|trans}} between {{now}} and',
     self::TEMPLATE_CUSTOMIZED
 )]
 #[Template(
@@ -82,31 +81,16 @@ final class DateTimeDiff extends Standard
                 ->withId('dateTimeDiff' . ucfirst($this->rule->evaluate($input)->id));
         }
 
-        return $this->enrichResult(
-            $this->nowParameter($now),
+        $nowPlaceholder = $this->nowParameter($now);
+
+        return Result::fromAdjacent(
             $input,
-            $this->rule->evaluate($this->comparisonValue($now, $compareTo))
+            'dateTimeDiff',
+            $this,
+            $this->rule->evaluate($this->comparisonValue($now, $compareTo)),
+            ['type' => $this->type, 'now' => $nowPlaceholder],
+            $nowPlaceholder === 'now' ? self::TEMPLATE_STANDARD : self::TEMPLATE_CUSTOMIZED
         );
-    }
-
-    private function enrichResult(string $now, mixed $input, Result $result): Result
-    {
-        $name = $input instanceof DateTimeInterface ? $input->format('c') : $input;
-
-        if (!$result->allowsSubsequent()) {
-            return $result
-                ->withNameIfMissing($name)
-                ->withChildren(
-                    ...array_map(fn(Result $child) => $this->enrichResult($now, $input, $child), $result->children)
-                );
-        }
-
-        $parameters = ['type' => $this->type, 'now' => $now];
-        $template = $now === 'now' ? self::TEMPLATE_STANDARD : self::TEMPLATE_CUSTOMIZED;
-
-        return (new Result($result->isValid, $input, $this, $parameters, $template, id: $result->id))
-            ->withPrefixedId('dateTimeDiff')
-            ->withSubsequent($result->withNameIfMissing($name));
     }
 
     private function comparisonValue(DateTimeInterface $now, DateTimeInterface $compareTo): int|float

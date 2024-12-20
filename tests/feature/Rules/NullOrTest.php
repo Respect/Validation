@@ -77,7 +77,7 @@ test('Inverted nullined with template', expectAll(
     ['notNullOrAlpha' => 'Next to nifty null notations']
 ));
 
-test('Without subsequent result', expectAll(
+test('Without adjacent result', expectAll(
     fn() => v::nullOr(v::alpha()->stringType())->assert(1234),
     '1234 must contain only letters (a-z) or must be null',
     <<<'FULL_MESSAGE'
@@ -92,7 +92,7 @@ test('Without subsequent result', expectAll(
     ]
 ));
 
-test('Without subsequent result with templates', expectAll(
+test('Without adjacent result with templates', expectAll(
     fn() => v::nullOr(v::alpha()->stringType())->assert(1234, [
         'nullOrAlpha' => 'Should be nul or alpha',
         'nullOrStringType' => 'Should be nul or string type',

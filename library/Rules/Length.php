@@ -15,7 +15,6 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Wrapper;
 
-use function array_map;
 use function count;
 use function is_array;
 use function is_string;
@@ -45,22 +44,7 @@ final class Length extends Wrapper
                 ->withId('length' . ucfirst($this->rule->evaluate($input)->id));
         }
 
-        return $this->enrichResult($input, $this->rule->evaluate($length));
-    }
-
-    private function enrichResult(mixed $input, Result $result): Result
-    {
-        if (!$result->allowsSubsequent()) {
-            return $result
-                ->withInput($input)
-                ->withChildren(
-                    ...array_map(fn(Result $child) => $this->enrichResult($input, $child), $result->children)
-                );
-        }
-
-        return (new Result($result->isValid, $input, $this, id: $result->id))
-            ->withPrefixedId('length')
-            ->withSubsequent($result->withInput($input));
+        return Result::fromAdjacent($input, 'length', $this, $this->rule->evaluate($length));
     }
 
     private function extractLength(mixed $input): ?int

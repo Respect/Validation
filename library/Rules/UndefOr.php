@@ -42,10 +42,10 @@ final class UndefOr extends Wrapper
 
     private function enrichResult(Result $result): Result
     {
-        if ($result->allowsSubsequent()) {
+        if ($result->allowsAdjacent()) {
             return $result
                 ->withPrefixedId('undefOr')
-                ->withSubsequent(new Result($result->isValid, $result->input, $this));
+                ->withAdjacent(new Result($result->isValid, $result->input, $this));
         }
 
         return $result->withChildren(...array_map(fn(Result $child) => $this->enrichResult($child), $result->children));

@@ -39,7 +39,7 @@ final class Result
         public readonly Mode $mode = Mode::DEFAULT,
         ?string $name = null,
         ?string $id = null,
-        public readonly ?Result $subsequent = null,
+        public readonly ?Result $adjacent = null,
         public readonly bool $unchangeableId = false,
         Result ...$children,
     ) {
@@ -67,6 +67,29 @@ final class Result
         string $template = Rule::TEMPLATE_STANDARD
     ): self {
         return new self(true, $input, $rule, $parameters, $template);
+    }
+
+    /** @param array<string, mixed> $parameters */
+    public static function fromAdjacent(
+        mixed $input,
+        string $prefix,
+        Rule $rule,
+        Result $adjacent,
+        array $parameters = [],
+        string $template = Rule::TEMPLATE_STANDARD
+    ): Result {
+        if ($adjacent->allowsAdjacent()) {
+            return (new Result($adjacent->isValid, $input, $rule, $parameters, $template, id: $adjacent->id))
+                ->withPrefixedId($prefix)
+                ->withAdjacent($adjacent->withInput($input));
+        }
+
+        $childrenAsAdjacent = array_map(
+            static fn(Result $child) => self::fromAdjacent($input, $prefix, $rule, $child, $parameters, $template),
+            $adjacent->children
+        );
+
+        return $adjacent->withInput($input)->withChildren(...$childrenAsAdjacent);
     }
 
     public function withTemplate(string $template): self
@@ -123,16 +146,16 @@ final class Result
         );
     }
 
-    public function withSubsequent(Result $subsequent): self
+    public function withAdjacent(Result $adjacent): self
     {
-        return $this->clone(subsequent: $subsequent);
+        return $this->clone(adjacent: $adjacent);
     }
 
     public function withInvertedValidation(): self
     {
         return $this->clone(
             isValid: !$this->isValid,
-            subsequent: $this->subsequent?->withInvertedValidation(),
+            adjacent: $this->adjacent?->withInvertedValidation(),
             children: array_map(static fn (Result $child) => $child->withInvertedValidation(), $this->children),
         );
     }
@@ -142,7 +165,7 @@ final class Result
         return $this->clone(
             isValid: !$this->isValid,
             mode: $this->mode == Mode::DEFAULT ? Mode::INVERTED : Mode::DEFAULT,
-            subsequent: $this->subsequent?->withInvertedMode(),
+            adjacent: $this->adjacent?->withInvertedMode(),
             children: array_map(static fn (Result $child) => $child->withInvertedMode(), $this->children),
         );
     }
@@ -152,18 +175,18 @@ final class Result
         return preg_match('/__[0-9a-z_]+_/', $this->template) === 0;
     }
 
-    public function allowsSubsequent(): bool
+    public function allowsAdjacent(): bool
     {
         if ($this->children === [] && !$this->hasCustomTemplate()) {
             return true;
         }
 
-        $childrenThatAllowSubsequent = array_filter(
+        $childrenThatAllowAdjacent = array_filter(
             $this->children,
-            static fn (Result $child) => $child->allowsSubsequent()
+            static fn (Result $child) => $child->allowsAdjacent()
         );
 
-        return count($childrenThatAllowSubsequent) === 1;
+        return count($childrenThatAllowAdjacent) === 1;
     }
 
     /**
@@ -176,7 +199,7 @@ final class Result
         ?Mode $mode = null,
         ?string $name = null,
         ?string $id = null,
-        ?Result $subsequent = null,
+        ?Result $adjacent = null,
         ?bool $unchangeableId = null,
         ?array $children = null
     ): self {
@@ -189,7 +212,7 @@ final class Result
             $mode ?? $this->mode,
             $name ?? $this->name,
             $id ?? $this->id,
-            $subsequent ?? $this->subsequent,
+            $adjacent ?? $this->adjacent,
             $unchangeableId ?? $this->unchangeableId,
             ...($children ?? $this->children)
         );

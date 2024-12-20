@@ -52,8 +52,8 @@ final class StandardRenderer implements Renderer
             $translator->translate($template ?? $this->getTemplateMessage($result))
         );
 
-        if (!$result->hasCustomTemplate() && $result->subsequent !== null) {
-            $rendered .= ' ' . $this->render($result->subsequent, $translator);
+        if (!$result->hasCustomTemplate() && $result->adjacent !== null) {
+            $rendered .= ' ' . $this->render($result->adjacent, $translator);
         }
 
         return $rendered;

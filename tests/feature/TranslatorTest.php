@@ -43,5 +43,5 @@ test('Scenario #2', expectMessage(
 
         v::dateTimeDiff('years', v::equals(2))->assert('1972-02-09');
     },
-    'O número de anos entre agora e 1972-02-09 deve ser igual a 2',
+    'O número de anos entre agora e "1972-02-09" deve ser igual a 2',
 ));

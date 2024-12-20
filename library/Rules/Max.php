@@ -11,19 +11,18 @@ namespace Respect\Validation\Rules;
 
 use Attribute;
 use Respect\Validation\Message\Template;
-use Respect\Validation\Rules\Core\ArrayAggregateFunction;
+use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\FilteredNonEmptyArray;
 
 use function max;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template('The maximum of', 'The maximum of')]
-final class Max extends ArrayAggregateFunction
+final class Max extends FilteredNonEmptyArray
 {
-    protected string $idPrefix = 'max';
-
     /** @param non-empty-array<mixed> $input */
-    protected function extractAggregate(array $input): mixed
+    protected function evaluateNonEmptyArray(array $input): Result
     {
-        return max($input);
+        return Result::fromAdjacent($input, 'max', $this, $this->rule->evaluate(max($input)));
     }
 }

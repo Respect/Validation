@@ -33,7 +33,7 @@ final class ResultBuilder
 
     private Rule $rule;
 
-    private ?Result $subsequent = null;
+    private ?Result $adjacent = null;
 
     private bool $unchangeableId = false;
 
@@ -56,7 +56,7 @@ final class ResultBuilder
             $this->mode,
             $this->name,
             $this->id,
-            $this->subsequent,
+            $this->adjacent,
             $this->unchangeableId,
             ...$this->children
         );
@@ -126,9 +126,9 @@ final class ResultBuilder
         return $this;
     }
 
-    public function subsequent(Result $build): self
+    public function adjacent(Result $build): self
     {
-        $this->subsequent = $build;
+        $this->adjacent = $build;
 
         return $this;
     }

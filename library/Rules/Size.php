@@ -19,7 +19,6 @@ use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Wrapper;
 use SplFileInfo;
 
-use function array_map;
 use function filesize;
 use function is_string;
 use function ucfirst;
@@ -72,8 +71,9 @@ final class Size extends Wrapper
         }
 
         $result = $this->rule->evaluate($this->getSize($input) / self::DATA_STORAGE_UNITS[$this->unit]['bytes']);
+        $parameters = ['unit' => self::DATA_STORAGE_UNITS[$this->unit]['name']];
 
-        return $this->enrichResult($input, $result);
+        return Result::fromAdjacent($input, 'size', $this, $result, $parameters);
     }
 
     private function getSize(mixed $input): ?int
@@ -95,22 +95,5 @@ final class Size extends Wrapper
         }
 
         return null;
-    }
-
-    private function enrichResult(mixed $input, Result $result): Result
-    {
-        if (!$result->allowsSubsequent()) {
-            return $result
-                ->withInput($input)
-                ->withChildren(
-                    ...array_map(fn(Result $child) => $this->enrichResult($input, $child), $result->children)
-                );
-        }
-
-        $parameters = ['unit' => self::DATA_STORAGE_UNITS[$this->unit]['name']];
-
-        return (new Result($result->isValid, $input, $this, $parameters, id: $result->id))
-            ->withPrefixedId('size')
-            ->withSubsequent($result->withInput($input));
     }
 }
