@@ -46,6 +46,6 @@ See also:
 - [AllOf](AllOf.md)
 - [AlwaysInvalid](AlwaysInvalid.md)
 - [AnyOf](AnyOf.md)
-- [Consecutive](Consecutive.md)
+- [Circuit](Circuit.md)
 - [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)

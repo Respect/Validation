@@ -46,7 +46,7 @@ v::allOf(v::intVal(), v::positive())->isValid(15); // true
 See also:
 
 - [AnyOf](AnyOf.md)
-- [Consecutive](Consecutive.md)
+- [Circuit](Circuit.md)
 - [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)
 - [When](When.md)

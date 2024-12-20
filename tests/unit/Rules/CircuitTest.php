@@ -19,21 +19,21 @@ use Respect\Validation\Test\TestCase;
 use function rand;
 
 #[Group('rule')]
-#[CoversClass(Consecutive::class)]
-final class ConsecutiveTest extends TestCase
+#[CoversClass(Circuit::class)]
+final class CircuitTest extends TestCase
 {
     #[Test]
     #[DataProvider('providerForAnyValues')]
     public function itShouldValidateInputWhenAllRulesValidatesTheInput(mixed $input): void
     {
-        self::assertValidInput(new Consecutive(Stub::pass(1), Stub::pass(1)), $input);
+        self::assertValidInput(new Circuit(Stub::pass(1), Stub::pass(1)), $input);
     }
 
     #[Test]
     #[DataProvider('providerForFailingRules')]
     public function itShouldExecuteRulesInSequenceUntilOneFails(Stub ...$stub): void
     {
-        $rule = new Consecutive(...$stub);
+        $rule = new Circuit(...$stub);
 
         self::assertInvalidInput($rule, rand());
     }
@@ -43,7 +43,7 @@ final class ConsecutiveTest extends TestCase
     {
         $input = rand();
 
-        $rule = new Consecutive(Stub::fail(1), Stub::daze());
+        $rule = new Circuit(Stub::fail(1), Stub::daze());
 
         $actual = $rule->evaluate($input);
         $expected = Stub::fail(1)->evaluate($input);

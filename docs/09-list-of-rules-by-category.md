@@ -61,13 +61,11 @@
 
 - [AllOf](rules/AllOf.md)
 - [AnyOf](rules/AnyOf.md)
-- [Consecutive](rules/Consecutive.md)
 - [NoneOf](rules/NoneOf.md)
 - [OneOf](rules/OneOf.md)
 
 ## Conditions
 
-- [Consecutive](rules/Consecutive.md)
 - [Not](rules/Not.md)
 - [When](rules/When.md)
 
@@ -163,7 +161,6 @@
 - [AllOf](rules/AllOf.md)
 - [AnyOf](rules/AnyOf.md)
 - [Call](rules/Call.md)
-- [Consecutive](rules/Consecutive.md)
 - [Each](rules/Each.md)
 - [Key](rules/Key.md)
 - [KeySet](rules/KeySet.md)
@@ -314,7 +311,6 @@
 - [Charset](rules/Charset.md)
 - [Cnh](rules/Cnh.md)
 - [Cnpj](rules/Cnpj.md)
-- [Consecutive](rules/Consecutive.md)
 - [Consonant](rules/Consonant.md)
 - [Contains](rules/Contains.md)
 - [ContainsAny](rules/ContainsAny.md)

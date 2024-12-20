@@ -56,11 +56,11 @@ interface KeyBuilder
 
     public static function keyCharset(int|string $key, string $charset, string ...$charsets): Chain;
 
+    public static function keyCircuit(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+
     public static function keyCnh(int|string $key): Chain;
 
     public static function keyCnpj(int|string $key): Chain;
-
-    public static function keyConsecutive(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function keyConsonant(int|string $key, string ...$additionalChars): Chain;
 

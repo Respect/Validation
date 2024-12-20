@@ -15,7 +15,7 @@ use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\Composite;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
-final class Consecutive extends Composite
+final class Circuit extends Composite
 {
     public function evaluate(mixed $input): Result
     {

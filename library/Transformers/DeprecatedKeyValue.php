@@ -42,7 +42,7 @@ final class DeprecatedKeyValue implements Transformer
 
         [$comparedKey, $ruleName, $baseKey] = $ruleSpec->arguments;
 
-        return new RuleSpec('consecutive', [
+        return new RuleSpec('circuit', [
             new KeyExists($comparedKey),
             new KeyExists($baseKey),
             new Lazy(

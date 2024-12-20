@@ -57,11 +57,11 @@ interface NullOrChain
 
     public function nullOrCharset(string $charset, string ...$charsets): Chain;
 
+    public function nullOrCircuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+
     public function nullOrCnh(): Chain;
 
     public function nullOrCnpj(): Chain;
-
-    public function nullOrConsecutive(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function nullOrConsonant(string ...$additionalChars): Chain;
 

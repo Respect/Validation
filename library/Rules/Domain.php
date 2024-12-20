@@ -58,9 +58,9 @@ final class Domain extends Standard
         return new Result($this->partsRule->evaluate($parts)->isValid, $input, $this);
     }
 
-    private function createGenericRule(): Consecutive
+    private function createGenericRule(): Circuit
     {
-        return new Consecutive(
+        return new Circuit(
             new StringType(),
             new NoWhitespace(),
             new Contains('.'),
@@ -74,13 +74,13 @@ final class Domain extends Standard
             return new Tld();
         }
 
-        return new Consecutive(new Not(new StartsWith('-')), new Length(new GreaterThanOrEqual(2)));
+        return new Circuit(new Not(new StartsWith('-')), new Length(new GreaterThanOrEqual(2)));
     }
 
     private function createPartsRule(): Rule
     {
         return new Each(
-            new Consecutive(
+            new Circuit(
                 new Alnum('-'),
                 new Not(new StartsWith('-')),
                 new AnyOf(

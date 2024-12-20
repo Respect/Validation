@@ -56,11 +56,11 @@ interface PropertyBuilder
 
     public static function propertyCharset(string $propertyName, string $charset, string ...$charsets): Chain;
 
+    public static function propertyCircuit(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+
     public static function propertyCnh(string $propertyName): Chain;
 
     public static function propertyCnpj(string $propertyName): Chain;
-
-    public static function propertyConsecutive(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function propertyConsonant(string $propertyName, string ...$additionalChars): Chain;
 

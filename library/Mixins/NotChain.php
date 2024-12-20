@@ -55,11 +55,11 @@ interface NotChain
 
     public function notCharset(string $charset, string ...$charsets): Chain;
 
+    public function notCircuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+
     public function notCnh(): Chain;
 
     public function notCnpj(): Chain;
-
-    public function notConsecutive(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function notConsonant(string ...$additionalChars): Chain;
 

@@ -65,11 +65,11 @@ interface Builder extends
 
     public static function charset(string $charset, string ...$charsets): Chain;
 
+    public static function circuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+
     public static function cnh(): Chain;
 
     public static function cnpj(): Chain;
-
-    public static function consecutive(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function consonant(string ...$additionalChars): Chain;
 

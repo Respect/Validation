@@ -44,7 +44,7 @@ v::subdivisionCode('US')->isValid('CA'); // true
 ***
 See also:
 
-- [Consecutive](Consecutive.md)
+- [Circuit](Circuit.md)
 - [CountryCode](CountryCode.md)
 - [CurrencyCode](CurrencyCode.md)
 - [Nip](Nip.md)

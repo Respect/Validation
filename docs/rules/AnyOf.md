@@ -44,7 +44,7 @@ so `AnyOf()` returns true.
 See also:
 
 - [AllOf](AllOf.md)
-- [Consecutive](Consecutive.md)
+- [Circuit](Circuit.md)
 - [ContainsAny](ContainsAny.md)
 - [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)

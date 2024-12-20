@@ -70,11 +70,11 @@ interface Chain extends
 
     public function charset(string $charset, string ...$charsets): Chain;
 
+    public function circuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+
     public function cnh(): Chain;
 
     public function cnpj(): Chain;
-
-    public function consecutive(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function consonant(string ...$additionalChars): Chain;
 

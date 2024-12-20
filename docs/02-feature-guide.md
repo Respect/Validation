@@ -43,7 +43,7 @@ Respect\Validation offers over 150 rules, many of which are designed to address 
 * Validating the **Length** of the input: [Length](rules/Length.md).
 * Validating the **Maximum** value in the input: [Max](rules/Max.md).
 * Validating the **Minimum** value in the input: [Min](rules/Min.md).
-* Handling **Special cases**: [Lazy](rules/Lazy.md), [Consecutive](rules/Consecutive.md), [Call](rules/Call.md).
+* Handling **Special cases**: [Lazy](rules/Lazy.md), [Circuit](rules/Circuit.md), [Call](rules/Call.md).
 
 ### Custom templates
 

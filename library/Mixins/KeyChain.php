@@ -56,11 +56,11 @@ interface KeyChain
 
     public function keyCharset(int|string $key, string $charset, string ...$charsets): Chain;
 
+    public function keyCircuit(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+
     public function keyCnh(int|string $key): Chain;
 
     public function keyCnpj(int|string $key): Chain;
-
-    public function keyConsecutive(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function keyConsonant(int|string $key, string ...$additionalChars): Chain;
 

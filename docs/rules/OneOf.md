@@ -46,6 +46,6 @@ See also:
 
 - [AllOf](AllOf.md)
 - [AnyOf](AnyOf.md)
-- [Consecutive](Consecutive.md)
+- [Circuit](Circuit.md)
 - [NoneOf](NoneOf.md)
 - [When](When.md)

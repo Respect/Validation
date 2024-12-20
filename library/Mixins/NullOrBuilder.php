@@ -57,11 +57,11 @@ interface NullOrBuilder
 
     public static function nullOrCharset(string $charset, string ...$charsets): Chain;
 
+    public static function nullOrCircuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+
     public static function nullOrCnh(): Chain;
 
     public static function nullOrCnpj(): Chain;
-
-    public static function nullOrConsecutive(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function nullOrConsonant(string ...$additionalChars): Chain;
 

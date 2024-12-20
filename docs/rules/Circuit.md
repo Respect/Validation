@@ -1,8 +1,8 @@
-# Consecutive
+# Circuit
 
-- `Consecutive(Rule $rule1, Rule $rule2, Rule ...$rule)`
+- `Circuit(Rule $rule1, Rule $rule2, Rule ...$rule)`
 
-Validates the input against a series of rules until one fails.
+Validates the input against a series of rules until the first fails.
 
 This rule can be handy for getting the least error messages possible from a chain.
 
@@ -10,7 +10,7 @@ This rule can be helpful in combinations with [Lazy](Lazy.md). An excellent exam
 country code and a subdivision code.
 
 ```php
-v::consecutive(
+v::circuit(
     v::key('countryCode', v::countryCode()),
     v::lazy(static fn($input) => v::key('subdivisionCode', v::subdivisionCode($input['countryCode']))),
 )->isValid($_POST);
@@ -22,11 +22,7 @@ would then have to write `v::key('countryCode', v::countryCode())` twice in your
 
 ## Templates
 
-## Template placeholders
-
-| Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+This rule does not have any templates, because it will always return the result of the first rule that fails. When all the validation rules pass, it will return the result of the last rule of the circuit.
 
 ## Categorization
 

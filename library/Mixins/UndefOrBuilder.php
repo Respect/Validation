@@ -55,11 +55,11 @@ interface UndefOrBuilder
 
     public static function undefOrCharset(string $charset, string ...$charsets): Chain;
 
+    public static function undefOrCircuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+
     public static function undefOrCnh(): Chain;
 
     public static function undefOrCnpj(): Chain;
-
-    public static function undefOrConsecutive(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function undefOrConsonant(string ...$additionalChars): Chain;
 
