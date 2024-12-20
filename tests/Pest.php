@@ -12,7 +12,7 @@ use Symfony\Component\VarExporter\VarExporter;
 
 use function PHPUnit\Framework\assertStringMatchesFormat;
 
-/** @param array<string, mixed> $messages */
+/** @param array<string|int, mixed> $messages */
 function expectAll(Closure $callback, string $message, string $fullMessage, array $messages): Closure
 {
     return function () use ($callback, $message, $fullMessage, $messages): void {
@@ -27,7 +27,7 @@ function expectAll(Closure $callback, string $message, string $fullMessage, arra
     };
 }
 
-/** @param array<string, mixed> $messages */
+/** @param array<string|int, mixed> $messages */
 function expectAllToMatch(Closure $callback, string $message, string $fullMessage, array $messages): Closure
 {
     return function () use ($callback, $message, $fullMessage, $messages): void {
@@ -70,7 +70,7 @@ function expectFullMessage(Closure $callback, string $fullMessage): Closure
     };
 }
 
-/** @param array<string, mixed> $messages */
+/** @param array<string|int, mixed> $messages */
 function expectMessages(Closure $callback, array $messages): Closure
 {
     return function () use ($callback, $messages): void {

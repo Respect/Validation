@@ -41,8 +41,8 @@ test('https://github.com/Respect/Validation/issues/1469', expectAll(
     [
         'keySet' => [
             '__root__' => 'Each item in order_items must be valid',
-            'keySet.1' => 'quantity must be an integer value',
-            'keySet.2' => [
+            0 => 'quantity must be an integer value',
+            1 => [
                 '__root__' => 'order_items contains both missing and extra keys',
                 'product_title' => 'product_title must be present',
                 'quantity' => 'quantity must be present',

@@ -14,7 +14,6 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\FilteredNonEmptyArray;
 
-use function array_map;
 use function array_reduce;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -27,7 +26,10 @@ final class Each extends FilteredNonEmptyArray
     /** @param non-empty-array<mixed> $input */
     protected function evaluateNonEmptyArray(array $input): Result
     {
-        $children = array_map(fn ($item) => $this->rule->evaluate($item), $input);
+        $children = [];
+        foreach ($input as $key => $value) {
+            $children[] = $this->rule->evaluate($value)->withUnchangeableId((string) $key);
+        }
         $isValid = array_reduce($children, static fn ($carry, $childResult) => $carry && $childResult->isValid, true);
         if ($isValid) {
             return Result::passed($input, $this)->withChildren(...$children);

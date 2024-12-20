@@ -49,7 +49,7 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
     [
         'each' => [
             '__root__' => 'Each item in `[["manufacturer": "Honda", "model": "Accord"], ["manufacturer": "Toyota", "model": "Rav4"], ["manufacturer": "Fo ... ]` must be valid',
-            'oneOf.3' => [
+            2 => [
                 '__root__' => 'Only one of these rules must pass for `["manufacturer": "Ford", "model": "not real"]`',
                 'allOf.1' => [
                     '__root__' => 'All the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`',
@@ -63,7 +63,7 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
                 ],
                 'allOf.3' => 'model must be in `["F150", "Bronco"]`',
             ],
-            'oneOf.4' => [
+            3 => [
                 '__root__' => 'Only one of these rules must pass for `["manufacturer": "Honda", "model": "not valid"]`',
                 'allOf.1' => 'model must be in `["Accord", "Fit"]`',
                 'allOf.2' => [
