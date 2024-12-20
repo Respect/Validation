@@ -80,7 +80,7 @@ final class Result
     ): Result {
         if ($adjacent->allowsAdjacent()) {
             return (new Result($adjacent->isValid, $input, $rule, $parameters, $template, id: $adjacent->id))
-                ->withPrefixedId($prefix)
+                ->withPrefix($prefix)
                 ->withAdjacent($adjacent->withInput($input));
         }
 
@@ -111,7 +111,7 @@ final class Result
         return $this->clone(id: $id, unchangeableId: true);
     }
 
-    public function withPrefixedId(string $prefix): self
+    public function withPrefix(string $prefix): self
     {
         if ($this->id === $this->name || $this->unchangeableId) {
             return $this;
