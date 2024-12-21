@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Builders;
 
+use Respect\Validation\Message\Placeholder\Id;
+use Respect\Validation\Message\Placeholder\Name;
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Test\Rules\Stub;
@@ -26,9 +29,9 @@ final class ResultBuilder
     /** @var array<string, mixed> */
     private array $parameters = [];
 
-    private string|null $name = null;
+    private Name|null $name = null;
 
-    private string|null $id = null;
+    private Id|null $id = null;
 
     private Rule $rule;
 
@@ -37,7 +40,7 @@ final class ResultBuilder
     /** @var array<Result> */
     private array $children = [];
 
-    private string|int|null $path = null;
+    private Path|null $path = null;
 
     public function __construct()
     {
@@ -61,7 +64,7 @@ final class ResultBuilder
         );
     }
 
-    public function withPath(string|int|null $path): self
+    public function withPath(Path $path): self
     {
         $this->path = $path;
 
@@ -99,14 +102,14 @@ final class ResultBuilder
 
     public function name(string $name): self
     {
-        $this->name = $name;
+        $this->name = new Name($name);
 
         return $this;
     }
 
     public function id(string $id): self
     {
-        $this->id = $id;
+        $this->id = new Id($id);
 
         return $this;
     }

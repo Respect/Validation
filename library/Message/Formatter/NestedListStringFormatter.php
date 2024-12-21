@@ -15,7 +15,6 @@ use Respect\Validation\Message\Translator;
 use Respect\Validation\Result;
 
 use function array_filter;
-use function array_map;
 use function array_reduce;
 use function count;
 use function rtrim;
@@ -26,8 +25,6 @@ use const PHP_EOL;
 
 final readonly class NestedListStringFormatter implements StringFormatter
 {
-    use PathProcessor;
-
     public function __construct(
         private Renderer $renderer,
         private TemplateResolver $templateResolver,
@@ -51,14 +48,16 @@ final readonly class NestedListStringFormatter implements StringFormatter
         $matchedTemplates = $this->templateResolver->selectMatches($result, $templates);
 
         $formatted = '';
+        $displayedName = null;
         if ($this->isVisible($result, ...$siblings)) {
             $indentation = str_repeat(' ', $depth * 2);
+            $displayedName = $result->name;
             $formatted .= sprintf(
                 '%s- %s' . PHP_EOL,
                 $indentation,
                 $this->renderer->render(
                     $this->templateResolver->resolve(
-                        $depth > 0 ? $result->withDeepestPath() : $result,
+                        $result->withoutParentPath(),
                         $matchedTemplates,
                     ),
                     $translator,
@@ -68,17 +67,13 @@ final readonly class NestedListStringFormatter implements StringFormatter
         }
 
         if (!$this->templateResolver->hasMatch($result, $matchedTemplates)) {
-            $children = array_map(
-                fn(Result $child) => $this->overwritePath($result, $child),
-                $result->children,
-            );
-            foreach ($children as $child) {
+            foreach ($result->children as $child) {
                 $formatted .= $this->formatRecursively(
-                    $child,
+                    $displayedName === $child->name ? $child->withoutName() : $child,
                     $matchedTemplates,
                     $translator,
                     $depth,
-                    ...array_filter($children, static fn(Result $sibling) => $sibling !== $child),
+                    ...array_filter($result->children, static fn(Result $sibling) => $sibling !== $child),
                 );
                 $formatted .= PHP_EOL;
             }

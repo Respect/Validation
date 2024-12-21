@@ -13,12 +13,12 @@ test('https://github.com/Respect/Validation/issues/1333', catchAll(
         ->and($message)->toBe('User Email must not contain whitespaces')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - User Email must pass all the rules
-              - User Email must not contain whitespaces
-              - User Email must be a valid email address
+              - "not email" must not contain whitespaces
+              - "not email" must be a valid email address
             FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => 'User Email must pass all the rules',
-            'noWhitespace' => 'User Email must not contain whitespaces',
-            'email' => 'User Email must be a valid email address',
+            'noWhitespace' => '"not email" must not contain whitespaces',
+            'email' => '"not email" must be a valid email address',
         ]),
 ));

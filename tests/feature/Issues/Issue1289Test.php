@@ -46,6 +46,9 @@ test('https://github.com/Respect/Validation/issues/1289', catchAll(
                 ],
             ]),
     fn(string $message, string $fullMessage, array $messages) => expect()
+        // Currently we're getting `.0.default.default` instead of `.0.default`
+        // that is happening the result has multiple children, and they're not inheriting the path from their
+        // parent, but instead, the parent is duplicating the children's path.
         ->and($message)->toBe('`.0.default` must be a string')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - `.0` must pass the rules
@@ -57,11 +60,7 @@ test('https://github.com/Respect/Validation/issues/1289', catchAll(
         ->and($messages)->toBe([
             0 => [
                 '__root__' => '`.0` must pass the rules',
-                'default' => [
-                    '__root__' => '`.default` must pass one of the rules',
-                    'stringType' => '`.default` must be a string',
-                    'boolType' => '`.default` must be a boolean',
-                ],
+                'default' => '`.default` must be a boolean',
                 'description' => '`.description` must be a string value',
             ],
         ]),

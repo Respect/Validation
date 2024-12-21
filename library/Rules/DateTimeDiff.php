@@ -20,7 +20,6 @@ use Respect\Validation\Rule;
 use Throwable;
 
 use function in_array;
-use function ucfirst;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
@@ -77,7 +76,7 @@ final readonly class DateTimeDiff implements Rule
             $parameters = ['sample' => $now->format($this->format ?? 'c'), 'now' => $this->nowParameter($now)];
 
             return Result::failed($input, $this, $parameters, $template)
-                ->withId('dateTimeDiff' . ucfirst($this->rule->evaluate($input)->id));
+                ->withId($this->rule->evaluate($input)->id->withPrefix('dateTimeDiff'));
         }
 
         $nowPlaceholder = $this->nowParameter($now);

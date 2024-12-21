@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Core;
 
+use Respect\Validation\Message\Placeholder\Name;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\AllOf;
 use Respect\Validation\Rules\Named;
@@ -21,25 +22,17 @@ final class Reducer extends Wrapper
         parent::__construct($rules === [] ? $rule1 : new AllOf($rule1, ...$rules));
     }
 
-    public function withTemplate(string|null $template): self
+    public function withTemplate(string $template): self
     {
-        if ($template === null) {
-            return $this;
-        }
-
         return new self(new Templated($this->rule, $template));
     }
 
-    public function withName(string|null $name): self
+    public function withName(Name $name): self
     {
-        if ($name === null) {
-            return $this;
-        }
-
         return new self(new Named($this->rule, $name));
     }
 
-    public function getName(): string|null
+    public function getName(): Name|null
     {
         if ($this->rule instanceof Nameable) {
             return $this->rule->getName();

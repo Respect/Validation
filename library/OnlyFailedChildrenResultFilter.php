@@ -19,7 +19,7 @@ final readonly class OnlyFailedChildrenResultFilter implements ResultFilter
                 continue;
             }
 
-            $children[] = $this->filter($child->getDeepestPath() ? $child->withId($child->getDeepestPath()) : $child);
+            $children[] = $this->filter($child);
         }
 
         if ($children === []) {

@@ -10,22 +10,27 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Attribute;
+use Respect\Validation\Message\Placeholder\Name;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Nameable;
 use Respect\Validation\Rules\Core\Wrapper;
 
+use function is_string;
+
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 final class Named extends Wrapper implements Nameable
 {
-    public function __construct(
-        Rule $rule,
-        private readonly string $name,
-    ) {
+    private readonly Name $name;
+
+    public function __construct(Rule $rule, string|Name $name)
+    {
         parent::__construct($rule);
+
+        $this->name = is_string($name) ? new Name($name) : $name;
     }
 
-    public function getName(): string
+    public function getName(): Name
     {
         return $this->name;
     }

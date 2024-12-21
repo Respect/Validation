@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Attribute;
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\FilteredNonEmptyArray;
@@ -28,7 +29,7 @@ final class Each extends FilteredNonEmptyArray
     {
         $children = [];
         foreach ($input as $key => $value) {
-            $children[] = $this->rule->evaluate($value)->withPath($key);
+            $children[] = $this->rule->evaluate($value)->withPath(new Path($key));
         }
 
         $hasPassed = array_reduce(

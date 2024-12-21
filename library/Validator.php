@@ -11,6 +11,7 @@ namespace Respect\Validation;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\ArrayFormatter;
+use Respect\Validation\Message\Placeholder\Name;
 use Respect\Validation\Message\StringFormatter;
 use Respect\Validation\Message\Translator;
 use Respect\Validation\Mixins\Builder;
@@ -31,7 +32,7 @@ final class Validator implements Rule, Nameable
     /** @var array<string, mixed> */
     private array $templates = [];
 
-    private string|null $name = null;
+    private Name|null $name = null;
 
     private string|null $template = null;
 
@@ -127,7 +128,16 @@ final class Validator implements Rule, Nameable
 
     public function getRule(): Reducer
     {
-        return (new Reducer(...$this->rules))->withTemplate($this->template)->withName($this->name);
+        $reducer = new Reducer(...$this->rules);
+        if ($this->name !== null) {
+            $reducer = $reducer->withName($this->name);
+        }
+
+        if ($this->template !== null) {
+            $reducer = $reducer->withTemplate($this->template);
+        }
+
+        return $reducer;
     }
 
     /** @return array<Rule> */
@@ -136,14 +146,14 @@ final class Validator implements Rule, Nameable
         return $this->rules;
     }
 
-    public function getName(): string|null
+    public function getName(): Name|null
     {
         return $this->getRule()->getName() ?? $this->name;
     }
 
     public function setName(string $name): static
     {
-        $this->name = $name;
+        $this->name = new Name($name);
 
         return $this;
     }

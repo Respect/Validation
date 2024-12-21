@@ -9,25 +9,22 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use Respect\Validation\Message\Placeholder\Id;
+use Respect\Validation\Message\Placeholder\Name;
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Rules\Core\Nameable;
 
 use function array_filter;
 use function array_map;
 use function count;
-use function end;
-use function explode;
-use function lcfirst;
 use function preg_match;
-use function strrchr;
-use function substr;
-use function ucfirst;
 
 final readonly class Result
 {
     /** @var array<Result> */
     public array $children;
 
-    public string $id;
+    public Id $id;
 
     /** @param array<string, mixed> $parameters */
     public function __construct(
@@ -37,13 +34,13 @@ final readonly class Result
         public array $parameters = [],
         public string $template = Rule::TEMPLATE_STANDARD,
         public bool $hasInvertedMode = false,
-        public string|null $name = null,
-        string|null $id = null,
+        public Name|null $name = null,
+        Id|null $id = null,
         public Result|null $adjacent = null,
-        public string|int|null $path = null,
+        public Path|null $path = null,
         Result ...$children,
     ) {
-        $this->id = $id ?? lcfirst(substr((string) strrchr($rule::class, '\\'), 1));
+        $this->id = $id ?? Id::fromRule($rule);
         $this->children = $children;
     }
 
@@ -77,9 +74,14 @@ final readonly class Result
         string $template = Rule::TEMPLATE_STANDARD,
     ): Result {
         if ($adjacent->allowsAdjacent()) {
-            return (new Result($adjacent->hasPassed, $input, $rule, $parameters, $template, id: $adjacent->id))
-                ->withPrefix($prefix)
-                ->withAdjacent($adjacent->withInput($input));
+            return (new Result(
+                $adjacent->hasPassed,
+                $input,
+                $rule,
+                $parameters,
+                $template,
+                id: $adjacent->id->withPrefix($prefix),
+            ))->withAdjacent($adjacent->withInput($input));
         }
 
         $childrenAsAdjacent = array_map(
@@ -102,73 +104,86 @@ final readonly class Result
         return clone($this, ['parameters' => $parameters + $this->parameters]);
     }
 
-    public function withId(string $id): self
+    public function withId(Id $id): self
     {
         return clone($this, ['id' => $id]);
     }
 
     public function withIdFrom(Rule $rule): self
     {
-        return clone($this, ['id' => lcfirst(substr((string) strrchr($rule::class, '\\'), 1))]);
+        return clone($this, ['id' => Id::fromRule($rule)]);
     }
 
-    public function withPath(string|int $path): self
+    public function withPath(Path $path): self
     {
-        return clone($this, [
-            'adjacent' => $this->adjacent?->withPath($path),
-            'path' => $this->path === null ? $path : $path . '.' . $this->path,
-        ]);
-    }
+        if ($this->path === $path) {
+            return $this;
+        }
 
-    public function withDeepestPath(): self
-    {
-        $path = $this->getDeepestPath();
-        if ($path === null || $path === (string) $this->path) {
+        if ($this->path !== null) {
+            $this->path->withParent($path);
+
             return $this;
         }
 
         return clone($this, [
-            'adjacent' => $this->adjacent?->withPath($path),
             'path' => $path,
+            'adjacent' => $this->adjacent?->withPath($path),
+            'children' => array_map(
+                static fn(Result $child) => $child->withPath($path),
+                $this->children,
+            ),
         ]);
     }
 
-    public function getDeepestPath(): string|null
+    public function withoutParentPath(): self
     {
-        if ($this->path === null) {
-            return null;
-        }
-
-        $paths = explode('.', (string) $this->path);
-        if (count($paths) === 1) {
-            return (string) $this->path;
-        }
-
-        return end($paths);
-    }
-
-    public function withPrefix(string $prefix): self
-    {
-        if ($this->id === $this->name || $this->path !== null) {
+        if ($this->path === null || $this->path->isOrphan()) {
             return $this;
         }
 
-        // phpcs:ignore SlevomatCodingStandard.PHP.UselessParentheses
-        return clone($this, ['id' => $prefix . ucfirst($this->id)]);
+        return clone ($this, [
+            'path' => new Path($this->path->value),
+            'adjacent' => $this->adjacent?->withoutParentPath(),
+            'children' => array_map(
+                fn(Result $child) => $child->path === $this->path ? $child->withoutParentPath() : $child,
+                $this->children,
+            ),
+        ]);
+    }
+
+    public function withoutName(): self
+    {
+        if ($this->name === null) {
+            return $this;
+        }
+
+        return clone ($this, [
+            'name' => null,
+            'adjacent' => $this->adjacent?->withoutName(),
+            'children' => array_map(
+                fn(Result $child) => $child->name === $this->name ? $child->withoutName() : $child,
+                $this->children,
+            ),
+        ]);
     }
 
     public function withChildren(Result ...$children): self
     {
-        return clone($this, ['children' => $children]);
+        if ($this->path === null) {
+            return clone($this, ['children' => $children]);
+        }
+
+        return clone($this, ['children' => array_map(fn(Result $child) => $child->withPath($this->path), $children)]);
     }
 
-    public function withName(string $name): self
+    public function withName(Name $name): self
     {
         return clone($this, [
             'name' => $this->name ?? $name,
             'adjacent' => $this->adjacent?->withName($name),
             'children' => array_map(
-                static fn(Result $child) => $child->path === null ? $child->withName($child->name ?? $name) : $child,
+                static fn(Result $child) => $child->withName($child->name ?? $name),
                 $this->children,
             ),
         ]);

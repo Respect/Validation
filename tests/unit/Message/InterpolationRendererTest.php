@@ -11,6 +11,7 @@ namespace Respect\Validation\Message;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Message\Placeholder\Name;
 use Respect\Validation\Message\Translator\ArrayTranslator;
 use Respect\Validation\Message\Translator\DummyTranslator;
 use Respect\Validation\Test\Builders\ResultBuilder;
@@ -132,7 +133,7 @@ final class InterpolationRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            sprintf('Will replace %s', $value),
+            sprintf('Will replace %s', $stringifier->stringify(new Name($value), 0) ?? 'FAILED'),
             $renderer->render($result, new DummyTranslator()),
         );
     }
@@ -152,7 +153,10 @@ final class InterpolationRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            sprintf('Will replace %s', $stringifier->stringify($value, 0)),
+            sprintf(
+                'Will replace %s',
+                $stringifier->stringify(new Name((string) $stringifier->stringify($value, 0)), 0),
+            ),
             $renderer->render($result, new DummyTranslator()),
         );
     }
@@ -160,7 +164,8 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultProcessingNameAsSomeParameterInTheTemplate(): void
     {
-        $renderer = new InterpolationRenderer(new TestingStringifier());
+        $stringifier = new TestingStringifier();
+        $renderer = new InterpolationRenderer($stringifier);
 
         $name = 'my name';
 
@@ -170,7 +175,7 @@ final class InterpolationRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            'Will replace ' . $name,
+            'Will replace ' . $stringifier->stringify(new Name($name), 0),
             $renderer->render($result, new DummyTranslator()),
         );
     }
@@ -190,7 +195,10 @@ final class InterpolationRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            sprintf('Will replace %s', $stringifier->stringify($input, 0)),
+            sprintf(
+                'Will replace %s',
+                $stringifier->stringify(new Name((string) $stringifier->stringify($input, 0)), 0),
+            ),
             $renderer->render($result, new DummyTranslator()),
         );
     }
@@ -231,7 +239,7 @@ final class InterpolationRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            sprintf('Will replace %s', $parameterNameValue),
+            sprintf('Will replace %s', $stringifier->stringify(new Name($parameterNameValue), 0)),
             $renderer->render($result, new DummyTranslator()),
         );
     }
@@ -294,7 +302,10 @@ final class InterpolationRendererTest extends TestCase
         $result = (new ResultBuilder())->build();
 
         self::assertSame(
-            sprintf('%s must be a valid stub', $stringifier->stringify($result->input, 0)),
+            sprintf(
+                '%s must be a valid stub',
+                $stringifier->stringify(new Name((string) $stringifier->stringify($result->input, 0)), 0),
+            ),
             $renderer->render($result, new DummyTranslator()),
         );
     }
@@ -308,7 +319,10 @@ final class InterpolationRendererTest extends TestCase
         $result = (new ResultBuilder())->hasInvertedMode()->build();
 
         self::assertSame(
-            sprintf('%s must not be a valid stub', $stringifier->stringify($result->input, 0)),
+            sprintf(
+                '%s must not be a valid stub',
+                $stringifier->stringify(new Name((string) $stringifier->stringify($result->input, 0)), 0),
+            ),
             $renderer->render($result, new DummyTranslator()),
         );
     }

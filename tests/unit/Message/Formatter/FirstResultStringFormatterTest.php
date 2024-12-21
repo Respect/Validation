@@ -71,7 +71,7 @@ final class FirstResultStringFormatterTest extends TestCase
             'without children, with templates' => [
                 (new ResultBuilder())->build(),
                 'This is a new template',
-                [(new ResultBuilder())->build()->id => 'This is a new template'],
+                [(new ResultBuilder())->build()->id->value => 'This is a new template'],
             ],
             'with children, without templates' => [
                 (new ResultBuilder())

@@ -11,6 +11,7 @@ namespace Respect\Validation\Message\Formatter;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\OnlyFailedChildrenResultFilter;
 use Respect\Validation\Result;
 use Respect\Validation\Test\Builders\ResultBuilder;
@@ -53,7 +54,7 @@ final class OnlyFailedChildrenResultFilterTest extends TestCase
     public function itKeepsChildrenWithNonNullPathUnchanged(): void
     {
         $child1 = (new ResultBuilder())->id('a')->hasPassed(false)->build(); // path null
-        $child2 = (new ResultBuilder())->id('b')->hasPassed(false)->withPath('0')->build(); // non‑null path
+        $child2 = (new ResultBuilder())->id('b')->hasPassed(false)->withPath(new Path(0))->build(); // non‑null path
 
         $parent = (new ResultBuilder())
             ->hasPassed(false)
@@ -64,7 +65,7 @@ final class OnlyFailedChildrenResultFilterTest extends TestCase
         $filtered = $filter->filter($parent)->children;
 
         self::assertCount(2, $filtered);
-        $ids = array_map(static fn(Result $c) => $c->id, $filtered);
+        $ids = array_map(static fn(Result $c) => $c->id->value, $filtered);
         self::assertContains('a', $ids);
         self::assertContains('b', $ids);
     }
@@ -95,6 +96,6 @@ final class OnlyFailedChildrenResultFilterTest extends TestCase
 
         // The filtered child should contain only the failing grand‑child
         self::assertCount(1, $filteredChild->children);
-        self::assertSame('gcFail', $filteredChild->children[0]->id);
+        self::assertSame('gcFail', $filteredChild->children[0]->id->value);
     }
 }

@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Attribute;
 use ReflectionObject;
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
@@ -35,7 +36,7 @@ final readonly class PropertyExists implements Rule
             $this->hasProperty($input),
             $input,
             $this,
-            path: $this->propertyName,
+            path: new Path($this->propertyName),
         );
     }
 

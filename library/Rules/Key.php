@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Attribute;
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\KeyRelated;
@@ -37,6 +38,6 @@ final class Key extends Wrapper implements KeyRelated
             return $keyExistsResult->withNameFrom($this->rule);
         }
 
-        return $this->rule->evaluate($input[$this->key])->withPath($this->key);
+        return $this->rule->evaluate($input[$this->key])->withPath(new Path($this->key));
     }
 }

@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use Attribute;
 use ReflectionObject;
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Wrapper;
@@ -34,7 +35,7 @@ final class Property extends Wrapper
 
         return $this->rule
             ->evaluate($this->extractPropertyValue($input, $this->propertyName))
-            ->withPath($this->propertyName);
+            ->withPath(new Path($this->propertyName));
     }
 
     private function extractPropertyValue(object $input, string $property): mixed

@@ -77,7 +77,7 @@ test('With nested key that fails validation', catchAll(
         ),
     )->assert(['vegetables' => ['root' => 12, 'stems' => 12]]),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('`.vegetables.root` must be a string')
+        ->and($message)->toBe('`.vegetables.root` (<- Vegetables) must be a string')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Vegetables must pass all the rules
           - `.root` must be a string

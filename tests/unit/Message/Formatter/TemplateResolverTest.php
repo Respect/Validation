@@ -12,6 +12,7 @@ namespace Respect\Validation\Message\Formatter;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Test\Builders\ResultBuilder;
 use Respect\Validation\Test\TestCase;
 use stdClass;
@@ -22,7 +23,7 @@ final class TemplateResolverTest extends TestCase
     #[Test]
     public function itShouldReturnResultWithTemplateWhenKeyExists(): void
     {
-        $result = (new ResultBuilder())->withPath('foo-path')->build();
+        $result = (new ResultBuilder())->withPath(new Path('foo-path'))->build();
         $templates = ['foo-path' => 'My custom template'];
         $sut = new TemplateResolver();
         $newResult = $sut->resolve($result, $templates);
@@ -36,7 +37,7 @@ final class TemplateResolverTest extends TestCase
     {
         $this->expectException(ComponentException::class);
 
-        $result = (new ResultBuilder())->withPath('foo-path')->build();
+        $result = (new ResultBuilder())->withPath(new Path('foo-path'))->build();
         $templates = ['foo-path' => new stdClass()];
         $sut = new TemplateResolver();
         $sut->resolve($result, $templates);
@@ -45,7 +46,7 @@ final class TemplateResolverTest extends TestCase
     #[Test]
     public function itShouldReturnTrueForIsFinalTemplateWhenTemplateIsString(): void
     {
-        $result = (new ResultBuilder())->withPath('foo-path')->build();
+        $result = (new ResultBuilder())->withPath(new Path('foo-path'))->build();
         $templates = ['foo-path' => 'My custom template'];
         $sut = new TemplateResolver();
 
@@ -55,7 +56,7 @@ final class TemplateResolverTest extends TestCase
     #[Test]
     public function itShouldReturnFalseForIsFinalTemplateWhenTemplateIsNotString(): void
     {
-        $result = (new ResultBuilder())->withPath('foo-path')->build();
+        $result = (new ResultBuilder())->withPath(new Path('foo-path'))->build();
         $templates = ['foo-path' => ['my-template']];
         $sut = new TemplateResolver();
 
@@ -65,7 +66,7 @@ final class TemplateResolverTest extends TestCase
     #[Test]
     public function itShouldSelectSubTemplatesWhenKeyExistsAndIsArray(): void
     {
-        $result = (new ResultBuilder())->withPath('foo-path')->build();
+        $result = (new ResultBuilder())->withPath(new Path('foo-path'))->build();
         $subTemplates = ['sub' => 'template'];
         $templates = ['foo-path' => $subTemplates];
         $sut = new TemplateResolver();
@@ -77,7 +78,7 @@ final class TemplateResolverTest extends TestCase
     #[Test]
     public function itShouldReturnOriginalTemplatesWhenKeyDoesNotExist(): void
     {
-        $result = (new ResultBuilder())->withPath('foo-path')->build();
+        $result = (new ResultBuilder())->withPath(new Path('foo-path'))->build();
         $templates = ['bar-path' => ['sub' => 'template']];
         $sut = new TemplateResolver();
         $selected = $sut->selectMatches($result, $templates);

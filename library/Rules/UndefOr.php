@@ -44,7 +44,7 @@ final class UndefOr extends Wrapper
     {
         if ($result->allowsAdjacent()) {
             return $result
-                ->withPrefix('undefOr')
+                ->withId($result->id->withPrefix('undefOr'))
                 ->withAdjacent(new Result($result->hasPassed, $result->input, $this));
         }
 

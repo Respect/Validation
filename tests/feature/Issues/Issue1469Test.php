@@ -47,24 +47,13 @@ test('https://github.com/Respect/Validation/issues/1469', catchAll(
         ->and($messages)->toBe([
             'keySet' => [
                 '__root__' => 'Each item in `.order_items` must be valid',
-                0 => 'quantity must be an integer value',
+                0 => '`.quantity` must be an integer value',
                 1 => [
-                    '__root__' => '`.order_items` contains both missing and extra keys',
+                    '__root__' => '`.1` contains both missing and extra keys',
                     'product_title' => '`.product_title` must be present',
                     'quantity' => '`.quantity` must be present',
                     'product_title2' => '`.product_title2` must not be present',
                 ],
             ],
         ]),
-))
-->skip(<<<'TEST_SKIP'
-This test is skipped because the issue is not fixed yet.
-
-When changing the path of a `Result` we don't change the path of its children. I took this approach because we don't
-want to duplicated `.path1.path1` in the message (`.parent.child`).
-
-However, that means that when one has a rule/result in-between paths (`KeySet` in this case), the children will be
-totally unaware of the path of the parent. Although that's partially the intended, it causes problems like these.
-
-I'm not sure how to fix this yet.
-TEST_SKIP);
+));

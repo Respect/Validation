@@ -19,7 +19,6 @@ use function count;
 use function is_array;
 use function is_string;
 use function mb_strlen;
-use function ucfirst;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
@@ -41,7 +40,7 @@ final class Length extends Wrapper
         $length = $this->extractLength($input);
         if ($length === null) {
             return Result::failed($input, $this, [], self::TEMPLATE_WRONG_TYPE)
-                ->withId('length' . ucfirst($this->rule->evaluate($input)->id));
+                ->withId($this->rule->evaluate($input)->id->withPrefix('length'));
         }
 
         return Result::fromAdjacent($input, 'length', $this, $this->rule->evaluate($length));

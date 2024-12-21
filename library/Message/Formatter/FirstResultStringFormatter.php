@@ -16,8 +16,6 @@ use Respect\Validation\Result;
 
 final readonly class FirstResultStringFormatter implements StringFormatter
 {
-    use PathProcessor;
-
     public function __construct(
         private Renderer $renderer,
         private TemplateResolver $templateResolver,
@@ -31,7 +29,7 @@ final readonly class FirstResultStringFormatter implements StringFormatter
         if (!$this->templateResolver->hasMatch($result, $matchedTemplates)) {
             foreach ($result->children as $child) {
                 return $this->format(
-                    $this->overwritePath($result, $child),
+                    $child,
                     $matchedTemplates,
                     $translator,
                 );

@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Message\Placeholder\Id;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
 
@@ -28,7 +29,7 @@ final class NotTest extends RuleTestCase
 
         self::assertEquals(
             $rule->evaluate('input'),
-            $wrapped->evaluate('input')->withPrefix('not')->withToggledModeAndValidation(),
+            $wrapped->evaluate('input')->withId(new Id('notStub'))->withToggledModeAndValidation(),
         );
     }
 

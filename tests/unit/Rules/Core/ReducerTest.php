@@ -57,17 +57,4 @@ final class ReducerTest extends TestCase
         self::assertSame($rule, $result->rule);
         self::assertSame($template, $result->template);
     }
-
-    #[Test]
-    public function shouldReturnSelfWhenTryingToCreatedWithNullTemplate(): void
-    {
-        $rule = Stub::any(1);
-
-        $template = null;
-
-        $reducer = new Reducer($rule);
-        $withTemplated = $reducer->withTemplate($template);
-
-        self::assertSame($reducer, $withTemplated);
-    }
 }

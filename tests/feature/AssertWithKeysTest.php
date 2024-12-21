@@ -36,6 +36,8 @@ test('Scenario #1', catchFullMessage(
                 'password' => 42,
             ],
         ]),
+    // This is failing because the paths now have name.
+    // the name should not be displayed on the children if the parent is being displayed.
     fn(string $fullMessage) => expect($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - the given data must pass all the rules
               - `.mysql` must pass all the rules

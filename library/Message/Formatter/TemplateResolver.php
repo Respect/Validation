@@ -80,6 +80,9 @@ final readonly class TemplateResolver
     /** @return non-empty-array<string|int> */
     private function getKeys(Result $result): array
     {
-        return array_filter([$result->path, $result->name, $result->id], static fn($key) => $key !== null);
+        return array_filter(
+            [$result->path?->value, $result->name?->value, $result->id->value],
+            static fn($key) => $key !== null,
+        );
     }
 }

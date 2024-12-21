@@ -59,7 +59,7 @@ final class FilteredNonEmptyArrayTest extends TestCase
         $sut = new ConcreteFilteredNonEmptyArray(Stub::daze());
         $result = $sut->evaluate(null);
 
-        self::assertEquals('concreteFilteredNonEmptyArray', $result->id);
+        self::assertEquals('concreteFilteredNonEmptyArray', $result->id->value);
     }
 
     #[Test]
@@ -68,6 +68,6 @@ final class FilteredNonEmptyArrayTest extends TestCase
         $sut = new ConcreteFilteredNonEmptyArray(Stub::daze());
         $result = $sut->evaluate([]);
 
-        self::assertEquals('concreteFilteredNonEmptyArray', $result->id);
+        self::assertEquals('concreteFilteredNonEmptyArray', $result->id->value);
     }
 }

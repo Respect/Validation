@@ -12,10 +12,12 @@ namespace Respect\Validation\Message;
 use ReflectionClass;
 use Respect\Stringifier\Stringifier;
 use Respect\Validation\Message\Placeholder\Listed;
+use Respect\Validation\Message\Placeholder\Name;
 use Respect\Validation\Message\Placeholder\Quoted;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 
+use function array_key_exists;
 use function is_array;
 use function is_bool;
 use function is_scalar;
@@ -35,12 +37,8 @@ final class InterpolationRenderer implements Renderer
 
     public function render(Result $result, Translator $translator): string
     {
-        $parameters = $result->parameters;
-        $parameters['path'] = $result->path !== null ? Quoted::fromPath($result->path) : null;
-        $parameters['input'] = $result->input;
-
-        $builtName = $result->name ?? $parameters['path'] ?? $this->placeholder('input', $result->input, $translator);
-        $parameters['name'] ??= $builtName;
+        $parameters = ['path' => $result->path, 'input' => $result->input, 'name' => $this->getName($result)];
+        $parameters += $result->parameters;
 
         $rendered = (string) preg_replace_callback(
             '/{{(\w+)(\|([^}]+))?}}/',
@@ -100,10 +98,6 @@ final class InterpolationRenderer implements Renderer
             return $translator->translate($value);
         }
 
-        if ($name === 'name' && is_string($value)) {
-            return $value;
-        }
-
         return $this->stringifier->stringify($value, 0) ?? print_r($value, true);
     }
 
@@ -126,5 +120,26 @@ final class InterpolationRenderer implements Renderer
         }
 
         return $result->template;
+    }
+
+    private function getName(Result $result): Name
+    {
+        if (array_key_exists('name', $result->parameters) && is_string($result->parameters['name'])) {
+            return new Name($result->parameters['name']);
+        }
+
+        if (array_key_exists('name', $result->parameters)) {
+            return new Name((string) $this->stringifier->stringify($result->parameters['name'], 0));
+        }
+
+        if ($result->name !== null) {
+            return $result->path ? $result->name->withPath($result->path) : $result->name;
+        }
+
+        if ($result->path?->value !== null) {
+            return new Name((string) $this->stringifier->stringify($result->path, 0));
+        }
+
+        return new Name((string) $this->stringifier->stringify($result->input, 0));
     }
 }

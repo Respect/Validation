@@ -41,7 +41,7 @@ test('https://github.com/Respect/Validation/issues/796', catchAll(
             ],
         ]),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('`.mysql.host` must be a string')
+        ->and($message)->toBe('`.mysql.host` (<- the given data) must be a string')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - the given data must pass all the rules
               - `.mysql` must pass the rules

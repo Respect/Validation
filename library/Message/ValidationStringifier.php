@@ -32,6 +32,8 @@ use Respect\Stringifier\Stringifiers\ResourceStringifier;
 use Respect\Stringifier\Stringifiers\StringableObjectStringifier;
 use Respect\Stringifier\Stringifiers\ThrowableObjectStringifier;
 use Respect\Validation\Message\Stringifier\ListedStringifier;
+use Respect\Validation\Message\Stringifier\NameStringifier;
+use Respect\Validation\Message\Stringifier\PathStringifier;
 use Respect\Validation\Message\Stringifier\QuotedStringifier;
 
 final readonly class ValidationStringifier implements Stringifier
@@ -88,8 +90,12 @@ final readonly class ValidationStringifier implements Stringifier
         $stringifier->prependStringifier(new ThrowableObjectStringifier($jsonEncodableStringifier, $quoter));
         $stringifier->prependStringifier(new DateTimeStringifier($quoter, DateTimeInterface::ATOM));
         $stringifier->prependStringifier(new IteratorObjectStringifier($stringifier, $quoter));
+
+        // Stringifiers from this project only
+        $stringifier->prependStringifier(new PathStringifier($quoter));
         $stringifier->prependStringifier(new QuotedStringifier($quoter));
         $stringifier->prependStringifier(new ListedStringifier($stringifier));
+        $stringifier->prependStringifier(new NameStringifier($stringifier));
 
         return $stringifier;
     }

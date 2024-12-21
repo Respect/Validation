@@ -21,7 +21,6 @@ use SplFileInfo;
 
 use function filesize;
 use function is_string;
-use function ucfirst;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
@@ -67,7 +66,7 @@ final class Size extends Wrapper
         $size = $this->getSize($input);
         if ($size === null) {
             return Result::failed($input, $this, [], self::TEMPLATE_WRONG_TYPE)
-                ->withId('size' . ucfirst($this->rule->evaluate($input)->id));
+                ->withId($this->rule->evaluate($input)->id->withPrefix('size'));
         }
 
         $result = $this->rule->evaluate($this->getSize($input) / self::DATA_STORAGE_UNITS[$this->unit]['bytes']);

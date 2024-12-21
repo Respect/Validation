@@ -41,7 +41,7 @@ final class NullOr extends Wrapper
     {
         if ($result->allowsAdjacent()) {
             return $result
-                ->withPrefix('nullOr')
+                ->withId($result->id->withPrefix('nullOr'))
                 ->withAdjacent(new Result($result->hasPassed, $result->input, $this));
         }
 

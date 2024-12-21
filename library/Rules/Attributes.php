@@ -12,6 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use ReflectionAttribute;
 use ReflectionObject;
+use Respect\Validation\Message\Placeholder\Id;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Reducer;
@@ -21,9 +22,10 @@ final class Attributes implements Rule
 {
     public function evaluate(mixed $input): Result
     {
+        $id = new Id('attributes');
         $objectType = (new ObjectType())->evaluate($input);
         if (!$objectType->hasPassed) {
-            return $objectType->withId('attributes');
+            return $objectType->withId($id);
         }
 
         $rules = [];
@@ -49,9 +51,9 @@ final class Attributes implements Rule
         }
 
         if ($rules === []) {
-            return (new AlwaysValid())->evaluate($input)->withId('attributes');
+            return (new AlwaysValid())->evaluate($input)->withId($id);
         }
 
-        return (new Reducer(...$rules))->evaluate($input)->withId('attributes');
+        return (new Reducer(...$rules))->evaluate($input)->withId($id);
     }
 }
