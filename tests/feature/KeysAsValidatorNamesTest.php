@@ -21,7 +21,7 @@ test('Scenario #1', expectFullMessage(
     },
     <<<'FULL_MESSAGE'
     - User Subscription Form must pass all the rules
-      - The length of username must be between 2 and 32
-      - birthdate must be a valid date/time
+      - The length of `.username` must be between 2 and 32
+      - `.birthdate` must be a valid date/time
     FULL_MESSAGE,
 ));

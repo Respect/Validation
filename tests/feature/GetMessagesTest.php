@@ -22,18 +22,18 @@ test('Scenario #1', expectMessages(
     [
         '__root__' => '`["mysql": ["host": 42, "schema": 42], "postgresql": ["user": 42, "password": 42]]` must pass all the rules',
         'mysql' => [
-            '__root__' => 'mysql must pass all the rules',
-            'host' => 'host must be a string',
-            'user' => 'user must be present',
-            'password' => 'password must be present',
-            'schema' => 'schema must be a string',
+            '__root__' => '`.mysql` must pass all the rules',
+            'host' => '`.host` must be a string',
+            'user' => '`.user` must be present',
+            'password' => '`.password` must be present',
+            'schema' => '`.schema` must be a string',
         ],
         'postgresql' => [
-            '__root__' => 'postgresql must pass all the rules',
-            'host' => 'host must be present',
-            'user' => 'user must be a string',
-            'password' => 'password must be a string',
-            'schema' => 'schema must be present',
+            '__root__' => '`.postgresql` must pass all the rules',
+            'host' => '`.host` must be present',
+            'user' => '`.user` must be a string',
+            'password' => '`.password` must be a string',
+            'schema' => '`.schema` must be present',
         ],
     ],
 ));

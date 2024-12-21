@@ -16,6 +16,11 @@ final class Quoted
     ) {
     }
 
+    public static function fromPath(int|string $path): self
+    {
+        return new self('.' . $path);
+    }
+
     public function getValue(): string
     {
         return $this->value;

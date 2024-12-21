@@ -38,15 +38,15 @@ test('Scenario #1', expectFullMessage(
         ]),
     <<<'FULL_MESSAGE'
     - the given data must pass all the rules
-      - mysql must pass all the rules
-        - host must be a string
-        - user must be present
-        - password must be present
-        - schema must be a string
-      - postgresql must pass all the rules
-        - host must be present
-        - user must be a string
-        - password must be a string
-        - schema must be present
+      - `.mysql` must pass all the rules
+        - `.host` must be a string
+        - `.user` must be present
+        - `.password` must be present
+        - `.schema` must be a string
+      - `.postgresql` must pass all the rules
+        - `.host` must be present
+        - `.user` must be a string
+        - `.password` must be a string
+        - `.schema` must be present
     FULL_MESSAGE,
 ));

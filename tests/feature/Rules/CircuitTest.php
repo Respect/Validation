@@ -86,7 +86,7 @@ test('Real example', expectAll(
         v::key('countyCode', v::countryCode()),
         v::lazy(fn ($input) => v::key('subdivisionCode', v::subdivisionCode($input['countyCode']))),
     )->assert(['countyCode' => 'BR', 'subdivisionCode' => 'CA']),
-    'subdivisionCode must be a subdivision code of Brazil',
-    '- subdivisionCode must be a subdivision code of Brazil',
-    ['subdivisionCode' => 'subdivisionCode must be a subdivision code of Brazil'],
+    '`.subdivisionCode` must be a subdivision code of Brazil',
+    '- `.subdivisionCode` must be a subdivision code of Brazil',
+    ['subdivisionCode' => '`.subdivisionCode` must be a subdivision code of Brazil'],
 ));

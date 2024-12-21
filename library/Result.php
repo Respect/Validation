@@ -10,11 +10,12 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use Respect\Validation\Rules\Core\Nameable;
-use Respect\Validation\Rules\Core\Renameable;
 
 use function array_filter;
 use function array_map;
 use function count;
+use function end;
+use function explode;
 use function lcfirst;
 use function preg_match;
 use function strrchr;
@@ -39,7 +40,7 @@ final class Result
         public readonly ?string $name = null,
         ?string $id = null,
         public readonly ?Result $adjacent = null,
-        public readonly bool $unchangeableId = false,
+        public readonly string|int|null $path = null,
         Result ...$children,
     ) {
         $this->id = $id ?? lcfirst(substr((string) strrchr($rule::class, '\\'), 1));
@@ -102,10 +103,6 @@ final class Result
 
     public function withId(string $id): self
     {
-        if ($this->unchangeableId) {
-            return $this;
-        }
-
         return $this->clone(id: $id);
     }
 
@@ -114,14 +111,44 @@ final class Result
         return $this->clone(id: lcfirst(substr((string) strrchr($rule::class, '\\'), 1)));
     }
 
-    public function withUnchangeableId(string $id): self
+    public function withPath(string|int $path): self
     {
-        return $this->clone(id: $id, unchangeableId: true);
+        return $this->clone(
+            adjacent: $this->adjacent?->withPath($path),
+            path: $this->path === null ? $path : $path . '.' . $this->path,
+        );
+    }
+
+    public function withDeepestPath(): self
+    {
+        $path = $this->getDeepestPath();
+        if ($path === null || $path === (string) $this->path) {
+            return $this;
+        }
+
+        return $this->clone(
+            adjacent: $this->adjacent?->withPath($path),
+            path: $path,
+        );
+    }
+
+    public function getDeepestPath(): ?string
+    {
+        if ($this->path === null) {
+            return null;
+        }
+
+        $paths = explode('.', (string) $this->path);
+        if (count($paths) === 1) {
+            return (string) $this->path;
+        }
+
+        return end($paths);
     }
 
     public function withPrefix(string $prefix): self
     {
-        if ($this->id === $this->name || $this->unchangeableId) {
+        if ($this->id === $this->name || $this->path !== null) {
             return $this;
         }
 
@@ -136,10 +163,10 @@ final class Result
     public function withName(string $name): self
     {
         return $this->clone(
-            name: $this->rule instanceof Renameable ? $name : ($this->name ?? $name),
+            name: $this->name ?? $name,
             adjacent: $this->adjacent?->withName($name),
             children: array_map(
-                static fn (Result $child) => $child->withName($child->name ?? $name),
+                static fn (Result $child) => $child->path === null ? $child->withName($child->name ?? $name) : $child,
                 $this->children
             ),
         );
@@ -223,7 +250,7 @@ final class Result
         ?string $name = null,
         ?string $id = null,
         ?Result $adjacent = null,
-        ?bool $unchangeableId = null,
+        string|int|null $path = null,
         ?array $children = null
     ): self {
         return new self(
@@ -236,7 +263,7 @@ final class Result
             $name ?? $this->name,
             $id ?? $this->id,
             $adjacent ?? $this->adjacent,
-            $unchangeableId ?? $this->unchangeableId,
+            $path ?? $this->path,
             ...($children ?? $this->children)
         );
     }

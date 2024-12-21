@@ -35,8 +35,6 @@ final class ResultBuilder
 
     private ?Result $adjacent = null;
 
-    private bool $unchangeableId = false;
-
     /** @var array<Result> */
     private array $children = [];
 
@@ -57,7 +55,7 @@ final class ResultBuilder
             $this->name,
             $this->id,
             $this->adjacent,
-            $this->unchangeableId,
+            null,
             ...$this->children
         );
     }

@@ -14,7 +14,7 @@ test('https://github.com/Respect/Validation/issues/425', expectAll(
             ->key('reference', v::stringType()->notEmpty()->lengthBetween(1, 50));
         $validator->assert(['age' => 1]);
     },
-    'reference must be present',
-    '- reference must be present',
-    ['reference' => 'reference must be present'],
+    '`.reference` must be present',
+    '- `.reference` must be present',
+    ['reference' => '`.reference` must be present'],
 ));

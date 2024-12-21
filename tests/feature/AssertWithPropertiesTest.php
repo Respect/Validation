@@ -46,9 +46,9 @@ test('Scenario #1', expectFullMessage(
     },
     <<<'FULL_MESSAGE'
     - the given data must pass all the rules
-      - mysql must pass the rules
-        - host must be a string
-      - postgresql must pass the rules
-        - user must be a string
+      - `.mysql` must pass the rules
+        - `.host` must be a string
+      - `.postgresql` must pass the rules
+        - `.user` must be a string
     FULL_MESSAGE,
 ));

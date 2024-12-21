@@ -16,10 +16,10 @@ test('Scenario #1', expectMessage(
 
 test('Scenario #2', expectMessage(
     fn() => v::key('email', v::email())->setName('Email')->assert($input),
-    'email must be a valid email address',
+    'Email must be a valid email address',
 ));
 
 test('Scenario #3', expectMessage(
     fn() => v::key('email', v::email())->assert($input),
-    'email must be a valid email address',
+    '`.email` must be a valid email address',
 ));
