@@ -30,7 +30,7 @@ test('https://github.com/Respect/Validation/issues/179', expectAll(
       - user must be present
     FULL_MESSAGE,
     [
-        '__root__' => 'These rules must pass for Settings',
+        '__root' => 'These rules must pass for Settings',
         'host' => 'host must be a string',
         'user' => 'user must be present',
     ]

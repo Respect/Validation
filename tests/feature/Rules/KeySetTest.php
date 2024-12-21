@@ -11,21 +11,30 @@ test('one rule / one failed', expectAll(
     fn() => v::keySet(v::key('foo', v::intType()))->assert(['foo' => 'string']),
     'foo must be an integer',
     '- foo must be an integer',
-    ['foo' => 'foo must be an integer']
+    [
+        '__root' => '`["foo": "string"]` validation failed',
+        'foo' => 'foo must be an integer',
+    ]
 ));
 
 test('one rule / one missing key', expectAll(
     fn() => v::keySet(v::keyExists('foo'))->assert([]),
     'foo must be present',
     '- foo must be present',
-    ['foo' => 'foo must be present']
+    [
+        '__root' => '`[]` contains missing keys',
+        'foo' => 'foo must be present',
+    ]
 ));
 
 test('one rule / one extra key', expectAll(
     fn() => v::keySet(v::keyExists('foo'))->assert(['foo' => 42, 'bar' => 'string']),
     'bar must not be present',
     '- bar must not be present',
-    ['bar' => 'bar must not be present']
+    [
+        '__root' => '`["foo": 42, "bar": "string"]` contains extra keys',
+        'bar' => 'bar must not be present',
+    ]
 ));
 
 test('one rule / one extra key / one missing key', expectAll(
@@ -37,7 +46,7 @@ test('one rule / one extra key / one missing key', expectAll(
       - bar must not be present
     FULL_MESSAGE,
     [
-        '__root__' => '`["bar": true]` contains both missing and extra keys',
+        '__root' => '`["bar": true]` contains both missing and extra keys',
         'foo' => 'foo must be present',
         'bar' => 'bar must not be present',
     ]
@@ -52,7 +61,7 @@ test('one rule / two extra keys', expectAll(
       - baz must not be present
     FULL_MESSAGE,
     [
-        '__root__' => '`["foo": 42, "bar": "string", "baz": true]` contains extra keys',
+        '__root' => '`["foo": 42, "bar": "string", "baz": true]` contains extra keys',
         'bar' => 'bar must not be present',
         'baz' => 'baz must not be present',
     ]
@@ -90,7 +99,7 @@ test('one rule / more than ten extra keys', expectAll(
       - plugh must not be present
     FULL_MESSAGE,
     [
-        '__root__' => '`["foo": 42, "bar": "string", "baz": true, "qux": false, "quux": 42, ...]` contains extra keys',
+        '__root' => '`["foo": 42, "bar": "string", "baz": true, "qux": false, "quux": 42, ...]` contains extra keys',
         'bar' => 'bar must not be present',
         'baz' => 'baz must not be present',
         'qux' => 'qux must not be present',
@@ -108,7 +117,10 @@ test('multiple rules / one failed', expectAll(
     fn() => v::keySet(v::keyExists('foo'), v::keyExists('bar'))->assert(['foo' => 42]),
     'bar must be present',
     '- bar must be present',
-    ['bar' => 'bar must be present']
+    [
+        '__root' => '`["foo": 42]` contains missing keys',
+        'bar' => 'bar must be present',
+    ]
 ));
 
 test('multiple rules / all failed', expectAll(
@@ -120,7 +132,7 @@ test('multiple rules / all failed', expectAll(
       - bar must be present
     FULL_MESSAGE,
     [
-        '__root__' => '`[]` contains missing keys',
+        '__root' => '`[]` contains missing keys',
         'foo' => 'foo must be present',
         'bar' => 'bar must be present',
     ]
@@ -133,7 +145,10 @@ test('multiple rules / one extra key', expectAll(
     )->assert(['foo' => 42, 'bar' => 'string', 'baz' => true]),
     'baz must not be present',
     '- baz must not be present',
-    ['baz' => 'baz must not be present']
+    [
+        '__root' => '`["foo": 42, "bar": "string", "baz": true]` contains extra keys',
+        'baz' => 'baz must not be present',
+    ]
 ));
 
 test('multiple rules / one extra key / one missing', expectAll(
@@ -148,7 +163,7 @@ test('multiple rules / one extra key / one missing', expectAll(
       - baz must not be present
     FULL_MESSAGE,
     [
-        '__root__' => '`["bar": "string", "baz": true]` contains both missing and extra keys',
+        '__root' => '`["bar": "string", "baz": true]` contains both missing and extra keys',
         'foo' => 'foo must be present',
         'baz' => 'baz must not be present',
     ]
@@ -167,7 +182,7 @@ test('multiple rules / two extra keys', expectAll(
       - baz must not be present
     FULL_MESSAGE,
     [
-        '__root__' => '`["foo": 42, "bar": "string", "baz": true, "qux": false]` contains extra keys',
+        '__root' => '`["foo": 42, "bar": "string", "baz": true, "qux": false]` contains extra keys',
         'qux' => 'qux must be an integer',
         'baz' => 'baz must not be present',
     ]
@@ -187,7 +202,7 @@ test('multiple rules / all failed validation', expectAll(
       - baz must be an integer
     FULL_MESSAGE,
     [
-        '__root__' => '`["foo": 42, "bar": "string", "baz": true]` validation failed',
+        '__root' => '`["foo": 42, "bar": "string", "baz": true]` validation failed',
         'bar' => 'bar must be an integer',
         'baz' => 'baz must be an integer',
     ]
@@ -208,7 +223,7 @@ test('multiple rules / single missing key / single failed validation', expectAll
       - baz must be present
     FULL_MESSAGE,
     [
-        '__root__' => '`["foo": 42, "bar": "string"]` contains missing keys',
+        '__root' => '`["foo": 42, "bar": "string"]` contains missing keys',
         'bar' => 'bar must be an integer',
         'baz' => 'baz must be present',
     ]

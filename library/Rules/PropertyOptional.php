@@ -38,7 +38,7 @@ final class PropertyOptional extends Wrapper
 
         return $this->rule
             ->evaluate($this->extractPropertyValue($input, $this->propertyName))
-            ->withUnchangeableId($this->propertyName)
+            ->withPath($this->propertyName)
             ->withNameIfMissing($this->rule->getName() ?? $this->propertyName);
     }
 }

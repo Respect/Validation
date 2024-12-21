@@ -25,7 +25,7 @@ test('https://github.com/Respect/Validation/issues/799 | #1', expectAll(
       - scheme must be present
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for 1',
+        '__root' => 'All the required rules must pass for 1',
         'arrayVal' => '1 must be an array value',
         'scheme' => 'scheme must be present',
     ]
@@ -42,5 +42,8 @@ test('https://github.com/Respect/Validation/issues/799 | #2', expectAll(
         ->assert($input),
     'scheme must start with "https"',
     '- scheme must start with "https"',
-    ['scheme' => 'scheme must start with "https"']
+    [
+        '__root' => 'These rules must pass for `["scheme": "http", "host": "www.google.com", "path": "/search", "query": "q=respect.github.com"]`',
+        'scheme' => 'scheme must start with "https"',
+    ]
 ));

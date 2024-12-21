@@ -16,7 +16,7 @@ test('https://github.com/Respect/Validation/issues/1333', expectAll(
       - User Email must be a valid email address
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for User Email',
+        '__root' => 'All the required rules must pass for User Email',
         'noWhitespace' => 'User Email must not contain whitespaces',
         'email' => 'User Email must be a valid email address',
     ]

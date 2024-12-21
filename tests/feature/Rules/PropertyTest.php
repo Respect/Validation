@@ -21,6 +21,23 @@ test('Default', expectAll(
     ['foo' => 'foo must be an integer']
 ));
 
+test('With multiple rules', expectAll(
+    fn() => v::property('foo', v::intType()->positive())->assert((object) ['foo' => 'string']),
+    'foo must be an integer',
+    <<<'FULL_MESSAGE'
+    - All the required rules must pass for foo
+      - foo must be an integer
+      - foo must be a positive number
+    FULL_MESSAGE,
+    [
+        'foo' => [
+            '__root' => 'All the required rules must pass for foo',
+            'intType' => 'foo must be an integer',
+            'positive' => 'foo must be a positive number',
+        ],
+    ]
+));
+
 test('Inverted', expectAll(
     fn() => v::not(v::property('foo', v::intType()))->assert((object) ['foo' => 12]),
     'foo must not be an integer',

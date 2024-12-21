@@ -32,7 +32,7 @@ trait ArrayProvider
             'with single-level children, without templates' => [
                 self::singleLevelChildrenMessage(),
                 [
-                    '__root__' => '__parent_original__',
+                    '__root' => '__parent_original__',
                     '1st' => '__1st_original__',
                     '2nd' => '__2nd_original__',
                     '3rd' => '__3rd_original__',
@@ -41,13 +41,13 @@ trait ArrayProvider
             'with single-level children, with templates' => [
                 self::singleLevelChildrenMessage(),
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
                     '2nd' => '2nd custom',
                     '3rd' => '3rd custom',
                 ],
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
                     '2nd' => '2nd custom',
                     '3rd' => '3rd custom',
@@ -56,7 +56,7 @@ trait ArrayProvider
             'with single-level children, with partial templates' => [
                 self::singleLevelChildrenMessage(),
                 [
-                    '__root__' => '__parent_original__',
+                    '__root' => '__parent_original__',
                     '1st' => '1st custom',
                     '2nd' => '__2nd_original__',
                     '3rd' => '3rd custom',
@@ -74,22 +74,28 @@ trait ArrayProvider
             'with single-nested child, without templates' => [
                 self::multiLevelChildrenWithSingleNestedChildMessage(),
                 [
-                    '__root__' => '__parent_original__',
+                    '__root' => '__parent_original__',
                     '1st' => '__1st_original__',
-                    '2nd' => '__2nd_1st_original__',
+                    '2nd' => [
+                        '__root' => '__2nd_original__',
+                        '2nd_1st' => '__2nd_1st_original__',
+                    ],
                     '3rd' => '__3rd_original__',
                 ],
             ],
             'with single-nested child, with templates' => [
                 self::multiLevelChildrenWithSingleNestedChildMessage(),
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
-                    '2nd' => '2nd > 1st custom',
+                    '2nd' => [
+                        '__root' => '__2nd_original__',
+                        '2nd_1st' => '2nd > 1st custom',
+                    ],
                     '3rd' => '3rd custom',
                 ],
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
                     '2nd' => [
                         '2nd_1st' => '2nd > 1st custom',
@@ -100,13 +106,16 @@ trait ArrayProvider
             'with single-nested child, with partial templates' => [
                 self::multiLevelChildrenWithSingleNestedChildMessage(),
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
-                    '2nd' => '__2nd_1st_original__',
+                    '2nd' => [
+                        '__root' => '__2nd_original__',
+                        '2nd_1st' => '__2nd_1st_original__',
+                    ],
                     '3rd' => '3rd custom',
                 ],
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
                     '2nd' => [
                         '2nd_2nd' => '2nd > 2nd not shown',
@@ -117,13 +126,13 @@ trait ArrayProvider
             'with single-nested child, with overwritten templates' => [
                 self::multiLevelChildrenWithSingleNestedChildMessage(),
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
                     '2nd' => '2nd custom',
                     '3rd' => '3rd custom',
                 ],
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
                     '2nd' => '2nd custom',
                     '3rd' => '3rd custom',
@@ -132,10 +141,10 @@ trait ArrayProvider
             'with multi-nested children, without templates' => [
                 self::multiLevelChildrenWithMultiNestedChildrenMessage(),
                 [
-                    '__root__' => '__parent_original__',
+                    '__root' => '__parent_original__',
                     '1st' => '__1st_original__',
                     '2nd' => [
-                        '__root__' => '__2nd_original__',
+                        '__root' => '__2nd_original__',
                         '2nd_1st' => '__2nd_1st_original__',
                         '2nd_2nd' => '__2nd_2nd_original__',
                     ],
@@ -145,20 +154,20 @@ trait ArrayProvider
             'with multi-nested children, with templates' => [
                 self::multiLevelChildrenWithMultiNestedChildrenMessage(),
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
                     '2nd' => [
-                        '__root__' => '2nd custom',
+                        '__root' => '2nd custom',
                         '2nd_1st' => '2nd > 1st custom',
                         '2nd_2nd' => '2nd > 2nd custom',
                     ],
                     '3rd' => '3rd custom',
                 ],
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
                     '2nd' => [
-                        '__root__' => '2nd custom',
+                        '__root' => '2nd custom',
                         '2nd_1st' => '2nd > 1st custom',
                         '2nd_2nd' => '2nd > 2nd custom',
                     ],
@@ -168,17 +177,17 @@ trait ArrayProvider
             'with multi-nested children, with partial templates' => [
                 self::multiLevelChildrenWithMultiNestedChildrenMessage(),
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
                     '2nd' => [
-                        '__root__' => '__2nd_original__',
+                        '__root' => '__2nd_original__',
                         '2nd_1st' => '__2nd_1st_original__',
                         '2nd_2nd' => '2nd > 2nd custom',
                     ],
                     '3rd' => '3rd custom',
                 ],
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
                     '2nd' => [
                         '2nd_2nd' => '2nd > 2nd custom',
@@ -189,7 +198,7 @@ trait ArrayProvider
             'with children with the same id, without templates' => [
                 self::singleLevelChildrenWithSameId(),
                 [
-                    '__root__' => '__parent_original__',
+                    '__root' => '__parent_original__',
                     'child.1' => '__1st_original__',
                     'child.2' => '__2nd_original__',
                     'child.3' => '__3rd_original__',
@@ -198,13 +207,13 @@ trait ArrayProvider
             'with children with the same id, with templates' => [
                 self::singleLevelChildrenWithSameId(),
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     'child.1' => '1st custom',
                     'child.2' => '2nd custom',
                     'child.3' => '3rd custom',
                 ],
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     'child.1' => '1st custom',
                     'child.2' => '2nd custom',
                     'child.3' => '3rd custom',
@@ -213,7 +222,7 @@ trait ArrayProvider
             'with children with the same id, with partial templates' => [
                 self::singleLevelChildrenWithSameId(),
                 [
-                    '__root__' => '__parent_original__',
+                    '__root' => '__parent_original__',
                     'child.1' => '1st custom',
                     'child.2' => '2nd custom',
                     'child.3' => '__3rd_original__',

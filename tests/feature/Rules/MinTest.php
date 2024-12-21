@@ -44,7 +44,7 @@ test('Chained wrapped rule', expectAll(
       - The minimum of `[2, 3, 4]` must be an odd number
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for `[2, 3, 4]`',
+        '__root' => 'All the required rules must pass for `[2, 3, 4]`',
         'minBetween' => 'The minimum of `[2, 3, 4]` must be between 5 and 7',
         'minOdd' => 'The minimum of `[2, 3, 4]` must be an odd number',
     ]

@@ -49,7 +49,7 @@ trait MainProvider
                     ->build(),
                 'Parent custom',
                 [
-                    '__root__' => 'Parent custom',
+                    '__root' => 'Parent custom',
                     '1st' => '1st custom',
                     '2nd' => '2nd custom',
                 ],
