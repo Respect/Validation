@@ -12,6 +12,7 @@ namespace Respect\Validation\Message;
 use ReflectionClass;
 use Respect\Stringifier\Stringifier;
 use Respect\Validation\Message\Placeholder\Listed;
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Message\Placeholder\Quoted;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
@@ -36,7 +37,7 @@ final class StandardRenderer implements Renderer
     public function render(Result $result, Translator $translator, ?string $template = null): string
     {
         $parameters = $result->parameters;
-        $parameters['path'] = $result->path !== null ? Quoted::fromPath($result->path) : null;
+        $parameters['path'] = $result->path !== null ? new Path($result->path) : null;
         $parameters['input'] = $result->input;
 
         $builtName = $result->name ?? $parameters['path'] ?? $this->placeholder('input', $result->input, $translator);
