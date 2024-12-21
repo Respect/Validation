@@ -56,11 +56,7 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
     [
         0 => [
             '__root__' => '`.0` must pass the rules',
-            'default' => [
-                '__root__' => '`.default` must pass one of the rules',
-                'stringType' => '`.default` must be a string',
-                'boolType' => '`.default` must be a boolean',
-            ],
+            'default' => '`.default` must be a boolean',
             'description' => '`.description` must be a string value',
         ],
     ],

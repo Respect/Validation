@@ -15,6 +15,7 @@ use Respect\Validation\Rules\Core\Simple;
 
 use function is_scalar;
 use function mb_strlen;
+use function preg_match;
 use function preg_replace;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -34,7 +35,11 @@ final class Cnh extends Simple
         $input = (string) preg_replace('{\D}', '', (string) $input);
 
         // Validate length and invalid numbers
-        if (mb_strlen($input) != 11 || ((int) $input === 0)) {
+        if (mb_strlen($input) != 11) {
+            return false;
+        }
+
+        if (preg_match('/^(\d)\1{10}/', $input) > 0) {
             return false;
         }
 

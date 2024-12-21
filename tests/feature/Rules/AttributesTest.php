@@ -52,11 +52,7 @@ test('Multiple attributes, all failed', expectAll(
     [
         '__root__' => '`Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$birthdate="not a date" +$email="not an email" +$phone ... }` must pass the rules',
         'name' => '`.name` must not be empty',
-        'birthdate' => [
-            '__root__' => '`.birthdate` must pass all the rules',
-            'date' => '`.birthdate` must be a valid date in the format "2005-12-30"',
-            'dateTimeDiffLessThanOrEqual' => 'For comparison with now, `.birthdate` must be a valid datetime',
-        ],
+        'birthdate' => 'For comparison with now, `.birthdate` must be a valid datetime',
         'email' => '`.email` must be a valid email address or must be null',
         'phone' => '`.phone` must be a valid telephone number or must be null',
     ],
