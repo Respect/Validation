@@ -23,15 +23,15 @@ test('https://github.com/Respect/Validation/issues/179', expectAll(
         $validator->key('schema', v::stringType());
         $validator->assert($config);
     },
-    'host must be a string',
+    '`.host` must be a string',
     <<<'FULL_MESSAGE'
     - Settings must pass the rules
-      - host must be a string
-      - user must be present
+      - `.host` must be a string
+      - `.user` must be present
     FULL_MESSAGE,
     [
         '__root__' => 'Settings must pass the rules',
-        'host' => 'host must be a string',
-        'user' => 'user must be present',
+        'host' => '`.host` must be a string',
+        'user' => '`.user` must be present',
     ],
 ));

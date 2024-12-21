@@ -28,25 +28,25 @@ test('https://github.com/Respect/Validation/issues/1469', expectAll(
             ))->notEmpty()),
         )->assert($data);
     },
-    'quantity must be an integer value',
+    '`.0.quantity` must be an integer value',
     <<<'FULL_MESSAGE'
-    - Each item in order_items must be valid
-      - order_items validation failed
-        - quantity must be an integer value
-      - order_items contains both missing and extra keys
-        - product_title must be present
-        - quantity must be present
-        - product_title2 must not be present
+    - Each item in `.order_items` must be valid
+      - `.0` validation failed
+        - `.quantity` must be an integer value
+      - `.1` contains both missing and extra keys
+        - `.product_title` must be present
+        - `.quantity` must be present
+        - `.product_title2` must not be present
     FULL_MESSAGE,
     [
         'keySet' => [
-            '__root__' => 'Each item in order_items must be valid',
+            '__root__' => 'Each item in `.order_items` must be valid',
             0 => 'quantity must be an integer value',
             1 => [
-                '__root__' => 'order_items contains both missing and extra keys',
-                'product_title' => 'product_title must be present',
-                'quantity' => 'quantity must be present',
-                'product_title2' => 'product_title2 must not be present',
+                '__root__' => '`.order_items` contains both missing and extra keys',
+                'product_title' => '`.product_title` must be present',
+                'quantity' => '`.quantity must` be present',
+                'product_title2' => '`.product_title2` must not be present',
             ],
         ],
     ],

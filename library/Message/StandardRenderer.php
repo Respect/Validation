@@ -36,9 +36,11 @@ final class StandardRenderer implements Renderer
 
     public function render(Result $result, Translator $translator, ?string $template = null): string
     {
-        $parameters = $result->parameters;
-        $parameters['name'] ??= $result->name ?? $this->placeholder('input', $result->input, $translator);
-        $parameters['input'] = $result->input;
+        $parameters = $result->parameters + [
+            'path' => $result->path !== null ? Quoted::fromPath($result->path) : null,
+            'input' => $result->input,
+        ];
+        $parameters['name'] ??= $result->name ?? $parameters['path'] ?? $this->placeholder('input', $result->input, $translator);
 
         $rendered = (string) preg_replace_callback(
             '/{{(\w+)(\|([^}]+))?}}/',

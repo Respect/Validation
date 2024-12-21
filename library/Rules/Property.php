@@ -13,7 +13,6 @@ use Attribute;
 use ReflectionObject;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
-use Respect\Validation\Rules\Core\Nameable;
 use Respect\Validation\Rules\Core\Wrapper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -30,22 +29,12 @@ final class Property extends Wrapper
     {
         $propertyExistsResult = (new PropertyExists($this->propertyName))->evaluate($input);
         if (!$propertyExistsResult->isValid) {
-            return $propertyExistsResult->withName($this->getName());
+            return $propertyExistsResult->withNameFrom($this->rule);
         }
 
         return $this->rule
             ->evaluate($this->extractPropertyValue($input, $this->propertyName))
-            ->withName($this->getName())
-            ->withUnchangeableId($this->propertyName);
-    }
-
-    private function getName(): string
-    {
-        if ($this->rule instanceof Nameable) {
-            return $this->rule->getName() ?? $this->propertyName;
-        }
-
-        return $this->propertyName;
+            ->withPath($this->propertyName);
     }
 
     private function extractPropertyValue(object $input, string $property): mixed

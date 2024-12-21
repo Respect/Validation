@@ -11,9 +11,9 @@ date_default_timezone_set('UTC');
 
 test('Key', expectAll(
     fn() => v::keyEquals('foo', 12)->assert(['foo' => 10]),
-    'foo must be equal to 12',
-    '- foo must be equal to 12',
-    ['foo' => 'foo must be equal to 12'],
+    '`.foo` must be equal to 12',
+    '- `.foo` must be equal to 12',
+    ['foo' => '`.foo` must be equal to 12'],
 ));
 
 test('Length', expectAll(
@@ -53,9 +53,9 @@ test('NullOr', expectAll(
 
 test('Property', expectAll(
     fn() => v::propertyBetween('foo', 1, 3)->assert((object) ['foo' => 5]),
-    'foo must be between 1 and 3',
-    '- foo must be between 1 and 3',
-    ['foo' => 'foo must be between 1 and 3'],
+    '`.foo` must be between 1 and 3',
+    '- `.foo` must be between 1 and 3',
+    ['foo' => '`.foo` must be between 1 and 3'],
 ));
 
 test('UndefOr', expectAll(

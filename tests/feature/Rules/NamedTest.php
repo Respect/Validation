@@ -69,17 +69,17 @@ test('With nested key that fails validation', expectAll(
             'Vegetables'
         ),
     )->assert(['vegetables' => ['root' => 12, 'stems' => 12]]),
-    'root must be a string',
+    '`.vegetables.root` must be a string',
     <<<'FULL_MESSAGE'
     - Vegetables must pass all the rules
-      - root must be a string
-      - stems must be a string
-      - fruits must be present
+      - `.root` must be a string
+      - `.stems` must be a string
+      - `.fruits` must be present
     FULL_MESSAGE,
     [
         '__root__' => 'Vegetables must pass all the rules',
-        'root' => 'root must be a string',
-        'stems' => 'stems must be a string',
-        'fruits' => 'fruits must be present',
+        'root' => '`.root` must be a string',
+        'stems' => '`.stems` must be a string',
+        'fruits' => '`.fruits` must be present',
     ],
 ));

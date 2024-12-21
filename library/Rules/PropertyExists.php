@@ -23,7 +23,7 @@ use function is_object;
     '{{name}} must be present',
     '{{name}} must not be present',
 )]
-final class PropertyExists extends Standard implements Renameable
+final class PropertyExists extends Standard
 {
     public function __construct(
         private readonly string $propertyName
@@ -36,8 +36,7 @@ final class PropertyExists extends Standard implements Renameable
             $this->hasProperty($input),
             $input,
             $this,
-            name: $this->propertyName,
-            id: $this->propertyName
+            path: $this->propertyName,
         );
     }
 

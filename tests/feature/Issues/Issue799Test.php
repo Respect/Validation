@@ -22,12 +22,12 @@ test('https://github.com/Respect/Validation/issues/799 | #1', expectAll(
     <<<'FULL_MESSAGE'
     - 1 must pass all the rules
       - 1 must be an array value
-      - scheme must be present
+      - `.scheme` must be present
     FULL_MESSAGE,
     [
         '__root__' => '1 must pass all the rules',
         'arrayVal' => '1 must be an array value',
-        'scheme' => 'scheme must be present',
+        'scheme' => '`.scheme` must be present',
     ],
 ));
 
@@ -38,7 +38,7 @@ test('https://github.com/Respect/Validation/issues/799 | #2', expectAll(
             v::arrayVal()->key('scheme', v::startsWith('https')),
         )
         ->assert($input),
-    'scheme must start with "https"',
-    '- scheme must start with "https"',
-    ['scheme' => 'scheme must start with "https"'],
+    '`.scheme` must start with "https"',
+    '- `.scheme` must start with "https"',
+    ['scheme' => '`.scheme` must start with "https"'],
 ));

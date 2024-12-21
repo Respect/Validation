@@ -25,7 +25,7 @@ use function is_array;
     '{{name}} must be present',
     '{{name}} must not be present',
 )]
-final class KeyExists extends Standard implements KeyRelated, Renameable
+final class KeyExists extends Standard implements KeyRelated
 {
     public function __construct(
         private readonly int|string $key
@@ -39,7 +39,7 @@ final class KeyExists extends Standard implements KeyRelated, Renameable
 
     public function evaluate(mixed $input): Result
     {
-        return new Result($this->hasKey($input), $input, $this, name: (string) $this->key, id: (string) $this->key);
+        return new Result($this->hasKey($input), $input, $this, path: $this->key);
     }
 
     private function hasKey(mixed $input): bool

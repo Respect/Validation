@@ -45,23 +45,23 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
                 'children' => ['nope'],
             ],
         ]),
-    'default must be a string',
+    '`.0.default` must be a string',
     <<<'FULL_MESSAGE'
-    - `["default": 2, "description": [], "children": ["nope"]]` must pass the rules
-      - default must pass one of the rules
-        - default must be a string
-        - default must be a boolean
-      - description must be a string value
+    - `.0` must pass the rules
+      - `.default` must pass one of the rules
+        - 2 must be a string
+        - 2 must be a boolean
+      - `.description` must be a string value
     FULL_MESSAGE,
     [
         0 => [
-            '__root__' => '`["default": 2, "description": [], "children": ["nope"]]` must pass the rules',
+            '__root__' => '`.0` must pass the rules',
             'default' => [
-                '__root__' => 'default must pass one of the rules',
-                'stringType' => 'default must be a string',
-                'boolType' => 'default must be a boolean',
+                '__root__' => '`.default` must pass one of the rules',
+                'stringType' => '2 must be a string',
+                'boolType' => '2 must be a boolean',
             ],
-            'description' => 'description must be a string value',
+            'description' => '`.description` must be a string value',
         ],
     ],
 ));

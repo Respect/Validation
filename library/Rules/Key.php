@@ -13,7 +13,6 @@ use Attribute;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\KeyRelated;
-use Respect\Validation\Rules\Core\Nameable;
 use Respect\Validation\Rules\Core\Wrapper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -35,21 +34,9 @@ final class Key extends Wrapper implements KeyRelated
     {
         $keyExistsResult = (new KeyExists($this->key))->evaluate($input);
         if (!$keyExistsResult->isValid) {
-            return $keyExistsResult->withName($this->getName());
+            return $keyExistsResult->withNameFrom($this->rule);
         }
 
-        return $this->rule
-            ->evaluate($input[$this->key])
-            ->withName($this->getName())
-            ->withUnchangeableId((string) $this->key);
-    }
-
-    private function getName(): string
-    {
-        if ($this->rule instanceof Nameable) {
-            return $this->rule->getName() ?? ((string) $this->key);
-        }
-
-        return (string) $this->key;
+        return $this->rule->evaluate($input[$this->key])->withPath($this->key);
     }
 }
