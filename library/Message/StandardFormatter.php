@@ -99,7 +99,7 @@ final class StandardFormatter implements Formatter
     {
         $selectedTemplates = $this->selectTemplates($result, $templates);
         $messages = [
-            '__root__' => $this->renderer->render($this->getTemplated($result, $selectedTemplates), $translator),
+            '__root' => $this->renderer->render($this->getTemplated($result, $selectedTemplates), $translator),
         ];
 
         $children = [];
@@ -120,7 +120,7 @@ final class StandardFormatter implements Formatter
         }
 
         if (count($children) === 0 || $this->isFinalTemplate($result, $selectedTemplates)) {
-            return [$result->path ?? $result->id => $messages['__root__']];
+            return [$result->path ?? $result->id => $messages['__root']];
         }
 
         if ($result->path !== null) {
@@ -172,7 +172,7 @@ final class StandardFormatter implements Formatter
             return $result;
         }
 
-        foreach ([$result->path, $result->name, $result->id, '__root__'] as $key) {
+        foreach ([$result->path, $result->name, $result->id, '__root'] as $key) {
             if (!isset($templates[$key])) {
                 continue;
             }
@@ -211,7 +211,7 @@ final class StandardFormatter implements Formatter
             }
         }
 
-        return isset($templates['__root__']);
+        return isset($templates['__root']);
     }
 
     /**

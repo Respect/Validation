@@ -121,7 +121,7 @@ test('Without adjacent result', expectAll(
       - The number of years between now and "1 year ago" must be between 2 and 5
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for "1 year ago"',
+        '__root' => 'All the required rules must pass for "1 year ago"',
         'dateTimeDiffPrimeNumber' => 'The number of years between now and "1 year ago" must be a prime number',
         'dateTimeDiffBetween' => 'The number of years between now and "1 year ago" must be between 2 and 5',
     ]
@@ -141,7 +141,7 @@ test('Without adjacent result with templates', expectAll(
       - The number of years between now and "1 year ago" must be between 2 and 5
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for "1 year ago"',
+        '__root' => 'All the required rules must pass for "1 year ago"',
         'dateTimeDiffPrimeNumber' => 'The number of years between now and "1 year ago" must be a prime number',
         'dateTimeDiffBetween' => 'The number of years between now and "1 year ago" must be between 2 and 5',
     ]

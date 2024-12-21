@@ -20,7 +20,7 @@ test('https://github.com/Respect/Validation/issues/446', expectAll(
     'The length of name must be between 2 and 32',
     '- The length of name must be between 2 and 32',
     [
-        '__root__' => 'These rules must pass for `["name": "w", "email": "hello@hello.com"]`',
+        '__root' => 'These rules must pass for `["name": "w", "email": "hello@hello.com"]`',
         'name' => 'The length of name must be between 2 and 32',
     ]
 ));

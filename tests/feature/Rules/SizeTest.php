@@ -66,7 +66,7 @@ test('Chained wrapped rule', expectAll(
       - The size in kilobytes of "vfs://root/2kb.txt" must be an odd number
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for "vfs://root/2kb.txt"',
+        '__root' => 'All the required rules must pass for "vfs://root/2kb.txt"',
         'sizeBetween' => 'The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7',
         'sizeOdd' => 'The size in kilobytes of "vfs://root/2kb.txt" must be an odd number',
     ]

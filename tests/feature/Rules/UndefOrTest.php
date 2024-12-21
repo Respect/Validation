@@ -86,7 +86,7 @@ test('Without adjacent result', expectAll(
       - 1234 must be a string or must be undefined
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for 1234',
+        '__root' => 'All the required rules must pass for 1234',
         'undefOrAlpha' => '1234 must contain only letters (a-z) or must be undefined',
         'undefOrStringType' => '1234 must be a string or must be undefined',
     ]
@@ -104,7 +104,7 @@ test('Without adjacent result with templates', expectAll(
       - Should be nul or string type
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for 1234',
+        '__root' => 'All the required rules must pass for 1234',
         'undefOrAlpha' => 'Should be nul or alpha',
         'undefOrStringType' => 'Should be nul or string type',
     ]

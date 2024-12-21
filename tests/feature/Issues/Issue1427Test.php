@@ -42,26 +42,26 @@ test('https://github.com/Respect/Validation/discussions/1427', expectAll(
         - permissions must be iterable
     FULL_MESSAGE,
     [
-        '__root__' => 'Each item in `[16: ["groups": [1, "A", 3, 4, 5], "permissions": ["perm1": true, "perm2": false, "perm3": "boom!"]], 18: false, ... ]` must be valid',
+        '__root' => 'Each item in `[16: ["groups": [1, "A", 3, 4, 5], "permissions": ["perm1": true, "perm2": false, "perm3": "boom!"]], 18: false, ... ]` must be valid',
         16 => [
-            '__root__' => 'These rules must pass for `["groups": [1, "A", 3, 4, 5], "permissions": ["perm1": true, "perm2": false, "perm3": "boom!"]]`',
+            '__root' => 'These rules must pass for `["groups": [1, "A", 3, 4, 5], "permissions": ["perm1": true, "perm2": false, "perm3": "boom!"]]`',
             'groups' => [
-                '__root__' => 'Each item in groups must be valid',
+                '__root' => 'Each item in groups must be valid',
                 1 => 'groups must be an integer value',
             ],
             'permissions' => [
-                '__root__' => 'Each item in permissions must be valid',
+                '__root' => 'Each item in permissions must be valid',
                 'perm3' => 'permissions must be a boolean value',
             ],
         ],
         18 => [
-            '__root__' => 'All the required rules must pass for `false`',
+            '__root' => 'All the required rules must pass for `false`',
             'arrayVal' => '`false` must be an array value',
             'groups' => 'groups must be present',
             'permissions' => 'permissions must be present',
         ],
         24 => [
-            '__root__' => 'These rules must pass for `["permissions": false]`',
+            '__root' => 'These rules must pass for `["permissions": false]`',
             'groups' => 'groups must be present',
             'permissions' => 'permissions must be iterable',
         ],

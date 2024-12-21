@@ -51,7 +51,7 @@ test('Chained wrapped rule', expectAll(
       - The length of `[]` must be an odd number
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for `[]`',
+        '__root' => 'All the required rules must pass for `[]`',
         'lengthBetween' => 'The length of `[]` must be between 5 and 7',
         'lengthOdd' => 'The length of `[]` must be an odd number',
     ]

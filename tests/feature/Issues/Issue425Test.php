@@ -17,7 +17,7 @@ test('https://github.com/Respect/Validation/issues/425', expectAll(
     'reference must be present',
     '- reference must be present',
     [
-        '__root__' => 'These rules must pass for `["age": 1]`',
+        '__root' => 'These rules must pass for `["age": 1]`',
         'reference' => 'reference must be present',
     ]
 ));

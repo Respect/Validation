@@ -31,7 +31,7 @@ test('With multiple rules', expectAll(
     FULL_MESSAGE,
     [
         'foo' => [
-            '__root__' => 'All the required rules must pass for foo',
+            '__root' => 'All the required rules must pass for foo',
             'intType' => 'foo must be an integer',
             'positive' => 'foo must be a positive number',
         ],

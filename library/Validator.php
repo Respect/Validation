@@ -81,9 +81,9 @@ final class Validator implements Rule
         if (is_array($template)) {
             $templates = $template;
         } elseif (is_string($template)) {
-            $templates = ['__root__' => $template];
+            $templates = ['__root' => $template];
         } elseif ($this->getTemplate() != null) {
-            $templates = ['__root__' => $this->getTemplate()];
+            $templates = ['__root' => $this->getTemplate()];
         }
 
         $exception = new ValidationException(

@@ -142,12 +142,12 @@ final class ValidatorTest extends TestCase
     #[Test]
     public function itShouldAssertUsingTheGivingArrayTemplateWithRootKey(): void
     {
-        $template = ['__root__' => 'This is my new template'];
+        $template = ['__root' => 'This is my new template'];
 
-        $this->expectExceptionMessage($template['__root__']);
+        $this->expectExceptionMessage($template['__root']);
 
         $validator = Validator::create(Stub::fail(1));
-        $validator->setTemplates(['__root__' => 'This is my pre-defined template']);
+        $validator->setTemplates(['__root' => 'This is my pre-defined template']);
         $validator->assert('whatever', $template);
     }
 
@@ -173,7 +173,7 @@ final class ValidatorTest extends TestCase
         return [
             'string' => ['This is my new template'],
             'array key named key' => [['stub' => 'This is my new template']],
-            'array key __root__ key' => [['__root__' => 'This is my new template']],
+            'array key __root key' => [['__root' => 'This is my new template']],
         ];
     }
 }

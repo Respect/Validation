@@ -35,28 +35,28 @@ test('https://github.com/Respect/Validation/issues/1334', expectAll(
         - street must be a string
     FULL_MESSAGE,
     [
-        '__root__' => 'These rules must pass for `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]`',
+        '__root' => 'These rules must pass for `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]`',
         'each' => [
-            '__root__' => 'Each item in `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]` must be valid',
+            '__root' => 'Each item in `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]` must be valid',
             0 => [
-                '__root__' => 'These rules must pass for `["region": "Oregon", "country": "USA", "other": 123]`',
+                '__root' => 'These rules must pass for `["region": "Oregon", "country": "USA", "other": 123]`',
                 'street' => 'street must be present',
                 'other' => [
-                    '__root__' => 'These rules must pass for other',
+                    '__root' => 'These rules must pass for other',
                     'nullOrStringType' => 'other must be a string or must be null',
                 ],
             ],
             1 => [
-                '__root__' => 'These rules must pass for `["street": "", "region": "Oregon", "country": "USA"]`',
+                '__root' => 'These rules must pass for `["street": "", "region": "Oregon", "country": "USA"]`',
                 'street' => [
-                    '__root__' => 'These rules must pass for street',
+                    '__root' => 'These rules must pass for street',
                     'notEmpty' => 'street must not be empty',
                 ],
             ],
             2 => [
-                '__root__' => 'These rules must pass for `["street": 123, "region": "Oregon", "country": "USA"]`',
+                '__root' => 'These rules must pass for `["street": 123, "region": "Oregon", "country": "USA"]`',
                 'street' => [
-                    '__root__' => 'These rules must pass for street',
+                    '__root' => 'These rules must pass for street',
                     'stringType' => 'street must be a string',
                 ],
             ],

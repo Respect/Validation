@@ -14,7 +14,7 @@ test('Default', expectAll(
     'name must not be empty',
     '- name must not be empty',
     [
-        '__root__' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$email="john.doe@gmail.com" +$birthdate="2024-06-23" + ... }`',
+        '__root' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$email="john.doe@gmail.com" +$birthdate="2024-06-23" + ... }`',
         'name' => 'name must not be empty',
     ]
 ));
@@ -24,7 +24,7 @@ test('Inverted', expectAll(
     'phone must be a valid telephone number or must be null',
     '- phone must be a valid telephone number or must be null',
     [
-        '__root__' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$email="john.doe@gmail.com" +$birthdate="2024- ... }`',
+        '__root' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$email="john.doe@gmail.com" +$birthdate="2024- ... }`',
         'phone' => 'phone must be a valid telephone number or must be null',
     ]
 ));
@@ -41,7 +41,7 @@ test('Nullable', expectAll(
     'phone must be a valid telephone number or must be null',
     '- phone must be a valid telephone number or must be null',
     [
-        '__root__' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$email="john.doe@gmail.com" +$birthdate="2024- ... }`',
+        '__root' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$email="john.doe@gmail.com" +$birthdate="2024- ... }`',
         'phone' => 'phone must be a valid telephone number or must be null',
     ]
 ));
@@ -59,11 +59,11 @@ test('Multiple attributes, all failed', expectAll(
       - phone must be a valid telephone number or must be null
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for `Respect\\Validation\\Test\\Stubs\\WithAttributes { +$name="" +$email="not an email" +$birthdate="not a date" +$phone ... }`',
+        '__root' => 'All the required rules must pass for `Respect\\Validation\\Test\\Stubs\\WithAttributes { +$name="" +$email="not an email" +$birthdate="not a date" +$phone ... }`',
         'name' => 'name must not be empty',
         'email' => 'email must be a valid email address',
         'birthdate' => [
-            '__root__' => 'All the required rules must pass for birthdate',
+            '__root' => 'All the required rules must pass for birthdate',
             'date' => 'birthdate must be a valid date in the format "2005-12-30"',
             'dateTimeDiffLessThanOrEqual' => 'For comparison with now, birthdate must be a valid datetime',
         ],
@@ -76,9 +76,9 @@ test('Multiple attributes, one failed', expectAll(
     'birthdate must be a valid date in the format "2005-12-30"',
     '- birthdate must be a valid date in the format "2005-12-30"',
     [
-        '__root__' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$email="john.doe@gmail.com" +$birthdate="22 ye ... }`',
+        '__root' => 'These rules must pass for `Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$email="john.doe@gmail.com" +$birthdate="22 ye ... }`',
         'birthdate' => [
-            '__root__' => 'These rules must pass for birthdate',
+            '__root' => 'These rules must pass for birthdate',
             'date' => 'birthdate must be a valid date in the format "2005-12-30"',
         ],
     ]

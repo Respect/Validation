@@ -44,7 +44,7 @@ The code above generates the following output:
 ```no-highlight
 Array
 (
-    [__root__] => All the required rules must pass for "The Respect Panda"
+    [__root] => All the required rules must pass for "The Respect Panda"
     [alnum] => "The Respect Panda" must contain only letters (a-z) and digits (0-9)
     [lowercase] => "The Respect Panda" must contain only lowercase letters
 )
@@ -69,7 +69,7 @@ try {
 	    ->assert(
 		    'The Respect Panda',
 			[
-			    '__root__' => 'The given input is not valid',
+			    '__root' => 'The given input is not valid',
 			    'alnum' => 'Your username must contain only letters and digits',
 			    'lowercase' => 'Your username must be lowercase',
 			]
@@ -84,7 +84,7 @@ The code above will generate the following output.
 ```no-highlight
 Array
 (
-    [__root__] => The given input is not valid
+    [__root] => The given input is not valid
     [alnum] => Your username must contain only letters and digits
     [lowercase] => Your username must be lowercase
 )
@@ -100,7 +100,7 @@ use Respect\Validation\Validator as v;
 
 $validator = v::alnum()->lowercase();
 $validator->setTemplates([
-    '__root__' => '{{name}} is not valid',
+    '__root' => '{{name}} is not valid',
     'alnum' => 'Usernames must contain only letters and digits',
     'lowercase' => 'Usernames must be lowercase',
 ]);
