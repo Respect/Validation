@@ -30,13 +30,6 @@ It's similar to [NotEmpty](NotEmpty.md) but it's way more strict.
 
 ### `NotBlank::TEMPLATE_STANDARD`
 
-| Mode       | Template                    |
-|------------|-----------------------------|
-| `default`  | The value must not be blank |
-| `inverted` | The value must be blank     |
-
-### `NotBlank::TEMPLATE_NAMED`
-
 | Mode       | Template                   |
 |------------|----------------------------|
 | `default`  | {{name}} must not be blank |

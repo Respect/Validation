@@ -16,9 +16,9 @@ test('When valid use "then"', expectAll(
 
 test('When invalid use "else"', expectAll(
     fn() => v::when(v::intVal(), v::positive(), v::notEmpty())->assert(''),
-    'The value must not be empty',
-    '- The value must not be empty',
-    ['notEmpty' => 'The value must not be empty'],
+    '"" must not be empty',
+    '- "" must not be empty',
+    ['notEmpty' => '"" must not be empty'],
 ));
 
 test('When valid use "then" using single template', expectAll(

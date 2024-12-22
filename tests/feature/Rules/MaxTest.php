@@ -16,9 +16,9 @@ test('Non-iterable', expectAll(
 
 test('Empty', expectAll(
     fn() => v::max(v::negative())->assert([]),
-    'The value must not be empty',
-    '- The value must not be empty',
-    ['max' => 'The value must not be empty'],
+    '`[]` must not be empty',
+    '- `[]` must not be empty',
+    ['max' => '`[]` must not be empty'],
 ));
 
 test('Default', expectAll(

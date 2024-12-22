@@ -23,24 +23,14 @@ use function trim;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    'The value must not be blank',
-    'The value must be blank',
-    self::TEMPLATE_STANDARD,
-)]
-#[Template(
     '{{name}} must not be blank',
     '{{name}} must be blank',
-    self::TEMPLATE_NAMED,
 )]
 final class NotBlank extends Standard
 {
-    public const TEMPLATE_NAMED = '__named__';
-
     public function evaluate(mixed $input): Result
     {
-        $template = $input || $this->getName() ? self::TEMPLATE_NAMED : self::TEMPLATE_STANDARD;
-
-        return new Result($this->isBlank($input), $input, $this, [], $template);
+        return new Result($this->isBlank($input), $input, $this);
     }
 
     private function isBlank(mixed $input): bool

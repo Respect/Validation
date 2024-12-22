@@ -16,9 +16,9 @@ test('Non-iterable', expectAll(
 
 test('Empty', expectAll(
     fn() => v::each(v::intType())->assert([]),
-    'The value must not be empty',
-    '- The value must not be empty',
-    ['each' => 'The value must not be empty'],
+    '`[]` must not be empty',
+    '- `[]` must not be empty',
+    ['each' => '`[]` must not be empty'],
 ));
 
 test('Default', expectAll(

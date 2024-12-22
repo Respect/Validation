@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 test('Scenario #1', expectMessage(
     fn() => v::notEmpty()->assert(null),
-    'The value must not be empty',
+    '`null` must not be empty',
 ));
 
 test('Scenario #2', expectMessage(
@@ -24,7 +24,7 @@ test('Scenario #3', expectMessage(
 
 test('Scenario #4', expectFullMessage(
     fn() => v::notEmpty()->assert(''),
-    '- The value must not be empty',
+    '- "" must not be empty',
 ));
 
 test('Scenario #5', expectFullMessage(
