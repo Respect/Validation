@@ -13,5 +13,5 @@ test('Optional', expectAll(
     fn() => v::optional(v::scalarVal())->assert([]),
     '`[]` must be a scalar value or must be undefined',
     '- `[]` must be a scalar value or must be undefined',
-    ['undefOrScalarVal' => '`[]` must be a scalar value or must be undefined']
+    ['undefOrScalarVal' => '`[]` must be a scalar value or must be undefined'],
 ));

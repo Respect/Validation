@@ -13,13 +13,13 @@ test('https://github.com/Respect/Validation/issues/1334', expectAll(
             v::key('street', v::stringType()->notEmpty())
                 ->key('region', v::stringType()->notEmpty())
                 ->key('country', v::stringType()->notEmpty())
-                ->keyOptional('other', v::nullOr(v::notEmpty()->stringType()))
+                ->keyOptional('other', v::nullOr(v::notEmpty()->stringType())),
         )->assert(
             [
                 ['region' => 'Oregon', 'country' => 'USA', 'other' => 123],
                 ['street' => '', 'region' => 'Oregon', 'country' => 'USA'],
                 ['street' => 123, 'region' => 'Oregon', 'country' => 'USA'],
-            ]
+            ],
         );
     },
     'street must be present',
@@ -45,5 +45,5 @@ test('https://github.com/Respect/Validation/issues/1334', expectAll(
             1 => 'street must not be empty',
             2 => 'street must be a string',
         ],
-    ]
+    ],
 ));

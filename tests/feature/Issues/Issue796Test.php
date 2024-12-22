@@ -8,14 +8,14 @@
 declare(strict_types=1);
 
 test('https://github.com/Respect/Validation/issues/796', expectAll(
-    fn () => v::create()
+    fn() => v::create()
         ->key(
             'mysql',
             v::create()
                 ->key('host', v::stringType())
                 ->key('user', v::stringType())
                 ->key('password', v::stringType())
-                ->key('schema', v::stringType())
+                ->key('schema', v::stringType()),
         )
         ->key(
             'postgresql',
@@ -23,7 +23,7 @@ test('https://github.com/Respect/Validation/issues/796', expectAll(
                 ->key('host', v::stringType())
                 ->key('user', v::stringType())
                 ->key('password', v::stringType())
-                ->key('schema', v::stringType())
+                ->key('schema', v::stringType()),
         )
         ->setName('the given data')
         ->assert([
@@ -52,5 +52,5 @@ test('https://github.com/Respect/Validation/issues/796', expectAll(
         '__root__' => 'All the required rules must pass for the given data',
         'mysql' => 'host must be a string',
         'postgresql' => 'user must be a string',
-    ]
+    ],
 ));

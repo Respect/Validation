@@ -13,11 +13,11 @@ test('Scenario #1', expectMessage(
             v::not(
                 v::not(
                     v::not(
-                        v::intVal()->positive()
-                    )
-                )
-            )
-        )
+                        v::intVal()->positive(),
+                    ),
+                ),
+            ),
+        ),
     )->assert(2),
     '2 must not be an integer value',
 ));
@@ -28,11 +28,11 @@ test('Scenario #2', expectFullMessage(
             v::not(
                 v::not(
                     v::not(
-                        v::intVal()->positive()
-                    )
-                )
-            )
-        )
+                        v::intVal()->positive(),
+                    ),
+                ),
+            ),
+        ),
     )->assert(2),
     <<<'FULL_MESSAGE'
     - These rules must not pass for 2

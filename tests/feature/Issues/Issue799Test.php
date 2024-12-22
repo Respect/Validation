@@ -15,7 +15,7 @@ test('https://github.com/Respect/Validation/issues/799 | #1', expectAll(
     fn() => v::create()
         ->call(
             [new CountableStub(1), 'count'],
-            v::arrayVal()->key('scheme', v::startsWith('https'))
+            v::arrayVal()->key('scheme', v::startsWith('https')),
         )
         ->assert($input),
     '1 must be an array value',
@@ -28,19 +28,17 @@ test('https://github.com/Respect/Validation/issues/799 | #1', expectAll(
         '__root__' => 'All the required rules must pass for 1',
         'arrayVal' => '1 must be an array value',
         'scheme' => 'scheme must be present',
-    ]
+    ],
 ));
 
 test('https://github.com/Respect/Validation/issues/799 | #2', expectAll(
     fn() => v::create()
         ->call(
-            function ($url) {
-                return parse_url($url);
-            },
-            v::arrayVal()->key('scheme', v::startsWith('https'))
+            fn ($url) => parse_url($url),
+            v::arrayVal()->key('scheme', v::startsWith('https')),
         )
         ->assert($input),
     'scheme must start with "https"',
     '- scheme must start with "https"',
-    ['scheme' => 'scheme must start with "https"']
+    ['scheme' => 'scheme must start with "https"'],
 ));

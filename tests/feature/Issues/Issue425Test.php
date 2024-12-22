@@ -16,5 +16,5 @@ test('https://github.com/Respect/Validation/issues/425', expectAll(
     },
     'reference must be present',
     '- reference must be present',
-    ['reference' => 'reference must be present']
+    ['reference' => 'reference must be present'],
 ));

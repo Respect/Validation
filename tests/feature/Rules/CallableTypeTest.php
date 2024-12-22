@@ -24,7 +24,7 @@ test('Scenario #3', expectFullMessage(
 
 test('Scenario #4', expectFullMessage(
     fn() => v::not(v::callableType())->assert(function (): void {
-    // Do nothing
+        // Do nothing
     }),
     '- `function (): void` must not be a callable',
 ));

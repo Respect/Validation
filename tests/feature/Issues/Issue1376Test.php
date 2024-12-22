@@ -34,5 +34,5 @@ test('https://github.com/Respect/Validation/issues/1376', expectAll(
             'lengthBetween' => 'The length of author must be between 1 and 2',
         ],
         'user' => 'user must be present',
-    ]
+    ],
 ));

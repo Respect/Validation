@@ -24,8 +24,8 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
                     'default',
                     new OneOf(
                         new StringType(),
-                        new BoolType()
-                    )
+                        new BoolType(),
+                    ),
                 ),
                 new KeyOptional(
                     'description',
@@ -34,9 +34,9 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
                 new KeyOptional(
                     'children',
                     new ArrayType(),
-                )
-            )
-        )
+                ),
+            ),
+        ),
     )
         ->assert([
             [
@@ -63,5 +63,5 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
             ],
             'description' => 'description must be a string value',
         ],
-    ]
+    ],
 ));

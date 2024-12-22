@@ -49,5 +49,5 @@ test('https://github.com/Respect/Validation/issues/1469', expectAll(
                 'product_title2' => 'product_title2 must not be present',
             ],
         ],
-    ]
+    ],
 ));

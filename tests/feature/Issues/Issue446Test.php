@@ -19,5 +19,5 @@ test('https://github.com/Respect/Validation/issues/446', expectAll(
         ->assert($arr),
     'The length of name must be between 2 and 32',
     '- The length of name must be between 2 and 32',
-    ['name' => 'The length of name must be between 2 and 32']
+    ['name' => 'The length of name must be between 2 and 32'],
 ));

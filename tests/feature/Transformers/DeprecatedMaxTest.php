@@ -22,11 +22,11 @@ test('Scenario #2', expectMessageAndError(
 test('Scenario #3', expectMessageAndError(
     fn() => v::max('today')->assert('tomorrow'),
     '"tomorrow" must be less than or equal to "today"',
-    'Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead.'
+    'Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead.',
 ));
 
 test('Scenario #4', expectMessageAndError(
     fn() => v::not(v::max('b'))->assert('a'),
     '"a" must be greater than "b"',
-    'Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead.'
+    'Calling max() with a scalar value has been deprecated, and will be not allows in the next major version. Use lessThanOrEqual() instead.',
 ));

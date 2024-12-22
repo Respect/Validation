@@ -21,5 +21,5 @@ test('https://github.com/Respect/Validation/issues/1033', expectAll(
         0 => '"A" must be equal to 1',
         1 => '"B" must be equal to 1',
         2 => '"B" must be equal to 1',
-    ]
+    ],
 ));

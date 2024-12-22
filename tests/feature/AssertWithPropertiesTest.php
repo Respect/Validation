@@ -31,7 +31,7 @@ test('Scenario #1', expectFullMessage(
                     ->property('host', v::stringType())
                     ->property('user', v::stringType())
                     ->property('password', v::stringType())
-                    ->property('schema', v::stringType())
+                    ->property('schema', v::stringType()),
             )
             ->property(
                 'postgresql',
@@ -39,7 +39,7 @@ test('Scenario #1', expectFullMessage(
                     ->property('host', v::stringType())
                     ->property('user', v::stringType())
                     ->property('password', v::stringType())
-                    ->property('schema', v::stringType())
+                    ->property('schema', v::stringType()),
             )
             ->setName('the given data')
             ->assert($object);

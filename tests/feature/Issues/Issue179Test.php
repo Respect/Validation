@@ -33,5 +33,5 @@ test('https://github.com/Respect/Validation/issues/179', expectAll(
         '__root__' => 'These rules must pass for Settings',
         'host' => 'host must be a string',
         'user' => 'user must be present',
-    ]
+    ],
 ));

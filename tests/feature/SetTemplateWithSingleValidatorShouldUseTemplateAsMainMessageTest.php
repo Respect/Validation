@@ -10,6 +10,6 @@ declare(strict_types=1);
 use Respect\Validation\Validator;
 
 test('Scenario', expectMessage(
-    fn() =>  Validator::callback('is_int')->setTemplate('{{name}} is not tasty')->assert('something'),
+    fn() => Validator::callback('is_int')->setTemplate('{{name}} is not tasty')->assert('something'),
     '"something" is not tasty',
 ));

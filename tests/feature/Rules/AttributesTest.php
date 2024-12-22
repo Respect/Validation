@@ -13,28 +13,28 @@ test('Default', expectAll(
     fn() => v::attributes()->assert(new WithAttributes('', 'john.doe@gmail.com', '2024-06-23')),
     'name must not be empty',
     '- name must not be empty',
-    ['name' => 'name must not be empty']
+    ['name' => 'name must not be empty'],
 ));
 
 test('Inverted', expectAll(
     fn() => v::attributes()->assert(new WithAttributes('John Doe', 'john.doe@gmail.com', '2024-06-23', '+1234567890')),
     'phone must be a valid telephone number or must be null',
     '- phone must be a valid telephone number or must be null',
-    ['phone' => 'phone must be a valid telephone number or must be null']
+    ['phone' => 'phone must be a valid telephone number or must be null'],
 ));
 
 test('Not an object', expectAll(
     fn() => v::attributes()->assert([]),
     '`[]` must be an object',
     '- `[]` must be an object',
-    ['attributes' => '`[]` must be an object']
+    ['attributes' => '`[]` must be an object'],
 ));
 
 test('Nullable', expectAll(
     fn() => v::attributes()->assert(new WithAttributes('John Doe', 'john.doe@gmail.com', '2024-06-23', 'not a phone number')),
     'phone must be a valid telephone number or must be null',
     '- phone must be a valid telephone number or must be null',
-    ['phone' => 'phone must be a valid telephone number or must be null']
+    ['phone' => 'phone must be a valid telephone number or must be null'],
 ));
 
 test('Multiple attributes, all failed', expectAll(
@@ -59,12 +59,12 @@ test('Multiple attributes, all failed', expectAll(
             'dateTimeDiffLessThanOrEqual' => 'For comparison with now, birthdate must be a valid datetime',
         ],
         'phone' => 'phone must be a valid telephone number or must be null',
-    ]
+    ],
 ));
 
 test('Multiple attributes, one failed', expectAll(
     fn() => v::attributes()->assert(new WithAttributes('John Doe', 'john.doe@gmail.com', '22 years ago')),
     'birthdate must be a valid date in the format "2005-12-30"',
     '- birthdate must be a valid date in the format "2005-12-30"',
-    ['birthdate' => 'birthdate must be a valid date in the format "2005-12-30"']
+    ['birthdate' => 'birthdate must be a valid date in the format "2005-12-30"'],
 ));

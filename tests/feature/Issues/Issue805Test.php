@@ -11,5 +11,5 @@ test('https://github.com/Respect/Validation/issues/805', expectAll(
     fn() => v::key('email', v::email()->setTemplate('WRONG EMAIL!!!!!!'))->assert(['email' => 'qwe']),
     'WRONG EMAIL!!!!!!',
     '- WRONG EMAIL!!!!!!',
-    ['email' => 'WRONG EMAIL!!!!!!']
+    ['email' => 'WRONG EMAIL!!!!!!'],
 ));

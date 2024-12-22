@@ -21,8 +21,8 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
         v::oneOf(
             v::key('manufacturer', v::equals('Honda'))->key('model', v::in(['Accord', 'Fit'])),
             v::key('manufacturer', v::equals('Toyota'))->key('model', v::in(['Rav4', 'Camry'])),
-            v::key('manufacturer', v::equals('Ford'))->key('model', Validator::in(['F150', 'Bronco']))
-        )
+            v::key('manufacturer', v::equals('Ford'))->key('model', Validator::in(['F150', 'Bronco'])),
+        ),
     )->assert($cars),
     'manufacturer must be equal to "Honda"',
     <<<'FULL_MESSAGE'
@@ -78,5 +78,5 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
                 ],
             ],
         ],
-    ]
+    ],
 ));

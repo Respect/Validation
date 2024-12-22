@@ -11,5 +11,5 @@ test('https://github.com/Respect/Validation/issues/619', expectAll(
     fn() => v::instance(stdClass::class)->setTemplate('invalid object')->assert('test'),
     'invalid object',
     '- invalid object',
-    ['instance' => 'invalid object']
+    ['instance' => 'invalid object'],
 ));

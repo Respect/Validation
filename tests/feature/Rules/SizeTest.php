@@ -26,35 +26,35 @@ test('Default', expectAll(
     fn() => v::size('KB', v::lessThan(2))->assert($this->file2Kb->url()),
     'The size in kilobytes of "vfs://root/2kb.txt" must be less than 2',
     '- The size in kilobytes of "vfs://root/2kb.txt" must be less than 2',
-    ['sizeLessThan' => 'The size in kilobytes of "vfs://root/2kb.txt" must be less than 2']
+    ['sizeLessThan' => 'The size in kilobytes of "vfs://root/2kb.txt" must be less than 2'],
 ));
 
 test('Wrong type', expectAll(
     fn() => v::size('KB', v::lessThan(2))->assert(new stdClass()),
     '`stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface',
     '- `stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface',
-    ['sizeLessThan' => '`stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface']
+    ['sizeLessThan' => '`stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface'],
 ));
 
 test('Inverted', expectAll(
     fn() => v::size('MB', v::not(v::equals(3)))->assert($this->file2Mb->url()),
     'The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3',
     '- The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3',
-    ['sizeNotEquals' => 'The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3']
+    ['sizeNotEquals' => 'The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3'],
 ));
 
 test('Wrapped with name', expectAll(
     fn() => v::size('KB', v::lessThan(2)->setName('Wrapped'))->assert($this->file2Kb->url()),
     'The size in kilobytes of Wrapped must be less than 2',
     '- The size in kilobytes of Wrapped must be less than 2',
-    ['sizeLessThan' => 'The size in kilobytes of Wrapped must be less than 2']
+    ['sizeLessThan' => 'The size in kilobytes of Wrapped must be less than 2'],
 ));
 
 test('Wrapper with name', expectAll(
     fn() => v::size('KB', v::lessThan(2))->setName('Wrapper')->assert($this->file2Kb->url()),
     'The size in kilobytes of Wrapper must be less than 2',
     '- The size in kilobytes of Wrapper must be less than 2',
-    ['sizeLessThan' => 'The size in kilobytes of Wrapper must be less than 2']
+    ['sizeLessThan' => 'The size in kilobytes of Wrapper must be less than 2'],
 ));
 
 test('Chained wrapped rule', expectAll(
@@ -69,5 +69,5 @@ test('Chained wrapped rule', expectAll(
         '__root__' => 'All the required rules must pass for "vfs://root/2kb.txt"',
         'sizeBetween' => 'The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7',
         'sizeOdd' => 'The size in kilobytes of "vfs://root/2kb.txt" must be an odd number',
-    ]
+    ],
 ));

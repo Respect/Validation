@@ -11,14 +11,14 @@ test('Non-iterable', expectAll(
     fn() => v::each(v::intType())->assert(null),
     '`null` must be iterable',
     '- `null` must be iterable',
-    ['each' => '`null` must be iterable']
+    ['each' => '`null` must be iterable'],
 ));
 
 test('Empty', expectAll(
     fn() => v::each(v::intType())->assert([]),
     'The value must not be empty',
     '- The value must not be empty',
-    ['each' => 'The value must not be empty']
+    ['each' => 'The value must not be empty'],
 ));
 
 test('Default', expectAll(
@@ -35,7 +35,7 @@ test('Default', expectAll(
         0 => '"a" must be an integer',
         1 => '"b" must be an integer',
         2 => '"c" must be an integer',
-    ]
+    ],
 ));
 
 test('Inverted', expectAll(
@@ -52,21 +52,21 @@ test('Inverted', expectAll(
         0 => '1 must not be an integer',
         1 => '2 must not be an integer',
         2 => '3 must not be an integer',
-    ]
+    ],
 ));
 
 test('With name, non-iterable', expectAll(
     fn() => v::each(v::intType()->setName('Wrapped'))->setName('Wrapper')->assert(null),
     'Wrapped must be iterable',
     '- Wrapped must be iterable',
-    ['Wrapped' => 'Wrapped must be iterable']
+    ['Wrapped' => 'Wrapped must be iterable'],
 ));
 
 test('With name, empty', expectAll(
     fn() => v::each(v::intType()->setName('Wrapped'))->setName('Wrapper')->assert([]),
     'Wrapped must not be empty',
     '- Wrapped must not be empty',
-    ['Wrapped' => 'Wrapped must not be empty']
+    ['Wrapped' => 'Wrapped must not be empty'],
 ));
 
 test('With name, default', expectAll(
@@ -83,7 +83,7 @@ test('With name, default', expectAll(
         0 => 'Wrapped must be an integer',
         1 => 'Wrapped must be an integer',
         2 => 'Wrapped must be an integer',
-    ]
+    ],
 ));
 
 test('With name, inverted', expectAll(
@@ -100,7 +100,7 @@ test('With name, inverted', expectAll(
         0 => 'Wrapped must not be an integer',
         1 => 'Wrapped must not be an integer',
         2 => 'Wrapped must not be an integer',
-    ]
+    ],
 ));
 
 test('With wrapper name, default', expectAll(
@@ -117,7 +117,7 @@ test('With wrapper name, default', expectAll(
         0 => 'Wrapper must be an integer',
         1 => 'Wrapper must be an integer',
         2 => 'Wrapper must be an integer',
-    ]
+    ],
 ));
 
 test('With wrapper name, inverted', expectAll(
@@ -134,7 +134,7 @@ test('With wrapper name, inverted', expectAll(
         0 => 'Wrapper must not be an integer',
         1 => 'Wrapper must not be an integer',
         2 => 'Wrapper must not be an integer',
-    ]
+    ],
 ));
 
 test('With Not name, inverted', expectAll(
@@ -151,14 +151,14 @@ test('With Not name, inverted', expectAll(
         0 => 'Not must not be an integer',
         1 => 'Not must not be an integer',
         2 => 'Not must not be an integer',
-    ]
+    ],
 ));
 
 test('With template, non-iterable', expectAll(
     fn() => v::each(v::intType())->setTemplate('You should have passed an iterable')->assert(null),
     'You should have passed an iterable',
     '- You should have passed an iterable',
-    ['each' => 'You should have passed an iterable']
+    ['each' => 'You should have passed an iterable'],
 ));
 
 test('With template, empty', expectAll(
@@ -166,7 +166,7 @@ test('With template, empty', expectAll(
         ->assert([]),
     'You should have passed an non-empty',
     '- You should have passed an non-empty',
-    ['each' => 'You should have passed an non-empty']
+    ['each' => 'You should have passed an non-empty'],
 ));
 
 test('With template, default', expectAll(
@@ -175,7 +175,7 @@ test('With template, default', expectAll(
         ->assert(['a', 'b', 'c']),
     'All items should have been integers',
     '- All items should have been integers',
-    ['each' => 'All items should have been integers']
+    ['each' => 'All items should have been integers'],
 ));
 
 test('with template, inverted', expectAll(
@@ -184,7 +184,7 @@ test('with template, inverted', expectAll(
         ->assert([1, 2, 3]),
     'All items should not have been integers',
     '- All items should not have been integers',
-    ['notEach' => 'All items should not have been integers']
+    ['notEach' => 'All items should not have been integers'],
 ));
 
 test('With array template, default', expectAll(
@@ -210,7 +210,7 @@ test('With array template, default', expectAll(
         0 => 'First item should have been an integer',
         1 => 'Second item should have been an integer',
         2 => 'Third item should have been an integer',
-    ]
+    ],
 ));
 
 test('With array template and name, default', expectAll(
@@ -237,7 +237,7 @@ test('With array template and name, default', expectAll(
         0 => 'Wrapped must be an integer',
         1 => 'Wrapped must be an integer',
         2 => 'Wrapped must be an integer',
-    ]
+    ],
 ));
 
 test('Chained wrapped rule', expectAll(
@@ -264,7 +264,7 @@ test('Chained wrapped rule', expectAll(
             'between' => '4 must be between 5 and 7',
             'odd' => '4 must be an odd number',
         ],
-    ]
+    ],
 ));
 
 test('Multiple nested rules', expectAll(
@@ -289,5 +289,5 @@ test('Multiple nested rules', expectAll(
             'arrayType' => '"not an array" must be an array',
             'my_int' => 'my_int must be present',
         ],
-    ]
+    ],
 ));

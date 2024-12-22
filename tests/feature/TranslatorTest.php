@@ -18,8 +18,7 @@ test('Scenario #1', expectFullMessage(
             'The length of' => 'O comprimento de',
             '{{name}} must be a string' => '{{name}} deve ser uma string',
             '{{name}} must be between {{minValue}} and {{maxValue}}' => '{{name}} deve possuir de {{minValue}} a {{maxValue}} caracteres',
-            '{{name}} must be a valid telephone number for country {{countryName|trans}}'
-            => '{{name}} deve ser um número de telefone válido para o país {{countryName|trans}}',
+            '{{name}} must be a valid telephone number for country {{countryName|trans}}' => '{{name}} deve ser um número de telefone válido para o país {{countryName|trans}}',
             'United States' => 'Estados Unidos',
         ]));
 

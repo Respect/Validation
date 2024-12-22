@@ -16,7 +16,7 @@ test('Scenario #1', expectMessages(
                     ->key('host', v::stringType())
                     ->key('user', v::stringType())
                     ->key('password', v::stringType())
-                    ->key('schema', v::stringType())
+                    ->key('schema', v::stringType()),
             )
             ->key(
                 'postgresql',
@@ -24,7 +24,7 @@ test('Scenario #1', expectMessages(
                     ->key('host', v::stringType())
                     ->key('user', v::stringType())
                     ->key('password', v::stringType())
-                    ->key('schema', v::stringType())
+                    ->key('schema', v::stringType()),
             )
             ->assert(
                 [
@@ -45,7 +45,7 @@ test('Scenario #1', expectMessages(
                     'postgresql' => [
                         'schema' => 'You must provide a valid PostgreSQL schema',
                     ],
-                ]
+                ],
             );
     },
     [

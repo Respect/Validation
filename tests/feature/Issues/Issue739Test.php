@@ -11,5 +11,5 @@ test('https://github.com/Respect/Validation/issues/739', expectAll(
     fn() => v::when(v::alwaysInvalid(), v::alwaysValid())->assert('foo'),
     '"foo" is invalid',
     '- "foo" is invalid',
-    ['alwaysInvalid' => '"foo" is invalid']
+    ['alwaysInvalid' => '"foo" is invalid'],
 ));

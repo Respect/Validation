@@ -15,7 +15,7 @@ test('Scenario #1', expectFullMessage(
                 ->key('host', v::stringType())
                 ->key('user', v::stringType())
                 ->key('password', v::stringType())
-                ->key('schema', v::stringType())
+                ->key('schema', v::stringType()),
         )
         ->key(
             'postgresql',
@@ -23,7 +23,7 @@ test('Scenario #1', expectFullMessage(
                 ->key('host', v::stringType())
                 ->key('user', v::stringType())
                 ->key('password', v::stringType())
-                ->key('schema', v::stringType())
+                ->key('schema', v::stringType()),
         )
         ->setName('the given data')
         ->assert([
