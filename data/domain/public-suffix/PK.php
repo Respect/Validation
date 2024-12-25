@@ -11,7 +11,6 @@ return [
     'GOB.PK',
     'GOG.PK',
     'GOK.PK',
-    'GON.PK',
     'GOP.PK',
     'GOS.PK',
     'GOV.PK',
