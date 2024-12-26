@@ -36,10 +36,12 @@ final class Validator implements Rule
 
     private ?string $template = null;
 
+    /** @param array<string> $ignoredBacktracePaths */
     public function __construct(
         private readonly Factory $factory,
         private readonly Formatter $formatter,
         private readonly Translator $translator,
+        private readonly array $ignoredBacktracePaths,
     ) {
     }
 
@@ -48,7 +50,8 @@ final class Validator implements Rule
         $validator = new self(
             ValidatorDefaults::getFactory(),
             ValidatorDefaults::getFormatter(),
-            ValidatorDefaults::getTranslator()
+            ValidatorDefaults::getTranslator(),
+            ValidatorDefaults::getIgnoredBacktracePaths()
         );
         $validator->rules = $rules;
 
@@ -89,7 +92,8 @@ final class Validator implements Rule
         $exception = new ValidationException(
             $this->formatter->main($result, $templates, $this->translator),
             $this->formatter->full($result, $templates, $this->translator),
-            $this->formatter->array($result, $templates, $this->translator)
+            $this->formatter->array($result, $templates, $this->translator),
+            $this->ignoredBacktracePaths
         );
 
         if (!is_callable($template)) {
@@ -103,6 +107,13 @@ final class Validator implements Rule
     public function setTemplates(array $templates): self
     {
         $this->templates = $templates;
+
+        return $this;
+    }
+
+    public function addRule(Rule $rule): self
+    {
+        $this->rules[] = $rule;
 
         return $this;
     }
@@ -166,8 +177,6 @@ final class Validator implements Rule
      */
     public function __call(string $ruleName, array $arguments): self
     {
-        $this->rules[] = $this->factory->rule($ruleName, $arguments);
-
-        return $this;
+        return $this->addRule($this->factory->rule($ruleName, $arguments));
     }
 }

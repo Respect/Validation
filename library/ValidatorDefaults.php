@@ -22,6 +22,9 @@ final class ValidatorDefaults
 
     private static ?Translator $translator = null;
 
+    /** @var array<string> */
+    private static array $ignoredBacktracePaths = [__DIR__ . '/Validator.php'];
+
     public static function setFactory(Factory $factory): void
     {
         self::$factory = $factory;
@@ -62,5 +65,16 @@ final class ValidatorDefaults
         }
 
         return self::$translator;
+    }
+
+    /** @return array<string>*/
+    public static function getIgnoredBacktracePaths(): array
+    {
+        return self::$ignoredBacktracePaths;
+    }
+
+    public static function setIgnoredBacktracePaths(string ...$ignoredBacktracePaths): void
+    {
+        self::$ignoredBacktracePaths = $ignoredBacktracePaths;
     }
 }
