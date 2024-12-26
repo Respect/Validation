@@ -14,7 +14,7 @@ test('Scenario #1', expectMessage(
 
 test('Scenario #2', expectMessage(
     fn() => v::not(v::callableType())->assert('trim'),
-    '`trim(string $string, string $characters = " \\n\\r\\t\\u000b\\u0000"): string` must not be a callable',
+    '"trim" must not be a callable',
 ));
 
 test('Scenario #3', expectFullMessage(
@@ -26,5 +26,5 @@ test('Scenario #4', expectFullMessage(
     fn() => v::not(v::callableType())->assert(function (): void {
         // Do nothing
     }),
-    '- `function (): void` must not be a callable',
+    '- `Closure {}` must not be a callable',
 ));

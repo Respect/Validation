@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 test('Scenario #1', expectMessage(
     fn() => v::resourceType()->assert('test'),
-    '`test(?string $description = null, ?Closure $closure = null): Pest\\Support\\HigherOrderTapProxy|Pest\\PendingCalls\\Te ...` must be a resource',
+    '"test" must be a resource',
 ));
 
 test('Scenario #2', expectMessage(

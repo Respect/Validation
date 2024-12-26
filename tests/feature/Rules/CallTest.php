@@ -19,7 +19,7 @@ test('Scenario #2', expectMessage(
 
 test('Scenario #3', expectMessage(
     fn() => v::call('stripslashes', v::alwaysValid())->assert([]),
-    '`[]` must be a suitable argument for `stripslashes(string $string): string`',
+    '`[]` must be a suitable argument for "stripslashes"',
 ));
 
 test('Scenario #4', expectFullMessage(
@@ -34,5 +34,5 @@ test('Scenario #5', expectFullMessage(
 
 test('Scenario #6', expectFullMessage(
     fn() => v::call('array_shift', v::alwaysValid())->assert(INF),
-    '- `INF` must be a suitable argument for `array_shift(array &$array): ?mixed`',
+    '- `INF` must be a suitable argument for "array_shift"',
 ));

@@ -21,7 +21,7 @@ test('Scenario #2', expectMessage(
 
 test('Scenario #3', expectFullMessage(
     fn() => v::cnpj()->assert('test'),
-    '- `test(?string $description = null, ?Closure $closure = null): Pest\\Support\\HigherOrderTapProxy|Pest\\PendingCalls\\Te ...` must be a valid CNPJ number',
+    '- "test" must be a valid CNPJ number',
 ));
 
 test('Scenario #4', expectFullMessage(

@@ -11,7 +11,6 @@ namespace Respect\Validation\Message;
 
 use ReflectionClass;
 use Respect\Stringifier\Stringifier;
-use Respect\Stringifier\Stringifiers\CompositeStringifier;
 use Respect\Validation\Mode;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
@@ -27,11 +26,9 @@ final class StandardRenderer implements Renderer
     /** @var array<string, array<Template>> */
     private array $templates = [];
 
-    private readonly Stringifier $stringifier;
-
-    public function __construct(?Stringifier $stringifier = null)
-    {
-        $this->stringifier = $stringifier ?? CompositeStringifier::createDefault();
+    public function __construct(
+        private readonly Stringifier $stringifier = new StandardStringifier(),
+    ) {
     }
 
     public function render(Result $result, Translator $translator, ?string $template = null): string

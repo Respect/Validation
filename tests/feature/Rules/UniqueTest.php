@@ -19,7 +19,7 @@ test('Scenario #2', expectMessage(
 
 test('Scenario #3', expectFullMessage(
     fn() => v::unique()->assert('test'),
-    '- `test(?string $description = null, ?Closure $closure = null): Pest\\Support\\HigherOrderTapProxy|Pest\\PendingCalls\\Te ...` must not contain duplicates',
+    '- "test" must not contain duplicates',
 ));
 
 test('Scenario #4', expectFullMessage(

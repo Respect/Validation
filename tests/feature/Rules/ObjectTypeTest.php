@@ -19,7 +19,7 @@ test('Scenario #2', expectMessage(
 
 test('Scenario #3', expectFullMessage(
     fn() => v::objectType()->assert('test'),
-    '- `test(?string $description = null, ?Closure $closure = null): Pest\\Support\\HigherOrderTapProxy|Pest\\PendingCalls\\Te ...` must be an object',
+    '- "test" must be an object',
 ));
 
 test('Scenario #4', expectFullMessage(
