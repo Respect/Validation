@@ -11,6 +11,7 @@ namespace Respect\Validation\Message;
 
 use ReflectionClass;
 use Respect\Stringifier\Stringifier;
+use Respect\Validation\Message\Placeholder\Quoted;
 use Respect\Validation\Mode;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
@@ -71,6 +72,10 @@ final class StandardRenderer implements Renderer
 
     private function placeholder(string $name, mixed $value, Translator $translator, ?string $modifier = null): string
     {
+        if ($modifier === 'quote' && is_string($value)) {
+            return $this->placeholder($name, new Quoted($value), $translator);
+        }
+
         if ($modifier === 'raw' && is_scalar($value)) {
             return is_bool($value) ? (string) (int) $value : (string) $value;
         }

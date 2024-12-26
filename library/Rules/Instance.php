@@ -16,8 +16,8 @@ use Respect\Validation\Rules\Core\Standard;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an instance of `{{class|raw}}`',
-    '{{name}} must not be an instance of `{{class|raw}}`',
+    '{{name}} must be an instance of {{class|quote}}',
+    '{{name}} must not be an instance of {{class|quote}}',
 )]
 final class Instance extends Standard
 {

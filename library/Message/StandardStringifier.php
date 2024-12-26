@@ -31,6 +31,7 @@ use Respect\Stringifier\Stringifiers\ObjectWithDebugInfoStringifier;
 use Respect\Stringifier\Stringifiers\ResourceStringifier;
 use Respect\Stringifier\Stringifiers\StringableObjectStringifier;
 use Respect\Stringifier\Stringifiers\ThrowableObjectStringifier;
+use Respect\Validation\Message\Stringifier\QuotedStringifier;
 
 final class StandardStringifier implements Stringifier
 {
@@ -86,6 +87,7 @@ final class StandardStringifier implements Stringifier
         $stringifier->prependStringifier(new ThrowableObjectStringifier($jsonEncodableStringifier, $quoter));
         $stringifier->prependStringifier(new DateTimeStringifier($quoter, DateTimeInterface::ATOM));
         $stringifier->prependStringifier(new IteratorObjectStringifier($stringifier, $quoter));
+        $stringifier->prependStringifier(new QuotedStringifier($quoter));
 
         return $stringifier;
     }
