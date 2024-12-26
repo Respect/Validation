@@ -39,18 +39,6 @@ abstract class Wrapper implements Rule
         return $this;
     }
 
-    public function getTemplate(): ?string
-    {
-        return $this->rule->getTemplate();
-    }
-
-    public function setTemplate(string $template): static
-    {
-        $this->rule->setTemplate($template);
-
-        return $this;
-    }
-
     public function getRule(): Rule
     {
         return $this->rule;

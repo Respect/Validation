@@ -26,8 +26,7 @@ final class When extends Standard
         ?Rule $else = null
     ) {
         if ($else === null) {
-            $else = new AlwaysInvalid();
-            $else->setTemplate(AlwaysInvalid::TEMPLATE_SIMPLE);
+            $else = new Templated(new AlwaysInvalid(), AlwaysInvalid::TEMPLATE_SIMPLE);
         }
 
         $this->else = $else;

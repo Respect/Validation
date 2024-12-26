@@ -12,10 +12,7 @@ namespace Respect\Validation\Rules\Core;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\AlwaysInvalid;
-
-use function uniqid;
 
 #[CoversClass(Binder::class)]
 final class BinderTest extends TestCase
@@ -64,51 +61,5 @@ final class BinderTest extends TestCase
 
         self::assertNull($bound->getName());
         self::assertNull($result->name);
-    }
-
-    #[Test]
-    public function shouldBindTemplateToBoundRule(): void
-    {
-        $sourceTemplate = uniqid();
-
-        $source = new AlwaysInvalid();
-        $source->setTemplate($sourceTemplate);
-
-        $bound = new AlwaysInvalid();
-        $binder = new Binder($source, $bound);
-        $result = $binder->evaluate(null);
-
-        self::assertSame($sourceTemplate, $bound->getTemplate());
-        self::assertSame($sourceTemplate, $result->template);
-    }
-
-    #[Test]
-    public function shouldNotBindTemplateToBoundRuleWhenItAlreadyHasSomeTemplate(): void
-    {
-        $source = new AlwaysInvalid();
-        $source->setTemplate('source template');
-
-        $boundTemplate = 'bound name';
-
-        $bound = new AlwaysInvalid();
-        $bound->setTemplate($boundTemplate);
-
-        $binder = new Binder($source, $bound);
-        $result = $binder->evaluate(null);
-
-        self::assertSame($boundTemplate, $bound->getTemplate());
-        self::assertSame($boundTemplate, $result->template);
-    }
-
-    #[Test]
-    public function shouldNotBindTemplateToBoundRuleWhenSourceHasNoTemplate(): void
-    {
-        $bound = new AlwaysInvalid();
-
-        $binder = new Binder(new AlwaysInvalid(), $bound);
-        $result = $binder->evaluate(null);
-
-        self::assertNull($bound->getTemplate());
-        self::assertSame(Rule::TEMPLATE_STANDARD, $result->template);
     }
 }

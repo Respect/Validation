@@ -18,8 +18,6 @@ abstract class Standard implements Rule
 
     private ?string $name = null;
 
-    private ?string $template = null;
-
     public function getName(): ?string
     {
         return $this->name;
@@ -28,18 +26,6 @@ abstract class Standard implements Rule
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getTemplate(): ?string
-    {
-        return $this->template;
-    }
-
-    public function setTemplate(string $template): static
-    {
-        $this->template = $template;
 
         return $this;
     }

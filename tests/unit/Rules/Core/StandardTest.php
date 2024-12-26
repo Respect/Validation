@@ -35,21 +35,4 @@ final class StandardTest extends TestCase
 
         self::assertEquals('foo', $rule->getName());
     }
-
-    #[Test]
-    public function itShouldNotHaveAnyTemplateByDefault(): void
-    {
-        $rule = new ConcreteStandard();
-
-        self::assertNull($rule->getTemplate());
-    }
-
-    #[Test]
-    public function itShouldBeAbleToSetTemplate(): void
-    {
-        $rule = new ConcreteStandard();
-        $rule->setTemplate('foo');
-
-        self::assertEquals('foo', $rule->getTemplate());
-    }
 }

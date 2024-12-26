@@ -13,12 +13,15 @@ test('https://github.com/Respect/Validation/issues/1477', expectAll(
     function (): void {
         v::key(
             'Address',
-            (new class extends Simple {
-                protected function isValid(mixed $input): bool
-                {
-                    return false;
-                }
-            })->setTemplate('{{name}} is not good!'),
+            v::templated(
+                new class extends Simple {
+                    protected function isValid(mixed $input): bool
+                    {
+                        return false;
+                    }
+                },
+                '{{name}} is not good!',
+            ),
         )->assert(['Address' => 'cvejvn']);
     },
     'Address is not good!',

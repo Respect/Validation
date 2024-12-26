@@ -32,17 +32,6 @@ final class CompositeTest extends TestCase
     }
 
     #[Test]
-    public function itShouldDefineAndRetrieveTemplate(): void
-    {
-        $template = 'This is a template';
-
-        $sut = new ConcreteComposite(Stub::daze(), Stub::daze());
-        $sut->setTemplate($template);
-
-        self::assertEquals($template, $sut->getTemplate());
-    }
-
-    #[Test]
     public function itShouldUpdateTheNameOfTheChildWhenUpdatingItsName(): void
     {
         $ruleName = 'something';

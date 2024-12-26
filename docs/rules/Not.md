@@ -28,6 +28,7 @@ Each other validation has custom messages for negated rules.
 
 ## Categorization
 
+- Core
 - Conditions
 - Nesting
 
@@ -41,3 +42,4 @@ Each other validation has custom messages for negated rules.
 See also:
 
 - [NoneOf](NoneOf.md)
+- [Templated](Templated.md)

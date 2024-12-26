@@ -57,7 +57,7 @@ final class Validator implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return (new Binder($this, new Reducer(...$this->rules)))->evaluate($input);
+        return (new Binder($this, (new Reducer(...$this->rules))->withTemplate($this->template)))->evaluate($input);
     }
 
     public function isValid(mixed $input): bool

@@ -61,13 +61,20 @@
 
 - [AllOf](rules/AllOf.md)
 - [AnyOf](rules/AnyOf.md)
+- [Circuit](rules/Circuit.md)
 - [NoneOf](rules/NoneOf.md)
 - [OneOf](rules/OneOf.md)
 
 ## Conditions
 
+- [Circuit](rules/Circuit.md)
 - [Not](rules/Not.md)
 - [When](rules/When.md)
+
+## Core
+
+- [Not](rules/Not.md)
+- [Templated](rules/Templated.md)
 
 ## Date and Time
 
@@ -155,12 +162,14 @@
 - [NotBlank](rules/NotBlank.md)
 - [NotEmpty](rules/NotEmpty.md)
 - [NotUndef](rules/NotUndef.md)
+- [Templated](rules/Templated.md)
 
 ## Nesting
 
 - [AllOf](rules/AllOf.md)
 - [AnyOf](rules/AnyOf.md)
 - [Call](rules/Call.md)
+- [Circuit](rules/Circuit.md)
 - [Each](rules/Each.md)
 - [Key](rules/Key.md)
 - [KeySet](rules/KeySet.md)
@@ -254,6 +263,7 @@
 - [Property](rules/Property.md)
 - [PropertyExists](rules/PropertyExists.md)
 - [PropertyOptional](rules/PropertyOptional.md)
+- [Templated](rules/Templated.md)
 
 ## Transformations
 
@@ -309,6 +319,7 @@
 - [CallableType](rules/CallableType.md)
 - [Callback](rules/Callback.md)
 - [Charset](rules/Charset.md)
+- [Circuit](rules/Circuit.md)
 - [Cnh](rules/Cnh.md)
 - [Cnpj](rules/Cnpj.md)
 - [Consonant](rules/Consonant.md)
@@ -431,6 +442,7 @@
 - [SubdivisionCode](rules/SubdivisionCode.md)
 - [Subset](rules/Subset.md)
 - [SymbolicLink](rules/SymbolicLink.md)
+- [Templated](rules/Templated.md)
 - [Time](rules/Time.md)
 - [Tld](rules/Tld.md)
 - [TrueVal](rules/TrueVal.md)

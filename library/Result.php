@@ -27,15 +27,13 @@ final class Result
 
     public readonly ?string $name;
 
-    public readonly string $template;
-
     /** @param array<string, mixed> $parameters */
     public function __construct(
         public readonly bool $isValid,
         public readonly mixed $input,
         public readonly Rule $rule,
         public readonly array $parameters = [],
-        string $template = Rule::TEMPLATE_STANDARD,
+        public readonly string $template = Rule::TEMPLATE_STANDARD,
         public readonly Mode $mode = Mode::DEFAULT,
         ?string $name = null,
         ?string $id = null,
@@ -44,7 +42,6 @@ final class Result
         Result ...$children,
     ) {
         $this->name = $rule->getName() ?? $name;
-        $this->template = $rule->getTemplate() ?? $template;
         $this->id = $id ?? lcfirst(substr((string) strrchr($rule::class, '\\'), 1));
         $this->children = $children;
     }
@@ -95,6 +92,12 @@ final class Result
     public function withTemplate(string $template): self
     {
         return $this->clone(template: $template);
+    }
+
+    /** @param array<string, mixed> $parameters */
+    public function withExtraParameters(array $parameters): self
+    {
+        return $this->clone(parameters: $parameters + $this->parameters);
     }
 
     public function withId(string $id): self
@@ -190,11 +193,13 @@ final class Result
     }
 
     /**
+     * @param array<string, mixed> $parameters
      * @param array<Result>|null $children
      */
     private function clone(
         ?bool $isValid = null,
         mixed $input = null,
+        ?array $parameters = null,
         ?string $template = null,
         ?Mode $mode = null,
         ?string $name = null,
@@ -207,7 +212,7 @@ final class Result
             $isValid ?? $this->isValid,
             $input ?? $this->input,
             $this->rule,
-            $this->parameters,
+            $parameters ?? $this->parameters,
             $template ?? $this->template,
             $mode ?? $this->mode,
             $name ?? $this->name,

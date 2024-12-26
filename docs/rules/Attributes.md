@@ -83,3 +83,4 @@ See also:
 - [Property](Property.md)
 - [PropertyExists](PropertyExists.md)
 - [PropertyOptional](PropertyOptional.md)
+- [Templated](Templated.md)

@@ -45,18 +45,4 @@ final class WrapperTest extends TestCase
         self::assertSame($name, $rule->getName());
         self::assertSame($name, $sut->getName());
     }
-
-    #[Test]
-    public function shouldPassTemplateOnToWrapped(): void
-    {
-        $template = 'Whatever';
-
-        $rule = Stub::pass(1);
-
-        $sut = new ConcreteWrapper($rule);
-        $sut->setTemplate($template);
-
-        self::assertSame($template, $rule->getTemplate());
-        self::assertSame($template, $sut->getTemplate());
-    }
 }

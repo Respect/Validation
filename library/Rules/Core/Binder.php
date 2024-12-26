@@ -26,10 +26,6 @@ final class Binder extends Standard
             $this->bound->setName($this->source->getName());
         }
 
-        if ($this->source->getTemplate() !== null && $this->bound->getTemplate() === null) {
-            $this->bound->setTemplate($this->source->getTemplate());
-        }
-
         return $this->bound->evaluate($input);
     }
 }

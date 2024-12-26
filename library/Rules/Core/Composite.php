@@ -23,8 +23,6 @@ abstract class Composite implements Rule
 
     private ?string $name = null;
 
-    private ?string $template = null;
-
     public function __construct(Rule $rule1, Rule $rule2, Rule ...$rules)
     {
         $this->rules = array_merge([$rule1, $rule2], $rules);
@@ -54,17 +52,5 @@ abstract class Composite implements Rule
     public function getName(): ?string
     {
         return $this->name;
-    }
-
-    public function setTemplate(string $template): static
-    {
-        $this->template = $template;
-
-        return $this;
-    }
-
-    public function getTemplate(): ?string
-    {
-        return $this->template;
     }
 }
