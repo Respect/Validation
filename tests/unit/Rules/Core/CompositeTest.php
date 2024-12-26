@@ -30,44 +30,4 @@ final class CompositeTest extends TestCase
         self::assertCount(3, $actual);
         self::assertEquals($expected, $actual);
     }
-
-    #[Test]
-    public function itShouldUpdateTheNameOfTheChildWhenUpdatingItsName(): void
-    {
-        $ruleName = 'something';
-
-        $rule1 = Stub::daze();
-        $rule2 = Stub::daze();
-
-        $composite = new ConcreteComposite($rule1, $rule2);
-
-        self::assertNull($rule1->getName());
-        self::assertNull($rule2->getName());
-
-        $composite->setName($ruleName);
-
-        self::assertEquals($ruleName, $rule1->getName());
-        self::assertEquals($ruleName, $rule2->getName());
-        self::assertEquals($ruleName, $composite->getName());
-    }
-
-    #[Test]
-    public function itShouldNotUpdateTheNameOfTheChildWhenUpdatingItsNameIfTheChildAlreadyHasSomeName(): void
-    {
-        $ruleName1 = 'something';
-        $ruleName2 = 'something else';
-
-        $rule1 = Stub::daze();
-        $rule1->setName($ruleName1);
-
-        $rule2 = Stub::daze();
-        $rule2->setName($ruleName1);
-
-        $composite = new ConcreteComposite($rule1, $rule2);
-        $composite->setName($ruleName2);
-
-        self::assertEquals($ruleName1, $rule1->getName());
-        self::assertEquals($ruleName1, $rule2->getName());
-        self::assertEquals($ruleName2, $composite->getName());
-    }
 }

@@ -36,7 +36,7 @@ test('Double-inverted with missing key', expectAll(
 ));
 
 test('With wrapped name, missing key', expectAll(
-    fn() => v::key('foo', v::intType()->setName('Wrapped'))->setName('Wrapper')->assert([]),
+    fn() => v::key('foo', v::intType()->setName('Wrapped'))->assert([]),
     'Wrapped must be present',
     '- Wrapped must be present',
     ['foo' => 'Wrapped must be present'],
@@ -65,9 +65,9 @@ test('With wrapper name, default', expectAll(
 
 test('With wrapper name, missing key', expectAll(
     fn() => v::key('foo', v::intType())->setName('Wrapper')->assert([]),
-    'foo must be present',
-    '- foo must be present',
-    ['foo' => 'foo must be present'],
+    'Wrapper must be present',
+    '- Wrapper must be present',
+    ['foo' => 'Wrapper must be present'],
 ));
 
 test('With wrapper name, inverted', expectAll(

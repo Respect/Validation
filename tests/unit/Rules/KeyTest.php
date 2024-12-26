@@ -60,28 +60,4 @@ final class KeyTest extends TestCase
 
         self::assertSame($key, $rule->getKey());
     }
-
-    #[Test]
-    public function itShouldUpdateWrappedNameWithTheGivenKeyWhenItIsString(): void
-    {
-        $key = 'toodaloo';
-
-        $wrapped = Stub::daze();
-
-        new Key($key, $wrapped);
-
-        self::assertEquals($key, $wrapped->getName());
-    }
-
-    #[Test]
-    public function itShouldUpdateWrappedNameWithTheGivenKeyWhenItIsInteger(): void
-    {
-        $key = 123;
-
-        $wrapped = Stub::daze();
-
-        new Key($key, $wrapped);
-
-        self::assertEquals($key, $wrapped->getName());
-    }
 }

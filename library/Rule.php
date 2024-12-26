@@ -14,8 +14,4 @@ interface Rule
     public const TEMPLATE_STANDARD = '__standard__';
 
     public function evaluate(mixed $input): Result;
-
-    public function getName(): ?string;
-
-    public function setName(string $name): static;
 }

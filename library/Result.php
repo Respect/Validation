@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use Respect\Validation\Rules\Core\Nameable;
+use Respect\Validation\Rules\Core\Renameable;
+
 use function array_filter;
 use function array_map;
 use function count;
@@ -25,8 +28,6 @@ final class Result
 
     public readonly string $id;
 
-    public readonly ?string $name;
-
     /** @param array<string, mixed> $parameters */
     public function __construct(
         public readonly bool $isValid,
@@ -35,13 +36,12 @@ final class Result
         public readonly array $parameters = [],
         public readonly string $template = Rule::TEMPLATE_STANDARD,
         public readonly Mode $mode = Mode::DEFAULT,
-        ?string $name = null,
+        public readonly ?string $name = null,
         ?string $id = null,
         public readonly ?Result $adjacent = null,
         public readonly bool $unchangeableId = false,
         Result ...$children,
     ) {
-        $this->name = $rule->getName() ?? $name;
         $this->id = $id ?? lcfirst(substr((string) strrchr($rule::class, '\\'), 1));
         $this->children = $children;
     }
@@ -109,6 +109,11 @@ final class Result
         return $this->clone(id: $id);
     }
 
+    public function withIdFrom(Rule $rule): self
+    {
+        return $this->clone(id: lcfirst(substr((string) strrchr($rule::class, '\\'), 1)));
+    }
+
     public function withUnchangeableId(string $id): self
     {
         return $this->clone(id: $id, unchangeableId: true);
@@ -128,12 +133,25 @@ final class Result
         return $this->clone(children: $children);
     }
 
-    public function withNameIfMissing(string $name): self
+    public function withName(string $name): self
     {
         return $this->clone(
-            name: $this->name ?? $name,
-            children: array_map(static fn (Result $child) => $child->withNameIfMissing($name), $this->children),
+            name: $this->rule instanceof Renameable ? $name : ($this->name ?? $name),
+            adjacent: $this->adjacent?->withName($name),
+            children: array_map(
+                static fn (Result $child) => $child->withName($child->name ?? $name),
+                $this->children
+            ),
         );
+    }
+
+    public function withNameFrom(Rule $rule): self
+    {
+        if ($rule instanceof Nameable && $rule->getName() !== null) {
+            return $this->withName($rule->getName());
+        }
+
+        return $this;
     }
 
     public function withInput(mixed $input): self

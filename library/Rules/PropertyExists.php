@@ -13,6 +13,7 @@ use Attribute;
 use ReflectionObject;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Core\Renameable;
 use Respect\Validation\Rules\Core\Standard;
 
 use function is_object;
@@ -22,7 +23,7 @@ use function is_object;
     '{{name}} must be present',
     '{{name}} must not be present',
 )]
-final class PropertyExists extends Standard
+final class PropertyExists extends Standard implements Renameable
 {
     public function __construct(
         private readonly string $propertyName
@@ -31,18 +32,21 @@ final class PropertyExists extends Standard
 
     public function evaluate(mixed $input): Result
     {
-        if (!is_object($input)) {
-            return Result::failed($input, $this)->withNameIfMissing($this->propertyName)->withId($this->propertyName);
-        }
-
-        $reflection = new ReflectionObject($input);
-
         return new Result(
-            $reflection->hasProperty($this->propertyName),
+            $this->hasProperty($input),
             $input,
             $this,
             name: $this->propertyName,
             id: $this->propertyName
         );
+    }
+
+    private function hasProperty(mixed $input): bool
+    {
+        if (!is_object($input)) {
+            return false;
+        }
+
+        return (new ReflectionObject($input))->hasProperty($this->propertyName);
     }
 }

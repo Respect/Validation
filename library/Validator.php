@@ -13,7 +13,7 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\Formatter;
 use Respect\Validation\Message\Translator;
 use Respect\Validation\Mixins\Builder;
-use Respect\Validation\Rules\Core\Binder;
+use Respect\Validation\Rules\Core\Nameable;
 use Respect\Validation\Rules\Core\Reducer;
 use Throwable;
 
@@ -24,7 +24,7 @@ use function is_string;
 /**
  * @mixin Builder
  */
-final class Validator implements Rule
+final class Validator implements Rule, Nameable
 {
     /** @var array<Rule> */
     private array $rules = [];
@@ -60,7 +60,7 @@ final class Validator implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return (new Binder($this, (new Reducer(...$this->rules))->withTemplate($this->template)))->evaluate($input);
+        return $this->getRule()->evaluate($input);
     }
 
     public function isValid(mixed $input): bool
@@ -118,6 +118,11 @@ final class Validator implements Rule
         return $this;
     }
 
+    public function getRule(): Reducer
+    {
+        return (new Reducer(...$this->rules))->withTemplate($this->template)->withName($this->name);
+    }
+
     /** @return array<Rule> */
     public function getRules(): array
     {
@@ -142,7 +147,7 @@ final class Validator implements Rule
 
     public function getName(): ?string
     {
-        return $this->name;
+        return $this->getRule()->getName() ?? $this->name;
     }
 
     public function setName(string $name): static

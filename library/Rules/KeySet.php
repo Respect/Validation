@@ -14,7 +14,6 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
-use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\KeyRelated;
 use Respect\Validation\Rules\Core\Reducer;
 use Respect\Validation\Rules\Core\Standard;
@@ -76,7 +75,7 @@ final class KeySet extends Standard
 
     public function evaluate(mixed $input): Result
     {
-        $arrayResult = (new Binder($this, new ArrayType()))->evaluate($input);
+        $arrayResult = (new ArrayType())->evaluate($input);
         if (!$arrayResult->isValid) {
             return $arrayResult;
         }

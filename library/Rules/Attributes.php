@@ -14,7 +14,6 @@ use ReflectionAttribute;
 use ReflectionObject;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
-use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\Reducer;
 use Respect\Validation\Rules\Core\Standard;
 
@@ -23,7 +22,7 @@ final class Attributes extends Standard
 {
     public function evaluate(mixed $input): Result
     {
-        $objectType = (new Binder($this, new ObjectType()))->evaluate($input);
+        $objectType = (new ObjectType())->evaluate($input);
         if (!$objectType->isValid) {
             return $objectType->withId('attributes');
         }
@@ -49,6 +48,6 @@ final class Attributes extends Standard
             return (new AlwaysValid())->evaluate($input)->withId('attributes');
         }
 
-        return (new Binder($this, new Reducer(...$rules)))->evaluate($input)->withId('attributes');
+        return (new Reducer(...$rules))->evaluate($input)->withId('attributes');
     }
 }

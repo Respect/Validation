@@ -41,5 +41,6 @@ Each other validation has custom messages for negated rules.
 ***
 See also:
 
+- [Named](Named.md)
 - [NoneOf](NoneOf.md)
 - [Templated](Templated.md)

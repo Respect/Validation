@@ -242,6 +242,8 @@ interface Chain extends
 
     public function multiple(int $multipleOf): Chain;
 
+    public function named(Rule $rule, string $name): Chain;
+
     public function negative(): Chain;
 
     public function nfeAccessKey(): Chain;

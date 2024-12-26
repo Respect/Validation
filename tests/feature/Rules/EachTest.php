@@ -56,17 +56,17 @@ test('Inverted', expectAll(
 ));
 
 test('With name, non-iterable', expectAll(
-    fn() => v::each(v::intType()->setName('Wrapped'))->setName('Wrapper')->assert(null),
+    fn() => v::each(v::intType()->setName('Wrapped'))->assert(null),
     'Wrapped must be iterable',
     '- Wrapped must be iterable',
-    ['Wrapped' => 'Wrapped must be iterable'],
+    ['each' => 'Wrapped must be iterable'],
 ));
 
 test('With name, empty', expectAll(
-    fn() => v::each(v::intType()->setName('Wrapped'))->setName('Wrapper')->assert([]),
+    fn() => v::each(v::intType()->setName('Wrapped'))->assert([]),
     'Wrapped must not be empty',
     '- Wrapped must not be empty',
-    ['Wrapped' => 'Wrapped must not be empty'],
+    ['each' => 'Wrapped must not be empty'],
 ));
 
 test('With name, default', expectAll(

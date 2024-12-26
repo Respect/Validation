@@ -14,6 +14,7 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\KeyRelated;
+use Respect\Validation\Rules\Core\Renameable;
 use Respect\Validation\Rules\Core\Standard;
 
 use function array_key_exists;
@@ -24,7 +25,7 @@ use function is_array;
     '{{name}} must be present',
     '{{name}} must not be present',
 )]
-final class KeyExists extends Standard implements KeyRelated
+final class KeyExists extends Standard implements KeyRelated, Renameable
 {
     public function __construct(
         private readonly int|string $key

@@ -31,10 +31,9 @@ final class Each extends FilteredNonEmptyArray
             $children[] = $this->rule->evaluate($value)->withUnchangeableId((string) $key);
         }
         $isValid = array_reduce($children, static fn ($carry, $childResult) => $carry && $childResult->isValid, true);
-        if ($isValid) {
-            return Result::passed($input, $this)->withChildren(...$children);
-        }
 
-        return Result::failed($input, $this)->withChildren(...$children);
+        return (new Result($isValid, $input, $this))
+            ->withChildren(...$children)
+            ->withNameFrom($this->rule);
     }
 }

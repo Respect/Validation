@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\AllOf;
+use Respect\Validation\Rules\Named;
 use Respect\Validation\Rules\Templated;
 
 final class Reducer extends Wrapper
@@ -27,5 +28,23 @@ final class Reducer extends Wrapper
         }
 
         return new self(new Templated($this->rule, $template));
+    }
+
+    public function withName(?string $name): self
+    {
+        if ($name === null) {
+            return $this;
+        }
+
+        return new self(new Named($this->rule, $name));
+    }
+
+    public function getName(): ?string
+    {
+        if ($this->rule instanceof Nameable) {
+            return $this->rule->getName();
+        }
+
+        return null;
     }
 }

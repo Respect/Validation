@@ -46,4 +46,5 @@ This rule does not have any templates, as you must define the templates yourself
 See also:
 
 - [Attributes](Attributes.md)
+- [Named](Named.md)
 - [Not](Not.md)

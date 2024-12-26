@@ -13,7 +13,6 @@ use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
-use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\Standard;
 
 use function call_user_func;
@@ -37,6 +36,6 @@ final class Lazy extends Standard
             throw new ComponentException('Lazy failed because it could not create the rule');
         }
 
-        return (new Binder($this, $rule))->evaluate($input);
+        return $rule->evaluate($input);
     }
 }

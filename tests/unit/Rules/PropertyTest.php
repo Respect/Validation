@@ -62,28 +62,4 @@ final class PropertyTest extends TestCase
 
         self::assertEquals([$object->foo], $wrapped->inputs);
     }
-
-    #[Test]
-    public function itShouldUpdateWrappedRuleNameWithTheGivenName(): void
-    {
-        $property = 'foo';
-        $wrapped = Stub::daze();
-
-        new Property($property, $wrapped);
-
-        self::assertEquals($property, $wrapped->getName());
-    }
-
-    #[Test]
-    public function itShouldNotUpdateWrappedRuleNameWithTheGivenNameWhenRuleAlreadyHasName(): void
-    {
-        $name = 'bar';
-
-        $wrapped = Stub::daze();
-        $wrapped->setName($name);
-
-        new Property('foo', $wrapped);
-
-        self::assertEquals($name, $wrapped->getName());
-    }
 }

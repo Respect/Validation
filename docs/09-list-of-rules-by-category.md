@@ -73,6 +73,7 @@
 
 ## Core
 
+- [Named](rules/Named.md)
 - [Not](rules/Not.md)
 - [Templated](rules/Templated.md)
 
@@ -159,6 +160,7 @@
 ## Miscellaneous
 
 - [FilterVar](rules/FilterVar.md)
+- [Named](rules/Named.md)
 - [NotBlank](rules/NotBlank.md)
 - [NotEmpty](rules/NotEmpty.md)
 - [NotUndef](rules/NotUndef.md)
@@ -260,6 +262,7 @@
 - [KeyExists](rules/KeyExists.md)
 - [KeyOptional](rules/KeyOptional.md)
 - [KeySet](rules/KeySet.md)
+- [Named](rules/Named.md)
 - [Property](rules/Property.md)
 - [PropertyExists](rules/PropertyExists.md)
 - [PropertyOptional](rules/PropertyOptional.md)
@@ -392,6 +395,7 @@
 - [Mimetype](rules/Mimetype.md)
 - [Min](rules/Min.md)
 - [Multiple](rules/Multiple.md)
+- [Named](rules/Named.md)
 - [Negative](rules/Negative.md)
 - [NfeAccessKey](rules/NfeAccessKey.md)
 - [Nif](rules/Nif.md)

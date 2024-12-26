@@ -12,7 +12,8 @@ namespace Respect\Validation\Rules\Core;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Test\Rules\Core\ConcreteStandard;
+use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 
 #[Group('core')]
@@ -20,19 +21,33 @@ use Respect\Validation\Test\TestCase;
 final class StandardTest extends TestCase
 {
     #[Test]
-    public function itShouldNotHaveAnyNameByDefault(): void
+    public function itShouldAllowUsingTheValidateMethod(): void
     {
-        $rule = new ConcreteStandard();
+        $rule = Stub::pass(1);
 
-        self::assertNull($rule->getName());
+        // @phpstan-ignore-next-line
+        self::assertTrue($rule->validate('any'));
     }
 
     #[Test]
-    public function itShouldBeAbleToSetName(): void
+    public function itShouldAllowUsingTheAssertMethod(): void
     {
-        $rule = new ConcreteStandard();
-        $rule->setName('foo');
+        $rule = Stub::fail(1);
 
-        self::assertEquals('foo', $rule->getName());
+        self::expectException(ValidationException::class);
+
+        // @phpstan-ignore-next-line
+        $rule->assert('any');
+    }
+
+    #[Test]
+    public function itShouldAllowUsingTheCheckMethod(): void
+    {
+        $rule = Stub::fail(1);
+
+        self::expectException(ValidationException::class);
+
+        // @phpstan-ignore-next-line
+        $rule->check('any');
     }
 }

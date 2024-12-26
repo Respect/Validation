@@ -12,31 +12,26 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
-use Respect\Validation\Rules\Core\KeyRelated;
+use Respect\Validation\Rules\Core\Nameable;
 use Respect\Validation\Rules\Core\Wrapper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
-final class KeyOptional extends Wrapper implements KeyRelated
+final class Named extends Wrapper implements Nameable
 {
     public function __construct(
-        private readonly int|string $key,
         Rule $rule,
+        private readonly string $name
     ) {
         parent::__construct($rule);
     }
 
-    public function getKey(): int|string
+    public function getName(): string
     {
-        return $this->key;
+        return $this->name;
     }
 
     public function evaluate(mixed $input): Result
     {
-        $keyExistsResult = (new KeyExists($this->key))->evaluate($input);
-        if (!$keyExistsResult->isValid) {
-            return $keyExistsResult->withNameFrom($this->rule)->withInvertedMode();
-        }
-
-        return (new Key($this->key, $this->rule))->evaluate($input);
+        return $this->rule->evaluate($input)->withName($this->name);
     }
 }

@@ -15,9 +15,6 @@ use Respect\Validation\Rules\NotEmpty;
 
 use function is_array;
 use function iterator_to_array;
-use function lcfirst;
-use function strrchr;
-use function substr;
 
 abstract class FilteredNonEmptyArray extends Wrapper
 {
@@ -26,16 +23,15 @@ abstract class FilteredNonEmptyArray extends Wrapper
 
     public function evaluate(mixed $input): Result
     {
-        $id = $this->rule->getName() ?? $this->getName() ?? lcfirst(substr((string) strrchr(static::class, '\\'), 1));
-        $iterableResult = (new Binder($this, new IterableType()))->evaluate($input);
+        $iterableResult = (new IterableType())->evaluate($input);
         if (!$iterableResult->isValid) {
-            return $iterableResult->withId($id);
+            return $iterableResult->withIdFrom($this)->withNameFrom($this->rule);
         }
 
         $array = $this->toArray($input);
-        $notEmptyResult = (new Binder($this, new NotEmpty()))->evaluate($array);
+        $notEmptyResult = (new NotEmpty())->evaluate($array);
         if (!$notEmptyResult->isValid) {
-            return $notEmptyResult->withId($id);
+            return $notEmptyResult->withIdFrom($this)->withNameFrom($this->rule);
         }
 
         // @phpstan-ignore-next-line

@@ -78,6 +78,7 @@ v::attributes()->assert(new Person('', 'not an email', 'not a date', 'not a phon
 ***
 See also:
 
+- [Named](Named.md)
 - [NullOr](NullOr.md)
 - [ObjectType](ObjectType.md)
 - [Property](Property.md)

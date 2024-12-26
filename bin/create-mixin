@@ -172,6 +172,7 @@ function overwriteFile(string $content, string $basename): void
         'PropertyOptional',
         'Attributes',
         'Templated',
+        'Named',
     ];
 
     $mixins = [
@@ -179,10 +180,10 @@ function overwriteFile(string $content, string $basename): void
         ['Length', 'length', $numberRelatedRules, []],
         ['Max', 'max', $numberRelatedRules, []],
         ['Min', 'min', $numberRelatedRules, []],
-        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotUndef', 'NotOptional', 'NullOr', 'UndefOr', 'Optional', 'Attributes', 'Templated']],
-        ['NullOr', 'nullOr', [], ['Nullable', 'NullOr', 'Optional', 'NotOptional', 'NotUndef', 'UndefOr', 'Templated']],
+        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotUndef', 'NotOptional', 'NullOr', 'UndefOr', 'Optional', 'Attributes', 'Templated', 'Named']],
+        ['NullOr', 'nullOr', [], ['Nullable', 'NullOr', 'Optional', 'NotOptional', 'NotUndef', 'UndefOr', 'Templated', 'Named']],
         ['Property', 'property', [], $structureRelatedRules],
-        ['UndefOr', 'undefOr', [], ['Nullable', 'NullOr', 'NotOptional', 'NotUndef', 'Optional', 'UndefOr', 'Attributes', 'Templated']],
+        ['UndefOr', 'undefOr', [], ['Nullable', 'NullOr', 'NotOptional', 'NotUndef', 'Optional', 'UndefOr', 'Attributes', 'Templated', 'Named']],
         ['', null, [], []],
     ];
 

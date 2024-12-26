@@ -9,24 +9,32 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Core;
 
-use Respect\Validation\Helpers\DeprecatedValidatableMethods;
 use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 abstract class Standard implements Rule
 {
-    use DeprecatedValidatableMethods;
-
-    private ?string $name = null;
-
-    public function getName(): ?string
+    /**
+     * @deprecated Calling `validate()` directly is deprecated, please use the `Validator::isValid()` class instead.
+     */
+    public function validate(mixed $input): bool
     {
-        return $this->name;
+        return $this->evaluate($input)->isValid;
     }
 
-    public function setName(string $name): static
+    /**
+     * @deprecated Calling `assert()` directly is deprecated, please use the `Validator::assert()` instead.
+     */
+    public function assert(mixed $input): void
     {
-        $this->name = $name;
+        Validator::create($this)->assert($input);
+    }
 
-        return $this;
+    /**
+     * @deprecated Calling `check()` directly is deprecated, please use the `Validator::assert()` instead.
+     */
+    public function check(mixed $input): void
+    {
+        Validator::create($this)->assert($input);
     }
 }

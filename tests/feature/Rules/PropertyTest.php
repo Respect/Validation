@@ -36,7 +36,7 @@ test('Double-inverted with missing property', expectAll(
 ));
 
 test('With wrapped name, missing property', expectAll(
-    fn() => v::property('foo', v::intType()->setName('Wrapped'))->setName('Wrapper')->assert(new stdClass()),
+    fn() => v::property('foo', v::intType()->setName('Wrapped'))->assert(new stdClass()),
     'Wrapped must be present',
     '- Wrapped must be present',
     ['foo' => 'Wrapped must be present'],
@@ -69,9 +69,9 @@ test('With wrapper name, default', expectAll(
 
 test('With wrapper name, missing property', expectAll(
     fn() => v::property('foo', v::intType())->setName('Wrapper')->assert(new stdClass()),
-    'foo must be present',
-    '- foo must be present',
-    ['foo' => 'foo must be present'],
+    'Wrapper must be present',
+    '- Wrapper must be present',
+    ['foo' => 'Wrapper must be present'],
 ));
 
 test('With wrapper name, inverted', expectAll(

@@ -31,18 +31,4 @@ final class WrapperTest extends TestCase
 
         self::assertEquals($wrapped->evaluate($input), $wrapper->evaluate($input));
     }
-
-    #[Test]
-    public function shouldPassNameOnToWrapped(): void
-    {
-        $name = 'Whatever';
-
-        $rule = Stub::pass(1);
-
-        $sut = new ConcreteWrapper($rule);
-        $sut->setName($name);
-
-        self::assertSame($name, $rule->getName());
-        self::assertSame($name, $sut->getName());
-    }
 }

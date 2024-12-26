@@ -12,7 +12,6 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
-use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\Standard;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -34,11 +33,11 @@ final class When extends Standard
 
     public function evaluate(mixed $input): Result
     {
-        $whenResult = (new Binder($this, $this->when))->evaluate($input);
+        $whenResult = $this->when->evaluate($input);
         if ($whenResult->isValid) {
-            return (new Binder($this, $this->then))->evaluate($input);
+            return $this->then->evaluate($input);
         }
 
-        return (new Binder($this, $this->else))->evaluate($input);
+        return $this->else->evaluate($input);
     }
 }

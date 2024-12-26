@@ -51,28 +51,4 @@ final class KeyOptionalTest extends TestCase
 
         self::assertEquals($wrapped->inputs, [$input[$key]]);
     }
-
-    #[Test]
-    public function itShouldUpdateWrappedNameWithTheGivenKeyWhenItIsString(): void
-    {
-        $key = 'toodaloo';
-
-        $wrapped = Stub::daze();
-
-        new KeyOptional($key, $wrapped);
-
-        self::assertEquals($key, $wrapped->getName());
-    }
-
-    #[Test]
-    public function itShouldUpdateWrappedNameWithTheGivenKeyWhenItIsInteger(): void
-    {
-        $key = 123;
-
-        $wrapped = Stub::daze();
-
-        new KeyOptional($key, $wrapped);
-
-        self::assertEquals($key, $wrapped->getName());
-    }
 }

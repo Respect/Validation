@@ -12,8 +12,8 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
-use Respect\Validation\Rules\Core\Binder;
 use Respect\Validation\Rules\Core\KeyRelated;
+use Respect\Validation\Rules\Core\Nameable;
 use Respect\Validation\Rules\Core\Wrapper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -23,7 +23,6 @@ final class Key extends Wrapper implements KeyRelated
         private readonly int|string $key,
         Rule $rule,
     ) {
-        $rule->setName($rule->getName() ?? (string) $key);
         parent::__construct($rule);
     }
 
@@ -34,14 +33,23 @@ final class Key extends Wrapper implements KeyRelated
 
     public function evaluate(mixed $input): Result
     {
-        $keyExistsResult = (new Binder($this, new KeyExists($this->key)))->evaluate($input);
+        $keyExistsResult = (new KeyExists($this->key))->evaluate($input);
         if (!$keyExistsResult->isValid) {
-            return $keyExistsResult;
+            return $keyExistsResult->withName($this->getName());
         }
 
         return $this->rule
             ->evaluate($input[$this->key])
-            ->withUnchangeableId((string) $this->key)
-            ->withNameIfMissing($this->rule->getName() ?? (string) $this->key);
+            ->withName($this->getName())
+            ->withUnchangeableId((string) $this->key);
+    }
+
+    private function getName(): string
+    {
+        if ($this->rule instanceof Nameable) {
+            return $this->rule->getName() ?? ((string) $this->key);
+        }
+
+        return (string) $this->key;
     }
 }

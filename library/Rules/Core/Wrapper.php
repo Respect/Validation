@@ -9,14 +9,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Core;
 
-use Respect\Validation\Helpers\DeprecatedValidatableMethods;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 
-abstract class Wrapper implements Rule
+abstract class Wrapper extends Standard
 {
-    use DeprecatedValidatableMethods;
-
     public function __construct(
         protected readonly Rule $rule
     ) {
@@ -25,18 +22,6 @@ abstract class Wrapper implements Rule
     public function evaluate(mixed $input): Result
     {
         return $this->rule->evaluate($input);
-    }
-
-    public function getName(): ?string
-    {
-        return $this->rule->getName();
-    }
-
-    public function setName(string $name): static
-    {
-        $this->rule->setName($name);
-
-        return $this;
     }
 
     public function getRule(): Rule
