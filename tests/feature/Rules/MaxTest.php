@@ -74,12 +74,12 @@ test('Chained wrapped rule', expectAll(
     fn() => v::max(v::between(5, 7)->odd())->assert([1, 2, 3, 4]),
     'The maximum of `[1, 2, 3, 4]` must be between 5 and 7',
     <<<'FULL_MESSAGE'
-    - All the required rules must pass for `[1, 2, 3, 4]`
+    - `[1, 2, 3, 4]` must pass all the rules
       - The maximum of `[1, 2, 3, 4]` must be between 5 and 7
       - The maximum of `[1, 2, 3, 4]` must be an odd number
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for `[1, 2, 3, 4]`',
+        '__root__' => '`[1, 2, 3, 4]` must pass all the rules',
         'maxBetween' => 'The maximum of `[1, 2, 3, 4]` must be between 5 and 7',
         'maxOdd' => 'The maximum of `[1, 2, 3, 4]` must be an odd number',
     ],

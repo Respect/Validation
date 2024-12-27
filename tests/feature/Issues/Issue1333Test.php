@@ -11,12 +11,12 @@ test('https://github.com/Respect/Validation/issues/1333', expectAll(
     fn() => v::noWhitespace()->email()->setName('User Email')->assert('not email'),
     'User Email must not contain whitespaces',
     <<<'FULL_MESSAGE'
-    - All the required rules must pass for User Email
+    - User Email must pass all the rules
       - User Email must not contain whitespaces
       - User Email must be a valid email address
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for User Email',
+        '__root__' => 'User Email must pass all the rules',
         'noWhitespace' => 'User Email must not contain whitespaces',
         'email' => 'User Email must be a valid email address',
     ],

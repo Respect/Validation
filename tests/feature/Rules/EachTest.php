@@ -245,22 +245,22 @@ test('Chained wrapped rule', expectAll(
     '2 must be between 5 and 7',
     <<<'FULL_MESSAGE'
     - Each item in `[2, 4]` must be valid
-      - All the required rules must pass for 2
+      - 2 must pass all the rules
         - 2 must be between 5 and 7
         - 2 must be an odd number
-      - All the required rules must pass for 4
+      - 4 must pass all the rules
         - 4 must be between 5 and 7
         - 4 must be an odd number
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in `[2, 4]` must be valid',
         0 => [
-            '__root__' => 'All the required rules must pass for 2',
+            '__root__' => '2 must pass all the rules',
             'between' => '2 must be between 5 and 7',
             'odd' => '2 must be an odd number',
         ],
         1 => [
-            '__root__' => 'All the required rules must pass for 4',
+            '__root__' => '4 must pass all the rules',
             'between' => '4 must be between 5 and 7',
             'odd' => '4 must be an odd number',
         ],
@@ -272,11 +272,11 @@ test('Multiple nested rules', expectAll(
     'my_int must be present',
     <<<'FULL_MESSAGE'
     - Each item in `[["not_int": "wrong"], ["my_int": 2], "not an array"]` must be valid
-      - These rules must pass for `["not_int": "wrong"]`
+      - `["not_int": "wrong"]` must pass the rules
         - my_int must be present
-      - These rules must pass for `["my_int": 2]`
+      - `["my_int": 2]` must pass the rules
         - my_int must be an odd number
-      - All the required rules must pass for "not an array"
+      - "not an array" must pass all the rules
         - "not an array" must be an array
         - my_int must be present
     FULL_MESSAGE,
@@ -285,7 +285,7 @@ test('Multiple nested rules', expectAll(
         0 => 'my_int must be present',
         1 => 'my_int must be an odd number',
         2 => [
-            '__root__' => 'All the required rules must pass for "not an array"',
+            '__root__' => '"not an array" must pass all the rules',
             'arrayType' => '"not an array" must be an array',
             'my_int' => 'my_int must be present',
         ],

@@ -116,12 +116,12 @@ test('Without adjacent result', expectAll(
     fn() => v::dateTimeDiff('years', v::primeNumber()->between(2, 5))->assert('1 year ago'),
     'The number of years between now and "1 year ago" must be a prime number',
     <<<'FULL_MESSAGE'
-    - All the required rules must pass for "1 year ago"
+    - "1 year ago" must pass all the rules
       - The number of years between now and "1 year ago" must be a prime number
       - The number of years between now and "1 year ago" must be between 2 and 5
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for "1 year ago"',
+        '__root__' => '"1 year ago" must pass all the rules',
         'dateTimeDiffPrimeNumber' => 'The number of years between now and "1 year ago" must be a prime number',
         'dateTimeDiffBetween' => 'The number of years between now and "1 year ago" must be between 2 and 5',
     ],
@@ -136,12 +136,12 @@ test('Without adjacent result with templates', expectAll(
     ])->assert('1 year ago'),
     'The number of years between now and "1 year ago" must be a prime number',
     <<<'FULL_MESSAGE'
-    - All the required rules must pass for "1 year ago"
+    - "1 year ago" must pass all the rules
       - The number of years between now and "1 year ago" must be a prime number
       - The number of years between now and "1 year ago" must be between 2 and 5
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for "1 year ago"',
+        '__root__' => '"1 year ago" must pass all the rules',
         'dateTimeDiffPrimeNumber' => 'The number of years between now and "1 year ago" must be a prime number',
         'dateTimeDiffBetween' => 'The number of years between now and "1 year ago" must be between 2 and 5',
     ],

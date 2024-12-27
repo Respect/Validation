@@ -25,20 +25,20 @@ test('https://github.com/Respect/Validation/issues/1334', expectAll(
     'street must be present',
     <<<'FULL_MESSAGE'
     - Each item in `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]` must be valid
-      - These rules must pass for `["region": "Oregon", "country": "USA", "other": 123]`
+      - `["region": "Oregon", "country": "USA", "other": 123]` must pass the rules
         - street must be present
-        - These rules must pass for other
+        - other must pass the rules
           - other must be a string or must be null
-      - These rules must pass for `["street": "", "region": "Oregon", "country": "USA"]`
+      - `["street": "", "region": "Oregon", "country": "USA"]` must pass the rules
         - street must not be empty
-      - These rules must pass for `["street": 123, "region": "Oregon", "country": "USA"]`
+      - `["street": 123, "region": "Oregon", "country": "USA"]` must pass the rules
         - street must be a string
     FULL_MESSAGE,
     [
         'each' => [
             '__root__' => 'Each item in `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]` must be valid',
             0 => [
-                '__root__' => 'These rules must pass for `["region": "Oregon", "country": "USA", "other": 123]`',
+                '__root__' => '`["region": "Oregon", "country": "USA", "other": 123]` must pass the rules',
                 'street' => 'street must be present',
                 'other' => 'other must be a string or must be null',
             ],

@@ -61,12 +61,12 @@ test('Chained wrapped rule', expectAll(
     fn() => v::size('KB', v::between(5, 7)->odd())->assert($this->file2Kb->url()),
     'The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7',
     <<<'FULL_MESSAGE'
-    - All the required rules must pass for "vfs://root/2kb.txt"
+    - "vfs://root/2kb.txt" must pass all the rules
       - The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7
       - The size in kilobytes of "vfs://root/2kb.txt" must be an odd number
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for "vfs://root/2kb.txt"',
+        '__root__' => '"vfs://root/2kb.txt" must pass all the rules',
         'sizeBetween' => 'The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7',
         'sizeOdd' => 'The size in kilobytes of "vfs://root/2kb.txt" must be an odd number',
     ],

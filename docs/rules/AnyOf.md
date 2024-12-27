@@ -17,10 +17,10 @@ so `AnyOf()` returns true.
 
 ### `AnyOf::TEMPLATE_STANDARD`
 
-| Mode       | Template                                               |
-|------------|--------------------------------------------------------|
-| `default`  | At least one of these rules must pass for {{name}}     |
-| `inverted` | At least one of these rules must not pass for {{name}} |
+| Mode       | Template                                     |
+|------------|----------------------------------------------|
+| `default`  | {{name}} must pass at least one of the rules |
+| `inverted` | {{name}} must pass at least one of the rules |
 
 ## Template placeholders
 

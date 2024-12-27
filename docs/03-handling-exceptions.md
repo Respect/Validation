@@ -19,7 +19,7 @@ try {
 The code above generates the following output:
 
 ```no-highlight
-- All the required rules must pass for "The Respect Panda"
+- "The Respect Panda" must pass all the rules
   - "The Respect Panda" must contain only letters (a-z) and digits (0-9)
   - "The Respect Panda" must contain only lowercase letters
 ```
@@ -44,7 +44,7 @@ The code above generates the following output:
 ```no-highlight
 Array
 (
-    [__root__] => All the required rules must pass for "The Respect Panda"
+    [__root__] => "The Respect Panda" must pass all the rules
     [alnum] => "The Respect Panda" must contain only letters (a-z) and digits (0-9)
     [lowercase] => "The Respect Panda" must contain only lowercase letters
 )

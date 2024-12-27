@@ -39,12 +39,12 @@ test('Chained wrapped rule', expectAll(
     fn() => v::min(v::between(5, 7)->odd())->assert([2, 3, 4]),
     'The minimum of `[2, 3, 4]` must be between 5 and 7',
     <<<'FULL_MESSAGE'
-    - All the required rules must pass for `[2, 3, 4]`
+    - `[2, 3, 4]` must pass all the rules
       - The minimum of `[2, 3, 4]` must be between 5 and 7
       - The minimum of `[2, 3, 4]` must be an odd number
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for `[2, 3, 4]`',
+        '__root__' => '`[2, 3, 4]` must pass all the rules',
         'minBetween' => 'The minimum of `[2, 3, 4]` must be between 5 and 7',
         'minOdd' => 'The minimum of `[2, 3, 4]` must be an odd number',
     ],

@@ -35,7 +35,7 @@ test('Scenario #2', expectFullMessage(
         ),
     )->assert(2),
     <<<'FULL_MESSAGE'
-    - These rules must not pass for 2
+    - 2 must pass the rules
       - 2 must not be an integer value
       - 2 must not be a positive number
     FULL_MESSAGE,

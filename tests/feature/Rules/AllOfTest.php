@@ -7,33 +7,74 @@
 
 declare(strict_types=1);
 
-test('Two rules', expectAll(
-    fn() => v::allOf(v::intType(), v::negative())->assert('2'),
-    '"2" must be an integer',
+test('Default: fail, fail', expectAll(
+    fn() => v::allOf(v::intType(), v::negative())->assert('string'),
+    '"string" must be an integer',
     <<<'FULL_MESSAGE'
-    - All the required rules must pass for "2"
-      - "2" must be an integer
-      - "2" must be a negative number
+    - "string" must pass all the rules
+      - "string" must be an integer
+      - "string" must be a negative number
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for "2"',
-        'intType' => '"2" must be an integer',
-        'negative' => '"2" must be a negative number',
+        '__root__' => '"string" must pass all the rules',
+        'intType' => '"string" must be an integer',
+        'negative' => '"string" must be a negative number',
     ],
 ));
 
-test('Wrapped by "not"', expectAll(
-    fn() => v::not(v::allOf(v::intType(), v::positive()))->assert(3),
-    '3 must not be an integer',
+test('Default: fail, pass', expectAll(
+    fn() => v::allOf(v::intType(), v::stringType())->assert('string'),
+    '"string" must be an integer',
     <<<'FULL_MESSAGE'
-    - These rules must not pass for 3
-      - 3 must not be an integer
-      - 3 must not be a positive number
+    - "string" must be an integer
     FULL_MESSAGE,
     [
-        '__root__' => 'These rules must not pass for 3',
-        'intType' => '3 must not be an integer',
-        'positive' => '3 must not be a positive number',
+        'intType' => '"string" must be an integer',
+    ],
+));
+
+test('Default: fail, fail, pass', expectAll(
+    fn() => v::allOf(v::intType(), v::positive(), v::stringType())->assert('string'),
+    '"string" must be an integer',
+    <<<'FULL_MESSAGE'
+    - "string" must pass the rules
+      - "string" must be an integer
+      - "string" must be a positive number
+    FULL_MESSAGE,
+    [
+        '__root__' => '"string" must pass the rules',
+        'intType' => '"string" must be an integer',
+        'positive' => '"string" must be a positive number',
+    ],
+));
+
+test('Inverted: pass, pass', expectAll(
+    fn() => v::not(v::allOf(v::intType(), v::negative()))->assert(-1),
+    '-1 must not be an integer',
+    <<<'FULL_MESSAGE'
+    - -1 must pass the rules
+      - -1 must not be an integer
+      - -1 must not be a negative number
+    FULL_MESSAGE,
+    [
+        '__root__' => '-1 must pass the rules',
+        'intType' => '-1 must not be an integer',
+        'negative' => '-1 must not be a negative number',
+    ],
+));
+
+test('Inverted: pass, fail, fail', expectAll(
+    fn() => v::allOf(v::intType(), v::alpha(), v::stringType())->assert(2),
+    '2 must contain only letters (a-z)',
+    <<<'FULL_MESSAGE'
+    - 2 must pass the rules
+      - 2 must contain only letters (a-z)
+      - 2 must be a string
+    FULL_MESSAGE,
+    [
+        '__root__' => '2 must pass the rules',
+        'alpha' => '2 must contain only letters (a-z)',
+        'stringType' => '2 must be a string',
     ],
 ));
 

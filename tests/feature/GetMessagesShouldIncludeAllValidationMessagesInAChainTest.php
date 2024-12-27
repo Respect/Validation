@@ -20,7 +20,7 @@ test('Scenario #1', expectMessages(
             ->assert(['username' => 'u', 'birthdate' => 'Not a date', 'password' => '']);
     },
     [
-        '__root__' => 'All the required rules must pass for `["username": "u", "birthdate": "Not a date", "password": ""]`',
+        '__root__' => '`["username": "u", "birthdate": "Not a date", "password": ""]` must pass all the rules',
         'username' => 'The length of username must be between 2 and 32',
         'birthdate' => 'birthdate must be a valid date/time',
         'password' => 'password must not be empty',

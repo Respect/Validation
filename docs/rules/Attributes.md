@@ -49,10 +49,10 @@ v::attributes()->assert(new Person('John Doe', 'john.doe@gmail.com', '2020-06-23
 
 v::attributes()->assert(new Person('', 'not an email', 'not a date', 'not a phone number'));
 // Full message:
-// - All the required rules must pass for `Person { +$name="" +$email="not an email" +$birthdate="not a date" +$phone="not a phone number" }`
+// - `Person { +$name="" +$email="not an email" +$birthdate="not a date" +$phone="not a phone number" }` must pass all the rules
 //   - name must not be empty
 //   - email must be a valid email address
-//   - All the required rules must pass for birthdate
+//   - birthdate must pass all the rules
 //     - birthdate must be a valid date in the format "2005-12-30"
 //     - For comparison with now, birthdate must be a valid datetime
 //   - phone must be a valid telephone number or must be null

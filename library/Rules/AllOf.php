@@ -22,18 +22,18 @@ use function count;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    'These rules must pass for {{name}}',
-    'These rules must not pass for {{name}}',
+    '{{name}} must pass the rules',
+    '{{name}} must pass the rules',
     self::TEMPLATE_SOME,
 )]
 #[Template(
-    'All the required rules must pass for {{name}}',
-    'None of these rules must pass for {{name}}',
-    self::TEMPLATE_NONE,
+    '{{name}} must pass all the rules',
+    '{{name}} must pass all the rules',
+    self::TEMPLATE_ALL,
 )]
 final class AllOf extends Composite
 {
-    public const TEMPLATE_NONE = '__none__';
+    public const TEMPLATE_ALL = '__all__';
     public const TEMPLATE_SOME = '__some__';
 
     public function evaluate(mixed $input): Result
@@ -43,7 +43,7 @@ final class AllOf extends Composite
         $failed = array_filter($children, static fn (Result $result): bool => !$result->isValid);
         $template = self::TEMPLATE_SOME;
         if (count($children) === count($failed)) {
-            $template = self::TEMPLATE_NONE;
+            $template = self::TEMPLATE_ALL;
         }
 
         return (new Result($valid, $input, $this, [], $template))->withChildren(...$children);

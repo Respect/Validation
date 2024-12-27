@@ -12,17 +12,21 @@ v::allOf(v::intVal(), v::positive())->isValid(15); // true
 
 ### `AllOf::TEMPLATE_SOME`
 
-| Mode       | Template                               |
-|------------|----------------------------------------|
-| `default`  | These rules must pass for {{name}}     |
-| `inverted` | These rules must not pass for {{name}} |
+Used when some rules must be failed.
 
-### `AllOf::TEMPLATE_NONE`
+| Mode       | Template                     |
+|------------|------------------------------|
+| `default`  | {{name}} must pass the rules |
+| `inverted` | {{name}} must pass the rules |
 
-| Mode       | Template                                      |
-|------------|-----------------------------------------------|
-| `default`  | All the required rules must pass for {{name}} |
-| `inverted` | None of these rules must pass for {{name}}    |
+### `AllOf::TEMPLATE_ALL`
+
+Used when all rules have failed.
+
+| Mode       | Template                         |
+|------------|----------------------------------|
+| `default`  | {{name}} must pass all the rules |
+| `inverted` | {{name}} must pass all the rules |
 
 ## Template placeholders
 

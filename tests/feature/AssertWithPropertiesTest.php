@@ -45,10 +45,10 @@ test('Scenario #1', expectFullMessage(
             ->assert($object);
     },
     <<<'FULL_MESSAGE'
-    - All the required rules must pass for the given data
-      - These rules must pass for mysql
+    - the given data must pass all the rules
+      - mysql must pass the rules
         - host must be a string
-      - These rules must pass for postgresql
+      - postgresql must pass the rules
         - user must be a string
     FULL_MESSAGE,
 ));

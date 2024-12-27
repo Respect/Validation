@@ -14,7 +14,7 @@ use Respect\Validation\ValidatorDefaults;
 test('Various translations', expectFullMessage(
     function (): void {
         ValidatorDefaults::setTranslator(new ArrayTranslator([
-            'All the required rules must pass for {{name}}' => 'Todas as regras requeridas devem passar para {{name}}',
+            '{{name}} must pass all the rules' => 'Todas as regras requeridas devem passar para {{name}}',
             'The length of' => 'O comprimento de',
             '{{name}} must be a string' => '{{name}} deve ser uma string',
             '{{name}} must be between {{minValue}} and {{maxValue}}' => '{{name}} deve possuir de {{minValue}} a {{maxValue}} caracteres',

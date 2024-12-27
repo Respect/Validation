@@ -25,12 +25,12 @@ test('https://github.com/Respect/Validation/issues/179', expectAll(
     },
     'host must be a string',
     <<<'FULL_MESSAGE'
-    - These rules must pass for Settings
+    - Settings must pass the rules
       - host must be a string
       - user must be present
     FULL_MESSAGE,
     [
-        '__root__' => 'These rules must pass for Settings',
+        '__root__' => 'Settings must pass the rules',
         'host' => 'host must be a string',
         'user' => 'user must be present',
     ],

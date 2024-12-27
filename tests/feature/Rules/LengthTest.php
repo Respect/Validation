@@ -46,12 +46,12 @@ test('Chained wrapped rule', expectAll(
     fn() => v::length(v::between(5, 7)->odd())->assert([]),
     'The length of `[]` must be between 5 and 7',
     <<<'FULL_MESSAGE'
-    - All the required rules must pass for `[]`
+    - `[]` must pass all the rules
       - The length of `[]` must be between 5 and 7
       - The length of `[]` must be an odd number
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for `[]`',
+        '__root__' => '`[]` must pass all the rules',
         'lengthBetween' => 'The length of `[]` must be between 5 and 7',
         'lengthOdd' => 'The length of `[]` must be an odd number',
     ],

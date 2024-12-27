@@ -16,20 +16,20 @@ test('https://github.com/Respect/Validation/issues/1376', expectAll(
         ->assert((object) ['author' => 'foo']),
     'title must be present',
     <<<'FULL_MESSAGE'
-    - All the required rules must pass for `stdClass { +$author="foo" }`
+    - `stdClass { +$author="foo" }` must pass all the rules
       - title must be present
       - description must be present
-      - All the required rules must pass for author
+      - author must pass all the rules
         - author must be an integer
         - The length of author must be between 1 and 2
       - user must be present
     FULL_MESSAGE,
     [
-        '__root__' => 'All the required rules must pass for `stdClass { +$author="foo" }`',
+        '__root__' => '`stdClass { +$author="foo" }` must pass all the rules',
         'title' => 'title must be present',
         'description' => 'description must be present',
         'author' => [
-            '__root__' => 'All the required rules must pass for author',
+            '__root__' => 'author must pass all the rules',
             'intType' => 'author must be an integer',
             'lengthBetween' => 'The length of author must be between 1 and 2',
         ],

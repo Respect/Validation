@@ -15,12 +15,23 @@ In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 
 ## Templates
 
-### `NoneOf::TEMPLATE_STANDARD`
+### `NoneOf::TEMPLATE_SOME`
 
-| Mode       | Template                                   |
-|------------|--------------------------------------------|
-| `default`  | None of these rules must pass for {{name}} |
-| `inverted` | All of these rules must pass for {{name}}  |
+Used when some rules have passed.
+
+| Mode       | Template                     |
+|------------|------------------------------|
+| `default`  | {{name}} must pass the rules |
+| `inverted` | {{name}} must pass the rules |
+
+### `NoneOf::TEMPLATE_ALL`
+
+Used when all rules have passed.
+
+| Mode       | Template                         |
+|------------|----------------------------------|
+| `default`  | {{name}} must pass all the rules |
+| `inverted` | {{name}} must pass all the rules |
 
 ## Template placeholders
 

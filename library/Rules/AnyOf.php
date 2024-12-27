@@ -20,8 +20,8 @@ use function array_reduce;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    'At least one of these rules must pass for {{name}}',
-    'At least one of these rules must not pass for {{name}}',
+    '{{name}} must pass at least one of the rules',
+    '{{name}} must pass at least one of the rules',
 )]
 final class AnyOf extends Composite
 {

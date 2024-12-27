@@ -7,30 +7,58 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
-    fn() => v::noneOf(v::intType(), v::positive())->assert(42),
-    '42 must not be an integer',
-));
-
-test('Scenario #2', expectMessage(
-    fn() => v::not(v::noneOf(v::intType(), v::positive()))->assert('-1'),
-    '"-1" must be an integer',
-));
-
-test('Scenario #3', expectFullMessage(
-    fn() => v::noneOf(v::intType(), v::positive())->assert(42),
+test('Default: fail, fail', expectAll(
+    fn() => v::noneOf(v::intType(), v::negative())->assert(-1),
+    '-1 must not be an integer',
     <<<'FULL_MESSAGE'
-    - None of these rules must pass for 42
-      - 42 must not be an integer
-      - 42 must not be a positive number
+    - -1 must pass all the rules
+      - -1 must not be an integer
+      - -1 must not be a negative number
     FULL_MESSAGE,
+    [
+        '__root__' => '-1 must pass all the rules',
+        'intType' => '-1 must not be an integer',
+        'negative' => '-1 must not be a negative number',
+    ],
 ));
 
-test('Scenario #4', expectFullMessage(
-    fn() => v::not(v::noneOf(v::intType(), v::positive()))->assert('-1'),
+test('Default: pass, fail', expectAll(
+    fn() => v::noneOf(v::intType(), v::stringType())->assert('string'),
+    '"string" must not be a string',
     <<<'FULL_MESSAGE'
-- All of these rules must pass for "-1"
-  - "-1" must be an integer
-  - "-1" must be a positive number
-FULL_MESSAGE,
+    - "string" must not be a string
+    FULL_MESSAGE,
+    [
+        'stringType' => '"string" must not be a string',
+    ],
+));
+
+test('Default: pass, fail, fail', expectAll(
+    fn() => v::noneOf(v::intType(), v::alpha(), v::stringType())->assert('string'),
+    '"string" must not contain letters (a-z)',
+    <<<'FULL_MESSAGE'
+    - "string" must pass the rules
+      - "string" must not contain letters (a-z)
+      - "string" must not be a string
+    FULL_MESSAGE,
+    [
+        '__root__' => '"string" must pass the rules',
+        'alpha' => '"string" must not contain letters (a-z)',
+        'stringType' => '"string" must not be a string',
+    ],
+));
+
+test('Inverted: fail, fail', expectAll(
+    fn() => v::not(v::noneOf(v::intType(), v::negative()))->assert('string'),
+    '"string" must be an integer',
+    <<<'FULL_MESSAGE'
+    - "string" must pass the rules
+      - "string" must be an integer
+      - "string" must be a negative number
+    FULL_MESSAGE,
+    [
+        '__root__' => '"string" must pass the rules',
+        'intType' => '"string" must be an integer',
+        'negative' => '"string" must be a negative number',
+    ],
 ));

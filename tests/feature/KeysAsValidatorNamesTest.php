@@ -20,7 +20,7 @@ test('Scenario #1', expectFullMessage(
             ->assert(['username' => '0', 'birthdate' => 'Whatever']);
     },
     <<<'FULL_MESSAGE'
-    - All the required rules must pass for User Subscription Form
+    - User Subscription Form must pass all the rules
       - The length of username must be between 2 and 32
       - birthdate must be a valid date/time
     FULL_MESSAGE,

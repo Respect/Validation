@@ -16,12 +16,23 @@ character, one or the other, but not neither nor both.
 
 ## Templates
 
-### `OneOf::TEMPLATE_STANDARD`
+### `OneOf::TEMPLATE_NONE`
 
-| Mode       | Template                                           |
-|------------|----------------------------------------------------|
-| `default`  | Only one of these rules must pass for {{name}}     |
-| `inverted` | Only one of these rules must not pass for {{name}} |
+Used when none of the rules have passed.
+
+| Mode       | Template                            |
+|------------|-------------------------------------|
+| `default`  | {{name}} must pass one of the rules |
+| `inverted` | {{name}} must pass one of the rules |
+
+### `OneOf::TEMPLATE_MORE_THAN_ONE`
+
+Used when more than one rule has passed.
+
+| Mode       | Template                                 |
+|------------|------------------------------------------|
+| `default`  | {{name}} must pass only one of the rules |
+| `inverted` | {{name}} must pass only one of the rules |
 
 ## Template placeholders
 
