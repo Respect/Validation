@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
@@ -10,18 +12,31 @@ namespace Respect\Validation;
 use Countable;
 use Iterator;
 
+use function array_filter;
+use function array_key_exists;
+use function array_map;
+use function array_values;
+use function count;
+use function current;
+use function key;
+use function next;
+use function reset;
+
 /**
  * @implements Iterator<int, Result>
  */
 final class ResultSet implements Iterator, Countable
 {
+    /** @var array<int, Result> */
     private array $children;
+
     public function __construct(
         private readonly Result $result,
     ) {
         $this->children = $this->extractDeduplicatedChildren();
     }
 
+    /** @return array<int, Result> */
     public function extractDeduplicatedChildren(): array
     {
         /** @var array<string, Result> $deduplicatedResults */
@@ -62,14 +77,15 @@ final class ResultSet implements Iterator, Countable
         );
     }
 
-    public function current(): Result|false
-    {
-        return current($this->children);
-    }
-
+    /** @return array<int, Result> */
     public function getArrayCopy(): array
     {
         return $this->children;
+    }
+
+    public function current(): Result|false
+    {
+        return current($this->children);
     }
 
     public function next(): void
