@@ -11,7 +11,7 @@ use Respect\Validation\Message\Translator\ArrayTranslator;
 use Respect\Validation\Validator;
 use Respect\Validation\ValidatorDefaults;
 
-test('Scenario #1', expectFullMessage(
+test('Various translations', expectFullMessage(
     function (): void {
         ValidatorDefaults::setTranslator(new ArrayTranslator([
             'All the required rules must pass for {{name}}' => 'Todas as regras requeridas devem passar para {{name}}',
@@ -32,7 +32,7 @@ test('Scenario #1', expectFullMessage(
     FULL_MESSAGE,
 ));
 
-test('Scenario #2', expectMessage(
+test('DateTimeDiff', expectMessage(
     function (): void {
         ValidatorDefaults::setTranslator(new ArrayTranslator([
             'years' => 'anos',
@@ -43,4 +43,28 @@ test('Scenario #2', expectMessage(
         v::dateTimeDiff('years', v::equals(2))->assert('1972-02-09');
     },
     'O número de anos entre agora e "1972-02-09" deve ser igual a 2',
+));
+
+test('Using "listOr"', expectMessage(
+    function (): void {
+        ValidatorDefaults::setTranslator(new ArrayTranslator([
+            'Your name must be {{haystack|listOr}}' => 'Seu nome deve ser {{haystack|listOr}}',
+            'or' => 'ou',
+        ]));
+
+        v::templated(v::in(['Respect', 'Validation']), 'Your name must be {{haystack|listOr}}')->assert('');
+    },
+    'Seu nome deve ser "Respect" ou "Validation"',
+));
+
+test('Using "listAnd"', expectMessage(
+    function (): void {
+        ValidatorDefaults::setTranslator(new ArrayTranslator([
+            '{{haystack|listAnd}} are the only possible names' => '{{haystack|listAnd}} são os únicos nomes possíveis',
+            'and' => 'e',
+        ]));
+
+        v::templated(v::in(['Respect', 'Validation']), '{{haystack|listAnd}} are the only possible names')->assert('');
+    },
+    '"Respect" e "Validation" são os únicos nomes possíveis',
 ));

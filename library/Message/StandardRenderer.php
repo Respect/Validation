@@ -11,11 +11,13 @@ namespace Respect\Validation\Message;
 
 use ReflectionClass;
 use Respect\Stringifier\Stringifier;
+use Respect\Validation\Message\Placeholder\Listed;
 use Respect\Validation\Message\Placeholder\Quoted;
 use Respect\Validation\Mode;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 
+use function is_array;
 use function is_bool;
 use function is_scalar;
 use function is_string;
@@ -74,6 +76,14 @@ final class StandardRenderer implements Renderer
     {
         if ($modifier === 'quote' && is_string($value)) {
             return $this->placeholder($name, new Quoted($value), $translator);
+        }
+
+        if ($modifier === 'listOr' && is_array($value)) {
+            return $this->placeholder($name, new Listed($value, $translator->translate('or')), $translator);
+        }
+
+        if ($modifier === 'listAnd' && is_array($value)) {
+            return $this->placeholder($name, new Listed($value, $translator->translate('and')), $translator);
         }
 
         if ($modifier === 'raw' && is_scalar($value)) {
