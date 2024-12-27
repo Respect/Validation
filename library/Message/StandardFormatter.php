@@ -106,42 +106,42 @@ final class StandardFormatter implements Formatter
     {
         $selectedTemplates = $this->selectTemplates($result, $templates);
         $deduplicatedChildren = $this->extractDeduplicatedChildren($result);
-        if (count($deduplicatedChildren) === 0 || $this->isFinalTemplate($result, $selectedTemplates)) {
-            return [
-                $result->getDeepestPath() ?? $result->id => $this->renderer->render(
-                    $this->getTemplated($result->withDeepestPath(), $selectedTemplates),
+        $messages = [
+            'messages' => [
+                $result->id => $this->renderer->render(
+                    $this->getTemplated($result, $selectedTemplates)->withWithoutPath(),
                     $translator
                 ),
-            ];
-        }
-
-        $messages = [];
+            ],
+            'details' => [],
+            'children' => [],
+        ];
         foreach ($deduplicatedChildren as $child) {
+            if ($child->path === null) {
+                $messages['details'][$child->id] = $this->renderer->render(
+                    $this->getTemplated($child, $selectedTemplates)->withWithoutPath(),
+                    $translator
+                );
+                continue;
+            }
             $key = $child->getDeepestPath() ?? $child->id;
-            $messages[$key] = $this->array(
+            $messages['children'][$key] = $this->array(
                 $this->resultWithPath($result, $child),
                 $this->selectTemplates($child, $selectedTemplates),
                 $translator
             );
-            if (count($messages[$key]) !== 1) {
+            if (count($messages['children'][$key]) !== 1) {
                 continue;
             }
 
-            $messages[$key] = current($messages[$key]);
+            $messages['children'][$key] = current($messages['children'][$key]);
         }
 
-        if (count($messages) > 1) {
-            $self = [
-                '__root__' => $this->renderer->render(
-                    $this->getTemplated($result->withDeepestPath(), $selectedTemplates),
-                    $translator
-                ),
-            ];
-
-            return $self + $messages;
+        if ($result->path !== null) {
+            return [$result->getDeepestPath() => array_filter($messages)];
         }
 
-        return $messages;
+        return array_filter($messages);
     }
 
     public function resultWithPath(Result $parent, Result $child): Result

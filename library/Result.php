@@ -132,6 +132,23 @@ final class Result
         );
     }
 
+    public function withWithoutPath(): self
+    {
+        return new self(
+            $this->isValid,
+            $this->input,
+            $this->rule,
+            $this->parameters,
+            $this->template,
+            $this->mode,
+            $this->name,
+            $this->id,
+            $this->adjacent?->withWithoutPath(),
+            null,
+            ...$this->children
+        );
+    }
+
     public function getDeepestPath(): ?string
     {
         if ($this->path === null) {
