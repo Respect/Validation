@@ -14,6 +14,7 @@ use Respect\Validation\Result;
 
 use function array_filter;
 use function array_key_exists;
+use function array_map;
 use function array_reduce;
 use function array_values;
 use function count;
@@ -42,11 +43,7 @@ final class StandardFormatter implements Formatter
         $selectedTemplates = $this->selectTemplates($result, $templates);
         if (!$this->isFinalTemplate($result, $selectedTemplates)) {
             foreach ($this->extractDeduplicatedChildren($result) as $child) {
-                if ($result->path !== null && $child->path !== null && $child->path !== $result->path) {
-                    $child = $child->withPath($result->path);
-                } elseif ($result->path !== null && $child->path === null) {
-                    $child = $child->withPath($result->path);
-                }
+                $child = $this->resultWithPath($result, $child);
 
                 return $this->main($child, $selectedTemplates, $translator);
             }
@@ -63,7 +60,6 @@ final class StandardFormatter implements Formatter
         array $templates,
         Translator $translator,
         int $depth = 0,
-        ?Result $parent = null,
         Result ...$siblings
     ): string {
         $selectedTemplates = $this->selectTemplates($result, $templates);
@@ -75,20 +71,25 @@ final class StandardFormatter implements Formatter
             $rendered .= sprintf(
                 '%s- %s' . PHP_EOL,
                 $indentation,
-                $this->renderer->render($this->getTemplated($result, $selectedTemplates), $translator),
+                $this->renderer->render(
+                    $this->getTemplated($depth > 0 ? $result->withDeepestPath() : $result, $selectedTemplates),
+                    $translator
+                ),
             );
             $depth++;
         }
 
         if (!$isFinalTemplate) {
-            $results = $this->extractDeduplicatedChildren($result);
+            $results = array_map(
+                fn(Result $child) => $this->resultWithPath($result, $child),
+                $this->extractDeduplicatedChildren($result)
+            );
             foreach ($results as $child) {
                 $rendered .= $this->full(
                     $child,
                     $selectedTemplates,
                     $translator,
                     $depth,
-                    $result,
                     ...array_filter($results, static fn (Result $sibling) => $sibling !== $child)
                 );
                 $rendered .= PHP_EOL;
@@ -110,7 +111,7 @@ final class StandardFormatter implements Formatter
         if (count($deduplicatedChildren) === 0 || $this->isFinalTemplate($result, $selectedTemplates)) {
             return [
                 $result->path ?? $result->id => $this->renderer->render(
-                    $this->getTemplated($result, $selectedTemplates),
+                    $this->getTemplated($result->withDeepestPath(), $selectedTemplates),
                     $translator
                 ),
             ];
@@ -120,7 +121,7 @@ final class StandardFormatter implements Formatter
         foreach ($deduplicatedChildren as $child) {
             $key = $child->path ?? $child->id;
             $messages[$key] = $this->array(
-                $child,
+                $this->resultWithPath($result, $child),
                 $this->selectTemplates($child, $selectedTemplates),
                 $translator
             );
@@ -133,13 +134,29 @@ final class StandardFormatter implements Formatter
 
         if (count($messages) > 1) {
             $self = [
-                '__root__' => $this->renderer->render($this->getTemplated($result, $selectedTemplates), $translator),
+                '__root__' => $this->renderer->render(
+                    $this->getTemplated($result->withDeepestPath(), $selectedTemplates),
+                    $translator
+                ),
             ];
 
             return $self + $messages;
         }
 
         return $messages;
+    }
+
+    public function resultWithPath(Result $parent, Result $child): Result
+    {
+        if ($parent->path !== null && $child->path !== null && $child->path !== $parent->path) {
+            return $child->withPath($parent->path);
+        }
+
+        if ($parent->path !== null && $child->path === null) {
+            return $child->withPath($parent->path);
+        }
+
+        return $child;
     }
 
     private function isAlwaysVisible(Result $result, Result ...$siblings): bool

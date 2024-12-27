@@ -20,8 +20,8 @@ test('https://github.com/Respect/Validation/issues/1376', expectAll(
       - `.title` must be present
       - `.description` must be present
       - `.author` must pass all the rules
-        - "foo" must be an integer
-        - The length of "foo" must be between 1 and 2
+        - `.author` must be an integer
+        - The length of `.author` must be between 1 and 2
       - `.user` must be present
     FULL_MESSAGE,
     [
@@ -30,8 +30,8 @@ test('https://github.com/Respect/Validation/issues/1376', expectAll(
         'description' => '`.description` must be present',
         'author' => [
             '__root__' => '`.author` must pass all the rules',
-            'intType' => '"foo" must be an integer',
-            'lengthBetween' => 'The length of "foo" must be between 1 and 2',
+            'intType' => '`.author` must be an integer',
+            'lengthBetween' => 'The length of `.author` must be between 1 and 2',
         ],
         'user' => '`.user` must be present',
     ],

@@ -49,8 +49,8 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
     <<<'FULL_MESSAGE'
     - `.0` must pass the rules
       - `.default` must pass one of the rules
-        - 2 must be a string
-        - 2 must be a boolean
+        - `.default` must be a string
+        - `.default` must be a boolean
       - `.description` must be a string value
     FULL_MESSAGE,
     [
@@ -58,8 +58,8 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
             '__root__' => '`.0` must pass the rules',
             'default' => [
                 '__root__' => '`.default` must pass one of the rules',
-                'stringType' => '2 must be a string',
-                'boolType' => '2 must be a boolean',
+                'stringType' => '`.default` must be a string',
+                'boolType' => '`.default` must be a boolean',
             ],
             'description' => '`.description` must be a string value',
         ],

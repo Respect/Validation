@@ -50,11 +50,11 @@ test('Multiple attributes, all failed', expectAll(
       - `.phone` must be a valid telephone number or must be null
     FULL_MESSAGE,
     [
-        '__root__' => '`Respect\Validation\Test\Stubs\WithAttributes{ +$name="" +$email="not an email" +$birthdate="not a date" +$phone ... }` must pass all the rules',
+        '__root__' => '`Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$email="not an email" +$birthdate="not a date" +$phone ... }` must pass all the rules',
         'name' => '`.name` must not be empty',
         'email' => '`.email` must be a valid email address',
         'birthdate' => [
-            '__root__' => 'birthdate must pass all the rules',
+            '__root__' => '`.birthdate` must pass all the rules',
             'date' => '`.birthdate` must be a valid date in the format "2005-12-30"',
             'dateTimeDiffLessThanOrEqual' => 'For comparison with now, `.birthdate` must be a valid datetime',
         ],

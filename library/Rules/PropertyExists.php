@@ -13,7 +13,6 @@ use Attribute;
 use ReflectionObject;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Renameable;
 use Respect\Validation\Rules\Core\Standard;
 
 use function is_object;

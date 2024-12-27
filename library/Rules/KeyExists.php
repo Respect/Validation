@@ -14,7 +14,6 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\KeyRelated;
-use Respect\Validation\Rules\Core\Renameable;
 use Respect\Validation\Rules\Core\Standard;
 
 use function array_key_exists;

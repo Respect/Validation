@@ -28,11 +28,11 @@ test('https://github.com/Respect/Validation/issues/1334', expectAll(
       - `.0` must pass the rules
         - `.street` must be present
         - `.other` must pass the rules
-          - 123 must be a string or must be null
+          - `.other` must be a string or must be null
       - `.1` must pass the rules
-        - "" must not be empty
+        - `.street` must not be empty
       - `.2` must pass the rules
-        - 123 must be a string
+        - `.street` must be a string
     FULL_MESSAGE,
     [
         'each' => [
@@ -40,10 +40,10 @@ test('https://github.com/Respect/Validation/issues/1334', expectAll(
             0 => [
                 '__root__' => '`.0` must pass the rules',
                 'street' => '`.street` must be present',
-                'other' => '123 must be a string or must be null',
+                'other' => '`.other` must be a string or must be null',
             ],
-            1 => '"" must not be empty',
-            2 => '123 must be a string',
+            1 => '`.street` must not be empty',
+            2 => '`.street` must be a string',
         ],
     ],
 ));

@@ -10,11 +10,12 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use Respect\Validation\Rules\Core\Nameable;
-use Respect\Validation\Rules\Core\Renameable;
 
 use function array_filter;
 use function array_map;
 use function count;
+use function end;
+use function explode;
 use function lcfirst;
 use function preg_match;
 use function strrchr;
@@ -112,17 +113,22 @@ final class Result
 
     public function withPath(string|int $path): self
     {
-        if ($this->path === $path) {
+        return $this->clone(
+            adjacent: $this->adjacent?->withPath($path),
+            path: $this->path === null ? $path : $path . '.' . $this->path,
+        );
+    }
+
+    public function withDeepestPath(): self
+    {
+        $paths = explode('.', (string) $this->path);
+        if (count($paths) === 1) {
             return $this;
         }
 
         return $this->clone(
-            adjacent: $this->adjacent?->withPath($path),
-            path: $this->path === null ? $path : $path . '.' . $this->path,
-//            children: array_map(
-//                static fn (Result $child) => $child->path === null ? $child->withPath($child->name ?? $path) : $child,
-//                $this->children
-//            ),
+            adjacent: $this->adjacent?->withPath(end($paths)),
+            path: end($paths),
         );
     }
 

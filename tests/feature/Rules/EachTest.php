@@ -256,13 +256,13 @@ test('Chained wrapped rule', expectAll(
         '__root__' => 'Each item in `[2, 4]` must be valid',
         0 => [
             '__root__' => '`.0` must pass all the rules',
-            'between' => '2 must be between 5 and 7',
-            'odd' => '2 must be an odd number',
+            'between' => '`.0` must be between 5 and 7',
+            'odd' => '`.0` must be an odd number',
         ],
         1 => [
             '__root__' => '`.1` must pass all the rules',
-            'between' => '4 must be between 5 and 7',
-            'odd' => '4 must be an odd number',
+            'between' => '`.1` must be between 5 and 7',
+            'odd' => '`.1` must be an odd number',
         ],
     ],
 ));
@@ -282,12 +282,12 @@ test('Multiple nested rules', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in `[["not_int": "wrong"], ["my_int": 2], "not an array"]` must be valid',
-        0 => 'my_int must be present',
-        1 => 'my_int must be an odd number',
+        0 => '`.my_int` must be present',
+        1 => '`.my_int` must be an odd number',
         2 => [
-            '__root__' => '"not an array" must pass all the rules',
-            'arrayType' => '"not an array" must be an array',
-            'my_int' => 'my_int must be present',
+            '__root__' => '`.2` must pass all the rules',
+            'arrayType' => '`.2` must be an array',
+            'my_int' => '`.my_int` must be present',
         ],
     ],
 ));
