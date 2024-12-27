@@ -121,15 +121,29 @@ final class Result
 
     public function withDeepestPath(): self
     {
-        $paths = explode('.', (string) $this->path);
-        if (count($paths) === 1) {
+        $path = $this->getDeepestPath();
+        if ($path === null || $path === (string) $this->path) {
             return $this;
         }
 
         return $this->clone(
-            adjacent: $this->adjacent?->withPath(end($paths)),
-            path: end($paths),
+            adjacent: $this->adjacent?->withPath($path),
+            path: $path,
         );
+    }
+
+    public function getDeepestPath(): ?string
+    {
+        if ($this->path === null) {
+            return null;
+        }
+
+        $paths = explode('.', (string) $this->path);
+        if (count($paths) === 1) {
+            return (string) $this->path;
+        }
+
+        return end($paths);
     }
 
     public function withPrefix(string $prefix): self

@@ -12,6 +12,7 @@ namespace Respect\Validation\Message;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Result;
 
+use Respect\Validation\ResultSet;
 use function array_filter;
 use function array_key_exists;
 use function array_map;
@@ -42,9 +43,7 @@ final class StandardFormatter implements Formatter
     {
         $selectedTemplates = $this->selectTemplates($result, $templates);
         if (!$this->isFinalTemplate($result, $selectedTemplates)) {
-            foreach ($this->extractDeduplicatedChildren($result) as $child) {
-                $child = $this->resultWithPath($result, $child);
-
+            foreach (new ResultSet($result) as $child) {
                 return $this->main($child, $selectedTemplates, $translator);
             }
         }
@@ -80,17 +79,14 @@ final class StandardFormatter implements Formatter
         }
 
         if (!$isFinalTemplate) {
-            $results = array_map(
-                fn(Result $child) => $this->resultWithPath($result, $child),
-                $this->extractDeduplicatedChildren($result)
-            );
+            $results = new ResultSet($result);
             foreach ($results as $child) {
                 $rendered .= $this->full(
                     $child,
                     $selectedTemplates,
                     $translator,
                     $depth,
-                    ...array_filter($results, static fn (Result $sibling) => $sibling !== $child)
+                    ...array_filter($results->getArrayCopy(), static fn (Result $sibling) => $sibling !== $child)
                 );
                 $rendered .= PHP_EOL;
             }
