@@ -17,6 +17,7 @@ namespace Respect\Validation\Exceptions;
  * @author Eduardo Gulias Davis <me@egulias.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class EmailException extends ValidationException
 {

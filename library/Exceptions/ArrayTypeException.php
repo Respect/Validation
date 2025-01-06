@@ -14,6 +14,7 @@ namespace Respect\Validation\Exceptions;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author João Torquato <joao.otl@gmail.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class ArrayTypeException extends ValidationException
 {

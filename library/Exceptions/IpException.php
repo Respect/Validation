@@ -14,6 +14,7 @@ namespace Respect\Validation\Exceptions;
  * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class IpException extends ValidationException
 {

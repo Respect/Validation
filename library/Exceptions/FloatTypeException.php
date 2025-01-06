@@ -14,6 +14,7 @@ namespace Respect\Validation\Exceptions;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Reginaldo Junior <76regi@gmail.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class FloatTypeException extends ValidationException
 {

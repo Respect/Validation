@@ -12,6 +12,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Bruno Luiz da Silva <contato@brunoluiz.net>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class DateException extends ValidationException
 {

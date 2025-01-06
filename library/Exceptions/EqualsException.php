@@ -13,6 +13,7 @@ namespace Respect\Validation\Exceptions;
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Ian Nisbet <ian@glutenite.co.uk>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class EqualsException extends ValidationException
 {

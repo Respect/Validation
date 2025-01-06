@@ -16,6 +16,7 @@ namespace Respect\Validation\Exceptions;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Paul Karikari <paulkarikari1@gmail.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class TldException extends ValidationException
 {

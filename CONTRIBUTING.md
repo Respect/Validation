@@ -79,44 +79,6 @@ final class HelloWorld extends AbstractRule
 }
 ```
 
-### Creating the rule exception
-
-Just that and we're done with the rule code. The Exception requires you to
-declare messages used by `assert()` and `check()`. Messages are declared in
-affirmative and negative moods, so if anyone calls `v::not(v::helloWorld())` the
-library will show the appropriate message.
-
-```php
-<?php
-
-/*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- * SPDX-License-Identifier: MIT
- */
-
-declare(strict_types=1);
-
-namespace Respect\Validation\Exceptions;
-
-/**
- * @author Your Name <youremail@yourdomain.tld>
- */
-final class HelloWorldException extends ValidationException
-{
-    /**
-     * {@inheritDoc}
-     */
-    protected $defaultTemplates = [
-        self::MODE_DEFAULT => [
-            self::STANDARD => '{{name}} must be a Hello World',
-        ],
-        self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must not be a Hello World',
-        ]
-    ];
-}
-```
-
 ### Creating unit tests
 
 Finally, we need to test if everything is running smooth. We have `RuleTestCase`

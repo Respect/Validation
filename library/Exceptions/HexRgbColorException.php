@@ -12,6 +12,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Davide Pastore <pasdavide@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class HexRgbColorException extends ValidationException
 {

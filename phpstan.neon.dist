@@ -32,6 +32,8 @@ parameters:
         path: library/Rules/AbstractAge.php
 
     # Why: Deprecations of version 3.0
+    - message: '/Using rule exceptions directly is deprecated, and will be removed in the next major version\./'
+
     -
         message: '/Calling `.+\(\)` directly from rules is deprecated. Please use {@see \\Respect\\Validation\\Validator::.+\(\)} instead./'
         path: tests/unit/Rules

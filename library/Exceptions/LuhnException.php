@@ -13,6 +13,7 @@ namespace Respect\Validation\Exceptions;
  * @author Alexander Gorshkov <mazanax@yandex.ru>
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class LuhnException extends ValidationException
 {

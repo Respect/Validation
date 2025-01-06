@@ -15,6 +15,7 @@ use Respect\Validation\Helpers\CountryInfo;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Michael Firsikov <michael.firsikov@gmail.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class PhoneException extends ValidationException
 {

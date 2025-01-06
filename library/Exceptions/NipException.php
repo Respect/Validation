@@ -12,6 +12,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Tomasz Regdos <tomek@regdos.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class NipException extends ValidationException
 {

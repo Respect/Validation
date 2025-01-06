@@ -12,6 +12,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class RomanException extends ValidationException
 {

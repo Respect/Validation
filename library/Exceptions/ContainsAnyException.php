@@ -11,6 +11,7 @@ namespace Respect\Validation\Exceptions;
 
 /**
  * @author Kirill Dlussky <kirill@dlussky.ru>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class ContainsAnyException extends ValidationException
 {

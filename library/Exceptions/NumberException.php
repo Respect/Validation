@@ -13,6 +13,7 @@ namespace Respect\Validation\Exceptions;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Ismael Elias <ismael.esq@hotmail.com>
  * @author Vitaliy <reboot.m@gmail.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class NumberException extends ValidationException
 {

@@ -12,6 +12,7 @@ namespace Respect\Validation\Exceptions;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class ExistsException extends ValidationException
 {

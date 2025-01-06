@@ -13,6 +13,7 @@ namespace Respect\Validation\Exceptions;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
+ * @deprecated Using rule exceptions directly is deprecated, and will be removed in the next major version. Please use {@see ValidationException} instead.
  */
 final class ConsonantException extends FilteredValidationException
 {
