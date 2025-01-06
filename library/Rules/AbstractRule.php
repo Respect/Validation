@@ -18,6 +18,8 @@ use Respect\Validation\Validatable;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Vicente Mendoza <vicentemmor@yahoo.com.mx>
+ *
+ * @deprecated This class is deprecated, and will be removed in the next major version. Use {@see \Respect\Validation\Rules\Core\Simple} instead.
  */
 abstract class AbstractRule implements Validatable
 {

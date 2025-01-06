@@ -16,6 +16,8 @@ use Respect\Validation\Validatable;
  *
  * @author Alasdair North <alasdair@runway.io>
  * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @deprecated This class is deprecated, and will be removed in the next major version. Use {@see \Respect\Validation\Rules\Core\Wrapper} instead.
  */
 abstract class AbstractWrapper extends AbstractRule
 {

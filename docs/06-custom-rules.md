@@ -10,11 +10,11 @@ validate method will be executed. Here's how the class should look:
 ```php
 namespace My\Validation\Rules;
 
-use Respect\Validation\Rules\AbstractRule;
+use Respect\Validation\Rules\Core\Simple;
 
-final class Something extends AbstractRule
+final class Something extends Simple
 {
-    public function validate($input): bool
+    public function isValid(mixed $input): bool
     {
         // Do something here with the $input and return a boolean value
     }

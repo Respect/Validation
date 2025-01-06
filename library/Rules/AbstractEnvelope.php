@@ -19,6 +19,8 @@ use Respect\Validation\Validatable;
  * having an custom message.
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
+ *
+ * @deprecated This class is deprecated, and will be removed in the next major version. Use {@see \Respect\Validation\Rules\Core\Envelop} instead.
  */
 abstract class AbstractEnvelope extends AbstractRule
 {

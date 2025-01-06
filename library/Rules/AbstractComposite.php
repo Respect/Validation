@@ -22,6 +22,8 @@ use function array_map;
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Wojciech Frącz <fraczwojciech@gmail.com>
+ *
+ * @deprecated This class is deprecated, and will be removed in the next major version. Use {@see \Respect\Validation\Rules\Core\Composite} instead.
  */
 abstract class AbstractComposite extends AbstractRule
 {
