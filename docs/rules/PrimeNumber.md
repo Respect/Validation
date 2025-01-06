@@ -5,7 +5,7 @@
 Validates a prime number
 
 ```php
-v::primeNumber()->validate(7); // true
+v::primeNumber()->isValid(7); // true
 ```
 
 ## Categorization

@@ -20,7 +20,7 @@ use function count;
 class AllOf extends AbstractComposite
 {
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `assert()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::assert()} instead.
      */
     public function assert($input): void
     {
@@ -42,7 +42,7 @@ class AllOf extends AbstractComposite
     }
 
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `check()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::check()} instead.
      */
     public function check($input): void
     {
@@ -52,7 +52,7 @@ class AllOf extends AbstractComposite
     }
 
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
      */
     public function validate($input): bool
     {

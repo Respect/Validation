@@ -5,7 +5,7 @@
 Validates if the given data is a file exists and is readable.
 
 ```php
-v::readable()->validate('file.txt'); // true
+v::readable()->isValid('file.txt'); // true
 ```
 
 ## Categorization

@@ -5,8 +5,8 @@
 Validates whether the type of the input is [boolean](http://php.net/types.boolean).
 
 ```php
-v::boolType()->validate(true); // true
-v::boolType()->validate(false); // true
+v::boolType()->isValid(true); // true
+v::boolType()->isValid(false); // true
 ```
 
 ## Categorization

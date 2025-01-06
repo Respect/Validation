@@ -5,7 +5,7 @@
 This is a group validator that acts as an OR operator.
 
 ```php
-v::anyOf(v::intVal(), v::floatVal())->validate(15.5); // true
+v::anyOf(v::intVal(), v::floatVal())->isValid(15.5); // true
 ```
 
 In the sample above, `IntVal()` doesn't validates, but `FloatVal()` validates,

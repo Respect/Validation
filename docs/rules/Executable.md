@@ -5,7 +5,7 @@
 Validates if a file is an executable.
 
 ```php
-v::executable()->validate('script.sh'); // true
+v::executable()->isValid('script.sh'); // true
 ```
 
 ## Categorization

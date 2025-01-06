@@ -6,7 +6,7 @@
 Validates whether the input contains only whitespaces characters.
 
 ```php
-v::space()->validate('    '); // true
+v::space()->isValid('    '); // true
 ```
 
 ## Categorization

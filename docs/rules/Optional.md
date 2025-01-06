@@ -6,8 +6,8 @@ Validates if the given input is optional or not. By _optional_ we consider `null
 or an empty string (`''`).
 
 ```php
-v::optional(v::alpha())->validate(''); // true
-v::optional(v::digit())->validate(null); // true
+v::optional(v::alpha())->isValid(''); // true
+v::optional(v::digit())->isValid(null); // true
 ```
 
 ## Categorization

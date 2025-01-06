@@ -6,9 +6,9 @@
 Validates whether the input is a valid phone number.
 
 ```php
-v::phone()->validate('+1 650 253 00 00'); // true
-v::phone('BR')->validate('+55 11 91111 1111'); // true
-v::phone('BR')->validate('11 91111 1111'); // false
+v::phone()->isValid('+1 650 253 00 00'); // true
+v::phone('BR')->isValid('+55 11 91111 1111'); // true
+v::phone('BR')->isValid('11 91111 1111'); // false
 ```
 
 ## Note

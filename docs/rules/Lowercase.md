@@ -5,7 +5,7 @@
 Validates whether the characters in the input are lowercase.
 
 ```php
-v::stringType()->lowercase()->validate('xkcd'); // true
+v::stringType()->lowercase()->isValid('xkcd'); // true
 ```
 
 ## Categorization

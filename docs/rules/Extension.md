@@ -5,7 +5,7 @@
 Validates if the file extension matches the expected one:
 
 ```php
-v::extension('png')->validate('image.png'); // true
+v::extension('png')->isValid('image.png'); // true
 ```
 
 This rule is case-sensitive.

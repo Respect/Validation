@@ -5,11 +5,11 @@
 Validates whether the input is a URL.
 
 ```php
-v::url()->validate('http://example.com'); // true
-v::url()->validate('https://www.youtube.com/watch?v=6FOUqQt3Kg0'); // true
-v::url()->validate('ldap://[::1]'); // true
-v::url()->validate('mailto:john.doe@example.com'); // true
-v::url()->validate('news:new.example.com'); // true
+v::url()->isValid('http://example.com'); // true
+v::url()->isValid('https://www.youtube.com/watch?v=6FOUqQt3Kg0'); // true
+v::url()->isValid('ldap://[::1]'); // true
+v::url()->isValid('mailto:john.doe@example.com'); // true
+v::url()->isValid('news:new.example.com'); // true
 ```
 
 ## Categorization

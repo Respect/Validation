@@ -5,19 +5,19 @@
 Validates whether the input is a valid postal code or not.
 
 ```php
-v::postalCode('BR')->validate('02179000'); // true
-v::postalCode('BR')->validate('02179-000'); // true
-v::postalCode('US')->validate('02179-000'); // false
-v::postalCode('US')->validate('55372'); // true
-v::postalCode('PL')->validate('99-300'); // true
+v::postalCode('BR')->isValid('02179000'); // true
+v::postalCode('BR')->isValid('02179-000'); // true
+v::postalCode('US')->isValid('02179-000'); // false
+v::postalCode('US')->isValid('55372'); // true
+v::postalCode('PL')->isValid('99-300'); // true
 ```
 
 By default, `PostalCode` won't validate the format (puncts, spaces), unless you pass `$formatted = true`:
 
 
 ```php
-v::postalCode('BR', true)->validate('02179000'); // false
-v::postalCode('BR', true)->validate('02179-000'); // true
+v::postalCode('BR', true)->isValid('02179000'); // false
+v::postalCode('BR', true)->isValid('02179-000'); // true
 ```
 
 Message template for this validator includes `{{countryCode}}`.

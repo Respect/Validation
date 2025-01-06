@@ -10,32 +10,32 @@ Validates the length of the given input.
 Most simple example:
 
 ```php
-v::stringType()->length(1, 5)->validate('abc'); // true
+v::stringType()->length(1, 5)->isValid('abc'); // true
 ```
 
 You can also validate only minimum length:
 
 ```php
-v::stringType()->length(5, null)->validate('abcdef'); // true
+v::stringType()->length(5, null)->isValid('abcdef'); // true
 ```
 
 Only maximum length:
 
 ```php
-v::stringType()->length(null, 5)->validate('abc'); // true
+v::stringType()->length(null, 5)->isValid('abc'); // true
 ```
 
 The type as the first validator in a chain is a good practice,
 since length accepts many types:
 
 ```php
-v::arrayVal()->length(1, 5)->validate(['foo', 'bar']); // true
+v::arrayVal()->length(1, 5)->isValid(['foo', 'bar']); // true
 ```
 
 A third parameter may be passed to validate the passed values inclusive:
 
 ```php
-v::stringType()->length(1, 5, true)->validate('a'); // true
+v::stringType()->length(1, 5, true)->isValid('a'); // true
 ```
 
 Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.

@@ -51,6 +51,9 @@ final class Phone extends AbstractRule
         }
     }
 
+    /**
+     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
+     */
     public function validate($input): bool
     {
         if (!is_scalar($input)) {

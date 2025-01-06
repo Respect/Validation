@@ -10,19 +10,19 @@ Validates an object attribute, even private ones.
 $obj = new stdClass;
 $obj->foo = 'bar';
 
-v::attribute('foo')->validate($obj); // true
+v::attribute('foo')->isValid($obj); // true
 ```
 
 You can also validate the attribute itself:
 
 ```php
-v::attribute('foo', v::equals('bar'))->validate($obj); // true
+v::attribute('foo', v::equals('bar'))->isValid($obj); // true
 ```
 
 Third parameter makes the attribute presence optional:
 
 ```php
-v::attribute('lorem', v::stringType(), false)->validate($obj); // true
+v::attribute('lorem', v::stringType(), false)->isValid($obj); // true
 ```
 
 The name of this validator is automatically set to the attribute name.

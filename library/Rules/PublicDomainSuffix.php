@@ -22,6 +22,9 @@ final class PublicDomainSuffix extends AbstractRule
 {
     use CanValidateUndefined;
 
+    /**
+     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
+     */
     public function validate($input): bool
     {
         if (!is_scalar($input)) {

@@ -5,10 +5,10 @@
 Validates whether the input array contains only unique values.
 
 ```php
-v::unique()->validate([]); // true
-v::unique()->validate([1, 2, 3]); // true
-v::unique()->validate([1, 2, 2, 3]); // false
-v::unique()->validate([1, 2, 3, 1]); // false
+v::unique()->isValid([]); // true
+v::unique()->isValid([1, 2, 3]); // true
+v::unique()->isValid([1, 2, 2, 3]); // false
+v::unique()->isValid([1, 2, 3, 1]); // false
 ```
 
 ## Categorization

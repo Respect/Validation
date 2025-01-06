@@ -27,8 +27,7 @@ final class Imei extends AbstractRule
 
     /**
      * @see https://en.wikipedia.org/wiki/International_Mobile_Station_Equipment_Identity
-     *
-     * {@inheritDoc}
+     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
      */
     public function validate($input): bool
     {

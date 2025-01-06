@@ -24,7 +24,7 @@ use const FILTER_VALIDATE_INT;
 final class Odd extends AbstractRule
 {
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
      */
     public function validate($input): bool
     {

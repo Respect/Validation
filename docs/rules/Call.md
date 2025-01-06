@@ -37,7 +37,7 @@ v::call(
         ->key('host',   v::domain())
         ->key('path',   v::stringType())
         ->key('query',  v::notEmpty())
-)->validate($url);
+)->isValid($url);
 ```
 
 ## Categorization

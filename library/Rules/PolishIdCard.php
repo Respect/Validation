@@ -28,7 +28,7 @@ final class PolishIdCard extends AbstractRule
     private const ASCII_CODE_A = 65;
 
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
      */
     public function validate($input): bool
     {

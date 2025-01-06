@@ -40,7 +40,7 @@ final class Each extends AbstractRule
     }
 
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `assert()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::assert()} instead.
      */
     public function assert($input): void
     {
@@ -67,7 +67,7 @@ final class Each extends AbstractRule
     }
 
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `check()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::check()} instead.
      */
     public function check($input): void
     {
@@ -81,7 +81,7 @@ final class Each extends AbstractRule
     }
 
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
      */
     public function validate($input): bool
     {

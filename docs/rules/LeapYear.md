@@ -5,7 +5,7 @@
 Validates if a year is leap.
 
 ```php
-v::leapYear()->validate('1988'); // true
+v::leapYear()->isValid('1988'); // true
 ```
 
 This validator accepts DateTime instances as well.

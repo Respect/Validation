@@ -11,13 +11,13 @@ if the value is at the beginning of the input.
 For strings:
 
 ```php
-v::startsWith('lorem')->validate('lorem ipsum'); // true
+v::startsWith('lorem')->isValid('lorem ipsum'); // true
 ```
 
 For arrays:
 
 ```php
-v::startsWith('lorem')->validate(['lorem', 'ipsum']); // true
+v::startsWith('lorem')->isValid(['lorem', 'ipsum']); // true
 ```
 
 `true` may be passed as a parameter to indicate identical comparison

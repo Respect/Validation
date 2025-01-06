@@ -5,8 +5,8 @@
 Validate whether a given input is a [Luhn][] number.
 
 ```php
-v::luhn()->validate('2222400041240011'); // true
-v::luhn()->validate('respect!'); // false
+v::luhn()->isValid('2222400041240011'); // true
+v::luhn()->isValid('respect!'); // false
 ```
 
 ## Categorization

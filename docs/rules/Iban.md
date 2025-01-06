@@ -6,12 +6,12 @@ Validates whether the input is a valid [IBAN][] (International Bank Account
 Number) or not.
 
 ```php
-v::iban()->validate('SE35 5000 0000 0549 1000 0003'); // true
-v::iban()->validate('ch9300762011623852957'); // true
+v::iban()->isValid('SE35 5000 0000 0549 1000 0003'); // true
+v::iban()->isValid('ch9300762011623852957'); // true
 
-v::iban()->validate('ZZ32 5000 5880 7742'); // false
-v::iban()->validate(123456789); // false
-v::iban()->validate(''); // false
+v::iban()->isValid('ZZ32 5000 5880 7742'); // false
+v::iban()->isValid(123456789); // false
+v::iban()->isValid(''); // false
 ```
 
 ## Categorization

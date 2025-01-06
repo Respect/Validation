@@ -5,7 +5,7 @@
 Validates any input as invalid.
 
 ```php
-v::alwaysInvalid()->validate('whatever'); // false
+v::alwaysInvalid()->isValid('whatever'); // false
 ```
 
 ## Categorization

@@ -6,7 +6,7 @@
 Similar to `Graph` but accepts whitespace.
 
 ```php
-v::printable()->validate('LMKA0$% _123'); // true
+v::printable()->isValid('LMKA0$% _123'); // true
 ```
 
 ## Categorization

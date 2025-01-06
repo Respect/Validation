@@ -5,14 +5,14 @@
 Validates whether file input is as a regular filename.
 
 ```php
-v::file()->validate(__FILE__); // true
-v::file()->validate(__DIR__); // false
+v::file()->isValid(__FILE__); // true
+v::file()->isValid(__DIR__); // false
 ```
 
 This validator will consider SplFileInfo instances, so you can do something like:
 
 ```php
-v::file()->validate(new SplFileInfo('file.txt'));
+v::file()->isValid(new SplFileInfo('file.txt'));
 ```
 
 ## Categorization

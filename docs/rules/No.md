@@ -6,12 +6,12 @@
 Validates if value is considered as "No".
 
 ```php
-v::no()->validate('N'); // true
-v::no()->validate('Nay'); // true
-v::no()->validate('Nix'); // true
-v::no()->validate('No'); // true
-v::no()->validate('Nope'); // true
-v::no()->validate('Not'); // true
+v::no()->isValid('N'); // true
+v::no()->isValid('Nay'); // true
+v::no()->isValid('Nix'); // true
+v::no()->isValid('No'); // true
+v::no()->isValid('Nope'); // true
+v::no()->isValid('Not'); // true
 ```
 
 This rule is case insensitive.
@@ -21,13 +21,13 @@ constant, meaning that it will validate the input using your current location:
 
 ```php
 setlocale(LC_ALL, 'ru_RU');
-v::no(true)->validate('нет'); // true
+v::no(true)->isValid('нет'); // true
 ```
 
 Be careful when using `$locale` as `TRUE` because the it's very permissive:
 
 ```php
-v::no(true)->validate('Never gonna give you up 🎵'); // true
+v::no(true)->isValid('Never gonna give you up 🎵'); // true
 ```
 
 Besides that, with `$locale` as  `TRUE` it will consider any character starting
@@ -35,7 +35,7 @@ with "N" as valid:
 
 ```php
 setlocale(LC_ALL, 'es_ES');
-v::no(true)->validate('Yes'); // true
+v::no(true)->isValid('Yes'); // true
 ```
 
 ## Categorization

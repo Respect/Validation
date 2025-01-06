@@ -20,7 +20,7 @@ use function count;
 final class NoneOf extends AbstractComposite
 {
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `assert()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::assert()} instead.
      */
     public function assert($input): void
     {
@@ -37,7 +37,7 @@ final class NoneOf extends AbstractComposite
     }
 
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
      */
     public function validate($input): bool
     {

@@ -5,7 +5,7 @@
 Validates if the given input is writable file.
 
 ```php
-v::writable()->validate('file.txt'); // true
+v::writable()->isValid('file.txt'); // true
 ```
 
 ## Categorization

@@ -10,8 +10,8 @@ another key value and that may cause some ugly code since you need the input
 before the validation, making some checking manually:
 
 ```php
-v::key('password', v::notEmpty())->validate($_POST);
-v::key('password_confirmation', v::equals($_POST['password'] ?? null))->validate($_POST);
+v::key('password', v::notEmpty())->isValid($_POST);
+v::key('password_confirmation', v::equals($_POST['password'] ?? null))->isValid($_POST);
 ```
 
 The problem with the above code is because you do not know if `password` is a
@@ -22,7 +22,7 @@ The `keyValue()` rule makes this job easier by creating a rule named on
 `$ruleName` passing `$baseKey` as the first argument of this rule, see an example:
 
 ```php
-v::keyValue('password_confirmation', 'equals', 'password')->validate($_POST);
+v::keyValue('password_confirmation', 'equals', 'password')->isValid($_POST);
 ```
 
 The above code will result on `true` if _`$_POST['password_confirmation']` is
@@ -31,7 +31,7 @@ The above code will result on `true` if _`$_POST['password_confirmation']` is
 See another example:
 
 ```php
-v::keyValue('state', 'subdivisionCode', 'country')->validate($_POST);
+v::keyValue('state', 'subdivisionCode', 'country')->isValid($_POST);
 ```
 
 The above code will result on `true` if _`$_POST['state']` is a

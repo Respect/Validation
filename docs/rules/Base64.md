@@ -5,8 +5,8 @@
 Validate if a string is Base64-encoded.
 
 ```php
-v::base64()->validate('cmVzcGVjdCE='); // true
-v::base64()->validate('respect!'); // false
+v::base64()->isValid('cmVzcGVjdCE='); // true
+v::base64()->isValid('respect!'); // false
 ```
 
 ## Categorization

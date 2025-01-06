@@ -15,7 +15,7 @@ The Hello World validator is something like this:
 
 ```php
 $number = 123;
-v::numericVal()->validate($number); // true
+v::numericVal()->isValid($number); // true
 ```
 
 ## Chained validation
@@ -25,7 +25,7 @@ containing numbers and letters, no whitespace and length between 1 and 15.
 
 ```php
 $usernameValidator = v::alnum()->noWhitespace()->length(1, 15);
-$usernameValidator->validate('alganet'); // true
+$usernameValidator->isValid('alganet'); // true
 ```
 
 ## Validating object attributes
@@ -44,7 +44,7 @@ Is possible to validate its attributes in a single chain:
 $userValidator = v::attribute('name', v::stringType()->length(1, 32))
                   ->attribute('birthdate', v::date()->minAge(18));
 
-$userValidator->validate($user); // true
+$userValidator->isValid($user); // true
 ```
 
 Validating array keys is also possible using `v::key()`
@@ -78,7 +78,7 @@ v::key(
         ->key('field2', v::stringType())
         ->key('field3', v::boolType())
     )
-    ->assert($data); // You can also use check() or validate()
+    ->assert($data); // You can also use check() or isValid()
 ```
 
 ## Input optional
@@ -93,11 +93,11 @@ For that reason all rules are mandatory now but if you want to treat a value as
 optional you can use `v::optional()` rule:
 
 ```php
-v::alpha()->validate(''); // false input required
-v::alpha()->validate(null); // false input required
+v::alpha()->isValid(''); // false input required
+v::alpha()->isValid(null); // false input required
 
-v::optional(v::alpha())->validate(''); // true
-v::optional(v::alpha())->validate(null); // true
+v::optional(v::alpha())->isValid(''); // true
+v::optional(v::alpha())->isValid(null); // true
 ```
 
 By _optional_ we consider `null` or an empty string (`''`).
@@ -109,7 +109,7 @@ See more on [Optional](rules/Optional.md).
 You can use the `v::not()` to negate any rule:
 
 ```php
-v::not(v::intVal())->validate(10); // false, input must not be integer
+v::not(v::intVal())->isValid(10); // false, input must not be integer
 ```
 
 ## Validator reuse
@@ -117,9 +117,9 @@ v::not(v::intVal())->validate(10); // false, input must not be integer
 Once created, you can reuse your validator anywhere. Remember `$usernameValidator`?
 
 ```php
-$usernameValidator->validate('respect');            //true
-$usernameValidator->validate('alexandre gaigalas'); // false
-$usernameValidator->validate('#$%');                //false
+$usernameValidator->isValid('respect');            //true
+$usernameValidator->isValid('alexandre gaigalas'); // false
+$usernameValidator->isValid('#$%');                //false
 ```
 
 ## Exception types
@@ -144,7 +144,7 @@ $usernameValidator->validate('#$%');                //false
 ## Informative exceptions
 
 When something goes wrong, Validation can tell you exactly what's going on. For this,
-we use the `assert()` method instead of `validate()`:
+we use the `assert()` method instead of `isValid()`:
 
 ```php
 use Respect\Validation\Exceptions\NestedValidationException;
@@ -239,7 +239,7 @@ v::dateTime('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
 
 ## Validation methods
 
-We've seen `validate()` that returns true or false and `assert()` that throws a complete
+We've seen `isValid()` that returns true or false and `assert()` that throws a complete
 validation report. There is also a `check()` method that returns an Exception
 only with the first error found:
 

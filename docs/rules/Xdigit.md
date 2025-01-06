@@ -6,13 +6,13 @@
 Validates whether the input is an hexadecimal number or not.
 
 ```php
-v::xdigit()->validate('abc123'); // true
+v::xdigit()->isValid('abc123'); // true
 ```
 
 Notice, however, that it doesn't accept strings starting with 0x:
 
 ```php
-v::xdigit()->validate('0x1f'); // false
+v::xdigit()->isValid('0x1f'); // false
 ```
 
 ## Categorization

@@ -9,7 +9,7 @@ $dict = ['foo' => 42];
 
 v::keySet(
     v::key('foo', v::intVal())
-)->validate($dict); // true
+)->isValid($dict); // true
 ```
 
 Extra keys are not allowed:
@@ -18,7 +18,7 @@ $dict = ['foo' => 42, 'bar' => 'String'];
 
 v::keySet(
     v::key('foo', v::intVal())
-)->validate($dict); // false
+)->isValid($dict); // false
 ```
 
 Missing required keys are not allowed:
@@ -29,7 +29,7 @@ v::keySet(
     v::key('foo', v::intVal()),
     v::key('bar', v::stringType()),
     v::key('baz', v::boolType())
-)->validate($dict); // false
+)->isValid($dict); // false
 ```
 
 Missing non-required keys are allowed:
@@ -40,7 +40,7 @@ v::keySet(
     v::key('foo', v::intVal()),
     v::key('bar', v::stringType()),
     v::key('baz', v::boolType(), false)
-)->validate($dict); // true
+)->isValid($dict); // true
 ```
 
 It is not possible to negate `keySet()` rules with `not()`.

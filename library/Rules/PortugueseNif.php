@@ -30,7 +30,7 @@ use function strlen;
 final class PortugueseNif extends AbstractRule
 {
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
      */
     public function validate($input): bool
     {

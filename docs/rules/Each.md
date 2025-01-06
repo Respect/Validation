@@ -11,13 +11,13 @@ $releaseDates = [
     'relational' => '2011-02-05',
 ];
 
-v::each(v::dateTime())->validate($releaseDates); // true
+v::each(v::dateTime())->isValid($releaseDates); // true
 ```
 
 You can also validate array keys combining this rule with [Call](Call.md):
 
 ```php
-v::call('array_keys', v::each(v::stringType()))->validate($releaseDates); // true
+v::call('array_keys', v::each(v::stringType()))->isValid($releaseDates); // true
 ```
 
 This rule will not validate values that are not iterable, to have a more detailed
@@ -27,8 +27,8 @@ If the input is empty this rule will consider the value as valid, you use
 [NotEmpty](NotEmpty.md) if convenient:
 
 ```php
-v::each(v::dateTime())->validate([]); // true
-v::notEmpty()->each(v::dateTime())->validate([]); // false
+v::each(v::dateTime())->isValid([]); // true
+v::notEmpty()->each(v::dateTime())->isValid([]); // false
 ```
 
 ## Categorization

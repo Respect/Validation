@@ -6,7 +6,7 @@
 Validates whether the input contains only vowels.
 
 ```php
-v::vowel()->validate('aei'); // true
+v::vowel()->isValid('aei'); // true
 ```
 
 ## Categorization

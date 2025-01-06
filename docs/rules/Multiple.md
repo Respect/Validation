@@ -5,7 +5,7 @@
 Validates if the input is a multiple of the given parameter
 
 ```php
-v::intVal()->multiple(3)->validate(9); // true
+v::intVal()->multiple(3)->isValid(9); // true
 ```
 
 ## Categorization

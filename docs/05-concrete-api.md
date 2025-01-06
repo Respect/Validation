@@ -8,7 +8,7 @@ or magic methods. We'll use a traditional dependency injection approach.
 use Respect\Validation\Validator as v;
 
 $usernameValidator = v::alnum()->noWhitespace()->length(1, 15);
-$usernameValidator->validate('alganet'); // true
+$usernameValidator->isValid('alganet'); // true
 ```
 
 If you `var_dump($usernameValidator)`, you'll see a composite of objects with
@@ -18,13 +18,14 @@ the chain only builds the structure. You can build it by yourself:
 
 ```php
 use Respect\Validation\Rules;
+use Respect\Validation\Validator;
 
-$usernameValidator = new Rules\AllOf(
+$usernameValidator = Validator::create(
     new Rules\Alnum(),
     new Rules\NoWhitespace(),
     new Rules\Length(1, 15)
 );
-$usernameValidator->validate('alganet'); // true
+$usernameValidator->isValid('alganet'); // true
 ```
 
 This is still a very lean API. You can use it in any dependency injection
@@ -32,14 +33,16 @@ container or test it in the way you want. Nesting is still possible:
 
 ```php
 use Respect\Validation\Rules;
+use Respect\Validation\Validator;
 
-$usernameValidator = new Rules\AllOf(
+$usernameValidator = Validator::create(
     new Rules\Alnum(),
     new Rules\NoWhitespace(),
     new Rules\Length(1, 15)
 );
-$userValidator = new Rules\Key('name', $usernameValidator);
-$userValidator->validate(['name' => 'alganet']); // true
+
+$userValidator = Validator::create(new Rules\Key('name', $usernameValidator));
+$userValidator->isValid(['name' => 'alganet']); // true
 ```
 
 ## How It Works?
@@ -63,7 +66,7 @@ something complex and returns for you.
 
 > I really don't like static calls, can I avoid it?
 
-Yes. Just use `$validator = new Validator();` each time you want a new validator,
+Yes. Just use `$validator = Validator::create();` each time you want a new validator,
 and continue from there.
 
 > Do you have a static method for each rule?

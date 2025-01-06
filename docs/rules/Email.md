@@ -5,7 +5,7 @@
 Validates an email address.
 
 ```php
-v::email()->validate('alganet@gmail.com'); // true
+v::email()->isValid('alganet@gmail.com'); // true
 ```
 
 ## Categorization

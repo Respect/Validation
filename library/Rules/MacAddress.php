@@ -23,7 +23,7 @@ use function preg_match;
 final class MacAddress extends AbstractRule
 {
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
      */
     public function validate($input): bool
     {

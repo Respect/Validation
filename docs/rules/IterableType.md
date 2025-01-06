@@ -7,10 +7,10 @@ if you're able to iterate over it with [foreach](http://php.net/foreach) languag
 construct.
 
 ```php
-v::iterableType()->validate([]); // true
-v::iterableType()->validate(new ArrayObject()); // true
-v::iterableType()->validate(new stdClass()); // true
-v::iterableType()->validate('string'); // false
+v::iterableType()->isValid([]); // true
+v::iterableType()->isValid(new ArrayObject()); // true
+v::iterableType()->isValid(new stdClass()); // true
+v::iterableType()->isValid('string'); // false
 ```
 
 ## Categorization

@@ -5,8 +5,8 @@
 Validates whether the input is a subset of a given value.
 
 ```php
-v::subset([1, 2, 3])->validate([1, 2]); // true
-v::subset([1, 2])->validate([1, 2, 3]); // false
+v::subset([1, 2, 3])->isValid([1, 2]); // true
+v::subset([1, 2])->isValid([1, 2, 3]); // false
 ```
 
 ## Categorization

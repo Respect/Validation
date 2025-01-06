@@ -5,12 +5,12 @@
 Validates if the input results in a boolean value:
 
 ```php
-v::boolVal()->validate('on'); // true
-v::boolVal()->validate('off'); // true
-v::boolVal()->validate('yes'); // true
-v::boolVal()->validate('no'); // true
-v::boolVal()->validate(1); // true
-v::boolVal()->validate(0); // true
+v::boolVal()->isValid('on'); // true
+v::boolVal()->isValid('off'); // true
+v::boolVal()->isValid('yes'); // true
+v::boolVal()->isValid('no'); // true
+v::boolVal()->isValid(1); // true
+v::boolVal()->isValid(0); // true
 ```
 
 ## Categorization

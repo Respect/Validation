@@ -42,6 +42,9 @@ final class Not extends AbstractRule
         return $this->rule;
     }
 
+    /**
+     * @deprecated Calling `setName()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::setName()} instead.
+     */
     public function setName(string $name): Validatable
     {
         $this->rule->setName($name);
@@ -50,7 +53,7 @@ final class Not extends AbstractRule
     }
 
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
      */
     public function validate($input): bool
     {
@@ -58,7 +61,7 @@ final class Not extends AbstractRule
     }
 
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `assert()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::assert()} instead.
      */
     public function assert($input): void
     {

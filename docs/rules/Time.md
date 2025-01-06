@@ -23,15 +23,15 @@ Format  | Description                                        | Values
 When a `$format` is not given its default value is `H:i:s`.
 
 ```php
-v::time()->validate('00:00:00'); // true
-v::time()->validate('23:20:59'); // true
-v::time('H:i')->validate('23:59'); // true
-v::time('g:i A')->validate('8:13 AM'); // true
-v::time('His')->validate(232059); // true
+v::time()->isValid('00:00:00'); // true
+v::time()->isValid('23:20:59'); // true
+v::time('H:i')->isValid('23:59'); // true
+v::time('g:i A')->isValid('8:13 AM'); // true
+v::time('His')->isValid(232059); // true
 
-v::time()->validate('24:00:00'); // false
-v::time()->validate(new DateTime()); // false
-v::time()->validate(new DateTimeImmutable()); // false
+v::time()->isValid('24:00:00'); // false
+v::time()->isValid(new DateTime()); // false
+v::time()->isValid(new DateTimeImmutable()); // false
 ```
 
 ## Categorization

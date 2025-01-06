@@ -5,14 +5,14 @@
 Validates if a value is considered as `true`.
 
 ```php
-v::trueVal()->validate(true); // true
-v::trueVal()->validate(1); // true
-v::trueVal()->validate('1'); // true
-v::trueVal()->validate('true'); // true
-v::trueVal()->validate('on'); // true
-v::trueVal()->validate('yes'); // true
-v::trueVal()->validate('0.5'); // false
-v::trueVal()->validate('2'); // false
+v::trueVal()->isValid(true); // true
+v::trueVal()->isValid(1); // true
+v::trueVal()->isValid('1'); // true
+v::trueVal()->isValid('true'); // true
+v::trueVal()->isValid('on'); // true
+v::trueVal()->isValid('yes'); // true
+v::trueVal()->isValid('0.5'); // false
+v::trueVal()->isValid('2'); // false
 ```
 
 ## Categorization

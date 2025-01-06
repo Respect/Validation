@@ -5,7 +5,7 @@
 Validates whether the input is an [object](http://php.net/types.object).
 
 ```php
-v::objectType()->validate(new stdClass); // true
+v::objectType()->isValid(new stdClass); // true
 ```
 
 ## Categorization

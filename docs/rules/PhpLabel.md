@@ -9,9 +9,9 @@ Reference:
 http://php.net/manual/en/language.variables.basics.php
 
 ```php
-v::phpLabel()->validate('person'); //true
-v::phpLabel()->validate('foo'); //true
-v::phpLabel()->validate('4ccess'); //false
+v::phpLabel()->isValid('person'); //true
+v::phpLabel()->isValid('foo'); //true
+v::phpLabel()->isValid('4ccess'); //false
 ```
 
 ## Categorization

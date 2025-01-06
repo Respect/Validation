@@ -39,7 +39,7 @@ abstract class AbstractComposite extends AbstractRule
     }
 
     /**
-     * {@inheritDoc}
+     * @deprecated Calling `setName()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::setName()} instead.
      */
     public function setName(string $name): Validatable
     {
