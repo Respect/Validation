@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use finfo;
-use Respect\Validation\Rules\Key;
 
 interface ChainedValidator extends Validatable
 {
@@ -199,7 +198,7 @@ interface ChainedValidator extends Validatable
         bool $mandatory = true
     ): ChainedValidator;
 
-    public function keySet(Key ...$rule): ChainedValidator;
+    public function keySet(Validatable ...$rule): ChainedValidator;
 
     public function keyValue(string $comparedKey, string $ruleName, string $baseKey): ChainedValidator;
 
