@@ -13,43 +13,43 @@ $input = [
     ],
 ];
 
-test('Scenario #1', expectMessageAndError(
+test('Scenario #1', expectMessageAndDeprecation(
     fn() => v::keyNested('foo.bar.baz')->assert(['foo.bar.baz' => false]),
     '`.foo` must be present',
     'The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead.',
 ));
 
-test('Scenario #A', expectMessageAndError(
+test('Scenario #A', expectMessageAndDeprecation(
     fn() => v::keyNested('foo.bar.baz')->assert(['foo' => []]),
     '`.foo.bar` must be present',
     'The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead.',
 ));
 
-test('Scenario #B', expectMessageAndError(
+test('Scenario #B', expectMessageAndDeprecation(
     fn() => v::keyNested('foo.bar.baz')->assert(['foo' => []]),
     '`.foo.bar` must be present',
     'The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead.',
 ));
 
-test('Scenario #C', expectMessageAndError(
+test('Scenario #C', expectMessageAndDeprecation(
     fn() => v::keyNested('foo.bar.baz')->assert(['foo' => ['bar' => []]]),
     '`.foo.bar.baz` must be present',
     'The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead.',
 ));
 
-test('Scenario #2', expectMessageAndError(
+test('Scenario #2', expectMessageAndDeprecation(
     fn() => v::keyNested('foo.bar', v::negative())->assert($input),
     '`.foo.bar` must be a negative number',
     'The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead.',
 ));
 
-test('Scenario #3', expectMessageAndError(
+test('Scenario #3', expectMessageAndDeprecation(
     fn() => v::keyNested('foo.bar', v::stringType())->assert(new ArrayObject($input)),
     '`.foo.bar` must be a string',
     'The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead.',
 ));
 
-test('Scenario #4', expectMessageAndError(
+test('Scenario #4', expectMessageAndDeprecation(
     fn() => v::keyNested('foo.bar', v::floatType(), false)->assert($input),
     '`.foo.bar` must be float',
     'The keyNested() rule is deprecated and will be removed in the next major version. Use nested key() or property() instead.',

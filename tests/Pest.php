@@ -96,21 +96,20 @@ function expectDeprecation(Closure $callback, string $error): Closure
             return true;
         });
 
-        try {
-            $callback->call($this);
-        } catch (Throwable $e) {
-            restore_error_handler();
-            expect($lastError)->toBe($error);
-            throw $e;
-        }
+        $callback->call($this);
+        restore_error_handler();
+        expect($lastError)->toBe($error);
     };
 }
 
-function expectMessageAndError(Closure $callback, string $message, string $error): Closure
+function expectMessageAndDeprecation(Closure $callback, string $message, string $error): Closure
 {
     return function () use ($callback, $message, $error): void {
         $lastError = null;
         set_error_handler(static function (int $errno, string $errstr) use (&$lastError): bool {
+            if ($errno !== E_USER_DEPRECATED) {
+                return false;
+            }
             $lastError = $errstr;
 
             return true;

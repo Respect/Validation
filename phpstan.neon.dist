@@ -21,6 +21,8 @@ parameters:
       path: tests/feature/Transformers/AliasesTest.php
     - message: '/Call to an undefined static method Respect\\Validation\\Validator::(min|max)Age\(\)./'
       path: tests/feature/Transformers/DeprecatedAgeTest.php
+    - message: '/Static method Respect\\Validation\\Mixins\\Builder::.+Of\(\) invoked with \d parameters?, at least 2 required/'
+      path: tests/feature/Transformers/DeprecatedCompositeTest.php
     - message: '/Call to an undefined static method Respect\\Validation\\Validator::attribute\(\)./'
       path: tests/feature/Transformers/DeprecatedAttributeTest.php
     - message: '/Static method Respect\\Validation\\Mixins\\Builder::key\(\) invoked with \d parameters?, 2 required/'

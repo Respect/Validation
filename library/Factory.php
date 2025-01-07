@@ -16,6 +16,7 @@ use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Transformers\Aliases;
 use Respect\Validation\Transformers\DeprecatedAge;
 use Respect\Validation\Transformers\DeprecatedAttribute;
+use Respect\Validation\Transformers\DeprecatedComposite;
 use Respect\Validation\Transformers\DeprecatedKey;
 use Respect\Validation\Transformers\DeprecatedKeyNested;
 use Respect\Validation\Transformers\DeprecatedKeyValue;
@@ -45,9 +46,17 @@ final class Factory
                 new DeprecatedKeyValue(
                     new DeprecatedMinAndMax(
                         new DeprecatedAge(
-                            new DeprecatedKeyNested(new DeprecatedLength(new DeprecatedType(new DeprecatedSize(
-                                new Aliases(new Prefix())
-                            ))))
+                            new DeprecatedKeyNested(
+                                new DeprecatedLength(
+                                    new DeprecatedType(
+                                        new DeprecatedSize(
+                                            new DeprecatedComposite(
+                                                new Aliases(new Prefix())
+                                            )
+                                        )
+                                    )
+                                )
+                            )
                         )
                     )
                 )
