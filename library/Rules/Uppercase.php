@@ -23,7 +23,7 @@ use function mb_strtoupper;
 )]
 final class Uppercase extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

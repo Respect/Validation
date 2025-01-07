@@ -25,7 +25,7 @@ use const SORT_REGULAR;
 )]
 final class Unique extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (!is_array($input)) {
             return false;

@@ -25,7 +25,7 @@ use function preg_replace;
 )]
 final class Pis extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

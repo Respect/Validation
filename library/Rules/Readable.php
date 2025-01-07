@@ -25,7 +25,7 @@ use function is_string;
 )]
 final class Readable extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $input->isReadable();

@@ -40,7 +40,7 @@ final class Callback extends Simple
         $this->arguments = $arguments;
     }
 
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return (bool) call_user_func_array($this->callback, $this->getArguments($input));
     }

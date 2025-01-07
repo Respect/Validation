@@ -23,7 +23,7 @@ final class IterableVal extends Simple
 {
     use CanValidateIterable;
 
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return $this->isIterable($input);
     }

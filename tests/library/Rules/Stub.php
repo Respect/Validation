@@ -55,7 +55,7 @@ final class Stub extends Simple
         return new self(...array_fill(0, $expectedCount, false));
     }
 
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         $this->inputs[] = $input;
 

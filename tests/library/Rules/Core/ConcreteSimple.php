@@ -13,7 +13,7 @@ use Respect\Validation\Rules\Core\Simple;
 
 final class ConcreteSimple extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return true;
     }

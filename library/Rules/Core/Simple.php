@@ -13,7 +13,7 @@ use Respect\Validation\Result;
 
 abstract class Simple extends Standard
 {
-    abstract protected function isValid(mixed $input): bool;
+    abstract public function isValid(mixed $input): bool;
 
     public function evaluate(mixed $input): Result
     {

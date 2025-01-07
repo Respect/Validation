@@ -24,7 +24,7 @@ use const FILTER_VALIDATE_INT;
 )]
 final class Even extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (filter_var($input, FILTER_VALIDATE_INT) === false) {
             return false;

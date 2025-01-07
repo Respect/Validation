@@ -237,7 +237,7 @@ final class Tld extends Simple
         'ZA', 'ZAPPOS', 'ZARA', 'ZERO', 'ZIP', 'ZM', 'ZONE', 'ZUERICH', 'ZW',
     ];
 
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

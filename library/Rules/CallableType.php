@@ -22,7 +22,7 @@ use function is_callable;
 )]
 final class CallableType extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return is_callable($input);
     }

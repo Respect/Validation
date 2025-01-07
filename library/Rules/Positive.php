@@ -22,7 +22,7 @@ use function is_numeric;
 )]
 final class Positive extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (!is_numeric($input)) {
             return false;

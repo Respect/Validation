@@ -25,7 +25,7 @@ use function preg_replace;
 )]
 final class Cpf extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         // Code ported from jsfromhell.com
         $c = preg_replace('/\D/', '', $input);

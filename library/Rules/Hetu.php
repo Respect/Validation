@@ -30,7 +30,7 @@ final class Hetu extends Simple
 {
     use CanValidateDateTime;
 
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (!is_string($input)) {
             return false;

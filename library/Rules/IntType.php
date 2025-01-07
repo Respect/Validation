@@ -22,7 +22,7 @@ use function is_int;
 )]
 final class IntType extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return is_int($input);
     }

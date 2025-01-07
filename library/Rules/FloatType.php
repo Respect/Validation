@@ -22,7 +22,7 @@ use function is_float;
 )]
 final class FloatType extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return is_float($input);
     }

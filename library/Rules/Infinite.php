@@ -23,7 +23,7 @@ use function is_numeric;
 )]
 final class Infinite extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return is_numeric($input) && is_infinite((float) $input);
     }

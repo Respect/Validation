@@ -24,7 +24,7 @@ use function is_string;
 )]
 final class Exists extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             $input = $input->getPathname();

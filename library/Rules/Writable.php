@@ -25,7 +25,7 @@ use function is_writable;
 )]
 final class Writable extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $input->isWritable();

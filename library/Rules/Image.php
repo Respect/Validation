@@ -35,7 +35,7 @@ final class Image extends Simple
         $this->fileInfo = $fileInfo ?: new finfo(FILEINFO_MIME_TYPE);
     }
 
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $this->isValid($input->getPathname());

@@ -29,7 +29,7 @@ final class LeapDate extends Simple
     ) {
     }
 
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if ($input instanceof DateTimeInterface) {
             return $input->format('m-d') === '02-29';

@@ -22,7 +22,7 @@ use function is_resource;
 )]
 final class ResourceType extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return is_resource($input);
     }

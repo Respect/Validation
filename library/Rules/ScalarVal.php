@@ -22,7 +22,7 @@ use function is_scalar;
 )]
 final class ScalarVal extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return is_scalar($input);
     }

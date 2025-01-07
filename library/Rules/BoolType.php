@@ -22,7 +22,7 @@ use function is_bool;
 )]
 final class BoolType extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return is_bool($input);
     }

@@ -26,7 +26,7 @@ final class Imei extends Simple
 {
     private const IMEI_SIZE = 15;
 
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

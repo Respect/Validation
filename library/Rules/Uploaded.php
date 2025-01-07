@@ -25,7 +25,7 @@ use function is_uploaded_file;
 )]
 final class Uploaded extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if ($input instanceof SplFileInfo) {
             return $this->isValid($input->getPathname());

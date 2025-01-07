@@ -22,7 +22,7 @@ use function is_null;
 )]
 final class NullType extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return is_null($input);
     }

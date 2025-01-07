@@ -22,7 +22,7 @@ use function is_iterable;
 )]
 final class IterableType extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         return is_iterable($input);
     }

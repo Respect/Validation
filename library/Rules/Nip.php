@@ -28,7 +28,7 @@ use function str_split;
 )]
 final class Nip extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (!is_scalar($input)) {
             return false;

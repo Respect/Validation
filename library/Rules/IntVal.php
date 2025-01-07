@@ -24,7 +24,7 @@ use function preg_match;
 )]
 final class IntVal extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (is_int($input)) {
             return true;

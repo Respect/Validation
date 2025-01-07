@@ -27,7 +27,7 @@ use function strtotime;
 )]
 final class LeapYear extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (is_numeric($input)) {
             $date = strtotime(sprintf('%d-02-29', (int) $input));

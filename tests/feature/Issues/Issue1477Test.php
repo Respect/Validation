@@ -15,7 +15,7 @@ test('https://github.com/Respect/Validation/issues/1477', expectAll(
             'Address',
             v::templated(
                 new class extends Simple {
-                    protected function isValid(mixed $input): bool
+                    public function isValid(mixed $input): bool
                     {
                         return false;
                     }

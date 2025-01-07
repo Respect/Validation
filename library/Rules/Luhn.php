@@ -27,7 +27,7 @@ use function str_split;
 )]
 final class Luhn extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         if (!(new Digit())->evaluate($input)->isValid) {
             return false;
