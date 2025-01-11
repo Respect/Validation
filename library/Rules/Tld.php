@@ -236,7 +236,7 @@ final class Tld extends AbstractRule
     ];
 
     /**
-     * @deprecated Calling `validate()` directly from rules is deprecated. Please use {@see \Respect\Validation\Validator::isValid()} instead.
+     * {@inheritDoc}
      */
     public function validate($input): bool
     {
