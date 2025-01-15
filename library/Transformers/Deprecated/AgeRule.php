@@ -7,10 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Transformers;
+namespace Respect\Validation\Transformers\Deprecated;
 
 use Respect\Validation\Rules\GreaterThanOrEqual;
 use Respect\Validation\Rules\LessThanOrEqual;
+use Respect\Validation\Transformers\RuleSpec;
+use Respect\Validation\Transformers\Transformer;
 
 use function in_array;
 use function sprintf;
@@ -18,7 +20,7 @@ use function trigger_error;
 
 use const E_USER_DEPRECATED;
 
-final class DeprecatedAge implements Transformer
+final class AgeRule implements Transformer
 {
     public function __construct(
         private readonly Transformer $next

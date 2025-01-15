@@ -7,7 +7,10 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Transformers;
+namespace Respect\Validation\Transformers\Deprecated;
+
+use Respect\Validation\Transformers\RuleSpec;
+use Respect\Validation\Transformers\Transformer;
 
 use function current;
 use function sprintf;
@@ -15,7 +18,7 @@ use function trigger_error;
 
 use const E_USER_DEPRECATED;
 
-final class DeprecatedType implements Transformer
+final class TypeRule implements Transformer
 {
     private const AVAILABLE_TYPES = [
         'array' => 'arrayType',

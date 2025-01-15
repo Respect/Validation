@@ -7,9 +7,11 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Transformers;
+namespace Respect\Validation\Transformers\Deprecated;
 
 use Respect\Validation\Rule;
+use Respect\Validation\Transformers\RuleSpec;
+use Respect\Validation\Transformers\Transformer;
 
 use function in_array;
 use function sprintf;
@@ -17,7 +19,7 @@ use function trigger_error;
 
 use const E_USER_DEPRECATED;
 
-final class DeprecatedMinAndMax implements Transformer
+final class MinAndMaxArguments implements Transformer
 {
     public function __construct(
         private readonly Transformer $next

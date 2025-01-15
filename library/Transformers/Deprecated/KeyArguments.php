@@ -7,14 +7,17 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Transformers;
+namespace Respect\Validation\Transformers\Deprecated;
+
+use Respect\Validation\Transformers\RuleSpec;
+use Respect\Validation\Transformers\Transformer;
 
 use function array_key_exists;
 use function trigger_error;
 
 use const E_USER_DEPRECATED;
 
-final class DeprecatedKey implements Transformer
+final class KeyArguments implements Transformer
 {
     public function __construct(
         private readonly Transformer $next

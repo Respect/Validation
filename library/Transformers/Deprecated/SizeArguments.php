@@ -7,13 +7,15 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Transformers;
+namespace Respect\Validation\Transformers\Deprecated;
 
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Between;
 use Respect\Validation\Rules\Equals;
 use Respect\Validation\Rules\GreaterThanOrEqual;
 use Respect\Validation\Rules\LessThanOrEqual;
+use Respect\Validation\Transformers\RuleSpec;
+use Respect\Validation\Transformers\Transformer;
 
 use function filter_var;
 use function is_float;
@@ -28,7 +30,7 @@ use const E_USER_DEPRECATED;
 use const FILTER_VALIDATE_FLOAT;
 use const FILTER_VALIDATE_INT;
 
-final class DeprecatedSize implements Transformer
+final class SizeArguments implements Transformer
 {
     public function __construct(
         private readonly Transformer $next

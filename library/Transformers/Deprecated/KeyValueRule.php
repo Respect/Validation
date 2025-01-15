@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Transformers;
+namespace Respect\Validation\Transformers\Deprecated;
 
 use Respect\Validation\Message\Placeholder\Quoted;
 use Respect\Validation\Rules\AlwaysInvalid;
@@ -15,6 +15,8 @@ use Respect\Validation\Rules\Key;
 use Respect\Validation\Rules\KeyExists;
 use Respect\Validation\Rules\Lazy;
 use Respect\Validation\Rules\Templated;
+use Respect\Validation\Transformers\RuleSpec;
+use Respect\Validation\Transformers\Transformer;
 use Respect\Validation\Validator;
 use Throwable;
 
@@ -22,7 +24,7 @@ use function trigger_error;
 
 use const E_USER_DEPRECATED;
 
-final class DeprecatedKeyValue implements Transformer
+final class KeyValueRule implements Transformer
 {
     public function __construct(
         private readonly Transformer $next

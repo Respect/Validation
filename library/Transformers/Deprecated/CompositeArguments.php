@@ -7,10 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Transformers;
+namespace Respect\Validation\Transformers\Deprecated;
 
 use Respect\Validation\Rules\AlwaysInvalid;
 use Respect\Validation\Rules\AlwaysValid;
+use Respect\Validation\Transformers\RuleSpec;
+use Respect\Validation\Transformers\Transformer;
 
 use function count;
 use function in_array;
@@ -19,7 +21,7 @@ use function trigger_error;
 
 use const E_USER_DEPRECATED;
 
-final class DeprecatedComposite implements Transformer
+final class CompositeArguments implements Transformer
 {
     public function __construct(
         private readonly Transformer $next

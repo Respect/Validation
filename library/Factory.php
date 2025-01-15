@@ -14,16 +14,16 @@ use ReflectionException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Transformers\Aliases;
-use Respect\Validation\Transformers\DeprecatedAge;
-use Respect\Validation\Transformers\DeprecatedAttribute;
-use Respect\Validation\Transformers\DeprecatedComposite;
-use Respect\Validation\Transformers\DeprecatedKey;
-use Respect\Validation\Transformers\DeprecatedKeyNested;
-use Respect\Validation\Transformers\DeprecatedKeyValue;
-use Respect\Validation\Transformers\DeprecatedLength;
-use Respect\Validation\Transformers\DeprecatedMinAndMax;
-use Respect\Validation\Transformers\DeprecatedSize;
-use Respect\Validation\Transformers\DeprecatedType;
+use Respect\Validation\Transformers\Deprecated\AgeRule;
+use Respect\Validation\Transformers\Deprecated\AttributeRule;
+use Respect\Validation\Transformers\Deprecated\CompositeArguments;
+use Respect\Validation\Transformers\Deprecated\KeyArguments;
+use Respect\Validation\Transformers\Deprecated\KeyNestedRule;
+use Respect\Validation\Transformers\Deprecated\KeyValueRule;
+use Respect\Validation\Transformers\Deprecated\LengthArguments;
+use Respect\Validation\Transformers\Deprecated\MinAndMaxArguments;
+use Respect\Validation\Transformers\Deprecated\SizeArguments;
+use Respect\Validation\Transformers\Deprecated\TypeRule;
 use Respect\Validation\Transformers\Prefix;
 use Respect\Validation\Transformers\RuleSpec;
 use Respect\Validation\Transformers\Transformer;
@@ -41,20 +41,14 @@ final class Factory
     private array $rulesNamespaces = ['Respect\\Validation\\Rules'];
 
     public function __construct(
-        private readonly Transformer $transformer = new DeprecatedAttribute(
-            new DeprecatedKey(
-                new DeprecatedKeyValue(
-                    new DeprecatedMinAndMax(
-                        new DeprecatedAge(
-                            new DeprecatedKeyNested(
-                                new DeprecatedLength(
-                                    new DeprecatedType(
-                                        new DeprecatedSize(
-                                            new DeprecatedComposite(
-                                                new Aliases(new Prefix())
-                                            )
-                                        )
-                                    )
+        private readonly Transformer $transformer = new AttributeRule(
+            new KeyArguments(
+                new KeyValueRule(
+                    new MinAndMaxArguments(
+                        new AgeRule(
+                            new KeyNestedRule(
+                                new LengthArguments(
+                                    new TypeRule(new SizeArguments(new CompositeArguments(new Aliases(new Prefix()))))
                                 )
                             )
                         )
