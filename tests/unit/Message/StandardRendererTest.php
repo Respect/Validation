@@ -13,7 +13,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Message\Translator\ArrayTranslator;
 use Respect\Validation\Message\Translator\DummyTranslator;
-use Respect\Validation\Mode;
 use Respect\Validation\Test\Builders\ResultBuilder;
 use Respect\Validation\Test\Message\TestingStringifier;
 use Respect\Validation\Test\TestCase;
@@ -318,7 +317,7 @@ final class StandardRendererTest extends TestCase
         $stringifier = new TestingStringifier();
         $renderer = new StandardRenderer($stringifier);
 
-        $result = (new ResultBuilder())->mode(Mode::INVERTED)->build();
+        $result = (new ResultBuilder())->hasInvertedMode()->build();
 
         self::assertSame(
             sprintf('%s must not be a valid stub', $stringifier->stringify($result->input, 0)),
@@ -331,7 +330,7 @@ final class StandardRendererTest extends TestCase
     {
         $renderer = new StandardRenderer(new TestingStringifier());
 
-        $result = (new ResultBuilder())->template('__not_standard__')->mode(Mode::INVERTED)->build();
+        $result = (new ResultBuilder())->template('__not_standard__')->hasInvertedMode()->build();
 
         self::assertSame(
             $result->template,

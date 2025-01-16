@@ -13,7 +13,6 @@ use ReflectionClass;
 use Respect\Stringifier\Stringifier;
 use Respect\Validation\Message\Placeholder\Listed;
 use Respect\Validation\Message\Placeholder\Quoted;
-use Respect\Validation\Mode;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 
@@ -115,7 +114,7 @@ final class StandardRenderer implements Renderer
                 continue;
             }
 
-            if ($result->mode == Mode::INVERTED) {
+            if ($result->hasInvertedMode) {
                 return $template->inverted;
             }
 

@@ -31,7 +31,7 @@ final class NullOr extends Wrapper
         }
 
         if (!$result->isValid) {
-            return $this->enrichResult($result->withInvertedValidation());
+            return $this->enrichResult($result->withToggledValidation());
         }
 
         return $this->enrichResult($result);

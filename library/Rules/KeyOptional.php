@@ -34,7 +34,7 @@ final class KeyOptional extends Wrapper implements KeyRelated
     {
         $keyExistsResult = (new KeyExists($this->key))->evaluate($input);
         if (!$keyExistsResult->isValid) {
-            return $keyExistsResult->withNameFrom($this->rule)->withInvertedMode();
+            return $keyExistsResult->withNameFrom($this->rule)->withToggledModeAndValidation();
         }
 
         return (new Key($this->key, $this->rule))->evaluate($input);

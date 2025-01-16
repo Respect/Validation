@@ -49,7 +49,7 @@ final class OneOf extends Composite
 
             $template = self::TEMPLATE_MORE_THAN_ONE;
             $children = array_map(
-                static fn (Result $child) => $child->isValid ? $child->withInvertedValidation() : $child,
+                static fn (Result $child) => $child->isValid ? $child->withToggledValidation() : $child,
                 $children
             );
         }

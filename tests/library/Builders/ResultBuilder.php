@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Builders;
 
-use Respect\Validation\Mode;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Test\Rules\Stub;
@@ -20,7 +19,7 @@ final class ResultBuilder
 
     private mixed $input = 'input';
 
-    private Mode $mode = Mode::DEFAULT;
+    private bool $hasInvertedMode = false;
 
     private string $template = Rule::TEMPLATE_STANDARD;
 
@@ -51,7 +50,7 @@ final class ResultBuilder
             $this->rule,
             $this->parameters,
             $this->template,
-            $this->mode,
+            $this->hasInvertedMode,
             $this->name,
             $this->id,
             $this->adjacent,
@@ -117,9 +116,9 @@ final class ResultBuilder
         return $this;
     }
 
-    public function mode(Mode $mode): self
+    public function hasInvertedMode(): self
     {
-        $this->mode = $mode;
+        $this->hasInvertedMode = true;
 
         return $this;
     }

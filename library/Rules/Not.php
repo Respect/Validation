@@ -18,6 +18,6 @@ final class Not extends Wrapper
 {
     public function evaluate(mixed $input): Result
     {
-        return $this->rule->evaluate($input)->withInvertedMode()->withPrefix('not');
+        return $this->rule->evaluate($input)->withToggledModeAndValidation()->withPrefix('not');
     }
 }

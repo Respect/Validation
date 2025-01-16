@@ -36,7 +36,7 @@ final class Result
         public readonly Rule $rule,
         public readonly array $parameters = [],
         public readonly string $template = Rule::TEMPLATE_STANDARD,
-        public readonly Mode $mode = Mode::DEFAULT,
+        public readonly bool $hasInvertedMode = false,
         public readonly ?string $name = null,
         ?string $id = null,
         public readonly ?Result $adjacent = null,
@@ -199,22 +199,22 @@ final class Result
         return $this->clone(adjacent: $adjacent);
     }
 
-    public function withInvertedValidation(): self
+    public function withToggledValidation(): self
     {
         return $this->clone(
             isValid: !$this->isValid,
-            adjacent: $this->adjacent?->withInvertedValidation(),
-            children: array_map(static fn (Result $child) => $child->withInvertedValidation(), $this->children),
+            adjacent: $this->adjacent?->withToggledValidation(),
+            children: array_map(static fn (Result $child) => $child->withToggledValidation(), $this->children),
         );
     }
 
-    public function withInvertedMode(): self
+    public function withToggledModeAndValidation(): self
     {
         return $this->clone(
             isValid: !$this->isValid,
-            mode: $this->mode == Mode::DEFAULT ? Mode::INVERTED : Mode::DEFAULT,
-            adjacent: $this->adjacent?->withInvertedMode(),
-            children: array_map(static fn (Result $child) => $child->withInvertedMode(), $this->children),
+            mode: !$this->hasInvertedMode,
+            adjacent: $this->adjacent?->withToggledModeAndValidation(),
+            children: array_map(static fn (Result $child) => $child->withToggledModeAndValidation(), $this->children),
         );
     }
 
@@ -246,7 +246,7 @@ final class Result
         mixed $input = null,
         ?array $parameters = null,
         ?string $template = null,
-        ?Mode $mode = null,
+        ?bool $mode = null,
         ?string $name = null,
         ?string $id = null,
         ?Result $adjacent = null,
@@ -259,7 +259,7 @@ final class Result
             $this->rule,
             $parameters ?? $this->parameters,
             $template ?? $this->template,
-            $mode ?? $this->mode,
+            $mode ?? $this->hasInvertedMode,
             $name ?? $this->name,
             $id ?? $this->id,
             $adjacent ?? $this->adjacent,

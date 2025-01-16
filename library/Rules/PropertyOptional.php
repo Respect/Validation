@@ -28,7 +28,7 @@ final class PropertyOptional extends Wrapper
     {
         $propertyExistsResult = (new PropertyExists($this->propertyName))->evaluate($input);
         if (!$propertyExistsResult->isValid) {
-            return $propertyExistsResult->withNameFrom($this->rule)->withInvertedMode();
+            return $propertyExistsResult->withNameFrom($this->rule)->withToggledModeAndValidation();
         }
 
         return (new Property($this->propertyName, $this->rule))->evaluate($input);
