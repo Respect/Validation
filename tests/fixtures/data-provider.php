@@ -140,7 +140,7 @@ return [
         'tags' => ['objectType', 'withoutAttributes'],
     ],
     'object with Rule attributes' => [
-        'value' => [new WithAttributes('John Doe', 'john.doe@gmail.com', '1912-06-23')],
+        'value' => [new WithAttributes('John Doe', '1912-06-23', 'john.doe@gmail.com')],
         'tags' => ['objectType', 'withAttributes'],
     ],
     'anonymous class' => [

@@ -18,7 +18,7 @@ use Respect\Validation\Rules\Core\Composite;
 use function array_map;
 use function array_reduce;
 
-#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must pass at least one of the rules',
     '{{name}} must pass at least one of the rules',

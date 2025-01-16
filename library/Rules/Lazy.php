@@ -17,7 +17,7 @@ use Respect\Validation\Rules\Core\Standard;
 
 use function call_user_func;
 
-#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 final class Lazy extends Standard
 {
     /** @var callable(mixed): Rule */

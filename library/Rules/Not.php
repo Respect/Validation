@@ -13,7 +13,7 @@ use Attribute;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Wrapper;
 
-#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 final class Not extends Wrapper
 {
     public function evaluate(mixed $input): Result

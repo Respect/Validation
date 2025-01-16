@@ -55,13 +55,13 @@ final class AttributesTest extends TestCase
             'All' => [
                 new WithAttributes(
                     'John Doe',
-                    'john.doe@gmail.com',
                     '2020-06-23',
+                    'john.doe@gmail.com',
                     '+31206241111',
                     'Amstel 1 1011 PN AMSTERDAM Noord-Holland'
                 ),
             ],
-            'Only required' => [new WithAttributes('Jane Doe', 'janedoe@yahoo.com', '2017-11-30')],
+            'Only required' => [new WithAttributes('Jane Doe', '2017-11-30', 'janedoe@yahoo.com')],
         ];
     }
 
@@ -69,11 +69,12 @@ final class AttributesTest extends TestCase
     public static function providerForObjectsWithInvalidPropertyValues(): array
     {
         return [
-            [new WithAttributes('', 'not an email', 'not a date', 'not a phone number')],
-            [new WithAttributes('', 'john.doe@gmail.com', '1912-06-23', '+1234567890')],
-            [new WithAttributes('John Doe', 'not an email', '1912-06-23', '+1234567890')],
-            [new WithAttributes('John Doe', 'john.doe@gmail.com', 'not a date', '+1234567890')],
-            [new WithAttributes('John Doe', 'john.doe@gmail.com', '1912-06-23', 'not a phone number')],
+            [new WithAttributes('Jane Doe', '2017-11-30')],
+            [new WithAttributes('', 'not a date', 'not an email', 'not a phone number')],
+            [new WithAttributes('', '1912-06-23', 'john.doe@gmail.com', '+1234567890')],
+            [new WithAttributes('John Doe', '1912-06-23', 'not an email', '+1234567890')],
+            [new WithAttributes('John Doe', 'not a date', 'john.doe@gmail.com', '+1234567890')],
+            [new WithAttributes('John Doe', '1912-06-23', 'john.doe@gmail.com', 'not a phone number')],
         ];
     }
 }

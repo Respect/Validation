@@ -28,7 +28,11 @@ final class Attributes extends Standard
         }
 
         $rules = [];
-        foreach ((new ReflectionObject($input))->getProperties() as $property) {
+        $reflection = new ReflectionObject($input);
+        foreach ($reflection->getAttributes(Rule::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
+            $rules[] = $attribute->newInstance();
+        }
+        foreach ($reflection->getProperties() as $property) {
             $childrenRules = [];
             foreach ($property->getAttributes(Rule::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
                 $childrenRules[] = $attribute->newInstance();

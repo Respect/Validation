@@ -14,7 +14,7 @@ use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Standard;
 
-#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 final class When extends Standard
 {
     private readonly Rule $else;

@@ -15,7 +15,7 @@ use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Nameable;
 use Respect\Validation\Rules\Core\Wrapper;
 
-#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 final class Named extends Wrapper implements Nameable
 {
     public function __construct(

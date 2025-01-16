@@ -20,7 +20,7 @@ use function array_map;
 use function array_reduce;
 use function count;
 
-#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must pass the rules',
     '{{name}} must pass the rules',

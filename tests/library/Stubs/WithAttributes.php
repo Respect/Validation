@@ -9,24 +9,23 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Stubs;
 
-use Respect\Validation\Rules\Date;
-use Respect\Validation\Rules\DateTimeDiff;
-use Respect\Validation\Rules\Email;
-use Respect\Validation\Rules\LessThanOrEqual;
-use Respect\Validation\Rules\NotEmpty;
-use Respect\Validation\Rules\Phone;
+use Respect\Validation\Rules as Rule;
 
+#[Rule\AnyOf(
+    new Rule\Property('email', new Rule\NotUndef()),
+    new Rule\Property('phone', new Rule\NotUndef()),
+)]
 final class WithAttributes
 {
     public function __construct(
-        #[NotEmpty]
+        #[Rule\NotEmpty]
         public string $name,
-        #[Email]
-        public string $email,
-        #[Date('Y-m-d')]
-        #[DateTimeDiff('years', new LessThanOrEqual(25))]
+        #[Rule\Date('Y-m-d')]
+        #[Rule\DateTimeDiff('years', new Rule\LessThanOrEqual(25))]
         public string $birthdate,
-        #[Phone]
+        #[Rule\Email]
+        public ?string $email = null,
+        #[Rule\Phone]
         public ?string $phone = null,
         public ?string $address = null,
     ) {

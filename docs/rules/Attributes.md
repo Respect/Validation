@@ -7,20 +7,24 @@ Validates the PHP attributes defined in the properties of the input.
 Example of object:
 
 ```php
-use Respect\Validation\Rules;
+use Respect\Validation\Rules as Rule;
 
+#[Rule\AnyOf(
+    new Rule\Property('email', new Rule\NotUndef()),
+    new Rule\Property('phone', new Rule\NotUndef()),
+)]
 final class Person
 {
     public function __construct(
-        #[Rules\NotEmpty]
-        public readonly string $name,
-        #[Rules\Email]
-        public readonly string $email,
-        #[Rules\Date('Y-m-d')]
-        #[Rules\DateTimeDiff('years', new Rules\LessThanOrEqual(25))]
-        public readonly string $birthdate,
-        #[Rules\Phone]
-        public readonly ?string $phone
+        #[Rule\NotEmpty]
+        public string $name,
+        #[Rule\Date('Y-m-d')]
+        #[Rule\DateTimeDiff('years', new Rule\LessThanOrEqual(25))]
+        public string $birthdate,
+        #[Rule\Email]
+        public ?string $email = null,
+        #[Rule\Phone]
+        public ?string $phone = null,
     ) {
     }
 }
@@ -29,33 +33,39 @@ final class Person
 Here is how you can validate the attributes of the object:
 
 ```php
-v::attributes()->assert(new Person('John Doe', 'john.doe@gmail.com', '2020-06-23'));
+v::attributes()->assert(new Person('John Doe', '2020-06-23', 'john.doe@gmail.com'));
 // No exception
 
-v::attributes()->assert(new Person('John Doe', 'john.doe@gmail.com', '2020-06-23', '+31 20 624 1111'));
+v::attributes()->assert(new Person('John Doe', '2020-06-23', 'john.doe@gmail.com', '+12024561111'));
 // No exception
 
-v::attributes()->assert(new Person('', 'john.doe@gmail.com', '2020-06-23', '+1234567890'));
-// Message: name must not be empty
+v::attributes()->assert(new Person('', '2020-06-23', 'john.doe@gmail.com', '+12024561111'));
+// Message: `.name` must not be empty
 
-v::attributes()->assert(new Person('John Doe', 'not an email', '2020-06-23', '+1234567890'));
-// Message: email must be a valid email address
+v::attributes()->assert(new Person('John Doe', 'not a date', 'john.doe@gmail.com', '+12024561111'));
+// Message: `.birthdate` must be a valid date in the format "2005-12-30"
 
-v::attributes()->assert(new Person('John Doe', 'john.doe@gmail.com', 'not a date', '+1234567890'));
-// Message: birthdate must be a valid date in the format "2005-12-30"
+v::attributes()->assert(new Person('John Doe', '2020-06-23', 'not an email', '+12024561111'));
+// Message: `.email` must be a valid email address or must be null
 
-v::attributes()->assert(new Person('John Doe', 'john.doe@gmail.com', '2020-06-23', 'not a phone number'));
-// Message: phone must be a valid telephone number or must be null
+v::attributes()->assert(new Person('John Doe', '2020-06-23', 'john.doe@gmail.com', 'not a phone number'));
+// Message: `.phone` must be a valid telephone number or must be null
 
-v::attributes()->assert(new Person('', 'not an email', 'not a date', 'not a phone number'));
+v::attributes()->assert(new Person('John Doe', '2020-06-23'));
 // Full message:
-// - `Person { +$name="" +$email="not an email" +$birthdate="not a date" +$phone="not a phone number" }` must pass all the rules
-//   - name must not be empty
-//   - email must be a valid email address
-//   - birthdate must pass all the rules
-//     - birthdate must be a valid date in the format "2005-12-30"
-//     - For comparison with now, birthdate must be a valid datetime
-//   - phone must be a valid telephone number or must be null
+// - `Person { +$name="John Doe" +$birthdate="2020-06-23" +$email=null +$phone=null +$address=null }` must pass at least one of the rules
+//  - `.email` must be defined
+//  - `.phone` must be defined
+
+v::attributes()->assert(new Person('', 'not a date', 'not an email', 'not a phone number'));
+// Full message:
+// - `Person { +$name="" +$birthdate="not a date" +$email="not an email" +$phone="not a phone number" +$address=null }` must pass the rules
+//   - `.name` must not be empty
+//   - `.birthdate` must pass all the rules
+//     - `.birthdate` must be a valid date in the format "2005-12-30"
+//     - For comparison with now, `.birthdate` must be a valid datetime
+//   - `.email` must be a valid email address or must be null
+//   - `.phone` must be a valid telephone number or must be null
 ```
 
 ## Caveats
