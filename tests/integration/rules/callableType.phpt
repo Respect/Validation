@@ -21,7 +21,7 @@ try {
 }
 ?>
 --EXPECT--
-`{ }` must be callable
-"trim" must not be callable
-- `TRUE` must be callable
-- `[object] (Closure: { })` must not be callable
+`[]` must be callable
+`trim(string $string, string $characters = " \n\r\t\u000b\u0000"): string` must not be callable
+- `true` must be callable
+- `function (): void` must not be callable

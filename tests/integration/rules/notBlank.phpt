@@ -22,4 +22,4 @@ Field must not be blank
 1 must be blank
 - The value must not be blank
 - Field must not be blank
-- `{ 1 }` must be blank
+- `[1]` must be blank

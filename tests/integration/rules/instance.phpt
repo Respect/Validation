@@ -15,7 +15,7 @@ exceptionFullMessage(static fn() => v::instance(ArrayIterator::class)->assert(ne
 exceptionFullMessage(static fn() => v::not(v::instance(stdClass::class))->assert(new stdClass()));
 ?>
 --EXPECT--
-"" must be an instance of "DateTime"
-`[traversable] (ArrayObject: { })` must not be an instance of "Traversable"
-- `[object] (stdClass: { })` must be an instance of "ArrayIterator"
-- `[object] (stdClass: { })` must not be an instance of "stdClass"
+"" must be an instance of `DateTime`
+`ArrayObject { getArrayCopy() => [] }` must not be an instance of `Traversable`
+- `stdClass {}` must be an instance of `ArrayIterator`
+- `stdClass {}` must not be an instance of `stdClass`

@@ -148,7 +148,7 @@ final class KeySetTest extends TestCase
         $keySet = new KeySet($key1, $key2);
 
         $this->expectException(KeySetException::class);
-        $this->expectExceptionMessage('Must have keys `{ "foo", "bar" }`');
+        $this->expectExceptionMessage('Must have keys `["foo", "bar"]`');
 
         $keySet->check($input);
     }
@@ -166,7 +166,7 @@ final class KeySetTest extends TestCase
         $keySet = new KeySet($key1, $key2);
 
         $this->expectException(KeySetException::class);
-        $this->expectExceptionMessage('Must have keys `{ "foo", "bar" }`');
+        $this->expectExceptionMessage('Must have keys `["foo", "bar"]`');
 
         $keySet->assert($input);
     }
@@ -183,7 +183,7 @@ final class KeySetTest extends TestCase
         $keySet = new KeySet($key1);
 
         $this->expectException(KeySetException::class);
-        $this->expectExceptionMessage('Must not have keys `{ "bar" }`');
+        $this->expectExceptionMessage('Must not have keys `["bar"]`');
 
         $keySet->assert($input);
     }
@@ -213,7 +213,7 @@ final class KeySetTest extends TestCase
         $keySet = new KeySet(new Key('name'));
 
         $this->expectException(KeySetException::class);
-        $this->expectExceptionMessage('Must have keys `{ "name" }`');
+        $this->expectExceptionMessage('Must have keys `["name"]`');
 
         $keySet->assert($input);
     }

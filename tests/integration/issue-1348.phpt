@@ -34,8 +34,8 @@ Array
 (
     [each] => Array
         (
-            [validator.0] => All of the required rules must pass for `{ "manufacturer": "Ford", "model": "not real" }`
-            [validator.1] => All of the required rules must pass for `{ "manufacturer": "Honda", "model": "not valid" }`
+            [validator.0] => All of the required rules must pass for `["manufacturer": "Ford", "model": "not real"]`
+            [validator.1] => All of the required rules must pass for `["manufacturer": "Honda", "model": "not valid"]`
         )
 
 )

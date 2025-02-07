@@ -16,6 +16,6 @@ exceptionFullMessage(static fn() => v::not(v::endsWith('foo'))->assert(['bar', '
 ?>
 --EXPECT--
 "bar" must end with "foo"
-`{ "bar", "foo" }` must not end with "foo"
+`["bar", "foo"]` must not end with "foo"
 - "" must end with "foo"
-- `{ "bar", "foo" }` must not end with "foo"
+- `["bar", "foo"]` must not end with "foo"

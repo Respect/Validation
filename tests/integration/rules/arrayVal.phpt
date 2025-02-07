@@ -17,6 +17,6 @@ exceptionFullMessage(static fn() => v::not(v::arrayVal())->assert(new ArrayObjec
 ?>
 --EXPECT--
 "Bla %123" must be an array value
-`{ 42 }` must not be an array value
-- `[object] (stdClass: { })` must be an array value
-- `[traversable] (ArrayObject: { 2, 3 })` must not be an array value
+`[42]` must not be an array value
+- `stdClass {}` must be an array value
+- `ArrayObject { getArrayCopy() => [2, 3] }` must not be an array value

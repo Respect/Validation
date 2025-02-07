@@ -15,7 +15,7 @@ exceptionFullMessage(static fn() => v::scalarVal()->assert(new stdClass()));
 exceptionFullMessage(static fn() => v::not(v::scalarVal())->assert(42));
 ?>
 --EXPECT--
-`{ }` must be a scalar value
-`TRUE` must not be a scalar value
-- `[object] (stdClass: { })` must be a scalar value
+`[]` must be a scalar value
+`true` must not be a scalar value
+- `stdClass {}` must be a scalar value
 - 42 must not be a scalar value

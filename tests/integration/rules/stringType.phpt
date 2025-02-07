@@ -17,5 +17,5 @@ exceptionFullMessage(static fn() => v::not(v::stringType())->assert('bar'));
 --EXPECT--
 42 must be of type string
 "foo" must not be of type string
-- `TRUE` must be of type string
+- `true` must be of type string
 - "bar" must not be of type string

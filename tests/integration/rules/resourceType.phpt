@@ -16,6 +16,6 @@ exceptionFullMessage(static fn() => v::not(v::resourceType())->assert(tmpfile())
 ?>
 --EXPECT--
 "test" must be a resource
-`[resource] (stream)` must not be a resource
-- `{ }` must be a resource
-- `[resource] (stream)` must not be a resource
+`resource <stream>` must not be a resource
+- `[]` must be a resource
+- `resource <stream>` must not be a resource

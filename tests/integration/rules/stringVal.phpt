@@ -15,7 +15,7 @@ exceptionFullMessage(static fn() => v::stringVal()->assert(new stdClass()));
 exceptionFullMessage(static fn() => v::not(v::stringVal())->assert(42));
 ?>
 --EXPECT--
-`{ }` must be a string
-`TRUE` must not be string
-- `[object] (stdClass: { })` must be a string
+`[]` must be a string
+`true` must not be string
+- `stdClass {}` must be a string
 - 42 must not be string

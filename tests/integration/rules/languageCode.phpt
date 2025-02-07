@@ -15,7 +15,7 @@ exceptionFullMessage(static fn() => v::languageCode()->assert('por'));
 exceptionFullMessage(static fn() => v::not(v::languageCode())->assert('en'));
 ?>
 --EXPECT--
-`NULL` must be a valid ISO 639 "alpha-2" language code
+`null` must be a valid ISO 639 "alpha-2" language code
 "pt" must not be a valid ISO 639 "alpha-2" language code
 - "por" must be a valid ISO 639 "alpha-2" language code
 - "en" must not be a valid ISO 639 "alpha-2" language code

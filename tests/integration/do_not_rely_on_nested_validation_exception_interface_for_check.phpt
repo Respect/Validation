@@ -23,4 +23,4 @@ try {
 }
 ?>
 --EXPECT--
-"really messed up screen#name" must contain only letters (a-z), digits (0-9) and "_"
+"really messed up screen#name" must contain only letters (a-z), digits (0-9) and `_(string $message): string`

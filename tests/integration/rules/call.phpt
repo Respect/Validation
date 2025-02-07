@@ -18,8 +18,8 @@ exceptionFullMessage(static fn() => v::call('array_walk', v::alwaysValid())->ass
 ?>
 --EXPECT--
 "two words" must not contain whitespace
-" something " must not be valid when executed with "trim"
-`{ }` must be valid when executed with "trim"
+" something " must not be valid when executed with `trim(string $string, string $characters = " \n\r\t\u000b\u0000"): string`
+`[]` must be valid when executed with `trim(string $string, string $characters = " \n\r\t\u000b\u0000"): string`
 - "1234" must be of type integer
-- 1.2 must not be valid when executed with "is_float"
-- `INF` must be valid when executed with "array_walk"
+- 1.2 must not be valid when executed with `is_float(?mixed $value): bool`
+- `INF` must be valid when executed with `array_walk(object|array &$array, callable $callback, ?mixed $arg = null): true`
