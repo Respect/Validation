@@ -26,6 +26,12 @@ final class PathStringifier implements Stringifier
             return null;
         }
 
-        return $this->quoter->quote('.' . $raw->getValue(), $depth);
+        $path = $raw;
+        $string = $path->value;
+        while ($path = $path->child) {
+            $string .= '.' . $path->value;
+        }
+
+        return $this->quoter->quote('.' . $string, $depth);
     }
 }

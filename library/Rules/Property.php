@@ -34,7 +34,7 @@ final class Property extends Wrapper
 
         return $this->rule
             ->evaluate($this->extractPropertyValue($input, $this->propertyName))
-            ->withPath($this->propertyName);
+            ->withParentPath($this->propertyName);
     }
 
     private function extractPropertyValue(object $input, string $property): mixed

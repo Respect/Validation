@@ -11,8 +11,8 @@ namespace Respect\Validation;
 
 use Countable;
 use Iterator;
-
 use RecursiveIterator;
+
 use function array_filter;
 use function array_key_exists;
 use function array_map;
@@ -26,7 +26,7 @@ use function reset;
 /**
  * @implements Iterator<int, Result>
  */
-final class FailedResultIterator implements Iterator, Countable, \RecursiveIterator
+final class FailedResultIterator implements Iterator, Countable, RecursiveIterator
 {
     private array $children;
 
@@ -43,7 +43,7 @@ final class FailedResultIterator implements Iterator, Countable, \RecursiveItera
         $duplicateCounters = [];
         foreach ($this->result->children as $child) {
             if ($child->path !== null) {
-                $deduplicatedResults[$child->path] = $child->isValid ? null : $child;
+                $deduplicatedResults[$child->path->value] = $child->isValid ? null : $child;
                 continue;
             }
 
@@ -62,7 +62,7 @@ final class FailedResultIterator implements Iterator, Countable, \RecursiveItera
 
         return array_map(
             function (Result $child): Result {
-                if ($this->result->path !== null && $child->path !== null && $child->path !== $this->result->path) {
+                if ($this->result->path !== null && $child->path !== null && $child->path->isEqual($this->result->path)) {
                     return $child->withPath($this->result->path);
                 }
 
@@ -116,7 +116,7 @@ final class FailedResultIterator implements Iterator, Countable, \RecursiveItera
         return $this->result->children !== [];
     }
 
-    public function getChildren(): ?RecursiveIterator
+    public function getChildren(): ?self
     {
         if (!$this->hasChildren()) {
             return null;

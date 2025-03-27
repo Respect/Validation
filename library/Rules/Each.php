@@ -28,7 +28,7 @@ final class Each extends FilteredNonEmptyArray
     {
         $children = [];
         foreach ($input as $key => $value) {
-            $children[] = $this->rule->evaluate($value)->withPath($key);
+            $children[] = $this->rule->evaluate($value)->withParentPath($key);
         }
         $isValid = array_reduce($children, static fn ($carry, $childResult) => $carry && $childResult->isValid, true);
 
