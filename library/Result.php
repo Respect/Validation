@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Rules\Core\Nameable;
 
 use function array_filter;
@@ -40,7 +41,7 @@ final class Result
         public readonly ?string $name = null,
         ?string $id = null,
         public readonly ?Result $adjacent = null,
-        public readonly string|int|null $path = null,
+        public readonly ?Path $path = null,
         Result ...$children,
     ) {
         $this->id = $id ?? lcfirst(substr((string) strrchr($rule::class, '\\'), 1));
@@ -111,39 +112,40 @@ final class Result
         return $this->clone(id: lcfirst(substr((string) strrchr($rule::class, '\\'), 1)));
     }
 
-    public function withPath(string|int $path): self
+    public function withPath(Path $path): self
     {
-        return $this->clone(
-            adjacent: $this->adjacent?->withPath($path),
-            path: $this->path === null ? $path : $path . '.' . $this->path,
-        );
-    }
-
-    public function withDeepestPath(): self
-    {
-        $path = $this->getDeepestPath();
-        if ($path === null || $path === (string) $this->path) {
-            return $this;
-        }
-
         return $this->clone(
             adjacent: $this->adjacent?->withPath($path),
             path: $path,
         );
     }
 
-    public function getDeepestPath(): ?string
+    public function withChildPath(string|int $path): self
     {
-        if ($this->path === null) {
-            return null;
+        return $this->clone(
+            adjacent: $this->adjacent?->withChildPath($path),
+            path: new Path($path, $this->path),
+        );
+    }
+
+    public function withParentPath(string|int $path): self
+    {
+        return $this->clone(
+            adjacent: $this->adjacent?->withParentPath($path),
+            path: $this->path?->withParent($path) ?? new Path($path),
+        );
+    }
+
+    public function withDeepestPath(): self
+    {
+        if ($this->path === null || $this->path->child === null || $this->path->getDeepest() === $this->path) {
+            return $this;
         }
 
-        $paths = explode('.', (string) $this->path);
-        if (count($paths) === 1) {
-            return (string) $this->path;
-        }
-
-        return end($paths);
+        return $this->clone(
+            adjacent: $this->adjacent?->withDeepestPath(),
+            path: $this->path?->getDeepest(),
+        );
     }
 
     public function withPrefix(string $prefix): self
@@ -250,7 +252,7 @@ final class Result
         ?string $name = null,
         ?string $id = null,
         ?Result $adjacent = null,
-        string|int|null $path = null,
+        ?Path $path = null,
         ?array $children = null
     ): self {
         return new self(

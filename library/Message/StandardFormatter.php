@@ -10,13 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Message;
 
 use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\FailedResultIterator;
 use Respect\Validation\Result;
 
 use function array_filter;
-use function array_key_exists;
-use function array_map;
 use function array_reduce;
-use function array_values;
 use function count;
 use function current;
 use function is_array;
@@ -42,8 +40,8 @@ final class StandardFormatter implements Formatter
     {
         $selectedTemplates = $this->selectTemplates($result, $templates);
         if (!$this->isFinalTemplate($result, $selectedTemplates)) {
-            foreach ($this->extractDeduplicatedChildren($result) as $child) {
-                return $this->main($this->resultWithPath($result, $child), $selectedTemplates, $translator);
+            foreach (new FailedResultIterator($result) as $child) {
+                return $this->main($child, $selectedTemplates, $translator);
             }
         }
 
@@ -78,17 +76,14 @@ final class StandardFormatter implements Formatter
         }
 
         if (!$isFinalTemplate) {
-            $results = array_map(
-                fn(Result $child) => $this->resultWithPath($result, $child),
-                $this->extractDeduplicatedChildren($result)
-            );
+            $results = new FailedResultIterator($result);
             foreach ($results as $child) {
                 $rendered .= $this->full(
                     $child,
                     $selectedTemplates,
                     $translator,
                     $depth,
-                    ...array_filter($results, static fn (Result $sibling) => $sibling !== $child)
+                    ...array_filter($results->getArrayCopy(), static fn (Result $sibling) => $sibling !== $child)
                 );
                 $rendered .= PHP_EOL;
             }
@@ -105,10 +100,10 @@ final class StandardFormatter implements Formatter
     public function array(Result $result, array $templates, Translator $translator): array
     {
         $selectedTemplates = $this->selectTemplates($result, $templates);
-        $deduplicatedChildren = $this->extractDeduplicatedChildren($result);
+        $deduplicatedChildren = new FailedResultIterator($result);
         if (count($deduplicatedChildren) === 0 || $this->isFinalTemplate($result, $selectedTemplates)) {
             return [
-                $result->getDeepestPath() ?? $result->id => $this->renderer->render(
+                $result->path?->getDeepest()->value ?? $result->id => $this->renderer->render(
                     $this->getTemplated($result->withDeepestPath(), $selectedTemplates),
                     $translator
                 ),
@@ -117,7 +112,7 @@ final class StandardFormatter implements Formatter
 
         $messages = [];
         foreach ($deduplicatedChildren as $child) {
-            $key = $child->getDeepestPath() ?? $child->id;
+            $key = $child?->path?->getDeepest()->value ?? $child->id;
             $messages[$key] = $this->array(
                 $this->resultWithPath($result, $child),
                 $this->selectTemplates($child, $selectedTemplates),
@@ -144,7 +139,7 @@ final class StandardFormatter implements Formatter
         return $messages;
     }
 
-    public function resultWithPath(Result $parent, Result $child): Result
+    private function resultWithPath(Result $parent, Result $child): Result
     {
         if ($parent->path !== null && $child->path !== null && $child->path !== $parent->path) {
             return $child->withPath($parent->path);
@@ -199,7 +194,7 @@ final class StandardFormatter implements Formatter
             return $result;
         }
 
-        foreach ([$result->path, $result->name, $result->id, '__root__'] as $key) {
+        foreach ([$result->path?->value, $result->name, $result->id, '__root__'] as $key) {
             if (!isset($templates[$key])) {
                 continue;
             }
@@ -221,7 +216,7 @@ final class StandardFormatter implements Formatter
      */
     private function isFinalTemplate(Result $result, array $templates): bool
     {
-        $keys = [$result->path, $result->name, $result->id];
+        $keys = [$result->path?->value, $result->name, $result->id];
         foreach ($keys as $key) {
             if (isset($templates[$key]) && is_string($templates[$key])) {
                 return true;
@@ -248,40 +243,12 @@ final class StandardFormatter implements Formatter
      */
     private function selectTemplates(Result $result, array $templates): array
     {
-        foreach ([$result->path, $result->name, $result->id] as $key) {
+        foreach ([$result->path?->value, $result->name, $result->id] as $key) {
             if (isset($templates[$key]) && is_array($templates[$key])) {
                 return $templates[$key];
             }
         }
 
         return $templates;
-    }
-
-    /** @return array<Result> */
-    private function extractDeduplicatedChildren(Result $result): array
-    {
-        /** @var array<string, Result> $deduplicatedResults */
-        $deduplicatedResults = [];
-        $duplicateCounters = [];
-        foreach ($result->children as $child) {
-            $id = $child->getDeepestPath() ?? $child->id;
-            if (isset($duplicateCounters[$id])) {
-                $id .= '.' . ++$duplicateCounters[$id];
-            } elseif (array_key_exists($id, $deduplicatedResults)) {
-                $deduplicatedResults[$id . '.1'] = $deduplicatedResults[$id]?->withId($id . '.1');
-                unset($deduplicatedResults[$id]);
-                $duplicateCounters[$id] = 2;
-                $id .= '.2';
-            }
-
-            if ($child->path === null) {
-                $deduplicatedResults[$id] = $child->isValid ? null : $child->withId($id);
-                continue;
-            }
-
-            $deduplicatedResults[$id] = $child->isValid ? null : $child;
-        }
-
-        return array_values(array_filter($deduplicatedResults));
     }
 }

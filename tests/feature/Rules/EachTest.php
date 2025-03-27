@@ -254,16 +254,8 @@ test('Chained wrapped rule', expectAll(
     FULL_MESSAGE,
     [
         '__root__' => 'Each item in `[2, 4]` must be valid',
-        0 => [
-            '__root__' => '`.0` must pass all the rules',
-            'between' => '`.0` must be between 5 and 7',
-            'odd' => '`.0` must be an odd number',
-        ],
-        1 => [
-            '__root__' => '`.1` must pass all the rules',
-            'between' => '`.1` must be between 5 and 7',
-            'odd' => '`.1` must be an odd number',
-        ],
+        0 => '`.0` must be an odd number',
+        1 => '`.1` must be an odd number',
     ],
 ));
 

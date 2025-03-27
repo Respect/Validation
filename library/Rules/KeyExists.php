@@ -11,6 +11,7 @@ namespace Respect\Validation\Rules;
 
 use ArrayAccess;
 use Attribute;
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\KeyRelated;
@@ -38,7 +39,7 @@ final class KeyExists extends Standard implements KeyRelated
 
     public function evaluate(mixed $input): Result
     {
-        return new Result($this->hasKey($input), $input, $this, path: $this->key);
+        return new Result($this->hasKey($input), $input, $this, path: new Path($this->key));
     }
 
     private function hasKey(mixed $input): bool
