@@ -43,19 +43,19 @@ final class Domain extends Standard
     public function evaluate(mixed $input): Result
     {
         $genericResult = $this->genericRule->evaluate($input);
-        if (!$genericResult->isValid) {
+        if (!$genericResult->hasPassed) {
             return Result::failed($input, $this);
         }
 
         $parts = explode('.', (string) $input);
         if (count($parts) >= 2) {
             $childResult = $this->tldRule->evaluate(array_pop($parts));
-            if (!$childResult->isValid) {
+            if (!$childResult->hasPassed) {
                 return Result::failed($input, $this);
             }
         }
 
-        return new Result($this->partsRule->evaluate($parts)->isValid, $input, $this);
+        return new Result($this->partsRule->evaluate($parts)->hasPassed, $input, $this);
     }
 
     private function createGenericRule(): Circuit

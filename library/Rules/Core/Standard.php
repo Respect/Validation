@@ -19,7 +19,7 @@ abstract class Standard implements Rule
      */
     public function validate(mixed $input): bool
     {
-        return $this->evaluate($input)->isValid;
+        return $this->evaluate($input)->hasPassed;
     }
 
     /**

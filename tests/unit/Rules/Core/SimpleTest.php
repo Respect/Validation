@@ -25,7 +25,7 @@ final class SimpleTest extends TestCase
     {
         $rule = new ConcreteSimple();
 
-        self::assertTrue($rule->evaluate('any')->isValid);
+        self::assertTrue($rule->evaluate('any')->hasPassed);
     }
 
     #[Test]

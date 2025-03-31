@@ -30,9 +30,13 @@ final class Each extends FilteredNonEmptyArray
         foreach ($input as $key => $value) {
             $children[] = $this->rule->evaluate($value)->withPath($key);
         }
-        $isValid = array_reduce($children, static fn ($carry, $childResult) => $carry && $childResult->isValid, true);
+        $hasPassed = array_reduce(
+            $children,
+            static fn ($carry, $childResult) => $carry && $childResult->hasPassed,
+            true,
+        );
 
-        return (new Result($isValid, $input, $this))
+        return (new Result($hasPassed, $input, $this))
             ->withChildren(...$children)
             ->withNameFrom($this->rule);
     }

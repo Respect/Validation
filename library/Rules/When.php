@@ -34,7 +34,7 @@ final class When extends Standard
     public function evaluate(mixed $input): Result
     {
         $whenResult = $this->when->evaluate($input);
-        if ($whenResult->isValid) {
+        if ($whenResult->hasPassed) {
             return $this->then->evaluate($input);
         }
 

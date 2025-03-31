@@ -33,7 +33,7 @@ final class KeyOptional extends Wrapper implements KeyRelated
     public function evaluate(mixed $input): Result
     {
         $keyExistsResult = (new KeyExists($this->key))->evaluate($input);
-        if (!$keyExistsResult->isValid) {
+        if (!$keyExistsResult->hasPassed) {
             return $keyExistsResult->withNameFrom($this->rule)->withToggledModeAndValidation();
         }
 

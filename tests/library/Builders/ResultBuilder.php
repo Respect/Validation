@@ -15,7 +15,7 @@ use Respect\Validation\Test\Rules\Stub;
 
 final class ResultBuilder
 {
-    private bool $isValid = false;
+    private bool $hasPassed = false;
 
     private mixed $input = 'input';
 
@@ -45,7 +45,7 @@ final class ResultBuilder
     public function build(): Result
     {
         return new Result(
-            $this->isValid,
+            $this->hasPassed,
             $this->input,
             $this->rule,
             $this->parameters,
@@ -59,9 +59,9 @@ final class ResultBuilder
         );
     }
 
-    public function isValid(bool $isValid): self
+    public function hasPassed(bool $hasPassed): self
     {
-        $this->isValid = $isValid;
+        $this->hasPassed = $hasPassed;
 
         return $this;
     }

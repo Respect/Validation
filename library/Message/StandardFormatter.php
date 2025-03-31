@@ -159,7 +159,7 @@ final class StandardFormatter implements Formatter
 
     private function isAlwaysVisible(Result $result, Result ...$siblings): bool
     {
-        if ($result->isValid) {
+        if ($result->hasPassed) {
             return false;
         }
 
@@ -275,11 +275,11 @@ final class StandardFormatter implements Formatter
             }
 
             if ($child->path === null) {
-                $deduplicatedResults[$id] = $child->isValid ? null : $child->withId($id);
+                $deduplicatedResults[$id] = $child->hasPassed ? null : $child->withId($id);
                 continue;
             }
 
-            $deduplicatedResults[$id] = $child->isValid ? null : $child;
+            $deduplicatedResults[$id] = $child->hasPassed ? null : $child;
         }
 
         return array_values(array_filter($deduplicatedResults));

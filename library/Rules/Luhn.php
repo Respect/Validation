@@ -29,7 +29,7 @@ final class Luhn extends Simple
 {
     public function isValid(mixed $input): bool
     {
-        if (!(new Digit())->evaluate($input)->isValid) {
+        if (!(new Digit())->evaluate($input)->hasPassed) {
             return false;
         }
 

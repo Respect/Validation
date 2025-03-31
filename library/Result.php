@@ -31,7 +31,7 @@ final class Result
 
     /** @param array<string, mixed> $parameters */
     public function __construct(
-        public readonly bool $isValid,
+        public readonly bool $hasPassed,
         public readonly mixed $input,
         public readonly Rule $rule,
         public readonly array $parameters = [],
@@ -77,7 +77,7 @@ final class Result
         string $template = Rule::TEMPLATE_STANDARD
     ): Result {
         if ($adjacent->allowsAdjacent()) {
-            return (new Result($adjacent->isValid, $input, $rule, $parameters, $template, id: $adjacent->id))
+            return (new Result($adjacent->hasPassed, $input, $rule, $parameters, $template, id: $adjacent->id))
                 ->withPrefix($prefix)
                 ->withAdjacent($adjacent->withInput($input));
         }
@@ -202,7 +202,7 @@ final class Result
     public function withToggledValidation(): self
     {
         return $this->clone(
-            isValid: !$this->isValid,
+            hasPassed: !$this->hasPassed,
             adjacent: $this->adjacent?->withToggledValidation(),
             children: array_map(static fn (Result $child) => $child->withToggledValidation(), $this->children),
         );
@@ -211,7 +211,7 @@ final class Result
     public function withToggledModeAndValidation(): self
     {
         return $this->clone(
-            isValid: !$this->isValid,
+            hasPassed: !$this->hasPassed,
             mode: !$this->hasInvertedMode,
             adjacent: $this->adjacent?->withToggledModeAndValidation(),
             children: array_map(static fn (Result $child) => $child->withToggledModeAndValidation(), $this->children),
@@ -242,7 +242,7 @@ final class Result
      * @param array<Result>|null $children
      */
     private function clone(
-        ?bool $isValid = null,
+        ?bool $hasPassed = null,
         mixed $input = null,
         ?array $parameters = null,
         ?string $template = null,
@@ -254,7 +254,7 @@ final class Result
         ?array $children = null
     ): self {
         return new self(
-            $isValid ?? $this->isValid,
+            $hasPassed ?? $this->hasPassed,
             $input ?? $this->input,
             $this->rule,
             $parameters ?? $this->parameters,

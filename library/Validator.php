@@ -65,14 +65,14 @@ final class Validator implements Rule, Nameable
 
     public function isValid(mixed $input): bool
     {
-        return $this->evaluate($input)->isValid;
+        return $this->evaluate($input)->hasPassed;
     }
 
     /** @param array<string, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
     public function assert(mixed $input, array|string|Throwable|callable|null $template = null): void
     {
         $result = $this->evaluate($input);
-        if ($result->isValid) {
+        if ($result->hasPassed) {
             return;
         }
 
@@ -134,7 +134,7 @@ final class Validator implements Rule, Nameable
      */
     public function validate(mixed $input): bool
     {
-        return $this->evaluate($input)->isValid;
+        return $this->evaluate($input)->hasPassed;
     }
 
     /**

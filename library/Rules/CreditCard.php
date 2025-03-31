@@ -75,7 +75,7 @@ final class CreditCard extends Standard
         }
 
         $filteredInput = (string) preg_replace('/[ .-]/', '', (string) $input);
-        if (!(new Luhn())->evaluate($filteredInput)->isValid) {
+        if (!(new Luhn())->evaluate($filteredInput)->hasPassed) {
             return Result::failed($input, $this, $parameters, $template);
         }
 

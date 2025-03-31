@@ -76,7 +76,7 @@ final class KeySet extends Standard
     public function evaluate(mixed $input): Result
     {
         $arrayResult = (new ArrayType())->evaluate($input);
-        if (!$arrayResult->isValid) {
+        if (!$arrayResult->hasPassed) {
             return $arrayResult;
         }
 
@@ -86,7 +86,7 @@ final class KeySet extends Standard
         )));
         $keysResult = $keys->evaluate($input);
 
-        return (new Result($keysResult->isValid, $input, $this, [], $this->getTemplateFromKeys(array_keys($input))))
+        return (new Result($keysResult->hasPassed, $input, $this, [], $this->getTemplateFromKeys(array_keys($input))))
             ->withChildren(...($keysResult->children === [] ? [$keysResult] : $keysResult->children));
     }
 

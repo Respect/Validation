@@ -23,7 +23,7 @@ final class Attributes extends Standard
     public function evaluate(mixed $input): Result
     {
         $objectType = (new ObjectType())->evaluate($input);
-        if (!$objectType->isValid) {
+        if (!$objectType->hasPassed) {
             return $objectType->withId('attributes');
         }
 

@@ -27,7 +27,7 @@ final class EnvelopeTest extends TestCase
     {
         $rule = new ConcreteEnvelope(Stub::pass(1), []);
 
-        self::assertTrue($rule->evaluate('something')->isValid);
+        self::assertTrue($rule->evaluate('something')->hasPassed);
     }
 
     #[Test]
@@ -35,7 +35,7 @@ final class EnvelopeTest extends TestCase
     {
         $rule = new ConcreteEnvelope(Stub::fail(1), []);
 
-        self::assertFalse($rule->evaluate('something')->isValid);
+        self::assertFalse($rule->evaluate('something')->hasPassed);
     }
 
     #[Test]

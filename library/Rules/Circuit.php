@@ -20,7 +20,7 @@ final class Circuit extends Composite
     {
         foreach ($this->rules as $rule) {
             $result = $rule->evaluate($input);
-            if (!$result->isValid) {
+            if (!$result->hasPassed) {
                 return $result;
             }
         }

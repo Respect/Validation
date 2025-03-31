@@ -23,6 +23,6 @@ abstract class Envelope extends Standard
 
     public function evaluate(mixed $input): Result
     {
-        return new Result($this->rule->evaluate($input)->isValid, $input, $this, $this->parameters);
+        return new Result($this->rule->evaluate($input)->hasPassed, $input, $this, $this->parameters);
     }
 }

@@ -24,13 +24,13 @@ abstract class FilteredNonEmptyArray extends Wrapper
     public function evaluate(mixed $input): Result
     {
         $iterableResult = (new IterableType())->evaluate($input);
-        if (!$iterableResult->isValid) {
+        if (!$iterableResult->hasPassed) {
             return $iterableResult->withIdFrom($this)->withNameFrom($this->rule);
         }
 
         $array = $this->toArray($input);
         $notEmptyResult = (new NotEmpty())->evaluate($array);
-        if (!$notEmptyResult->isValid) {
+        if (!$notEmptyResult->hasPassed) {
             return $notEmptyResult->withIdFrom($this)->withNameFrom($this->rule);
         }
 

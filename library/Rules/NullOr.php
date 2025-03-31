@@ -30,7 +30,7 @@ final class NullOr extends Wrapper
             return $this->enrichResult($result);
         }
 
-        if (!$result->isValid) {
+        if (!$result->hasPassed) {
             return $this->enrichResult($result->withToggledValidation());
         }
 
@@ -42,7 +42,7 @@ final class NullOr extends Wrapper
         if ($result->allowsAdjacent()) {
             return $result
                 ->withPrefix('nullOr')
-                ->withAdjacent(new Result($result->isValid, $result->input, $this));
+                ->withAdjacent(new Result($result->hasPassed, $result->input, $this));
         }
 
         return $result->withChildren(...array_map(fn(Result $child) => $this->enrichResult($child), $result->children));

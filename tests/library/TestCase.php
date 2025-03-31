@@ -41,7 +41,7 @@ abstract class TestCase extends PHPUnitTestCase
         $result = $rule->evaluate($input);
 
         self::assertTrue(
-            $result->isValid,
+            $result->hasPassed,
             sprintf(
                 '%s should pass with input %s and parameters %s',
                 substr((string) strrchr($rule::class, '\\'), 1),
@@ -56,7 +56,7 @@ abstract class TestCase extends PHPUnitTestCase
         $result = $rule->evaluate($input);
 
         self::assertFalse(
-            $result->isValid,
+            $result->hasPassed,
             sprintf(
                 '%s should fail with input %s and parameters %s',
                 substr((string) strrchr($rule::class, '\\'), 1),

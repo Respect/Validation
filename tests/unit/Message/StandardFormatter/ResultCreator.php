@@ -65,7 +65,7 @@ trait ResultCreator
                 (new ResultBuilder())->id('child')->template('__1st_original__')->build(),
                 (new ResultBuilder())->id('child')->template('__2nd_original__')->build(),
                 (new ResultBuilder())->id('child')->template('__3rd_original__')->build(),
-                (new ResultBuilder())->id('child')->template('__4th_original__')->isValid(true)->build(),
+                (new ResultBuilder())->id('child')->template('__4th_original__')->hasPassed(true)->build(),
             )
             ->build();
     }
@@ -78,7 +78,7 @@ trait ResultCreator
                     ->template('__1st_original__')
                     ->children(
                         (new ResultBuilder())->id('1st_1st')->template('__1st_1st_original__')->build(),
-                        (new ResultBuilder())->id('1st_2nd')->template('__1st_2nd_original__')->isValid(true)->build()
+                        (new ResultBuilder())->id('1st_2nd')->template('__1st_2nd_original__')->hasPassed(true)->build()
                     )
                     ->build(),
                 (new ResultBuilder())

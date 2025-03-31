@@ -42,8 +42,8 @@ final class NoneOf extends Composite
             static fn (Rule $rule) => $rule->evaluate($input)->withToggledModeAndValidation(),
             $this->rules
         );
-        $valid = array_reduce($children, static fn (bool $carry, Result $result) => $carry && $result->isValid, true);
-        $failed = array_filter($children, static fn (Result $result): bool => !$result->isValid);
+        $valid = array_reduce($children, static fn (bool $carry, Result $result) => $carry && $result->hasPassed, true);
+        $failed = array_filter($children, static fn (Result $result): bool => !$result->hasPassed);
         $template = self::TEMPLATE_SOME;
         if (count($children) === count($failed)) {
             $template = self::TEMPLATE_ALL;

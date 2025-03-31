@@ -25,7 +25,7 @@ final class AlwaysValidTest extends TestCase
     {
         $rule = new AlwaysValid();
 
-        self::assertTrue($rule->evaluate($input)->isValid);
+        self::assertTrue($rule->evaluate($input)->hasPassed);
     }
 
     /**
