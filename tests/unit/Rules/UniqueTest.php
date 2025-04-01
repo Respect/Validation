@@ -30,13 +30,24 @@ final class UniqueTest extends RuleTestCase
         $rule = new Unique();
 
         return [
-            [$rule, []],
-            [$rule, [1, 2, 3]],
-            [$rule, [true, false]],
-            [$rule, ['alpha', 'beta', 'gamma', 'delta']],
-            [$rule, [0, 2.71, 3.14]],
-            [$rule, [[], ['str'], [1]]],
-            [$rule, [(object) ['key' => 'value'], (object) ['other_key' => 'value']]],
+            'empty' => [$rule, []],
+            'integers' => [$rule, [1, 2, 3]],
+            'booleans' => [$rule, [true, false]],
+            'strings' => [$rule, ['alpha', 'beta', 'gamma', 'delta']],
+            'floats' => [$rule, [2.71, 1.3, 3.14]],
+            'numeric strings' => [$rule, ['14.0', '14.1', '14.10']],
+            'integers + booleans' => [$rule, [1, true]],
+            'integers + floats' => [$rule, [2.0, 2, 3.14]],
+            'integers + floats + strings' => [$rule, [14.0, '14', '14.0']],
+            'arrays' => [$rule, [[], ['str'], [1]]],
+            'arrays (multidimensional)' => [
+                $rule, [
+                    ['key' => ['id' => 123, 'name' => 'Something']],
+                    ['key' => ['id' => 122, 'name' => 'Something else']],
+                ],
+            ],
+            'objects' => [$rule, [(object) ['key' => 'value'], (object) ['other_key' => 'value']]],
+            'objects (same properties)' => [$rule, [(object) ['key' => 'value'], (object) ['key' => 'value']]],
         ];
     }
 
@@ -46,17 +57,23 @@ final class UniqueTest extends RuleTestCase
     public static function providerForInvalidInput(): array
     {
         $rule = new Unique();
+        $object = (object) ['key' => 'value'];
 
         return [
-            [$rule, 'test'],
-            [$rule, [1, 2, 2, 3]],
-            [$rule, [1, 2, 3, 1]],
-            [$rule, [true, false, false]],
-            [$rule, ['alpha', 'beta', 'gamma', 'delta', 'beta']],
-            [$rule, [0, 3.14, 2.71, 3.14]],
-            [$rule, [[], [1], [1]]],
-            [$rule, [(object) ['key' => 'value'], (object) ['key' => 'value']]],
-            [$rule, [1, true, 'test']], // PHP's array_unique treats 1 and true as equal
+            'string' => [$rule, 'test'],
+            'integers (2nd & 3rd)' => [$rule, [1, 2, 2, 3]],
+            'integers (2nd & 4th)' => [$rule, [1, 2, 3, 1]],
+            'booleans' => [$rule, [true, false, false]],
+            'strings' => [$rule, ['alpha', 'beta', 'gamma', 'delta', 'beta']],
+            'integers + floats' => [$rule, [0, 3.14, 2.71, 3.14]],
+            'arrays' => [$rule, [[], [1], [1]]],
+            'objects (single instance)' => [$rule, [$object, $object]],
+            'arrays (multidimensional)' => [
+                $rule, [
+                    ['key' => ['id' => 123, 'name' => 'Something']],
+                    ['key' => ['id' => 123, 'name' => 'Something']],
+                ],
+            ],
         ];
     }
 }

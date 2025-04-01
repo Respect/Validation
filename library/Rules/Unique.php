@@ -9,10 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use function array_unique;
+use function array_is_list;
+use function in_array;
 use function is_array;
-
-use const SORT_REGULAR;
 
 /**
  * Validates whether the input array contains only unique values.
@@ -32,6 +31,34 @@ final class Unique extends AbstractRule
             return false;
         }
 
-        return $input == array_unique($input, SORT_REGULAR);
+        return $input == $this->unique($input);
+    }
+
+    /**
+     * @param array<mixed, mixed> $input
+     *
+     * @return array<mixed, mixed>
+     */
+    private function unique(array $input): array
+    {
+        if (!array_is_list($input)) {
+            return $input;
+        }
+
+        $unique = [];
+        foreach ($input as $value) {
+            $comparedValue = $value;
+            if (is_array($comparedValue)) {
+                $comparedValue = $this->unique($comparedValue);
+            }
+
+            if (in_array($comparedValue, $unique, true)) {
+                continue;
+            }
+
+            $unique[] = $comparedValue;
+        }
+
+        return $unique;
     }
 }
