@@ -5,9 +5,13 @@ return [
     'AC.UG',
     'CO.UG',
     'COM.UG',
+    'EDU.UG',
     'GO.UG',
+    'GOV.UG',
+    'MIL.UG',
     'NE.UG',
     'OR.UG',
     'ORG.UG',
     'SC.UG',
+    'US.UG',
 ];
