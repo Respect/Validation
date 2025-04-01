@@ -35,6 +35,7 @@ final class UniqueTest extends RuleTestCase
             [$rule, [true, false]],
             [$rule, ['alpha', 'beta', 'gamma', 'delta']],
             [$rule, [0, 2.71, 3.14]],
+            [$rule, ['14.0', '14.1', '14.10']],
             [$rule, [[], ['str'], [1]]],
             [$rule, [(object) ['key' => 'value'], (object) ['other_key' => 'value']]],
         ];

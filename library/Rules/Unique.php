@@ -12,8 +12,6 @@ namespace Respect\Validation\Rules;
 use function array_unique;
 use function is_array;
 
-use const SORT_REGULAR;
-
 /**
  * Validates whether the input array contains only unique values.
  *
@@ -32,6 +30,6 @@ final class Unique extends AbstractRule
             return false;
         }
 
-        return $input == array_unique($input, SORT_REGULAR);
+        return $input == array_unique($input);
     }
 }
