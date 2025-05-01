@@ -8,6 +8,7 @@ return [
     'COM.VE',
     'E12.VE',
     'EDU.VE',
+    'EMPRENDE.VE',
     'FIRM.VE',
     'GOB.VE',
     'GOV.VE',
