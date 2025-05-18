@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Transformers\Deprecated;
 
-use Respect\Validation\Message\Placeholder\Quoted;
+use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Rules\AlwaysInvalid;
 use Respect\Validation\Rules\Key;
 use Respect\Validation\Rules\KeyExists;
@@ -56,7 +56,7 @@ final class KeyValueRule implements Transformer
                         return new Templated(
                             new AlwaysInvalid(),
                             '{{baseKey}} must be valid to validate {{comparedKey}}',
-                            ['comparedKey' => Quoted::fromPath($comparedKey), 'baseKey' => Quoted::fromPath($baseKey)]
+                            ['comparedKey' => new Path($comparedKey), 'baseKey' => new Path($baseKey)],
                         );
                     }
                 }
