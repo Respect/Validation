@@ -14,6 +14,8 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
+use function str_repeat;
+
 #[Group('rule')]
 #[CoversClass(Cnh::class)]
 final class CnhTest extends RuleTestCase
@@ -132,6 +134,16 @@ final class CnhTest extends RuleTestCase
             [$rule, '0034172483001'],
             [$rule, '00006700431345'],
             [$rule, '0032926944005'],
+            [$rule, str_repeat('0', 11)],
+            [$rule, str_repeat('1', 11)],
+            [$rule, str_repeat('2', 11)],
+            [$rule, str_repeat('3', 11)],
+            [$rule, str_repeat('4', 11)],
+            [$rule, str_repeat('5', 11)],
+            [$rule, str_repeat('6', 11)],
+            [$rule, str_repeat('7', 11)],
+            [$rule, str_repeat('8', 11)],
+            [$rule, str_repeat('9', 11)],
         ];
     }
 }
