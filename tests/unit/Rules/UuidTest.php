@@ -72,6 +72,8 @@ final class UuidTest extends RuleTestCase
             return;
         }
 
+        $version = random_int(9, PHP_INT_MAX);
+
         self::expectException(ComponentException::class);
         self::expectExceptionMessage('Only versions 1 to 8 are supported: ' . $version . ' given');
         new Uuid($version, true);
