@@ -357,7 +357,7 @@ interface ChainedValidator extends Validatable
 
     public function url(): ChainedValidator;
 
-    public function uuid(?int $version = null): ChainedValidator;
+    public function uuid(?int $version = null, ?bool $useRamseyUuid = null): ChainedValidator;
 
     public function version(): ChainedValidator;
 
