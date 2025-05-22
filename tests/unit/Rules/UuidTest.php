@@ -157,7 +157,7 @@ final class UuidTest extends RuleTestCase
         $thisClass      = new ReflectionClass(self::class);
         $classConstants = $thisClass->getConstants();
 
-        $sutNative = new Uuid();
+        $sutNative = new Uuid(null, false);
         foreach ($baseTests as $name => $input) {
             $tests[$name] = [$sutNative, $input];
         }
@@ -169,7 +169,7 @@ final class UuidTest extends RuleTestCase
                 }
 
                 $tests['version ' . $version1 . ' with version ' . $version2] = [
-                    new Uuid($version1),
+                    new Uuid($version1, false),
                     $classConstants['UUID_VERSION_' . $version2],
                 ];
             }

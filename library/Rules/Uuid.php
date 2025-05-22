@@ -36,21 +36,18 @@ final class Uuid extends AbstractRule
     /**
      * The UUID version to validate for.
      *
-     * @var int|null
      */
     private ?int $version;
 
     /**
      * Whether to use Ramsey/Uuid to validate the UUID.
      *
-     * @var bool
      */
     private bool $useRamseyUuid = false;
 
     /**
      * Whether Ramsey/Uuid is loaded.
      *
-     * @var bool|null
      */
     private static ?bool $ramseyUuidIsLoaded = null;
 
