@@ -60,16 +60,22 @@ final class UuidTest extends RuleTestCase
     /**
      * @test
      */
-    public function itShouldThrowExceptionWhenVersionIsGreaterThanMax(): void
+    public function itShouldThrowExceptionWhenVersionIsGreaterThanFive(): void
     {
         $version = random_int(6, PHP_INT_MAX);
 
         self::expectException(ComponentException::class);
         self::expectExceptionMessage('Only versions 1, 3, 4, and 5 are supported: ' . $version . ' given');
         new Uuid($version, false);
+    }
 
+    /**
+     * @test
+     */
+    public function itShouldThrowExceptionWhenVersionIsGreaterThanMaxRamseyUuid(): void
+    {
         if (!self::ramseyUuidIsLoaded()) {
-            return;
+            self::markTestSkipped('ramsey/uuid is not installed');
         }
 
         $version = random_int(9, PHP_INT_MAX);
@@ -89,10 +95,18 @@ final class UuidTest extends RuleTestCase
         self::expectException(ComponentException::class);
         self::expectExceptionMessage('Only versions 1, 3, 4, and 5 are supported: ' . $version . ' given');
         new Uuid($version, false);
+    }
 
+    /**
+     * @test
+     */
+    public function itShouldThrowExceptionWhenVersionIsLessThanMinRamseyUuid(): void
+    {
         if (!self::ramseyUuidIsLoaded()) {
-            return;
+            self::markTestSkipped('ramsey/uuid is not installed');
         }
+
+        $version = random_int(PHP_INT_MIN, 0);
 
         self::expectException(ComponentException::class);
         self::expectExceptionMessage('Only versions 1 to 8 are supported: ' . $version . ' given');
