@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Ramsey\Uuid\Uuid as RamseyUuid;
+use Ramsey\Uuid\UuidInterface;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function class_exists;
@@ -80,20 +81,27 @@ final class Uuid extends AbstractRule
      */
     public function validate($input): bool
     {
-        if (!is_string($input)) {
+        if ($this->useRamseyUuid) {
+            if (!is_string($input) && !($input instanceof UuidInterface)) {
+                return false;
+            }
+
+            if (is_string($input) && RamseyUuid::isValid($input)) {
+                $input = RamseyUuid::fromString($input);
+            }
+
+            if ($input instanceof UuidInterface) {
+                if ($this->version !== null) {
+                    return $input->getVersion() === $this->version;
+                }
+
+                return $input->getVersion() !== null;
+            }
+
             return false;
         }
 
-        if ($this->useRamseyUuid) {
-            if (RamseyUuid::isValid($input)) {
-                $uuid = RamseyUuid::fromString($input);
-                if ($this->version !== null) {
-                    return $uuid->getVersion() === $this->version;
-                }
-
-                return $uuid->getVersion() !== null;
-            }
-
+        if (!is_string($input)) {
             return false;
         }
 

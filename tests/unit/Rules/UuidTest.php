@@ -147,6 +147,14 @@ final class UuidTest extends RuleTestCase
                     new Uuid($version, true),
                     $classConstants['UUID_VERSION_' . $version],
                 ];
+                $tests[' any version with version ' . $version . ' ramsey/uuid object']             = [
+                    $sutRamsey,
+                    RamseyUuid::fromString($classConstants['UUID_VERSION_' . $version]),
+                ];
+                $tests['version ' . $version . ' with version ' . $version . ' ramsey/uuid object'] = [
+                    new Uuid($version, true),
+                    RamseyUuid::fromString($classConstants['UUID_VERSION_' . $version]),
+                ];
             }
         }
 
@@ -203,9 +211,14 @@ final class UuidTest extends RuleTestCase
                         continue;
                     }
 
-                    $tests['version ' . $version1 . ' with version ' . $version2] = [
+                    $tests['version ' . $version1 . ' with version ' . $version2 . ' ramsey/uuid'] = [
                         new Uuid($version1, true),
                         $classConstants['UUID_VERSION_' . $version2],
+                    ];
+
+                    $tests['version ' . $version1 . ' with version ' . $version2 . ' ramsey/uuid object'] = [
+                        new Uuid($version1, true),
+                        RamseyUuid::fromString($classConstants['UUID_VERSION_' . $version2]),
                     ];
                 }
             }
