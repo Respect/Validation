@@ -355,7 +355,7 @@ interface StaticValidator
 
     public static function url(): ChainedValidator;
 
-    public static function uuid(?int $version = null): ChainedValidator;
+    public static function uuid(?int $version = null, ?bool $useRamseyUuid = null): ChainedValidator;
 
     public static function version(): ChainedValidator;
 
