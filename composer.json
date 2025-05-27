@@ -37,6 +37,7 @@
         "phpstan/phpstan-phpunit": "^2.0",
         "phpunit/phpunit": "^10.5",
         "psr/http-message": "^1.0 || ^2.0",
+        "ramsey/uuid": "^4",
         "respect/coding-standard": "^4.0",
         "sokil/php-isocodes": "^4.2.1",
         "sokil/php-isocodes-db-only": "^4.0",
@@ -49,6 +50,7 @@
         "ext-mbstring": "Multibyte String Functions",
         "egulias/email-validator": "Improves the Email rule if available",
         "giggsey/libphonenumber-for-php-lite": "Enables the phone rule if available",
+        "ramsey/uuid": "Enables the UUID rule if available",
         "sokil/php-isocodes": "Enable rules that validate ISO codes",
         "sokil/php-isocodes-db-only": "Enable rules that validate ISO codes"
     },

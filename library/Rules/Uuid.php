@@ -10,14 +10,18 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Attribute;
+use Ramsey\Uuid\Rfc4122\FieldsInterface;
+use Ramsey\Uuid\Uuid as RamseyUuid;
+use Ramsey\Uuid\UuidInterface;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rules\Core\Standard;
+use Throwable;
 
+use function class_exists;
 use function is_string;
-use function preg_match;
-use function sprintf;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
@@ -34,15 +38,16 @@ final class Uuid extends Standard
 {
     public const TEMPLATE_VERSION = '__version__';
 
-    private const PATTERN_FORMAT = '/^[0-9a-f]{8}-[0-9a-f]{4}-%s[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
-
     public function __construct(
         private readonly ?int $version = null
     ) {
+        if (!class_exists(RamseyUuid::class)) {
+            throw new MissingComposerDependencyException('Uuid rule requires ramsey/uuid', '=');
+        }
         if ($version !== null && !$this->isSupportedVersion($version)) {
             throw new InvalidRuleConstructorException(
-                'Only versions 1, 3, 4, and 5 are supported: %d given',
-                (string) $version
+                'Only versions 1 to 8 are supported: %d given',
+                (string)$version
             );
         }
     }
@@ -51,24 +56,27 @@ final class Uuid extends Standard
     {
         $template = $this->version ? self::TEMPLATE_VERSION : self::TEMPLATE_STANDARD;
         $parameters = ['version' => $this->version];
-        if (!is_string($input)) {
+
+        if (!is_string($input) && !($input instanceof UuidInterface)) {
             return Result::failed($input, $this, $parameters, $template);
         }
 
-        return new Result(preg_match($this->getPattern(), $input) > 0, $input, $this, $parameters, $template);
+        try {
+            $uuid = is_string($input) ? RamseyUuid::fromString($input) : $input;
+        } catch (Throwable) {
+            return Result::failed($input, $this, $parameters, $template);
+        }
+
+        $fields = $uuid->getFields();
+        $uuidVersion = $fields instanceof FieldsInterface ? $fields->getVersion() : null;
+
+        $hasPassed = $this->version ? $uuidVersion === $this->version : $uuidVersion !== null;
+
+        return new Result($hasPassed, $input, $this, $parameters, $template);
     }
 
     private function isSupportedVersion(int $version): bool
     {
-        return $version >= 1 && $version <= 5 && $version !== 2;
-    }
-
-    private function getPattern(): string
-    {
-        if ($this->version !== null) {
-            return sprintf(self::PATTERN_FORMAT, $this->version);
-        }
-
-        return sprintf(self::PATTERN_FORMAT, '[13-5]');
+        return $version >= 1 && $version <= 8;
     }
 }
