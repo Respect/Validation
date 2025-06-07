@@ -7,6 +7,7 @@ return [
     'CO.ID',
     'DESA.ID',
     'GO.ID',
+    'KOP.ID',
     'MIL.ID',
     'MY.ID',
     'NET.ID',
