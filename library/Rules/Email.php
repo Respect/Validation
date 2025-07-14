@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
 
@@ -26,6 +27,7 @@ use const FILTER_VALIDATE_EMAIL;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
+#[Attribute]
 final class Email extends AbstractRule
 {
     /**

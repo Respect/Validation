@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function preg_match;
 
 /**
@@ -17,6 +19,7 @@ use function preg_match;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
+#[Attribute]
 final class Vowel extends AbstractFilterRule
 {
     /**

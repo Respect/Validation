@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function array_map;
 use function is_scalar;
 use function preg_match;
@@ -22,6 +24,7 @@ use function str_split;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Tomasz Regdos <tomek@regdos.com>
  */
+#[Attribute]
 final class Nip extends AbstractRule
 {
     /**

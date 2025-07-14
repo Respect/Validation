@@ -9,11 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 /**
  * Validates if the input is identical to some value.
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Identical extends AbstractRule
 {
     /**

@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function bcmod;
 use function is_string;
 use function ord;
@@ -24,6 +26,7 @@ use function substr;
  *
  * @author Mazen Touati <mazen_touati@hotmail.com>
  */
+#[Attribute]
 final class Iban extends AbstractRule
 {
     private const COUNTRIES_LENGTHS = [

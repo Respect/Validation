@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function in_array;
 use function is_array;
 use function mb_stripos;
@@ -21,6 +23,7 @@ use function mb_strpos;
  * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class In extends AbstractRule
 {
     /**

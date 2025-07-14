@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function end;
 use function is_array;
 use function mb_strlen;
@@ -23,6 +25,7 @@ use function mb_strrpos;
  * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class EndsWith extends AbstractRule
 {
     /**

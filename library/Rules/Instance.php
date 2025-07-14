@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 /**
  * Validates if the input is an instance of the given class or interface.
  *
@@ -16,6 +18,7 @@ namespace Respect\Validation\Rules;
  * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Instance extends AbstractRule
 {
     /**

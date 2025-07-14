@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function intval;
 use function mb_strlen;
 use function preg_match;
@@ -24,6 +26,7 @@ use function preg_replace;
  * @author Jean Pimentel <jeanfap@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Cpf extends AbstractRule
 {
     /**

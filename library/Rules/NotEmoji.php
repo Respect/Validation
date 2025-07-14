@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function implode;
 use function is_string;
 use function preg_match;
@@ -18,6 +20,7 @@ use function preg_match;
  *
  * @author Mazen Touati <mazen_touati@hotmail.com>
  */
+#[Attribute]
 final class NotEmoji extends AbstractRule
 {
     private const RANGES = [

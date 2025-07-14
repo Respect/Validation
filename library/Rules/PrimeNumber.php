@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function ceil;
 use function is_numeric;
 use function sqrt;
@@ -22,6 +24,7 @@ use function sqrt;
  * @author Ismael Elias <ismael.esq@hotmail.com>
  * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
  */
+#[Attribute]
 final class PrimeNumber extends AbstractRule
 {
     /**

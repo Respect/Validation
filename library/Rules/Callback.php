@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function array_merge;
 use function call_user_func_array;
 use function count;
@@ -20,6 +22,7 @@ use function count;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Callback extends AbstractRule
 {
     /**

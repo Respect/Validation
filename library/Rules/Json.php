@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function function_exists;
 use function is_string;
 use function json_decode;
@@ -23,6 +25,7 @@ use const JSON_ERROR_NONE;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Json extends AbstractRule
 {
     /**

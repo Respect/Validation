@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_key_exists;
@@ -30,6 +31,7 @@ use const FILTER_VALIDATE_URL;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class FilterVar extends AbstractEnvelope
 {
     private const ALLOWED_FILTERS = [

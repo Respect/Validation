@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_object;
 
 /**
@@ -17,6 +19,7 @@ use function is_object;
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class ObjectType extends AbstractRule
 {
     /**

@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_numeric;
 use function is_string;
 use function number_format;
@@ -20,6 +22,7 @@ use function var_export;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Decimal extends AbstractRule
 {
     /**

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_values;
@@ -24,6 +25,7 @@ use function str_split;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mikhail Vyrtsev <reeywhaar@gmail.com>
  */
+#[Attribute]
 final class Sorted extends AbstractRule
 {
     public const ASCENDING = 'ASC';

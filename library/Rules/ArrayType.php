@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_array;
 
 /**
@@ -19,6 +21,7 @@ use function is_array;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author João Torquato <joao.otl@gmail.com>
  */
+#[Attribute]
 final class ArrayType extends AbstractRule
 {
     /**

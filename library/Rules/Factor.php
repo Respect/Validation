@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function abs;
 use function is_integer;
 use function is_numeric;
@@ -20,6 +22,7 @@ use function is_numeric;
  * @author David Meister <thedavidmeister@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Factor extends AbstractRule
 {
     /**

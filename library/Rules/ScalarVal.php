@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_scalar;
 
 /**
@@ -16,6 +18,7 @@ use function is_scalar;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class ScalarVal extends AbstractRule
 {
     /**

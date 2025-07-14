@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function array_map;
 use function count;
 use function str_split;
@@ -22,6 +24,7 @@ use function str_split;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Luhn extends AbstractRule
 {
     /**

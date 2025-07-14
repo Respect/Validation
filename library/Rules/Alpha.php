@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function ctype_alpha;
 
 /**
@@ -18,6 +20,7 @@ use function ctype_alpha;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
+#[Attribute]
 final class Alpha extends AbstractFilterRule
 {
     /**

@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function floor;
 use function is_numeric;
 use function sqrt;
@@ -21,6 +23,7 @@ use function sqrt;
  * @author Kleber Hamada Sato <kleberhs007@yahoo.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
+#[Attribute]
 final class PerfectSquare extends AbstractRule
 {
     /**

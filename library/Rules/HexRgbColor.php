@@ -9,12 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 /**
  * Validates whether the input is a hex RGB color or not.
  *
  * @author Davide Pastore <pasdavide@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class HexRgbColor extends AbstractEnvelope
 {
     public function __construct()

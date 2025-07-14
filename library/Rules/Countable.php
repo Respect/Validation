@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Countable as CountableInterface;
 
 use function is_array;
@@ -20,6 +21,7 @@ use function is_array;
  * @author João Torquato <joao.otl@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Countable extends AbstractRule
 {
     /**

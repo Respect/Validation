@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use DateTimeImmutable;
 use DateTimeInterface;
 
@@ -21,6 +22,7 @@ use function is_scalar;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jayson Reis <santosdosreis@gmail.com>
  */
+#[Attribute]
 final class LeapDate extends AbstractRule
 {
     /**

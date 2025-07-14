@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function array_map;
 use function floor;
 use function mb_strlen;
@@ -26,6 +28,7 @@ use function str_split;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class NfeAccessKey extends AbstractRule
 {
     /**

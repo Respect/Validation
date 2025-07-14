@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function is_string;
@@ -24,6 +25,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Michael Weimann <mail@michael-weimann.eu>
  */
+#[Attribute]
 final class Uuid extends AbstractRule
 {
     /**

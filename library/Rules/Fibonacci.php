@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_numeric;
 
 /**
@@ -18,6 +20,7 @@ use function is_numeric;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Samuel Heinzmann <samuel.heinzmann@swisscom.com>
  */
+#[Attribute]
 final class Fibonacci extends AbstractRule
 {
     /**

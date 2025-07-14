@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_nan;
 use function is_numeric;
 
@@ -19,6 +21,7 @@ use function is_numeric;
  * @author Ismael Elias <ismael.esq@hotmail.com>
  * @author Vitaliy <reboot.m@gmail.com>
  */
+#[Attribute]
 final class Number extends AbstractRule
 {
     /**

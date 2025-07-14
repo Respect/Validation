@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\DomainException;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Exceptions\ValidationException;
@@ -30,6 +31,7 @@ use function mb_substr_count;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author Róbert Nagy <vrnagy@gmail.com>
  */
+#[Attribute]
 final class Domain extends AbstractRule
 {
     /**

@@ -9,12 +9,15 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 /**
  * Validates a maximum age for a given date.
  *
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class MaxAge extends AbstractAge
 {
     /**

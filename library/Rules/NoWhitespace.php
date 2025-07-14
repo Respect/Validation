@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_null;
 use function is_scalar;
 use function preg_match;
@@ -21,6 +23,7 @@ use function preg_match;
  * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class NoWhitespace extends AbstractRule
 {
     /**

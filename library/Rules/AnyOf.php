@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\AnyOfException;
 use Respect\Validation\Exceptions\ValidationException;
 
@@ -18,6 +19,7 @@ use function count;
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class AnyOf extends AbstractComposite
 {
     /**

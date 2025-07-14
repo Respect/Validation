@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function implode;
 use function is_scalar;
 use function preg_match;
@@ -20,6 +22,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Moritz Fromm <moritzgitfromm@gmail.com>
  */
+#[Attribute]
 final class Isbn extends AbstractRule
 {
     /**

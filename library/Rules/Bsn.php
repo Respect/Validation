@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function ctype_digit;
 use function intval;
 use function is_scalar;
@@ -24,6 +26,7 @@ use function strval;
  * @author Ronald Drenth <ronalddrenth@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Bsn extends AbstractRule
 {
     /**

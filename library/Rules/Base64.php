@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_string;
 use function mb_strlen;
 use function preg_match;
@@ -20,6 +22,7 @@ use function preg_match;
  * @author Jens Segers <segers.jens@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Base64 extends AbstractRule
 {
     /**

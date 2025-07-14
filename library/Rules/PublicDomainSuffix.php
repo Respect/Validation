@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Helpers\DomainInfo;
 
@@ -18,6 +19,7 @@ use function in_array;
 use function is_scalar;
 use function strtoupper;
 
+#[Attribute]
 final class PublicDomainSuffix extends AbstractRule
 {
     use CanValidateUndefined;

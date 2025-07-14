@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Respect\Validation\Exceptions\ComponentException;
@@ -28,6 +29,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Felipe Stival <v0idpwn@gmail.com>
  */
+#[Attribute]
 final class Size extends AbstractRule
 {
     /**

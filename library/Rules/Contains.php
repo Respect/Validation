@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function in_array;
 use function is_array;
 use function is_scalar;
@@ -23,6 +25,7 @@ use function mb_strpos;
  * @author Marcelo Araujo <msaraujo@php.net>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Contains extends AbstractRule
 {
     /**

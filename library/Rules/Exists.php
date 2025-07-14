@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use SplFileInfo;
 
 use function file_exists;
@@ -18,6 +19,7 @@ use function is_string;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Exists extends AbstractRule
 {
     /**

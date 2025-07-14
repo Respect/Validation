@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function filter_var;
 use function is_float;
 
@@ -22,6 +24,7 @@ use const FILTER_VALIDATE_FLOAT;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jayson Reis <santosdosreis@gmail.com>
  */
+#[Attribute]
 final class FloatVal extends AbstractRule
 {
     /**

@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function nl_langinfo;
 
 use const NOEXPR;
@@ -18,6 +20,7 @@ use const NOEXPR;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class No extends AbstractEnvelope
 {
     public function __construct(bool $useLocale = false)

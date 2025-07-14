@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function ctype_space;
 
 /**
@@ -19,6 +21,7 @@ use function ctype_space;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
+#[Attribute]
 final class Space extends AbstractFilterRule
 {
     /**

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use SplFileInfo;
 
 use function is_link;
@@ -20,6 +21,7 @@ use function is_string;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Gus Antoniassi <gus.antoniassi@gmail.com>
  */
+#[Attribute]
 final class SymbolicLink extends AbstractRule
 {
     /**

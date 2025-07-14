@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_diff;
@@ -23,6 +24,7 @@ use function mb_list_encodings;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Charset extends AbstractRule
 {
     /**

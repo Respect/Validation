@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\NoneOfException;
 
 use function count;
@@ -17,6 +18,7 @@ use function count;
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class NoneOf extends AbstractComposite
 {
     /**

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_column;
@@ -26,6 +27,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class CountryCode extends AbstractSearcher
 {
     /**

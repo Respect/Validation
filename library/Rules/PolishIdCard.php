@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_scalar;
 use function ord;
 use function preg_match;
@@ -20,6 +22,7 @@ use function preg_match;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class PolishIdCard extends AbstractRule
 {
     private const ASCII_CODE_0 = 48;

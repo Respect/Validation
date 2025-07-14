@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function filter_var;
 
 use const FILTER_VALIDATE_INT;
@@ -20,6 +22,7 @@ use const FILTER_VALIDATE_INT;
  * @author Jean Pimentel <jeanfap@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
+#[Attribute]
 final class Even extends AbstractRule
 {
     /**

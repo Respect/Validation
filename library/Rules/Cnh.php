@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_scalar;
 use function mb_strlen;
 use function preg_replace;
@@ -21,6 +23,7 @@ use function preg_replace;
  * @author Kinn Coelho Julião <kinncj@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Cnh extends AbstractRule
 {
     /**

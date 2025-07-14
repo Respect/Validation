@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_scalar;
 use function preg_match;
 
@@ -19,6 +21,7 @@ use function preg_match;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Tomasz Regdos <tomek@regdos.com>
  */
+#[Attribute]
 final class Pesel extends AbstractRule
 {
     /**

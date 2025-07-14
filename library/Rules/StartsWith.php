@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_array;
 use function is_string;
 use function mb_stripos;
@@ -22,6 +24,7 @@ use function reset;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Marcelo Araujo <msaraujo@php.net>
  */
+#[Attribute]
 final class StartsWith extends AbstractRule
 {
     /**

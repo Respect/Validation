@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 /**
  * Validates if the input is a Roman numeral.
  *
@@ -16,6 +18,7 @@ namespace Respect\Validation\Rules;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  */
+#[Attribute]
 final class Roman extends AbstractEnvelope
 {
     public function __construct()

@@ -9,11 +9,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 /**
  * Validates the given input with a defined rule when input is not NULL.
  *
  * @author Jens Segers <segers.jens@gmail.com>
  */
+#[Attribute]
 final class Nullable extends AbstractWrapper
 {
     /**

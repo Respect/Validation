@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use DateTimeInterface;
 use Respect\Validation\Helpers\CanValidateDateTime;
 
@@ -21,6 +22,7 @@ use function strtotime;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class DateTime extends AbstractRule
 {
     use CanValidateDateTime;

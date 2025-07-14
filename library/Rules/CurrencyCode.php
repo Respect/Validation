@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 /**
  * Validates currency codes in ISO 4217.
  *
@@ -17,6 +19,7 @@ namespace Respect\Validation\Rules;
  * @author Tim Strijdhorst <tstrijdhorst@users.noreply.github.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class CurrencyCode extends AbstractSearcher
 {
     /**

@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function array_pop;
 use function array_sum;
 use function is_numeric;
@@ -27,6 +29,7 @@ use function str_split;
  * @author Julián Gutiérrez <juliangut@gmail.com>
  * @author Senén <senen@instasent.com>
  */
+#[Attribute]
 final class Nif extends AbstractRule
 {
     /**

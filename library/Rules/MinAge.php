@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 /**
  * Validates a minimum age for a given date.
  *
@@ -17,6 +19,7 @@ namespace Respect\Validation\Rules;
  * @author Jean Pimentel <jeanfap@gmail.com>
  * @author Kennedy Tedesco <kennedyt.tw@gmail.com>
  */
+#[Attribute]
 final class MinAge extends AbstractAge
 {
     /**

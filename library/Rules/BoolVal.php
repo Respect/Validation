@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function filter_var;
 use function is_bool;
 
@@ -22,6 +24,7 @@ use const FILTER_VALIDATE_BOOLEAN;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class BoolVal extends AbstractRule
 {
     /**

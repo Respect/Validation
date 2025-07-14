@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 
 use const FILTER_VALIDATE_URL;
@@ -18,6 +19,7 @@ use const FILTER_VALIDATE_URL;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Url extends AbstractEnvelope
 {
     /**

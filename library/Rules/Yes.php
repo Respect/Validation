@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_string;
 use function nl_langinfo;
 use function preg_match;
@@ -21,6 +23,7 @@ use const YESEXPR;
  * @author Cameron Hall <me@chall.id.au>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Yes extends AbstractRule
 {
     /**

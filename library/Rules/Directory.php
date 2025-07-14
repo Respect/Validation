@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Directory as NativeDirectory;
 use SplFileInfo;
 
@@ -21,6 +22,7 @@ use function is_scalar;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Directory extends AbstractRule
 {
     /**

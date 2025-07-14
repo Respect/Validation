@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use stdClass;
 
 use function array_filter;
@@ -23,6 +24,7 @@ use function trim;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class NotBlank extends AbstractRule
 {
     /**

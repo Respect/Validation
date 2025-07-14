@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\NonNegatable;
 use Respect\Validation\Validatable;
@@ -25,6 +26,7 @@ use function is_array;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class KeySet extends AbstractWrapper implements NonNegatable
 {
     /**

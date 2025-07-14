@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function array_map;
 
 /**
@@ -17,6 +19,7 @@ use function array_map;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Kirill Dlussky <kirill@dlussky.ru>
  */
+#[Attribute]
 final class ContainsAny extends AbstractEnvelope
 {
     /**

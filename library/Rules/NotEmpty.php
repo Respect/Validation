@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_string;
 use function trim;
 
@@ -19,6 +21,7 @@ use function trim;
  * @author Bram Van der Sype <bram.vandersype@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class NotEmpty extends AbstractRule
 {
     /**

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
 use Respect\Validation\Exceptions\ComponentException;
@@ -28,6 +29,7 @@ use function sprintf;
  * @author Graham Campbell <graham@mineuk.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Phone extends AbstractRule
 {
     /**

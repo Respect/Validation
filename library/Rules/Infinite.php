@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_infinite;
 use function is_numeric;
 
@@ -18,6 +20,7 @@ use function is_numeric;
  * @author Danilo Benevides <danilobenevides01@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Infinite extends AbstractRule
 {
     /**

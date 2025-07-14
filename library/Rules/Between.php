@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Helpers\CanCompareValues;
 
@@ -18,6 +19,7 @@ use Respect\Validation\Helpers\CanCompareValues;
  * @author Alexandre Gomes Gaigalas <alganet@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Between extends AbstractEnvelope
 {
     use CanCompareValues;

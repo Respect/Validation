@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function array_diff;
 use function is_array;
 
@@ -18,6 +20,7 @@ use function is_array;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Singwai Chan <singwai.chan@live.com>
  */
+#[Attribute]
 final class Subset extends AbstractRule
 {
     /**

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use DateTimeInterface;
 
 use function date;
@@ -24,6 +25,7 @@ use function strtotime;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jayson Reis <santosdosreis@gmail.com>
  */
+#[Attribute]
 final class LeapYear extends AbstractRule
 {
     /**

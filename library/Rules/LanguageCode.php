@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_column;
@@ -23,6 +24,7 @@ use function sprintf;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class LanguageCode extends AbstractEnvelope
 {
     public const ALPHA2 = 'alpha-2';

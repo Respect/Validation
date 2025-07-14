@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 /**
  * Validates any input as invalid.
  *
@@ -16,6 +18,7 @@ namespace Respect\Validation\Rules;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class AlwaysInvalid extends AbstractRule
 {
     /**

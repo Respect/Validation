@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function ctype_alnum;
 
 /**
@@ -21,6 +23,7 @@ use function ctype_alnum;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Nick Lombard <github@jigsoft.co.za>
  */
+#[Attribute]
 final class Alnum extends AbstractFilterRule
 {
     /**

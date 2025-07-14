@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_float;
 
 /**
@@ -17,6 +19,7 @@ use function is_float;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Reginaldo Junior <76regi@gmail.com>
  */
+#[Attribute]
 final class FloatType extends AbstractRule
 {
     /**

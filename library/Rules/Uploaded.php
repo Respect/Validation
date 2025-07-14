@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Psr\Http\Message\UploadedFileInterface;
 use SplFileInfo;
 
@@ -21,6 +22,7 @@ use function is_uploaded_file;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
+#[Attribute]
 final class Uploaded extends AbstractRule
 {
     /**

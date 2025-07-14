@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayAccess;
+use Attribute;
 use SimpleXMLElement;
 
 use function is_array;
@@ -23,6 +24,7 @@ use function is_array;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class ArrayVal extends AbstractRule
 {
     /**

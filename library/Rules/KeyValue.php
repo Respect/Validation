@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Factory;
@@ -20,6 +21,7 @@ use function in_array;
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class KeyValue extends AbstractRule
 {
     /**

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\OneOfException;
 use Respect\Validation\Exceptions\ValidationException;
 
@@ -19,6 +20,7 @@ use function count;
  * @author Bradyn Poulsen <bradyn@bradynpoulsen.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class OneOf extends AbstractComposite
 {
     /**

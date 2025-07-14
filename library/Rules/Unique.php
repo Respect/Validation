@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function array_is_list;
 use function in_array;
 use function is_array;
@@ -20,6 +22,7 @@ use function is_array;
  * @author Krzysztof Śmiałek <admin@avensome.net>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
+#[Attribute]
 final class Unique extends AbstractRule
 {
     /**

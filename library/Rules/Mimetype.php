@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use finfo;
 use SplFileInfo;
 
@@ -23,6 +24,7 @@ use const FILEINFO_MIME_TYPE;
  * @author Danilo Correa <danilosilva87@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Mimetype extends AbstractRule
 {
     /**

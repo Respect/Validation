@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function bccomp;
@@ -36,6 +37,7 @@ use const FILTER_VALIDATE_IP;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Luís Otávio Cobucci Oblonczyk <lcobucci@gmail.com>
  */
+#[Attribute]
 final class Ip extends AbstractRule
 {
     /**

@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function array_keys;
 use function array_map;
 use function array_pop;
@@ -27,6 +29,7 @@ use function strlen;
  *
  * @author Gonçalo Andrade <goncalo.andrade95@gmail.com>
  */
+#[Attribute]
 final class PortugueseNif extends AbstractRule
 {
     /**

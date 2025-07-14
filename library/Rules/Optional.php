@@ -9,11 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Helpers\CanValidateUndefined;
 
 /**
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Optional extends AbstractWrapper
 {
     use CanValidateUndefined;

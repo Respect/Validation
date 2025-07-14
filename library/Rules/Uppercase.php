@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_string;
 use function mb_strtoupper;
 
@@ -20,6 +22,7 @@ use function mb_strtoupper;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Jean Pimentel <jeanfap@gmail.com>
  */
+#[Attribute]
 final class Uppercase extends AbstractRule
 {
     /**

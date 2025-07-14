@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use ArrayAccess;
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_key_exists;
@@ -29,6 +30,7 @@ use function sprintf;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Ivan Zinovyev <vanyazin@gmail.com>
  */
+#[Attribute]
 final class KeyNested extends AbstractRelated
 {
     /**

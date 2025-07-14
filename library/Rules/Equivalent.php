@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function is_scalar;
 use function mb_strtoupper;
 
@@ -17,6 +19,7 @@ use function mb_strtoupper;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Equivalent extends AbstractRule
 {
     /**

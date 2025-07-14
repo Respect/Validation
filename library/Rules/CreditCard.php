@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function array_keys;
@@ -29,6 +30,7 @@ use function sprintf;
  * @author William Espindola <oi@williamespindola.com.br>
  * @author Rakshit Arora <rakshit087@gmail.com>
  */
+#[Attribute]
 final class CreditCard extends AbstractRule
 {
     public const ANY = 'Any';

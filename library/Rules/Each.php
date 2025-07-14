@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\EachException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Helpers\CanValidateIterable;
@@ -22,6 +23,7 @@ use Respect\Validation\Validatable;
  * @author Nick Lombard <github@jigsoft.co.za>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Each extends AbstractRule
 {
     use CanValidateIterable;

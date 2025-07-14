@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use finfo;
 use SplFileInfo;
 
@@ -25,6 +26,7 @@ use const FILEINFO_MIME_TYPE;
  * @author Guilherme Siani <guilherme@siani.com.br>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Image extends AbstractRule
 {
     /**

@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Validatable;
 use Throwable;
@@ -24,6 +25,7 @@ use function set_error_handler;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class Call extends AbstractRule
 {
     /**

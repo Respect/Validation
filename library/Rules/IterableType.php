@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Helpers\CanValidateIterable;
 
 /**
@@ -16,6 +17,7 @@ use Respect\Validation\Helpers\CanValidateIterable;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class IterableType extends AbstractRule
 {
     use CanValidateIterable;

@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 /**
  * Validates if the input is equal to some value.
  *
@@ -16,6 +18,7 @@ namespace Respect\Validation\Rules;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
  */
+#[Attribute]
 final class Equals extends AbstractRule
 {
     /**

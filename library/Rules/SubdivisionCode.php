@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Helpers\CountryInfo;
 
 use function array_keys;
@@ -22,6 +23,7 @@ use function array_keys;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Mazen Touati <mazen_touati@hotmail.com>
  */
+#[Attribute]
 final class SubdivisionCode extends AbstractSearcher
 {
     /**

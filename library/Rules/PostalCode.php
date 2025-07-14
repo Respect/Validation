@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\ComponentException;
 
 use function sprintf;
@@ -20,6 +21,7 @@ use function sprintf;
  *
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[Attribute]
 final class PostalCode extends AbstractEnvelope
 {
     private const DEFAULT_PATTERN = '/^$/';

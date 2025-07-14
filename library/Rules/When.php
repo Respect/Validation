@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
 use Respect\Validation\Exceptions\AlwaysInvalidException;
 use Respect\Validation\Validatable;
 
@@ -20,6 +21,7 @@ use Respect\Validation\Validatable;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Hugo Hamon <hugo.hamon@sensiolabs.com>
  */
+#[Attribute]
 final class When extends AbstractRule
 {
     /**

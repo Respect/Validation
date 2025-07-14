@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute as BaseAttribute;
 use ReflectionException;
 use ReflectionProperty;
 use Respect\Validation\Validatable;
@@ -23,6 +24,7 @@ use function property_exists;
  * @author Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * @author Henrique Moody <henriquemoody@gmail.com>
  */
+#[BaseAttribute]
 final class Attribute extends AbstractRelated
 {
     public function __construct(string $reference, ?Validatable $rule = null, bool $mandatory = true)

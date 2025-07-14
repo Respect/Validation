@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
+use Attribute;
+
 use function array_map;
 use function array_sum;
 use function count;
@@ -26,6 +28,7 @@ use function str_split;
  * @author Renato Moura <renato@naturalweb.com.br>
  * @author William Espindola <oi@williamespindola.com.br>
  */
+#[Attribute]
 final class Cnpj extends AbstractRule
 {
     /**
