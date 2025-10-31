@@ -37,6 +37,7 @@ final class CanValidateDateTimeTest extends TestCase
     public static function providerForValidDateTime(): array
     {
         return [
+            'overflow days' => ['m-Y', '02-2025'],
             ['Y-m-d', '2009-09-09'],
             ['Y-m-d', '2020-02-29'],
             ['Ymd', '20090909'],

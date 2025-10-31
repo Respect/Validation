@@ -33,7 +33,7 @@ trait CanValidateDateTime
 
         if ($this->isDateFormat($format)) {
             $formattedDate = DateTime::createFromFormat(
-                $format,
+                '!' . $format,
                 $value,
                 new DateTimeZone(date_default_timezone_get()),
             );
