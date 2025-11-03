@@ -42,6 +42,114 @@ $userValidator = new Rules\Key('name', $usernameValidator);
 $userValidator->isValid(['name' => 'alganet']); // true
 ```
 
+## New in Version 3.0
+
+Version 3.0 introduces several new features and changes to the API:
+
+### Assert Method Changes
+
+The `assert()` and `check()` methods are now only available on the `Validator` wrapper, not on individual rule classes:
+
+```php
+// v2.x pattern (no longer works)
+// $email = new Email();
+// $email->assert($input);
+
+// v3.0 pattern
+v::email()->assert($input);
+// OR
+$validator = new Validator(new Email());
+$validator->assert($input);
+```
+
+### New Assert Overloads
+
+Version 3.0 introduces flexible `assert()` overloads that accept templates, exceptions, and callables:
+
+```php
+use Respect\Validation\Validator as v;
+
+// Template string
+v::email()->assert($input, 'Must be a valid email');
+
+// Template array (per rule)
+v::intVal()->positive()->lessThan(100)->assert($input, [
+    'intVal' => 'Must be an integer',
+    'positive' => 'Must be positive',
+    'lessThan' => 'Must be under 100',
+]);
+
+// Custom exception
+v::email()->assert($input, new DomainException('Invalid email'));
+
+// Callable handler
+v::email()->assert($input, fn($ex) => logError($ex));
+```
+
+### Named and Templated Rules
+
+Version 3.0 introduces `Named` and `Templated` rules for clearer message customization:
+
+```php
+use Respect\Validation\Validator as v;
+
+// Named rule for better identification
+$validator = v::named(v::alnum()->lowercase(), 'Username');
+
+// Templated rule for custom message
+$validator = v::templated(
+    v::named(v::alnum()->lowercase(), 'Username'),
+    '{{name}} must be a valid username'
+);
+
+// Combined approach
+$validator = v::templated(
+    v::named(v::email(), 'Email Address'),
+    '{{name}} is invalid'
+);
+```
+
+### Prefix Rules
+
+For common validation patterns, use the concise prefix rule syntax:
+
+```php
+use Respect\Validation\Validator as v;
+
+// Traditional chaining
+v::key('email', v::email());
+v::property('age', v::positive());
+
+// Prefix rules (v3.0+)
+v::keyEmail('email');
+v::propertyPositive('age');
+
+// Available prefixes: key, property, length, max, min, nullOr, undefOr
+```
+
+### Attributes Support
+
+PHP 8+ attributes allow you to declare validation rules directly on class properties:
+
+```php
+use Respect\Validation\Rules\{Email, Between, NotBlank};
+
+class User
+{
+    #[Email]
+    public string $email;
+    
+    #[Between(18, 120)]
+    public int $age;
+    
+    #[NotBlank]
+    public string $name;
+}
+
+// Validate all attributed properties
+v::attributes()->assert($user);
+```
+
 ## How It Works?
 
 The Respect\Validation chain is an

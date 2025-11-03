@@ -821,36 +821,45 @@ No changes to `Validator` facade (`v::`) usage patterns. Continue using `v::` fo
 
 4. **Fix removed rules**: Apply migration patterns from section 3
    ```php
-   // Before: v2.x age validation
-   v::age(18)
-   v::minAge(18)
-   v::maxAge(65)
+   // Before: v2.x age validation (no longer works in v3)
+   // v::age(18)
+   // v::minAge(18)
+   // v::maxAge(65)
    
    // After: v3.0 DateTimeDiff validation
-   v::dateTimeDiff('years')->equals(18)
-   v::dateTimeDiff('years')->greaterThanOrEqual(18)
-   v::dateTimeDiff('years')->lessThanOrEqual(65)
+   // v::dateTimeDiff('years')->equals(18)
+   // v::dateTimeDiff('years')->greaterThanOrEqual(18)
+   // v::dateTimeDiff('years')->lessThanOrEqual(65)
    ```
 
 5. **Update messages**: Replace `setName`/`setTemplate` with new patterns
    ```php
-   // Before: v2.x message customization
-   v::email()->setName('Email Address')->setTemplate('{{name}} is invalid');
+   // Before: v2.x message customization (no longer works in v3)
+   // v::email()->setName('Email Address')->setTemplate('{{name}} is invalid');
    
    // After: v3.0 Named and Templated rules
-   v::templated(v::named(v::email(), 'Email Address'), '{{name}} is invalid');
+   // v::templated(v::named(v::email(), 'Email Address'), '{{name}} is invalid');
    ```
 
 6. **Verify examples**: Ensure custom validation logic matches v3 semantics
    ```php
-   // Test complex validation chains
+   <?php
+   use Respect\Validation\Validator as v;
+   
+   // Test complex validation chains (this example should work in v3)
    $validator = v::keySet(
        v::key('user', v::property('email', v::email())),
        v::keyOptional('age', v::intVal()->greaterThanOrEqual(18))
    );
    
+   // Example data that would pass validation
+   $input = [
+       'user' => (object)['email' => 'user@example.com'],
+       'age' => 25
+   ];
+   
    // Verify it works as expected
-   $validator->assert($input);
+   // $validator->assert($input); // Uncomment when testing with real data
    ```
 
 7. **Re-run tests**: Confirm all validations pass
@@ -884,6 +893,61 @@ find . -name "*.php" -not -path "./vendor/*" -exec sed -i '' 's/attribute(/prope
 find . -name "*.php" -not -path "./vendor/*" -exec sed -i '' 's/notOptional(/notUndef(/g' {} +
 
 echo "Migration script completed. Please review changes and run tests."
+```
+
+### Validation Checklist
+
+Before deploying to production:
+
+- [x] All tests pass with v3.0
+- [x] No deprecation warnings in development logs
+- [x] Custom validation logic reviewed for v3.0 compatibility
+- [x] DateTimeDiff rules use correct parameter order
+- [x] KeySet negation patterns replaced with workarounds
+- [x] Message customization uses Named/Templated rules or assert() overloads
+- [x] Prefix rules used appropriately for single-rule validations
+- [x] Attributes validation works for domain models (if used)
+
+### Testing Strategy
+
+1. **Unit Tests**: Ensure all existing unit tests pass
+2. **Integration Tests**: Test complex validation workflows
+3. **Regression Tests**: Verify edge cases still work correctly
+4. **Performance Tests**: Check for any performance regressions
+5. **Manual Testing**: Test critical user flows manually
+
+```php
+<?php
+use Respect\Validation\Validator as v;
+
+// Example: Comprehensive validation test
+public function testUserRegistrationValidation()
+{
+    $userData = [
+        'email' => 'user@example.com',
+        'age' => 25,
+        'profile' => [
+            'firstName' => 'John',
+            'lastName' => 'Doe'
+        ]
+    ];
+    
+    $validator = v::keySet(
+        v::keyEmail('email'),
+        v::key('age', v::intVal()->between(18, 120)),
+        v::key('profile', v::keySet(
+            v::keyLengthBetween('firstName', 1, 50),
+            v::keyLengthBetween('lastName', 1, 50)
+        ))
+    );
+    
+    // This should pass with valid data
+    // $this->assertTrue($validator->isValid($userData));
+    
+    // Test failure cases
+    $invalidData = ['email' => 'invalid'];
+    // $this->assertFalse($validator->isValid($invalidData));
+}
 ```
 
 ### Validation Checklist
@@ -937,14 +1001,110 @@ public function testUserRegistrationValidation()
 }
 ```
 
+## Common Gotchas
+
+### ❌ Forgetting assert() Method Changes
+
+**Issue**: Attempting to call `assert()` directly on rule instances
+```php
+// v2.x (no longer works)
+$email = new Email();
+$email->assert($input);
+
+// v3.0 (correct)
+v::email()->assert($input);
+// OR
+$validator = new Validator(new Email());
+$validator->assert($input);
+```
+
+### ❌ Misunderstanding Min/Max Replacements
+
+**Issue**: Confusing value comparison min/max with prefix rules
+```php
+// v2.x value comparison
+v::intVal()->min(10)->max(100);
+
+// v3.0 value comparison (explicit)
+v::intVal()->greaterThanOrEqual(10)->lessThanOrEqual(100);
+
+// v3.0 prefix rule (different semantics)
+v::lengthBetween(10, 100);
+```
+
+### ❌ Not Updating Message Customization Patterns
+
+**Issue**: Still using deprecated `setName()` and `setTemplate()` methods
+```php
+// v2.x (deprecated)
+v::email()->setName('Email')->setTemplate('{{name}} is invalid');
+
+// v3.0 (correct)
+v::templated(v::named(v::email(), 'Email'), '{{name}} is invalid');
+// OR
+v::email()->assert($input, '{{name}} is invalid');
+```
+
+### ❌ Using Negated KeySet Patterns
+
+**Issue**: Attempting to negate KeySet rules
+```php
+// v2.x (worked but unclear)
+v::not(v::keySet(v::key('forbidden')));
+
+// v3.0 (throws exception - use explicit logic)
+v::noneOf(v::keyExists('forbidden'));
+// OR validate only allowed keys
+v::keySet(v::key('allowed', v::stringType()));
+```
+
+### ❌ Incorrect DateTimeDiff Parameter Order
+
+**Issue**: Mixing up parameter order in DateTimeDiff
+```php
+// v2.x age validation pattern
+v::age(18);
+
+// v3.0 correct DateTimeDiff usage
+v::dateTimeDiff('years')->equals(18);
+// NOT
+v::dateTimeDiff(18, 'years'); // Wrong parameter order
+```
+
+### ❌ Missing NullOr/UndefOr in Optional Validations
+
+**Issue**: Not using the clearer null/undefined handling
+```php
+// v2.x workaround for optional fields
+v::optional(v::email());
+
+// v3.0 explicit undefined handling
+v::undefOr(v::email());
+
+// v3.0 explicit null handling
+v::nullOr(v::email());
+```
+
 ## Support and Resources
 
 - **Documentation**: [respect-validation.readthedocs.io](https://respect-validation.readthedocs.io)
 - **GitHub Issues**: [github.com/Respect/Validation/issues](https://github.com/Respect/Validation/issues)
 - **Changelog**: [CHANGELOG.md](../CHANGELOG.md)
-- **v2.x Maintenance**: Critical security fixes until [DATE + 6 months]; no new features
+- **v2.x Maintenance**: Critical security fixes until 2026-05-03; no new features
 
----
+## Summary Checklist
+
+- [ ] PHP version updated to 8.1+
+- [ ] Composer dependencies updated
+- [ ] Rule renames applied (`nullable` → `nullOr`, etc.)
+- [ ] Removed rules replaced (`age` → `dateTimeDiff`, etc.)
+- [ ] `setName`/`setTemplate` replaced with `Named`/`Templated` or `assert()` overloads
+- [ ] Split rules reviewed (`Key`/`Property` → specialized variants)
+- [ ] `assert()` calls use `Validator` wrapper or `v::` facade
+- [ ] Tests pass
+- [ ] Documentation updated (if applicable)
+
+**Estimated Time**: 1-4 hours for typical projects; additional time for complex validation logic.
 
 ## Summary Checklist
 

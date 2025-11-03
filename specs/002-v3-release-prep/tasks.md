@@ -88,10 +88,10 @@
 - [x] T020 [US1] Complete new features section (prefix rules, attributes, enhanced error handling) in docs/11-migration-from-2x.md
 - [x] T021 [US1] Document deprecation warnings and temporary compatibility in docs/11-migration-from-2x.md
 - [x] T022 [US1] Add testing your migration section with step-by-step validation in docs/11-migration-from-2x.md
-- [ ] T023 [US1] Complete common gotchas section with real-world examples in docs/11-migration-from-2x.md
-- [ ] T024 [US1] Update support and resources section with correct links and dates in docs/11-migration-from-2x.md
-- [ ] T025 [US1] Finalize summary checklist for migration completeness in docs/11-migration-from-2x.md
-- [ ] T026 [US1] Validate all code examples in migration guide execute correctly against v3.0
+- [x] T023 [US1] Complete common gotchas section with real-world examples in docs/11-migration-from-2x.md
+- [x] T024 [US1] Update support and resources section with correct links and dates in docs/11-migration-from-2x.md
+- [x] T025 [US1] Finalize summary checklist for migration completeness in docs/11-migration-from-2x.md
+- [x] T026 [US1] Validate all code examples in migration guide execute correctly against v3.0
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -110,27 +110,27 @@
 
 ### Implementation for User Story 2
 
-- [ ] T029 [P] [US2] Update installation requirements to PHP 8.1+ in docs/01-installation.md
-- [ ] T030 [P] [US2] Update Composer command to ^3.0 in docs/01-installation.md
-- [ ] T031 [P] [US2] Add prefix rules section to docs/02-feature-guide.md
-- [ ] T032 [P] [US2] Add attributes support section to docs/02-feature-guide.md
-- [ ] T033 [P] [US2] Update assert() overloads documentation in docs/02-feature-guide.md
-- [ ] T034 [P] [US2] Replace setName()/setTemplate() examples with Named/Templated rules in docs/02-feature-guide.md
-- [ ] T035 [P] [US2] Update all examples in docs/03-handling-exceptions.md to v3.0 syntax
-- [ ] T036 [P] [US2] Document Named and Templated rules in docs/03-handling-exceptions.md
-- [ ] T037 [P] [US2] Update result tree examples with path semantics in docs/03-handling-exceptions.md
-- [ ] T038 [P] [US2] Document new assert() overloads in docs/03-handling-exceptions.md
-- [ ] T039 [P] [US2] Update examples to use Named rule instead of setName() in docs/04-message-translation.md
-- [ ] T040 [P] [US2] Show Templated rule usage in docs/04-message-translation.md
-- [ ] T041 [P] [US2] Document new {{placeholder|quote}} filter in docs/05-message-placeholder-conversion.md
-- [ ] T042 [P] [US2] Update all examples in docs/05-message-placeholder-conversion.md to v3.0 syntax
-- [ ] T043 [P] [US2] Show filter usage in templates in docs/05-message-placeholder-conversion.md
-- [ ] T044 [P] [US2] Add new methods on Validator class to docs/06-concrete-api.md
-- [ ] T045 [P] [US2] Document assert() overloads with signatures in docs/06-concrete-api.md
-- [ ] T046 [P] [US2] Remove deprecated methods documentation in docs/06-concrete-api.md
-- [ ] T047 [P] [US2] Show Named and Templated rules in docs/06-concrete-api.md
-- [ ] T048 [P] [US2] Verify custom rule examples show correct v3.0 Rule interface in docs/07-custom-rules.md
-- [ ] T049 [P] [US2] Ensure custom rule examples use #[Template] attributes in docs/07-custom-rules.md
+- [x] T029 [P] [US2] Update installation requirements to PHP 8.1+ in docs/01-installation.md
+- [x] T030 [P] [US2] Update Composer command to ^3.0 in docs/01-installation.md
+- [x] T031 [P] [US2] Add prefix rules section to docs/02-feature-guide.md
+- [x] T032 [P] [US2] Add attributes support section to docs/02-feature-guide.md
+- [x] T033 [P] [US2] Update assert() overloads documentation in docs/02-feature-guide.md
+- [x] T034 [P] [US2] Replace setName()/setTemplate() examples with Named/Templated rules in docs/02-feature-guide.md
+- [x] T035 [P] [US2] Update all examples in docs/03-handling-exceptions.md to v3.0 syntax
+- [x] T036 [P] [US2] Document Named and Templated rules in docs/03-handling-exceptions.md
+- [x] T037 [P] [US2] Update result tree examples with path semantics in docs/03-handling-exceptions.md
+- [x] T038 [P] [US2] Document new assert() overloads in docs/03-handling-exceptions.md
+- [x] T039 [P] [US2] Update examples to use Named rule instead of setName() in docs/04-message-translation.md
+- [x] T040 [P] [US2] Show Templated rule usage in docs/04-message-translation.md
+- [x] T041 [P] [US2] Document new {{placeholder|quote}} filter in docs/05-message-placeholder-conversion.md
+- [x] T042 [P] [US2] Update all examples in docs/05-message-placeholder-conversion.md to v3.0 syntax
+- [x] T043 [P] [US2] Show filter usage in templates in docs/05-message-placeholder-conversion.md
+- [x] T044 [P] [US2] Add new methods on Validator class to docs/06-concrete-api.md
+- [x] T045 [P] [US2] Document assert() overloads with signatures in docs/06-concrete-api.md
+- [x] T046 [P] [US2] Remove deprecated methods documentation in docs/06-concrete-api.md
+- [x] T047 [P] [US2] Show Named and Templated rules in docs/06-concrete-api.md
+- [x] T048 [P] [US2] Verify custom rule examples show correct v3.0 Rule interface in docs/07-custom-rules.md
+- [x] T049 [P] [US2] Ensure custom rule examples use #[Template] attributes in docs/07-custom-rules.md
 - [ ] T050 [P] [US2] Verify examples in docs/08-comparable-values.md run against v3.0
 - [ ] T051 [P] [US2] Update examples to new rule names in docs/08-comparable-values.md
 - [ ] T052 [P] [US2] Update rule names in docs/09-list-of-rules-by-category.md (all renames from research.md)

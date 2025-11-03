@@ -28,3 +28,13 @@ Thumbs.db
 # Temp files
 *.tmp
 *.log
+
+# PHP specific patterns
+*.php~
+.php_cs.cache
+.php_cs.fixed
+.phpunit.result.cache
+coverage/
+.php_cs.dist
+.php_cs
+.phpstorm.meta.php

@@ -24,6 +24,26 @@ $translator = new GettextTranslator();
 $validator = new Validator(new Factory(), new StandardFormatter(), $translator);
 ```
 
+## Message customization with Named and Templated rules
+
+Version 3.0 introduces `Named` and `Templated` rules for clearer message customization:
+
+```php
+use Respect\Validation\Validator as v;
+
+// Using Named rule for better identification
+$usernameValidator = v::named(v::alnum()->lowercase(), 'Username');
+
+// Using Templated rule for custom message
+$customMessageValidator = v::templated(
+    v::named(v::alnum()->lowercase(), 'Username'),
+    '{{name}} must be a valid username'
+);
+
+// Using assert() overload for custom messages
+$emailValidator = v::email()->assert($input, 'Please provide a valid email address');
+```
+
 ## Supported translators
 
 - `ArrayTranslator`: Translates messages using an array of messages.
