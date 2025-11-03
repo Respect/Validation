@@ -102,11 +102,39 @@ v::email()->assert($input, 'Email address is required');
 v::nullable(v::email())
 v::optional(v::intVal())
 v::attribute('name', v::stringType())
+v::min(10)  // Value comparison
+v::max(100) // Value comparison
 
 // v3.0
 v::nullOr(v::email())
 v::undefOr(v::intVal())
 v::property('name', v::stringType())
+v::greaterThanOrEqual(10)  // Value comparison (explicit)
+v::lessThanOrEqual(100)    // Value comparison (explicit)
+```
+
+**Context-Dependent Min/Max Replacements**:
+
+When `min()` and `max()` were used for value comparisons (not as prefix rules), replace them:
+
+```php
+// v2.x value comparison
+v::intVal()->min(18)  // Age validation
+v::floatVal()->max(100)  // Score validation
+
+// v3.0 equivalent
+v::intVal()->greaterThanOrEqual(18)
+v::floatVal()->lessThanOrEqual(100)
+```
+
+When `min()` and `max()` should become prefix rules:
+
+```php
+// v2.x chained validation
+v::min(10)->max(100)  // Length validation
+
+// v3.0 prefix rule (more concise)
+v::lengthBetween(10, 100)
 ```
 
 **Migration Strategy**:
