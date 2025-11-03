@@ -35,6 +35,7 @@ final class CanValidateDateTimeTest extends TestCase
     /**
      * @test
      *
+     * @dataProvider providerForInvalidDateTime
      */
     public function shouldFindWhenValueIsNotDateTime(string $format, string $value): void
     {
@@ -44,7 +45,6 @@ final class CanValidateDateTimeTest extends TestCase
     /**
      * @test
      *
-     * @dataProvider providerForValidDateTimeOnNonExistentDay
      */
     public function shouldFindWhenValueIsDateTimeOnOverflowDay(): void
     {
