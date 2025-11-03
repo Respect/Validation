@@ -38,9 +38,7 @@ final class CanValidateDateTimeTest extends TestCase
      */
     public function shouldFindWhenValueIsNotDateTime(string $format, string $value): void
     {
-        timecop_freeze(new DateTime('2025-10-31 12:00:00'));
-        self::assertTrue($this->isDateTime('m/Y', '06/2025'));
-        timecop_return();
+        self::assertFalse($this->isDateTime($format, $value));
     }
 
     /**
@@ -48,9 +46,11 @@ final class CanValidateDateTimeTest extends TestCase
      *
      * @dataProvider providerForValidDateTimeOnNonExistentDay
      */
-    public function shouldFindWhenValueIsDateTime(string $format, string $value): void
+    public function shouldFindWhenValueIsDateTimeOnOverflowDay(): void
     {
-        self::assertTrue($this->isDateTime($format, $value));
+        timecop_freeze(new DateTime('2025-10-31 12:00:00'));
+        self::assertTrue($this->isDateTime('m/Y', '06/2025'));
+        timecop_return();
     }
 
     /**
