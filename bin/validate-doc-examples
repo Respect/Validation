@@ -1,0 +1,222 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Script to validate PHP code examples in documentation against v3.0 library
+ *
+ * Usage:
+ *   bin/validate-doc-examples docs/rules/Email.md
+ *   bin/validate-doc-examples docs/
+ */
+
+// Check if we have the correct number of arguments
+if ($argc < 2) {
+    echo "Usage: bin/validate-doc-examples <file|directory>\n";
+    echo "Example: bin/validate-doc-examples docs/rules/Email.md\n";
+    echo "Example: bin/validate-doc-examples docs/\n";
+    exit(1);
+}
+
+$path = $argv[1];
+
+// Check if the path exists
+if (!file_exists($path)) {
+    echo "Error: Path '$path' does not exist\n";
+    exit(1);
+}
+
+// Autoload the Respect\Validation library
+$autoloadPath = __DIR__ . '/../vendor/autoload.php';
+if (!file_exists($autoloadPath)) {
+    echo "Error: Composer dependencies not found. Run 'composer install' first.\n";
+    exit(1);
+}
+
+require $autoloadPath;
+
+/**
+ * Extract PHP code blocks from markdown content
+ *
+ * @param string $content
+ * @return array
+ */
+function extractPhpCodeBlocks($content)
+{
+    $blocks = [];
+    $pattern = '/```php\s*\n(.*?)```/s';
+    preg_match_all($pattern, $content, $matches);
+    
+    foreach ($matches[1] as $code) {
+        // Skip code that contains <?php tag (already has context)
+        if (strpos($code, '<?php') !== false) {
+            continue;
+        }
+        
+        $blocks[] = trim($code);
+    }
+    
+    return $blocks;
+}
+
+/**
+ * Validate a PHP code example by writing it to a temp file and executing it
+ *
+ * @param string $code
+ * @param string $sourceFile
+ * @return array
+ */
+function validateCodeExample($code, $sourceFile)
+{
+    // Create the complete PHP script with proper context
+    $fullCode = <<<PHP
+<?php
+require '{$GLOBALS['autoloadPath']}';
+use Respect\Validation\Validator as v;
+use Respect\Validation\Exceptions\ValidationException;
+
+// Extracted code example:
+$code
+PHP;
+    
+    // Write to temporary file
+    $tempFile = tempnam(sys_get_temp_dir(), 'validation_');
+    file_put_contents($tempFile, $fullCode);
+    
+    // Execute the temporary file
+    $output = [];
+    $returnCode = 0;
+    exec("php $tempFile 2>&1", $output, $returnCode);
+    
+    // Clean up
+    unlink($tempFile);
+    
+    $outputStr = implode("\n", $output);
+    
+    if ($returnCode === 0) {
+        return ['success' => true, 'message' => 'Code executed successfully'];
+    } else {
+        return ['success' => false, 'message' => "Execution failed with code $returnCode: $outputStr"];
+    }
+}
+
+/**
+ * Process a single markdown file
+ *
+ * @param string $file
+ * @return array
+ */
+function processFile($file)
+{
+    echo "Processing $file...\n";
+    
+    $content = file_get_contents($file);
+    $codeBlocks = extractPhpCodeBlocks($content);
+    
+    if (empty($codeBlocks)) {
+        echo "  No PHP code blocks found\n";
+        return ['total' => 0, 'passed' => 0, 'failed' => 0, 'errors' => []];
+    }
+    
+    echo "  Found " . count($codeBlocks) . " PHP code blocks\n";
+    
+    $results = [
+        'total' => count($codeBlocks),
+        'passed' => 0,
+        'failed' => 0,
+        'errors' => []
+    ];
+    
+    foreach ($codeBlocks as $index => $code) {
+        echo "    Validating code block " . ($index + 1) . "...\n";
+        
+        $result = validateCodeExample($code, $file);
+        
+        if ($result['success']) {
+            $results['passed']++;
+            echo "      ✓ Passed\n";
+        } else {
+            $results['failed']++;
+            $error = "      ✗ Failed: " . $result['message'];
+            $results['errors'][] = $error;
+            echo $error . "\n";
+        }
+    }
+    
+    return $results;
+}
+
+/**
+ * Process a directory recursively
+ *
+ * @param string $directory
+ * @return array
+ */
+function processDirectory($directory)
+{
+    $results = [
+        'total' => 0,
+        'passed' => 0,
+        'failed' => 0,
+        'errors' => []
+    ];
+    
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($directory)
+    );
+    
+    $files = [];
+    foreach ($iterator as $file) {
+        if ($file->isFile() && $file->getExtension() === 'md') {
+            $files[] = $file->getPathname();
+        }
+    }
+    
+    // Sort files for consistent output
+    sort($files);
+    
+    foreach ($files as $file) {
+        $fileResults = processFile($file);
+        
+        $results['total'] += $fileResults['total'];
+        $results['passed'] += $fileResults['passed'];
+        $results['failed'] += $fileResults['failed'];
+        $results['errors'] = array_merge($results['errors'], $fileResults['errors']);
+    }
+    
+    return $results;
+}
+
+// Main execution
+try {
+    if (is_file($path)) {
+        $results = processFile($path);
+    } elseif (is_dir($path)) {
+        $results = processDirectory($path);
+    } else {
+        echo "Error: '$path' is neither a file nor a directory\n";
+        exit(1);
+    }
+    
+    // Print summary
+    echo "\n" . str_repeat('=', 50) . "\n";
+    echo "VALIDATION SUMMARY\n";
+    echo str_repeat('=', 50) . "\n";
+    echo "Total code blocks: " . $results['total'] . "\n";
+    echo "Passed: " . $results['passed'] . "\n";
+    echo "Failed: " . $results['failed'] . "\n";
+    
+    if (!empty($results['errors'])) {
+        echo "\nERRORS:\n";
+        echo str_repeat('-', 20) . "\n";
+        foreach ($results['errors'] as $error) {
+            echo $error . "\n";
+        }
+    }
+    
+    // Exit with appropriate code
+    exit($results['failed'] > 0 ? 1 : 0);
+    
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage() . "\n";
+    exit(1);
+}

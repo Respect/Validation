@@ -8,3 +8,23 @@ phpcs.xml
 phpstan.neon
 phpunit.xml
 vendor/
+
+# MkDocs build output
+site/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.log
