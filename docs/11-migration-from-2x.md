@@ -561,9 +561,35 @@ v::maxLessThan(100)           // maximum value less than 100
 v::minGreaterThan(0)          // minimum value greater than 0
 v::nullOrEmail()              // null or valid email
 v::undefOrPositive()          // undefined or positive number
+
+// More complex prefix examples
+v::keyLengthBetween('username', 3, 20)  // key 'username' with length 3-20
+v::propertyNullOrEmail('email')         // property 'email' that is null or valid email
+v::keyUndefOrPositive('score')          // key 'score' that is undefined or positive
+```
+
+**Advanced Prefix Usage**:
+
+```php
+// Combine prefix rules with other rules
+v::keySet(
+    v::keyEmail('email'),
+    v::keyLengthBetween('username', 3, 20),
+    v::keyNullOrBetween('age', 18, 120)
+)
+
+// Nested prefix rules
+$addressValidator = v::keySet(
+    v::keyLengthBetween('street', 5, 100),
+    v::keyNullOrLengthBetween('apartment', 1, 10),
+    v::keyLengthBetween('city', 2, 50),
+    v::keyLengthEqual('zip', 5)  // New in v3.0
+)
 ```
 
 **When to Use**: Prefix rules reduce boilerplate for single-rule validations; use traditional chaining for complex compositions.
+
+**Performance Benefits**: Prefix rules are slightly more performant as they avoid intermediate rule creation.
 
 ---
 
@@ -592,7 +618,44 @@ class User
 v::attributes()->assert($user);
 ```
 
+**Advanced Attributes Usage**:
+
+```php
+use Respect\Validation\Rules\{Email, Between, NotBlank, KeySet, Key, StringVal, IntVal};
+
+class User
+{
+    #[NotBlank]
+    #[Email]
+    public string $email;
+    
+    #[Between(18, 120)]
+    public int $age;
+    
+    #[NotBlank]
+    #[StringVal]
+    public string $name;
+    
+    #[Key('street')]  // Nested validation
+    public array $address;
+}
+
+// Validate with nested structure
+v::attributes(
+    v::key('address', v::keySet(
+        v::key('street', v::stringType()->lengthBetween(5, 100)),
+        v::keyOptional('apartment', v::stringType()->lengthBetween(1, 10))
+    ))
+)->assert($user);
+```
+
 **When to Use**: Domain models with static validation rules benefit from attribute declarations; dynamic validation still requires fluent API.
+
+**Benefits**:
+- Validation rules are co-located with properties
+- IDE support for rule discovery
+- Self-documenting code
+- Compile-time validation rule definition
 
 ---
 
@@ -618,9 +681,33 @@ try {
 }
 ```
 
+**Advanced Error Handling**:
+
+```php
+// Get detailed error information
+try {
+    $validator->assert($input);
+} catch (ValidationException $e) {
+    // Get all messages with paths
+    $messages = $e->getMessages();
+    
+    // Get specific error by path
+    $emailError = $e->getMessage('user.email');
+    
+    // Get full result tree
+    $result = $e->getResult();
+    
+    // Navigate result tree
+    $userResult = $result->getSubsequent('user');
+    $emailResult = $userResult->getSubsequent('email');
+}
+```
+
 **Why Useful**: Eliminates ambiguity in nested structures (e.g., which "email" failed in multi-user validation).
 
 **Enhanced Results**: Results now support nested subsequents for structured validation feedback, with path-based error identification for nested structures in rules like `UndefOr`, `NullOr`, `DateTimeDiff`, `Max`, `Min`, and `Length`.
+
+**Migration Benefit**: Easier debugging and error reporting in complex validation scenarios.
 
 ---
 

@@ -85,7 +85,7 @@
 - [x] T017 [US1] Complete split rules documentation with usage patterns in docs/11-migration-from-2x.md
 - [x] T018 [US1] Document message customization changes (setName/setTemplate) in docs/11-migration-from-2x.md
 - [x] T019 [US1] Add KeySet negation workaround examples in docs/11-migration-from-2x.md
-- [ ] T020 [US1] Complete new features section (prefix rules, attributes, enhanced error handling) in docs/11-migration-from-2x.md
+- [x] T020 [US1] Complete new features section (prefix rules, attributes, enhanced error handling) in docs/11-migration-from-2x.md
 - [ ] T021 [US1] Document deprecation warnings and temporary compatibility in docs/11-migration-from-2x.md
 - [ ] T022 [US1] Add testing your migration section with step-by-step validation in docs/11-migration-from-2x.md
 - [ ] T023 [US1] Complete common gotchas section with real-world examples in docs/11-migration-from-2x.md
