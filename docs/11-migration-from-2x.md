@@ -167,25 +167,31 @@ v::lengthBetween(10, 100)
 v::age(18)
 
 // v3.0: Exact age
-v::dateTimeDiff('years', now())->equals(18)
+v::dateTimeDiff('years')->equals(18)
 
 // v2.x: Minimum age
 v::minAge(18)
 
 // v3.0: Minimum age (18 or older)
-v::dateTimeDiff('years', now())->greaterThanOrEqual(18)
+v::dateTimeDiff('years')->greaterThanOrEqual(18)
 
 // v2.x: Maximum age
 v::maxAge(65)
 
 // v3.0: Maximum age (65 or younger)
-v::dateTimeDiff('years', now())->lessThanOrEqual(65)
+v::dateTimeDiff('years')->lessThanOrEqual(65)
 
 // v2.x: Age range
 v::minAge(18)->maxAge(65)
 
 // v3.0: Age range
-v::dateTimeDiff('years', now())->between(18, 65)
+v::dateTimeDiff('years')->between(18, 65)
+
+// v2.x: Age with specific date
+v::minAge(18, $referenceDate)
+
+// v3.0: Age with specific date
+v::dateTimeDiff('years', $referenceDate)->greaterThanOrEqual(18)
 ```
 
 **KeyValue Migration**:
@@ -196,6 +202,34 @@ v::keyValue('password', 'password_confirmation')
 
 // v3.0: Explicit comparison
 v::key('password_confirmation', v::equals($input['password']))
+
+// v2.x: Multiple key comparisons
+v::keyValue('start_date', 'end_date')
+
+// v3.0: Multiple key comparisons
+v::key('end_date', v::greaterThan(v::keyValue('start_date')))
+```
+
+**Consecutive Migration**:
+
+```php
+// v2.x: Sequential validation
+v::consecutive(v::intVal(), v::positive(), v::lessThan(100))
+
+// v3.0: Use lazy for sequential validation
+v::lazy(v::intVal(), v::positive(), v::lessThan(100))
+
+// v2.x: Complex consecutive validation
+v::consecutive(
+    v::key('email', v::email()),
+    v::key('age', v::intVal()->min(18))
+)
+
+// v3.0: Complex validation with lazy
+v::lazy(
+    v::key('email', v::email()),
+    v::key('age', v::intVal()->greaterThanOrEqual(18))
+)
 ```
 
 **Migration Strategy**: Search codebase for removed rule names; apply patterns above.
