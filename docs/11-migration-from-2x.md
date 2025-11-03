@@ -63,6 +63,12 @@ v::email()->assert($input); // Use facade
 // OR
 $validator = new Validator(new Email());
 $validator->assert($input); // Explicit wrapper
+
+// Complex validations
+v::intVal()->positive()->lessThan(100)->assert($input);
+
+// With custom messages
+v::email()->assert($input, 'Email address is required');
 ```
 
 **Migration Strategy**:

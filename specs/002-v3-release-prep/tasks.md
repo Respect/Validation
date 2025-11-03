@@ -79,7 +79,7 @@
 
 - [x] T012 [P] [US1] Update migration guide metadata (dates, version) in docs/11-migration-from-2x.md
 - [x] T013 [P] [US1] Fill in breaking changes section with all v3.0 changes from research.md
-- [ ] T014 [US1] Complete validator construction pattern section with examples in docs/11-migration-from-2x.md
+- [x] T014 [US1] Complete validator construction pattern section with examples in docs/11-migration-from-2x.md
 - [ ] T015 [US1] Document rule renames with find/replace guidance in docs/11-migration-from-2x.md
 - [ ] T016 [US1] Add removed rules migration paths with examples in docs/11-migration-from-2x.md
 - [ ] T017 [US1] Complete split rules documentation with usage patterns in docs/11-migration-from-2x.md
