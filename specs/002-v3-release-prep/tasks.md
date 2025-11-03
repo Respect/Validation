@@ -73,7 +73,7 @@
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
 - [x] T010 [P] [US1] Validate migration guide structure against template in docs/11-migration-from-2x.md
-- [ ] T011 [P] [US1] Test all side-by-side examples in migration guide compile for both v2.4 and v3.0
+- [x] T011 [P] [US1] Test all side-by-side examples in migration guide compile for both v2.4 and v3.0
 
 ### Implementation for User Story 1
 
