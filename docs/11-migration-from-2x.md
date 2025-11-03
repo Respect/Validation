@@ -368,6 +368,8 @@ try {
 
 **Why Useful**: Eliminates ambiguity in nested structures (e.g., which "email" failed in multi-user validation).
 
+**Enhanced Results**: Results now support nested subsequents for structured validation feedback, with path-based error identification for nested structures in rules like `UndefOr`, `NullOr`, `DateTimeDiff`, `Max`, `Min`, and `Length`.
+
 ---
 
 ## Deprecation Warnings
