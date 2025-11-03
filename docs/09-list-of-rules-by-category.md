@@ -218,6 +218,16 @@
 - [PropertyExists](rules/PropertyExists.md)
 - [PropertyOptional](rules/PropertyOptional.md)
 
+## Prefixes
+
+- [key](rules/Key.md) - `keyEmail()`, `keyLengthBetween()`, etc.
+- [property](rules/Property.md) - `propertyPositive()`, `propertyNullOrEmail()`, etc.
+- [length](rules/Length.md) - `lengthBetween()`, `lengthEqual()`, etc.
+- [max](rules/Max.md) - `maxLessThan()`, `maxEquals()`, etc.
+- [min](rules/Min.md) - `minGreaterThan()`, `minEquals()`, etc.
+- [nullOr](rules/NullOr.md) - `nullOrEmail()`, `nullOrPositive()`, etc.
+- [undefOr](rules/UndefOr.md) - `undefOrEmail()`, `undefOrPositive()`, etc.
+
 ## Strings
 
 - [Alnum](rules/Alnum.md)
