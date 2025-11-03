@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Script to check links in documentation files
+
+echo "Checking links in documentation files..."
+
+# Check if markdown-link-check is installed
+if ! command -v npx &> /dev/null; then
+    echo "Error: npm is not installed"
+    exit 1
+fi
+
+# Check links in all markdown files in docs directory
+find docs -name "*.md" -type f | while read file; do
+    echo "Checking links in $file..."
+    npx markdown-link-check -c .markdown-link-check.json "$file"
+done
+
+echo "Link checking complete!"

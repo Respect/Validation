@@ -55,7 +55,7 @@
 - [x] T005 Setup migration guide template from contracts/migration-guide-template.md to docs/11-migration-from-2x.md
 - [x] T006 [P] Create rule documentation schema validation script based on contracts/rule-doc-schema.md
 - [x] T007 [P] Setup example validation framework based on contracts/examples-schema.md
-- [ ] T008 Configure link checking tool for documentation cross-references
+- [x] T008 Configure link checking tool for documentation cross-references
 - [ ] T009 Setup environment with v3.0 library for example validation
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
