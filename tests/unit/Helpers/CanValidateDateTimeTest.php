@@ -84,6 +84,4 @@ final class CanValidateDateTimeTest extends TestCase
             ['Y-m-d H:i:s', '1987-12-31'],
         ];
     }
-
-
 }
