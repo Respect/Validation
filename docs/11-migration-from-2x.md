@@ -797,21 +797,145 @@ No changes to `Validator` facade (`v::`) usage patterns. Continue using `v::` fo
 ### Step-by-Step Validation
 
 1. **Update Composer**: `composer require respect/validation:^3.0`
+   ```bash
+   composer require respect/validation:^3.0
+   composer update
+   ```
+
 2. **Run tests**: Identify failures
+   ```bash
+   # Run your existing test suite
+   vendor/bin/phpunit
+   # Or if using Pest
+   vendor/bin/pest
+   ```
+
 3. **Apply renames**: Use find/replace for safe renames
+   ```bash
+   # Safe automated replacements (✅ Yes in migration guide)
+   find . -name "*.php" -exec sed -i '' 's/nullable(/nullOr(/g' {} +
+   find . -name "*.php" -exec sed -i '' 's/optional(/undefOr(/g' {} +
+   find . -name "*.php" -exec sed -i '' 's/attribute(/property(/g' {} +
+   find . -name "*.php" -exec sed -i '' 's/notOptional(/notUndef(/g' {} +
+   ```
+
 4. **Fix removed rules**: Apply migration patterns from section 3
+   ```php
+   // Before: v2.x age validation
+   v::age(18)
+   v::minAge(18)
+   v::maxAge(65)
+   
+   // After: v3.0 DateTimeDiff validation
+   v::dateTimeDiff('years')->equals(18)
+   v::dateTimeDiff('years')->greaterThanOrEqual(18)
+   v::dateTimeDiff('years')->lessThanOrEqual(65)
+   ```
+
 5. **Update messages**: Replace `setName`/`setTemplate` with new patterns
+   ```php
+   // Before: v2.x message customization
+   v::email()->setName('Email Address')->setTemplate('{{name}} is invalid');
+   
+   // After: v3.0 Named and Templated rules
+   v::templated(v::named(v::email(), 'Email Address'), '{{name}} is invalid');
+   ```
+
 6. **Verify examples**: Ensure custom validation logic matches v3 semantics
+   ```php
+   // Test complex validation chains
+   $validator = v::keySet(
+       v::key('user', v::property('email', v::email())),
+       v::keyOptional('age', v::intVal()->greaterThanOrEqual(18))
+   );
+   
+   // Verify it works as expected
+   $validator->assert($input);
+   ```
+
 7. **Re-run tests**: Confirm all validations pass
+   ```bash
+   vendor/bin/phpunit
+   ```
 
-### Common Gotchas
+### Automated Migration Script
 
-- **Min/Max confusion**: New prefix rules vs. comparison rules; check context
-- **Age validation**: Requires `now()` or reference date in `dateTimeDiff`
-- **KeyOptional**: Passes validation if key is absent; use `key()` if key is mandatory
-- **Assertion location**: `assert()` only available on `Validator`, not individual rules
+Create a simple migration script to help with the process:
 
----
+```bash
+#!/bin/bash
+# migrate-to-v3.sh
+
+echo "Migrating to Respect\Validation v3.0..."
+
+# Backup files first
+echo "Creating backup..."
+tar -czf validation-backup-$(date +%Y%m%d).tar.gz src/ tests/ app/
+
+# Update composer
+echo "Updating composer dependencies..."
+composer require respect/validation:^3.0
+
+# Apply safe renames
+echo "Applying safe rule renames..."
+find . -name "*.php" -not -path "./vendor/*" -exec sed -i '' 's/nullable(/nullOr(/g' {} +
+find . -name "*.php" -not -path "./vendor/*" -exec sed -i '' 's/optional(/undefOr(/g' {} +
+find . -name "*.php" -not -path "./vendor/*" -exec sed -i '' 's/attribute(/property(/g' {} +
+find . -name "*.php" -not -path "./vendor/*" -exec sed -i '' 's/notOptional(/notUndef(/g' {} +
+
+echo "Migration script completed. Please review changes and run tests."
+```
+
+### Validation Checklist
+
+Before deploying to production:
+
+- [ ] All tests pass with v3.0
+- [ ] No deprecation warnings in development logs
+- [ ] Custom validation logic reviewed for v3.0 compatibility
+- [ ] DateTimeDiff rules use correct parameter order
+- [ ] KeySet negation patterns replaced with workarounds
+- [ ] Message customization uses Named/Templated rules or assert() overloads
+- [ ] Prefix rules used appropriately for single-rule validations
+- [ ] Attributes validation works for domain models (if used)
+
+### Testing Strategy
+
+1. **Unit Tests**: Ensure all existing unit tests pass
+2. **Integration Tests**: Test complex validation workflows
+3. **Regression Tests**: Verify edge cases still work correctly
+4. **Performance Tests**: Check for any performance regressions
+5. **Manual Testing**: Test critical user flows manually
+
+```php
+// Example: Comprehensive validation test
+public function testUserRegistrationValidation()
+{
+    $userData = [
+        'email' => 'user@example.com',
+        'age' => 25,
+        'profile' => [
+            'firstName' => 'John',
+            'lastName' => 'Doe'
+        ]
+    ];
+    
+    $validator = v::keySet(
+        v::keyEmail('email'),
+        v::key('age', v::intVal()->between(18, 120)),
+        v::key('profile', v::keySet(
+            v::keyLengthBetween('firstName', 1, 50),
+            v::keyLengthBetween('lastName', 1, 50)
+        ))
+    );
+    
+    $this->assertTrue($validator->isValid($userData));
+    
+    // Test failure cases
+    $invalidData = ['email' => 'invalid'];
+    $this->assertFalse($validator->isValid($invalidData));
+}
+```
 
 ## Support and Resources
 
