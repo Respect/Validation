@@ -440,15 +440,98 @@ v::key('user',
 **v2.x** (allowed but unclear semantics):
 ```php
 v::not(v::keySet(v::key('a'), v::key('b')))
+
+// Reject specific keys
+v::not(v::keySet(
+    v::key('admin_only'),
+    v::key('debug_flag')
+))
 ```
 
 **v3.0** (throws exception):
 ```php
 // Use explicit logic instead
 v::each(v::not(v::in(['a', 'b'])))
+
+// Reject specific keys - more explicit approach
+v::keySet(
+    v::key('allowed_key', v::stringType()),
+    // Add validation for other allowed keys
+)->setTemplate('Invalid keys found in input')
 ```
 
-**Migration Strategy**: Search for `not(.*keySet`; replace with explicit validation logic.
+**Workaround Examples**:
+
+```php
+// v2.x: Reject arrays containing specific keys
+v::not(v::keySet(v::key('forbidden1'), v::key('forbidden2')))
+
+// v3.0: Check that forbidden keys don't exist
+v::noneOf(
+    v::keyExists('forbidden1'),
+    v::keyExists('forbidden2')
+)
+
+// v2.x: Inverse key validation (no specific keys allowed)
+v::not(v::keySet(v::key('email'), v::key('password')))
+
+// v3.0: Explicit validation of allowed structure
+v::keySet(
+    v::keyOptional('email', v::email()),
+    v::keyOptional('password', v::stringType()->lengthBetween(8, 100))
+    // Only allow these specific keys
+)
+
+// v2.x: Complex negation
+v::not(v::keySet(
+    v::key('user', v::keySet(
+        v::key('admin', v::trueVal())
+    ))
+))
+
+// v3.0: Direct validation approach
+v::keySet(
+    v::keyOptional('user', v::keySet(
+        v::keyOptional('admin', v::not(v::trueVal()))
+    ))
+)
+```
+
+**Advanced Workarounds**:
+
+For complex scenarios, you might need custom validation logic:
+
+```php
+// Custom rule to validate that only allowed keys exist
+class AllowedKeysOnly extends AbstractRule
+{
+    public function __construct(private array $allowedKeys)
+    {
+    }
+
+    public function validate(mixed $input): bool
+    {
+        if (!is_array($input)) {
+            return false;
+        }
+
+        return empty(array_diff(array_keys($input), $this->allowedKeys));
+    }
+}
+
+// Usage
+v::keySet(
+    new AllowedKeysOnly(['name', 'email', 'age']),
+    v::key('name', v::stringType()),
+    v::key('email', v::email()),
+    v::key('age', v::intVal()->greaterThanOrEqual(18))
+);
+```
+
+**Migration Strategy**: Search for `not(.*keySet`; replace with explicit validation logic using:
+- `noneOf()` for rejecting specific keys
+- Direct `keySet()` validation for allowed structures
+- Custom rules for complex scenarios
 
 **Why**: Negating structural validation is semantically ambiguous.
 
