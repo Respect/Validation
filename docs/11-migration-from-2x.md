@@ -271,6 +271,54 @@ v::keyExists('email')
 
 // v3.0: Built-in optional validation
 v::keyOptional('referral_code', v::uuid())
+
+// v2.x: Property validation
+v::attribute('age', v::intVal()->min(18))
+
+// v3.0: Property validation (renamed)
+v::property('age', v::intVal()->greaterThanOrEqual(18))
+
+// v2.x: Property existence check
+v::attribute('name')
+
+// v3.0: Property existence check
+v::propertyExists('name')
+
+// v2.x: Optional property validation
+// (v2.x required custom logic with optional()/nullable())
+
+// v3.0: Built-in optional property validation
+v::propertyOptional('middleName', v::stringType())
+```
+
+**Complex Usage Patterns**:
+
+```php
+// v2.x: Complex key validation with workarounds
+v::keySet(
+    v::key('email', v::email()),
+    v::key('age', v::optional(v::intVal()->min(18)))
+)
+
+// v3.0: Clearer optional key validation
+v::keySet(
+    v::key('email', v::email()),
+    v::keyOptional('age', v::intVal()->greaterThanOrEqual(18))
+)
+
+// v2.x: Property validation on objects
+v::attribute('user', v::attribute('email', v::email()))
+
+// v3.0: Property validation on objects (clearer naming)
+v::property('user', v::property('email', v::email()))
+
+// v2.x: Existence-only checks
+v::key('requiredField')
+    ->attribute('requiredProperty')
+
+// v3.0: Explicit existence checks
+v::keyExists('requiredField')
+    ->propertyExists('requiredProperty')
 ```
 
 **Migration Strategy**: Review all `key()` and `attribute()` calls; determine if existence check or optional validation applies; use appropriate v3 variant.

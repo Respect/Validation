@@ -82,7 +82,7 @@
 - [x] T014 [US1] Complete validator construction pattern section with examples in docs/11-migration-from-2x.md
 - [x] T015 [US1] Document rule renames with find/replace guidance in docs/11-migration-from-2x.md
 - [x] T016 [US1] Add removed rules migration paths with examples in docs/11-migration-from-2x.md
-- [ ] T017 [US1] Complete split rules documentation with usage patterns in docs/11-migration-from-2x.md
+- [x] T017 [US1] Complete split rules documentation with usage patterns in docs/11-migration-from-2x.md
 - [ ] T018 [US1] Document message customization changes (setName/setTemplate) in docs/11-migration-from-2x.md
 - [ ] T019 [US1] Add KeySet negation workaround examples in docs/11-migration-from-2x.md
 - [ ] T020 [US1] Complete new features section (prefix rules, attributes, enhanced error handling) in docs/11-migration-from-2x.md
