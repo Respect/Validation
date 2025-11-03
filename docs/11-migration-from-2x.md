@@ -348,6 +348,15 @@ v::templated(
     v::named(v::email(), 'Email Address'),
     '{{name}} is invalid'
 );
+
+// With complex rules
+v::templated(
+    v::named(
+        v::intVal()->greaterThanOrEqual(18),
+        'Age'
+    ),
+    '{{name}} must be 18 or older'
+);
 ```
 
 **Enhanced `assert()` Overloads** (v3.0 only):
@@ -368,6 +377,50 @@ v::email()->assert($input, new DomainException('Invalid email'));
 
 // Callable handler
 v::email()->assert($input, fn($ex) => logError($ex));
+
+// With Named and Templated rules
+v::named(v::email(), 'Email Address')
+    ->assert($input, '{{name}} must be a valid email address');
+
+// Complex validation with custom messages
+v::keySet(
+    v::key('name', v::named(v::stringType(), 'Name')),
+    v::key('age', v::named(v::intVal(), 'Age'))
+)->assert($userData, [
+    'name' => 'Please provide a valid name',
+    'age' => 'Age must be a number',
+    '__self__' => 'Please check your user data'
+]);
+```
+
+**Migration Examples**:
+
+```php
+// v2.x: Simple name and template
+v::email()
+    ->setName('Email')
+    ->setTemplate('{{name}} is not valid');
+
+// v3.0: Using Named and Templated rules
+v::templated(
+    v::named(v::email(), 'Email'),
+    '{{name}} is not valid'
+);
+
+// v2.x: Complex chained rule with messages
+v::key('user', 
+    v::attribute('email', v::email())
+        ->setName('User Email')
+        ->setTemplate('Email is invalid')
+);
+
+// v3.0: Clear separation of concerns
+v::key('user',
+    v::named(
+        v::property('email', v::email()),
+        'User Email'
+    )
+)->setTemplate('{{name}} is invalid');
 ```
 
 **Migration Strategy**:
