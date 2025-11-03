@@ -1,0 +1,280 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Script to validate rule documentation files against the defined schema
+ *
+ * Usage:
+ *   bin/validate-rule-docs docs/rules/Email.md
+ *   bin/validate-rule-docs docs/rules/
+ */
+
+// Check if we have the correct number of arguments
+if ($argc < 2) {
+    echo "Usage: bin/validate-rule-docs <file|directory>\n";
+    echo "Example: bin/validate-rule-docs docs/rules/Email.md\n";
+    echo "Example: bin/validate-rule-docs docs/rules/\n";
+    exit(1);
+}
+
+$path = $argv[1];
+
+// Check if the path exists
+if (!file_exists($path)) {
+    echo "Error: Path '$path' does not exist\n";
+    exit(1);
+}
+
+/**
+ * Get valid categories from the schema
+ *
+ * @return array
+ */
+function getValidCategories()
+{
+    return [
+        'String Validation',
+        'Numeric',
+        'Dates and Times',
+        'Array and Iterable',
+        'Object',
+        'Type Checking',
+        'Comparison',
+        'File System',
+        'Internet and Networking',
+        'Regional (IDs, Postal Codes, etc.)',
+        'Banking',
+        'Miscellaneous'
+    ];
+}
+
+/**
+ * Validate a rule documentation file against the schema
+ *
+ * @param string $file
+ * @return array
+ */
+function validateRuleDoc($file)
+{
+    echo "Validating $file...\n";
+    
+    $content = file_get_contents($file);
+    
+    $results = [
+        'file' => $file,
+        'passed' => 0,
+        'failed' => 0,
+        'errors' => []
+    ];
+    
+    // Check 1: File has a title (H1)
+    if (!preg_match('/^#\s+\w+/', $content)) {
+        $results['failed']++;
+        $results['errors'][] = "Missing or invalid title (H1 heading)";
+    } else {
+        $results['passed']++;
+    }
+    
+    // Check 2: Has brief description
+    $lines = explode("\n", $content);
+    $descriptionFound = false;
+    foreach ($lines as $line) {
+        if (preg_match('/^#\s+\w+/', $line)) {
+            continue; // Skip title
+        }
+        if (trim($line) !== '' && !preg_match('/^```/', $line)) {
+            $descriptionFound = true;
+            break;
+        }
+    }
+    
+    if (!$descriptionFound) {
+        $results['failed']++;
+        $results['errors'][] = "Missing brief description after title";
+    } else {
+        $results['passed']++;
+    }
+    
+    // Check 3: Has required sections
+    $requiredSections = ['## Usage', '## Parameters', '## Examples', '## Message Template', '## Categorization', '## Changelog'];
+    foreach ($requiredSections as $section) {
+        if (strpos($content, $section) === false) {
+            $results['failed']++;
+            $results['errors'][] = "Missing required section: $section";
+        } else {
+            $results['passed']++;
+        }
+    }
+    
+    // Check 4: Has PHP code examples without <?php tags
+    if (preg_match_all('/```php\s*\n(.*?)```/s', $content, $matches)) {
+        foreach ($matches[1] as $code) {
+            if (strpos($code, '<?php') !== false) {
+                $results['failed']++;
+                $results['errors'][] = "PHP code block contains <?php tag";
+            } else {
+                $results['passed']++;
+            }
+        }
+    } else {
+        $results['failed']++;
+        $results['errors'][] = "No PHP code examples found";
+    }
+    
+    // Check 5: Has examples with expected outcomes
+    if (preg_match_all('/```php\s*\n(.*?)```/s', $content, $matches)) {
+        $hasOutcomes = false;
+        foreach ($matches[1] as $code) {
+            if (strpos($code, '// passes') !== false || strpos($code, '// throws') !== false) {
+                $hasOutcomes = true;
+                break;
+            }
+        }
+        
+        if (!$hasOutcomes) {
+            $results['failed']++;
+            $results['errors'][] = "PHP examples should include expected outcomes (// passes, // throws)";
+        } else {
+            $results['passed']++;
+        }
+    }
+    
+    // Check 6: Validate categories
+    if (preg_match('/## Categorization\s*\n((?:\s*-.*\n)+)/', $content, $matches)) {
+        $categoryLines = explode("\n", trim($matches[1]));
+        $validCategories = getValidCategories();
+        $hasValidCategory = false;
+        
+        foreach ($categoryLines as $line) {
+            if (preg_match('/^\s*-\s*(.+)$/', $line, $catMatches)) {
+                $category = trim($catMatches[1]);
+                if (in_array($category, $validCategories)) {
+                    $hasValidCategory = true;
+                    $results['passed']++;
+                } else {
+                    $results['failed']++;
+                    $results['errors'][] = "Invalid category: $category";
+                }
+            }
+        }
+        
+        if (!$hasValidCategory) {
+            $results['failed']++;
+            $results['errors'][] = "No valid categories found";
+        }
+    } else {
+        $results['failed']++;
+        $results['errors'][] = "Could not parse categories section";
+    }
+    
+    // Check 7: Has version footer
+    if (!preg_match('/---\s*\n\s*\*\*Version\*\*:/', $content)) {
+        $results['failed']++;
+        $results['errors'][] = "Missing version footer";
+    } else {
+        $results['passed']++;
+    }
+    
+    return $results;
+}
+
+/**
+ * Process a single markdown file
+ *
+ * @param string $file
+ * @return array
+ */
+function processFile($file)
+{
+    return validateRuleDoc($file);
+}
+
+/**
+ * Process a directory recursively
+ *
+ * @param string $directory
+ * @return array
+ */
+function processDirectory($directory)
+{
+    $results = [
+        'total' => 0,
+        'passed' => 0,
+        'failed' => 0,
+        'errors' => [],
+        'files' => []
+    ];
+    
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($directory)
+    );
+    
+    $files = [];
+    foreach ($iterator as $file) {
+        if ($file->isFile() && $file->getExtension() === 'md') {
+            $files[] = $file->getPathname();
+        }
+    }
+    
+    // Sort files for consistent output
+    sort($files);
+    
+    foreach ($files as $file) {
+        $fileResults = processFile($file);
+        
+        $results['total']++;
+        $results['passed'] += $fileResults['passed'];
+        $results['failed'] += $fileResults['failed'];
+        $results['errors'] = array_merge($results['errors'], $fileResults['errors']);
+        $results['files'][] = $fileResults;
+    }
+    
+    return $results;
+}
+
+// Main execution
+try {
+    if (is_file($path)) {
+        $results = processFile($path);
+        $summary = [
+            'total' => 1,
+            'passed' => $results['passed'],
+            'failed' => $results['failed'],
+            'errors' => $results['errors']
+        ];
+    } elseif (is_dir($path)) {
+        $results = processDirectory($path);
+        $summary = [
+            'total' => $results['total'],
+            'passed' => $results['passed'],
+            'failed' => $results['failed'],
+            'errors' => $results['errors']
+        ];
+    } else {
+        echo "Error: '$path' is neither a file nor a directory\n";
+        exit(1);
+    }
+    
+    // Print summary
+    echo "\n" . str_repeat('=', 50) . "\n";
+    echo "RULE DOCUMENTATION VALIDATION SUMMARY\n";
+    echo str_repeat('=', 50) . "\n";
+    echo "Total validations: " . $summary['total'] . "\n";
+    echo "Passed: " . $summary['passed'] . "\n";
+    echo "Failed: " . $summary['failed'] . "\n";
+    
+    if (!empty($summary['errors'])) {
+        echo "\nERRORS:\n";
+        echo str_repeat('-', 20) . "\n";
+        foreach (array_unique($summary['errors']) as $error) {
+            echo "✗ " . $error . "\n";
+        }
+    }
+    
+    // Exit with appropriate code
+    exit($summary['failed'] > 0 ? 1 : 0);
+    
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage() . "\n";
+    exit(1);
+}
