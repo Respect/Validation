@@ -1,2 +1,208 @@
 site_name: Respect\Validation
 theme: readthedocs
+nav:
+  - Home: index.md
+  - Installation: 01-installation.md
+  - Feature Guide: 02-feature-guide.md
+  - Handling Exceptions: 03-handling-exceptions.md
+  - Message Translation: 04-message-translation.md
+  - Message Placeholder Conversion: 05-message-placeholder-conversion.md
+  - Concrete API: 06-concrete-api.md
+  - Custom Rules: 07-custom-rules.md
+  - Comparable Values: 08-comparable-values.md
+  - Rules by Category: 09-list-of-rules-by-category.md
+  - License: 10-license.md
+  - Migration from 2.x: 11-migration-from-2x.md
+  - Prefix Rules: 12-prefix-rules.md
+  - Rules:
+    - A:
+      - Alnum: rules/Alnum.md
+      - Alpha: rules/Alpha.md
+      - AlwaysInvalid: rules/AlwaysInvalid.md
+      - AlwaysValid: rules/AlwaysValid.md
+      - AnyOf: rules/AnyOf.md
+      - ArrayType: rules/ArrayType.md
+      - ArrayVal: rules/ArrayVal.md
+      - Attributes: rules/Attributes.md
+    - B:
+      - Base: rules/Base.md
+      - Base64: rules/Base64.md
+      - Between: rules/Between.md
+      - BetweenExclusive: rules/BetweenExclusive.md
+    - C:
+      - BoolType: rules/BoolType.md
+      - BoolVal: rules/BoolVal.md
+      - Bsn: rules/Bsn.md
+    - D:
+      - Call: rules/Call.md
+      - CallableType: rules/CallableType.md
+      - Callback: rules/Callback.md
+      - Charset: rules/Charset.md
+      - Circuit: rules/Circuit.md
+      - Cnh: rules/Cnh.md
+      - Cnpj: rules/Cnpj.md
+      - Consonant: rules/Consonant.md
+      - Contains: rules/Contains.md
+      - ContainsAny: rules/ContainsAny.md
+      - Control: rules/Control.md
+      - Countable: rules/Countable.md
+      - CountryCode: rules/CountryCode.md
+      - CreditCard: rules/CreditCard.md
+      - CurrencyCode: rules/CurrencyCode.md
+    - D:
+      - Date: rules/Date.md
+      - DateTime: rules/DateTime.md
+      - DateTimeDiff: rules/DateTimeDiff.md
+      - Decimal: rules/Decimal.md
+      - Digit: rules/Digit.md
+    - D-E:
+      - Directory: rules/Directory.md
+      - Domain: rules/Domain.md
+      - Each: rules/Each.md
+      - Email: rules/Email.md
+      - EndsWith: rules/EndsWith.md
+      - Equals: rules/Equals.md
+      - Equivalent: rules/Equivalent.md
+      - Even: rules/Even.md
+      - Executable: rules/Executable.md
+      - Exists: rules/Exists.md
+      - Extension: rules/Extension.md
+    - F:
+      - Factor: rules/Factor.md
+      - FalseVal: rules/FalseVal.md
+      - Fibonacci: rules/Fibonacci.md
+      - File: rules/File.md
+      - FilterVar: rules/FilterVar.md
+      - Finite: rules/Finite.md
+      - FloatType: rules/FloatType.md
+      - FloatVal: rules/FloatVal.md
+    - G:
+      - Graph: rules/Graph.md
+      - GreaterThan: rules/GreaterThan.md
+      - GreaterThanOrEqual: rules/GreaterThanOrEqual.md
+    - H:
+      - Hetu: rules/Hetu.md
+      - HexRgbColor: rules/HexRgbColor.md
+    - I:
+      - Iban: rules/Iban.md
+      - Identical: rules/Identical.md
+      - Image: rules/Image.md
+      - Imei: rules/Imei.md
+      - In: rules/In.md
+      - Infinite: rules/Infinite.md
+      - Instance: rules/Instance.md
+      - IntType: rules/IntType.md
+      - IntVal: rules/IntVal.md
+      - Ip: rules/Ip.md
+      - Isbn: rules/Isbn.md
+      - IterableType: rules/IterableType.md
+      - IterableVal: rules/IterableVal.md
+    - J:
+      - Json: rules/Json.md
+    - K:
+      - Key: rules/Key.md
+      - KeyExists: rules/KeyExists.md
+      - KeyOptional: rules/KeyOptional.md
+      - KeySet: rules/KeySet.md
+    - L:
+      - LanguageCode: rules/LanguageCode.md
+      - Lazy: rules/Lazy.md
+      - LeapDate: rules/LeapDate.md
+      - LeapYear: rules/LeapYear.md
+      - Length: rules/Length.md
+      - LessThan: rules/LessThan.md
+      - LessThanOrEqual: rules/LessThanOrEqual.md
+      - Lowercase: rules/Lowercase.md
+      - Luhn: rules/Luhn.md
+    - M:
+      - MacAddress: rules/MacAddress.md
+      - Max: rules/Max.md
+      - Mimetype: rules/Mimetype.md
+      - Min: rules/Min.md
+      - Multiple: rules/Multiple.md
+    - N:
+      - Named: rules/Named.md
+      - Negative: rules/Negative.md
+      - NfeAccessKey: rules/NfeAccessKey.md
+      - Nif: rules/Nif.md
+      - Nip: rules/Nip.md
+      - No: rules/No.md
+      - NoWhitespace: rules/NoWhitespace.md
+      - NoneOf: rules/NoneOf.md
+      - Not: rules/Not.md
+      - NotBlank: rules/NotBlank.md
+      - NotEmoji: rules/NotEmoji.md
+      - NotEmpty: rules/NotEmpty.md
+      - NotUndef: rules/NotUndef.md
+      - NullOr: rules/NullOr.md
+      - NullType: rules/NullType.md
+      - Number: rules/Number.md
+      - NumericVal: rules/NumericVal.md
+    - O:
+      - ObjectType: rules/ObjectType.md
+      - Odd: rules/Odd.md
+      - OneOf: rules/OneOf.md
+    - P:
+      - PerfectSquare: rules/PerfectSquare.md
+      - Pesel: rules/Pesel.md
+      - Phone: rules/Phone.md
+      - PhpLabel: rules/PhpLabel.md
+      - Pis: rules/Pis.md
+      - PolishIdCard: rules/PolishIdCard.md
+      - PortugueseNif: rules/PortugueseNif.md
+      - Positive: rules/Positive.md
+      - PostalCode: rules/PostalCode.md
+      - PrimeNumber: rules/PrimeNumber.md
+      - Printable: rules/Printable.md
+      - Property: rules/Property.md
+      - PropertyExists: rules/PropertyExists.md
+      - PropertyOptional: rules/PropertyOptional.md
+      - PublicDomainSuffix: rules/PublicDomainSuffix.md
+      - Punct: rules/Punct.md
+    - R:
+      - Readable: rules/Readable.md
+      - Regex: rules/Regex.md
+      - ResourceType: rules/ResourceType.md
+      - Roman: rules/Roman.md
+    - S:
+      - ScalarVal: rules/ScalarVal.md
+      - Size: rules/Size.md
+      - Slug: rules/Slug.md
+      - Sorted: rules/Sorted.md
+      - Space: rules/Space.md
+      - StartsWith: rules/StartsWith.md
+      - StringType: rules/StringType.md
+      - StringVal: rules/StringVal.md
+      - SubdivisionCode: rules/SubdivisionCode.md
+      - Subset: rules/Subset.md
+      - SymbolicLink: rules/SymbolicLink.md
+    - T:
+      - Templated: rules/Templated.md
+      - Time: rules/Time.md
+      - Tld: rules/Tld.md
+      - TrueVal: rules/TrueVal.md
+      - Type: rules/Type.md
+    - U:
+      - UndefOr: rules/UndefOr.md
+      - Unique: rules/Unique.md
+      - Uploaded: rules/Uploaded.md
+      - Uppercase: rules/Uppercase.md
+      - Url: rules/Url.md
+      - Uuid: rules/Uuid.md
+    - V:
+      - Version: rules/Version.md
+      - VideoUrl: rules/VideoUrl.md
+      - Vowel: rules/Vowel.md
+    - W:
+      - When: rules/When.md
+      - Writable: rules/Writable.md
+    - X:
+      - Xdigit: rules/Xdigit.md
+    - Y:
+      - Yes: rules/Yes.md
+    - Removed in v3.0:
+      - Age: rules/Age.md
+      - Consecutive: rules/Consecutive.md
+      - KeyValue: rules/KeyValue.md
+      - MaxAge: rules/MaxAge.md
+      - MinAge: rules/MinAge.md
