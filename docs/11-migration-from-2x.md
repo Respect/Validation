@@ -719,9 +719,76 @@ v3.0 includes deprecation transformers for renamed rules. Code using old names w
 
 **Recommended**: Update to new names immediately; transformers may be removed in future minor versions.
 
+**Deprecation Warning Examples**:
+
+```php
+// This will work but emit a deprecation warning
+v::nullable(v::email());  // Deprecated: nullable is deprecated
+
+// Recommended replacement
+v::nullOr(v::email());    // No warning
+
+// Multiple deprecated rules
+v::nullable(v::optional(v::min(10)));  // Multiple warnings
+
+// Recommended replacement
+v::nullOr(v::undefOr(v::greaterThanOrEqual(10)));  // No warnings
+```
+
+**Controlling Deprecation Warnings**:
+
+```php
+// Suppress deprecation warnings (not recommended for production)
+error_reporting(E_ALL & ~E_DEPRECATED);
+
+// Or set a custom error handler
+set_error_handler(function($errno, $errstr) {
+    if (strpos($errstr, 'deprecated') !== false) {
+        // Log or handle deprecation warnings
+        error_log("Deprecation: $errstr");
+        return true; // Don't execute PHP internal error handler
+    }
+    return false; // Execute PHP internal error handler
+}, E_DEPRECATED);
+```
+
+**Migration Strategy for Deprecation Warnings**:
+
+1. **Development Phase**: Keep warnings enabled to identify deprecated usage
+2. **Testing Phase**: Run test suite with error reporting enabled
+3. **Production Phase**: Consider suppressing warnings if immediate migration isn't possible
+4. **Long-term**: Remove all deprecated rule usage
+
 ### Facades and Helpers
 
 No changes to `Validator` facade (`v::`) usage patterns. Continue using `v::` for all rules.
+
+**Backward Compatibility**:
+- All existing `v::{rule}()` patterns continue to work
+- Rule parameter signatures remain the same where possible
+- Custom rules implementing the Rule interface continue to work
+
+**Potential Breaking Changes**:
+- Rules that relied on `setName()`/`setTemplate()` chaining will need refactoring
+- Rules that expected `assert()`/`check()` on individual rule instances will break
+- Rules that wrapped `KeySet` with `Not` will throw exceptions
+
+### Version Migration Timeline
+
+**v3.0 (Current)**:
+- Deprecation transformers included
+- Warnings emitted for deprecated usage
+- Full backward compatibility for non-deprecated features
+
+**v3.x (Future minors)**:
+- Deprecation transformers may be removed
+- Deprecated rule names may stop working
+- New features added without breaking changes
+
+**v4.0 (Future major)**:
+- All deprecated features removed
+- Only current v3.0+ patterns supported
+- New breaking changes may be introduced
 
 ---
 
