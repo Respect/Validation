@@ -18,10 +18,15 @@ use Respect\Validation\Factory;
 use Respect\Validation\Message\StandardFormatter;
 use Respect\Validation\Message\Translator\GettextTranslator;
 use Respect\Validation\Validator;
+use Respect\Validation\ValidatorDefaults;
 
 $translator = new GettextTranslator();
 
-$validator = new Validator(new Factory(), new StandardFormatter(), $translator);
+// Set the translator globally
+ValidatorDefaults::setTranslator($translator);
+
+// Create a validator with the translator
+$validator = Validator::create();
 ```
 
 ## Message customization with Named and Templated rules
@@ -41,7 +46,7 @@ $customMessageValidator = v::templated(
 );
 
 // Using assert() overload for custom messages
-$emailValidator = v::email()->assert($input, 'Please provide a valid email address');
+$emailValidator = v::email()->assert('invalid@example.com', 'Please provide a valid email address');
 ```
 
 ## Placeholder Behaviors and Formatting Changes

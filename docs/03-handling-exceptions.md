@@ -205,8 +205,8 @@ try {
     // Get specific error by path
     // $emailError = $exception->getMessage('user.email');
     
-    // Get full result tree
-    $result = $exception->getResult();
+    // Get full result tree (if available)
+    // $result = $exception->getResult(); // Only available on ResultException
 }
 ```
 

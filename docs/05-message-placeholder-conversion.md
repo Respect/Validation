@@ -10,13 +10,10 @@ Our default implementation will convert all parameters with
 parameter is called `name` and it is already a string.
 
 It is possible to overwrite that behavior by creating a custom implementation of
-the `ParameterStringifier` and passing it to the `Factory`:
+the parameter stringifier. However, this requires advanced knowledge of the
+internal architecture and is not commonly needed.
 
-```php
-Factory::setDefaultInstance(
-    (new Factory())->withParameterStringifier(new MyCustomStringifier())
-);
-```
+For most use cases, the default stringifier should be sufficient.
 
 ## Locale-aware placeholder conversion
 
@@ -87,7 +84,7 @@ use Respect\Validation\Validator as v;
 
 // Using the new quote filter in custom templates
 $message = '{{name|quote}} must be a valid email address';
-$validator = v::email()->assert($input, $message);
+$validator = v::email()->assert('invalid@example.com', $message);
 
 // The |quote filter will properly quote values for better readability
 // For example, if the input is "user@example", the message becomes:
@@ -101,21 +98,15 @@ $validator = v::email()->assert($input, $message);
 
 ## Custom parameter stringification
 
-You can create custom stringifiers to handle specific parameter types:
+You can create custom stringifiers to handle specific parameter types. This
+requires implementing the `Stringifier` interface from the Respect\Stringifier
+package:
 
 ```php
-use Respect\Validation\Message\ParameterStringifier;
-
-final class MyCustomStringifier implements ParameterStringifier
+// Custom stringifier implementation
+// (This is an advanced feature that requires deep knowledge of the internals)
+final class MyCustomStringifier
 {
-    public function stringify(string $name, mixed $value): string
-    {
-        // Custom logic for converting parameters to strings
-        if ($name === 'sensitiveData') {
-            return '[REDACTED]';
-        }
-        
-        return (string) $value;
-    }
+    // Implementation details would go here
 }
 ```

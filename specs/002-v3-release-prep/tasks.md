@@ -189,7 +189,7 @@
 - [x] T080 [P] Fix any broken internal links discovered in link check
 - [x] T081 [P] Add visible v3.0 applicability notes to 100% of changed pages
 - [x] T082 Validate that 0 broken links exist across updated documentation
-- [ ] T083 Run quickstart.md validation to ensure all steps work correctly
+- [x] T083 Run quickstart.md validation to ensure all steps work correctly
 - [ ] T084 Final proofread of all documentation for clarity and consistency
 - [ ] T085 Verify cross-linking integrity between sections
 - [ ] T086 Ensure all examples execute as written against v3.0

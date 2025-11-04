@@ -68,15 +68,17 @@ function extractPhpCodeBlocks($content)
 function validateCodeExample($code, $sourceFile)
 {
     // Create the complete PHP script with proper context
-    $fullCode = <<<PHP
-<?php
-require '{$GLOBALS['autoloadPath']}';
-use Respect\Validation\Validator as v;
-use Respect\Validation\Exceptions\ValidationException;
-
-// Extracted code example:
-$code
-PHP;
+    $fullCode = '';
+    
+    // Only add use statements if they're not already in the code
+    $useValidator = (strpos($code, 'use Respect\Validation\Validator') === false) ? "use Respect\Validation\Validator as v;\n" : '';
+    $useValidationException = (strpos($code, 'ValidationException') !== false && strpos($code, 'use Respect\Validation\Exceptions\ValidationException') === false) ? "use Respect\Validation\Exceptions\ValidationException;\n" : '';
+    
+    if ($useValidator || $useValidationException) {
+        $fullCode = "<?php\nrequire '{$GLOBALS['autoloadPath']}';\n{$useValidator}{$useValidationException}\n// Extracted code example:\n$code";
+    } else {
+        $fullCode = "<?php\nrequire '{$GLOBALS['autoloadPath']}';\n\n// Extracted code example:\n$code";
+    }
     
     // Write to temporary file
     $tempFile = tempnam(sys_get_temp_dir(), 'validation_');
