@@ -7,9 +7,9 @@ Validates the input using a defined rule when the input is not `null`.
 ## Usage
 
 ```php
-v::nullable(v::email())->isValid(null); // true
-v::nullable(v::email())->isValid('example@example.com'); // true
-v::nullable(v::email())->isValid('not an email'); // false
+v::nullOr(v::email())->isValid(null); // true
+v::nullOr(v::email())->isValid('example@example.com'); // true
+v::nullOr(v::email())->isValid('not an email'); // false
 ```
 
 ## Prefix
