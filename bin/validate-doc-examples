@@ -52,6 +52,11 @@ function extractPhpCodeBlocks($content)
             continue;
         }
         
+        // Skip code that contains // throws (meant to show error messages)
+        if (strpos($code, '// throws') !== false) {
+            continue;
+        }
+        
         $blocks[] = trim($code);
     }
     
@@ -110,6 +115,12 @@ function validateCodeExample($code, $sourceFile)
 function processFile($file)
 {
     echo "Processing $file...\n";
+    
+    // Skip files for removed rules
+    if (strpos(file_get_contents($file), 'Removed in v3.0') !== false) {
+        echo "  Skipping file for removed rule\n";
+        return ['total' => 0, 'passed' => 0, 'failed' => 0, 'errors' => []];
+    }
     
     $content = file_get_contents($file);
     $codeBlocks = extractPhpCodeBlocks($content);

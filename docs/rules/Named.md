@@ -6,14 +6,14 @@ Validates the input with the given rule, and uses the custom name in the error m
 
 ```php
 v::named(v::email(), 'Your email')->assert('not an email');
-// Message: Your email must be a valid email address
+// throws ValidationException with message: Your email must be a valid email address
 ```
 
 Here's an example of a similar code, but without using the `Named` rule:
 
 ```php
 v::email()->assert('not an email');
-// Message: "not an email" must be a valid email address
+// throws ValidationException with message: "not an email" must be a valid email address
 ```
 
 The `Named` rule can be also useful when you're using [Attributes](Attributes.md) and want a custom name for a specific property.

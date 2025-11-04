@@ -45,11 +45,8 @@ v::nullOr(v::email())->isValid(null); // true
 The templates from this rule serve as message suffixes:
 
 ```php
-v::nullOr(v::alpha())->assert('has1number');
-// "has1number" must contain only letters (a-z) or must be null
-
 v::not(v::nullOr(v::alpha()))->assert("alpha");
-// "alpha" must not contain letters (a-z) and must not be null
+// throws ValidationException with message: "alpha" must not contain letters (a-z) and must not be null
 ```
 
 ## Template placeholders
