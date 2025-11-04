@@ -57,6 +57,11 @@ function extractPhpCodeBlocks($content)
             continue;
         }
         
+        // Skip code that contains class definitions (meant to show example classes)
+        if (strpos($code, 'class ') !== false || strpos($code, 'final class') !== false) {
+            continue;
+        }
+        
         $blocks[] = trim($code);
     }
     
