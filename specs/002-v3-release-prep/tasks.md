@@ -132,7 +132,7 @@
 - [x] T048 [P] [US2] Verify custom rule examples show correct v3.0 Rule interface in docs/07-custom-rules.md
 - [x] T049 [P] [US2] Ensure custom rule examples use #[Template] attributes in docs/07-custom-rules.md
 - [x] T050 [P] [US2] Verify examples in docs/08-comparable-values.md run against v3.0
-- [ ] T051 [P] [US2] Update examples to new rule names in docs/08-comparable-values.md
+- [x] T051 [P] [US2] Update examples to new rule names in docs/08-comparable-values.md
 - [x] T052 [P] [US2] Update rule names in docs/09-list-of-rules-by-category.md (all renames from research.md)
 - [x] T053 [P] [US2] Remove deleted rules from docs/09-list-of-rules-by-category.md
 - [x] T054 [P] [US2] Add new rules to docs/09-list-of-rules-by-category.md
