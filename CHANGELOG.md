@@ -1,5 +1,39 @@
 # Changes in Respect\Validation 2.x
 
+## 3.0
+
+Major release with breaking changes. For upgrade instructions, see the [Migration Guide](docs/11-migration-from-2x.md).
+
+### Breaking Changes:
+
+- PHP 8.1+ is now required (dropped support for PHP 8.0 and below)
+- Removed rules: `Age`, `MinAge`, `MaxAge`, `KeyValue`, `Consecutive`
+- Renamed rules: 
+  - `Min` → `GreaterThanOrEqual`
+  - `Max` → `LessThanOrEqual`
+  - `Nullable` → `NullOr`
+  - `Optional` → `UndefOr`
+  - `Attribute` → `Property`
+  - `NotOptional` → `NotUndef`
+- Split rules:
+  - `Key` split into `Key`, `KeyExists`, `KeyOptional`
+  - `Property` split into `Property`, `PropertyExists`, `PropertyOptional`
+- Removed deprecated methods: `setName()`, `setTemplate()`
+
+### New Features:
+
+- Prefix rules for common validation patterns (`keyEmail`, `propertyPositive`, etc.)
+- PHP 8+ attributes support with `#[Email]`, `#[Between]`, etc.
+- Enhanced result reporting with path-based error identification
+- New rule variants: `KeyExists`, `KeyOptional`, `PropertyExists`, `PropertyOptional`
+- New `Named` and `Templated` rules to replace `setName()` and `setTemplate()`
+- `{placeholder|quote}` filter in message templates
+
+### Removed:
+
+- Symfony façade validators removed (deprecated in v2.3)
+
+
 ## 2.3
 
 Versioning Changes:

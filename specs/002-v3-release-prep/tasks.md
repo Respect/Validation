@@ -181,7 +181,7 @@
 **Purpose**: Improvements that affect multiple user stories and final validation
 
 - [x] T074 [P] Update mkdocs.yml navigation to include migration guide at docs/11-migration-from-2x.md
-- [ ] T075 [P] Add v3.0 section to CHANGELOG.md with summary pointing to migration guide
+- [x] T075 [P] Add v3.0 section to CHANGELOG.md with summary pointing to migration guide
 - [x] T076 [P] Update README.md examples to v3.0 syntax
 - [x] T077 [P] Add v2.x support timeline to README.md
 - [x] T078 [P] Add link to migration guide in README.md
