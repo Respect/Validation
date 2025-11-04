@@ -163,31 +163,31 @@ v::lengthBetween(10, 100)
 **Age Validation Migration**:
 
 ```php
-// v2.x: Exact age
+// v2.x: Exact age (this example is expected to fail in v3.0)
 v::age(18)
 
 // v3.0: Exact age
 v::dateTimeDiff('years')->equals(18)
 
-// v2.x: Minimum age
+// v2.x: Minimum age (this example is expected to fail in v3.0)
 v::minAge(18)
 
 // v3.0: Minimum age (18 or older)
 v::dateTimeDiff('years')->greaterThanOrEqual(18)
 
-// v2.x: Maximum age
+// v2.x: Maximum age (this example is expected to fail in v3.0)
 v::maxAge(65)
 
 // v3.0: Maximum age (65 or younger)
 v::dateTimeDiff('years')->lessThanOrEqual(65)
 
-// v2.x: Age range
+// v2.x: Age range (this example is expected to fail in v3.0)
 v::minAge(18)->maxAge(65)
 
 // v3.0: Age range
 v::dateTimeDiff('years')->between(18, 65)
 
-// v2.x: Age with specific date
+// v2.x: Age with specific date (this example is expected to fail in v3.0)
 v::minAge(18, $referenceDate)
 
 // v3.0: Age with specific date
@@ -197,13 +197,13 @@ v::dateTimeDiff('years', $referenceDate)->greaterThanOrEqual(18)
 **KeyValue Migration**:
 
 ```php
-// v2.x
+// v2.x (this example is expected to fail in v3.0)
 v::keyValue('password', 'password_confirmation')
 
 // v3.0: Explicit comparison
 v::key('password_confirmation', v::equals($input['password']))
 
-// v2.x: Multiple key comparisons
+// v2.x: Multiple key comparisons (this example is expected to fail in v3.0)
 v::keyValue('start_date', 'end_date')
 
 // v3.0: Multiple key comparisons
@@ -213,13 +213,13 @@ v::key('end_date', v::greaterThan(v::keyValue('start_date')))
 **Consecutive Migration**:
 
 ```php
-// v2.x: Sequential validation
+// v2.x: Sequential validation (this example is expected to fail in v3.0)
 v::consecutive(v::intVal(), v::positive(), v::lessThan(100))
 
 // v3.0: Use lazy for sequential validation
 v::lazy(v::intVal(), v::positive(), v::lessThan(100))
 
-// v2.x: Complex consecutive validation
+// v2.x: Complex consecutive validation (this example is expected to fail in v3.0)
 v::consecutive(
     v::key('email', v::email()),
     v::key('age', v::intVal()->min(18))
@@ -1063,6 +1063,7 @@ v::keySet(v::key('allowed', v::stringType()));
 **Issue**: Mixing up parameter order in DateTimeDiff
 ```php
 // v2.x age validation pattern
+// v2.4 incorrect (this example is expected to fail in v3.0)
 v::age(18);
 
 // v3.0 correct DateTimeDiff usage
