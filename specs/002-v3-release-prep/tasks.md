@@ -144,7 +144,7 @@
 - [x] T060 [P] [US2] Create documentation for new rule variants (KeyExists, KeyOptional, etc.) in docs/rules/
 - [x] T061 [P] [US2] Create documentation for new prefix rules in docs/rules/
 - [x] T062 [P] [US2] Update all examples in rule docs to use v:: facade
-- [ ] T063 [P] [US2] Remove <?php tags from all examples in documentation
+- [x] T063 [P] [US2] Remove <?php tags from all examples in documentation
 - [ ] T064 [P] [US2] Add inline comments to examples showing expected outcomes
 - [ ] T065 [US2] Validate that 95% of sampled code examples from docs run successfully against v3.0
 
