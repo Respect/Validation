@@ -105,7 +105,7 @@
 
 ### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T027 [P] [US2] Validate rule catalog completeness in docs/09-list-of-rules-by-category.md
+- [x] T027 [P] [US2] Validate rule catalog completeness in docs/09-list-of-rules-by-category.md
 - [ ] T028 [P] [US2] Test randomly sampled rule examples execute successfully against v3.0
 
 ### Implementation for User Story 2
