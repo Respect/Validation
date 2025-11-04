@@ -165,7 +165,7 @@
 
 ### Implementation for User Story 3
 
-- [ ] T068 [P] [US3] Update exception type/hierarchy documentation in docs/03-handling-exceptions.md
+- [x] T068 [P] [US3] Update exception type/hierarchy documentation in docs/03-handling-exceptions.md
 - [ ] T069 [P] [US3] Document placeholder conversion behaviors for different locales in docs/05-message-placeholder-conversion.md
 - [ ] T070 [P] [US3] Update message rendering/translation documentation in docs/04-message-translation.md
 - [ ] T071 [P] [US3] Document placeholder behaviors and formatting changes in docs/04-message-translation.md
