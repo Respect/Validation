@@ -160,8 +160,8 @@
 
 ### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T066 [P] [US3] Validate exception examples produce documented output in docs/03-handling-exceptions.md
-- [ ] T067 [P] [US3] Test placeholder conversion examples with different locales in docs/05-message-placeholder-conversion.md
+- [x] T066 [P] [US3] Validate exception examples produce documented output in docs/03-handling-exceptions.md
+- [x] T067 [P] [US3] Test placeholder conversion examples with different locales in docs/05-message-placeholder-conversion.md
 
 ### Implementation for User Story 3
 
@@ -169,8 +169,8 @@
 - [x] T069 [P] [US3] Document placeholder conversion behaviors for different locales in docs/05-message-placeholder-conversion.md
 - [x] T070 [P] [US3] Update message rendering/translation documentation in docs/04-message-translation.md
 - [x] T071 [P] [US3] Document placeholder behaviors and formatting changes in docs/04-message-translation.md
-- [ ] T072 [US3] Verify all exception examples match documented strings and formats
-- [ ] T073 [US3] Ensure placeholder examples produce documented localized messages
+- [x] T072 [US3] Verify all exception examples match documented strings and formats
+- [x] T073 [US3] Ensure placeholder examples produce documented localized messages
 
 **Checkpoint**: All user stories should now be independently functional
 
