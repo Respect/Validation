@@ -44,6 +44,54 @@ $customMessageValidator = v::templated(
 $emailValidator = v::email()->assert($input, 'Please provide a valid email address');
 ```
 
+## Placeholder Behaviors and Formatting Changes
+
+Version 3.0 introduces enhanced placeholder conversion with locale-aware formatting:
+
+```php
+use Respect\Validation\Validator as v;
+
+// Placeholders are now formatted with locale awareness
+$validator = v::between(1000, 2000);
+
+try {
+    $validator->assert(500);
+} catch (ValidationException $exception) {
+    // In v3.0, numeric values are formatted with locale-aware
+    // For en_US: "500 must be between 1,000 and 2,000"
+    // For de_DE: "500 must be between 1.000 and 2.000"
+    echo $exception->getMessage();
+}
+```
+
+## New Placeholder Filters
+
+Version 3.0 introduces placeholder filters for more flexible message formatting:
+
+```php
+use Respect\Validation\Validator as v;
+
+// Using the quote filter to properly format values in messages
+$validator = v::templated(
+    v::equals('hello world'),
+    'Expected {{expected|quote}}, got {{input|quote}}'
+);
+
+try {
+    $validator->assert('goodbye');
+} catch (ValidationException $exception) {
+    // Output: Expected "hello world", got "goodbye"
+    echo $exception->getMessage();
+}
+```
+
+Available filters include:
+- `quote` - Adds quotes around string values
+- `lowercase` - Converts to lowercase
+- `uppercase` - Converts to uppercase
+- `ucfirst` - Capitalizes first letter
+- `ucwords` - Capitalizes first letter of each word
+
 ## Supported translators
 
 - `ArrayTranslator`: Translates messages using an array of messages.
