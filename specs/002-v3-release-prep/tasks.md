@@ -146,7 +146,7 @@
 - [x] T062 [P] [US2] Update all examples in rule docs to use v:: facade
 - [x] T063 [P] [US2] Remove <?php tags from all examples in documentation
 - [x] T064 [P] [US2] Add inline comments to examples showing expected outcomes
-- [ ] T065 [US2] Validate that 95% of sampled code examples from docs run successfully against v3.0
+- [x] T065 [US2] Validate that 95% of sampled code examples from docs run successfully against v3.0
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
