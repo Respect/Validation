@@ -28,11 +28,11 @@ v::key(
 The name of this validator is automatically set to the key name.
 
 ```php
+v::key('email', v::email())->assert(['email' => 'user@example.com']); // passes
+// throws ValidationException with message: email must be present
 v::key('email', v::email())->assert([]);
-// message: email must be present
-
+// throws ValidationException with message: email must be valid email
 v::key('email', v::email())->assert(['email' => 'not email']);
-// message: email must be valid email
 ```
 
 ## Note

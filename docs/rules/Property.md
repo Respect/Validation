@@ -5,7 +5,9 @@
 Validates a property of an object or array using a defined rule.
 
 ```php
-v::property('name', v::stringType())->isValid($object); // true if $object->name is a string
+$object = new stdClass();
+$object->name = "John Doe";
+v::property('name', v::stringType())->isValid($object); // true
 ```
 
 ## Deprecation Notice
@@ -28,6 +30,7 @@ v::property('name', v::stringType())->isValid($object);
 You can also use `Property` to validate nested objects:
 
 ```php
+$object = new stdClass();
 $object->address = new stdClass();
 $object->address->postalCode = '1017 BS';
 
@@ -40,11 +43,13 @@ v::property(
 The name of this validator is automatically set to the property name.
 
 ```php
-v::property('website', v::url())->assert($object);
-// message: website must be present
-
-v::property('name', v::uppercase())->assert($object);
-// message: name must be uppercase
+$object = new stdClass();
+$object->website = "https://example.com";
+v::property('website', v::url())->assert($object); // passes
+// throws ValidationException with message: website must be present
+v::property('website', v::url())->assert(new stdClass());
+// throws ValidationException with message: website must be valid URL
+v::property('name', v::uppercase())->assert((object)['name' => 'john']);
 ```
 
 ## Note
