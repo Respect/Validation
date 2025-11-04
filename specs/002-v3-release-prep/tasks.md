@@ -139,7 +139,7 @@
 - [x] T055 [P] [US2] Add "Prefixes" category to docs/09-list-of-rules-by-category.md
 - [x] T056 [P] [US2] Mark deprecated rules with clear notes in docs/09-list-of-rules-by-category.md
 - [x] T057 [P] [US2] Update all 162+ rule documentation files in docs/rules/ to v3.0 syntax
-- [ ] T058 [P] [US2] Add deprecation notices to renamed rule docs in docs/rules/
+- [x] T058 [P] [US2] Add deprecation notices to renamed rule docs in docs/rules/
 - [ ] T059 [P] [US2] Add removal notices with replacements to removed rule docs in docs/rules/
 - [ ] T060 [P] [US2] Create documentation for new rule variants (KeyExists, KeyOptional, etc.) in docs/rules/
 - [ ] T061 [P] [US2] Create documentation for new prefix rules in docs/rules/

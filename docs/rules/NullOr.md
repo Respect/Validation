@@ -21,6 +21,18 @@ v::nullOrEmail()->isValid('not an email'); // false
 v::nullOrBetween(1, 3)->isValid(2); // true
 v::nullOrBetween(1, 3)->isValid(null); // true
 ```
+
+## Deprecation Notice
+
+**Changed in v3.0**: This rule was previously named `Nullable`. The `Nullable` rule has been renamed to `NullOr` for clearer semantic meaning.
+
+```php
+// Old v2.4 syntax (deprecated)
+v::nullable(v::email())->isValid(null); // true
+
+// New v3.0 syntax
+v::nullOr(v::email())->isValid(null); // true
+```
 ## Templates
 
 ### `NullOr::TEMPLATE_STANDARD`

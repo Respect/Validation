@@ -15,6 +15,18 @@ Validation makes comparison easier, check out our supported
 
 Message template for this validator includes `{{compareTo}}`.
 
+## Deprecation Notice
+
+**Changed in v3.0**: This rule was previously named `Min`. The `Min` rule has been renamed to `GreaterThanOrEqual` for clearer semantic meaning.
+
+```php
+// Old v2.4 syntax (deprecated)
+v::min(10)->isValid(11); // true
+
+// New v3.0 syntax
+v::greaterThanOrEqual(10)->isValid(11); // true
+```
+
 ## Templates
 
 ### `GreaterThanOrEqual::TEMPLATE_STANDARD`

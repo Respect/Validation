@@ -1,19 +1,28 @@
 # Property
 
-- `Property(string $propertyName, Rule $rule)`
+- `Property(string $name, Rule $rule)`
 
-Validates an object property against a given rule.
+Validates a property of an object or array using a defined rule.
 
 ```php
-$object = new stdClass;
-$object->name = 'The Respect Panda';
-$object->email = 'therespectpanda@gmail.com';
+v::property('name', v::stringType())->isValid($object); // true if $object->name is a string
+```
 
-v::property('name', v::equals('The Respect Panda'))->isValid($object); // true
+## Deprecation Notice
 
-v::property('email', v::email())->isValid($object); // true
+**Changed in v3.0**: This rule was previously named `Attribute`. The `Attribute` rule has been renamed to `Property` for a more accurate term for object properties.
 
-v::property('email', v::email()->endsWith('@example.com'))->assert($object); // false
+Additionally, in v3.0, the functionality has been split into three specialized rules:
+- [Property](Property.md) - Validates a property that may or may not exist
+- [PropertyExists](PropertyExists.md) - Validates a property that must exist
+- [PropertyOptional](PropertyOptional.md) - Validates a property that may be undefined
+
+```php
+// Old v2.4 syntax (deprecated)
+v::attribute('name', v::stringType())->isValid($object);
+
+// New v3.0 syntax
+v::property('name', v::stringType())->isValid($object);
 ```
 
 You can also use `Property` to validate nested objects:

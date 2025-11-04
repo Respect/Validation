@@ -2,12 +2,31 @@
 
 - `NotUndef()`
 
-Validates if the given input is not optional. By _optional_ we consider `null`
-or an empty string (`''`).
+Validates whether the input is not "undefined" (not null or empty string):
 
 ```php
-v::notUndef()->isValid(''); // false
 v::notUndef()->isValid(null); // false
+v::notUndef()->isValid(''); // false
+v::notUndef()->isValid(' '); // true
+v::notUndef()->isValid('0'); // true
+v::notUndef()->isValid(0); // true
+v::notUndef()->isValid(false); // true
+v::notUndef()->isValid([]); // false
+v::notUndef()->isValid(['']); // true
+v::notUndef()->isValid([0]); // true
+v::notUndef()->isValid(new stdClass()); // true
+```
+
+## Deprecation Notice
+
+**Changed in v3.0**: This rule was previously named `NotOptional`. The `NotOptional` rule has been renamed to `NotUndef` for consistency with the `UndefOr` rename.
+
+```php
+// Old v2.4 syntax (deprecated)
+v::notOptional()->isValid('value'); // true
+
+// New v3.0 syntax
+v::notUndef()->isValid('value'); // true
 ```
 
 Other values:
