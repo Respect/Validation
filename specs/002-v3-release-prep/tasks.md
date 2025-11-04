@@ -142,7 +142,7 @@
 - [x] T058 [P] [US2] Add deprecation notices to renamed rule docs in docs/rules/
 - [x] T059 [P] [US2] Add removal notices with replacements to removed rule docs in docs/rules/
 - [x] T060 [P] [US2] Create documentation for new rule variants (KeyExists, KeyOptional, etc.) in docs/rules/
-- [ ] T061 [P] [US2] Create documentation for new prefix rules in docs/rules/
+- [x] T061 [P] [US2] Create documentation for new prefix rules in docs/rules/
 - [ ] T062 [P] [US2] Update all examples in rule docs to use v:: facade
 - [ ] T063 [P] [US2] Remove <?php tags from all examples in documentation
 - [ ] T064 [P] [US2] Add inline comments to examples showing expected outcomes
