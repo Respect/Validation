@@ -16,7 +16,7 @@ jobs:
         run: sudo apt install xmlstarlet idn2
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           ref: ${{ secrets.LAST_MINOR_VERSION }}
 
