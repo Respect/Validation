@@ -4,6 +4,7 @@
          bootstrap="vendor/autoload.php"
          backupGlobals="false"
          backupStaticAttributes="false"
+         convertDeprecationsToExceptions="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
