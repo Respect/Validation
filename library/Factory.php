@@ -246,8 +246,6 @@ final class Factory
     {
         $values = [];
         foreach ($reflection->getProperties() as $property) {
-            $property->setAccessible(true);
-
             $propertyValue = $property->getValue($validatable);
             if ($propertyValue === null) {
                 continue;
