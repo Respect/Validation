@@ -99,7 +99,6 @@ final class EmailTest extends RuleTestCase
         $rule = new Email();
 
         $reflection = new ReflectionProperty(Email::class, 'validator');
-        $reflection->setAccessible(true);
         $reflection->setValue($rule, null);
 
         return $rule;

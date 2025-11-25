@@ -19,12 +19,14 @@ use function is_string;
 use function long2ip;
 use function mb_strpos;
 use function mb_substr_count;
+use function min;
 use function sprintf;
 use function str_repeat;
 use function str_replace;
 use function strtr;
 
 use const FILTER_VALIDATE_IP;
+use const PHP_INT_MAX;
 
 /**
  * Validates whether the input is a valid IP address.
@@ -106,7 +108,7 @@ final class Ip extends AbstractRule
         }
 
         if ($this->startAddress && $this->mask) {
-            return $this->startAddress . '/' . long2ip((int) $this->mask);
+            return $this->startAddress . '/' . long2ip((int) min($this->mask, PHP_INT_MAX));
         }
 
         return null;

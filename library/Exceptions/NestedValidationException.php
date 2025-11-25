@@ -113,7 +113,7 @@ class NestedValidationException extends ValidationException implements IteratorA
             $lastDepth = $currentDepth;
             $lastDepthOriginal = $currentDepthOriginal;
 
-            $childrenExceptions->attach($childException, $currentDepth);
+            $childrenExceptions->offsetSet($childException, $currentDepth);
         }
 
         return $childrenExceptions;
