@@ -18,6 +18,7 @@ use function mt_rand;
 use function uniqid;
 
 use const PHP_INT_MAX;
+use const PHP_VERSION_ID;
 
 /**
  * @group rule
@@ -31,6 +32,32 @@ use const PHP_INT_MAX;
  */
 final class FactorTest extends RuleTestCase
 {
+    /**
+     * Some edge cases emit E_DEPRECATED on PHP >= 8.5.
+     *
+     * @test
+     *
+     * @dataProvider providerForInvalidInputEdgeCases
+     */
+    public function shouldFailOnInvalidInputEdgeCases(Factor $rule, mixed $input): void
+    {
+        if (PHP_VERSION_ID >= 80500) {
+            $this->markTestSkipped('This test emits E_DEPRECATED on PHP >= 8.5');
+        }
+
+        self::assertInvalidInput($rule, $input);
+    }
+
+    /**
+     * @return array<string, array{0:Factor, 1:mixed}>
+     */
+    public static function providerForInvalidInputEdgeCases(): array
+    {
+        return [
+            'mt_rand is not factor PHP_INT_MAX + 1' => [new Factor(mt_rand()), PHP_INT_MAX + 1],
+        ];
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -93,7 +120,6 @@ final class FactorTest extends RuleTestCase
             'mt_rand is not factor 1.5' => [new Factor(mt_rand()), 1.5],
             'mt_rand is not factor -0.5' => [new Factor(mt_rand()), -0.5],
             'mt_rand is not factor -1.5' => [new Factor(mt_rand()), -1.5],
-            'mt_rand is not factor PHP_INT_MAX + 1' => [new Factor(mt_rand()), PHP_INT_MAX + 1],
             'mt_rand is not factor calc' => [new Factor(mt_rand()), mt_rand(1, mt_getrandmax() - 1) / mt_getrandmax()],
             'mt_rand is not factor -calc' => [
                 new Factor(mt_rand()),
