@@ -9,14 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
 
-use PHPUnit\Framework\SkippedTestError;
-use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\UploadedFileStub;
+use Respect\Validation\Test\TestCase;
 use SplFileInfo;
-use stdClass;
-
-use function extension_loaded;
-use function uopz_set_return;
 
 /**
  * @group rule
@@ -27,55 +22,45 @@ use function uopz_set_return;
  * @author Henrique Moody <henriquemoody@gmail.com>
  * @author Paul Karikari <paulkarikari1@gmail.com>
  */
-final class UploadedTest extends RuleTestCase
+final class UploadedTest extends TestCase
 {
     public const UPLOADED_FILENAME = 'uploaded.ext';
 
     /**
-     * {@inheritDoc}
+     * @test
      */
-    public static function providerForValidInput(): array
+    public function itShouldValidateWhenFileIsUploadedAndTheInputIsString(): void
     {
-        $rule = new Uploaded();
+        set_mock_is_uploaded_file_return(true);
 
-        return [
-            [$rule, self::UPLOADED_FILENAME],
-            [$rule, new SplFileInfo(self::UPLOADED_FILENAME)],
-            [$rule, UploadedFileStub::create()],
-        ];
+        self::assertValidInput(new Uploaded(), self::UPLOADED_FILENAME);
     }
 
     /**
-     * {@inheritDoc}
+     * @test
      */
-    public static function providerForInvalidInput(): array
+    public function itShouldValidateWhenFileIsUploadedAndTheInputIsSplFileInfo(): void
     {
-        $rule = new Uploaded();
+        set_mock_is_uploaded_file_return(true);
 
-        return [
-            [$rule, 'not-uploaded.ext'],
-            [$rule, new SplFileInfo('not-uploaded.ext')],
-            [$rule, []],
-            [$rule, 1],
-            [$rule, new stdClass()],
-        ];
+        self::assertValidInput(new Uploaded(), new SplFileInfo(self::UPLOADED_FILENAME));
     }
 
     /**
-     * {@inheritDoc}
+     * @test
      */
-    protected function setUp(): void
+    public function itShouldValidateWhenFileIsUploadedAndTheInputIsUploadedFile(): void
     {
-        if (!extension_loaded('uopz')) {
-            throw new SkippedTestError('Extension "uopz" is required to test "Uploaded" rule');
-        }
+        self::assertValidInput(new Uploaded(), UploadedFileStub::create());
+    }
 
-        uopz_set_return(
-            'is_uploaded_file',
-            static function (string $filename): bool {
-                return $filename === UploadedTest::UPLOADED_FILENAME;
-            },
-            true
-        );
+    /**
+     * @test
+     */
+    public function itShouldInvalidateWhenFileHasNotBeenUploaded(): void
+    {
+        set_mock_is_uploaded_file_return(false);
+
+        self::assertInvalidInput(new Uploaded(), self::UPLOADED_FILENAME);
     }
 }

@@ -5,24 +5,18 @@ Paul Karikari <paulkarikari1@gmail.com>
 
 declare(strict_types=1);
 
-require 'vendor/autoload.php';
+require 'tests/bootstrap.php';
 
 use Respect\Validation\Validator as v;
 
-uopz_set_return('is_uploaded_file', false);
+set_mock_is_uploaded_file_return(false);
 exceptionMessage(static fn() => v::uploaded()->check('filename'));
-uopz_set_return('is_uploaded_file', true);
+set_mock_is_uploaded_file_return(true);
 exceptionMessage(static fn() => v::not(v::uploaded())->check('filename'));
-uopz_set_return('is_uploaded_file', false);
+set_mock_is_uploaded_file_return(false);
 exceptionFullMessage(static fn() => v::uploaded()->assert('filename'));
-uopz_set_return('is_uploaded_file', true);
+set_mock_is_uploaded_file_return(true);
 exceptionFullMessage(static fn() => v::not(v::uploaded())->assert('filename'));?>
---SKIPIF--
-<?php
-if (!extension_loaded('uopz')) {
-    echo 'skip: Extension "uopz" is required to test "Uploaded" rule';
-}
-?>
 --EXPECT--
 "filename" must be an uploaded file
 "filename" must not be an uploaded file
