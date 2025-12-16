@@ -15,6 +15,7 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 use SplFileInfo;
 
+use function function_exists;
 use function is_scalar;
 use function is_uploaded_file;
 
@@ -37,6 +38,10 @@ final class Uploaded extends Simple
 
         if (!is_scalar($input)) {
             return false;
+        }
+
+        if (function_exists('mock_is_uploaded_file')) {
+            return mock_is_uploaded_file((string) $input);
         }
 
         return is_uploaded_file((string) $input);

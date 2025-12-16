@@ -33,8 +33,6 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           coverage: none
-          extensions: uopz
-          tools: pecl
 
       - name: Install Localisation Files
         run: |
@@ -65,8 +63,6 @@ jobs:
         with:
           php-version: 8.1
           coverage: pcov
-          extensions: uopz
-          tools: pecl
 
       - name: Install Localisation Files
         run: |

@@ -30,4 +30,5 @@
             </property>
         </properties>
     </rule>
+    <exclude-pattern>tests/bootstrap.php</exclude-pattern>
 </ruleset>
