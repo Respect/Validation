@@ -25,11 +25,11 @@ use function reset;
     '{{name}} must start with {{startValue}}',
     '{{name}} must not start with {{startValue}}',
 )]
-final class StartsWith implements Rule
+final readonly class StartsWith implements Rule
 {
     public function __construct(
-        private readonly mixed $startValue,
-        private readonly bool $identical = false
+        private mixed $startValue,
+        private bool $identical = false
     ) {
     }
 

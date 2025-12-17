@@ -19,10 +19,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.1"
-          - "8.2"
-          - "8.3"
-          - "8.4"
+          - "8.5"
 
     steps:
       - name: Checkout
@@ -61,7 +58,7 @@ jobs:
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.1
+          php-version: 8.5
           coverage: pcov
 
       - name: Install Localisation Files
@@ -93,7 +90,7 @@ jobs:
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.4
+          php-version: 8.5
           coverage: none
 
       - name: Install dependencies

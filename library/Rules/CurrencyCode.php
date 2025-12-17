@@ -25,13 +25,13 @@ use function in_array;
     '{{name}} must be a valid currency code',
     '{{name}} must not be a valid currency code',
 )]
-final class CurrencyCode implements Rule
+final readonly class CurrencyCode implements Rule
 {
-    private readonly Currencies $currencies;
+    private Currencies $currencies;
 
     /** @param "alpha-3"|"numeric" $set */
     public function __construct(
-        private readonly string $set = 'alpha-3',
+        private string $set = 'alpha-3',
         ?Currencies $currencies = null
     ) {
         if (!class_exists(Currencies::class)) {

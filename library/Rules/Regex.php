@@ -22,10 +22,10 @@ use function preg_match;
     '{{name}} must match the pattern {{regex|quote}}',
     '{{name}} must not match the pattern {{regex|quote}}',
 )]
-final class Regex implements Rule
+final readonly class Regex implements Rule
 {
     public function __construct(
-        private readonly string $regex
+        private string $regex
     ) {
     }
 

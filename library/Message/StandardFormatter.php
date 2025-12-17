@@ -28,10 +28,10 @@ use function str_repeat;
 
 use const PHP_EOL;
 
-final class StandardFormatter implements Formatter
+final readonly class StandardFormatter implements Formatter
 {
     public function __construct(
-        private readonly Renderer $renderer = new StandardRenderer(),
+        private Renderer $renderer = new StandardRenderer(),
     ) {
     }
 
@@ -117,7 +117,7 @@ final class StandardFormatter implements Formatter
 
         $messages = [];
         foreach ($deduplicatedChildren as $child) {
-            $key = $child->getDeepestPath() ?? $child->id;
+            $key = $child->getDeepestPath() ?? $child->id ?? 0;
             $messages[$key] = $this->array(
                 $this->resultWithPath($result, $child),
                 $this->selectTemplates($child, $selectedTemplates),
@@ -200,7 +200,7 @@ final class StandardFormatter implements Formatter
         }
 
         foreach ([$result->path, $result->name, $result->id, '__root__'] as $key) {
-            if (!isset($templates[$key])) {
+            if ($key === null || !isset($templates[$key])) {
                 continue;
             }
 
@@ -221,7 +221,7 @@ final class StandardFormatter implements Formatter
      */
     private function isFinalTemplate(Result $result, array $templates): bool
     {
-        $keys = [$result->path, $result->name, $result->id];
+        $keys = array_filter([$result->path, $result->name, $result->id], static fn($key) => $key !== null);
         foreach ($keys as $key) {
             if (isset($templates[$key]) && is_string($templates[$key])) {
                 return true;
@@ -249,7 +249,7 @@ final class StandardFormatter implements Formatter
     private function selectTemplates(Result $result, array $templates): array
     {
         foreach ([$result->path, $result->name, $result->id] as $key) {
-            if (isset($templates[$key]) && is_array($templates[$key])) {
+            if ($key !== null && isset($templates[$key]) && is_array($templates[$key])) {
                 return $templates[$key];
             }
         }

@@ -23,12 +23,14 @@ use function is_string;
 use function long2ip;
 use function mb_strpos;
 use function mb_substr_count;
+use function min;
 use function sprintf;
 use function str_repeat;
 use function str_replace;
 use function strtr;
 
 use const FILTER_VALIDATE_IP;
+use const PHP_INT_MAX;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
@@ -89,7 +91,7 @@ final class Ip implements Rule
         }
 
         if ($this->startAddress && $this->mask) {
-            return $this->startAddress . '/' . long2ip((int) $this->mask);
+            return $this->startAddress . '/' . long2ip((int) min($this->mask, PHP_INT_MAX));
         }
 
         return null;
@@ -160,7 +162,7 @@ final class Ip implements Rule
             throw new InvalidRuleConstructorException('Invalid network mask');
         }
 
-        $this->mask = sprintf('%032b', ip2long((string) long2ip(~(2 ** (32 - (int) $parts[1]) - 1))));
+        $this->mask = sprintf('%032b', ip2long(long2ip(~(2 ** (32 - (int) $parts[1]) - 1))));
     }
 
     private function verifyAddress(string $address): bool

@@ -32,7 +32,7 @@ use function str_split;
     '{{name}} must not be sorted in descending order',
     self::TEMPLATE_DESCENDING,
 )]
-final class Sorted implements Rule
+final readonly class Sorted implements Rule
 {
     public const TEMPLATE_ASCENDING = '__ascending__';
     public const TEMPLATE_DESCENDING = '__descending__';
@@ -41,7 +41,7 @@ final class Sorted implements Rule
     public const DESCENDING = 'DESC';
 
     public function __construct(
-        private readonly string $direction
+        private string $direction
     ) {
         if ($direction !== self::ASCENDING && $direction !== self::DESCENDING) {
             throw new InvalidRuleConstructorException(

@@ -24,11 +24,11 @@ use function preg_match;
     '{{name}} must be a number in base {{base|raw}}',
     '{{name}} must not be a number in base {{base|raw}}',
 )]
-final class Base implements Rule
+final readonly class Base implements Rule
 {
     public function __construct(
-        private readonly int $base,
-        private readonly string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        private int $base,
+        private string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     ) {
         $max = mb_strlen($this->chars);
         if ($base > $max) {

@@ -13,12 +13,12 @@ use Attribute;
 use Respect\Validation\Rule;
 
 #[Attribute(Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final class Template
+final readonly class Template
 {
     public function __construct(
-        public readonly string $default,
-        public readonly string $inverted,
-        public readonly string $id = Rule::TEMPLATE_STANDARD,
+        public string $default,
+        public string $inverted,
+        public string $id = Rule::TEMPLATE_STANDARD,
     ) {
     }
 }

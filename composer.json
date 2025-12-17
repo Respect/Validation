@@ -20,7 +20,7 @@
         }
     },
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.5",
         "respect/stringifier": "^2.0.0",
         "symfony/polyfill-mbstring": "^1.33"
     },
@@ -30,12 +30,12 @@
         "malukenho/docheader": "^1.0",
         "mikey179/vfsstream": "^1.6",
         "nette/php-generator": "^4.1",
-        "pestphp/pest": "^2.36",
+        "pestphp/pest": "^4.2",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-deprecation-rules": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
-        "phpunit/phpunit": "^10.5",
+        "phpunit/phpunit": "^12.5",
         "psr/http-message": "^1.0 || ^2.0",
         "ramsey/uuid": "^4",
         "respect/coding-standard": "^4.0",

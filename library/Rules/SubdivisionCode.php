@@ -26,13 +26,13 @@ use function class_exists;
     '{{name}} must be a subdivision code of {{countryName|trans}}',
     '{{name}} must not be a subdivision code of {{countryName|trans}}',
 )]
-final class SubdivisionCode implements Rule
+final readonly class SubdivisionCode implements Rule
 {
     use CanValidateUndefined;
 
-    private readonly Countries\Country $country;
+    private Countries\Country $country;
 
-    private readonly Subdivisions $subdivisions;
+    private Subdivisions $subdivisions;
 
     public function __construct(string $countryCode, ?Countries $countries = null, ?Subdivisions $subdivisions = null)
     {

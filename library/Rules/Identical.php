@@ -19,10 +19,10 @@ use Respect\Validation\Rule;
     '{{name}} must be identical to {{compareTo}}',
     '{{name}} must not be identical to {{compareTo}}',
 )]
-final class Identical implements Rule
+final readonly class Identical implements Rule
 {
     public function __construct(
-        private readonly mixed $compareTo
+        private mixed $compareTo
     ) {
     }
 

@@ -25,10 +25,10 @@ use const PATHINFO_EXTENSION;
     '{{name}} must have {{extension}} extension',
     '{{name}} must not have {{extension}} extension',
 )]
-final class Extension implements Rule
+final readonly class Extension implements Rule
 {
     public function __construct(
-        private readonly string $extension
+        private string $extension
     ) {
     }
 

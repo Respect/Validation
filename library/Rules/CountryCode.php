@@ -26,13 +26,13 @@ use function is_string;
     '{{name}} must be a valid country code',
     '{{name}} must not be a valid country code',
 )]
-final class CountryCode implements Rule
+final readonly class CountryCode implements Rule
 {
-    private readonly Countries $countries;
+    private Countries $countries;
 
     /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public function __construct(
-        private readonly string $set = 'alpha-2',
+        private string $set = 'alpha-2',
         ?Countries $countries = null
     ) {
         if (!class_exists(Countries::class)) {

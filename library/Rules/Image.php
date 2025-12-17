@@ -28,11 +28,9 @@ use const FILEINFO_MIME_TYPE;
 )]
 final class Image extends Simple
 {
-    private readonly finfo $fileInfo;
-
-    public function __construct(?finfo $fileInfo = null)
-    {
-        $this->fileInfo = $fileInfo ?: new finfo(FILEINFO_MIME_TYPE);
+    public function __construct(
+        private finfo $fileInfo = new finfo(FILEINFO_MIME_TYPE)
+    ) {
     }
 
     public function isValid(mixed $input): bool

@@ -46,11 +46,13 @@ final class Call implements Rule
         });
 
         try {
-            return $this->rule->evaluate(call_user_func($this->callable, $input));
+            $result = $this->rule->evaluate(call_user_func($this->callable, $input));
         } catch (Throwable) {
-            restore_error_handler();
-
-            return Result::failed($input, $this, ['callable' => $this->callable]);
+            $result = Result::failed($input, $this, ['callable' => $this->callable]);
         }
+
+        restore_error_handler();
+
+        return $result;
     }
 }

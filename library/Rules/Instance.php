@@ -19,11 +19,11 @@ use Respect\Validation\Rule;
     '{{name}} must be an instance of {{class|quote}}',
     '{{name}} must not be an instance of {{class|quote}}',
 )]
-final class Instance implements Rule
+final readonly class Instance implements Rule
 {
     /** @param class-string $class */
     public function __construct(
-        private readonly string $class
+        private string $class
     ) {
     }
 

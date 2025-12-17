@@ -27,9 +27,9 @@ use function is_string;
     '{{name}} must be a valid language code',
     '{{name}} must not be a valid language code',
 )]
-final class LanguageCode implements Rule
+final readonly class LanguageCode implements Rule
 {
-    private readonly Languages $languages;
+    private Languages $languages;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function __construct(

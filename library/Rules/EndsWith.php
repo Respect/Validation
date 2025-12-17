@@ -25,11 +25,11 @@ use function mb_strrpos;
     '{{name}} must end with {{endValue}}',
     '{{name}} must not end with {{endValue}}',
 )]
-final class EndsWith implements Rule
+final readonly class EndsWith implements Rule
 {
     public function __construct(
-        private readonly mixed $endValue,
-        private readonly bool $identical = false
+        private mixed $endValue,
+        private bool $identical = false
     ) {
     }
 

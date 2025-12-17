@@ -18,10 +18,10 @@ use function count;
 use function implode;
 use function sprintf;
 
-final class ListedStringifier implements Stringifier
+final readonly class ListedStringifier implements Stringifier
 {
     public function __construct(
-        private readonly Stringifier $stringifier
+        private Stringifier $stringifier
     ) {
     }
 

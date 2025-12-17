@@ -14,20 +14,13 @@ use Respect\Validation\Result;
 use Respect\Validation\Rule;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final class When implements Rule
+final readonly class When implements Rule
 {
-    private readonly Rule $else;
-
     public function __construct(
-        private readonly Rule $when,
-        private readonly Rule $then,
-        ?Rule $else = null
+        private Rule $when,
+        private Rule $then,
+        private Rule $else = new Templated(new AlwaysInvalid(), AlwaysInvalid::TEMPLATE_SIMPLE)
     ) {
-        if ($else === null) {
-            $else = new Templated(new AlwaysInvalid(), AlwaysInvalid::TEMPLATE_SIMPLE);
-        }
-
-        $this->else = $else;
     }
 
     public function evaluate(mixed $input): Result

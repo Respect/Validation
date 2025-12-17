@@ -26,12 +26,12 @@ use function strtotime;
     '{{name}} must be a valid time in the format {{sample}}',
     '{{name}} must not be a valid time in the format {{sample}}',
 )]
-final class Time implements Rule
+final readonly class Time implements Rule
 {
     use CanValidateDateTime;
 
     public function __construct(
-        private readonly string $format = 'H:i:s'
+        private string $format = 'H:i:s'
     ) {
         if (!preg_match('/^[gGhHisuvaA\W]+$/', $format)) {
             throw new InvalidRuleConstructorException('"%s" is not a valid date format', $format);

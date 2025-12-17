@@ -43,7 +43,7 @@ use function ucfirst;
     'For comparison with {{now|raw}}, {{name}} must not be a valid datetime in the format {{sample|raw}}',
     self::TEMPLATE_WRONG_FORMAT
 )]
-final class DateTimeDiff implements Rule
+final readonly class DateTimeDiff implements Rule
 {
     use CanValidateDateTime;
 
@@ -53,10 +53,10 @@ final class DateTimeDiff implements Rule
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function __construct(
-        private readonly string $type,
-        private readonly Rule $rule,
-        private readonly ?string $format = null,
-        private readonly ?DateTimeImmutable $now = null,
+        private string $type,
+        private Rule $rule,
+        private ?string $format = null,
+        private ?DateTimeImmutable $now = null,
     ) {
         $availableTypes = ['years', 'months', 'days', 'hours', 'minutes', 'seconds', 'microseconds'];
         if (!in_array($this->type, $availableTypes, true)) {

@@ -22,10 +22,10 @@ use function is_object;
     '{{name}} must be present',
     '{{name}} must not be present',
 )]
-final class PropertyExists implements Rule
+final readonly class PropertyExists implements Rule
 {
     public function __construct(
-        private readonly string $propertyName
+        private string $propertyName
     ) {
     }
 

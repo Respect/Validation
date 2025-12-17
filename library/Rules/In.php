@@ -24,11 +24,11 @@ use function mb_strpos;
     '{{name}} must be in {{haystack}}',
     '{{name}} must not be in {{haystack}}',
 )]
-final class In implements Rule
+final readonly class In implements Rule
 {
     public function __construct(
-        private readonly mixed $haystack,
-        private readonly bool $compareIdentical = false
+        private mixed $haystack,
+        private bool $compareIdentical = false
     ) {
     }
 

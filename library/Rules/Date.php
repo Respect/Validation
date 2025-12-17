@@ -26,12 +26,12 @@ use function strtotime;
     '{{name}} must be a valid date in the format {{sample}}',
     '{{name}} must not be a valid date in the format {{sample}}',
 )]
-final class Date implements Rule
+final readonly class Date implements Rule
 {
     use CanValidateDateTime;
 
     public function __construct(
-        private readonly string $format = 'Y-m-d'
+        private string $format = 'Y-m-d'
     ) {
         if (!preg_match('/^[djSFmMnYy\W]+$/', $format)) {
             throw new InvalidRuleConstructorException('"%s" is not a valid date format', $format);

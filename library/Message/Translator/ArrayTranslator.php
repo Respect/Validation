@@ -13,11 +13,11 @@ use Respect\Validation\Message\Translator;
 
 use function is_string;
 
-final class ArrayTranslator implements Translator
+final readonly class ArrayTranslator implements Translator
 {
     /** @param array<string, string> $messages */
     public function __construct(
-        private readonly array $messages
+        private array $messages
     ) {
     }
 

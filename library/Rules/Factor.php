@@ -17,16 +17,17 @@ use Respect\Validation\Rule;
 use function abs;
 use function is_integer;
 use function is_numeric;
+use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a factor of {{dividend|raw}}',
     '{{name}} must not be a factor of {{dividend|raw}}',
 )]
-final class Factor implements Rule
+final readonly class Factor implements Rule
 {
     public function __construct(
-        private readonly int $dividend
+        private int $dividend
     ) {
     }
 
@@ -40,7 +41,7 @@ final class Factor implements Rule
         }
 
         // Factors must be integers that are not zero.
-        if (!is_numeric($input) || (int) $input != $input || $input == 0) {
+        if (!is_numeric($input) || preg_match('/^-?\d+$/', (string) $input) === 0 || $input == 0) {
             return Result::failed($input, $this, $parameters);
         }
 

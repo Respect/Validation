@@ -22,11 +22,11 @@ use function is_array;
     '{{name}} must be subset of {{superset}}',
     '{{name}} must not be subset of {{superset}}',
 )]
-final class Subset implements Rule
+final readonly class Subset implements Rule
 {
     /** @param mixed[] $superset */
     public function __construct(
-        private readonly array $superset
+        private array $superset
     ) {
     }
 

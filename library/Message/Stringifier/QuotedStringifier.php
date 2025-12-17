@@ -13,10 +13,10 @@ use Respect\Stringifier\Quoter;
 use Respect\Stringifier\Stringifier;
 use Respect\Validation\Message\Placeholder\Quoted;
 
-final class QuotedStringifier implements Stringifier
+final readonly class QuotedStringifier implements Stringifier
 {
     public function __construct(
-        private readonly Quoter $quoter
+        private Quoter $quoter
     ) {
     }
 

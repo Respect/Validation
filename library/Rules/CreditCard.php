@@ -31,7 +31,7 @@ use function preg_replace;
     '{{name}} must not be a valid {{brand|raw}} credit card number',
     self::TEMPLATE_BRANDED,
 )]
-final class CreditCard implements Rule
+final readonly class CreditCard implements Rule
 {
     public const TEMPLATE_BRANDED = '__branded__';
     public const ANY = 'Any';
@@ -55,7 +55,7 @@ final class CreditCard implements Rule
     ];
 
     public function __construct(
-        private readonly string $brand = self::ANY
+        private string $brand = self::ANY
     ) {
         if (!isset(self::BRAND_REGEX_LIST[$brand])) {
             throw new InvalidRuleConstructorException(

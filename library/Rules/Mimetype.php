@@ -26,11 +26,11 @@ use const FILEINFO_MIME_TYPE;
     '{{name}} must have the {{mimetype}} MIME type',
     '{{name}} must not have the {{mimetype}} MIME type',
 )]
-final class Mimetype implements Rule
+final readonly class Mimetype implements Rule
 {
     public function __construct(
-        private readonly string $mimetype,
-        private readonly finfo $fileInfo = new finfo()
+        private string $mimetype,
+        private finfo $fileInfo = new finfo()
     ) {
     }
 

@@ -9,10 +9,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Message\Placeholder;
 
-final class Quoted
+final readonly class Quoted
 {
     public function __construct(
-        private readonly string $value
+        private string $value
     ) {
     }
 

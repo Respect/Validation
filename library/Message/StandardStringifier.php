@@ -34,17 +34,17 @@ use Respect\Stringifier\Stringifiers\ThrowableObjectStringifier;
 use Respect\Validation\Message\Stringifier\ListedStringifier;
 use Respect\Validation\Message\Stringifier\QuotedStringifier;
 
-final class StandardStringifier implements Stringifier
+final readonly class StandardStringifier implements Stringifier
 {
     private const MAXIMUM_DEPTH = 3;
     private const MAXIMUM_NUMBER_OF_ITEMS = 5;
     private const MAXIMUM_NUMBER_OF_PROPERTIES = self::MAXIMUM_NUMBER_OF_ITEMS;
     private const MAXIMUM_LENGTH = 120;
 
-    private readonly Stringifier $stringifier;
+    private Stringifier $stringifier;
 
     public function __construct(
-        private readonly Quoter $quoter = new StandardQuoter(self::MAXIMUM_LENGTH)
+        private Quoter $quoter = new StandardQuoter(self::MAXIMUM_LENGTH)
     ) {
         $this->stringifier = $this->createStringifier($quoter);
     }

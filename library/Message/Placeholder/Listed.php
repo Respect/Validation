@@ -9,12 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Message\Placeholder;
 
-final class Listed
+final readonly class Listed
 {
     /** @param array<int, mixed> $values */
     public function __construct(
-        public readonly array $values,
-        public readonly string $lastGlue
+        public array $values,
+        public string $lastGlue
     ) {
     }
 }

@@ -25,10 +25,10 @@ use function var_export;
     '{{name}} must have {{decimals}} decimals',
     '{{name}} must not have {{decimals}} decimals',
 )]
-final class Decimal implements Rule
+final readonly class Decimal implements Rule
 {
     public function __construct(
-        private readonly int $decimals
+        private int $decimals
     ) {
     }
 

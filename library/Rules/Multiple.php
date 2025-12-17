@@ -19,10 +19,10 @@ use Respect\Validation\Rule;
     '{{name}} must be a multiple of {{multipleOf}}',
     '{{name}} must not be a multiple of {{multipleOf}}',
 )]
-final class Multiple implements Rule
+final readonly class Multiple implements Rule
 {
     public function __construct(
-        private readonly int $multipleOf
+        private int $multipleOf
     ) {
     }
 

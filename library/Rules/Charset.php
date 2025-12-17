@@ -28,10 +28,10 @@ use function mb_list_encodings;
     '{{name}} must only contain characters from the {{charset|raw}} charset',
     '{{name}} must not contain any characters from the {{charset|raw}} charset',
 )]
-final class Charset implements Rule
+final readonly class Charset implements Rule
 {
     /** @var non-empty-array<string> */
-    private readonly array $charset;
+    private array $charset;
 
     public function __construct(string $charset, string ...$charsets)
     {

@@ -21,10 +21,10 @@ use function is_scalar;
     '{{name}} must be equal to {{compareTo}}',
     '{{name}} must not be equal to {{compareTo}}',
 )]
-final class Equals implements Rule
+final readonly class Equals implements Rule
 {
     public function __construct(
-        private readonly mixed $compareTo
+        private mixed $compareTo
     ) {
     }
 

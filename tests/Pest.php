@@ -70,7 +70,14 @@ function expectDeprecation(Closure $callback, string $error): Closure
             return true;
         });
 
-        $callback->call($this);
+        try {
+            $callback->call($this);
+        } catch (Throwable $throwable) {
+            restore_error_handler();
+
+            throw $throwable;
+        }
+
         restore_error_handler();
         expect($lastError)->toBe($error);
     };
@@ -93,8 +100,13 @@ function expectMessageAndDeprecation(Closure $callback, string $message, string 
             test()->expectException(ValidationException::class);
         } catch (ValidationException $e) {
             expect($e->getMessage())->toBe($message, 'Validation message does not match');
+        } catch (Throwable $throwable) {
+            restore_error_handler();
+
+            throw $throwable;
         }
         restore_error_handler();
+
         expect($lastError)->toBe($error);
     };
 }

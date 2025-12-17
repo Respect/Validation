@@ -45,7 +45,7 @@ use function array_slice;
     '{{name}} contains no missing keys',
     self::TEMPLATE_MISSING_KEYS
 )]
-final class KeySet implements Rule
+final readonly class KeySet implements Rule
 {
     public const TEMPLATE_BOTH = '__both__';
     public const TEMPLATE_EXTRA_KEYS = '__extra_keys__';
@@ -54,13 +54,13 @@ final class KeySet implements Rule
     private const MAX_DIFF_KEYS = 10;
 
     /** @var array<KeyRelated> */
-    private readonly array $rules;
+    private array $rules;
 
     /** @var array<int|string> */
-    private readonly array $allKeys;
+    private array $allKeys;
 
     /** @var array<int|string> */
-    private readonly array $mandatoryKeys;
+    private array $mandatoryKeys;
 
     public function __construct(Rule $rule, Rule ...$rules)
     {

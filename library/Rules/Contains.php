@@ -25,11 +25,11 @@ use function mb_strpos;
     '{{name}} must contain {{containsValue}}',
     '{{name}} must not contain {{containsValue}}',
 )]
-final class Contains implements Rule
+final readonly class Contains implements Rule
 {
     public function __construct(
-        private readonly mixed $containsValue,
-        private readonly bool $identical = false
+        private mixed $containsValue,
+        private bool $identical = false
     ) {
     }
 
