@@ -12,7 +12,7 @@ test('Default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('1234 must contain only letters (a-z) or must be null')
         ->and($fullMessage)->toBe('- 1234 must contain only letters (a-z) or must be null')
-        ->and($messages)->toBe(['nullOrAlpha' => '1234 must contain only letters (a-z) or must be null'])
+        ->and($messages)->toBe(['nullOrAlpha' => '1234 must contain only letters (a-z) or must be null']),
 ));
 
 test('Inverted wrapper', catchAll(
@@ -20,7 +20,7 @@ test('Inverted wrapper', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"alpha" must not contain letters (a-z) and must not be null')
         ->and($fullMessage)->toBe('- "alpha" must not contain letters (a-z) and must not be null')
-        ->and($messages)->toBe(['notNullOrAlpha' => '"alpha" must not contain letters (a-z) and must not be null'])
+        ->and($messages)->toBe(['notNullOrAlpha' => '"alpha" must not contain letters (a-z) and must not be null']),
 ));
 
 test('Inverted wrapped', catchAll(
@@ -28,7 +28,7 @@ test('Inverted wrapped', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"alpha" must not contain letters (a-z) or must be null')
         ->and($fullMessage)->toBe('- "alpha" must not contain letters (a-z) or must be null')
-        ->and($messages)->toBe(['nullOrNotAlpha' => '"alpha" must not contain letters (a-z) or must be null'])
+        ->and($messages)->toBe(['nullOrNotAlpha' => '"alpha" must not contain letters (a-z) or must be null']),
 ));
 
 test('Inverted nullined', catchAll(
@@ -36,7 +36,7 @@ test('Inverted nullined', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`null` must not contain letters (a-z) and must not be null')
         ->and($fullMessage)->toBe('- `null` must not contain letters (a-z) and must not be null')
-        ->and($messages)->toBe(['notNullOrAlpha' => '`null` must not contain letters (a-z) and must not be null'])
+        ->and($messages)->toBe(['notNullOrAlpha' => '`null` must not contain letters (a-z) and must not be null']),
 ));
 
 test('Inverted nullined, wrapped name', catchAll(
@@ -44,7 +44,7 @@ test('Inverted nullined, wrapped name', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must not contain letters (a-z) and must not be null')
         ->and($fullMessage)->toBe('- Wrapped must not contain letters (a-z) and must not be null')
-        ->and($messages)->toBe(['notNullOrAlpha' => 'Wrapped must not contain letters (a-z) and must not be null'])
+        ->and($messages)->toBe(['notNullOrAlpha' => 'Wrapped must not contain letters (a-z) and must not be null']),
 ));
 
 test('Inverted nullined, wrapper name', catchAll(
@@ -52,7 +52,7 @@ test('Inverted nullined, wrapper name', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapper must not contain letters (a-z) and must not be null')
         ->and($fullMessage)->toBe('- Wrapper must not contain letters (a-z) and must not be null')
-        ->and($messages)->toBe(['notNullOrAlpha' => 'Wrapper must not contain letters (a-z) and must not be null'])
+        ->and($messages)->toBe(['notNullOrAlpha' => 'Wrapper must not contain letters (a-z) and must not be null']),
 ));
 
 test('Inverted nullined, not name', catchAll(
@@ -60,7 +60,7 @@ test('Inverted nullined, not name', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Not must not contain letters (a-z) and must not be null')
         ->and($fullMessage)->toBe('- Not must not contain letters (a-z) and must not be null')
-        ->and($messages)->toBe(['notNullOrAlpha' => 'Not must not contain letters (a-z) and must not be null'])
+        ->and($messages)->toBe(['notNullOrAlpha' => 'Not must not contain letters (a-z) and must not be null']),
 ));
 
 test('With template', catchAll(
@@ -68,7 +68,7 @@ test('With template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Nine nimble numismatists near Naples')
         ->and($fullMessage)->toBe('- Nine nimble numismatists near Naples')
-        ->and($messages)->toBe(['nullOrAlpha' => 'Nine nimble numismatists near Naples'])
+        ->and($messages)->toBe(['nullOrAlpha' => 'Nine nimble numismatists near Naples']),
 ));
 
 test('With array template', catchAll(
@@ -76,7 +76,7 @@ test('With array template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Next to nifty null notations')
         ->and($fullMessage)->toBe('- Next to nifty null notations')
-        ->and($messages)->toBe(['nullOrAlpha' => 'Next to nifty null notations'])
+        ->and($messages)->toBe(['nullOrAlpha' => 'Next to nifty null notations']),
 ));
 
 test('Inverted nullined with template', catchAll(
@@ -84,7 +84,7 @@ test('Inverted nullined with template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Next to nifty null notations')
         ->and($fullMessage)->toBe('- Next to nifty null notations')
-        ->and($messages)->toBe(['notNullOrAlpha' => 'Next to nifty null notations'])
+        ->and($messages)->toBe(['notNullOrAlpha' => 'Next to nifty null notations']),
 ));
 
 test('Without adjacent result', catchAll(
@@ -100,7 +100,7 @@ test('Without adjacent result', catchAll(
             '__root__' => '1234 must pass all the rules',
             'nullOrAlpha' => '1234 must contain only letters (a-z) or must be null',
             'nullOrStringType' => '1234 must be a string or must be null',
-        ])
+        ]),
 ));
 
 test('Without adjacent result with templates', catchAll(
@@ -119,5 +119,5 @@ test('Without adjacent result with templates', catchAll(
             '__root__' => '1234 must pass all the rules',
             'nullOrAlpha' => 'Should be nul or alpha',
             'nullOrStringType' => 'Should be nul or string type',
-        ])
+        ]),
 ));

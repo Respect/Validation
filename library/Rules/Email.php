@@ -29,13 +29,14 @@ use const FILTER_VALIDATE_EMAIL;
 )]
 final class Email extends Simple
 {
-    private readonly ?EmailValidator $validator;
+    private readonly EmailValidator|null $validator;
 
-    public function __construct(?EmailValidator $validator = null)
+    public function __construct(EmailValidator|null $validator = null)
     {
         if ($validator === null && func_num_args() === 0 && class_exists(EmailValidator::class)) {
             $validator = new EmailValidator();
         }
+
         $this->validator = $validator;
     }
 

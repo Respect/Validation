@@ -28,9 +28,7 @@ final class AlwaysInvalidTest extends TestCase
         self::assertFalse($rule->evaluate($input)->hasPassed);
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public static function providerForInvalidInput(): iterable
     {
         return [

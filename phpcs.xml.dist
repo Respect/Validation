@@ -15,6 +15,15 @@
     <file>tests/</file>
 
     <rule ref="Respect" />
+
+    <!-- Exclusions -->
+    <exclude-pattern>tests/bootstrap.php</exclude-pattern>
+    <rule ref="Squiz.Arrays.ArrayDeclaration.ValueNoNewline">
+        <exclude-pattern>library/Rules/Tld.php</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Functions.GlobalFunction">
+        <exclude-pattern>tests/Pest.php</exclude-pattern>
+    </rule>
     <rule ref="Generic.Files.LineLength.TooLong">
         <exclude-pattern>tests/feature/</exclude-pattern>
     </rule>
@@ -22,13 +31,9 @@
         <exclude-pattern>tests/Pest.php</exclude-pattern>
         <exclude-pattern>tests/feature</exclude-pattern>
     </rule>
-    <rule ref="SlevomatCodingStandard.Attributes.AttributesOrder">
-        <properties>
-            <property name="order" type="array">
-                <element value="Attribute" />
-                <element value="Respect\Validation\Message\Template" />
-            </property>
-        </properties>
+    <rule ref="SlevomatCodingStandard.Classes.ClassStructure">
+        <exclude-pattern>tests/Pest.php</exclude-pattern>
+        <exclude-pattern>tests/feature</exclude-pattern>
     </rule>
     <exclude-pattern>tests/bootstrap.php</exclude-pattern>
 </ruleset>

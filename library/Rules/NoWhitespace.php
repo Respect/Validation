@@ -13,7 +13,6 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
-use function is_null;
 use function is_scalar;
 use function preg_match;
 
@@ -26,7 +25,7 @@ final class NoWhitespace extends Simple
 {
     public function isValid(mixed $input): bool
     {
-        if (is_null($input)) {
+        if ($input === null) {
             return true;
         }
 

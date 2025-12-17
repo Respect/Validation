@@ -34,20 +34,20 @@ use function str_split;
 )]
 final readonly class Sorted implements Rule
 {
-    public const TEMPLATE_ASCENDING = '__ascending__';
-    public const TEMPLATE_DESCENDING = '__descending__';
+    public const string TEMPLATE_ASCENDING = '__ascending__';
+    public const string TEMPLATE_DESCENDING = '__descending__';
 
-    public const ASCENDING = 'ASC';
-    public const DESCENDING = 'DESC';
+    public const string ASCENDING = 'ASC';
+    public const string DESCENDING = 'DESC';
 
     public function __construct(
-        private string $direction
+        private string $direction,
     ) {
         if ($direction !== self::ASCENDING && $direction !== self::DESCENDING) {
             throw new InvalidRuleConstructorException(
                 'Direction should be either "%s" or "%s"',
                 self::ASCENDING,
-                self::DESCENDING
+                self::DESCENDING,
             );
         }
     }

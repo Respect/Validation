@@ -33,17 +33,17 @@ use function preg_replace;
 )]
 final readonly class CreditCard implements Rule
 {
-    public const TEMPLATE_BRANDED = '__branded__';
-    public const ANY = 'Any';
-    public const AMERICAN_EXPRESS = 'American Express';
-    public const DINERS_CLUB = 'Diners Club';
-    public const DISCOVER = 'Discover';
-    public const JCB = 'JCB';
-    public const MASTERCARD = 'MasterCard';
-    public const VISA = 'Visa';
-    public const RUPAY = 'RuPay';
+    public const string TEMPLATE_BRANDED = '__branded__';
+    public const string ANY = 'Any';
+    public const string AMERICAN_EXPRESS = 'American Express';
+    public const string DINERS_CLUB = 'Diners Club';
+    public const string DISCOVER = 'Discover';
+    public const string JCB = 'JCB';
+    public const string MASTERCARD = 'MasterCard';
+    public const string VISA = 'Visa';
+    public const string RUPAY = 'RuPay';
 
-    private const BRAND_REGEX_LIST = [
+    private const array BRAND_REGEX_LIST = [
         self::ANY => '/^[0-9]+$/',
         self::AMERICAN_EXPRESS => '/^3[47]\d{13}$/',
         self::DINERS_CLUB => '/^3(?:0[0-5]|[68]\d)\d{11}$/',
@@ -55,13 +55,13 @@ final readonly class CreditCard implements Rule
     ];
 
     public function __construct(
-        private string $brand = self::ANY
+        private string $brand = self::ANY,
     ) {
         if (!isset(self::BRAND_REGEX_LIST[$brand])) {
             throw new InvalidRuleConstructorException(
                 '"%s" is not a valid credit card brand (Available: %s)',
                 $brand,
-                array_keys(self::BRAND_REGEX_LIST)
+                array_keys(self::BRAND_REGEX_LIST),
             );
         }
     }
@@ -84,7 +84,7 @@ final readonly class CreditCard implements Rule
             $input,
             $this,
             $parameters,
-            $template
+            $template,
         );
     }
 }

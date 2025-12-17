@@ -11,5 +11,5 @@ use Respect\Validation\Validator;
 
 test('Scenario', catchMessage(
     fn() => Validator::callback('is_int')->setTemplate('{{name}} is not tasty')->assert('something'),
-    fn(string $message) => expect($message)->toBe('"something" is not tasty')
+    fn(string $message) => expect($message)->toBe('"something" is not tasty'),
 ));

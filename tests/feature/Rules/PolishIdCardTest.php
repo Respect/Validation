@@ -11,20 +11,20 @@ require_once 'vendor/autoload.php';
 
 test('Scenario #1', catchMessage(
     fn() => v::polishIdCard()->assert('AYE205411'),
-    fn(string $message) => expect($message)->toBe('"AYE205411" must be a valid Polish Identity Card number')
+    fn(string $message) => expect($message)->toBe('"AYE205411" must be a valid Polish Identity Card number'),
 ));
 
 test('Scenario #2', catchMessage(
     fn() => v::not(v::polishIdCard())->assert('AYE205410'),
-    fn(string $message) => expect($message)->toBe('"AYE205410" must not be a valid Polish Identity Card number')
+    fn(string $message) => expect($message)->toBe('"AYE205410" must not be a valid Polish Identity Card number'),
 ));
 
 test('Scenario #3', catchFullMessage(
     fn() => v::polishIdCard()->assert('AYE205411'),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- "AYE205411" must be a valid Polish Identity Card number')
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "AYE205411" must be a valid Polish Identity Card number'),
 ));
 
 test('Scenario #4', catchFullMessage(
     fn() => v::not(v::polishIdCard())->assert('AYE205410'),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- "AYE205410" must not be a valid Polish Identity Card number')
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "AYE205410" must not be a valid Polish Identity Card number'),
 ));

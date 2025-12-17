@@ -35,7 +35,7 @@ trait CanValidateDateTime
             $formattedDate = DateTime::createFromFormat(
                 $format,
                 $value,
-                new DateTimeZone(date_default_timezone_get())
+                new DateTimeZone(date_default_timezone_get()),
             );
 
             if ($formattedDate === false || $value !== $formattedDate->format($format)) {
@@ -48,9 +48,7 @@ trait CanValidateDateTime
         return true;
     }
 
-    /**
-     * @param mixed[] $info
-     */
+    /** @param mixed[] $info */
     private function isDateTimeParsable(array $info): bool
     {
         return $info['error_count'] === 0 && $info['warning_count'] === 0;
@@ -61,9 +59,7 @@ trait CanValidateDateTime
         return preg_match('/[djSFmMnYy]/', $format) > 0;
     }
 
-    /**
-     * @param mixed[] $info
-     */
+    /** @param mixed[] $info */
     private function isDateInformation(array $info): bool
     {
         if ($info['day']) {

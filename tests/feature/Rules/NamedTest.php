@@ -12,7 +12,7 @@ test('Default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Potato must be a string')
         ->and($fullMessage)->toBe('- Potato must be a string')
-        ->and($messages)->toBe(['stringType' => 'Potato must be a string'])
+        ->and($messages)->toBe(['stringType' => 'Potato must be a string']),
 ));
 
 test('Inverted', catchAll(
@@ -20,7 +20,7 @@ test('Inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Zucchini must not be an integer')
         ->and($fullMessage)->toBe('- Zucchini must not be an integer')
-        ->and($messages)->toBe(['notIntType' => 'Zucchini must not be an integer'])
+        ->and($messages)->toBe(['notIntType' => 'Zucchini must not be an integer']),
 ));
 
 test('Template in Validator', catchAll(
@@ -30,7 +30,7 @@ test('Template in Validator', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Eggplant must be a string')
         ->and($fullMessage)->toBe('- Eggplant must be a string')
-        ->and($messages)->toBe(['stringType' => 'Eggplant must be a string'])
+        ->and($messages)->toBe(['stringType' => 'Eggplant must be a string']),
 ));
 
 test('With bound', catchAll(
@@ -38,7 +38,7 @@ test('With bound', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Pumpkin must be an object')
         ->and($fullMessage)->toBe('- Pumpkin must be an object')
-        ->and($messages)->toBe(['attributes' => 'Pumpkin must be an object'])
+        ->and($messages)->toBe(['attributes' => 'Pumpkin must be an object']),
 ));
 
 test('With key that does not exist', catchAll(
@@ -46,7 +46,7 @@ test('With key that does not exist', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Paprika must be present')
         ->and($fullMessage)->toBe('- Paprika must be present')
-        ->and($messages)->toBe(['vegetable' => 'Paprika must be present'])
+        ->and($messages)->toBe(['vegetable' => 'Paprika must be present']),
 ));
 
 test('With property that does not exist', catchAll(
@@ -54,7 +54,7 @@ test('With property that does not exist', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Broccoli must be present')
         ->and($fullMessage)->toBe('- Broccoli must be present')
-        ->and($messages)->toBe(['vegetable' => 'Broccoli must be present'])
+        ->and($messages)->toBe(['vegetable' => 'Broccoli must be present']),
 ));
 
 test('With key that fails validation', catchAll(
@@ -62,7 +62,7 @@ test('With key that fails validation', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Artichoke must be a string')
         ->and($fullMessage)->toBe('- Artichoke must be a string')
-        ->and($messages)->toBe(['vegetable' => 'Artichoke must be a string'])
+        ->and($messages)->toBe(['vegetable' => 'Artichoke must be a string']),
 ));
 
 test('With nested key that fails validation', catchAll(
@@ -73,7 +73,7 @@ test('With nested key that fails validation', catchAll(
                 ->key('root', v::stringType())
                 ->key('stems', v::stringType())
                 ->keyExists('fruits'),
-            'Vegetables'
+            'Vegetables',
         ),
     )->assert(['vegetables' => ['root' => 12, 'stems' => 12]]),
     fn(string $message, string $fullMessage, array $messages) => expect()
@@ -89,5 +89,5 @@ test('With nested key that fails validation', catchAll(
             'root' => '`.root` must be a string',
             'stems' => '`.stems` must be a string',
             'fruits' => '`.fruits` must be present',
-        ])
+        ]),
 ));

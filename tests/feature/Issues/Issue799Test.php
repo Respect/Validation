@@ -29,18 +29,18 @@ test('https://github.com/Respect/Validation/issues/799 | #1', catchAll(
             '__root__' => '1 must pass all the rules',
             'arrayVal' => '1 must be an array value',
             'scheme' => '`.scheme` must be present',
-        ])
+        ]),
 ));
 
 test('https://github.com/Respect/Validation/issues/799 | #2', catchAll(
     fn() => v::create()
         ->call(
-            fn ($url) => parse_url((string) $url),
+            fn($url) => parse_url((string) $url),
             v::arrayVal()->key('scheme', v::startsWith('https')),
         )
         ->assert($input),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.scheme` must start with "https"')
         ->and($fullMessage)->toBe('- `.scheme` must start with "https"')
-        ->and($messages)->toBe(['scheme' => '`.scheme` must start with "https"'])
+        ->and($messages)->toBe(['scheme' => '`.scheme` must start with "https"']),
 ));

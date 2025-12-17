@@ -11,6 +11,6 @@ namespace Respect\Validation\Test\Rules;
 
 use Respect\Validation\Rule;
 
-abstract class AbstractClass implements Rule
+abstract class MyAbstractClass implements Rule
 {
 }

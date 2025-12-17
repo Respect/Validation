@@ -19,7 +19,7 @@ final class MissingComposerDependencyException extends ComponentException implem
         parent::__construct(sprintf(
             '%s. Run `composer require %s` to fix this issue.',
             $message,
-            implode(' ', $dependencies)
+            implode(' ', $dependencies),
         ));
     }
 }

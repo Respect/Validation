@@ -26,7 +26,7 @@ use Respect\Validation\Rules\Core\Simple;
 )]
 final class AlwaysInvalid extends Simple
 {
-    public const TEMPLATE_SIMPLE = '__simple__';
+    public const string TEMPLATE_SIMPLE = '__simple__';
 
     public function isValid(mixed $input): bool
     {

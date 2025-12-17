@@ -32,13 +32,13 @@ final readonly class CurrencyCode implements Rule
     /** @param "alpha-3"|"numeric" $set */
     public function __construct(
         private string $set = 'alpha-3',
-        ?Currencies $currencies = null
+        Currencies|null $currencies = null,
     ) {
         if (!class_exists(Currencies::class)) {
             throw new MissingComposerDependencyException(
                 'CurrencyCode rule requires PHP ISO Codes',
                 'sokil/php-isocodes',
-                'sokil/php-isocodes-db-only'
+                'sokil/php-isocodes-db-only',
             );
         }
 
@@ -47,9 +47,10 @@ final readonly class CurrencyCode implements Rule
             throw new InvalidRuleConstructorException(
                 '"%s" is not a valid set for ISO 4217 (Available: %s)',
                 $set,
-                $availableSets
+                $availableSets,
             );
         }
+
         $this->currencies = $currencies ?? new Currencies();
     }
 

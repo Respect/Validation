@@ -15,7 +15,7 @@ use Respect\Validation\Result;
 use Respect\Validation\Rule;
 
 use function abs;
-use function is_integer;
+use function is_int;
 use function is_numeric;
 use function preg_match;
 
@@ -27,7 +27,7 @@ use function preg_match;
 final readonly class Factor implements Rule
 {
     public function __construct(
-        private int $dividend
+        private int $dividend,
     ) {
     }
 
@@ -50,6 +50,6 @@ final readonly class Factor implements Rule
 
         // The dividend divided by the input must be an integer if input is a
         // factor of the dividend.
-        return new Result(is_integer($dividend / $input), $input, $this, $parameters);
+        return new Result(is_int($dividend / $input), $input, $this, $parameters);
     }
 }

@@ -33,13 +33,13 @@ final readonly class CountryCode implements Rule
     /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public function __construct(
         private string $set = 'alpha-2',
-        ?Countries $countries = null
+        Countries|null $countries = null,
     ) {
         if (!class_exists(Countries::class)) {
             throw new MissingComposerDependencyException(
                 'SubdivisionCode rule requires PHP ISO Codes',
                 'sokil/php-isocodes',
-                'sokil/php-isocodes-db-only'
+                'sokil/php-isocodes-db-only',
             );
         }
 
@@ -48,7 +48,7 @@ final readonly class CountryCode implements Rule
             throw new InvalidRuleConstructorException(
                 '"%s" is not a valid set for ISO 3166-1 (Available: %s)',
                 $set,
-                $availableOptions
+                $availableOptions,
             );
         }
 

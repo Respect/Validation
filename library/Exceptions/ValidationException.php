@@ -19,7 +19,7 @@ final class ValidationException extends InvalidArgumentException implements Exce
 {
     /**
      * @param array<string, mixed> $messages
-     * @param array<string> $ignoredBacktracePaths
+     * @param array<string>        $ignoredBacktracePaths
      */
     public function __construct(
         string $message,
@@ -28,6 +28,7 @@ final class ValidationException extends InvalidArgumentException implements Exce
         array $ignoredBacktracePaths = [],
     ) {
         $this->overwriteFileAndLine($ignoredBacktracePaths);
+
         parent::__construct($message);
     }
 

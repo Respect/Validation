@@ -18,9 +18,7 @@ use function is_scalar;
 use function preg_match;
 use function str_split;
 
-/**
- * @see https://en.wikipedia.org/wiki/VAT_identification_number
- */
+/** @see https://en.wikipedia.org/wiki/VAT_identification_number */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid Polish VAT identification number',
@@ -48,7 +46,7 @@ final class Nip extends Simple
             $calculateControlNumber += $digits[$i] * $weights[$i];
         }
 
-        $calculateControlNumber = $calculateControlNumber % 11;
+        $calculateControlNumber %= 11;
 
         return $targetControlNumber == $calculateControlNumber;
     }

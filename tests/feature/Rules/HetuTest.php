@@ -12,7 +12,7 @@ test('Default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"010106A901O" must be a valid Finnish personal identity code')
         ->and($fullMessage)->toBe('- "010106A901O" must be a valid Finnish personal identity code')
-        ->and($messages)->toBe(['hetu' => '"010106A901O" must be a valid Finnish personal identity code'])
+        ->and($messages)->toBe(['hetu' => '"010106A901O" must be a valid Finnish personal identity code']),
 ));
 
 test('Inverted', catchAll(
@@ -20,7 +20,7 @@ test('Inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"010106A9012" must not be a valid Finnish personal identity code')
         ->and($fullMessage)->toBe('- "010106A9012" must not be a valid Finnish personal identity code')
-        ->and($messages)->toBe(['notHetu' => '"010106A9012" must not be a valid Finnish personal identity code'])
+        ->and($messages)->toBe(['notHetu' => '"010106A9012" must not be a valid Finnish personal identity code']),
 ));
 
 test('With template', catchAll(
@@ -28,7 +28,7 @@ test('With template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('That is not a HETU')
         ->and($fullMessage)->toBe('- That is not a HETU')
-        ->and($messages)->toBe(['hetu' => 'That is not a HETU'])
+        ->and($messages)->toBe(['hetu' => 'That is not a HETU']),
 ));
 
 test('With name', catchAll(
@@ -36,5 +36,5 @@ test('With name', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Hetu must be a valid Finnish personal identity code')
         ->and($fullMessage)->toBe('- Hetu must be a valid Finnish personal identity code')
-        ->and($messages)->toBe(['hetu' => 'Hetu must be a valid Finnish personal identity code'])
+        ->and($messages)->toBe(['hetu' => 'Hetu must be a valid Finnish personal identity code']),
 ));

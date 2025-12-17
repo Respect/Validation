@@ -26,44 +26,44 @@ use function ucfirst;
 #[Template(
     'The number of {{type|trans}} between now and',
     'The number of {{type|trans}} between now and',
-    self::TEMPLATE_STANDARD
+    self::TEMPLATE_STANDARD,
 )]
 #[Template(
     'The number of {{type|trans}} between {{now}} and',
     'The number of {{type|trans}} between {{now}} and',
-    self::TEMPLATE_CUSTOMIZED
+    self::TEMPLATE_CUSTOMIZED,
 )]
 #[Template(
     'For comparison with {{now|raw}}, {{name}} must be a valid datetime',
     'For comparison with {{now|raw}}, {{name}} must not be a valid datetime',
-    self::TEMPLATE_NOT_A_DATE
+    self::TEMPLATE_NOT_A_DATE,
 )]
 #[Template(
     'For comparison with {{now|raw}}, {{name}} must be a valid datetime in the format {{sample|raw}}',
     'For comparison with {{now|raw}}, {{name}} must not be a valid datetime in the format {{sample|raw}}',
-    self::TEMPLATE_WRONG_FORMAT
+    self::TEMPLATE_WRONG_FORMAT,
 )]
 final readonly class DateTimeDiff implements Rule
 {
     use CanValidateDateTime;
 
-    public const TEMPLATE_CUSTOMIZED = '__customized__';
-    public const TEMPLATE_NOT_A_DATE = '__not_a_date__';
-    public const TEMPLATE_WRONG_FORMAT = '__wrong_format__';
+    public const string TEMPLATE_CUSTOMIZED = '__customized__';
+    public const string TEMPLATE_NOT_A_DATE = '__not_a_date__';
+    public const string TEMPLATE_WRONG_FORMAT = '__wrong_format__';
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function __construct(
         private string $type,
         private Rule $rule,
-        private ?string $format = null,
-        private ?DateTimeImmutable $now = null,
+        private string|null $format = null,
+        private DateTimeImmutable|null $now = null,
     ) {
         $availableTypes = ['years', 'months', 'days', 'hours', 'minutes', 'seconds', 'microseconds'];
         if (!in_array($this->type, $availableTypes, true)) {
             throw new InvalidRuleConstructorException(
                 '"%s" is not a valid type of age (Available: %s)',
                 $this->type,
-                $availableTypes
+                $availableTypes,
             );
         }
     }
@@ -88,7 +88,7 @@ final readonly class DateTimeDiff implements Rule
             $this,
             $this->rule->evaluate($this->comparisonValue($now, $compareTo)),
             ['type' => $this->type, 'now' => $nowPlaceholder],
-            $nowPlaceholder === 'now' ? self::TEMPLATE_STANDARD : self::TEMPLATE_CUSTOMIZED
+            $nowPlaceholder === 'now' ? self::TEMPLATE_STANDARD : self::TEMPLATE_CUSTOMIZED,
         );
     }
 
@@ -118,7 +118,7 @@ final readonly class DateTimeDiff implements Rule
         return $now->format($this->format);
     }
 
-    private function createDateTimeObject(mixed $input): ?DateTimeInterface
+    private function createDateTimeObject(mixed $input): DateTimeInterface|null
     {
         if ($input instanceof DateTimeInterface) {
             return $input;

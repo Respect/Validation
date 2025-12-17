@@ -20,7 +20,7 @@ use SplFileInfo;
 #[CoversClass(Uploaded::class)]
 final class UploadedTest extends TestCase
 {
-    public const UPLOADED_FILENAME = 'uploaded.ext';
+    public const string UPLOADED_FILENAME = 'uploaded.ext';
 
     #[Test]
     public function itShouldValidateWhenFileIsUploadedAndTheInputIsString(): void

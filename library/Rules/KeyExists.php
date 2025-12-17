@@ -27,7 +27,7 @@ use function is_array;
 final class KeyExists implements Rule, KeyRelated
 {
     public function __construct(
-        private readonly int|string $key
+        private readonly int|string $key,
     ) {
     }
 

@@ -14,7 +14,7 @@ final readonly class Listed
     /** @param array<int, mixed> $values */
     public function __construct(
         public array $values,
-        public string $lastGlue
+        public string $lastGlue,
     ) {
     }
 }

@@ -26,7 +26,7 @@ final class BetweenExclusiveTest extends TestCase
     public function minimumValueShouldNotBeGreaterThanMaximumValue(): void
     {
         $this->expectExceptionObject(
-            new InvalidRuleConstructorException('Minimum cannot be less than or equals to maximum')
+            new InvalidRuleConstructorException('Minimum cannot be less than or equals to maximum'),
         );
 
         new BetweenExclusive(10, 5);
@@ -36,7 +36,7 @@ final class BetweenExclusiveTest extends TestCase
     public function minimumValueShouldNotBeEqualsToMaximumValue(): void
     {
         $this->expectExceptionObject(
-            new InvalidRuleConstructorException('Minimum cannot be less than or equals to maximum')
+            new InvalidRuleConstructorException('Minimum cannot be less than or equals to maximum'),
         );
 
         new BetweenExclusive(5, 5);

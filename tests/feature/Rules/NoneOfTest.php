@@ -20,7 +20,7 @@ test('Default: fail, fail', catchAll(
             '__root__' => '-1 must pass all the rules',
             'intType' => '-1 must not be an integer',
             'negative' => '-1 must not be a negative number',
-        ])
+        ]),
 ));
 
 test('Default: pass, fail', catchAll(
@@ -30,9 +30,7 @@ test('Default: pass, fail', catchAll(
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - "string" must not be a string
         FULL_MESSAGE)
-        ->and($messages)->toBe([
-            'stringType' => '"string" must not be a string',
-        ])
+        ->and($messages)->toBe(['stringType' => '"string" must not be a string']),
 ));
 
 test('Default: pass, fail, fail', catchAll(
@@ -48,7 +46,7 @@ test('Default: pass, fail, fail', catchAll(
             '__root__' => '"string" must pass the rules',
             'alpha' => '"string" must not contain letters (a-z)',
             'stringType' => '"string" must not be a string',
-        ])
+        ]),
 ));
 
 test('Inverted: fail, fail', catchAll(
@@ -64,5 +62,5 @@ test('Inverted: fail, fail', catchAll(
             '__root__' => '"string" must pass the rules',
             'intType' => '"string" must be an integer',
             'negative' => '"string" must be a negative number',
-        ])
+        ]),
 ));

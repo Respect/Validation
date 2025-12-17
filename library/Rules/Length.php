@@ -25,16 +25,16 @@ use function ucfirst;
 #[Template(
     'The length of',
     'The length of',
-    self::TEMPLATE_STANDARD
+    self::TEMPLATE_STANDARD,
 )]
 #[Template(
     '{{name}} must be a countable value or a string',
     '{{name}} must not be a countable value or a string',
-    self::TEMPLATE_WRONG_TYPE
+    self::TEMPLATE_WRONG_TYPE,
 )]
 final class Length extends Wrapper
 {
-    public const TEMPLATE_WRONG_TYPE = '__wrong_type__';
+    public const string TEMPLATE_WRONG_TYPE = '__wrong_type__';
 
     public function evaluate(mixed $input): Result
     {
@@ -47,7 +47,7 @@ final class Length extends Wrapper
         return Result::fromAdjacent($input, 'length', $this, $this->rule->evaluate($length));
     }
 
-    private function extractLength(mixed $input): ?int
+    private function extractLength(mixed $input): int|null
     {
         if (is_string($input)) {
             return (int) mb_strlen($input);

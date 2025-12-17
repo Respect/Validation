@@ -64,5 +64,5 @@ test('https://github.com/Respect/Validation/issues/1289', catchAll(
                 ],
                 'description' => '`.description` must be a string value',
             ],
-        ])
+        ]),
 ));

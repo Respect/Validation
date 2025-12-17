@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 test('Non-iterable', catchAll(
     fn() => v::each(v::intType())->assert(null),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`null` must be iterable')
         ->and($fullMessage)->toBe('- `null` must be iterable')
         ->and($messages)->toBe(['each' => '`null` must be iterable']),
@@ -17,7 +17,7 @@ test('Non-iterable', catchAll(
 
 test('Empty', catchAll(
     fn() => v::each(v::intType())->assert([]),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`[]` must not be empty')
         ->and($fullMessage)->toBe('- `[]` must not be empty')
         ->and($messages)->toBe(['each' => '`[]` must not be empty']),
@@ -25,7 +25,7 @@ test('Empty', catchAll(
 
 test('Default', catchAll(
     fn() => v::each(v::intType())->assert(['a', 'b', 'c']),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.0` must be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Each item in `["a", "b", "c"]` must be valid
@@ -43,7 +43,7 @@ test('Default', catchAll(
 
 test('Inverted', catchAll(
     fn() => v::not(v::each(v::intType()))->assert([1, 2, 3]),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.0` must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Each item in `[1, 2, 3]` must be invalid
@@ -61,7 +61,7 @@ test('Inverted', catchAll(
 
 test('With name, non-iterable', catchAll(
     fn() => v::each(v::intType()->setName('Wrapped'))->assert(null),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must be iterable')
         ->and($fullMessage)->toBe('- Wrapped must be iterable')
         ->and($messages)->toBe(['each' => 'Wrapped must be iterable']),
@@ -69,7 +69,7 @@ test('With name, non-iterable', catchAll(
 
 test('With name, empty', catchAll(
     fn() => v::each(v::intType()->setName('Wrapped'))->assert([]),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must not be empty')
         ->and($fullMessage)->toBe('- Wrapped must not be empty')
         ->and($messages)->toBe(['each' => 'Wrapped must not be empty']),
@@ -77,7 +77,7 @@ test('With name, empty', catchAll(
 
 test('With name, default', catchAll(
     fn() => v::each(v::intType()->setName('Wrapped'))->setName('Wrapper')->assert(['a', 'b', 'c']),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Each item in Wrapped must be valid
@@ -95,7 +95,7 @@ test('With name, default', catchAll(
 
 test('With name, inverted', catchAll(
     fn() => v::not(v::each(v::intType()->setName('Wrapped'))->setName('Wrapper'))->setName('Not')->assert([1, 2, 3]),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Each item in Wrapped must be invalid
@@ -113,7 +113,7 @@ test('With name, inverted', catchAll(
 
 test('With wrapper name, default', catchAll(
     fn() => v::each(v::intType())->setName('Wrapper')->assert(['a', 'b', 'c']),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.0` must be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Each item in Wrapper must be valid
@@ -131,7 +131,7 @@ test('With wrapper name, default', catchAll(
 
 test('With wrapper name, inverted', catchAll(
     fn() => v::not(v::each(v::intType())->setName('Wrapper'))->setName('Not')->assert([1, 2, 3]),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.0` must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Each item in Wrapper must be invalid
@@ -149,7 +149,7 @@ test('With wrapper name, inverted', catchAll(
 
 test('With Not name, inverted', catchAll(
     fn() => v::not(v::each(v::intType()))->setName('Not')->assert([1, 2, 3]),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.0` must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Each item in Not must be invalid
@@ -167,7 +167,7 @@ test('With Not name, inverted', catchAll(
 
 test('With template, non-iterable', catchAll(
     fn() => v::each(v::intType())->setTemplate('You should have passed an iterable')->assert(null),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('You should have passed an iterable')
         ->and($fullMessage)->toBe('- You should have passed an iterable')
         ->and($messages)->toBe(['each' => 'You should have passed an iterable']),
@@ -176,7 +176,7 @@ test('With template, non-iterable', catchAll(
 test('With template, empty', catchAll(
     fn() => v::each(v::intType())->setTemplate('You should have passed an non-empty')
         ->assert([]),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('You should have passed an non-empty')
         ->and($fullMessage)->toBe('- You should have passed an non-empty')
         ->and($messages)->toBe(['each' => 'You should have passed an non-empty']),
@@ -186,7 +186,7 @@ test('With template, default', catchAll(
     fn() => v::each(v::intType())
         ->setTemplate('All items should have been integers')
         ->assert(['a', 'b', 'c']),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('All items should have been integers')
         ->and($fullMessage)->toBe('- All items should have been integers')
         ->and($messages)->toBe(['each' => 'All items should have been integers']),
@@ -196,7 +196,7 @@ test('with template, inverted', catchAll(
     fn() => v::not(v::each(v::intType()))
         ->setTemplate('All items should not have been integers')
         ->assert([1, 2, 3]),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('All items should not have been integers')
         ->and($fullMessage)->toBe('- All items should not have been integers')
         ->and($messages)->toBe(['notEach' => 'All items should not have been integers']),
@@ -213,7 +213,7 @@ test('With array template, default', catchAll(
             ],
         ])
         ->assert(['a', 'b', 'c']),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('First item should have been an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Here a sequence of items that did not pass the validation
@@ -241,7 +241,7 @@ test('With array template and name, default', catchAll(
                     ],
                 ])
                 ->assert(['a', 'b', 'c']),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('First item should have been an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Here a sequence of items that did not pass the validation
@@ -259,7 +259,7 @@ test('With array template and name, default', catchAll(
 
 test('Chained wrapped rule', catchAll(
     fn() => v::each(v::between(5, 7)->odd())->assert([2, 4]),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.0` must be between 5 and 7')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Each item in `[2, 4]` must be valid
@@ -287,7 +287,7 @@ test('Chained wrapped rule', catchAll(
 
 test('Multiple nested rules', catchAll(
     fn() => v::each(v::arrayType()->key('my_int', v::intType()->odd()))->assert([['not_int' => 'wrong'], ['my_int' => 2], 'not an array']),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.0.my_int` must be present')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Each item in `[["not_int": "wrong"], ["my_int": 2], "not an array"]` must be valid

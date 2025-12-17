@@ -27,7 +27,7 @@ final class Tld extends Simple
     /**
      * List extracted from https://data.iana.org/TLD/tlds-alpha-by-domain.txt
      */
-    private const TLD_LIST = [
+    private const array TLD_LIST = [
         'AAA', 'AARP', 'ABB', 'ABBOTT', 'ABBVIE', 'ABC', 'ABLE', 'ABOGADO',
         'ABUDHABI', 'AC', 'ACADEMY', 'ACCENTURE', 'ACCOUNTANT', 'ACCOUNTANTS',
         'ACO', 'ACTOR', 'AD', 'ADS', 'ADULT', 'AE', 'AEG', 'AERO', 'AETNA',

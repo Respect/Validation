@@ -40,7 +40,7 @@ final class InvalidRuleConstructorException extends ComponentException implement
                     return implode(count($items) > 2 ? ', ' : ' ', $items);
                 },
                 $arguments,
-            )
+            ),
         ));
     }
 }

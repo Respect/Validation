@@ -21,11 +21,11 @@ use function sprintf;
 final readonly class ListedStringifier implements Stringifier
 {
     public function __construct(
-        private Stringifier $stringifier
+        private Stringifier $stringifier,
     ) {
     }
 
-    public function stringify(mixed $raw, int $depth): ?string
+    public function stringify(mixed $raw, int $depth): string|null
     {
         if (!$raw instanceof Listed) {
             return null;
@@ -35,10 +35,11 @@ final readonly class ListedStringifier implements Stringifier
             return null;
         }
 
-        $strings = array_map(fn ($value) => $this->stringifier->stringify($value, $depth + 1), $raw->values);
+        $strings = array_map(fn($value) => $this->stringifier->stringify($value, $depth + 1), $raw->values);
         if (count($strings) < 3) {
             return implode(sprintf(' %s ', $raw->lastGlue), $strings);
         }
+
         $lastString = array_pop($strings);
 
         return sprintf('%s, %s %s', implode(', ', $strings), $raw->lastGlue, $lastString);

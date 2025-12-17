@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('https://github.com/Respect/Validation/issues/1469', catchAll(
-    fn () => v::create()
+    fn() => v::create()
         ->arrayVal()
         ->keySet(
             v::key(
@@ -19,9 +19,9 @@ test('https://github.com/Respect/Validation/issues/1469', catchAll(
                         v::keySet(
                             v::key('product_title', v::stringVal()->notEmpty()),
                             v::key('quantity', v::intVal()->notEmpty()),
-                        )
+                        ),
                     )
-                    ->notEmpty()
+                    ->notEmpty(),
             ),
         )
         ->assert([
@@ -30,9 +30,7 @@ test('https://github.com/Respect/Validation/issues/1469', catchAll(
                     'product_title' => 'test',
                     'quantity' => 'test',
                 ],
-                [
-                    'product_title2' => 'test',
-                ],
+                ['product_title2' => 'test'],
             ],
         ]),
     fn(string $message, string $fullMessage, array $messages) => expect()
@@ -57,9 +55,9 @@ test('https://github.com/Respect/Validation/issues/1469', catchAll(
                     'product_title2' => '`.product_title2` must not be present',
                 ],
             ],
-        ])
+        ]),
 ))
-->skip(<<<TEST_SKIP
+->skip(<<<'TEST_SKIP'
 This test is skipped because the issue is not fixed yet.
 
 When changing the path of a `Result` we don't change the path of its children. I took this approach because we don't

@@ -33,14 +33,14 @@ use function count;
 )]
 final class AllOf extends Composite
 {
-    public const TEMPLATE_ALL = '__all__';
-    public const TEMPLATE_SOME = '__some__';
+    public const string TEMPLATE_ALL = '__all__';
+    public const string TEMPLATE_SOME = '__some__';
 
     public function evaluate(mixed $input): Result
     {
-        $children = array_map(static fn (Rule $rule) => $rule->evaluate($input), $this->rules);
-        $valid = array_reduce($children, static fn (bool $carry, Result $result) => $carry && $result->hasPassed, true);
-        $failed = array_filter($children, static fn (Result $result): bool => !$result->hasPassed);
+        $children = array_map(static fn(Rule $rule) => $rule->evaluate($input), $this->rules);
+        $valid = array_reduce($children, static fn(bool $carry, Result $result) => $carry && $result->hasPassed, true);
+        $failed = array_filter($children, static fn(Result $result): bool => !$result->hasPassed);
         $template = self::TEMPLATE_SOME;
         if (count($children) === count($failed)) {
             $template = self::TEMPLATE_ALL;

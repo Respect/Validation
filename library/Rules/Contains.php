@@ -29,7 +29,7 @@ final readonly class Contains implements Rule
 {
     public function __construct(
         private mixed $containsValue,
-        private bool $identical = false
+        private bool $identical = false,
     ) {
     }
 

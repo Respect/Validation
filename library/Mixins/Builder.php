@@ -75,41 +75,33 @@ interface Builder extends
 
     public static function contains(mixed $containsValue, bool $identical = false): Chain;
 
-    /**
-     * @param non-empty-array<mixed> $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public static function containsAny(array $needles, bool $identical = false): Chain;
 
     public static function control(string ...$additionalChars): Chain;
 
     public static function countable(): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public static function countryCode(string $set = 'alpha-2'): Chain;
 
     public static function cpf(): Chain;
 
     public static function creditCard(string $brand = 'Any'): Chain;
 
-    /**
-     * @param "alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-3"|"numeric" $set */
     public static function currencyCode(string $set = 'alpha-3'): Chain;
 
     public static function date(string $format = 'Y-m-d'): Chain;
 
-    public static function dateTime(?string $format = null): Chain;
+    public static function dateTime(string|null $format = null): Chain;
 
-    /**
-     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
-     */
+    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public static function dateTimeDiff(
         string $type,
         Rule $rule,
-        ?string $format = null,
-        ?DateTimeImmutable $now = null,
+        string|null $format = null,
+        DateTimeImmutable|null $now = null,
     ): Chain;
 
     public static function decimal(int $decimals): Chain;
@@ -176,16 +168,14 @@ interface Builder extends
 
     public static function infinite(): Chain;
 
-    /**
-     * @param class-string $class
-     */
+    /** @param class-string $class */
     public static function instance(string $class): Chain;
 
     public static function intType(): Chain;
 
     public static function intVal(): Chain;
 
-    public static function ip(string $range = '*', ?int $options = null): Chain;
+    public static function ip(string $range = '*', int|null $options = null): Chain;
 
     public static function isbn(): Chain;
 
@@ -203,14 +193,10 @@ interface Builder extends
 
     public static function keySet(Rule $rule, Rule ...$rules): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3" $set
-     */
+    /** @param "alpha-2"|"alpha-3" $set */
     public static function languageCode(string $set = 'alpha-2'): Chain;
 
-    /**
-     * @param callable(mixed): Rule $ruleCreator
-     */
+    /** @param callable(mixed): Rule $ruleCreator */
     public static function lazy(callable $ruleCreator): Chain;
 
     public static function leapDate(string $format): Chain;
@@ -281,7 +267,7 @@ interface Builder extends
 
     public static function pesel(): Chain;
 
-    public static function phone(?string $countryCode = null): Chain;
+    public static function phone(string|null $countryCode = null): Chain;
 
     public static function phpLabel(): Chain;
 
@@ -319,9 +305,7 @@ interface Builder extends
 
     public static function scalarVal(): Chain;
 
-    /**
-     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
-     */
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public static function size(string $unit, Rule $rule): Chain;
 
     public static function slug(): Chain;
@@ -338,16 +322,12 @@ interface Builder extends
 
     public static function subdivisionCode(string $countryCode): Chain;
 
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public static function subset(array $superset): Chain;
 
     public static function symbolicLink(): Chain;
 
-    /**
-     * @param array<string, mixed> $parameters
-     */
+    /** @param array<string, mixed> $parameters */
     public static function templated(Rule $rule, string $template, array $parameters = []): Chain;
 
     public static function time(string $format = 'H:i:s'): Chain;
@@ -366,15 +346,15 @@ interface Builder extends
 
     public static function url(): Chain;
 
-    public static function uuid(?int $version = null): Chain;
+    public static function uuid(int|null $version = null): Chain;
 
     public static function version(): Chain;
 
-    public static function videoUrl(?string $service = null): Chain;
+    public static function videoUrl(string|null $service = null): Chain;
 
     public static function vowel(string ...$additionalChars): Chain;
 
-    public static function when(Rule $when, Rule $then, ?Rule $else = null): Chain;
+    public static function when(Rule $when, Rule $then, Rule|null $else = null): Chain;
 
     public static function writable(): Chain;
 

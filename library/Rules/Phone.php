@@ -35,17 +35,17 @@ use function is_scalar;
 )]
 final class Phone implements Rule
 {
-    public const TEMPLATE_FOR_COUNTRY = '__for_country__';
-    public const TEMPLATE_INTERNATIONAL = '__international__';
+    public const string TEMPLATE_FOR_COUNTRY = '__for_country__';
+    public const string TEMPLATE_INTERNATIONAL = '__international__';
 
-    private readonly ?Countries\Country $country;
+    private readonly Countries\Country|null $country;
 
-    public function __construct(?string $countryCode = null, ?Countries $countries = null)
+    public function __construct(string|null $countryCode = null, Countries|null $countries = null)
     {
         if (!class_exists(PhoneNumberUtil::class)) {
             throw new MissingComposerDependencyException(
                 'Phone rule libphonenumber for PHP',
-                'giggsey/libphonenumber-for-php'
+                'giggsey/libphonenumber-for-php',
             );
         }
 
@@ -59,7 +59,7 @@ final class Phone implements Rule
             throw new MissingComposerDependencyException(
                 'Phone rule with country code requires PHP ISO Codes',
                 'sokil/php-isocodes',
-                'sokil/php-isocodes-db-only'
+                'sokil/php-isocodes-db-only',
             );
         }
 

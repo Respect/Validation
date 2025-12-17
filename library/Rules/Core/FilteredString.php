@@ -19,11 +19,9 @@ use function str_split;
 
 abstract class FilteredString implements Rule
 {
-    public const TEMPLATE_EXTRA = '__extra__';
+    public const string TEMPLATE_EXTRA = '__extra__';
 
     private readonly string $additionalChars;
-
-    abstract protected function isValid(string $input): bool;
 
     public function __construct(string ...$additionalChars)
     {
@@ -48,6 +46,8 @@ abstract class FilteredString implements Rule
 
         return new Result($isValid, $input, $this, $parameters, $template);
     }
+
+    abstract protected function isValid(string $input): bool;
 
     private function filter(string $input): string
     {

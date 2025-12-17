@@ -31,7 +31,7 @@ trait FullProvider
             ],
             'with single-level children, without templates' => [
                 self::singleLevelChildrenMessage(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - __parent_original__
                   - __1st_original__
                   - __2nd_original__
@@ -40,7 +40,7 @@ trait FullProvider
             ],
             'with single-level children, with templates' => [
                 self::singleLevelChildrenMessage(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - Parent custom
                   - 1st custom
                   - 2nd custom
@@ -57,7 +57,7 @@ trait FullProvider
             ],
             'with single-level children, with partial templates' => [
                 self::singleLevelChildrenMessage(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - __parent_original__
                   - 1st custom
                   - __2nd_original__
@@ -73,13 +73,11 @@ trait FullProvider
             'with single-level children, with overwritten template' => [
                 self::singleLevelChildrenMessage(),
                 '- Parent custom',
-                [
-                    'parent' => 'Parent custom',
-                ],
+                ['parent' => 'Parent custom'],
             ],
             'with single-nested child, without templates' => [
                 self::multiLevelChildrenWithSingleNestedChildMessage(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - __parent_original__
                   - __1st_original__
                   - __2nd_original__
@@ -89,7 +87,7 @@ trait FullProvider
             ],
             'with single-nested child, with templates' => [
                 self::multiLevelChildrenWithSingleNestedChildMessage(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - Parent custom
                   - 1st custom
                   - 2nd custom
@@ -110,7 +108,7 @@ trait FullProvider
             ],
             'with single-nested child, with partial templates' => [
                 self::multiLevelChildrenWithSingleNestedChildMessage(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - Parent custom
                   - 1st custom
                   - __2nd_original__
@@ -121,16 +119,14 @@ trait FullProvider
                     'parent' => [
                         '__root__' => 'Parent custom',
                         '1st' => '1st custom',
-                        '2nd' => [
-                            '2nd_2nd' => '2nd > 2nd not shown',
-                        ],
+                        '2nd' => ['2nd_2nd' => '2nd > 2nd not shown'],
                         '3rd' => '3rd custom',
                     ],
                 ],
             ],
             'with single-nested child, with overwritten templates' => [
                 self::multiLevelChildrenWithSingleNestedChildMessage(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - Parent custom
                   - 1st custom
                   - 2nd custom
@@ -147,7 +143,7 @@ trait FullProvider
             ],
             'with multi-nested children, without templates' => [
                 self::multiLevelChildrenWithMultiNestedChildrenMessage(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - __parent_original__
                   - __1st_original__
                   - __2nd_original__
@@ -158,7 +154,7 @@ trait FullProvider
             ],
             'with multi-nested children, with templates' => [
                 self::multiLevelChildrenWithMultiNestedChildrenMessage(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - Parent custom
                   - 1st custom
                   - 2nd custom
@@ -181,7 +177,7 @@ trait FullProvider
             ],
             'with multi-nested children, with partial templates' => [
                 self::multiLevelChildrenWithMultiNestedChildrenMessage(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - Parent custom
                   - 1st custom
                   - __2nd_original__
@@ -193,16 +189,14 @@ trait FullProvider
                     'parent' => [
                         '__root__' => 'Parent custom',
                         '1st' => '1st custom',
-                        '2nd' => [
-                            '2nd_2nd' => '2nd > 2nd custom',
-                        ],
+                        '2nd' => ['2nd_2nd' => '2nd > 2nd custom'],
                         '3rd' => '3rd custom',
                     ],
                 ],
             ],
             'with multi-nested children, with overwritten templates' => [
                 self::multiLevelChildrenWithMultiNestedChildrenMessage(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - Parent custom
                   - 1st custom
                   - 2nd custom
@@ -219,7 +213,7 @@ trait FullProvider
             ],
             'with children with the same id, without templates' => [
                 self::singleLevelChildrenWithSameId(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - __parent_original__
                   - __1st_original__
                   - __2nd_original__
@@ -228,7 +222,7 @@ trait FullProvider
             ],
             'with children with the same id, with templates' => [
                 self::singleLevelChildrenWithSameId(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - Parent custom
                   - 1st custom
                   - 2nd custom
@@ -245,7 +239,7 @@ trait FullProvider
             ],
             'with children with the same id, with partial templates' => [
                 self::singleLevelChildrenWithSameId(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - __parent_original__
                   - 1st custom
                   - 2nd custom
@@ -260,7 +254,7 @@ trait FullProvider
             ],
             'with siblings that dot not have only one child' => [
                 self::multiLevelChildrenWithSiblingsThatHaveOnlyOneChild(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - __parent_original__
                   - __1st_original__
                     - __1st_1st_original__
@@ -270,7 +264,7 @@ trait FullProvider
             ],
             'with siblings that dot not have only one child, with partial templates' => [
                 self::multiLevelChildrenWithSiblingsThatHaveOnlyOneChild(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - __parent_original__
                   - 1st custom
                   - 2nd custom
@@ -288,7 +282,7 @@ trait FullProvider
             ],
             'with siblings that dot not have more than one child' => [
                 self::multiLevelChildrenWithSiblingsThatHaveMoreThanOneChild(),
-                <<<FULL_MESSAGE
+                <<<'FULL_MESSAGE'
                 - __parent_original__
                   - __1st_original__
                     - __1st_1st_original__

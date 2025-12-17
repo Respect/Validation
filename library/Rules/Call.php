@@ -27,21 +27,19 @@ use function set_error_handler;
 )]
 final class Call implements Rule
 {
-    /**
-     * @var callable
-     */
+    /** @var callable */
     private $callable;
 
     public function __construct(
         callable $callable,
-        private readonly Rule $rule
+        private readonly Rule $rule,
     ) {
         $this->callable = $callable;
     }
 
     public function evaluate(mixed $input): Result
     {
-        set_error_handler(static function (int $severity, string $message, ?string $filename, int $line): void {
+        set_error_handler(static function (int $severity, string $message, string|null $filename, int $line): void {
             throw new ErrorException($message, 0, $severity, $filename, $line);
         });
 

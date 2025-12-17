@@ -25,7 +25,7 @@ final class LazyTest extends TestCase
     public function itShouldThrowAnExceptionWhenRuleCreatorDoesNotReturnRule(): void
     {
         // @phpstan-ignore-next-line
-        $rule = new Lazy(static fn () => null);
+        $rule = new Lazy(static fn() => null);
 
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('Lazy failed because it could not create the rule');
@@ -37,14 +37,14 @@ final class LazyTest extends TestCase
     #[DataProvider('providerForAnyValues')]
     public function itShouldInvalidInputWhenCreatedRuleFails(mixed $input): void
     {
-        self::assertInvalidInput(new Lazy(static fn ($creatorInput) => Stub::fail(1)), $input);
+        self::assertInvalidInput(new Lazy(static fn($creatorInput) => Stub::fail(1)), $input);
     }
 
     #[Test]
     #[DataProvider('providerForAnyValues')]
     public function itShouldValidInputWhenCreatedRulePasses(mixed $input): void
     {
-        self::assertValidInput(new Lazy(static fn ($creatorInput) => Stub::pass(1)), $input);
+        self::assertValidInput(new Lazy(static fn($creatorInput) => Stub::pass(1)), $input);
     }
 
     #[Test]
@@ -53,7 +53,7 @@ final class LazyTest extends TestCase
     {
         $expected = Stub::fail(1)->evaluate($input);
 
-        $rule = new Lazy(static fn ($creatorInput) => Stub::fail(1));
+        $rule = new Lazy(static fn($creatorInput) => Stub::fail(1));
         $actual = $rule->evaluate($input);
 
         self::assertEquals($expected, $actual);

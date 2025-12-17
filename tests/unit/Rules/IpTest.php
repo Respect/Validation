@@ -25,6 +25,15 @@ use const FILTER_FLAG_NO_PRIV_RANGE;
 #[CoversClass(Ip::class)]
 final class IpTest extends RuleTestCase
 {
+    protected function setUp(): void
+    {
+        if (extension_loaded('bcmath')) {
+            return;
+        }
+
+        $this->markTestSkipped('You need bcmath to execute this test');
+    }
+
     #[Test]
     #[DataProvider('providerForInvalidRanges')]
     public function invalidRangeShouldRaiseException(string $range): void
@@ -34,9 +43,7 @@ final class IpTest extends RuleTestCase
         new Ip($range);
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public static function providerForInvalidRanges(): array
     {
         return [
@@ -99,14 +106,5 @@ final class IpTest extends RuleTestCase
             [new Ip('127.0.0.1-127.0.0.5'), '127.0.0.10'],
             [new Ip('220.78.168.0/255.255.248.0'), '220.78.176.3'],
         ];
-    }
-
-    protected function setUp(): void
-    {
-        if (extension_loaded('bcmath')) {
-            return;
-        }
-
-        $this->markTestSkipped('You need bcmath to execute this test');
     }
 }

@@ -24,7 +24,7 @@ final class LanguageCodeTest extends RuleTestCase
     {
         $this->expectException(InvalidRuleConstructorException::class);
         $this->expectExceptionMessage(
-            '"whatever" is not a valid set for ISO 639-3 (Available: "alpha-2" and "alpha-3")'
+            '"whatever" is not a valid set for ISO 639-3 (Available: "alpha-2" and "alpha-3")',
         );
 
         // @phpstan-ignore-next-line

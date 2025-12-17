@@ -65,41 +65,33 @@ interface NotChain
 
     public function notContains(mixed $containsValue, bool $identical = false): Chain;
 
-    /**
-     * @param non-empty-array<mixed> $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public function notContainsAny(array $needles, bool $identical = false): Chain;
 
     public function notControl(string ...$additionalChars): Chain;
 
     public function notCountable(): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public function notCountryCode(string $set = 'alpha-2'): Chain;
 
     public function notCpf(): Chain;
 
     public function notCreditCard(string $brand = 'Any'): Chain;
 
-    /**
-     * @param "alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-3"|"numeric" $set */
     public function notCurrencyCode(string $set = 'alpha-3'): Chain;
 
     public function notDate(string $format = 'Y-m-d'): Chain;
 
-    public function notDateTime(?string $format = null): Chain;
+    public function notDateTime(string|null $format = null): Chain;
 
-    /**
-     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
-     */
+    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function notDateTimeDiff(
         string $type,
         Rule $rule,
-        ?string $format = null,
-        ?DateTimeImmutable $now = null,
+        string|null $format = null,
+        DateTimeImmutable|null $now = null,
     ): Chain;
 
     public function notDecimal(int $decimals): Chain;
@@ -166,16 +158,14 @@ interface NotChain
 
     public function notInfinite(): Chain;
 
-    /**
-     * @param class-string $class
-     */
+    /** @param class-string $class */
     public function notInstance(string $class): Chain;
 
     public function notIntType(): Chain;
 
     public function notIntVal(): Chain;
 
-    public function notIp(string $range = '*', ?int $options = null): Chain;
+    public function notIp(string $range = '*', int|null $options = null): Chain;
 
     public function notIsbn(): Chain;
 
@@ -193,14 +183,10 @@ interface NotChain
 
     public function notKeySet(Rule $rule, Rule ...$rules): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3" $set
-     */
+    /** @param "alpha-2"|"alpha-3" $set */
     public function notLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /**
-     * @param callable(mixed): Rule $ruleCreator
-     */
+    /** @param callable(mixed): Rule $ruleCreator */
     public function notLazy(callable $ruleCreator): Chain;
 
     public function notLeapDate(string $format): Chain;
@@ -257,7 +243,7 @@ interface NotChain
 
     public function notPesel(): Chain;
 
-    public function notPhone(?string $countryCode = null): Chain;
+    public function notPhone(string|null $countryCode = null): Chain;
 
     public function notPhpLabel(): Chain;
 
@@ -295,9 +281,7 @@ interface NotChain
 
     public function notScalarVal(): Chain;
 
-    /**
-     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
-     */
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function notSize(string $unit, Rule $rule): Chain;
 
     public function notSlug(): Chain;
@@ -314,9 +298,7 @@ interface NotChain
 
     public function notSubdivisionCode(string $countryCode): Chain;
 
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public function notSubset(array $superset): Chain;
 
     public function notSymbolicLink(): Chain;
@@ -335,15 +317,15 @@ interface NotChain
 
     public function notUrl(): Chain;
 
-    public function notUuid(?int $version = null): Chain;
+    public function notUuid(int|null $version = null): Chain;
 
     public function notVersion(): Chain;
 
-    public function notVideoUrl(?string $service = null): Chain;
+    public function notVideoUrl(string|null $service = null): Chain;
 
     public function notVowel(string ...$additionalChars): Chain;
 
-    public function notWhen(Rule $when, Rule $then, ?Rule $else = null): Chain;
+    public function notWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
 
     public function notWritable(): Chain;
 

@@ -66,42 +66,34 @@ interface PropertyChain
 
     public function propertyContains(string $propertyName, mixed $containsValue, bool $identical = false): Chain;
 
-    /**
-     * @param non-empty-array<mixed> $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public function propertyContainsAny(string $propertyName, array $needles, bool $identical = false): Chain;
 
     public function propertyControl(string $propertyName, string ...$additionalChars): Chain;
 
     public function propertyCountable(string $propertyName): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public function propertyCountryCode(string $propertyName, string $set = 'alpha-2'): Chain;
 
     public function propertyCpf(string $propertyName): Chain;
 
     public function propertyCreditCard(string $propertyName, string $brand = 'Any'): Chain;
 
-    /**
-     * @param "alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-3"|"numeric" $set */
     public function propertyCurrencyCode(string $propertyName, string $set = 'alpha-3'): Chain;
 
     public function propertyDate(string $propertyName, string $format = 'Y-m-d'): Chain;
 
-    public function propertyDateTime(string $propertyName, ?string $format = null): Chain;
+    public function propertyDateTime(string $propertyName, string|null $format = null): Chain;
 
-    /**
-     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
-     */
+    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function propertyDateTimeDiff(
         string $propertyName,
         string $type,
         Rule $rule,
-        ?string $format = null,
-        ?DateTimeImmutable $now = null,
+        string|null $format = null,
+        DateTimeImmutable|null $now = null,
     ): Chain;
 
     public function propertyDecimal(string $propertyName, int $decimals): Chain;
@@ -166,16 +158,14 @@ interface PropertyChain
 
     public function propertyInfinite(string $propertyName): Chain;
 
-    /**
-     * @param class-string $class
-     */
+    /** @param class-string $class */
     public function propertyInstance(string $propertyName, string $class): Chain;
 
     public function propertyIntType(string $propertyName): Chain;
 
     public function propertyIntVal(string $propertyName): Chain;
 
-    public function propertyIp(string $propertyName, string $range = '*', ?int $options = null): Chain;
+    public function propertyIp(string $propertyName, string $range = '*', int|null $options = null): Chain;
 
     public function propertyIsbn(string $propertyName): Chain;
 
@@ -185,14 +175,10 @@ interface PropertyChain
 
     public function propertyJson(string $propertyName): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3" $set
-     */
+    /** @param "alpha-2"|"alpha-3" $set */
     public function propertyLanguageCode(string $propertyName, string $set = 'alpha-2'): Chain;
 
-    /**
-     * @param callable(mixed): Rule $ruleCreator
-     */
+    /** @param callable(mixed): Rule $ruleCreator */
     public function propertyLazy(string $propertyName, callable $ruleCreator): Chain;
 
     public function propertyLeapDate(string $propertyName, string $format): Chain;
@@ -259,7 +245,7 @@ interface PropertyChain
 
     public function propertyPesel(string $propertyName): Chain;
 
-    public function propertyPhone(string $propertyName, ?string $countryCode = null): Chain;
+    public function propertyPhone(string $propertyName, string|null $countryCode = null): Chain;
 
     public function propertyPhpLabel(string $propertyName): Chain;
 
@@ -291,9 +277,7 @@ interface PropertyChain
 
     public function propertyScalarVal(string $propertyName): Chain;
 
-    /**
-     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
-     */
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function propertySize(string $propertyName, string $unit, Rule $rule): Chain;
 
     public function propertySlug(string $propertyName): Chain;
@@ -310,9 +294,7 @@ interface PropertyChain
 
     public function propertySubdivisionCode(string $propertyName, string $countryCode): Chain;
 
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public function propertySubset(string $propertyName, array $superset): Chain;
 
     public function propertySymbolicLink(string $propertyName): Chain;
@@ -331,15 +313,15 @@ interface PropertyChain
 
     public function propertyUrl(string $propertyName): Chain;
 
-    public function propertyUuid(string $propertyName, ?int $version = null): Chain;
+    public function propertyUuid(string $propertyName, int|null $version = null): Chain;
 
     public function propertyVersion(string $propertyName): Chain;
 
-    public function propertyVideoUrl(string $propertyName, ?string $service = null): Chain;
+    public function propertyVideoUrl(string $propertyName, string|null $service = null): Chain;
 
     public function propertyVowel(string $propertyName, string ...$additionalChars): Chain;
 
-    public function propertyWhen(string $propertyName, Rule $when, Rule $then, ?Rule $else = null): Chain;
+    public function propertyWhen(string $propertyName, Rule $when, Rule $then, Rule|null $else = null): Chain;
 
     public function propertyWritable(string $propertyName): Chain;
 

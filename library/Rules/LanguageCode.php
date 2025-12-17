@@ -34,13 +34,13 @@ final readonly class LanguageCode implements Rule
     /** @param "alpha-2"|"alpha-3" $set */
     public function __construct(
         private readonly string $set = 'alpha-2',
-        ?Languages $languages = null
+        Languages|null $languages = null,
     ) {
         if (!class_exists(Countries::class)) {
             throw new MissingComposerDependencyException(
                 'LanguageCode rule requires PHP ISO Codes',
                 'sokil/php-isocodes',
-                'sokil/php-isocodes-db-only'
+                'sokil/php-isocodes-db-only',
             );
         }
 
@@ -49,7 +49,7 @@ final readonly class LanguageCode implements Rule
             throw new InvalidRuleConstructorException(
                 '"%s" is not a valid set for ISO 639-3 (Available: %s)',
                 $set,
-                $availableSets
+                $availableSets,
             );
         }
 

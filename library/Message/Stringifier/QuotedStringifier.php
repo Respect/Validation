@@ -16,11 +16,11 @@ use Respect\Validation\Message\Placeholder\Quoted;
 final readonly class QuotedStringifier implements Stringifier
 {
     public function __construct(
-        private Quoter $quoter
+        private Quoter $quoter,
     ) {
     }
 
-    public function stringify(mixed $raw, int $depth): ?string
+    public function stringify(mixed $raw, int $depth): string|null
     {
         if (!$raw instanceof Quoted) {
             return null;

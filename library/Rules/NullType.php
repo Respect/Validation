@@ -13,8 +13,6 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
-use function is_null;
-
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be null',
@@ -24,6 +22,6 @@ final class NullType extends Simple
 {
     public function isValid(mixed $input): bool
     {
-        return is_null($input);
+        return $input === null;
     }
 }

@@ -79,8 +79,8 @@ final class DateTimeDiffTest extends RuleTestCase
                 'invalid date',
             ],
         ] + array_map(
-            static fn (array $args): array => [new DateTimeDiff('years', Stub::fail(1)), new DateTimeImmutable()],
-            iterator_to_array(self::providerForNonScalarValues())
+            static fn(array $args): array => [new DateTimeDiff('years', Stub::fail(1)), new DateTimeImmutable()],
+            iterator_to_array(self::providerForNonScalarValues()),
         );
     }
 }

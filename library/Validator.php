@@ -21,9 +21,7 @@ use function is_array;
 use function is_callable;
 use function is_string;
 
-/**
- * @mixin Builder
- */
+/** @mixin Builder */
 final class Validator implements Rule, Nameable
 {
     /** @var array<Rule> */
@@ -32,9 +30,9 @@ final class Validator implements Rule, Nameable
     /** @var array<string, mixed> */
     private array $templates = [];
 
-    private ?string $name = null;
+    private string|null $name = null;
 
-    private ?string $template = null;
+    private string|null $template = null;
 
     /** @param array<string> $ignoredBacktracePaths */
     public function __construct(
@@ -51,7 +49,7 @@ final class Validator implements Rule, Nameable
             ValidatorDefaults::getFactory(),
             ValidatorDefaults::getFormatter(),
             ValidatorDefaults::getTranslator(),
-            ValidatorDefaults::getIgnoredBacktracePaths()
+            ValidatorDefaults::getIgnoredBacktracePaths(),
         );
         $validator->rules = $rules;
 
@@ -93,7 +91,7 @@ final class Validator implements Rule, Nameable
             $this->formatter->main($result, $templates, $this->translator),
             $this->formatter->full($result, $templates, $this->translator),
             $this->formatter->array($result, $templates, $this->translator),
-            $this->ignoredBacktracePaths
+            $this->ignoredBacktracePaths,
         );
 
         if (!is_callable($template)) {
@@ -129,7 +127,7 @@ final class Validator implements Rule, Nameable
         return $this->rules;
     }
 
-    public function getName(): ?string
+    public function getName(): string|null
     {
         return $this->getRule()->getName() ?? $this->name;
     }
@@ -141,7 +139,7 @@ final class Validator implements Rule, Nameable
         return $this;
     }
 
-    public function getTemplate(): ?string
+    public function getTemplate(): string|null
     {
         return $this->template;
     }
@@ -153,17 +151,13 @@ final class Validator implements Rule, Nameable
         return $this;
     }
 
-    /**
-     * @param mixed[] $arguments
-     */
+    /** @param mixed[] $arguments */
     public static function __callStatic(string $ruleName, array $arguments): self
     {
         return self::create()->__call($ruleName, $arguments);
     }
 
-    /**
-     * @param mixed[] $arguments
-     */
+    /** @param mixed[] $arguments */
     public function __call(string $ruleName, array $arguments): self
     {
         return $this->addRule($this->factory->rule($ruleName, $arguments));

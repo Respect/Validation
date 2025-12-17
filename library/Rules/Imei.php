@@ -24,7 +24,7 @@ use function preg_replace;
 )]
 final class Imei extends Simple
 {
-    private const IMEI_SIZE = 15;
+    private const int IMEI_SIZE = 15;
 
     public function isValid(mixed $input): bool
     {

@@ -45,17 +45,17 @@ use const PHP_INT_MAX;
 )]
 final class Ip implements Rule
 {
-    public const TEMPLATE_NETWORK_RANGE = '__network_range__';
+    public const string TEMPLATE_NETWORK_RANGE = '__network_range__';
 
-    private ?string $range = null;
+    private string|null $range = null;
 
-    private ?string $startAddress = null;
+    private string|null $startAddress = null;
 
-    private ?string $endAddress = null;
+    private string|null $endAddress = null;
 
-    private ?string $mask = null;
+    private string|null $mask = null;
 
-    public function __construct(string $range = '*', private ?int $options = null)
+    public function __construct(string $range = '*', private int|null $options = null)
     {
         $this->parseRange($range);
         $this->range = $this->createRange();
@@ -84,7 +84,7 @@ final class Ip implements Rule
         return Result::passed($input, $this, $parameters, $template);
     }
 
-    private function createRange(): ?string
+    private function createRange(): string|null
     {
         if ($this->startAddress && $this->endAddress) {
             return $this->startAddress . '-' . $this->endAddress;

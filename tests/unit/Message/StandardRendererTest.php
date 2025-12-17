@@ -61,7 +61,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             'Will replace ' . $stringifier->stringify($value, 0),
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -82,7 +82,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s and 0.1', $stringifier->stringify($value, 0)),
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -103,7 +103,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s and 0', $stringifier->stringify($value, 0)),
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -125,7 +125,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s and %s', $stringifier->stringify($value, 0), $translation),
-            $renderer->render($result, new ArrayTranslator([$value => $translation]))
+            $renderer->render($result, new ArrayTranslator([$value => $translation])),
         );
     }
 
@@ -145,7 +145,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s', $value),
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -165,7 +165,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s', $stringifier->stringify($value, 0)),
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -183,7 +183,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             'Will replace ' . $name,
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -203,7 +203,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s', $stringifier->stringify($input, 0)),
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -223,7 +223,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s', $stringifier->stringify($input, 0)),
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -244,7 +244,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s', $parameterNameValue),
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -265,7 +265,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s', $stringifier->stringify($input, 0)),
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -307,7 +307,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             sprintf('%s must be a valid stub', $stringifier->stringify($result->input, 0)),
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -321,7 +321,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             sprintf('%s must not be a valid stub', $stringifier->stringify($result->input, 0)),
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 
@@ -334,7 +334,7 @@ final class StandardRendererTest extends TestCase
 
         self::assertSame(
             $result->template,
-            $renderer->render($result, new DummyTranslator())
+            $renderer->render($result, new DummyTranslator()),
         );
     }
 

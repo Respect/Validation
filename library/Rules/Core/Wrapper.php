@@ -15,7 +15,7 @@ use Respect\Validation\Rule;
 abstract class Wrapper implements Rule
 {
     public function __construct(
-        protected readonly Rule $rule
+        protected readonly Rule $rule,
     ) {
     }
 

@@ -21,7 +21,7 @@ final class Templated extends Wrapper
     public function __construct(
         Rule $rule,
         private readonly string $template,
-        private readonly array $parameters = []
+        private readonly array $parameters = [],
     ) {
         parent::__construct($rule);
     }

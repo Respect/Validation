@@ -11,9 +11,9 @@ namespace Respect\Validation\Test\Stubs;
 
 final class WithProperties
 {
-    public const PUBLIC_VALUE = 'public';
-    public const PROTECTED_VALUE = 'protected';
-    public const PRIVATE_VALUE = 'private';
+    public const string PUBLIC_VALUE = 'public';
+    public const string PROTECTED_VALUE = 'protected';
+    public const string PRIVATE_VALUE = 'private';
 
     public string $public = self::PUBLIC_VALUE;
 

@@ -12,7 +12,7 @@ test('Default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Template in "Templated"')
         ->and($fullMessage)->toBe('- Template in "Templated"')
-        ->and($messages)->toBe(['stringType' => 'Template in "Templated"'])
+        ->and($messages)->toBe(['stringType' => 'Template in "Templated"']),
 ));
 
 test('With parameters', catchAll(
@@ -20,7 +20,7 @@ test('With parameters', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Template in "Templated"')
         ->and($fullMessage)->toBe('- Template in "Templated"')
-        ->and($messages)->toBe(['stringType' => 'Template in "Templated"'])
+        ->and($messages)->toBe(['stringType' => 'Template in "Templated"']),
 ));
 
 test('Inverted', catchAll(
@@ -28,7 +28,7 @@ test('Inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Template in "Templated"')
         ->and($fullMessage)->toBe('- Template in "Templated"')
-        ->and($messages)->toBe(['notIntType' => 'Template in "Templated"'])
+        ->and($messages)->toBe(['notIntType' => 'Template in "Templated"']),
 ));
 
 test('Template in Validator', catchAll(
@@ -38,7 +38,7 @@ test('Template in Validator', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Template in "Templated"')
         ->and($fullMessage)->toBe('- Template in "Templated"')
-        ->and($messages)->toBe(['stringType' => 'Template in "Templated"'])
+        ->and($messages)->toBe(['stringType' => 'Template in "Templated"']),
 ));
 
 test('Template passed to Validator::assert()', catchAll(
@@ -46,7 +46,7 @@ test('Template passed to Validator::assert()', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Template in "Templated"')
         ->and($fullMessage)->toBe('- Template in "Templated"')
-        ->and($messages)->toBe(['stringType' => 'Template in "Templated"'])
+        ->and($messages)->toBe(['stringType' => 'Template in "Templated"']),
 ));
 
 test('With bound', catchAll(
@@ -54,5 +54,5 @@ test('With bound', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Template in "Templated"')
         ->and($fullMessage)->toBe('- Template in "Templated"')
-        ->and($messages)->toBe(['attributes' => 'Template in "Templated"'])
+        ->and($messages)->toBe(['attributes' => 'Template in "Templated"']),
 ));

@@ -16,7 +16,7 @@ use function substr;
 
 final class Prefix implements Transformer
 {
-    private const RULES_TO_SKIP = [
+    private const array RULES_TO_SKIP = [
         'key',
         'keyExists',
         'keyOptional',

@@ -17,7 +17,7 @@ abstract class Envelope implements Rule
     /** @param array<string, mixed> $parameters */
     public function __construct(
         private readonly Rule $rule,
-        private readonly array $parameters = []
+        private readonly array $parameters = [],
     ) {
     }
 

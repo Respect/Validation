@@ -36,7 +36,8 @@ final class ConsonantTest extends RuleTestCase
             'String "zbcxwyrspq"' => [$consonant, 'zbcxwyrspq'],
             'Ignoring characters "!@#$%^&*(){}"' => [new Consonant('!@#$%^&*(){}'), '!@#$%^&*(){} bc dfg'],
             'Ignoring characters "[]?+=/\\-_|"\',<>."' => [
-                new Consonant('[]?+=/\\-_|"\',<>.'), "[]?+=/\\-_|\"',<>. \t \n bc dfg",
+                new Consonant('[]?+=/\\-_|"\',<>.'),
+                "[]?+=/\\-_|\"',<>. \t \n bc dfg",
             ],
         ];
     }

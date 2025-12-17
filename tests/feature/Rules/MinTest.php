@@ -12,7 +12,7 @@ test('Default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The minimum of `[2, 3]` must be equal to 1')
         ->and($fullMessage)->toBe('- The minimum of `[2, 3]` must be equal to 1')
-        ->and($messages)->toBe(['minEquals' => 'The minimum of `[2, 3]` must be equal to 1'])
+        ->and($messages)->toBe(['minEquals' => 'The minimum of `[2, 3]` must be equal to 1']),
 ));
 
 test('Inverted', catchAll(
@@ -20,7 +20,7 @@ test('Inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The minimum of `[1, 2, 3]` must not be equal to 1')
         ->and($fullMessage)->toBe('- The minimum of `[1, 2, 3]` must not be equal to 1')
-        ->and($messages)->toBe(['notMinEquals' => 'The minimum of `[1, 2, 3]` must not be equal to 1'])
+        ->and($messages)->toBe(['notMinEquals' => 'The minimum of `[1, 2, 3]` must not be equal to 1']),
 ));
 
 test('With template', catchAll(
@@ -28,7 +28,7 @@ test('With template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('That did not go as planned')
         ->and($fullMessage)->toBe('- That did not go as planned')
-        ->and($messages)->toBe(['minEquals' => 'That did not go as planned'])
+        ->and($messages)->toBe(['minEquals' => 'That did not go as planned']),
 ));
 
 test('With name', catchAll(
@@ -36,7 +36,7 @@ test('With name', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The minimum of Options must be equal to 1')
         ->and($fullMessage)->toBe('- The minimum of Options must be equal to 1')
-        ->and($messages)->toBe(['minEquals' => 'The minimum of Options must be equal to 1'])
+        ->and($messages)->toBe(['minEquals' => 'The minimum of Options must be equal to 1']),
 ));
 
 test('Chained wrapped rule', catchAll(
@@ -52,5 +52,5 @@ test('Chained wrapped rule', catchAll(
             '__root__' => '`[2, 3, 4]` must pass all the rules',
             'minBetween' => 'The minimum of `[2, 3, 4]` must be between 5 and 7',
             'minOdd' => 'The minimum of `[2, 3, 4]` must be an odd number',
-        ])
+        ]),
 ));

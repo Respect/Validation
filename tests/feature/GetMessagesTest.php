@@ -35,5 +35,5 @@ test('Scenario #1', catchMessages(
             'password' => '`.password` must be a string',
             'schema' => '`.schema` must be present',
         ],
-    ])
+    ]),
 ));

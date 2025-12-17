@@ -40,9 +40,7 @@ final class DateTimeTest extends RuleTestCase
         date_default_timezone_set($currentTimezone);
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public static function providerForDateTimeWithTimezone(): array
     {
         return [

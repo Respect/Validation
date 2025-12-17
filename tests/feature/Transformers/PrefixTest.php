@@ -14,7 +14,7 @@ test('Key', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` must be equal to 12')
         ->and($fullMessage)->toBe('- `.foo` must be equal to 12')
-        ->and($messages)->toBe(['foo' => '`.foo` must be equal to 12'])
+        ->and($messages)->toBe(['foo' => '`.foo` must be equal to 12']),
 ));
 
 test('Length', catchAll(
@@ -22,7 +22,7 @@ test('Length', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The length of "foo" must be greater than 3')
         ->and($fullMessage)->toBe('- The length of "foo" must be greater than 3')
-        ->and($messages)->toBe(['lengthGreaterThan' => 'The length of "foo" must be greater than 3'])
+        ->and($messages)->toBe(['lengthGreaterThan' => 'The length of "foo" must be greater than 3']),
 ));
 
 test('Max', catchAll(
@@ -30,7 +30,7 @@ test('Max', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The maximum of `[1, 2, 3, 4]` must be an odd number')
         ->and($fullMessage)->toBe('- The maximum of `[1, 2, 3, 4]` must be an odd number')
-        ->and($messages)->toBe(['maxOdd' => 'The maximum of `[1, 2, 3, 4]` must be an odd number'])
+        ->and($messages)->toBe(['maxOdd' => 'The maximum of `[1, 2, 3, 4]` must be an odd number']),
 ));
 
 test('Min', catchAll(
@@ -38,7 +38,7 @@ test('Min', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The minimum of `[1, 2, 3]` must be an even number')
         ->and($fullMessage)->toBe('- The minimum of `[1, 2, 3]` must be an even number')
-        ->and($messages)->toBe(['minEven' => 'The minimum of `[1, 2, 3]` must be an even number'])
+        ->and($messages)->toBe(['minEven' => 'The minimum of `[1, 2, 3]` must be an even number']),
 ));
 
 test('Not', catchAll(
@@ -46,7 +46,7 @@ test('Not', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('2 must not be between 1 and 3')
         ->and($fullMessage)->toBe('- 2 must not be between 1 and 3')
-        ->and($messages)->toBe(['notBetween' => '2 must not be between 1 and 3'])
+        ->and($messages)->toBe(['notBetween' => '2 must not be between 1 and 3']),
 ));
 
 test('NullOr', catchAll(
@@ -54,7 +54,7 @@ test('NullOr', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"string" must be a boolean or must be null')
         ->and($fullMessage)->toBe('- "string" must be a boolean or must be null')
-        ->and($messages)->toBe(['nullOrBoolType' => '"string" must be a boolean or must be null'])
+        ->and($messages)->toBe(['nullOrBoolType' => '"string" must be a boolean or must be null']),
 ));
 
 test('Property', catchAll(
@@ -62,7 +62,7 @@ test('Property', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` must be between 1 and 3')
         ->and($fullMessage)->toBe('- `.foo` must be between 1 and 3')
-        ->and($messages)->toBe(['foo' => '`.foo` must be between 1 and 3'])
+        ->and($messages)->toBe(['foo' => '`.foo` must be between 1 and 3']),
 ));
 
 test('UndefOr', catchAll(
@@ -70,5 +70,5 @@ test('UndefOr', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"string" must be a URL or must be undefined')
         ->and($fullMessage)->toBe('- "string" must be a URL or must be undefined')
-        ->and($messages)->toBe(['undefOrUrl' => '"string" must be a URL or must be undefined'])
+        ->and($messages)->toBe(['undefOrUrl' => '"string" must be a URL or must be undefined']),
 ));

@@ -30,7 +30,7 @@ final readonly class Mimetype implements Rule
 {
     public function __construct(
         private string $mimetype,
-        private finfo $fileInfo = new finfo()
+        private finfo $fileInfo = new finfo(),
     ) {
     }
 
@@ -53,7 +53,7 @@ final readonly class Mimetype implements Rule
             $this->mimetype === $this->fileInfo->file($input, FILEINFO_MIME_TYPE),
             $input,
             $this,
-            $parameters
+            $parameters,
         );
     }
 }

@@ -22,7 +22,7 @@ use Respect\Validation\Rule;
 final readonly class Multiple implements Rule
 {
     public function __construct(
-        private int $multipleOf
+        private int $multipleOf,
     ) {
     }
 

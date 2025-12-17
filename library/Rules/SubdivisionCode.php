@@ -34,13 +34,16 @@ final readonly class SubdivisionCode implements Rule
 
     private Subdivisions $subdivisions;
 
-    public function __construct(string $countryCode, ?Countries $countries = null, ?Subdivisions $subdivisions = null)
-    {
+    public function __construct(
+        string $countryCode,
+        Countries|null $countries = null,
+        Subdivisions|null $subdivisions = null,
+    ) {
         if (!class_exists(Countries::class) || !class_exists(Subdivisions::class)) {
             throw new MissingComposerDependencyException(
                 'SubdivisionCode rule requires PHP ISO Codes',
                 'sokil/php-isocodes',
-                'sokil/php-isocodes-db-only'
+                'sokil/php-isocodes-db-only',
             );
         }
 

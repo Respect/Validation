@@ -27,10 +27,10 @@ final class AnyOf extends Composite
 {
     public function evaluate(mixed $input): Result
     {
-        $children = array_map(static fn (Rule $rule) => $rule->evaluate($input), $this->rules);
+        $children = array_map(static fn(Rule $rule) => $rule->evaluate($input), $this->rules);
         $valid = array_reduce(
             $children,
-            static fn (bool $carry, Result $result) => $carry || $result->hasPassed,
+            static fn(bool $carry, Result $result) => $carry || $result->hasPassed,
             false,
         );
 

@@ -20,7 +20,7 @@ test('Default: fail, fail', catchAll(
             '__root__' => '"string" must pass at least one of the rules',
             'intType' => '"string" must be an integer',
             'negative' => '"string" must be a negative number',
-        ])
+        ]),
 ));
 
 test('Inverted: pass, pass', catchAll(
@@ -36,7 +36,7 @@ test('Inverted: pass, pass', catchAll(
             '__root__' => '-1 must pass at least one of the rules',
             'intType' => '-1 must not be an integer',
             'negative' => '-1 must not be a negative number',
-        ])
+        ]),
 ));
 
 test('Inverted: pass, pass, fail', catchAll(
@@ -52,5 +52,5 @@ test('Inverted: pass, pass, fail', catchAll(
             '__root__' => '-1 must pass at least one of the rules',
             'intType' => '-1 must not be an integer',
             'negative' => '-1 must not be a negative number',
-        ])
+        ]),
 ));

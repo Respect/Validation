@@ -19,7 +19,7 @@ final class StreamStub implements StreamInterface
 
     private bool $isWritable = true;
 
-    private ?int $size = null;
+    private int|null $size = null;
 
     public static function create(): self
     {
@@ -62,7 +62,7 @@ final class StreamStub implements StreamInterface
         return null;
     }
 
-    public function getSize(): ?int
+    public function getSize(): int|null
     {
         return $this->size;
     }

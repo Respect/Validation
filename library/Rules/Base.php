@@ -28,7 +28,7 @@ final readonly class Base implements Rule
 {
     public function __construct(
         private int $base,
-        private string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        private string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
     ) {
         $max = mb_strlen($this->chars);
         if ($base > $max) {
@@ -42,7 +42,7 @@ final readonly class Base implements Rule
             (bool) preg_match('@^[' . mb_substr($this->chars, 0, $this->base) . ']+$@', (string) $input),
             $input,
             $this,
-            ['base' => $this->base]
+            ['base' => $this->base],
         );
     }
 }

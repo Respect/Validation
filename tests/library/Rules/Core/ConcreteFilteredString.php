@@ -13,7 +13,7 @@ use Respect\Validation\Rules\Core\FilteredString;
 
 final class ConcreteFilteredString extends FilteredString
 {
-    public ?string $lastFilteredInput = null;
+    public string|null $lastFilteredInput = null;
 
     protected function isValid(string $input): bool
     {

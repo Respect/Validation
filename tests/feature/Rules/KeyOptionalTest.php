@@ -12,7 +12,7 @@ test('Default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` must be an integer')
         ->and($fullMessage)->toBe('- `.foo` must be an integer')
-        ->and($messages)->toBe(['foo' => '`.foo` must be an integer'])
+        ->and($messages)->toBe(['foo' => '`.foo` must be an integer']),
 ));
 
 test('Inverted', catchAll(
@@ -20,7 +20,7 @@ test('Inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` must not be an integer')
         ->and($fullMessage)->toBe('- `.foo` must not be an integer')
-        ->and($messages)->toBe(['foo' => '`.foo` must not be an integer'])
+        ->and($messages)->toBe(['foo' => '`.foo` must not be an integer']),
 ));
 
 test('Inverted with missing key', catchAll(
@@ -28,7 +28,7 @@ test('Inverted with missing key', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` must be present')
         ->and($fullMessage)->toBe('- `.foo` must be present')
-        ->and($messages)->toBe(['foo' => '`.foo` must be present'])
+        ->and($messages)->toBe(['foo' => '`.foo` must be present']),
 ));
 
 test('With wrapped name, default', catchAll(
@@ -36,7 +36,7 @@ test('With wrapped name, default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must be an integer')
         ->and($fullMessage)->toBe('- Wrapped must be an integer')
-        ->and($messages)->toBe(['foo' => 'Wrapped must be an integer'])
+        ->and($messages)->toBe(['foo' => 'Wrapped must be an integer']),
 ));
 
 test('With wrapped name, inverted', catchAll(
@@ -44,7 +44,7 @@ test('With wrapped name, inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must not be an integer')
         ->and($fullMessage)->toBe('- Wrapped must not be an integer')
-        ->and($messages)->toBe(['foo' => 'Wrapped must not be an integer'])
+        ->and($messages)->toBe(['foo' => 'Wrapped must not be an integer']),
 ));
 
 test('With wrapper name, default', catchAll(
@@ -52,7 +52,7 @@ test('With wrapper name, default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapper must be an integer')
         ->and($fullMessage)->toBe('- Wrapper must be an integer')
-        ->and($messages)->toBe(['foo' => 'Wrapper must be an integer'])
+        ->and($messages)->toBe(['foo' => 'Wrapper must be an integer']),
 ));
 
 test('With wrapper name, inverted', catchAll(
@@ -60,7 +60,7 @@ test('With wrapper name, inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapper must not be an integer')
         ->and($fullMessage)->toBe('- Wrapper must not be an integer')
-        ->and($messages)->toBe(['foo' => 'Wrapper must not be an integer'])
+        ->and($messages)->toBe(['foo' => 'Wrapper must not be an integer']),
 ));
 
 test('With "Not" name, inverted', catchAll(
@@ -68,7 +68,7 @@ test('With "Not" name, inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Not must not be an integer')
         ->and($fullMessage)->toBe('- Not must not be an integer')
-        ->and($messages)->toBe(['foo' => 'Not must not be an integer'])
+        ->and($messages)->toBe(['foo' => 'Not must not be an integer']),
 ));
 
 test('With template, default', catchAll(
@@ -76,7 +76,7 @@ test('With template, default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('That key is off-key')
         ->and($fullMessage)->toBe('- That key is off-key')
-        ->and($messages)->toBe(['foo' => 'That key is off-key'])
+        ->and($messages)->toBe(['foo' => 'That key is off-key']),
 ));
 
 test('With template, inverted', catchAll(
@@ -84,5 +84,5 @@ test('With template, inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('No off-key key')
         ->and($fullMessage)->toBe('- No off-key key')
-        ->and($messages)->toBe(['foo' => 'No off-key key'])
+        ->and($messages)->toBe(['foo' => 'No off-key key']),
 ));

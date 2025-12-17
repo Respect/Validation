@@ -10,7 +10,7 @@ declare(strict_types=1);
 date_default_timezone_set('UTC');
 
 test('Scenario #1', catchMessages(
-    fn () => v::create()
+    fn() => v::create()
         ->key('username', v::lengthBetween(2, 32))->key('birthdate', v::dateTime())
         ->key('password', v::notEmpty())
         ->key('email', v::email())
@@ -21,5 +21,5 @@ test('Scenario #1', catchMessages(
         'birthdate' => '`.birthdate` must be a valid date/time',
         'password' => '`.password` must not be empty',
         'email' => '`.email` must be present',
-    ])
+    ]),
 ));

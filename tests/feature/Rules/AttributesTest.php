@@ -14,7 +14,7 @@ test('Default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.name` must not be empty')
         ->and($fullMessage)->toBe('- `.name` must not be empty')
-        ->and($messages)->toBe(['name' => '`.name` must not be empty'])
+        ->and($messages)->toBe(['name' => '`.name` must not be empty']),
 ));
 
 test('Inverted', catchAll(
@@ -22,7 +22,7 @@ test('Inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.phone` must be a valid telephone number or must be null')
         ->and($fullMessage)->toBe('- `.phone` must be a valid telephone number or must be null')
-        ->and($messages)->toBe(['phone' => '`.phone` must be a valid telephone number or must be null'])
+        ->and($messages)->toBe(['phone' => '`.phone` must be a valid telephone number or must be null']),
 ));
 
 test('Not an object', catchAll(
@@ -30,7 +30,7 @@ test('Not an object', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`[]` must be an object')
         ->and($fullMessage)->toBe('- `[]` must be an object')
-        ->and($messages)->toBe(['attributes' => '`[]` must be an object'])
+        ->and($messages)->toBe(['attributes' => '`[]` must be an object']),
 ));
 
 test('Nullable', catchAll(
@@ -38,7 +38,7 @@ test('Nullable', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.phone` must be a valid telephone number or must be null')
         ->and($fullMessage)->toBe('- `.phone` must be a valid telephone number or must be null')
-        ->and($messages)->toBe(['phone' => '`.phone` must be a valid telephone number or must be null'])
+        ->and($messages)->toBe(['phone' => '`.phone` must be a valid telephone number or must be null']),
 ));
 
 test('Multiple attributes, all failed', catchAll(
@@ -64,7 +64,7 @@ test('Multiple attributes, all failed', catchAll(
             ],
             'email' => '`.email` must be a valid email address or must be null',
             'phone' => '`.phone` must be a valid telephone number or must be null',
-        ])
+        ]),
 ));
 
 test('Failed attributes on the class', catchAll(
@@ -82,7 +82,7 @@ test('Failed attributes on the class', catchAll(
                 'email' => '`.email` must be defined',
                 'phone' => '`.phone` must be defined',
             ],
-        ])
+        ]),
 ));
 
 test('Multiple attributes, one failed', catchAll(
@@ -90,5 +90,5 @@ test('Multiple attributes, one failed', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.birthdate` must be a valid date in the format "2005-12-30"')
         ->and($fullMessage)->toBe('- `.birthdate` must be a valid date in the format "2005-12-30"')
-        ->and($messages)->toBe(['birthdate' => '`.birthdate` must be a valid date in the format "2005-12-30"'])
+        ->and($messages)->toBe(['birthdate' => '`.birthdate` must be a valid date in the format "2005-12-30"']),
 ));

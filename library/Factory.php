@@ -24,13 +24,11 @@ use function ucfirst;
 
 final class Factory
 {
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     private array $rulesNamespaces = ['Respect\\Validation\\Rules'];
 
     public function __construct(
-        private readonly Transformer $transformer = new Prefix()
+        private readonly Transformer $transformer = new Prefix(),
     ) {
     }
 
@@ -42,9 +40,7 @@ final class Factory
         return $clone;
     }
 
-    /**
-     * @param mixed[] $arguments
-     */
+    /** @param mixed[] $arguments */
     public function rule(string $ruleName, array $arguments = []): Rule
     {
         return $this->createRuleSpec($this->transformer->transform(new RuleSpec($ruleName, $arguments)));
@@ -60,9 +56,7 @@ final class Factory
         return $rule;
     }
 
-    /**
-     * @param mixed[] $arguments
-     */
+    /** @param mixed[] $arguments */
     private function createRule(string $ruleName, array $arguments = []): Rule
     {
         foreach ($this->rulesNamespaces as $namespace) {
@@ -72,7 +66,7 @@ final class Factory
                 $reflection = new ReflectionClass($name);
                 if (!$reflection->isSubclassOf(Rule::class)) {
                     throw new InvalidClassException(
-                        sprintf('"%s" must be an instance of "%s"', $name, Rule::class)
+                        sprintf('"%s" must be an instance of "%s"', $name, Rule::class),
                     );
                 }
 

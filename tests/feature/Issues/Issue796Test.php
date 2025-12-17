@@ -53,5 +53,5 @@ test('https://github.com/Respect/Validation/issues/796', catchAll(
             '__root__' => 'the given data must pass all the rules',
             'mysql' => '`.host` must be a string',
             'postgresql' => '`.user` must be a string',
-        ])
+        ]),
 ));

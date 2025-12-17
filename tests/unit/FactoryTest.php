@@ -14,19 +14,20 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
-use Respect\Validation\Test\Rules\AbstractClass;
 use Respect\Validation\Test\Rules\Invalid;
+use Respect\Validation\Test\Rules\MyAbstractClass;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\Rules\Valid;
 use Respect\Validation\Test\TestCase;
 
+use function assert;
 use function sprintf;
 
 #[Group('core')]
 #[CoversClass(Factory::class)]
 final class FactoryTest extends TestCase
 {
-    private const TEST_RULES_NAMESPACE = 'Respect\\Validation\\Test\\Rules';
+    private const string TEST_RULES_NAMESPACE = 'Respect\\Validation\\Test\\Rules';
 
     #[Test]
     public function shouldCreateRuleByNameBasedOnNamespace(): void
@@ -53,8 +54,8 @@ final class FactoryTest extends TestCase
         $constructorArguments = [true, false, true, false];
 
         $factory = (new Factory())->withRuleNamespace(self::TEST_RULES_NAMESPACE);
-        /** @var Stub $rule */
         $rule = $factory->rule('stub', $constructorArguments);
+        assert($rule instanceof Stub);
 
         self::assertSame($constructorArguments, $rule->validations);
     }
@@ -76,9 +77,9 @@ final class FactoryTest extends TestCase
         $factory = (new Factory())->withRuleNamespace(self::TEST_RULES_NAMESPACE);
 
         $this->expectException(InvalidClassException::class);
-        $this->expectExceptionMessage(sprintf('"%s" must be instantiable', AbstractClass::class));
+        $this->expectExceptionMessage(sprintf('"%s" must be instantiable', MyAbstractClass::class));
 
-        $factory->rule('abstractClass');
+        $factory->rule('myAbstractClass');
     }
 
     #[Test]

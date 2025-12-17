@@ -65,6 +65,7 @@ function expectDeprecation(Closure $callback, string $error): Closure
             if ($errno !== E_USER_DEPRECATED) {
                 return false;
             }
+
             $lastError = $errstr;
 
             return true;
@@ -91,6 +92,7 @@ function expectMessageAndDeprecation(Closure $callback, string $message, string 
             if ($errno !== E_USER_DEPRECATED) {
                 return false;
             }
+
             $lastError = $errstr;
 
             return true;
@@ -105,6 +107,7 @@ function expectMessageAndDeprecation(Closure $callback, string $message, string 
 
             throw $throwable;
         }
+
         restore_error_handler();
 
         expect($lastError)->toBe($error);

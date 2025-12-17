@@ -12,7 +12,7 @@ test('Default mode', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` must be present')
         ->and($fullMessage)->toBe('- `.foo` must be present')
-        ->and($messages)->toBe(['foo' => '`.foo` must be present'])
+        ->and($messages)->toBe(['foo' => '`.foo` must be present']),
 ));
 
 test('Inverted mode', catchAll(
@@ -20,7 +20,7 @@ test('Inverted mode', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` must not be present')
         ->and($fullMessage)->toBe('- `.foo` must not be present')
-        ->and($messages)->toBe(['foo' => '`.foo` must not be present'])
+        ->and($messages)->toBe(['foo' => '`.foo` must not be present']),
 ));
 
 test('Custom name', catchAll(
@@ -28,7 +28,7 @@ test('Custom name', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Custom name must be present')
         ->and($fullMessage)->toBe('- Custom name must be present')
-        ->and($messages)->toBe(['foo' => 'Custom name must be present'])
+        ->and($messages)->toBe(['foo' => 'Custom name must be present']),
 ));
 
 test('Custom template', catchAll(
@@ -36,5 +36,5 @@ test('Custom template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Custom template for `.foo`')
         ->and($fullMessage)->toBe('- Custom template for `.foo`')
-        ->and($messages)->toBe(['foo' => 'Custom template for `.foo`'])
+        ->and($messages)->toBe(['foo' => 'Custom template for `.foo`']),
 ));

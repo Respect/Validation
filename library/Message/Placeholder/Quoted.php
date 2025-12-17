@@ -12,7 +12,7 @@ namespace Respect\Validation\Message\Placeholder;
 final readonly class Quoted
 {
     public function __construct(
-        private string $value
+        private string $value,
     ) {
     }
 

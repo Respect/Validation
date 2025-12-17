@@ -16,9 +16,7 @@ use Respect\Validation\Rules\Core\Simple;
 use function is_string;
 use function preg_match;
 
-/**
- * @see http://semver.org/
- */
+/** @see http://semver.org/ */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a version',

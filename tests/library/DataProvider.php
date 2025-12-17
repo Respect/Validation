@@ -17,16 +17,12 @@ use function array_filter;
 use function array_intersect;
 use function array_map;
 
-/**
- * @implements IteratorAggregate<array<array{mixed}>>
- */
+/** @implements IteratorAggregate<array<array{mixed}>> */
 final class DataProvider implements IteratorAggregate
 {
-    /**
-     * @param array<mixed> $data
-     */
+    /** @param array<mixed> $data */
     public function __construct(
-        private readonly array $data
+        private readonly array $data,
     ) {
     }
 
@@ -34,7 +30,7 @@ final class DataProvider implements IteratorAggregate
     {
         return new self(array_filter(
             $this->data,
-            static fn($value) => array_intersect($tags, $value['tags']) === $tags
+            static fn($value) => array_intersect($tags, $value['tags']) === $tags,
         ));
     }
 
@@ -42,7 +38,7 @@ final class DataProvider implements IteratorAggregate
     {
         return new self(array_filter(
             $this->data,
-            static fn($value) => array_intersect($tags, $value['tags']) !== []
+            static fn($value) => array_intersect($tags, $value['tags']) !== [],
         ));
     }
 
@@ -50,13 +46,11 @@ final class DataProvider implements IteratorAggregate
     {
         return new self(array_filter(
             $this->data,
-            static fn($value) => array_intersect($tags, $value['tags']) === []
+            static fn($value) => array_intersect($tags, $value['tags']) === [],
         ));
     }
 
-    /**
-     * @return Traversable<array<mixed>>
-     */
+    /** @return Traversable<array<mixed>> */
     public function getIterator(): Traversable
     {
         return new ArrayIterator(array_map(static fn(array $value) => $value['value'], $this->data));

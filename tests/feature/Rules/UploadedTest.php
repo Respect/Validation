@@ -12,7 +12,7 @@ test('Scenario #1', catchMessage(
         set_mock_is_uploaded_file_return(false);
         v::uploaded()->assert('filename');
     },
-    fn(string $message) => expect($message)->toBe('"filename" must be an uploaded file')
+    fn(string $message) => expect($message)->toBe('"filename" must be an uploaded file'),
 ));
 
 test('Scenario #2', catchMessage(
@@ -20,7 +20,7 @@ test('Scenario #2', catchMessage(
         set_mock_is_uploaded_file_return(true);
         v::not(v::uploaded())->assert('filename');
     },
-    fn(string $message) => expect($message)->toBe('"filename" must not be an uploaded file')
+    fn(string $message) => expect($message)->toBe('"filename" must not be an uploaded file'),
 ));
 
 test('Scenario #3', catchFullMessage(
@@ -28,7 +28,7 @@ test('Scenario #3', catchFullMessage(
         set_mock_is_uploaded_file_return(false);
         v::uploaded()->assert('filename');
     },
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- "filename" must be an uploaded file')
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "filename" must be an uploaded file'),
 ));
 
 test('Scenario #4', catchFullMessage(
@@ -36,5 +36,5 @@ test('Scenario #4', catchFullMessage(
         set_mock_is_uploaded_file_return(true);
         v::not(v::uploaded())->assert('filename');
     },
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- "filename" must not be an uploaded file')
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "filename" must not be an uploaded file'),
 ));

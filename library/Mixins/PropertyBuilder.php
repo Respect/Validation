@@ -70,42 +70,34 @@ interface PropertyBuilder
         bool $identical = false,
     ): Chain;
 
-    /**
-     * @param non-empty-array<mixed> $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public static function propertyContainsAny(string $propertyName, array $needles, bool $identical = false): Chain;
 
     public static function propertyControl(string $propertyName, string ...$additionalChars): Chain;
 
     public static function propertyCountable(string $propertyName): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public static function propertyCountryCode(string $propertyName, string $set = 'alpha-2'): Chain;
 
     public static function propertyCpf(string $propertyName): Chain;
 
     public static function propertyCreditCard(string $propertyName, string $brand = 'Any'): Chain;
 
-    /**
-     * @param "alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-3"|"numeric" $set */
     public static function propertyCurrencyCode(string $propertyName, string $set = 'alpha-3'): Chain;
 
     public static function propertyDate(string $propertyName, string $format = 'Y-m-d'): Chain;
 
-    public static function propertyDateTime(string $propertyName, ?string $format = null): Chain;
+    public static function propertyDateTime(string $propertyName, string|null $format = null): Chain;
 
-    /**
-     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
-     */
+    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public static function propertyDateTimeDiff(
         string $propertyName,
         string $type,
         Rule $rule,
-        ?string $format = null,
-        ?DateTimeImmutable $now = null,
+        string|null $format = null,
+        DateTimeImmutable|null $now = null,
     ): Chain;
 
     public static function propertyDecimal(string $propertyName, int $decimals): Chain;
@@ -170,16 +162,14 @@ interface PropertyBuilder
 
     public static function propertyInfinite(string $propertyName): Chain;
 
-    /**
-     * @param class-string $class
-     */
+    /** @param class-string $class */
     public static function propertyInstance(string $propertyName, string $class): Chain;
 
     public static function propertyIntType(string $propertyName): Chain;
 
     public static function propertyIntVal(string $propertyName): Chain;
 
-    public static function propertyIp(string $propertyName, string $range = '*', ?int $options = null): Chain;
+    public static function propertyIp(string $propertyName, string $range = '*', int|null $options = null): Chain;
 
     public static function propertyIsbn(string $propertyName): Chain;
 
@@ -189,14 +179,10 @@ interface PropertyBuilder
 
     public static function propertyJson(string $propertyName): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3" $set
-     */
+    /** @param "alpha-2"|"alpha-3" $set */
     public static function propertyLanguageCode(string $propertyName, string $set = 'alpha-2'): Chain;
 
-    /**
-     * @param callable(mixed): Rule $ruleCreator
-     */
+    /** @param callable(mixed): Rule $ruleCreator */
     public static function propertyLazy(string $propertyName, callable $ruleCreator): Chain;
 
     public static function propertyLeapDate(string $propertyName, string $format): Chain;
@@ -263,7 +249,7 @@ interface PropertyBuilder
 
     public static function propertyPesel(string $propertyName): Chain;
 
-    public static function propertyPhone(string $propertyName, ?string $countryCode = null): Chain;
+    public static function propertyPhone(string $propertyName, string|null $countryCode = null): Chain;
 
     public static function propertyPhpLabel(string $propertyName): Chain;
 
@@ -299,9 +285,7 @@ interface PropertyBuilder
 
     public static function propertyScalarVal(string $propertyName): Chain;
 
-    /**
-     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
-     */
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public static function propertySize(string $propertyName, string $unit, Rule $rule): Chain;
 
     public static function propertySlug(string $propertyName): Chain;
@@ -318,9 +302,7 @@ interface PropertyBuilder
 
     public static function propertySubdivisionCode(string $propertyName, string $countryCode): Chain;
 
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public static function propertySubset(string $propertyName, array $superset): Chain;
 
     public static function propertySymbolicLink(string $propertyName): Chain;
@@ -339,15 +321,15 @@ interface PropertyBuilder
 
     public static function propertyUrl(string $propertyName): Chain;
 
-    public static function propertyUuid(string $propertyName, ?int $version = null): Chain;
+    public static function propertyUuid(string $propertyName, int|null $version = null): Chain;
 
     public static function propertyVersion(string $propertyName): Chain;
 
-    public static function propertyVideoUrl(string $propertyName, ?string $service = null): Chain;
+    public static function propertyVideoUrl(string $propertyName, string|null $service = null): Chain;
 
     public static function propertyVowel(string $propertyName, string ...$additionalChars): Chain;
 
-    public static function propertyWhen(string $propertyName, Rule $when, Rule $then, ?Rule $else = null): Chain;
+    public static function propertyWhen(string $propertyName, Rule $when, Rule $then, Rule|null $else = null): Chain;
 
     public static function propertyWritable(string $propertyName): Chain;
 

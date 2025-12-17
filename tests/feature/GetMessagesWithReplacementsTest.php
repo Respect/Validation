@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('Scenario #1', catchMessages(
-    fn () => v::create()
+    fn() => v::create()
         ->key(
             'mysql',
             v::create()
@@ -41,9 +41,7 @@ test('Scenario #1', catchMessages(
                     'user' => 'Value should be a MySQL username',
                     'host' => '`{{name}}` should be a MySQL host',
                 ],
-                'postgresql' => [
-                    'schema' => 'You must provide a valid PostgreSQL schema',
-                ],
+                'postgresql' => ['schema' => 'You must provide a valid PostgreSQL schema'],
             ],
         ),
     fn(array $messages) => expect($messages)->toBe([
@@ -62,5 +60,5 @@ test('Scenario #1', catchMessages(
             'password' => '`.password` must be a string',
             'schema' => 'You must provide a valid PostgreSQL schema',
         ],
-    ])
+    ]),
 ));

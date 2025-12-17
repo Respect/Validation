@@ -67,41 +67,33 @@ interface NullOrChain
 
     public function nullOrContains(mixed $containsValue, bool $identical = false): Chain;
 
-    /**
-     * @param non-empty-array<mixed> $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public function nullOrContainsAny(array $needles, bool $identical = false): Chain;
 
     public function nullOrControl(string ...$additionalChars): Chain;
 
     public function nullOrCountable(): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public function nullOrCountryCode(string $set = 'alpha-2'): Chain;
 
     public function nullOrCpf(): Chain;
 
     public function nullOrCreditCard(string $brand = 'Any'): Chain;
 
-    /**
-     * @param "alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-3"|"numeric" $set */
     public function nullOrCurrencyCode(string $set = 'alpha-3'): Chain;
 
     public function nullOrDate(string $format = 'Y-m-d'): Chain;
 
-    public function nullOrDateTime(?string $format = null): Chain;
+    public function nullOrDateTime(string|null $format = null): Chain;
 
-    /**
-     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
-     */
+    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function nullOrDateTimeDiff(
         string $type,
         Rule $rule,
-        ?string $format = null,
-        ?DateTimeImmutable $now = null,
+        string|null $format = null,
+        DateTimeImmutable|null $now = null,
     ): Chain;
 
     public function nullOrDecimal(int $decimals): Chain;
@@ -168,16 +160,14 @@ interface NullOrChain
 
     public function nullOrInfinite(): Chain;
 
-    /**
-     * @param class-string $class
-     */
+    /** @param class-string $class */
     public function nullOrInstance(string $class): Chain;
 
     public function nullOrIntType(): Chain;
 
     public function nullOrIntVal(): Chain;
 
-    public function nullOrIp(string $range = '*', ?int $options = null): Chain;
+    public function nullOrIp(string $range = '*', int|null $options = null): Chain;
 
     public function nullOrIsbn(): Chain;
 
@@ -195,14 +185,10 @@ interface NullOrChain
 
     public function nullOrKeySet(Rule $rule, Rule ...$rules): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3" $set
-     */
+    /** @param "alpha-2"|"alpha-3" $set */
     public function nullOrLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /**
-     * @param callable(mixed): Rule $ruleCreator
-     */
+    /** @param callable(mixed): Rule $ruleCreator */
     public function nullOrLazy(callable $ruleCreator): Chain;
 
     public function nullOrLeapDate(string $format): Chain;
@@ -267,7 +253,7 @@ interface NullOrChain
 
     public function nullOrPesel(): Chain;
 
-    public function nullOrPhone(?string $countryCode = null): Chain;
+    public function nullOrPhone(string|null $countryCode = null): Chain;
 
     public function nullOrPhpLabel(): Chain;
 
@@ -305,9 +291,7 @@ interface NullOrChain
 
     public function nullOrScalarVal(): Chain;
 
-    /**
-     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
-     */
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function nullOrSize(string $unit, Rule $rule): Chain;
 
     public function nullOrSlug(): Chain;
@@ -324,9 +308,7 @@ interface NullOrChain
 
     public function nullOrSubdivisionCode(string $countryCode): Chain;
 
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public function nullOrSubset(array $superset): Chain;
 
     public function nullOrSymbolicLink(): Chain;
@@ -345,15 +327,15 @@ interface NullOrChain
 
     public function nullOrUrl(): Chain;
 
-    public function nullOrUuid(?int $version = null): Chain;
+    public function nullOrUuid(int|null $version = null): Chain;
 
     public function nullOrVersion(): Chain;
 
-    public function nullOrVideoUrl(?string $service = null): Chain;
+    public function nullOrVideoUrl(string|null $service = null): Chain;
 
     public function nullOrVowel(string ...$additionalChars): Chain;
 
-    public function nullOrWhen(Rule $when, Rule $then, ?Rule $else = null): Chain;
+    public function nullOrWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
 
     public function nullOrWritable(): Chain;
 

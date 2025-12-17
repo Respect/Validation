@@ -33,9 +33,9 @@ use function preg_match;
 )]
 final class VideoUrl implements Rule
 {
-    public const TEMPLATE_SERVICE = '__service__';
+    public const string TEMPLATE_SERVICE = '__service__';
 
-    private const SERVICES = [
+    private const array SERVICES = [
         // phpcs:disable Generic.Files.LineLength.TooLong
         'youtube' => '@^https?://(www\.)?(?:youtube\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^\"&?/]{11})@i',
         'vimeo' => '@^https?://(www\.)?(player\.)?(vimeo\.com/)((channels/[A-z]+/)|(groups/[A-z]+/videos/)|(video/))?([0-9]+)@i',
@@ -44,7 +44,7 @@ final class VideoUrl implements Rule
     ];
 
     public function __construct(
-        private readonly ?string $service = null
+        private readonly string|null $service = null,
     ) {
         if ($service !== null && !$this->isSupportedService($service)) {
             throw new InvalidRuleConstructorException('"%s" is not a recognized video service.', $service);

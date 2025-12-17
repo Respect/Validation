@@ -11,5 +11,5 @@ namespace Respect\Validation\Rules\Core;
 
 interface Nameable
 {
-    public function getName(): ?string;
+    public function getName(): string|null;
 }

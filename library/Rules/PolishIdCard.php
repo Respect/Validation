@@ -17,9 +17,7 @@ use function is_scalar;
 use function ord;
 use function preg_match;
 
-/**
- * @see https://en.wikipedia.org/wiki/Polish_identity_card
- */
+/** @see https://en.wikipedia.org/wiki/Polish_identity_card */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid Polish Identity Card number',
@@ -27,10 +25,10 @@ use function preg_match;
 )]
 final class PolishIdCard extends Simple
 {
-    private const ASCII_CODE_0 = 48;
-    private const ASCII_CODE_7 = 55;
-    private const ASCII_CODE_9 = 57;
-    private const ASCII_CODE_A = 65;
+    private const int ASCII_CODE_0 = 48;
+    private const int ASCII_CODE_7 = 55;
+    private const int ASCII_CODE_9 = 57;
+    private const int ASCII_CODE_A = 65;
 
     public function isValid(mixed $input): bool
     {

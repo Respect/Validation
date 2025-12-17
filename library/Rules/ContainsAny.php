@@ -32,9 +32,10 @@ final class ContainsAny extends Envelope
         }
 
         $rules = $this->getRules($needles, $identical);
+
         parent::__construct(
             count($rules) === 1 ? $rules[0] : new AnyOf(...$rules),
-            ['needles' => $needles]
+            ['needles' => $needles],
         );
     }
 
@@ -49,7 +50,7 @@ final class ContainsAny extends Envelope
             static function ($needle) use ($identical): Contains {
                 return new Contains($needle, $identical);
             },
-            $needles
+            $needles,
         );
     }
 }

@@ -44,18 +44,22 @@ final class KeySetTest extends RuleTestCase
             new KeySet(new KeyExists('foo')),
             ['baz' => 'qux'],
         ];
+
         yield 'extra keys, failed rule' => [
             new KeySet(new Key('foo', Stub::pass(1))),
             ['foo' => 'bar', 'baz' => 'qux'],
         ];
+
         yield 'missing key, failed rule' => [
             new KeySet(new Key('foo', Stub::fail(1)), new KeyExists('bar')),
             ['foo' => 'bar', 'baz' => 'qux'],
         ];
+
         yield 'extra keys, with failing rule' => [
             new KeySet(new Key('foo', Stub::fail(1))),
             ['foo' => 'bar', 'baz' => 'qux'],
         ];
+
         yield 'correct keys, with failing rule' => [new KeySet(new Key('foo', Stub::fail(1))), ['foo' => 'bar']];
     }
 }

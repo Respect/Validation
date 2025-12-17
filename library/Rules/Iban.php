@@ -30,7 +30,7 @@ use function substr;
 )]
 final class Iban extends Simple
 {
-    private const COUNTRIES_LENGTHS = [
+    private const array COUNTRIES_LENGTHS = [
         'AL' => 28,
         'AD' => 24,
         'AT' => 20,
@@ -144,7 +144,7 @@ final class Iban extends Simple
             static function (array $match): string {
                 return strval(ord($match[0]) - 55);
             },
-            $reArrangedIban
+            $reArrangedIban,
         );
     }
 }

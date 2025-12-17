@@ -15,5 +15,5 @@ test('Scenario #1', catchFullMessage(
         - 0 must pass all the rules
           - 0 must be a string
           - 0 must be a countable value or a string
-        FULL_MESSAGE)
+        FULL_MESSAGE),
 ));

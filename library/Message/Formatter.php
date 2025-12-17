@@ -13,20 +13,16 @@ use Respect\Validation\Result;
 
 interface Formatter
 {
-    /**
-     * @param array<string, mixed> $templates
-     */
+    /** @param array<string, mixed> $templates */
     public function main(Result $result, array $templates, Translator $translator): string;
 
-    /**
-     * @param array<string, mixed> $templates
-     */
+    /** @param array<string, mixed> $templates */
     public function full(
         Result $result,
         array $templates,
         Translator $translator,
         int $depth = 0,
-        Result ...$siblings
+        Result ...$siblings,
     ): string;
 
     /**

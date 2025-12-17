@@ -28,7 +28,7 @@ use const PATHINFO_EXTENSION;
 final readonly class Extension implements Rule
 {
     public function __construct(
-        private string $extension
+        private string $extension,
     ) {
     }
 

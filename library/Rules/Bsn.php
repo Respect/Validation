@@ -19,9 +19,7 @@ use function is_scalar;
 use function mb_strlen;
 use function strval;
 
-/**
- * @see https://nl.wikipedia.org/wiki/Burgerservicenummer
- */
+/** @see https://nl.wikipedia.org/wiki/Burgerservicenummer */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid BSN',

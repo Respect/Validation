@@ -65,41 +65,33 @@ interface NotBuilder
 
     public static function notContains(mixed $containsValue, bool $identical = false): Chain;
 
-    /**
-     * @param non-empty-array<mixed> $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public static function notContainsAny(array $needles, bool $identical = false): Chain;
 
     public static function notControl(string ...$additionalChars): Chain;
 
     public static function notCountable(): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public static function notCountryCode(string $set = 'alpha-2'): Chain;
 
     public static function notCpf(): Chain;
 
     public static function notCreditCard(string $brand = 'Any'): Chain;
 
-    /**
-     * @param "alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-3"|"numeric" $set */
     public static function notCurrencyCode(string $set = 'alpha-3'): Chain;
 
     public static function notDate(string $format = 'Y-m-d'): Chain;
 
-    public static function notDateTime(?string $format = null): Chain;
+    public static function notDateTime(string|null $format = null): Chain;
 
-    /**
-     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
-     */
+    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public static function notDateTimeDiff(
         string $type,
         Rule $rule,
-        ?string $format = null,
-        ?DateTimeImmutable $now = null,
+        string|null $format = null,
+        DateTimeImmutable|null $now = null,
     ): Chain;
 
     public static function notDecimal(int $decimals): Chain;
@@ -166,16 +158,14 @@ interface NotBuilder
 
     public static function notInfinite(): Chain;
 
-    /**
-     * @param class-string $class
-     */
+    /** @param class-string $class */
     public static function notInstance(string $class): Chain;
 
     public static function notIntType(): Chain;
 
     public static function notIntVal(): Chain;
 
-    public static function notIp(string $range = '*', ?int $options = null): Chain;
+    public static function notIp(string $range = '*', int|null $options = null): Chain;
 
     public static function notIsbn(): Chain;
 
@@ -193,14 +183,10 @@ interface NotBuilder
 
     public static function notKeySet(Rule $rule, Rule ...$rules): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3" $set
-     */
+    /** @param "alpha-2"|"alpha-3" $set */
     public static function notLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /**
-     * @param callable(mixed): Rule $ruleCreator
-     */
+    /** @param callable(mixed): Rule $ruleCreator */
     public static function notLazy(callable $ruleCreator): Chain;
 
     public static function notLeapDate(string $format): Chain;
@@ -257,7 +243,7 @@ interface NotBuilder
 
     public static function notPesel(): Chain;
 
-    public static function notPhone(?string $countryCode = null): Chain;
+    public static function notPhone(string|null $countryCode = null): Chain;
 
     public static function notPhpLabel(): Chain;
 
@@ -295,9 +281,7 @@ interface NotBuilder
 
     public static function notScalarVal(): Chain;
 
-    /**
-     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
-     */
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public static function notSize(string $unit, Rule $rule): Chain;
 
     public static function notSlug(): Chain;
@@ -314,9 +298,7 @@ interface NotBuilder
 
     public static function notSubdivisionCode(string $countryCode): Chain;
 
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public static function notSubset(array $superset): Chain;
 
     public static function notSymbolicLink(): Chain;
@@ -335,15 +317,15 @@ interface NotBuilder
 
     public static function notUrl(): Chain;
 
-    public static function notUuid(?int $version = null): Chain;
+    public static function notUuid(int|null $version = null): Chain;
 
     public static function notVersion(): Chain;
 
-    public static function notVideoUrl(?string $service = null): Chain;
+    public static function notVideoUrl(string|null $service = null): Chain;
 
     public static function notVowel(string ...$additionalChars): Chain;
 
-    public static function notWhen(Rule $when, Rule $then, ?Rule $else = null): Chain;
+    public static function notWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
 
     public static function notWritable(): Chain;
 

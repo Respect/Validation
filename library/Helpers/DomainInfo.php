@@ -14,14 +14,10 @@ use function mb_strtoupper;
 
 final class DomainInfo
 {
-    /**
-     * @var mixed[]
-     */
+    /** @var mixed[] */
     private readonly array $data;
 
-    /**
-     * @var mixed[]
-     */
+    /** @var mixed[] */
     private static array $runtimeCache = [];
 
     public function __construct(string $tld)
@@ -36,9 +32,7 @@ final class DomainInfo
         $this->data = static::$runtimeCache[$tld];
     }
 
-    /**
-     * @return array<string>
-     */
+    /** @return array<string> */
     public function getPublicSuffixes(): array
     {
         return $this->data;

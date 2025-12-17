@@ -23,7 +23,7 @@ final readonly class Instance implements Rule
 {
     /** @param class-string $class */
     public function __construct(
-        private string $class
+        private string $class,
     ) {
     }
 

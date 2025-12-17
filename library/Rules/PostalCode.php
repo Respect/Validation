@@ -14,9 +14,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Envelope;
 
-/**
- * @see http://download.geonames.org/export/dump/countryInfo.txt
- */
+/** @see http://download.geonames.org/export/dump/countryInfo.txt */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid postal code on {{countryCode}}',
@@ -24,9 +22,9 @@ use Respect\Validation\Rules\Core\Envelope;
 )]
 final class PostalCode extends Envelope
 {
-    private const DEFAULT_PATTERN = '/^$/';
+    private const string DEFAULT_PATTERN = '/^$/';
 
-    private const POSTAL_CODES_EXTRA = [
+    private const array POSTAL_CODES_EXTRA = [
         // phpcs:disable Generic.Files.LineLength.TooLong
         'AM' => ['/^\d\d\d\d$/', '/^(\d{4})$/'],
         'BR' => ['/^\d\d\d\d\d-\d\d\d$/', '/^\d{5}-?\d{3}$/'],
@@ -40,7 +38,7 @@ final class PostalCode extends Envelope
         // phpcs:enable Generic.Files.LineLength.TooLong
     ];
 
-    private const POSTAL_CODES = [
+    private const array POSTAL_CODES = [
     // phpcs:disable Generic.Files.LineLength.TooLong
         'AD' => ['/^AD\d\d\d$/', '/^(?:AD)*(\d{3})$/'],
         'AL' => ['/^\d\d\d\d$/', '/^(\d{4})$/'],
@@ -216,9 +214,9 @@ final class PostalCode extends Envelope
 
         parent::__construct(
             new Regex(
-                self::POSTAL_CODES_EXTRA[$countryCode][$formatted ? 0 : 1] ?? self::POSTAL_CODES[$countryCode][$formatted ? 0 : 1] ?? self::DEFAULT_PATTERN
+                self::POSTAL_CODES_EXTRA[$countryCode][$formatted ? 0 : 1] ?? self::POSTAL_CODES[$countryCode][$formatted ? 0 : 1] ?? self::DEFAULT_PATTERN,
             ),
-            ['countryCode' => $countryCode]
+            ['countryCode' => $countryCode],
         );
     }
 }

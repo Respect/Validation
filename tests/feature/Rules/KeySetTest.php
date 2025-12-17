@@ -12,7 +12,7 @@ test('one rule / one failed', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` must be an integer')
         ->and($fullMessage)->toBe('- `.foo` must be an integer')
-        ->and($messages)->toBe(['foo' => '`.foo` must be an integer'])
+        ->and($messages)->toBe(['foo' => '`.foo` must be an integer']),
 ));
 
 test('one rule / one missing key', catchAll(
@@ -20,7 +20,7 @@ test('one rule / one missing key', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` must be present')
         ->and($fullMessage)->toBe('- `.foo` must be present')
-        ->and($messages)->toBe(['foo' => '`.foo` must be present'])
+        ->and($messages)->toBe(['foo' => '`.foo` must be present']),
 ));
 
 test('one rule / one extra key', catchAll(
@@ -28,7 +28,7 @@ test('one rule / one extra key', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.bar` must not be present')
         ->and($fullMessage)->toBe('- `.bar` must not be present')
-        ->and($messages)->toBe(['bar' => '`.bar` must not be present'])
+        ->and($messages)->toBe(['bar' => '`.bar` must not be present']),
 ));
 
 test('one rule / one extra key / one missing key', catchAll(
@@ -44,7 +44,7 @@ test('one rule / one extra key / one missing key', catchAll(
             '__root__' => '`["bar": true]` contains both missing and extra keys',
             'foo' => '`.foo` must be present',
             'bar' => '`.bar` must not be present',
-        ])
+        ]),
 ));
 
 test('one rule / two extra keys', catchAll(
@@ -60,7 +60,7 @@ test('one rule / two extra keys', catchAll(
             '__root__' => '`["foo": 42, "bar": "string", "baz": true]` contains extra keys',
             'bar' => '`.bar` must not be present',
             'baz' => '`.baz` must not be present',
-        ])
+        ]),
 ));
 
 test('one rule / more than ten extra keys', catchAll(
@@ -107,7 +107,7 @@ test('one rule / more than ten extra keys', catchAll(
             'waldo' => '`.waldo` must not be present',
             'fred' => '`.fred` must not be present',
             'plugh' => '`.plugh` must not be present',
-        ])
+        ]),
 ));
 
 test('multiple rules / one failed', catchAll(
@@ -115,7 +115,7 @@ test('multiple rules / one failed', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.bar` must be present')
         ->and($fullMessage)->toBe('- `.bar` must be present')
-        ->and($messages)->toBe(['bar' => '`.bar` must be present'])
+        ->and($messages)->toBe(['bar' => '`.bar` must be present']),
 ));
 
 test('multiple rules / all failed', catchAll(
@@ -131,7 +131,7 @@ test('multiple rules / all failed', catchAll(
             '__root__' => '`[]` contains missing keys',
             'foo' => '`.foo` must be present',
             'bar' => '`.bar` must be present',
-        ])
+        ]),
 ));
 
 test('multiple rules / one extra key', catchAll(
@@ -142,7 +142,7 @@ test('multiple rules / one extra key', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.baz` must not be present')
         ->and($fullMessage)->toBe('- `.baz` must not be present')
-        ->and($messages)->toBe(['baz' => '`.baz` must not be present'])
+        ->and($messages)->toBe(['baz' => '`.baz` must not be present']),
 ));
 
 test('multiple rules / one extra key / one missing', catchAll(
@@ -161,7 +161,7 @@ test('multiple rules / one extra key / one missing', catchAll(
             '__root__' => '`["bar": "string", "baz": true]` contains both missing and extra keys',
             'foo' => '`.foo` must be present',
             'baz' => '`.baz` must not be present',
-        ])
+        ]),
 ));
 
 test('multiple rules / two extra keys', catchAll(
@@ -181,7 +181,7 @@ test('multiple rules / two extra keys', catchAll(
             '__root__' => '`["foo": 42, "bar": "string", "baz": true, "qux": false]` contains extra keys',
             'qux' => '`.qux` must be an integer',
             'baz' => '`.baz` must not be present',
-        ])
+        ]),
 ));
 
 test('multiple rules / all failed validation', catchAll(
@@ -202,7 +202,7 @@ test('multiple rules / all failed validation', catchAll(
             '__root__' => '`["foo": 42, "bar": "string", "baz": true]` validation failed',
             'bar' => '`.bar` must be an integer',
             'baz' => '`.baz` must be an integer',
-        ])
+        ]),
 ));
 
 test('multiple rules / single missing key / single failed validation', catchAll(
@@ -224,5 +224,5 @@ test('multiple rules / single missing key / single failed validation', catchAll(
             '__root__' => '`["foo": 42, "bar": "string"]` contains missing keys',
             'bar' => '`.bar` must be an integer',
             'baz' => '`.baz` must be present',
-        ])
+        ]),
 ));

@@ -36,15 +36,15 @@ use Respect\Validation\Message\Stringifier\QuotedStringifier;
 
 final readonly class StandardStringifier implements Stringifier
 {
-    private const MAXIMUM_DEPTH = 3;
-    private const MAXIMUM_NUMBER_OF_ITEMS = 5;
-    private const MAXIMUM_NUMBER_OF_PROPERTIES = self::MAXIMUM_NUMBER_OF_ITEMS;
-    private const MAXIMUM_LENGTH = 120;
+    private const int MAXIMUM_DEPTH = 3;
+    private const int MAXIMUM_NUMBER_OF_ITEMS = 5;
+    private const int MAXIMUM_NUMBER_OF_PROPERTIES = self::MAXIMUM_NUMBER_OF_ITEMS;
+    private const int MAXIMUM_LENGTH = 120;
 
     private Stringifier $stringifier;
 
     public function __construct(
-        private Quoter $quoter = new StandardQuoter(self::MAXIMUM_LENGTH)
+        private Quoter $quoter = new StandardQuoter(self::MAXIMUM_LENGTH),
     ) {
         $this->stringifier = $this->createStringifier($quoter);
     }
@@ -78,7 +78,7 @@ final readonly class StandardStringifier implements Stringifier
             $stringifier,
             $quoter,
             self::MAXIMUM_DEPTH,
-            self::MAXIMUM_NUMBER_OF_PROPERTIES
+            self::MAXIMUM_NUMBER_OF_PROPERTIES,
         ));
         $stringifier->prependStringifier(new EnumerationStringifier($quoter));
         $stringifier->prependStringifier(new ObjectWithDebugInfoStringifier($arrayStringifier, $quoter));

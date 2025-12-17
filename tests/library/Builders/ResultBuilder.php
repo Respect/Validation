@@ -26,13 +26,13 @@ final class ResultBuilder
     /** @var array<string, mixed> */
     private array $parameters = [];
 
-    private ?string $name = null;
+    private string|null $name = null;
 
-    private ?string $id = null;
+    private string|null $id = null;
 
     private Rule $rule;
 
-    private ?Result $adjacent = null;
+    private Result|null $adjacent = null;
 
     /** @var array<Result> */
     private array $children = [];
@@ -55,7 +55,7 @@ final class ResultBuilder
             $this->id,
             $this->adjacent,
             null,
-            ...$this->children
+            ...$this->children,
         );
     }
 

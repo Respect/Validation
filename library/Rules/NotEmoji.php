@@ -24,7 +24,7 @@ use function preg_match;
 )]
 final class NotEmoji extends Simple
 {
-    private const RANGES = [
+    private const array RANGES = [
         '\x{0023}\x{FE0F}\x{20E3}',
         '\x{0023}\x{20E3}',
         '\x{002A}\x{FE0F}\x{20E3}',

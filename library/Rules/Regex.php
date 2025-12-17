@@ -25,7 +25,7 @@ use function preg_match;
 final readonly class Regex implements Rule
 {
     public function __construct(
-        private string $regex
+        private string $regex,
     ) {
     }
 

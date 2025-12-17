@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('Scenario #1', catchFullMessage(
-    fn () => v::create()
+    fn() => v::create()
         ->property(
             'mysql',
             v::create()
@@ -46,5 +46,5 @@ test('Scenario #1', catchFullMessage(
             - `.host` must be a string
           - `.postgresql` must pass the rules
             - `.user` must be a string
-        FULL_MESSAGE)
+        FULL_MESSAGE),
 ));

@@ -12,5 +12,5 @@ test('https://github.com/Respect/Validation/issues/805', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('WRONG EMAIL!!!!!!')
         ->and($fullMessage)->toBe('- WRONG EMAIL!!!!!!')
-        ->and($messages)->toBe(['email' => 'WRONG EMAIL!!!!!!'])
+        ->and($messages)->toBe(['email' => 'WRONG EMAIL!!!!!!']),
 ));

@@ -24,10 +24,10 @@ final class WithAttributes
         #[Rule\DateTimeDiff('years', new Rule\LessThanOrEqual(25))]
         public string $birthdate,
         #[Rule\Email]
-        public ?string $email = null,
+        public string|null $email = null,
         #[Rule\Phone]
-        public ?string $phone = null,
-        public ?string $address = null,
+        public string|null $phone = null,
+        public string|null $address = null,
     ) {
     }
 }

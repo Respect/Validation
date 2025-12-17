@@ -33,9 +33,7 @@ final class CanValidateDateTimeTest extends TestCase
         self::assertFalse($this->isDateTime($format, $value));
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public static function providerForValidDateTime(): array
     {
         return [
@@ -50,9 +48,7 @@ final class CanValidateDateTimeTest extends TestCase
         ];
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public static function providerForInvalidDateTime(): array
     {
         return [

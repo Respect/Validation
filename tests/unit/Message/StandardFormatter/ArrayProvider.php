@@ -91,9 +91,7 @@ trait ArrayProvider
                 [
                     '__root__' => 'Parent custom',
                     '1st' => '1st custom',
-                    '2nd' => [
-                        '2nd_1st' => '2nd > 1st custom',
-                    ],
+                    '2nd' => ['2nd_1st' => '2nd > 1st custom'],
                     '3rd' => '3rd custom',
                 ],
             ],
@@ -108,9 +106,7 @@ trait ArrayProvider
                 [
                     '__root__' => 'Parent custom',
                     '1st' => '1st custom',
-                    '2nd' => [
-                        '2nd_2nd' => '2nd > 2nd not shown',
-                    ],
+                    '2nd' => ['2nd_2nd' => '2nd > 2nd not shown'],
                     '3rd' => '3rd custom',
                 ],
             ],
@@ -180,9 +176,7 @@ trait ArrayProvider
                 [
                     '__root__' => 'Parent custom',
                     '1st' => '1st custom',
-                    '2nd' => [
-                        '2nd_2nd' => '2nd > 2nd custom',
-                    ],
+                    '2nd' => ['2nd_2nd' => '2nd > 2nd custom'],
                     '3rd' => '3rd custom',
                 ],
             ],

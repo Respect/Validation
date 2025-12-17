@@ -110,7 +110,7 @@ final class FilteredStringTest extends TestCase
     public function itShouldFilterAdditionalCharactersWhenValidatingInput(
         string $additionalChars,
         string $input,
-        string $expectedInput
+        string $expectedInput,
     ): void {
         $rule = new ConcreteFilteredString($additionalChars);
         $rule->evaluate($input);

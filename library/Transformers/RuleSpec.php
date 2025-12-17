@@ -15,7 +15,7 @@ final readonly class RuleSpec
     public function __construct(
         public string $name,
         public array $arguments = [],
-        public ?RuleSpec $wrapper = null,
+        public RuleSpec|null $wrapper = null,
     ) {
     }
 }

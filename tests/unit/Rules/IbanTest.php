@@ -20,6 +20,15 @@ use function extension_loaded;
 #[CoversClass(Iban::class)]
 final class IbanTest extends RuleTestCase
 {
+    protected function setUp(): void
+    {
+        if (extension_loaded('bcmath')) {
+            return;
+        }
+
+        $this->markTestSkipped('You need bcmath to execute this test');
+    }
+
     /** @return iterable<array{Iban, mixed}> */
     public static function providerForValidInput(): iterable
     {
@@ -58,14 +67,5 @@ final class IbanTest extends RuleTestCase
             'HungaryWrong' => [$sut, 'HU42 5000 5880 7742'],
             'GermanydWrong' => [$sut, 'DE89 5000 5880 7742'],
         ];
-    }
-
-    protected function setUp(): void
-    {
-        if (extension_loaded('bcmath')) {
-            return;
-        }
-
-        $this->markTestSkipped('You need bcmath to execute this test');
     }
 }

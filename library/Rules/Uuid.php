@@ -36,18 +36,19 @@ use function is_string;
 )]
 final class Uuid implements Rule
 {
-    public const TEMPLATE_VERSION = '__version__';
+    public const string TEMPLATE_VERSION = '__version__';
 
     public function __construct(
-        private readonly ?int $version = null
+        private readonly int|null $version = null,
     ) {
         if (!class_exists(RamseyUuid::class)) {
             throw new MissingComposerDependencyException('Uuid rule requires ramsey/uuid', '=');
         }
+
         if ($version !== null && !$this->isSupportedVersion($version)) {
             throw new InvalidRuleConstructorException(
                 'Only versions 1 to 8 are supported: %d given',
-                (string)$version
+                (string) $version,
             );
         }
     }

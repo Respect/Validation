@@ -64,16 +64,14 @@ final class Cnpj extends Simple
         return $digits[13] == $check;
     }
 
-    /**
-     * @return int[]
-     */
+    /** @return int[] */
     private function getDigits(string $input): array
     {
         return array_map(
             'intval',
             str_split(
-                (string) preg_replace('/\D/', '', $input)
-            )
+                (string) preg_replace('/\D/', '', $input),
+            ),
         );
     }
 }

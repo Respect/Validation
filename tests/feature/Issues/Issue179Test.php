@@ -34,5 +34,5 @@ test('https://github.com/Respect/Validation/issues/179', catchAll(
             '__root__' => 'Settings must pass the rules',
             'host' => '`.host` must be a string',
             'user' => '`.user` must be present',
-        ])
+        ]),
 ));

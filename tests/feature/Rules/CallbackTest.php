@@ -9,20 +9,20 @@ declare(strict_types=1);
 
 test('Scenario #1', catchMessage(
     fn() => v::callback('is_string')->assert([]),
-    fn(string $message) => expect($message)->toBe('`[]` must be valid')
+    fn(string $message) => expect($message)->toBe('`[]` must be valid'),
 ));
 
 test('Scenario #2', catchMessage(
     fn() => v::not(v::callback('is_string'))->assert('foo'),
-    fn(string $message) => expect($message)->toBe('"foo" must be invalid')
+    fn(string $message) => expect($message)->toBe('"foo" must be invalid'),
 ));
 
 test('Scenario #3', catchFullMessage(
     fn() => v::callback('is_string')->assert(true),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- `true` must be valid')
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `true` must be valid'),
 ));
 
 test('Scenario #4', catchFullMessage(
     fn() => v::not(v::callback('is_string'))->assert('foo'),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- "foo" must be invalid')
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "foo" must be invalid'),
 ));

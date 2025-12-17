@@ -24,14 +24,10 @@ use function count;
 )]
 final class Callback extends Simple
 {
-    /**
-     * @var callable
-     */
+    /** @var callable */
     private $callback;
 
-    /**
-     * @var mixed[]
-     */
+    /** @var mixed[] */
     private readonly array $arguments;
 
     public function __construct(callable $callback, mixed ...$arguments)
@@ -45,9 +41,7 @@ final class Callback extends Simple
         return (bool) call_user_func_array($this->callback, $this->getArguments($input));
     }
 
-    /**
-     * @return mixed[]
-     */
+    /** @return mixed[] */
     private function getArguments(mixed $input): array
     {
         $arguments = [$input];

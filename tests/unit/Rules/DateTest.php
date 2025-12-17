@@ -31,9 +31,7 @@ final class DateTest extends RuleTestCase
         new Date($format);
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public static function validFormatsProvider(): array
     {
         return [

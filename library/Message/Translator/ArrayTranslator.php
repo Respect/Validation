@@ -17,7 +17,7 @@ final readonly class ArrayTranslator implements Translator
 {
     /** @param array<string, string> $messages */
     public function __construct(
-        private array $messages
+        private array $messages,
     ) {
     }
 

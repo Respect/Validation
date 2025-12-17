@@ -20,7 +20,7 @@ test('Default: fail, fail', catchAll(
             '__root__' => '"string" must pass one of the rules',
             'intType' => '"string" must be an integer',
             'negative' => '"string" must be a negative number',
-        ])
+        ]),
 ));
 
 test('Default: fail, pass, pass', catchAll(
@@ -38,7 +38,7 @@ test('Default: fail, pass, pass', catchAll(
             'intType' => '"string" must be an integer',
             'stringType' => '"string" must be a string',
             'alpha' => '"string" must contain only letters (a-z)',
-        ])
+        ]),
 ));
 
 test('Default: pass, fail, pass', catchAll(
@@ -56,7 +56,7 @@ test('Default: pass, fail, pass', catchAll(
             'intType' => '"string" must be an integer',
             'stringType' => '"string" must be a string',
             'alpha' => '"string" must contain only letters (a-z)',
-        ])
+        ]),
 ));
 
 test('Default: pass, pass, fail', catchAll(
@@ -74,7 +74,7 @@ test('Default: pass, pass, fail', catchAll(
             'intType' => '"string" must be an integer',
             'stringType' => '"string" must be a string',
             'alpha' => '"string" must contain only letters (a-z)',
-        ])
+        ]),
 ));
 
 test('Inverted: fail, pass', catchAll(
@@ -82,9 +82,7 @@ test('Inverted: fail, pass', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('-1 must not be an integer')
         ->and($fullMessage)->toBe('- -1 must not be an integer')
-        ->and($messages)->toBe([
-            'intType' => '-1 must not be an integer',
-        ])
+        ->and($messages)->toBe(['intType' => '-1 must not be an integer']),
 ));
 
 test('Inverted: fail, fail, pass', catchAll(
@@ -92,7 +90,5 @@ test('Inverted: fail, fail, pass', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('-1 must not be a negative number')
         ->and($fullMessage)->toBe('- -1 must not be a negative number')
-        ->and($messages)->toBe([
-            'negative' => '-1 must not be a negative number',
-        ])
+        ->and($messages)->toBe(['negative' => '-1 must not be a negative number']),
 ));

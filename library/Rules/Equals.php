@@ -24,7 +24,7 @@ use function is_scalar;
 final readonly class Equals implements Rule
 {
     public function __construct(
-        private mixed $compareTo
+        private mixed $compareTo,
     ) {
     }
 

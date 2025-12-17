@@ -16,11 +16,11 @@ use Respect\Validation\Message\Translator\DummyTranslator;
 
 final class ValidatorDefaults
 {
-    private static ?Factory $factory = null;
+    private static Factory|null $factory = null;
 
-    private static ?Formatter $formatter = null;
+    private static Formatter|null $formatter = null;
 
-    private static ?Translator $translator = null;
+    private static Translator|null $translator = null;
 
     /** @var array<string> */
     private static array $ignoredBacktracePaths = [__DIR__ . '/Validator.php'];

@@ -29,7 +29,7 @@ final readonly class EndsWith implements Rule
 {
     public function __construct(
         private mixed $endValue,
-        private bool $identical = false
+        private bool $identical = false,
     ) {
     }
 

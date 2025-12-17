@@ -21,7 +21,7 @@ final class Reducer extends Wrapper
         parent::__construct($rules === [] ? $rule1 : new AllOf($rule1, ...$rules));
     }
 
-    public function withTemplate(?string $template): self
+    public function withTemplate(string|null $template): self
     {
         if ($template === null) {
             return $this;
@@ -30,7 +30,7 @@ final class Reducer extends Wrapper
         return new self(new Templated($this->rule, $template));
     }
 
-    public function withName(?string $name): self
+    public function withName(string|null $name): self
     {
         if ($name === null) {
             return $this;
@@ -39,7 +39,7 @@ final class Reducer extends Wrapper
         return new self(new Named($this->rule, $name));
     }
 
-    public function getName(): ?string
+    public function getName(): string|null
     {
         if ($this->rule instanceof Nameable) {
             return $this->rule->getName();

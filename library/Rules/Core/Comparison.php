@@ -17,10 +17,8 @@ abstract class Comparison implements Rule
 {
     use CanCompareValues;
 
-    abstract protected function compare(mixed $left, mixed $right): bool;
-
     public function __construct(
-        private readonly mixed $compareTo
+        private readonly mixed $compareTo,
     ) {
     }
 
@@ -37,4 +35,6 @@ abstract class Comparison implements Rule
 
         return new Result($this->compare($left, $right), $input, $this, $parameters);
     }
+
+    abstract protected function compare(mixed $left, mixed $right): bool;
 }

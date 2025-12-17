@@ -32,7 +32,7 @@ trait ResultCreator
                 (new ResultBuilder())->id('1st')->template('__1st_original__')->build(),
                 (new ResultBuilder())->id('2nd')->template('__2nd_original__')
                     ->children(
-                        (new ResultBuilder())->id('2nd_1st')->template('__2nd_1st_original__')->build()
+                        (new ResultBuilder())->id('2nd_1st')->template('__2nd_1st_original__')->build(),
                     )
                     ->build(),
                 (new ResultBuilder())->id('3rd')->template('__3rd_original__')->build(),
@@ -77,15 +77,22 @@ trait ResultCreator
                 (new ResultBuilder())->id('1st')
                     ->template('__1st_original__')
                     ->children(
-                        (new ResultBuilder())->id('1st_1st')->template('__1st_1st_original__')->build(),
-                        (new ResultBuilder())->id('1st_2nd')->template('__1st_2nd_original__')->hasPassed(true)->build()
+                        (new ResultBuilder())
+                            ->id('1st_1st')
+                            ->template('__1st_1st_original__')
+                            ->build(),
+                        (new ResultBuilder())
+                            ->id('1st_2nd')
+                            ->template('__1st_2nd_original__')
+                            ->hasPassed(true)
+                            ->build(),
                     )
                     ->build(),
                 (new ResultBuilder())
                     ->id('2nd')
                     ->template('__2nd_original__')
                     ->children(
-                        (new ResultBuilder())->id('2nd_1st')->template('__2nd_1st_original__')->build()
+                        (new ResultBuilder())->id('2nd_1st')->template('__2nd_1st_original__')->build(),
                     )
                     ->build(),
             )
@@ -100,7 +107,7 @@ trait ResultCreator
                     ->template('__1st_original__')
                     ->children(
                         (new ResultBuilder())->id('1st_1st')->template('__1st_1st_original__')->build(),
-                        (new ResultBuilder())->id('1st_2nd')->template('__1st_2nd_original__')->build()
+                        (new ResultBuilder())->id('1st_2nd')->template('__1st_2nd_original__')->build(),
                     )
                     ->build(),
                 (new ResultBuilder())
@@ -108,7 +115,7 @@ trait ResultCreator
                     ->template('__2nd_original__')
                     ->children(
                         (new ResultBuilder())->id('2nd_1st')->template('__2nd_1st_original__')->build(),
-                        (new ResultBuilder())->id('2nd_2nd')->template('__2nd_2nd_original__')->build()
+                        (new ResultBuilder())->id('2nd_2nd')->template('__2nd_2nd_original__')->build(),
                     )
                     ->build(),
                 (new ResultBuilder())->id('3nd')->template('__3rd_original__')->build(),

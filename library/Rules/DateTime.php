@@ -35,10 +35,10 @@ final class DateTime implements Rule
 {
     use CanValidateDateTime;
 
-    public const TEMPLATE_FORMAT = '__format__';
+    public const string TEMPLATE_FORMAT = '__format__';
 
     public function __construct(
-        private readonly ?string $format = null
+        private readonly string|null $format = null,
     ) {
     }
 

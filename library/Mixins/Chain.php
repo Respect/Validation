@@ -13,9 +13,7 @@ use DateTimeImmutable;
 use Respect\Validation\Rule;
 use Respect\Validation\Validator;
 
-/**
- * @mixin Validator
- */
+/** @mixin Validator */
 interface Chain extends
     Rule,
     KeyChain,
@@ -80,41 +78,33 @@ interface Chain extends
 
     public function contains(mixed $containsValue, bool $identical = false): Chain;
 
-    /**
-     * @param non-empty-array<mixed> $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public function containsAny(array $needles, bool $identical = false): Chain;
 
     public function control(string ...$additionalChars): Chain;
 
     public function countable(): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public function countryCode(string $set = 'alpha-2'): Chain;
 
     public function cpf(): Chain;
 
     public function creditCard(string $brand = 'Any'): Chain;
 
-    /**
-     * @param "alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-3"|"numeric" $set */
     public function currencyCode(string $set = 'alpha-3'): Chain;
 
     public function date(string $format = 'Y-m-d'): Chain;
 
-    public function dateTime(?string $format = null): Chain;
+    public function dateTime(string|null $format = null): Chain;
 
-    /**
-     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
-     */
+    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function dateTimeDiff(
         string $type,
         Rule $rule,
-        ?string $format = null,
-        ?DateTimeImmutable $now = null,
+        string|null $format = null,
+        DateTimeImmutable|null $now = null,
     ): Chain;
 
     public function decimal(int $decimals): Chain;
@@ -181,16 +171,14 @@ interface Chain extends
 
     public function infinite(): Chain;
 
-    /**
-     * @param class-string $class
-     */
+    /** @param class-string $class */
     public function instance(string $class): Chain;
 
     public function intType(): Chain;
 
     public function intVal(): Chain;
 
-    public function ip(string $range = '*', ?int $options = null): Chain;
+    public function ip(string $range = '*', int|null $options = null): Chain;
 
     public function isbn(): Chain;
 
@@ -208,14 +196,10 @@ interface Chain extends
 
     public function keySet(Rule $rule, Rule ...$rules): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3" $set
-     */
+    /** @param "alpha-2"|"alpha-3" $set */
     public function languageCode(string $set = 'alpha-2'): Chain;
 
-    /**
-     * @param callable(mixed): Rule $ruleCreator
-     */
+    /** @param callable(mixed): Rule $ruleCreator */
     public function lazy(callable $ruleCreator): Chain;
 
     public function leapDate(string $format): Chain;
@@ -286,7 +270,7 @@ interface Chain extends
 
     public function pesel(): Chain;
 
-    public function phone(?string $countryCode = null): Chain;
+    public function phone(string|null $countryCode = null): Chain;
 
     public function phpLabel(): Chain;
 
@@ -324,9 +308,7 @@ interface Chain extends
 
     public function scalarVal(): Chain;
 
-    /**
-     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
-     */
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function size(string $unit, Rule $rule): Chain;
 
     public function slug(): Chain;
@@ -343,16 +325,12 @@ interface Chain extends
 
     public function subdivisionCode(string $countryCode): Chain;
 
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public function subset(array $superset): Chain;
 
     public function symbolicLink(): Chain;
 
-    /**
-     * @param array<string, mixed> $parameters
-     */
+    /** @param array<string, mixed> $parameters */
     public function templated(Rule $rule, string $template, array $parameters = []): Chain;
 
     public function time(string $format = 'H:i:s'): Chain;
@@ -371,15 +349,15 @@ interface Chain extends
 
     public function url(): Chain;
 
-    public function uuid(?int $version = null): Chain;
+    public function uuid(int|null $version = null): Chain;
 
     public function version(): Chain;
 
-    public function videoUrl(?string $service = null): Chain;
+    public function videoUrl(string|null $service = null): Chain;
 
     public function vowel(string ...$additionalChars): Chain;
 
-    public function when(Rule $when, Rule $then, ?Rule $else = null): Chain;
+    public function when(Rule $when, Rule $then, Rule|null $else = null): Chain;
 
     public function writable(): Chain;
 

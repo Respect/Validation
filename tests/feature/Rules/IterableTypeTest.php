@@ -12,7 +12,7 @@ test('Default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`null` must be iterable')
         ->and($fullMessage)->toBe('- `null` must be iterable')
-        ->and($messages)->toBe(['iterableType' => '`null` must be iterable'])
+        ->and($messages)->toBe(['iterableType' => '`null` must be iterable']),
 ));
 
 test('Inverted', catchAll(
@@ -20,7 +20,7 @@ test('Inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`[1, 2, 3]` must not iterable')
         ->and($fullMessage)->toBe('- `[1, 2, 3]` must not iterable')
-        ->and($messages)->toBe(['notIterableType' => '`[1, 2, 3]` must not iterable'])
+        ->and($messages)->toBe(['notIterableType' => '`[1, 2, 3]` must not iterable']),
 ));
 
 test('With template', catchAll(
@@ -28,7 +28,7 @@ test('With template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Not an iterable at all')
         ->and($fullMessage)->toBe('- Not an iterable at all')
-        ->and($messages)->toBe(['iterableType' => 'Not an iterable at all'])
+        ->and($messages)->toBe(['iterableType' => 'Not an iterable at all']),
 ));
 
 test('With name', catchAll(
@@ -36,5 +36,5 @@ test('With name', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Options must be iterable')
         ->and($fullMessage)->toBe('- Options must be iterable')
-        ->and($messages)->toBe(['iterableType' => 'Options must be iterable'])
+        ->and($messages)->toBe(['iterableType' => 'Options must be iterable']),
 ));

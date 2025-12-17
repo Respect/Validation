@@ -47,7 +47,7 @@ final class Stub extends Simple
 
     public static function any(int $expectedCount): self
     {
-        return new self(...array_map(static fn () => rand(0, 1) == 1, array_fill(0, $expectedCount, null)));
+        return new self(...array_map(static fn() => rand(0, 1) == 1, array_fill(0, $expectedCount, null)));
     }
 
     public static function fail(int $expectedCount): self

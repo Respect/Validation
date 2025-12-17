@@ -54,7 +54,7 @@ final class FactorTest extends RuleTestCase
             '6 is factor \'2\'' => [new Factor(6), '2'],
             '4 is factor 2.00' => [new Factor(4), 2.0],
             '-0 is factor -5.000000' => [new Factor(-0), -5.000000],
-            '-0 is factor (float) - mt_rand()' => [new Factor(-0), (float) - mt_rand()],
+            '-0 is factor (float) - mt_rand()' => [new Factor(-0), (float) -mt_rand()],
         ];
     }
 

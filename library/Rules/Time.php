@@ -31,7 +31,7 @@ final readonly class Time implements Rule
     use CanValidateDateTime;
 
     public function __construct(
-        private string $format = 'H:i:s'
+        private string $format = 'H:i:s',
     ) {
         if (!preg_match('/^[gGhHisuvaA\W]+$/', $format)) {
             throw new InvalidRuleConstructorException('"%s" is not a valid date format', $format);

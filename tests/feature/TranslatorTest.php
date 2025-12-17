@@ -29,7 +29,7 @@ test('Various translations', catchFullMessage(
           - `[]` deve ser uma string
           - O comprimento de `[]` deve possuir de 2 a 15 caracteres
           - `[]` deve ser um número de telefone válido para o país Estados Unidos
-        FULL_MESSAGE)
+        FULL_MESSAGE),
 ));
 
 test('DateTimeDiff', catchMessage(
@@ -42,7 +42,7 @@ test('DateTimeDiff', catchMessage(
 
         v::dateTimeDiff('years', v::equals(2))->assert('1972-02-09');
     },
-    fn(string $message) => expect($message)->toBe('O número de anos entre agora e "1972-02-09" deve ser igual a 2')
+    fn(string $message) => expect($message)->toBe('O número de anos entre agora e "1972-02-09" deve ser igual a 2'),
 ));
 
 test('Using "listOr"', catchMessage(
@@ -54,7 +54,7 @@ test('Using "listOr"', catchMessage(
 
         v::templated(v::in(['Respect', 'Validation']), 'Your name must be {{haystack|listOr}}')->assert('');
     },
-    fn(string $message) => expect($message)->toBe('Seu nome deve ser "Respect" ou "Validation"')
+    fn(string $message) => expect($message)->toBe('Seu nome deve ser "Respect" ou "Validation"'),
 ));
 
 test('Using "listAnd"', catchMessage(
@@ -66,5 +66,5 @@ test('Using "listAnd"', catchMessage(
 
         v::templated(v::in(['Respect', 'Validation']), '{{haystack|listAnd}} are the only possible names')->assert('');
     },
-    fn(string $message) => expect($message)->toBe('"Respect" e "Validation" são os únicos nomes possíveis')
+    fn(string $message) => expect($message)->toBe('"Respect" e "Validation" são os únicos nomes possíveis'),
 ));

@@ -29,7 +29,7 @@ use const PHP_INT_MIN;
 #[CoversClass(Uuid::class)]
 final class UuidTest extends RuleTestCase
 {
-    private const ALL_VERSIONS = [
+    private const array ALL_VERSIONS = [
         1 => 'e4eaaaf2-d142-11e1-b3e4-080027620cdd',
         2 => '000003e8-3702-21f0-9f00-325096b39f47',
         3 => '11a38b9a-b3da-360f-9353-a5a725514269',
@@ -71,18 +71,22 @@ final class UuidTest extends RuleTestCase
                 new Uuid(),
                 str_replace('-', '', $string),
             ];
+
             yield sprintf('default with UUID version %d object', $version) => [
                 new Uuid(),
                 RamseyUuid::fromString($string),
             ];
+
             yield sprintf('expected version %1$d with UUID v%1$d string', $version) => [
                 new Uuid($version),
                 $string,
             ];
+
             yield sprintf('expected version %1$d with unformatted UUID v%1$d string', $version) => [
                 new Uuid($version),
                 str_replace('-', '', $string),
             ];
+
             yield sprintf('expected version %1$d with UUID v%1$d object', $version) => [
                 new Uuid($version),
                 RamseyUuid::fromString($string),
@@ -112,6 +116,7 @@ final class UuidTest extends RuleTestCase
                     new Uuid($versionB),
                     $string,
                 ];
+
                 yield sprintf('expected version %1$d with UUID version %2$d object', $versionA, $versionB) => [
                     new Uuid($versionB),
                     RamseyUuid::fromString($string),

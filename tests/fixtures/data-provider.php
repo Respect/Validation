@@ -144,8 +144,9 @@ return [
         'tags' => ['objectType', 'withAttributes'],
     ],
     'anonymous class' => [
-        'value' => [new class {
-        },
+        'value' => [
+            new class {
+            },
         ],
         'tags' => ['objectType', 'withoutAttributes'],
     ],
@@ -168,6 +169,7 @@ return [
                 if ($resource === false) {
                     throw new RuntimeException('Failed to create temporary file.');
                 }
+
                 fclose($resource);
 
                 return $resource;

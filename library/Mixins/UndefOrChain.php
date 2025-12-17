@@ -65,41 +65,33 @@ interface UndefOrChain
 
     public function undefOrContains(mixed $containsValue, bool $identical = false): Chain;
 
-    /**
-     * @param non-empty-array<mixed> $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public function undefOrContainsAny(array $needles, bool $identical = false): Chain;
 
     public function undefOrControl(string ...$additionalChars): Chain;
 
     public function undefOrCountable(): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public function undefOrCountryCode(string $set = 'alpha-2'): Chain;
 
     public function undefOrCpf(): Chain;
 
     public function undefOrCreditCard(string $brand = 'Any'): Chain;
 
-    /**
-     * @param "alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-3"|"numeric" $set */
     public function undefOrCurrencyCode(string $set = 'alpha-3'): Chain;
 
     public function undefOrDate(string $format = 'Y-m-d'): Chain;
 
-    public function undefOrDateTime(?string $format = null): Chain;
+    public function undefOrDateTime(string|null $format = null): Chain;
 
-    /**
-     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
-     */
+    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function undefOrDateTimeDiff(
         string $type,
         Rule $rule,
-        ?string $format = null,
-        ?DateTimeImmutable $now = null,
+        string|null $format = null,
+        DateTimeImmutable|null $now = null,
     ): Chain;
 
     public function undefOrDecimal(int $decimals): Chain;
@@ -166,16 +158,14 @@ interface UndefOrChain
 
     public function undefOrInfinite(): Chain;
 
-    /**
-     * @param class-string $class
-     */
+    /** @param class-string $class */
     public function undefOrInstance(string $class): Chain;
 
     public function undefOrIntType(): Chain;
 
     public function undefOrIntVal(): Chain;
 
-    public function undefOrIp(string $range = '*', ?int $options = null): Chain;
+    public function undefOrIp(string $range = '*', int|null $options = null): Chain;
 
     public function undefOrIsbn(): Chain;
 
@@ -193,14 +183,10 @@ interface UndefOrChain
 
     public function undefOrKeySet(Rule $rule, Rule ...$rules): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3" $set
-     */
+    /** @param "alpha-2"|"alpha-3" $set */
     public function undefOrLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /**
-     * @param callable(mixed): Rule $ruleCreator
-     */
+    /** @param callable(mixed): Rule $ruleCreator */
     public function undefOrLazy(callable $ruleCreator): Chain;
 
     public function undefOrLeapDate(string $format): Chain;
@@ -265,7 +251,7 @@ interface UndefOrChain
 
     public function undefOrPesel(): Chain;
 
-    public function undefOrPhone(?string $countryCode = null): Chain;
+    public function undefOrPhone(string|null $countryCode = null): Chain;
 
     public function undefOrPhpLabel(): Chain;
 
@@ -303,9 +289,7 @@ interface UndefOrChain
 
     public function undefOrScalarVal(): Chain;
 
-    /**
-     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
-     */
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function undefOrSize(string $unit, Rule $rule): Chain;
 
     public function undefOrSlug(): Chain;
@@ -322,9 +306,7 @@ interface UndefOrChain
 
     public function undefOrSubdivisionCode(string $countryCode): Chain;
 
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public function undefOrSubset(array $superset): Chain;
 
     public function undefOrSymbolicLink(): Chain;
@@ -343,15 +325,15 @@ interface UndefOrChain
 
     public function undefOrUrl(): Chain;
 
-    public function undefOrUuid(?int $version = null): Chain;
+    public function undefOrUuid(int|null $version = null): Chain;
 
     public function undefOrVersion(): Chain;
 
-    public function undefOrVideoUrl(?string $service = null): Chain;
+    public function undefOrVideoUrl(string|null $service = null): Chain;
 
     public function undefOrVowel(string ...$additionalChars): Chain;
 
-    public function undefOrWhen(Rule $when, Rule $then, ?Rule $else = null): Chain;
+    public function undefOrWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
 
     public function undefOrWritable(): Chain;
 

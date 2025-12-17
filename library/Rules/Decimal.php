@@ -28,7 +28,7 @@ use function var_export;
 final readonly class Decimal implements Rule
 {
     public function __construct(
-        private int $decimals
+        private int $decimals,
     ) {
     }
 

@@ -46,5 +46,5 @@ test('https://github.com/Respect/Validation/issues/1334', catchAll(
                 1 => '`.street` must not be empty',
                 2 => '`.street` must be a string',
             ],
-        ])
+        ]),
 ));

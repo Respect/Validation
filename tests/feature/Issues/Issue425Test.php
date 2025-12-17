@@ -17,5 +17,5 @@ test('https://github.com/Respect/Validation/issues/425', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.reference` must be present')
         ->and($fullMessage)->toBe('- `.reference` must be present')
-        ->and($messages)->toBe(['reference' => '`.reference` must be present'])
+        ->and($messages)->toBe(['reference' => '`.reference` must be present']),
 ));

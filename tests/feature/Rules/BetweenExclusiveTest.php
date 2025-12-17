@@ -12,7 +12,7 @@ test('Default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('12 must be greater than 1 and less than 10')
         ->and($fullMessage)->toBe('- 12 must be greater than 1 and less than 10')
-        ->and($messages)->toBe(['betweenExclusive' => '12 must be greater than 1 and less than 10'])
+        ->and($messages)->toBe(['betweenExclusive' => '12 must be greater than 1 and less than 10']),
 ));
 
 test('Inverted', catchAll(
@@ -20,7 +20,7 @@ test('Inverted', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('5 must not be greater than 1 or less than 10')
         ->and($fullMessage)->toBe('- 5 must not be greater than 1 or less than 10')
-        ->and($messages)->toBe(['notBetweenExclusive' => '5 must not be greater than 1 or less than 10'])
+        ->and($messages)->toBe(['notBetweenExclusive' => '5 must not be greater than 1 or less than 10']),
 ));
 
 test('With template', catchAll(
@@ -28,7 +28,7 @@ test('With template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Bewildered bees buzzed between blooming begonias')
         ->and($fullMessage)->toBe('- Bewildered bees buzzed between blooming begonias')
-        ->and($messages)->toBe(['betweenExclusive' => 'Bewildered bees buzzed between blooming begonias'])
+        ->and($messages)->toBe(['betweenExclusive' => 'Bewildered bees buzzed between blooming begonias']),
 ));
 
 test('With name', catchAll(
@@ -36,5 +36,5 @@ test('With name', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Range must be greater than 1 and less than 10')
         ->and($fullMessage)->toBe('- Range must be greater than 1 and less than 10')
-        ->and($messages)->toBe(['betweenExclusive' => 'Range must be greater than 1 and less than 10'])
+        ->and($messages)->toBe(['betweenExclusive' => 'Range must be greater than 1 and less than 10']),
 ));

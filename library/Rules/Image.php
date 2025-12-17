@@ -29,7 +29,7 @@ use const FILEINFO_MIME_TYPE;
 final class Image extends Simple
 {
     public function __construct(
-        private finfo $fileInfo = new finfo(FILEINFO_MIME_TYPE)
+        private finfo $fileInfo = new finfo(FILEINFO_MIME_TYPE),
     ) {
     }
 

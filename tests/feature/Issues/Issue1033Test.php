@@ -22,5 +22,5 @@ test('https://github.com/Respect/Validation/issues/1033', catchAll(
             0 => '`.0` must be equal to 1',
             1 => '`.1` must be equal to 1',
             2 => '`.2` must be equal to 1',
-        ])
+        ]),
 ));

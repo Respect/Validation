@@ -26,6 +26,11 @@ final class NoTest extends RuleTestCase
 {
     private readonly string $locale;
 
+    protected function setUp(): void
+    {
+        $this->locale = (string) setlocale(LC_ALL, '0');
+    }
+
     #[Test]
     #[DataProvider('providerForValidInputWithLocale')]
     public function itShouldValidateInputAccordingToTheLocale(string $locale, string $input): void
@@ -52,9 +57,7 @@ final class NoTest extends RuleTestCase
         self::assertInvalidInput(new No(true), $input);
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public static function providerForValidInputWithLocale(): array
     {
         return [
@@ -64,9 +67,7 @@ final class NoTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public static function providerForInvalidInputWithLocale(): array
     {
         return [
@@ -103,11 +104,6 @@ final class NoTest extends RuleTestCase
             [$sut, 'Noooooooo'],
             [$sut, 'Não'],
         ];
-    }
-
-    protected function setUp(): void
-    {
-        $this->locale = (string) setlocale(LC_ALL, '0');
     }
 
     protected function tearDown(): void

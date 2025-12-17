@@ -25,7 +25,7 @@ use function is_object;
 final readonly class PropertyExists implements Rule
 {
     public function __construct(
-        private string $propertyName
+        private string $propertyName,
     ) {
     }
 

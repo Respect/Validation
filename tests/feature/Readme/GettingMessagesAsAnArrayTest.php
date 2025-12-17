@@ -14,5 +14,5 @@ test('Scenario #1', catchMessages(
         'alnum' => '"really messed up screen#name" must contain only letters (a-z) and digits (0-9)',
         'noWhitespace' => '"really messed up screen#name" must not contain whitespaces',
         'lengthBetween' => 'The length of "really messed up screen#name" must be between 1 and 15',
-    ])
+    ]),
 ));

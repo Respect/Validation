@@ -19,7 +19,7 @@ final readonly class When implements Rule
     public function __construct(
         private Rule $when,
         private Rule $then,
-        private Rule $else = new Templated(new AlwaysInvalid(), AlwaysInvalid::TEMPLATE_SIMPLE)
+        private Rule $else = new Templated(new AlwaysInvalid(), AlwaysInvalid::TEMPLATE_SIMPLE),
     ) {
     }
 

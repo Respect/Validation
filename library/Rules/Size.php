@@ -27,18 +27,18 @@ use function ucfirst;
 #[Template(
     'The size in {{unit|trans}} of',
     'The size in {{unit|trans}} of',
-    Size::TEMPLATE_STANDARD
+    Size::TEMPLATE_STANDARD,
 )]
 #[Template(
     '{{name}} must be a filename or an instance of SplFileInfo or a PSR-7 interface',
     '{{name}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface',
-    self::TEMPLATE_WRONG_TYPE
+    self::TEMPLATE_WRONG_TYPE,
 )]
 final class Size extends Wrapper
 {
-    public const TEMPLATE_WRONG_TYPE = '__wrong_type__';
+    public const string TEMPLATE_WRONG_TYPE = '__wrong_type__';
 
-    private const DATA_STORAGE_UNITS = [
+    private const array DATA_STORAGE_UNITS = [
         'B' => ['name' => 'bytes', 'bytes' => 1],
         'KB' => ['name' => 'kilobytes', 'bytes' => 1024],
         'MB' => ['name' => 'megabytes', 'bytes' => 1024 ** 2],
@@ -53,7 +53,7 @@ final class Size extends Wrapper
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function __construct(
         private readonly string $unit,
-        Rule $rule
+        Rule $rule,
     ) {
         if (!isset(self::DATA_STORAGE_UNITS[$unit])) {
             throw new InvalidRuleConstructorException('"%s" is not a recognized data storage unit.', $unit);
@@ -76,7 +76,7 @@ final class Size extends Wrapper
         return Result::fromAdjacent($input, 'size', $this, $result, $parameters);
     }
 
-    private function getSize(mixed $input): ?int
+    private function getSize(mixed $input): int|null
     {
         if (is_string($input)) {
             return (int) filesize($input);

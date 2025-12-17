@@ -18,9 +18,7 @@ use function is_string;
 use function preg_match;
 use function str_split;
 
-/**
- * @see https://en.wikipedia.org/wiki/National_identification_number#Finland
- */
+/** @see https://en.wikipedia.org/wiki/National_identification_number#Finland */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid Finnish personal identity code',

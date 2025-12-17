@@ -31,9 +31,7 @@ final class TimeTest extends RuleTestCase
         new Time($format);
     }
 
-    /**
-     * @return mixed[][]
-     */
+    /** @return mixed[][] */
     public static function invalidFormatsProvider(): array
     {
         return [

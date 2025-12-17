@@ -29,7 +29,7 @@ final readonly class StartsWith implements Rule
 {
     public function __construct(
         private mixed $startValue,
-        private bool $identical = false
+        private bool $identical = false,
     ) {
     }
 

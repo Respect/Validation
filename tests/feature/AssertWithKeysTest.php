@@ -48,5 +48,5 @@ test('Scenario #1', catchFullMessage(
                 - `.user` must be a string
                 - `.password` must be a string
                 - `.schema` must be present
-            FULL_MESSAGE)
+            FULL_MESSAGE),
 ));

@@ -12,7 +12,7 @@ test('Default', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The length of "tulip" must be equal to 3')
         ->and($fullMessage)->toBe('- The length of "tulip" must be equal to 3')
-        ->and($messages)->toBe(['lengthEquals' => 'The length of "tulip" must be equal to 3'])
+        ->and($messages)->toBe(['lengthEquals' => 'The length of "tulip" must be equal to 3']),
 ));
 
 test('Inverted wrapped', catchAll(
@@ -20,7 +20,7 @@ test('Inverted wrapped', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The length of "rose" must not be equal to 4')
         ->and($fullMessage)->toBe('- The length of "rose" must not be equal to 4')
-        ->and($messages)->toBe(['lengthNotEquals' => 'The length of "rose" must not be equal to 4'])
+        ->and($messages)->toBe(['lengthNotEquals' => 'The length of "rose" must not be equal to 4']),
 ));
 
 test('Inverted wrapper', catchAll(
@@ -28,7 +28,7 @@ test('Inverted wrapper', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The length of "fern" must not be equal to 4')
         ->and($fullMessage)->toBe('- The length of "fern" must not be equal to 4')
-        ->and($messages)->toBe(['notLengthEquals' => 'The length of "fern" must not be equal to 4'])
+        ->and($messages)->toBe(['notLengthEquals' => 'The length of "fern" must not be equal to 4']),
 ));
 
 test('With template', catchAll(
@@ -36,7 +36,7 @@ test('With template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('This is a template')
         ->and($fullMessage)->toBe('- This is a template')
-        ->and($messages)->toBe(['lengthEquals' => 'This is a template'])
+        ->and($messages)->toBe(['lengthEquals' => 'This is a template']),
 ));
 
 test('With wrapper name', catchAll(
@@ -44,7 +44,7 @@ test('With wrapper name', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The length of Cactus must be equal to 3')
         ->and($fullMessage)->toBe('- The length of Cactus must be equal to 3')
-        ->and($messages)->toBe(['lengthEquals' => 'The length of Cactus must be equal to 3'])
+        ->and($messages)->toBe(['lengthEquals' => 'The length of Cactus must be equal to 3']),
 ));
 
 test('Chained wrapped rule', catchAll(
@@ -60,5 +60,5 @@ test('Chained wrapped rule', catchAll(
             '__root__' => '`[]` must pass all the rules',
             'lengthBetween' => 'The length of `[]` must be between 5 and 7',
             'lengthOdd' => 'The length of `[]` must be an odd number',
-        ])
+        ]),
 ));

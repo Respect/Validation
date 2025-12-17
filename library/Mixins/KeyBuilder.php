@@ -66,42 +66,34 @@ interface KeyBuilder
 
     public static function keyContains(int|string $key, mixed $containsValue, bool $identical = false): Chain;
 
-    /**
-     * @param non-empty-array<mixed> $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public static function keyContainsAny(int|string $key, array $needles, bool $identical = false): Chain;
 
     public static function keyControl(int|string $key, string ...$additionalChars): Chain;
 
     public static function keyCountable(int|string $key): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public static function keyCountryCode(int|string $key, string $set = 'alpha-2'): Chain;
 
     public static function keyCpf(int|string $key): Chain;
 
     public static function keyCreditCard(int|string $key, string $brand = 'Any'): Chain;
 
-    /**
-     * @param "alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-3"|"numeric" $set */
     public static function keyCurrencyCode(int|string $key, string $set = 'alpha-3'): Chain;
 
     public static function keyDate(int|string $key, string $format = 'Y-m-d'): Chain;
 
-    public static function keyDateTime(int|string $key, ?string $format = null): Chain;
+    public static function keyDateTime(int|string $key, string|null $format = null): Chain;
 
-    /**
-     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
-     */
+    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public static function keyDateTimeDiff(
         int|string $key,
         string $type,
         Rule $rule,
-        ?string $format = null,
-        ?DateTimeImmutable $now = null,
+        string|null $format = null,
+        DateTimeImmutable|null $now = null,
     ): Chain;
 
     public static function keyDecimal(int|string $key, int $decimals): Chain;
@@ -166,16 +158,14 @@ interface KeyBuilder
 
     public static function keyInfinite(int|string $key): Chain;
 
-    /**
-     * @param class-string $class
-     */
+    /** @param class-string $class */
     public static function keyInstance(int|string $key, string $class): Chain;
 
     public static function keyIntType(int|string $key): Chain;
 
     public static function keyIntVal(int|string $key): Chain;
 
-    public static function keyIp(int|string $key, string $range = '*', ?int $options = null): Chain;
+    public static function keyIp(int|string $key, string $range = '*', int|null $options = null): Chain;
 
     public static function keyIsbn(int|string $key): Chain;
 
@@ -185,14 +175,10 @@ interface KeyBuilder
 
     public static function keyJson(int|string $key): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3" $set
-     */
+    /** @param "alpha-2"|"alpha-3" $set */
     public static function keyLanguageCode(int|string $key, string $set = 'alpha-2'): Chain;
 
-    /**
-     * @param callable(mixed): Rule $ruleCreator
-     */
+    /** @param callable(mixed): Rule $ruleCreator */
     public static function keyLazy(int|string $key, callable $ruleCreator): Chain;
 
     public static function keyLeapDate(int|string $key, string $format): Chain;
@@ -259,7 +245,7 @@ interface KeyBuilder
 
     public static function keyPesel(int|string $key): Chain;
 
-    public static function keyPhone(int|string $key, ?string $countryCode = null): Chain;
+    public static function keyPhone(int|string $key, string|null $countryCode = null): Chain;
 
     public static function keyPhpLabel(int|string $key): Chain;
 
@@ -291,9 +277,7 @@ interface KeyBuilder
 
     public static function keyScalarVal(int|string $key): Chain;
 
-    /**
-     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
-     */
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public static function keySize(int|string $key, string $unit, Rule $rule): Chain;
 
     public static function keySlug(int|string $key): Chain;
@@ -310,9 +294,7 @@ interface KeyBuilder
 
     public static function keySubdivisionCode(int|string $key, string $countryCode): Chain;
 
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public static function keySubset(int|string $key, array $superset): Chain;
 
     public static function keySymbolicLink(int|string $key): Chain;
@@ -331,15 +313,15 @@ interface KeyBuilder
 
     public static function keyUrl(int|string $key): Chain;
 
-    public static function keyUuid(int|string $key, ?int $version = null): Chain;
+    public static function keyUuid(int|string $key, int|null $version = null): Chain;
 
     public static function keyVersion(int|string $key): Chain;
 
-    public static function keyVideoUrl(int|string $key, ?string $service = null): Chain;
+    public static function keyVideoUrl(int|string $key, string|null $service = null): Chain;
 
     public static function keyVowel(int|string $key, string ...$additionalChars): Chain;
 
-    public static function keyWhen(int|string $key, Rule $when, Rule $then, ?Rule $else = null): Chain;
+    public static function keyWhen(int|string $key, Rule $when, Rule $then, Rule|null $else = null): Chain;
 
     public static function keyWritable(int|string $key): Chain;
 

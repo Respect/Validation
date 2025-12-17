@@ -12,5 +12,5 @@ test('https://github.com/Respect/Validation/issues/739', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"foo" is invalid')
         ->and($fullMessage)->toBe('- "foo" is invalid')
-        ->and($messages)->toBe(['alwaysInvalid' => '"foo" is invalid'])
+        ->and($messages)->toBe(['alwaysInvalid' => '"foo" is invalid']),
 ));

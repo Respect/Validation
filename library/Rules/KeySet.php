@@ -33,25 +33,25 @@ use function array_slice;
 #[Template(
     '{{name}} contains both missing and extra keys',
     '{{name}} contains no missing or extra keys.',
-    self::TEMPLATE_BOTH
+    self::TEMPLATE_BOTH,
 )]
 #[Template(
     '{{name}} contains extra keys',
     '{{name}} contains no extra keys',
-    self::TEMPLATE_EXTRA_KEYS
+    self::TEMPLATE_EXTRA_KEYS,
 )]
 #[Template(
     '{{name}} contains missing keys',
     '{{name}} contains no missing keys',
-    self::TEMPLATE_MISSING_KEYS
+    self::TEMPLATE_MISSING_KEYS,
 )]
 final readonly class KeySet implements Rule
 {
-    public const TEMPLATE_BOTH = '__both__';
-    public const TEMPLATE_EXTRA_KEYS = '__extra_keys__';
-    public const TEMPLATE_MISSING_KEYS = '__missing_keys__';
+    public const string TEMPLATE_BOTH = '__both__';
+    public const string TEMPLATE_EXTRA_KEYS = '__extra_keys__';
+    public const string TEMPLATE_MISSING_KEYS = '__missing_keys__';
 
-    private const MAX_DIFF_KEYS = 10;
+    private const int MAX_DIFF_KEYS = 10;
 
     /** @var array<KeyRelated> */
     private array $rules;
@@ -81,7 +81,7 @@ final readonly class KeySet implements Rule
 
         $keys = new Reducer(...array_merge($this->rules, array_map(
             static fn(string|int $key) => new Not(new KeyExists($key)),
-            array_slice(array_diff(array_keys($input), $this->allKeys), 0, self::MAX_DIFF_KEYS)
+            array_slice(array_diff(array_keys($input), $this->allKeys), 0, self::MAX_DIFF_KEYS),
         )));
         $keysResult = $keys->evaluate($input);
 

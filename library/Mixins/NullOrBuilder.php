@@ -67,41 +67,33 @@ interface NullOrBuilder
 
     public static function nullOrContains(mixed $containsValue, bool $identical = false): Chain;
 
-    /**
-     * @param non-empty-array<mixed> $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public static function nullOrContainsAny(array $needles, bool $identical = false): Chain;
 
     public static function nullOrControl(string ...$additionalChars): Chain;
 
     public static function nullOrCountable(): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public static function nullOrCountryCode(string $set = 'alpha-2'): Chain;
 
     public static function nullOrCpf(): Chain;
 
     public static function nullOrCreditCard(string $brand = 'Any'): Chain;
 
-    /**
-     * @param "alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-3"|"numeric" $set */
     public static function nullOrCurrencyCode(string $set = 'alpha-3'): Chain;
 
     public static function nullOrDate(string $format = 'Y-m-d'): Chain;
 
-    public static function nullOrDateTime(?string $format = null): Chain;
+    public static function nullOrDateTime(string|null $format = null): Chain;
 
-    /**
-     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
-     */
+    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public static function nullOrDateTimeDiff(
         string $type,
         Rule $rule,
-        ?string $format = null,
-        ?DateTimeImmutable $now = null,
+        string|null $format = null,
+        DateTimeImmutable|null $now = null,
     ): Chain;
 
     public static function nullOrDecimal(int $decimals): Chain;
@@ -168,16 +160,14 @@ interface NullOrBuilder
 
     public static function nullOrInfinite(): Chain;
 
-    /**
-     * @param class-string $class
-     */
+    /** @param class-string $class */
     public static function nullOrInstance(string $class): Chain;
 
     public static function nullOrIntType(): Chain;
 
     public static function nullOrIntVal(): Chain;
 
-    public static function nullOrIp(string $range = '*', ?int $options = null): Chain;
+    public static function nullOrIp(string $range = '*', int|null $options = null): Chain;
 
     public static function nullOrIsbn(): Chain;
 
@@ -195,14 +185,10 @@ interface NullOrBuilder
 
     public static function nullOrKeySet(Rule $rule, Rule ...$rules): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3" $set
-     */
+    /** @param "alpha-2"|"alpha-3" $set */
     public static function nullOrLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /**
-     * @param callable(mixed): Rule $ruleCreator
-     */
+    /** @param callable(mixed): Rule $ruleCreator */
     public static function nullOrLazy(callable $ruleCreator): Chain;
 
     public static function nullOrLeapDate(string $format): Chain;
@@ -267,7 +253,7 @@ interface NullOrBuilder
 
     public static function nullOrPesel(): Chain;
 
-    public static function nullOrPhone(?string $countryCode = null): Chain;
+    public static function nullOrPhone(string|null $countryCode = null): Chain;
 
     public static function nullOrPhpLabel(): Chain;
 
@@ -305,9 +291,7 @@ interface NullOrBuilder
 
     public static function nullOrScalarVal(): Chain;
 
-    /**
-     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
-     */
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public static function nullOrSize(string $unit, Rule $rule): Chain;
 
     public static function nullOrSlug(): Chain;
@@ -324,9 +308,7 @@ interface NullOrBuilder
 
     public static function nullOrSubdivisionCode(string $countryCode): Chain;
 
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public static function nullOrSubset(array $superset): Chain;
 
     public static function nullOrSymbolicLink(): Chain;
@@ -345,15 +327,15 @@ interface NullOrBuilder
 
     public static function nullOrUrl(): Chain;
 
-    public static function nullOrUuid(?int $version = null): Chain;
+    public static function nullOrUuid(int|null $version = null): Chain;
 
     public static function nullOrVersion(): Chain;
 
-    public static function nullOrVideoUrl(?string $service = null): Chain;
+    public static function nullOrVideoUrl(string|null $service = null): Chain;
 
     public static function nullOrVowel(string ...$additionalChars): Chain;
 
-    public static function nullOrWhen(Rule $when, Rule $then, ?Rule $else = null): Chain;
+    public static function nullOrWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
 
     public static function nullOrWritable(): Chain;
 

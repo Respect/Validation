@@ -26,7 +26,7 @@ final readonly class Subset implements Rule
 {
     /** @param mixed[] $superset */
     public function __construct(
-        private array $superset
+        private array $superset,
     ) {
     }
 

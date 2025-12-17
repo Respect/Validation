@@ -63,7 +63,7 @@ final class Domain implements Rule
             new StringType(),
             new NoWhitespace(),
             new Contains('.'),
-            new Length(new GreaterThanOrEqual(3))
+            new Length(new GreaterThanOrEqual(3)),
         );
     }
 
@@ -86,10 +86,10 @@ final class Domain implements Rule
                     new Not(new Contains('--')),
                     new Callback(static function ($str) {
                         return mb_substr_count($str, '--') == 1;
-                    })
+                    }),
                 ),
-                new Not(new EndsWith('-'))
-            )
+                new Not(new EndsWith('-')),
+            ),
         );
     }
 }

@@ -29,6 +29,11 @@ final class YesTest extends RuleTestCase
 {
     private readonly string $locale;
 
+    protected function setUp(): void
+    {
+        $this->locale = (string) setlocale(LC_ALL, '0');
+    }
+
     #[Test]
     #[DataProvider('providerForValidInputWithLocale')]
     public function itShouldValidateValidInputAccordingToTheLocale(string $locale, string $input): void
@@ -55,9 +60,7 @@ final class YesTest extends RuleTestCase
         self::assertInvalidInput(new Yes(true), $input);
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public static function providerForValidInputWithLocale(): array
     {
         return [
@@ -67,9 +70,7 @@ final class YesTest extends RuleTestCase
         ];
     }
 
-    /**
-     * @return string[][]
-     */
+    /** @return string[][] */
     public static function providerForInvalidInputWithLocale(): array
     {
         return [
@@ -109,11 +110,6 @@ final class YesTest extends RuleTestCase
             'int' => [$sut, random_int(1, PHP_INT_MAX)],
             'float' => [$sut, random_int(1, 9) / 10],
         ];
-    }
-
-    protected function setUp(): void
-    {
-        $this->locale = (string) setlocale(LC_ALL, '0');
     }
 
     protected function tearDown(): void

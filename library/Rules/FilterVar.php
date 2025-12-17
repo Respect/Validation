@@ -35,7 +35,7 @@ use const FILTER_VALIDATE_URL;
 )]
 final class FilterVar extends Envelope
 {
-    private const ALLOWED_FILTERS = [
+    private const array ALLOWED_FILTERS = [
         FILTER_VALIDATE_BOOLEAN => 'is_bool',
         FILTER_VALIDATE_DOMAIN => 'is_string',
         FILTER_VALIDATE_EMAIL => 'is_string',
@@ -59,7 +59,7 @@ final class FilterVar extends Envelope
 
         parent::__construct(new Callback(static function ($input) use ($filter, $arguments) {
             return (self::ALLOWED_FILTERS[$filter])(
-                filter_var($input, ...$arguments)
+                filter_var($input, ...$arguments),
             );
         }));
     }

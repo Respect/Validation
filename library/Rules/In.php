@@ -28,7 +28,7 @@ final readonly class In implements Rule
 {
     public function __construct(
         private mixed $haystack,
-        private bool $compareIdentical = false
+        private bool $compareIdentical = false,
     ) {
     }
 

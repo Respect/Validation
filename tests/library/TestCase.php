@@ -26,7 +26,7 @@ use function substr;
 
 abstract class TestCase extends PHPUnitTestCase
 {
-    public static function fixture(?string $filename = null): string
+    public static function fixture(string|null $filename = null): string
     {
         $parts = [(string) realpath(__DIR__ . '/../fixtures')];
         if ($filename !== null) {
@@ -46,8 +46,8 @@ abstract class TestCase extends PHPUnitTestCase
                 '%s should pass with input %s and parameters %s',
                 substr((string) strrchr($rule::class, '\\'), 1),
                 stringify($input),
-                stringify($result->parameters)
-            )
+                stringify($result->parameters),
+            ),
         );
     }
 
@@ -61,8 +61,8 @@ abstract class TestCase extends PHPUnitTestCase
                 '%s should fail with input %s and parameters %s',
                 substr((string) strrchr($rule::class, '\\'), 1),
                 stringify($input),
-                stringify($result->parameters)
-            )
+                stringify($result->parameters),
+            ),
         );
     }
 

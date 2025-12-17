@@ -22,7 +22,7 @@ use Respect\Validation\Rule;
 final readonly class Identical implements Rule
 {
     public function __construct(
-        private mixed $compareTo
+        private mixed $compareTo,
     ) {
     }
 

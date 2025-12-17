@@ -12,7 +12,7 @@ test('With $type = "years"', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The number of years between now and "1 year ago" must be equal to 2')
         ->and($fullMessage)->toBe('- The number of years between now and "1 year ago" must be equal to 2')
-        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of years between now and "1 year ago" must be equal to 2'])
+        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of years between now and "1 year ago" must be equal to 2']),
 ));
 
 test('With $type = "months"', catchAll(
@@ -20,7 +20,7 @@ test('With $type = "months"', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The number of months between now and "2 months ago" must be equal to 3')
         ->and($fullMessage)->toBe('- The number of months between now and "2 months ago" must be equal to 3')
-        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of months between now and "2 months ago" must be equal to 3'])
+        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of months between now and "2 months ago" must be equal to 3']),
 ));
 
 test('With $type = "days"', catchAll(
@@ -28,7 +28,7 @@ test('With $type = "days"', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The number of days between now and "3 days ago" must be equal to 4')
         ->and($fullMessage)->toBe('- The number of days between now and "3 days ago" must be equal to 4')
-        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of days between now and "3 days ago" must be equal to 4'])
+        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of days between now and "3 days ago" must be equal to 4']),
 ));
 
 test('With $type = "hours"', catchAll(
@@ -36,7 +36,7 @@ test('With $type = "hours"', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The number of hours between now and "4 hours ago" must be equal to 5')
         ->and($fullMessage)->toBe('- The number of hours between now and "4 hours ago" must be equal to 5')
-        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of hours between now and "4 hours ago" must be equal to 5'])
+        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of hours between now and "4 hours ago" must be equal to 5']),
 ));
 
 test('With $type = "minutes"', catchAll(
@@ -44,7 +44,7 @@ test('With $type = "minutes"', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The number of minutes between now and "5 minutes ago" must be equal to 6')
         ->and($fullMessage)->toBe('- The number of minutes between now and "5 minutes ago" must be equal to 6')
-        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of minutes between now and "5 minutes ago" must be equal to 6'])
+        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of minutes between now and "5 minutes ago" must be equal to 6']),
 ));
 
 test('With $type = "microseconds"', catchAll(
@@ -52,7 +52,7 @@ test('With $type = "microseconds"', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The number of microseconds between now and "6 microseconds ago" must be equal to 7')
         ->and($fullMessage)->toBe('- The number of microseconds between now and "6 microseconds ago" must be equal to 7')
-        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of microseconds between now and "6 microseconds ago" must be equal to 7'])
+        ->and($messages)->toBe(['dateTimeDiffEquals' => 'The number of microseconds between now and "6 microseconds ago" must be equal to 7']),
 ));
 
 test('With custom $format', catchAll(
@@ -67,14 +67,14 @@ test('With input in non-parseable date', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('For comparison with now, "not a date" must be a valid datetime')
         ->and($fullMessage)->toBe('- For comparison with now, "not a date" must be a valid datetime')
-        ->and($messages)->toBe(['dateTimeDiffEquals' => 'For comparison with now, "not a date" must be a valid datetime'])
+        ->and($messages)->toBe(['dateTimeDiffEquals' => 'For comparison with now, "not a date" must be a valid datetime']),
 ));
 
 test('With input in incorrect $format', catchAll(
     fn() => v::dateTimeDiff('years', v::equals(2), 'Y-m-d')->assert('1 year ago'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toMatch('/For comparison with \d+-\d+-\d+, "1 year ago" must be a valid datetime in the format \d+-\d+-\d+/')
-        ->and($fullMessage)->toMatch('/- For comparison with \d+-\d+-\d+, "1 year ago" must be a valid datetime in the format \d+-\d+-\d+/')
+        ->and($fullMessage)->toMatch('/- For comparison with \d+-\d+-\d+, "1 year ago" must be a valid datetime in the format \d+-\d+-\d+/'),
 ));
 
 test('With custom $now', catchAll(
@@ -89,7 +89,7 @@ test('With custom template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Custom template')
         ->and($fullMessage)->toBe('- Custom template')
-        ->and($messages)->toBe(['equals' => 'Custom template'])
+        ->and($messages)->toBe(['equals' => 'Custom template']),
 ));
 
 test('Wrapped by "not"', catchAll(
@@ -97,7 +97,7 @@ test('Wrapped by "not"', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The number of years between now and "7 year ago" must not be less than 8')
         ->and($fullMessage)->toBe('- The number of years between now and "7 year ago" must not be less than 8')
-        ->and($messages)->toBe(['notDateTimeDiffLessThan' => 'The number of years between now and "7 year ago" must not be less than 8'])
+        ->and($messages)->toBe(['notDateTimeDiffLessThan' => 'The number of years between now and "7 year ago" must not be less than 8']),
 ));
 
 test('Wrapping "not"', catchAll(
@@ -105,7 +105,7 @@ test('Wrapping "not"', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The number of years between now and "8 year ago" must not be less than 9')
         ->and($fullMessage)->toBe('- The number of years between now and "8 year ago" must not be less than 9')
-        ->and($messages)->toBe(['dateTimeDiffNotLessThan' => 'The number of years between now and "8 year ago" must not be less than 9'])
+        ->and($messages)->toBe(['dateTimeDiffNotLessThan' => 'The number of years between now and "8 year ago" must not be less than 9']),
 ));
 
 test('Wrapped with custom template', catchAll(
@@ -113,7 +113,7 @@ test('Wrapped with custom template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped with custom template')
         ->and($fullMessage)->toBe('- Wrapped with custom template')
-        ->and($messages)->toBe(['equals' => 'Wrapped with custom template'])
+        ->and($messages)->toBe(['equals' => 'Wrapped with custom template']),
 ));
 
 test('Wrapper with custom template', catchAll(
@@ -121,7 +121,7 @@ test('Wrapper with custom template', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapper with custom template')
         ->and($fullMessage)->toBe('- Wrapper with custom template')
-        ->and($messages)->toBe(['dateTimeDiffEquals' => 'Wrapper with custom template'])
+        ->and($messages)->toBe(['dateTimeDiffEquals' => 'Wrapper with custom template']),
 ));
 
 test('Without adjacent result', catchAll(
@@ -137,7 +137,7 @@ test('Without adjacent result', catchAll(
             '__root__' => '"1 year ago" must pass all the rules',
             'dateTimeDiffPrimeNumber' => 'The number of years between now and "1 year ago" must be a prime number',
             'dateTimeDiffBetween' => 'The number of years between now and "1 year ago" must be between 2 and 5',
-        ])
+        ]),
 ));
 
 test('Without adjacent result with templates', catchAll(
@@ -158,5 +158,5 @@ test('Without adjacent result with templates', catchAll(
             '__root__' => '"1 year ago" must pass all the rules',
             'dateTimeDiffPrimeNumber' => 'The number of years between now and "1 year ago" must be a prime number',
             'dateTimeDiffBetween' => 'The number of years between now and "1 year ago" must be between 2 and 5',
-        ])
+        ]),
 ));

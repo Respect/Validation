@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 test('Default: fail, fail', catchAll(
     fn() => v::allOf(v::intType(), v::negative())->assert('string'),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"string" must be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - "string" must pass all the rules
@@ -25,7 +25,7 @@ test('Default: fail, fail', catchAll(
 
 test('Default: fail, pass', catchAll(
     fn() => v::allOf(v::intType(), v::stringType())->assert('string'),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"string" must be an integer')
         ->and($fullMessage)->toBe('- "string" must be an integer')
         ->and($messages)->toBe(['intType' => '"string" must be an integer']),
@@ -33,7 +33,7 @@ test('Default: fail, pass', catchAll(
 
 test('Default: fail, fail, pass', catchAll(
     fn() => v::allOf(v::intType(), v::positive(), v::stringType())->assert('string'),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"string" must be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - "string" must pass the rules
@@ -49,7 +49,7 @@ test('Default: fail, fail, pass', catchAll(
 
 test('Inverted: pass, pass', catchAll(
     fn() => v::not(v::allOf(v::intType(), v::negative()))->assert(-1),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('-1 must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - -1 must pass the rules
@@ -65,7 +65,7 @@ test('Inverted: pass, pass', catchAll(
 
 test('Inverted: pass, fail, fail', catchAll(
     fn() => v::allOf(v::intType(), v::alpha(), v::stringType())->assert(2),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('2 must contain only letters (a-z)')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - 2 must pass the rules
@@ -81,7 +81,7 @@ test('Inverted: pass, fail, fail', catchAll(
 
 test('Wrapping "not"', catchAll(
     fn() => v::allOf(v::not(v::intType()), v::greaterThan(2))->assert(4),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('4 must not be an integer')
         ->and($fullMessage)->toBe('- 4 must not be an integer')
         ->and($messages)->toBe(['notIntType' => '4 must not be an integer']),
@@ -89,7 +89,7 @@ test('Wrapping "not"', catchAll(
 
 test('With a single template', catchAll(
     fn() => v::allOf(v::stringType(), v::arrayType())->assert(5, 'This is a single template'),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('This is a single template')
         ->and($fullMessage)->toBe('- This is a single template')
         ->and($messages)->toBe(['allOf' => 'This is a single template']),
@@ -101,7 +101,7 @@ test('With multiple templates', catchAll(
         'stringType' => 'Template for "stringType"',
         'uppercase' => 'Template for "uppercase"',
     ]),
-    fn (string $message, string $fullMessage, array $messages) => expect()
+    fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Template for "stringType"')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - Two things are wrong

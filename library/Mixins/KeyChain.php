@@ -66,42 +66,34 @@ interface KeyChain
 
     public function keyContains(int|string $key, mixed $containsValue, bool $identical = false): Chain;
 
-    /**
-     * @param non-empty-array<mixed> $needles
-     */
+    /** @param non-empty-array<mixed> $needles */
     public function keyContainsAny(int|string $key, array $needles, bool $identical = false): Chain;
 
     public function keyControl(int|string $key, string ...$additionalChars): Chain;
 
     public function keyCountable(int|string $key): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-2"|"alpha-3"|"numeric" $set */
     public function keyCountryCode(int|string $key, string $set = 'alpha-2'): Chain;
 
     public function keyCpf(int|string $key): Chain;
 
     public function keyCreditCard(int|string $key, string $brand = 'Any'): Chain;
 
-    /**
-     * @param "alpha-3"|"numeric" $set
-     */
+    /** @param "alpha-3"|"numeric" $set */
     public function keyCurrencyCode(int|string $key, string $set = 'alpha-3'): Chain;
 
     public function keyDate(int|string $key, string $format = 'Y-m-d'): Chain;
 
-    public function keyDateTime(int|string $key, ?string $format = null): Chain;
+    public function keyDateTime(int|string $key, string|null $format = null): Chain;
 
-    /**
-     * @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type
-     */
+    /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function keyDateTimeDiff(
         int|string $key,
         string $type,
         Rule $rule,
-        ?string $format = null,
-        ?DateTimeImmutable $now = null,
+        string|null $format = null,
+        DateTimeImmutable|null $now = null,
     ): Chain;
 
     public function keyDecimal(int|string $key, int $decimals): Chain;
@@ -166,16 +158,14 @@ interface KeyChain
 
     public function keyInfinite(int|string $key): Chain;
 
-    /**
-     * @param class-string $class
-     */
+    /** @param class-string $class */
     public function keyInstance(int|string $key, string $class): Chain;
 
     public function keyIntType(int|string $key): Chain;
 
     public function keyIntVal(int|string $key): Chain;
 
-    public function keyIp(int|string $key, string $range = '*', ?int $options = null): Chain;
+    public function keyIp(int|string $key, string $range = '*', int|null $options = null): Chain;
 
     public function keyIsbn(int|string $key): Chain;
 
@@ -185,14 +175,10 @@ interface KeyChain
 
     public function keyJson(int|string $key): Chain;
 
-    /**
-     * @param "alpha-2"|"alpha-3" $set
-     */
+    /** @param "alpha-2"|"alpha-3" $set */
     public function keyLanguageCode(int|string $key, string $set = 'alpha-2'): Chain;
 
-    /**
-     * @param callable(mixed): Rule $ruleCreator
-     */
+    /** @param callable(mixed): Rule $ruleCreator */
     public function keyLazy(int|string $key, callable $ruleCreator): Chain;
 
     public function keyLeapDate(int|string $key, string $format): Chain;
@@ -259,7 +245,7 @@ interface KeyChain
 
     public function keyPesel(int|string $key): Chain;
 
-    public function keyPhone(int|string $key, ?string $countryCode = null): Chain;
+    public function keyPhone(int|string $key, string|null $countryCode = null): Chain;
 
     public function keyPhpLabel(int|string $key): Chain;
 
@@ -291,9 +277,7 @@ interface KeyChain
 
     public function keyScalarVal(int|string $key): Chain;
 
-    /**
-     * @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit
-     */
+    /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function keySize(int|string $key, string $unit, Rule $rule): Chain;
 
     public function keySlug(int|string $key): Chain;
@@ -310,9 +294,7 @@ interface KeyChain
 
     public function keySubdivisionCode(int|string $key, string $countryCode): Chain;
 
-    /**
-     * @param mixed[] $superset
-     */
+    /** @param mixed[] $superset */
     public function keySubset(int|string $key, array $superset): Chain;
 
     public function keySymbolicLink(int|string $key): Chain;
@@ -331,15 +313,15 @@ interface KeyChain
 
     public function keyUrl(int|string $key): Chain;
 
-    public function keyUuid(int|string $key, ?int $version = null): Chain;
+    public function keyUuid(int|string $key, int|null $version = null): Chain;
 
     public function keyVersion(int|string $key): Chain;
 
-    public function keyVideoUrl(int|string $key, ?string $service = null): Chain;
+    public function keyVideoUrl(int|string $key, string|null $service = null): Chain;
 
     public function keyVowel(int|string $key, string ...$additionalChars): Chain;
 
-    public function keyWhen(int|string $key, Rule $when, Rule $then, ?Rule $else = null): Chain;
+    public function keyWhen(int|string $key, Rule $when, Rule $then, Rule|null $else = null): Chain;
 
     public function keyWritable(int|string $key): Chain;
 

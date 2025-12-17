@@ -17,9 +17,7 @@ use function array_map;
 use function count;
 use function str_split;
 
-/**
- * @see https://en.wikipedia.org/wiki/Luhn_algorithm
- */
+/** @see https://en.wikipedia.org/wiki/Luhn_algorithm */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a valid Luhn number',
@@ -42,9 +40,10 @@ final class Luhn extends Simple
             if ($parity == $i % 2) {
                 $digit <<= 1;
                 if (9 < $digit) {
-                    $digit = $digit - 9;
+                    $digit -= 9;
                 }
             }
+
             $sum += $digit;
         }
 

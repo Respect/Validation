@@ -12,7 +12,7 @@ namespace Respect\Validation\Test\Stubs;
 final class ToStringStub
 {
     public function __construct(
-        private readonly string $value
+        private readonly string $value,
     ) {
     }
 

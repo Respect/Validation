@@ -16,7 +16,7 @@ use const UPLOAD_ERR_OK;
 
 final class UploadedFileStub implements UploadedFileInterface
 {
-    private ?int $size = null;
+    private int|null $size = null;
 
     public static function create(): self
     {
@@ -40,7 +40,7 @@ final class UploadedFileStub implements UploadedFileInterface
     {
     }
 
-    public function getSize(): ?int
+    public function getSize(): int|null
     {
         return $this->size;
     }
@@ -50,12 +50,12 @@ final class UploadedFileStub implements UploadedFileInterface
         return UPLOAD_ERR_OK;
     }
 
-    public function getClientFilename(): ?string
+    public function getClientFilename(): string|null
     {
         return null;
     }
 
-    public function getClientMediaType(): ?string
+    public function getClientMediaType(): string|null
     {
         return null;
     }

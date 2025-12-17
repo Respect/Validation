@@ -35,9 +35,7 @@ final readonly class StandardFormatter implements Formatter
     ) {
     }
 
-    /**
-     * @param array<string|int, mixed> $templates
-     */
+    /** @param array<string|int, mixed> $templates */
     public function main(Result $result, array $templates, Translator $translator): string
     {
         $selectedTemplates = $this->selectTemplates($result, $templates);
@@ -50,15 +48,13 @@ final readonly class StandardFormatter implements Formatter
         return $this->renderer->render($this->getTemplated($result, $selectedTemplates), $translator);
     }
 
-    /**
-     * @param array<string|int, mixed> $templates
-     */
+    /** @param array<string|int, mixed> $templates */
     public function full(
         Result $result,
         array $templates,
         Translator $translator,
         int $depth = 0,
-        Result ...$siblings
+        Result ...$siblings,
     ): string {
         $selectedTemplates = $this->selectTemplates($result, $templates);
         $isFinalTemplate = $this->isFinalTemplate($result, $selectedTemplates);
@@ -71,7 +67,7 @@ final readonly class StandardFormatter implements Formatter
                 $indentation,
                 $this->renderer->render(
                     $this->getTemplated($depth > 0 ? $result->withDeepestPath() : $result, $selectedTemplates),
-                    $translator
+                    $translator,
                 ),
             );
             $depth++;
@@ -80,7 +76,7 @@ final readonly class StandardFormatter implements Formatter
         if (!$isFinalTemplate) {
             $results = array_map(
                 fn(Result $child) => $this->resultWithPath($result, $child),
-                $this->extractDeduplicatedChildren($result)
+                $this->extractDeduplicatedChildren($result),
             );
             foreach ($results as $child) {
                 $rendered .= $this->full(
@@ -88,7 +84,7 @@ final readonly class StandardFormatter implements Formatter
                     $selectedTemplates,
                     $translator,
                     $depth,
-                    ...array_filter($results, static fn (Result $sibling) => $sibling !== $child)
+                    ...array_filter($results, static fn(Result $sibling) => $sibling !== $child),
                 );
                 $rendered .= PHP_EOL;
             }
@@ -110,7 +106,7 @@ final readonly class StandardFormatter implements Formatter
             return [
                 $result->getDeepestPath() ?? $result->id => $this->renderer->render(
                     $this->getTemplated($result->withDeepestPath(), $selectedTemplates),
-                    $translator
+                    $translator,
                 ),
             ];
         }
@@ -121,7 +117,7 @@ final readonly class StandardFormatter implements Formatter
             $messages[$key] = $this->array(
                 $this->resultWithPath($result, $child),
                 $this->selectTemplates($child, $selectedTemplates),
-                $translator
+                $translator,
             );
             if (count($messages[$key]) !== 1) {
                 continue;
@@ -134,7 +130,7 @@ final readonly class StandardFormatter implements Formatter
             $self = [
                 '__root__' => $this->renderer->render(
                     $this->getTemplated($result->withDeepestPath(), $selectedTemplates),
-                    $translator
+                    $translator,
                 ),
             ];
 
@@ -169,10 +165,10 @@ final readonly class StandardFormatter implements Formatter
 
         $childrenAlwaysVisible = array_filter(
             $result->children,
-            fn (Result $child) => $this->isAlwaysVisible($child, ...array_filter(
+            fn(Result $child) => $this->isAlwaysVisible($child, ...array_filter(
                 $result->children,
-                static fn (Result $sibling) => $sibling !== $child
-            ))
+                static fn(Result $sibling) => $sibling !== $child,
+            )),
         );
         if (count($childrenAlwaysVisible) !== 1) {
             return true;
@@ -184,11 +180,11 @@ final readonly class StandardFormatter implements Formatter
 
         return array_reduce(
             $siblings,
-            fn (bool $carry, Result $currentSibling) => $carry || $this->isAlwaysVisible(
+            fn(bool $carry, Result $currentSibling) => $carry || $this->isAlwaysVisible(
                 $currentSibling,
-                ...array_filter($siblings, static fn (Result $sibling) => $sibling !== $currentSibling)
+                ...array_filter($siblings, static fn(Result $sibling) => $sibling !== $currentSibling),
             ),
-            true
+            true,
         );
     }
 
@@ -209,16 +205,14 @@ final readonly class StandardFormatter implements Formatter
             }
 
             throw new ComponentException(
-                sprintf('Template for "%s" must be a string, %s given', $key, stringify($templates[$key]))
+                sprintf('Template for "%s" must be a string, %s given', $key, stringify($templates[$key])),
             );
         }
 
         return $result;
     }
 
-    /**
-     * @param array<string|int, mixed> $templates
-     */
+    /** @param array<string|int, mixed> $templates */
     private function isFinalTemplate(Result $result, array $templates): bool
     {
         $keys = array_filter([$result->path, $result->name, $result->id], static fn($key) => $key !== null);

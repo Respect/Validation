@@ -31,7 +31,7 @@ final readonly class Date implements Rule
     use CanValidateDateTime;
 
     public function __construct(
-        private string $format = 'Y-m-d'
+        private string $format = 'Y-m-d',
     ) {
         if (!preg_match('/^[djSFmMnYy\W]+$/', $format)) {
             throw new InvalidRuleConstructorException('"%s" is not a valid date format', $format);

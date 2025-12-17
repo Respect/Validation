@@ -12,5 +12,5 @@ test('https://github.com/Respect/Validation/issues/619', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('invalid object')
         ->and($fullMessage)->toBe('- invalid object')
-        ->and($messages)->toBe(['instance' => 'invalid object'])
+        ->and($messages)->toBe(['instance' => 'invalid object']),
 ));

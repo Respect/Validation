@@ -31,6 +31,7 @@ final class Attributes implements Rule
         foreach ($reflection->getAttributes(Rule::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
             $rules[] = $attribute->newInstance();
         }
+
         foreach ($reflection->getProperties() as $property) {
             $childrenRules = [];
             foreach ($property->getAttributes(Rule::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {

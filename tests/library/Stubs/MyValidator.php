@@ -24,6 +24,7 @@ final class MyValidator
         } catch (ValidationException $exception) {
             // This is a workaround to avoid changing exceptions that are thrown in other places.
             ValidatorDefaults::setIgnoredBacktracePaths(...$originalIgnoredBacktracePaths);
+
             throw $exception;
         }
     }

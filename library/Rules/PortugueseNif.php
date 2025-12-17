@@ -23,9 +23,7 @@ use function is_string;
 use function str_split;
 use function strlen;
 
-/**
- * @see https://pt.wikipedia.org/wiki/N%C3%BAmero_de_identifica%C3%A7%C3%A3o_fiscal
- */
+/** @see https://pt.wikipedia.org/wiki/N%C3%BAmero_de_identifica%C3%A7%C3%A3o_fiscal */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be a Portuguese NIF',
@@ -48,7 +46,7 @@ final class PortugueseNif extends Simple
             return false;
         }
 
-        $digits = array_map(static fn (string $digit) => intval($digit), str_split($input));
+        $digits = array_map(static fn(string $digit) => intval($digit), str_split($input));
 
         // Validate first and second digits
         switch ($digits[0]) {
@@ -59,6 +57,7 @@ final class PortugueseNif extends Simple
                     default:
                         return false;
                 }
+
                 break;
             case 7:
                 switch ($digits[1]) {
@@ -74,6 +73,7 @@ final class PortugueseNif extends Simple
                     default:
                         return false;
                 }
+
                 break;
             case 9:
                 switch ($digits[1]) {
@@ -85,6 +85,7 @@ final class PortugueseNif extends Simple
                     default:
                         return false;
                 }
+
                 break;
             default:
                 break;
@@ -93,7 +94,7 @@ final class PortugueseNif extends Simple
         // Validate check digit
         $checkDigit = array_pop($digits);
         $digitKeys = array_keys($digits);
-        $sumTerms = array_map(static fn (int $digit, int $position) => $digit * (9 - $position), $digits, $digitKeys);
+        $sumTerms = array_map(static fn(int $digit, int $position) => $digit * (9 - $position), $digits, $digitKeys);
         $sum = array_sum($sumTerms);
         $modulus = $sum % 11;
 

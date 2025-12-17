@@ -58,7 +58,7 @@ final class AttributesTest extends TestCase
                     '2020-06-23',
                     'john.doe@gmail.com',
                     '+31206241111',
-                    'Amstel 1 1011 PN AMSTERDAM Noord-Holland'
+                    'Amstel 1 1011 PN AMSTERDAM Noord-Holland',
                 ),
             ],
             'Only required' => [new WithAttributes('Jane Doe', '2017-11-30', 'janedoe@yahoo.com')],

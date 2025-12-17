@@ -54,11 +54,12 @@ test('Should go not overwrite file and line when it runs out of choices', functi
             array_filter(
                 array_map(
                     fn($trace) => $trace['file'] ?? null,
-                    debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)
-                )
-            )
+                    debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS),
+                ),
+            ),
         );
         $trace[] = __FILE__;
+
         throw new ValidationException('message', 'fullMessage', ['id' => 'message'], $trace);
     } catch (ValidationException $e) {
         expect($e->getFile())->toBe(__FILE__);

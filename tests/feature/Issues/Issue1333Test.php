@@ -20,5 +20,5 @@ test('https://github.com/Respect/Validation/issues/1333', catchAll(
             '__root__' => 'User Email must pass all the rules',
             'noWhitespace' => 'User Email must not contain whitespaces',
             'email' => 'User Email must be a valid email address',
-        ])
+        ]),
 ));

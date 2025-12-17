@@ -15,7 +15,7 @@ use Respect\Validation\Result;
 
 final class TestingMessageRenderer implements Renderer
 {
-    public function render(Result $result, Translator $translator, ?string $template = null): string
+    public function render(Result $result, Translator $translator, string|null $template = null): string
     {
         return $template ?? $result->template;
     }

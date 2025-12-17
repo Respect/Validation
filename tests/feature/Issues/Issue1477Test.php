@@ -10,7 +10,7 @@ declare(strict_types=1);
 use Respect\Validation\Rules\Core\Simple;
 
 test('https://github.com/Respect/Validation/issues/1477', catchAll(
-    fn () => v::key(
+    fn() => v::key(
         'Address',
         v::templated(
             new class extends Simple {
@@ -25,5 +25,5 @@ test('https://github.com/Respect/Validation/issues/1477', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.Address` is not good!')
         ->and($fullMessage)->toBe('- `.Address` is not good!')
-        ->and($messages)->toBe(['Address' => '`.Address` is not good!'])
+        ->and($messages)->toBe(['Address' => '`.Address` is not good!']),
 ));

@@ -25,7 +25,7 @@ use function is_scalar;
 final class LeapDate extends Simple
 {
     public function __construct(
-        private readonly string $format
+        private readonly string $format,
     ) {
     }
 

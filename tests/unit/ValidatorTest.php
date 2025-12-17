@@ -165,9 +165,7 @@ final class ValidatorTest extends TestCase
         $validator->assert('whatever', $template);
     }
 
-    /**
-     * @return array<string, array{string|array<string, mixed>}>
-     */
+    /** @return array<string, array{string|array<string, mixed>}> */
     public static function providerForTemplates(): array
     {
         return [

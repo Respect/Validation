@@ -18,9 +18,6 @@ use function iterator_to_array;
 
 abstract class FilteredNonEmptyArray extends Wrapper
 {
-    /** @param non-empty-array<mixed> $input */
-    abstract protected function evaluateNonEmptyArray(array $input): Result;
-
     public function evaluate(mixed $input): Result
     {
         $iterableResult = (new IterableType())->evaluate($input);
@@ -38,8 +35,12 @@ abstract class FilteredNonEmptyArray extends Wrapper
         return $this->evaluateNonEmptyArray($array);
     }
 
+    /** @param non-empty-array<mixed> $input */
+    abstract protected function evaluateNonEmptyArray(array $input): Result;
+
     /**
      * @param iterable<mixed> $input
+     *
      * @return array<mixed>
      */
     private function toArray(iterable $input): array

@@ -27,7 +27,7 @@ use const YESEXPR;
 final class Yes extends Simple
 {
     public function __construct(
-        private readonly bool $useLocale = false
+        private readonly bool $useLocale = false,
     ) {
     }
 
