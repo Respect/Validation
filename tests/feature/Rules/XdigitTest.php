@@ -7,42 +7,42 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::xdigit()->assert('aaa%a'),
-    '"aaa%a" must only contain hexadecimal digits',
+    fn(string $message) => expect($message)->toBe('"aaa%a" must only contain hexadecimal digits')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::xdigit(' ')->assert('bbb%b'),
-    '"bbb%b" must contain hexadecimal digits and " "',
+    fn(string $message) => expect($message)->toBe('"bbb%b" must contain hexadecimal digits and " "')
 ));
 
-test('Scenario #3', expectMessage(
+test('Scenario #3', catchMessage(
     fn() => v::not(v::xdigit())->assert('ccccc'),
-    '"ccccc" must not only contain hexadecimal digits',
+    fn(string $message) => expect($message)->toBe('"ccccc" must not only contain hexadecimal digits')
 ));
 
-test('Scenario #4', expectMessage(
+test('Scenario #4', catchMessage(
     fn() => v::not(v::xdigit('% '))->assert('ddd%d'),
-    '"ddd%d" must not contain hexadecimal digits or "% "',
+    fn(string $message) => expect($message)->toBe('"ddd%d" must not contain hexadecimal digits or "% "')
 ));
 
-test('Scenario #5', expectFullMessage(
+test('Scenario #5', catchFullMessage(
     fn() => v::xdigit()->assert('eee^e'),
-    '- "eee^e" must only contain hexadecimal digits',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "eee^e" must only contain hexadecimal digits')
 ));
 
-test('Scenario #6', expectFullMessage(
+test('Scenario #6', catchFullMessage(
     fn() => v::not(v::xdigit())->assert('fffff'),
-    '- "fffff" must not only contain hexadecimal digits',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "fffff" must not only contain hexadecimal digits')
 ));
 
-test('Scenario #7', expectFullMessage(
+test('Scenario #7', catchFullMessage(
     fn() => v::xdigit('* &%')->assert('000^0'),
-    '- "000^0" must contain hexadecimal digits and "* &%"',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "000^0" must contain hexadecimal digits and "* &%"')
 ));
 
-test('Scenario #8', expectFullMessage(
+test('Scenario #8', catchFullMessage(
     fn() => v::not(v::xdigit('^'))->assert('111^1'),
-    '- "111^1" must not contain hexadecimal digits or "^"',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "111^1" must not contain hexadecimal digits or "^"')
 ));

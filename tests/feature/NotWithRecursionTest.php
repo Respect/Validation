@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::not(
         v::not(
             v::not(
@@ -19,10 +19,10 @@ test('Scenario #1', expectMessage(
             ),
         ),
     )->assert(2),
-    '2 must not be an integer value',
+    fn(string $message) => expect($message)->toBe('2 must not be an integer value')
 ));
 
-test('Scenario #2', expectFullMessage(
+test('Scenario #2', catchFullMessage(
     fn() => v::not(
         v::not(
             v::not(
@@ -34,9 +34,9 @@ test('Scenario #2', expectFullMessage(
             ),
         ),
     )->assert(2),
-    <<<'FULL_MESSAGE'
-    - 2 must pass the rules
-      - 2 must not be an integer value
-      - 2 must not be a positive number
-    FULL_MESSAGE,
+    fn(string $fullMessage) => expect($fullMessage)->toBe(<<<'FULL_MESSAGE'
+        - 2 must pass the rules
+          - 2 must not be an integer value
+          - 2 must not be a positive number
+        FULL_MESSAGE)
 ));

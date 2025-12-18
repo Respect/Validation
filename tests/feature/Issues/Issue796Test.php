@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-test('https://github.com/Respect/Validation/issues/796', expectAll(
+test('https://github.com/Respect/Validation/issues/796', catchAll(
     fn() => v::create()
         ->key(
             'mysql',
@@ -40,17 +40,18 @@ test('https://github.com/Respect/Validation/issues/796', expectAll(
                 'schema' => 'schema',
             ],
         ]),
-    '`.mysql.host` must be a string',
-    <<<'FULL_MESSAGE'
-    - the given data must pass all the rules
-      - `.mysql` must pass the rules
-        - `.host` must be a string
-      - `.postgresql` must pass the rules
-        - `.user` must be a string
-    FULL_MESSAGE,
-    [
-        '__root__' => 'the given data must pass all the rules',
-        'mysql' => '`.host` must be a string',
-        'postgresql' => '`.user` must be a string',
-    ],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.mysql.host` must be a string')
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+            - the given data must pass all the rules
+              - `.mysql` must pass the rules
+                - `.host` must be a string
+              - `.postgresql` must pass the rules
+                - `.user` must be a string
+            FULL_MESSAGE)
+        ->and($messages)->toBe([
+            '__root__' => 'the given data must pass all the rules',
+            'mysql' => '`.host` must be a string',
+            'postgresql' => '`.user` must be a string',
+        ])
 ));

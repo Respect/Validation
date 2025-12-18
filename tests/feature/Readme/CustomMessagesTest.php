@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessages(
+test('Scenario #1', catchMessages(
     fn() => v::alnum()
         ->noWhitespace()
         ->length(v::between(1, 15))
@@ -16,10 +16,10 @@ test('Scenario #1', expectMessages(
             'noWhitespace' => '{{name}} cannot contain spaces',
             'length' => '{{name}} must not have more than 15 chars',
         ]),
-    [
+    fn(array $messages) => expect($messages)->toBe([
         '__root__' => '"really messed up screen#name" must pass all the rules',
         'alnum' => '"really messed up screen#name" must contain only letters and digits',
         'noWhitespace' => '"really messed up screen#name" cannot contain spaces',
         'lengthBetween' => 'The length of "really messed up screen#name" must be between 1 and 15',
-    ],
+    ])
 ));

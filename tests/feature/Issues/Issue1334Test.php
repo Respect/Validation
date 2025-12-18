@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-test('https://github.com/Respect/Validation/issues/1334', expectAll(
+test('https://github.com/Respect/Validation/issues/1334', catchAll(
     function (): void {
         v::notEmpty()->iterableType()->each(
             v::key('street', v::stringType()->notEmpty())
@@ -22,28 +22,29 @@ test('https://github.com/Respect/Validation/issues/1334', expectAll(
             ],
         );
     },
-    '`.0.street` must be present',
-    <<<'FULL_MESSAGE'
-    - Each item in `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]` must be valid
-      - `.0` must pass the rules
-        - `.street` must be present
-        - `.other` must pass the rules
-          - `.other` must be a string or must be null
-      - `.1` must pass the rules
-        - `.street` must not be empty
-      - `.2` must pass the rules
-        - `.street` must be a string
-    FULL_MESSAGE,
-    [
-        'each' => [
-            '__root__' => 'Each item in `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]` must be valid',
-            0 => [
-                '__root__' => '`.0` must pass the rules',
-                'street' => '`.street` must be present',
-                'other' => '`.other` must be a string or must be null',
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.0.street` must be present')
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+            - Each item in `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]` must be valid
+              - `.0` must pass the rules
+                - `.street` must be present
+                - `.other` must pass the rules
+                  - `.other` must be a string or must be null
+              - `.1` must pass the rules
+                - `.street` must not be empty
+              - `.2` must pass the rules
+                - `.street` must be a string
+            FULL_MESSAGE)
+        ->and($messages)->toBe([
+            'each' => [
+                '__root__' => 'Each item in `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]` must be valid',
+                0 => [
+                    '__root__' => '`.0` must pass the rules',
+                    'street' => '`.street` must be present',
+                    'other' => '`.other` must be a string or must be null',
+                ],
+                1 => '`.street` must not be empty',
+                2 => '`.street` must be a string',
             ],
-            1 => '`.street` must not be empty',
-            2 => '`.street` must be a string',
-        ],
-    ],
+        ])
 ));

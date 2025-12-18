@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectFullMessage(
+test('Scenario #1', catchFullMessage(
     fn() => v::create()
         ->key(
             'mysql',
@@ -36,17 +36,17 @@ test('Scenario #1', expectFullMessage(
                 'password' => 42,
             ],
         ]),
-    <<<'FULL_MESSAGE'
-    - the given data must pass all the rules
-      - `.mysql` must pass all the rules
-        - `.host` must be a string
-        - `.user` must be present
-        - `.password` must be present
-        - `.schema` must be a string
-      - `.postgresql` must pass all the rules
-        - `.host` must be present
-        - `.user` must be a string
-        - `.password` must be a string
-        - `.schema` must be present
-    FULL_MESSAGE,
+    fn(string $fullMessage) => expect($fullMessage)->toBe(<<<'FULL_MESSAGE'
+            - the given data must pass all the rules
+              - `.mysql` must pass all the rules
+                - `.host` must be a string
+                - `.user` must be present
+                - `.password` must be present
+                - `.schema` must be a string
+              - `.postgresql` must pass all the rules
+                - `.host` must be present
+                - `.user` must be a string
+                - `.password` must be a string
+                - `.schema` must be present
+            FULL_MESSAGE)
 ));

@@ -12,12 +12,13 @@ $arr = [
     'email' => 'hello@hello.com',
 ];
 
-test('https://github.com/Respect/Validation/issues/446', expectAll(
+test('https://github.com/Respect/Validation/issues/446', catchAll(
     fn() => v::create()
         ->key('name', v::lengthBetween(2, 32))
         ->key('email', v::email())
         ->assert($arr),
-    'The length of `.name` must be between 2 and 32',
-    '- The length of `.name` must be between 2 and 32',
-    ['name' => 'The length of `.name` must be between 2 and 32'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The length of `.name` must be between 2 and 32')
+        ->and($fullMessage)->toBe('- The length of `.name` must be between 2 and 32')
+        ->and($messages)->toBe(['name' => 'The length of `.name` must be between 2 and 32'])
 ));

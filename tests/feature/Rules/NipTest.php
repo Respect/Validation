@@ -9,22 +9,22 @@ declare(strict_types=1);
 
 require_once 'vendor/autoload.php';
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::nip()->assert('1645865778'),
-    '"1645865778" must be a valid Polish VAT identification number',
+    fn(string $message) => expect($message)->toBe('"1645865778" must be a valid Polish VAT identification number')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::nip())->assert('1645865777'),
-    '"1645865777" must not be a valid Polish VAT identification number',
+    fn(string $message) => expect($message)->toBe('"1645865777" must not be a valid Polish VAT identification number')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::nip()->assert('1645865778'),
-    '- "1645865778" must be a valid Polish VAT identification number',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "1645865778" must be a valid Polish VAT identification number')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::nip())->assert('1645865777'),
-    '- "1645865777" must not be a valid Polish VAT identification number',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "1645865777" must not be a valid Polish VAT identification number')
 ));

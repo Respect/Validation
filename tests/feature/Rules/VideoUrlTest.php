@@ -7,42 +7,42 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::videoUrl()->assert('example.com'),
-    '"example.com" must be a valid video URL',
+    fn(string $message) => expect($message)->toBe('"example.com" must be a valid video URL')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::videoUrl('YouTube')->assert('example.com'),
-    '"example.com" must be a valid YouTube video URL',
+    fn(string $message) => expect($message)->toBe('"example.com" must be a valid YouTube video URL')
 ));
 
-test('Scenario #3', expectMessage(
+test('Scenario #3', catchMessage(
     fn() => v::not(v::videoUrl())->assert('https://player.vimeo.com/video/7178746722'),
-    '"https://player.vimeo.com/video/7178746722" must not be a valid video URL',
+    fn(string $message) => expect($message)->toBe('"https://player.vimeo.com/video/7178746722" must not be a valid video URL')
 ));
 
-test('Scenario #4', expectMessage(
+test('Scenario #4', catchMessage(
     fn() => v::not(v::videoUrl('YouTube'))->assert('https://www.youtube.com/embed/netHLn9TScY'),
-    '"https://www.youtube.com/embed/netHLn9TScY" must not be a valid YouTube video URL',
+    fn(string $message) => expect($message)->toBe('"https://www.youtube.com/embed/netHLn9TScY" must not be a valid YouTube video URL')
 ));
 
-test('Scenario #5', expectFullMessage(
+test('Scenario #5', catchFullMessage(
     fn() => v::videoUrl()->assert('example.com'),
-    '- "example.com" must be a valid video URL',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "example.com" must be a valid video URL')
 ));
 
-test('Scenario #6', expectFullMessage(
+test('Scenario #6', catchFullMessage(
     fn() => v::videoUrl('Vimeo')->assert('example.com'),
-    '- "example.com" must be a valid Vimeo video URL',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "example.com" must be a valid Vimeo video URL')
 ));
 
-test('Scenario #7', expectFullMessage(
+test('Scenario #7', catchFullMessage(
     fn() => v::not(v::videoUrl())->assert('https://youtu.be/netHLn9TScY'),
-    '- "https://youtu.be/netHLn9TScY" must not be a valid video URL',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "https://youtu.be/netHLn9TScY" must not be a valid video URL')
 ));
 
-test('Scenario #8', expectFullMessage(
+test('Scenario #8', catchFullMessage(
     fn() => v::not(v::videoUrl('Vimeo'))->assert('https://vimeo.com/71787467'),
-    '- "https://vimeo.com/71787467" must not be a valid Vimeo video URL',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "https://vimeo.com/71787467" must not be a valid Vimeo video URL')
 ));

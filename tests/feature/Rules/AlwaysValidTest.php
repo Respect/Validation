@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::not(v::alwaysValid())->assert(true),
-    '`true` must be invalid',
+    fn(string $message) => expect($message)->toBe('`true` must be invalid')
 ));
 
-test('Scenario #2', expectFullMessage(
+test('Scenario #2', catchFullMessage(
     fn() => v::not(v::alwaysValid())->assert(true),
-    '- `true` must be invalid',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `true` must be invalid')
 ));

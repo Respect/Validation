@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::notEmoji()->assert('🍕'),
-    '"🍕" must not contain an emoji',
+    fn(string $message) => expect($message)->toBe('"🍕" must not contain an emoji')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::notEmoji())->assert('AB'),
-    '"AB" must contain an emoji',
+    fn(string $message) => expect($message)->toBe('"AB" must contain an emoji')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::notEmoji()->assert('🏄'),
-    '- "🏄" must not contain an emoji',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "🏄" must not contain an emoji')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::notEmoji())->assert('YZ'),
-    '- "YZ" must contain an emoji',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "YZ" must contain an emoji')
 ));

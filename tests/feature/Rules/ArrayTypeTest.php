@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::arrayType()->assert('teste'),
-    '"teste" must be an array',
+    fn(string $message) => expect($message)->toBe('"teste" must be an array')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::arrayType())->assert([]),
-    '`[]` must not be an array',
+    fn(string $message) => expect($message)->toBe('`[]` must not be an array')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::arrayType()->assert(new ArrayObject()),
-    '- `ArrayObject { getArrayCopy() => [] }` must be an array',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `ArrayObject { getArrayCopy() => [] }` must be an array')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::arrayType())->assert([1, 2, 3]),
-    '- `[1, 2, 3]` must not be an array',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `[1, 2, 3]` must not be an array')
 ));

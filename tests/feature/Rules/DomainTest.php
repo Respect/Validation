@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::domain()->assert('batman'),
-    '"batman" must be a valid domain',
+    fn(string $message) => expect($message)->toBe('"batman" must be a valid domain')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::domain())->assert('r--w.com'),
-    '"r--w.com" must not be a valid domain',
+    fn(string $message) => expect($message)->toBe('"r--w.com" must not be a valid domain')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::domain()->assert('p-éz-.kk'),
-    '- "p-éz-.kk" must be a valid domain',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "p-éz-.kk" must be a valid domain')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::domain())->assert('github.com'),
-    '- "github.com" must not be a valid domain',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "github.com" must not be a valid domain')
 ));

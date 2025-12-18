@@ -9,9 +9,10 @@ declare(strict_types=1);
 
 date_default_timezone_set('UTC');
 
-test('Optional', expectAll(
+test('Optional', catchAll(
     fn() => v::optional(v::scalarVal())->assert([]),
-    '`[]` must be a scalar value or must be undefined',
-    '- `[]` must be a scalar value or must be undefined',
-    ['undefOrScalarVal' => '`[]` must be a scalar value or must be undefined'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`[]` must be a scalar value or must be undefined')
+        ->and($fullMessage)->toBe('- `[]` must be a scalar value or must be undefined')
+        ->and($messages)->toBe(['undefOrScalarVal' => '`[]` must be a scalar value or must be undefined'])
 ));

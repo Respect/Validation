@@ -7,32 +7,32 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::call('trim', v::noWhitespace())->assert(' two words '),
-    '"two words" must not contain whitespaces',
+    fn(string $message) => expect($message)->toBe('"two words" must not contain whitespaces')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::call('stripslashes', v::stringType()))->assert(' some\thing '),
-    '" something " must not be a string',
+    fn(string $message) => expect($message)->toBe('" something " must not be a string')
 ));
 
-test('Scenario #3', expectMessage(
+test('Scenario #3', catchMessage(
     fn() => v::call('stripslashes', v::alwaysValid())->assert([]),
-    '`[]` must be a suitable argument for "stripslashes"',
+    fn(string $message) => expect($message)->toBe('`[]` must be a suitable argument for "stripslashes"')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::call('strval', v::intType())->assert(1234),
-    '- "1234" must be an integer',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "1234" must be an integer')
 ));
 
-test('Scenario #5', expectFullMessage(
+test('Scenario #5', catchFullMessage(
     fn() => v::not(v::call('is_float', v::boolType()))->assert(1.2),
-    '- `true` must not be a boolean',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `true` must not be a boolean')
 ));
 
-test('Scenario #6', expectFullMessage(
+test('Scenario #6', catchFullMessage(
     fn() => v::call('array_shift', v::alwaysValid())->assert(INF),
-    '- `INF` must be a suitable argument for "array_shift"',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `INF` must be a suitable argument for "array_shift"')
 ));

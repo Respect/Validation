@@ -11,7 +11,7 @@ use Respect\Validation\Message\Translator\ArrayTranslator;
 use Respect\Validation\Validator;
 use Respect\Validation\ValidatorDefaults;
 
-test('Various translations', expectFullMessage(
+test('Various translations', catchFullMessage(
     function (): void {
         ValidatorDefaults::setTranslator(new ArrayTranslator([
             '{{name}} must pass all the rules' => 'Todas as regras requeridas devem passar para {{name}}',
@@ -24,15 +24,15 @@ test('Various translations', expectFullMessage(
 
         Validator::stringType()->lengthBetween(2, 15)->phone('US')->assert([]);
     },
-    <<<'FULL_MESSAGE'
-    - Todas as regras requeridas devem passar para `[]`
-      - `[]` deve ser uma string
-      - O comprimento de `[]` deve possuir de 2 a 15 caracteres
-      - `[]` deve ser um número de telefone válido para o país Estados Unidos
-    FULL_MESSAGE,
+    fn(string $fullMessage) => expect($fullMessage)->toBe(<<<'FULL_MESSAGE'
+        - Todas as regras requeridas devem passar para `[]`
+          - `[]` deve ser uma string
+          - O comprimento de `[]` deve possuir de 2 a 15 caracteres
+          - `[]` deve ser um número de telefone válido para o país Estados Unidos
+        FULL_MESSAGE)
 ));
 
-test('DateTimeDiff', expectMessage(
+test('DateTimeDiff', catchMessage(
     function (): void {
         ValidatorDefaults::setTranslator(new ArrayTranslator([
             'years' => 'anos',
@@ -42,10 +42,10 @@ test('DateTimeDiff', expectMessage(
 
         v::dateTimeDiff('years', v::equals(2))->assert('1972-02-09');
     },
-    'O número de anos entre agora e "1972-02-09" deve ser igual a 2',
+    fn(string $message) => expect($message)->toBe('O número de anos entre agora e "1972-02-09" deve ser igual a 2')
 ));
 
-test('Using "listOr"', expectMessage(
+test('Using "listOr"', catchMessage(
     function (): void {
         ValidatorDefaults::setTranslator(new ArrayTranslator([
             'Your name must be {{haystack|listOr}}' => 'Seu nome deve ser {{haystack|listOr}}',
@@ -54,10 +54,10 @@ test('Using "listOr"', expectMessage(
 
         v::templated(v::in(['Respect', 'Validation']), 'Your name must be {{haystack|listOr}}')->assert('');
     },
-    'Seu nome deve ser "Respect" ou "Validation"',
+    fn(string $message) => expect($message)->toBe('Seu nome deve ser "Respect" ou "Validation"')
 ));
 
-test('Using "listAnd"', expectMessage(
+test('Using "listAnd"', catchMessage(
     function (): void {
         ValidatorDefaults::setTranslator(new ArrayTranslator([
             '{{haystack|listAnd}} are the only possible names' => '{{haystack|listAnd}} são os únicos nomes possíveis',
@@ -66,5 +66,5 @@ test('Using "listAnd"', expectMessage(
 
         v::templated(v::in(['Respect', 'Validation']), '{{haystack|listAnd}} are the only possible names')->assert('');
     },
-    '"Respect" e "Validation" são os únicos nomes possíveis',
+    fn(string $message) => expect($message)->toBe('"Respect" e "Validation" são os únicos nomes possíveis')
 ));

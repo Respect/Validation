@@ -8,77 +8,51 @@
 declare(strict_types=1);
 
 use Respect\Validation\Exceptions\ValidationException;
-use Symfony\Component\VarExporter\VarExporter;
 
-use function PHPUnit\Framework\assertStringMatchesFormat;
-
-/** @param array<string|int, mixed> $messages */
-function expectAll(Closure $callback, string $message, string $fullMessage, array $messages): Closure
+function catchAll(Closure $try, Closure $catch): Closure
 {
-    return function () use ($callback, $message, $fullMessage, $messages): void {
+    return function () use ($try, $catch): void {
         try {
-            $callback->call($this);
+            $try->call($this);
             test()->expectException(ValidationException::class);
         } catch (ValidationException $e) {
-            expect($e->getMessage())->toBe($message)
-            ->and($e->getFullMessage())->toBe($fullMessage)
-            ->and($e->getMessages())->toBe($messages);
+            $catch->call($this, $e->getMessage(), $e->getFullMessage(), $e->getMessages());
         }
     };
 }
 
-/** @param array<string|int, mixed> $messages */
-function expectAllToMatch(Closure $callback, string $message, string $fullMessage, array $messages): Closure
+function catchMessage(Closure $try, Closure $catch): Closure
 {
-    return function () use ($callback, $message, $fullMessage, $messages): void {
+    return function () use ($try, $catch): void {
         try {
-            $callback();
+            $try->call($this);
             test()->expectException(ValidationException::class);
         } catch (ValidationException $e) {
-            assertStringMatchesFormat($message, $e->getMessage(), 'Validation message does not match');
-            assertStringMatchesFormat($fullMessage, $e->getFullMessage(), 'Validation full message does not match');
-            assertStringMatchesFormat(
-                VarExporter::export($messages),
-                VarExporter::export($e->getMessages()),
-                'Validation messages do not match'
-            );
+            $catch->call($this, $e->getMessage());
         }
     };
 }
 
-function expectMessage(Closure $callback, string $message): Closure
+function catchFullMessage(Closure $try, Closure $catch): Closure
 {
-    return function () use ($callback, $message): void {
+    return function () use ($try, $catch): void {
         try {
-            $callback();
+            $try->call($this);
             test()->expectException(ValidationException::class);
         } catch (ValidationException $e) {
-            expect($e->getMessage())->toBe($message, 'Validation message does not match');
+            $catch->call($this, $e->getFullMessage());
         }
     };
 }
 
-function expectFullMessage(Closure $callback, string $fullMessage): Closure
+function catchMessages(Closure $try, Closure $catch): Closure
 {
-    return function () use ($callback, $fullMessage): void {
+    return function () use ($try, $catch): void {
         try {
-            $callback();
+            $try->call($this);
             test()->expectException(ValidationException::class);
-        } catch (ValidationException $exception) {
-            expect($exception->getFullMessage())->toBe($fullMessage, 'Validation full message does not match');
-        }
-    };
-}
-
-/** @param array<string|int, mixed> $messages */
-function expectMessages(Closure $callback, array $messages): Closure
-{
-    return function () use ($callback, $messages): void {
-        try {
-            $callback();
-            test()->expectException(ValidationException::class);
-        } catch (ValidationException $exception) {
-            expect($exception->getMessages())->toBe($messages, 'Validation messages do not match');
+        } catch (ValidationException $e) {
+            $catch->call($this, $e->getMessages());
         }
     };
 }

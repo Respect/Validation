@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::floatVal()->assert('a'),
-    '"a" must be a float value',
+    fn(string $message) => expect($message)->toBe('"a" must be a float value')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::floatVal())->assert(165.0),
-    '165.0 must not be a float value',
+    fn(string $message) => expect($message)->toBe('165.0 must not be a float value')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::floatVal()->assert('a'),
-    '- "a" must be a float value',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "a" must be a float value')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::floatVal())->assert('165.7'),
-    '- "165.7" must not be a float value',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "165.7" must not be a float value')
 ));

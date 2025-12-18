@@ -7,80 +7,90 @@
 
 declare(strict_types=1);
 
-test('Non-iterable', expectAll(
+test('Non-iterable', catchAll(
     fn() => v::max(v::negative())->assert(null),
-    '`null` must be iterable',
-    '- `null` must be iterable',
-    ['max' => '`null` must be iterable'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`null` must be iterable')
+        ->and($fullMessage)->toBe('- `null` must be iterable')
+        ->and($messages)->toBe(['max' => '`null` must be iterable'])
 ));
 
-test('Empty', expectAll(
+test('Empty', catchAll(
     fn() => v::max(v::negative())->assert([]),
-    '`[]` must not be empty',
-    '- `[]` must not be empty',
-    ['max' => '`[]` must not be empty'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`[]` must not be empty')
+        ->and($fullMessage)->toBe('- `[]` must not be empty')
+        ->and($messages)->toBe(['max' => '`[]` must not be empty'])
 ));
 
-test('Default', expectAll(
+test('Default', catchAll(
     fn() => v::max(v::negative())->assert([1, 2, 3]),
-    'The maximum of `[1, 2, 3]` must be a negative number',
-    '- The maximum of `[1, 2, 3]` must be a negative number',
-    ['maxNegative' => 'The maximum of `[1, 2, 3]` must be a negative number'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The maximum of `[1, 2, 3]` must be a negative number')
+        ->and($fullMessage)->toBe('- The maximum of `[1, 2, 3]` must be a negative number')
+        ->and($messages)->toBe(['maxNegative' => 'The maximum of `[1, 2, 3]` must be a negative number'])
 ));
 
-test('Inverted', expectAll(
+test('Inverted', catchAll(
     fn() => v::not(v::max(v::negative()))->assert([-3, -2, -1]),
-    'The maximum of `[-3, -2, -1]` must not be a negative number',
-    '- The maximum of `[-3, -2, -1]` must not be a negative number',
-    ['notMaxNegative' => 'The maximum of `[-3, -2, -1]` must not be a negative number'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The maximum of `[-3, -2, -1]` must not be a negative number')
+        ->and($fullMessage)->toBe('- The maximum of `[-3, -2, -1]` must not be a negative number')
+        ->and($messages)->toBe(['notMaxNegative' => 'The maximum of `[-3, -2, -1]` must not be a negative number'])
 ));
 
-test('With wrapped name, default', expectAll(
+test('With wrapped name, default', catchAll(
     fn() => v::max(v::negative()->setName('Wrapped'))->setName('Wrapper')->assert([1, 2, 3]),
-    'The maximum of Wrapped must be a negative number',
-    '- The maximum of Wrapped must be a negative number',
-    ['maxNegative' => 'The maximum of Wrapped must be a negative number'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The maximum of Wrapped must be a negative number')
+        ->and($fullMessage)->toBe('- The maximum of Wrapped must be a negative number')
+        ->and($messages)->toBe(['maxNegative' => 'The maximum of Wrapped must be a negative number'])
 ));
 
-test('With wrapper name, default', expectAll(
+test('With wrapper name, default', catchAll(
     fn() => v::max(v::negative())->setName('Wrapper')->assert([1, 2, 3]),
-    'The maximum of Wrapper must be a negative number',
-    '- The maximum of Wrapper must be a negative number',
-    ['maxNegative' => 'The maximum of Wrapper must be a negative number'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The maximum of Wrapper must be a negative number')
+        ->and($fullMessage)->toBe('- The maximum of Wrapper must be a negative number')
+        ->and($messages)->toBe(['maxNegative' => 'The maximum of Wrapper must be a negative number'])
 ));
 
-test('With wrapped name, inverted', expectAll(
+test('With wrapped name, inverted', catchAll(
     fn() => v::not(v::max(v::negative()->setName('Wrapped')))->setName('Wrapper')->assert([-3, -2, -1]),
-    'The maximum of Wrapped must not be a negative number',
-    '- The maximum of Wrapped must not be a negative number',
-    ['notMaxNegative' => 'The maximum of Wrapped must not be a negative number'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The maximum of Wrapped must not be a negative number')
+        ->and($fullMessage)->toBe('- The maximum of Wrapped must not be a negative number')
+        ->and($messages)->toBe(['notMaxNegative' => 'The maximum of Wrapped must not be a negative number'])
 ));
 
-test('With wrapper name, inverted', expectAll(
+test('With wrapper name, inverted', catchAll(
     fn() => v::not(v::max(v::negative()))->setName('Wrapper')->assert([-3, -2, -1]),
-    'The maximum of Wrapper must not be a negative number',
-    '- The maximum of Wrapper must not be a negative number',
-    ['notMaxNegative' => 'The maximum of Wrapper must not be a negative number'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The maximum of Wrapper must not be a negative number')
+        ->and($fullMessage)->toBe('- The maximum of Wrapper must not be a negative number')
+        ->and($messages)->toBe(['notMaxNegative' => 'The maximum of Wrapper must not be a negative number'])
 ));
 
-test('With template, default', expectAll(
+test('With template, default', catchAll(
     fn() => v::max(v::negative())->assert([1, 2, 3], 'The maximum of the value is not what we expect'),
-    'The maximum of the value is not what we expect',
-    '- The maximum of the value is not what we expect',
-    ['maxNegative' => 'The maximum of the value is not what we expect'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The maximum of the value is not what we expect')
+        ->and($fullMessage)->toBe('- The maximum of the value is not what we expect')
+        ->and($messages)->toBe(['maxNegative' => 'The maximum of the value is not what we expect'])
 ));
 
-test('Chained wrapped rule', expectAll(
+test('Chained wrapped rule', catchAll(
     fn() => v::max(v::between(5, 7)->odd())->assert([1, 2, 3, 4]),
-    'The maximum of `[1, 2, 3, 4]` must be between 5 and 7',
-    <<<'FULL_MESSAGE'
-    - `[1, 2, 3, 4]` must pass all the rules
-      - The maximum of `[1, 2, 3, 4]` must be between 5 and 7
-      - The maximum of `[1, 2, 3, 4]` must be an odd number
-    FULL_MESSAGE,
-    [
-        '__root__' => '`[1, 2, 3, 4]` must pass all the rules',
-        'maxBetween' => 'The maximum of `[1, 2, 3, 4]` must be between 5 and 7',
-        'maxOdd' => 'The maximum of `[1, 2, 3, 4]` must be an odd number',
-    ],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The maximum of `[1, 2, 3, 4]` must be between 5 and 7')
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+        - `[1, 2, 3, 4]` must pass all the rules
+          - The maximum of `[1, 2, 3, 4]` must be between 5 and 7
+          - The maximum of `[1, 2, 3, 4]` must be an odd number
+        FULL_MESSAGE)
+        ->and($messages)->toBe([
+            '__root__' => '`[1, 2, 3, 4]` must pass all the rules',
+            'maxBetween' => 'The maximum of `[1, 2, 3, 4]` must be between 5 and 7',
+            'maxOdd' => 'The maximum of `[1, 2, 3, 4]` must be an odd number',
+        ])
 ));

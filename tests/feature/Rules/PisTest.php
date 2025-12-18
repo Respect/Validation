@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::pis()->assert('this thing'),
-    '"this thing" must be a valid PIS number',
+    fn(string $message) => expect($message)->toBe('"this thing" must be a valid PIS number')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::pis())->assert('120.6671.406-4'),
-    '"120.6671.406-4" must not be a valid PIS number',
+    fn(string $message) => expect($message)->toBe('"120.6671.406-4" must not be a valid PIS number')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::pis()->assert('your mother'),
-    '- "your mother" must be a valid PIS number',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "your mother" must be a valid PIS number')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::pis())->assert('120.9378.174-5'),
-    '- "120.9378.174-5" must not be a valid PIS number',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "120.9378.174-5" must not be a valid PIS number')
 ));

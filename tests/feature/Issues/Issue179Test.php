@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-test('https://github.com/Respect/Validation/issues/179', expectAll(
+test('https://github.com/Respect/Validation/issues/179', catchAll(
     function (): void {
         $config = [
             'host' => 1,
@@ -23,15 +23,16 @@ test('https://github.com/Respect/Validation/issues/179', expectAll(
         $validator->key('schema', v::stringType());
         $validator->assert($config);
     },
-    '`.host` must be a string',
-    <<<'FULL_MESSAGE'
-    - Settings must pass the rules
-      - `.host` must be a string
-      - `.user` must be present
-    FULL_MESSAGE,
-    [
-        '__root__' => 'Settings must pass the rules',
-        'host' => '`.host` must be a string',
-        'user' => '`.user` must be present',
-    ],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.host` must be a string')
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+            - Settings must pass the rules
+              - `.host` must be a string
+              - `.user` must be present
+            FULL_MESSAGE)
+        ->and($messages)->toBe([
+            '__root__' => 'Settings must pass the rules',
+            'host' => '`.host` must be a string',
+            'user' => '`.user` must be present',
+        ])
 ));

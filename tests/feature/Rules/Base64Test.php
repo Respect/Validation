@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::base64()->assert('=c3VyZS4'),
-    '"=c3VyZS4" must be a base64 encoded string',
+    fn(string $message) => expect($message)->toBe('"=c3VyZS4" must be a base64 encoded string')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::base64())->assert('c3VyZS4='),
-    '"c3VyZS4=" must not be a base64 encoded string',
+    fn(string $message) => expect($message)->toBe('"c3VyZS4=" must not be a base64 encoded string')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::base64()->assert('=c3VyZS4'),
-    '- "=c3VyZS4" must be a base64 encoded string',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "=c3VyZS4" must be a base64 encoded string')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::base64())->assert('c3VyZS4='),
-    '- "c3VyZS4=" must not be a base64 encoded string',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "c3VyZS4=" must not be a base64 encoded string')
 ));

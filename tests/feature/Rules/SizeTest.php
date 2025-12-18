@@ -22,52 +22,58 @@ beforeEach(function (): void {
         ->at($this->root);
 });
 
-test('Default', expectAll(
+test('Default', catchAll(
     fn() => v::size('KB', v::lessThan(2))->assert($this->file2Kb->url()),
-    'The size in kilobytes of "vfs://root/2kb.txt" must be less than 2',
-    '- The size in kilobytes of "vfs://root/2kb.txt" must be less than 2',
-    ['sizeLessThan' => 'The size in kilobytes of "vfs://root/2kb.txt" must be less than 2'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The size in kilobytes of "vfs://root/2kb.txt" must be less than 2')
+        ->and($fullMessage)->toBe('- The size in kilobytes of "vfs://root/2kb.txt" must be less than 2')
+        ->and($messages)->toBe(['sizeLessThan' => 'The size in kilobytes of "vfs://root/2kb.txt" must be less than 2'])
 ));
 
-test('Wrong type', expectAll(
+test('Wrong type', catchAll(
     fn() => v::size('KB', v::lessThan(2))->assert(new stdClass()),
-    '`stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface',
-    '- `stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface',
-    ['sizeLessThan' => '`stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface')
+        ->and($fullMessage)->toBe('- `stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface')
+        ->and($messages)->toBe(['sizeLessThan' => '`stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface'])
 ));
 
-test('Inverted', expectAll(
+test('Inverted', catchAll(
     fn() => v::size('MB', v::not(v::equals(3)))->assert($this->file2Mb->url()),
-    'The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3',
-    '- The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3',
-    ['sizeNotEquals' => 'The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3')
+        ->and($fullMessage)->toBe('- The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3')
+        ->and($messages)->toBe(['sizeNotEquals' => 'The size in megabytes of "vfs://root/3mb.txt" must not be equal to 3'])
 ));
 
-test('Wrapped with name', expectAll(
+test('Wrapped with name', catchAll(
     fn() => v::size('KB', v::lessThan(2)->setName('Wrapped'))->assert($this->file2Kb->url()),
-    'The size in kilobytes of Wrapped must be less than 2',
-    '- The size in kilobytes of Wrapped must be less than 2',
-    ['sizeLessThan' => 'The size in kilobytes of Wrapped must be less than 2'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The size in kilobytes of Wrapped must be less than 2')
+        ->and($fullMessage)->toBe('- The size in kilobytes of Wrapped must be less than 2')
+        ->and($messages)->toBe(['sizeLessThan' => 'The size in kilobytes of Wrapped must be less than 2'])
 ));
 
-test('Wrapper with name', expectAll(
+test('Wrapper with name', catchAll(
     fn() => v::size('KB', v::lessThan(2))->setName('Wrapper')->assert($this->file2Kb->url()),
-    'The size in kilobytes of Wrapper must be less than 2',
-    '- The size in kilobytes of Wrapper must be less than 2',
-    ['sizeLessThan' => 'The size in kilobytes of Wrapper must be less than 2'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The size in kilobytes of Wrapper must be less than 2')
+        ->and($fullMessage)->toBe('- The size in kilobytes of Wrapper must be less than 2')
+        ->and($messages)->toBe(['sizeLessThan' => 'The size in kilobytes of Wrapper must be less than 2'])
 ));
 
-test('Chained wrapped rule', expectAll(
+test('Chained wrapped rule', catchAll(
     fn() => v::size('KB', v::between(5, 7)->odd())->assert($this->file2Kb->url()),
-    'The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7',
-    <<<'FULL_MESSAGE'
-    - "vfs://root/2kb.txt" must pass all the rules
-      - The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7
-      - The size in kilobytes of "vfs://root/2kb.txt" must be an odd number
-    FULL_MESSAGE,
-    [
-        '__root__' => '"vfs://root/2kb.txt" must pass all the rules',
-        'sizeBetween' => 'The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7',
-        'sizeOdd' => 'The size in kilobytes of "vfs://root/2kb.txt" must be an odd number',
-    ],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7')
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+        - "vfs://root/2kb.txt" must pass all the rules
+          - The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7
+          - The size in kilobytes of "vfs://root/2kb.txt" must be an odd number
+        FULL_MESSAGE)
+        ->and($messages)->toBe([
+            '__root__' => '"vfs://root/2kb.txt" must pass all the rules',
+            'sizeBetween' => 'The size in kilobytes of "vfs://root/2kb.txt" must be between 5 and 7',
+            'sizeOdd' => 'The size in kilobytes of "vfs://root/2kb.txt" must be an odd number',
+        ])
 ));

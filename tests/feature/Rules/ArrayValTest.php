@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::arrayVal()->assert('Bla %123'),
-    '"Bla %123" must be an array value',
+    fn(string $message) => expect($message)->toBe('"Bla %123" must be an array value')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::arrayVal())->assert([42]),
-    '`[42]` must not be an array value',
+    fn(string $message) => expect($message)->toBe('`[42]` must not be an array value')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::arrayVal()->assert(new stdClass()),
-    '- `stdClass {}` must be an array value',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `stdClass {}` must be an array value')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::arrayVal())->assert(new ArrayObject([2, 3])),
-    '- `ArrayObject { getArrayCopy() => [2, 3] }` must not be an array value',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `ArrayObject { getArrayCopy() => [2, 3] }` must not be an array value')
 ));

@@ -7,46 +7,52 @@
 
 declare(strict_types=1);
 
-test('Default', expectAll(
+test('Default', catchAll(
     fn() => v::templated(v::stringType(), 'Template in "Templated"')->assert(12),
-    'Template in "Templated"',
-    '- Template in "Templated"',
-    ['stringType' => 'Template in "Templated"'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Template in "Templated"')
+        ->and($fullMessage)->toBe('- Template in "Templated"')
+        ->and($messages)->toBe(['stringType' => 'Template in "Templated"'])
 ));
 
-test('With parameters', expectAll(
+test('With parameters', catchAll(
     fn() => v::templated(v::stringType(), 'Template in {{source}}', ['source' => 'Templated'])->assert(12),
-    'Template in "Templated"',
-    '- Template in "Templated"',
-    ['stringType' => 'Template in "Templated"'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Template in "Templated"')
+        ->and($fullMessage)->toBe('- Template in "Templated"')
+        ->and($messages)->toBe(['stringType' => 'Template in "Templated"'])
 ));
 
-test('Inverted', expectAll(
+test('Inverted', catchAll(
     fn() => v::not(v::templated(v::intType(), 'Template in "Templated"'))->assert(12),
-    'Template in "Templated"',
-    '- Template in "Templated"',
-    ['notIntType' => 'Template in "Templated"'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Template in "Templated"')
+        ->and($fullMessage)->toBe('- Template in "Templated"')
+        ->and($messages)->toBe(['notIntType' => 'Template in "Templated"'])
 ));
 
-test('Template in Validator', expectAll(
+test('Template in Validator', catchAll(
     fn() => v::templated(v::stringType(), 'Template in "Templated"')
         ->setTemplate('Template in "Validator"')
         ->assert(12),
-    'Template in "Templated"',
-    '- Template in "Templated"',
-    ['stringType' => 'Template in "Templated"'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Template in "Templated"')
+        ->and($fullMessage)->toBe('- Template in "Templated"')
+        ->and($messages)->toBe(['stringType' => 'Template in "Templated"'])
 ));
 
-test('Template passed to Validator::assert()', expectAll(
+test('Template passed to Validator::assert()', catchAll(
     fn() => v::templated(v::stringType(), 'Template in "Templated"')->assert(10, 'Template in "Validator::assert"'),
-    'Template in "Templated"',
-    '- Template in "Templated"',
-    ['stringType' => 'Template in "Templated"'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Template in "Templated"')
+        ->and($fullMessage)->toBe('- Template in "Templated"')
+        ->and($messages)->toBe(['stringType' => 'Template in "Templated"'])
 ));
 
-test('With bound', expectAll(
+test('With bound', catchAll(
     fn() => v::templated(v::attributes(), 'Template in "Templated"')->assert(null),
-    'Template in "Templated"',
-    '- Template in "Templated"',
-    ['attributes' => 'Template in "Templated"'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Template in "Templated"')
+        ->and($fullMessage)->toBe('- Template in "Templated"')
+        ->and($messages)->toBe(['attributes' => 'Template in "Templated"'])
 ));

@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::objectType()->assert([]),
-    '`[]` must be an object',
+    fn(string $message) => expect($message)->toBe('`[]` must be an object')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::objectType())->assert(new stdClass()),
-    '`stdClass {}` must not be an object',
+    fn(string $message) => expect($message)->toBe('`stdClass {}` must not be an object')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::objectType()->assert('test'),
-    '- "test" must be an object',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "test" must be an object')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::objectType())->assert(new ArrayObject()),
-    '- `ArrayObject { getArrayCopy() => [] }` must not be an object',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `ArrayObject { getArrayCopy() => [] }` must not be an object')
 ));

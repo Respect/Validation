@@ -7,37 +7,42 @@
 
 declare(strict_types=1);
 
-test('Default', expectAll(
+test('Default', catchAll(
     fn() => v::phone()->assert('123'),
-    '"123" must be a valid telephone number',
-    '- "123" must be a valid telephone number',
-    ['phone' => '"123" must be a valid telephone number'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('"123" must be a valid telephone number')
+        ->and($fullMessage)->toBe('- "123" must be a valid telephone number')
+        ->and($messages)->toBe(['phone' => '"123" must be a valid telephone number'])
 ));
 
-test('Country-specific', expectAll(
+test('Country-specific', catchAll(
     fn() => v::phone('BR')->assert('+1 650 253 00 00'),
-    '"+1 650 253 00 00" must be a valid telephone number for country Brazil',
-    '- "+1 650 253 00 00" must be a valid telephone number for country Brazil',
-    ['phone' => '"+1 650 253 00 00" must be a valid telephone number for country Brazil'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('"+1 650 253 00 00" must be a valid telephone number for country Brazil')
+        ->and($fullMessage)->toBe('- "+1 650 253 00 00" must be a valid telephone number for country Brazil')
+        ->and($messages)->toBe(['phone' => '"+1 650 253 00 00" must be a valid telephone number for country Brazil'])
 ));
 
-test('Inverted', expectAll(
+test('Inverted', catchAll(
     fn() => v::not(v::phone())->assert('+55 11 91111 1111'),
-    '"+55 11 91111 1111" must not be a valid telephone number',
-    '- "+55 11 91111 1111" must not be a valid telephone number',
-    ['notPhone' => '"+55 11 91111 1111" must not be a valid telephone number'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('"+55 11 91111 1111" must not be a valid telephone number')
+        ->and($fullMessage)->toBe('- "+55 11 91111 1111" must not be a valid telephone number')
+        ->and($messages)->toBe(['notPhone' => '"+55 11 91111 1111" must not be a valid telephone number'])
 ));
 
-test('Default with name', expectAll(
+test('Default with name', catchAll(
     fn() => v::phone()->setName('Phone')->assert('123'),
-    'Phone must be a valid telephone number',
-    '- Phone must be a valid telephone number',
-    ['phone' => 'Phone must be a valid telephone number'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Phone must be a valid telephone number')
+        ->and($fullMessage)->toBe('- Phone must be a valid telephone number')
+        ->and($messages)->toBe(['phone' => 'Phone must be a valid telephone number'])
 ));
 
-test('Country-specific with name', expectAll(
+test('Country-specific with name', catchAll(
     fn() => v::phone('US')->setName('Phone')->assert('123'),
-    'Phone must be a valid telephone number for country United States',
-    '- Phone must be a valid telephone number for country United States',
-    ['phone' => 'Phone must be a valid telephone number for country United States'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Phone must be a valid telephone number for country United States')
+        ->and($fullMessage)->toBe('- Phone must be a valid telephone number for country United States')
+        ->and($messages)->toBe(['phone' => 'Phone must be a valid telephone number for country United States'])
 ));

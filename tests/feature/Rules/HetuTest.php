@@ -7,30 +7,34 @@
 
 declare(strict_types=1);
 
-test('Default', expectAll(
+test('Default', catchAll(
     fn() => v::hetu()->assert('010106A901O'),
-    '"010106A901O" must be a valid Finnish personal identity code',
-    '- "010106A901O" must be a valid Finnish personal identity code',
-    ['hetu' => '"010106A901O" must be a valid Finnish personal identity code'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('"010106A901O" must be a valid Finnish personal identity code')
+        ->and($fullMessage)->toBe('- "010106A901O" must be a valid Finnish personal identity code')
+        ->and($messages)->toBe(['hetu' => '"010106A901O" must be a valid Finnish personal identity code'])
 ));
 
-test('Inverted', expectAll(
+test('Inverted', catchAll(
     fn() => v::not(v::hetu())->assert('010106A9012'),
-    '"010106A9012" must not be a valid Finnish personal identity code',
-    '- "010106A9012" must not be a valid Finnish personal identity code',
-    ['notHetu' => '"010106A9012" must not be a valid Finnish personal identity code'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('"010106A9012" must not be a valid Finnish personal identity code')
+        ->and($fullMessage)->toBe('- "010106A9012" must not be a valid Finnish personal identity code')
+        ->and($messages)->toBe(['notHetu' => '"010106A9012" must not be a valid Finnish personal identity code'])
 ));
 
-test('With template', expectAll(
+test('With template', catchAll(
     fn() => v::hetu()->assert('010106A901O', 'That is not a HETU'),
-    'That is not a HETU',
-    '- That is not a HETU',
-    ['hetu' => 'That is not a HETU'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('That is not a HETU')
+        ->and($fullMessage)->toBe('- That is not a HETU')
+        ->and($messages)->toBe(['hetu' => 'That is not a HETU'])
 ));
 
-test('With name', expectAll(
+test('With name', catchAll(
     fn() => v::hetu()->setName('Hetu')->assert('010106A901O'),
-    'Hetu must be a valid Finnish personal identity code',
-    '- Hetu must be a valid Finnish personal identity code',
-    ['hetu' => 'Hetu must be a valid Finnish personal identity code'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Hetu must be a valid Finnish personal identity code')
+        ->and($fullMessage)->toBe('- Hetu must be a valid Finnish personal identity code')
+        ->and($messages)->toBe(['hetu' => 'Hetu must be a valid Finnish personal identity code'])
 ));

@@ -7,30 +7,34 @@
 
 declare(strict_types=1);
 
-test('Default mode', expectAll(
+test('Default mode', catchAll(
     fn() => v::keyExists('foo')->assert(['bar' => 'baz']),
-    '`.foo` must be present',
-    '- `.foo` must be present',
-    ['foo' => '`.foo` must be present'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.foo` must be present')
+        ->and($fullMessage)->toBe('- `.foo` must be present')
+        ->and($messages)->toBe(['foo' => '`.foo` must be present'])
 ));
 
-test('Inverted mode', expectAll(
+test('Inverted mode', catchAll(
     fn() => v::not(v::keyExists('foo'))->assert(['foo' => 'baz']),
-    '`.foo` must not be present',
-    '- `.foo` must not be present',
-    ['foo' => '`.foo` must not be present'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.foo` must not be present')
+        ->and($fullMessage)->toBe('- `.foo` must not be present')
+        ->and($messages)->toBe(['foo' => '`.foo` must not be present'])
 ));
 
-test('Custom name', expectAll(
+test('Custom name', catchAll(
     fn() => v::keyExists('foo')->setName('Custom name')->assert(['bar' => 'baz']),
-    'Custom name must be present',
-    '- Custom name must be present',
-    ['foo' => 'Custom name must be present'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Custom name must be present')
+        ->and($fullMessage)->toBe('- Custom name must be present')
+        ->and($messages)->toBe(['foo' => 'Custom name must be present'])
 ));
 
-test('Custom template', expectAll(
+test('Custom template', catchAll(
     fn() => v::keyExists('foo')->assert(['bar' => 'baz'], 'Custom template for {{name}}'),
-    'Custom template for `.foo`',
-    '- Custom template for `.foo`',
-    ['foo' => 'Custom template for `.foo`'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Custom template for `.foo`')
+        ->and($fullMessage)->toBe('- Custom template for `.foo`')
+        ->and($messages)->toBe(['foo' => 'Custom template for `.foo`'])
 ));

@@ -9,22 +9,22 @@ declare(strict_types=1);
 
 require_once 'vendor/autoload.php';
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::pesel()->assert('21120209251'),
-    '"21120209251" must be a valid PESEL',
+    fn(string $message) => expect($message)->toBe('"21120209251" must be a valid PESEL')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::pesel())->assert('21120209256'),
-    '"21120209256" must not be a valid PESEL',
+    fn(string $message) => expect($message)->toBe('"21120209256" must not be a valid PESEL')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::pesel()->assert('21120209251'),
-    '- "21120209251" must be a valid PESEL',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "21120209251" must be a valid PESEL')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::pesel())->assert('21120209256'),
-    '- "21120209256" must not be a valid PESEL',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "21120209256" must not be a valid PESEL')
 ));

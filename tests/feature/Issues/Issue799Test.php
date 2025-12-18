@@ -11,34 +11,36 @@ use Respect\Validation\Test\Stubs\CountableStub;
 
 $input = 'http://www.google.com/search?q=respect.github.com';
 
-test('https://github.com/Respect/Validation/issues/799 | #1', expectAll(
+test('https://github.com/Respect/Validation/issues/799 | #1', catchAll(
     fn() => v::create()
         ->call(
             [new CountableStub(1), 'count'],
             v::arrayVal()->key('scheme', v::startsWith('https')),
         )
         ->assert($input),
-    '1 must be an array value',
-    <<<'FULL_MESSAGE'
-    - 1 must pass all the rules
-      - 1 must be an array value
-      - `.scheme` must be present
-    FULL_MESSAGE,
-    [
-        '__root__' => '1 must pass all the rules',
-        'arrayVal' => '1 must be an array value',
-        'scheme' => '`.scheme` must be present',
-    ],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('1 must be an array value')
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+            - 1 must pass all the rules
+              - 1 must be an array value
+              - `.scheme` must be present
+            FULL_MESSAGE)
+        ->and($messages)->toBe([
+            '__root__' => '1 must pass all the rules',
+            'arrayVal' => '1 must be an array value',
+            'scheme' => '`.scheme` must be present',
+        ])
 ));
 
-test('https://github.com/Respect/Validation/issues/799 | #2', expectAll(
+test('https://github.com/Respect/Validation/issues/799 | #2', catchAll(
     fn() => v::create()
         ->call(
-            fn ($url) => parse_url($url),
+            fn ($url) => parse_url((string) $url),
             v::arrayVal()->key('scheme', v::startsWith('https')),
         )
         ->assert($input),
-    '`.scheme` must start with "https"',
-    '- `.scheme` must start with "https"',
-    ['scheme' => '`.scheme` must start with "https"'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.scheme` must start with "https"')
+        ->and($fullMessage)->toBe('- `.scheme` must start with "https"')
+        ->and($messages)->toBe(['scheme' => '`.scheme` must start with "https"'])
 ));

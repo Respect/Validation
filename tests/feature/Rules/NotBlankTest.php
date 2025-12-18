@@ -7,32 +7,32 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::notBlank()->assert(null),
-    '`null` must not be blank',
+    fn(string $message) => expect($message)->toBe('`null` must not be blank')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::notBlank()->setName('Field')->assert(null),
-    'Field must not be blank',
+    fn(string $message) => expect($message)->toBe('Field must not be blank')
 ));
 
-test('Scenario #3', expectMessage(
+test('Scenario #3', catchMessage(
     fn() => v::not(v::notBlank())->assert(1),
-    '1 must be blank',
+    fn(string $message) => expect($message)->toBe('1 must be blank')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::notBlank()->assert(''),
-    '- "" must not be blank',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "" must not be blank')
 ));
 
-test('Scenario #5', expectFullMessage(
+test('Scenario #5', catchFullMessage(
     fn() => v::notBlank()->setName('Field')->assert(''),
-    '- Field must not be blank',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- Field must not be blank')
 ));
 
-test('Scenario #6', expectFullMessage(
+test('Scenario #6', catchFullMessage(
     fn() => v::not(v::notBlank())->assert([1]),
-    '- `[1]` must be blank',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `[1]` must be blank')
 ));

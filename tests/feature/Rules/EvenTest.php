@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::even()->assert(-1),
-    '-1 must be an even number',
+    fn(string $message) => expect($message)->toBe('-1 must be an even number')
 ));
 
-test('Scenario #2', expectFullMessage(
+test('Scenario #2', catchFullMessage(
     fn() => v::even()->assert(5),
-    '- 5 must be an even number',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- 5 must be an even number')
 ));
 
-test('Scenario #3', expectMessage(
+test('Scenario #3', catchMessage(
     fn() => v::not(v::even())->assert(6),
-    '6 must be an odd number',
+    fn(string $message) => expect($message)->toBe('6 must be an odd number')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::even())->assert(8),
-    '- 8 must be an odd number',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- 8 must be an odd number')
 ));

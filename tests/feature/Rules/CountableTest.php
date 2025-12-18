@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::countable()->assert(1.0),
-    '1.0 must be a countable value',
+    fn(string $message) => expect($message)->toBe('1.0 must be a countable value')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::countable())->assert([]),
-    '`[]` must not be a countable value',
+    fn(string $message) => expect($message)->toBe('`[]` must not be a countable value')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::countable()->assert('Not countable!'),
-    '- "Not countable!" must be a countable value',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "Not countable!" must be a countable value')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::countable())->assert(new ArrayObject()),
-    '- `ArrayObject { getArrayCopy() => [] }` must not be a countable value',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `ArrayObject { getArrayCopy() => [] }` must not be a countable value')
 ));

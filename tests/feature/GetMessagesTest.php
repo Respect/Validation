@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessages(
+test('Scenario #1', catchMessages(
     fn() => v::create()
         ->key('mysql', v::create()
             ->key('host', v::stringType())
@@ -19,7 +19,7 @@ test('Scenario #1', expectMessages(
             ->key('password', v::stringType())
             ->key('schema', v::stringType()))
         ->assert(['mysql' => ['host' => 42, 'schema' => 42], 'postgresql' => ['user' => 42, 'password' => 42]]),
-    [
+    fn(array $messages) => expect($messages)->toBe([
         '__root__' => '`["mysql": ["host": 42, "schema": 42], "postgresql": ["user": 42, "password": 42]]` must pass all the rules',
         'mysql' => [
             '__root__' => '`.mysql` must pass all the rules',
@@ -35,5 +35,5 @@ test('Scenario #1', expectMessages(
             'password' => '`.password` must be a string',
             'schema' => '`.schema` must be present',
         ],
-    ],
+    ])
 ));

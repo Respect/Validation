@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 use Respect\Validation\Validator;
 
-test('Scenario', expectMessage(
+test('Scenario', catchMessage(
     fn() => Validator::callback('is_int')->setTemplate('{{name}} is not tasty')->assert('something'),
-    '"something" is not tasty',
+    fn(string $message) => expect($message)->toBe('"something" is not tasty')
 ));

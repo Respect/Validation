@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::base(61)->assert('Z01xSsg5675hic20dj'),
-    '"Z01xSsg5675hic20dj" must be a number in base 61',
+    fn(string $message) => expect($message)->toBe('"Z01xSsg5675hic20dj" must be a number in base 61')
 ));
 
-test('Scenario #2', expectFullMessage(
+test('Scenario #2', catchFullMessage(
     fn() => v::base(2)->assert(''),
-    '- "" must be a number in base 2',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "" must be a number in base 2')
 ));
 
-test('Scenario #3', expectMessage(
+test('Scenario #3', catchMessage(
     fn() => v::not(v::base(2))->assert('011010001'),
-    '"011010001" must not be a number in base 2',
+    fn(string $message) => expect($message)->toBe('"011010001" must not be a number in base 2')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::base(2))->assert('011010001'),
-    '- "011010001" must not be a number in base 2',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "011010001" must not be a number in base 2')
 ));

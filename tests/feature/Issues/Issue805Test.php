@@ -7,9 +7,10 @@
 
 declare(strict_types=1);
 
-test('https://github.com/Respect/Validation/issues/805', expectAll(
+test('https://github.com/Respect/Validation/issues/805', catchAll(
     fn() => v::key('email', v::email()->setTemplate('WRONG EMAIL!!!!!!'))->assert(['email' => 'qwe']),
-    'WRONG EMAIL!!!!!!',
-    '- WRONG EMAIL!!!!!!',
-    ['email' => 'WRONG EMAIL!!!!!!'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('WRONG EMAIL!!!!!!')
+        ->and($fullMessage)->toBe('- WRONG EMAIL!!!!!!')
+        ->and($messages)->toBe(['email' => 'WRONG EMAIL!!!!!!'])
 ));

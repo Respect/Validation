@@ -7,72 +7,82 @@
 
 declare(strict_types=1);
 
-test('Default', expectAll(
+test('Default', catchAll(
     fn() => v::keyOptional('foo', v::intType())->assert(['foo' => 'string']),
-    '`.foo` must be an integer',
-    '- `.foo` must be an integer',
-    ['foo' => '`.foo` must be an integer'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.foo` must be an integer')
+        ->and($fullMessage)->toBe('- `.foo` must be an integer')
+        ->and($messages)->toBe(['foo' => '`.foo` must be an integer'])
 ));
 
-test('Inverted', expectAll(
+test('Inverted', catchAll(
     fn() => v::not(v::keyOptional('foo', v::intType()))->assert(['foo' => 12]),
-    '`.foo` must not be an integer',
-    '- `.foo` must not be an integer',
-    ['foo' => '`.foo` must not be an integer'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.foo` must not be an integer')
+        ->and($fullMessage)->toBe('- `.foo` must not be an integer')
+        ->and($messages)->toBe(['foo' => '`.foo` must not be an integer'])
 ));
 
-test('Inverted with missing key', expectAll(
+test('Inverted with missing key', catchAll(
     fn() => v::not(v::keyOptional('foo', v::intType()))->assert([]),
-    '`.foo` must be present',
-    '- `.foo` must be present',
-    ['foo' => '`.foo` must be present'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.foo` must be present')
+        ->and($fullMessage)->toBe('- `.foo` must be present')
+        ->and($messages)->toBe(['foo' => '`.foo` must be present'])
 ));
 
-test('With wrapped name, default', expectAll(
+test('With wrapped name, default', catchAll(
     fn() => v::keyOptional('foo', v::intType()->setName('Wrapped'))->setName('Wrapper')->assert(['foo' => 'string']),
-    'Wrapped must be an integer',
-    '- Wrapped must be an integer',
-    ['foo' => 'Wrapped must be an integer'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Wrapped must be an integer')
+        ->and($fullMessage)->toBe('- Wrapped must be an integer')
+        ->and($messages)->toBe(['foo' => 'Wrapped must be an integer'])
 ));
 
-test('With wrapped name, inverted', expectAll(
+test('With wrapped name, inverted', catchAll(
     fn() => v::not(v::keyOptional('foo', v::intType()->setName('Wrapped'))->setName('Wrapper'))->setName('Not')->assert(['foo' => 12]),
-    'Wrapped must not be an integer',
-    '- Wrapped must not be an integer',
-    ['foo' => 'Wrapped must not be an integer'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Wrapped must not be an integer')
+        ->and($fullMessage)->toBe('- Wrapped must not be an integer')
+        ->and($messages)->toBe(['foo' => 'Wrapped must not be an integer'])
 ));
 
-test('With wrapper name, default', expectAll(
+test('With wrapper name, default', catchAll(
     fn() => v::keyOptional('foo', v::intType())->setName('Wrapper')->assert(['foo' => 'string']),
-    'Wrapper must be an integer',
-    '- Wrapper must be an integer',
-    ['foo' => 'Wrapper must be an integer'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Wrapper must be an integer')
+        ->and($fullMessage)->toBe('- Wrapper must be an integer')
+        ->and($messages)->toBe(['foo' => 'Wrapper must be an integer'])
 ));
 
-test('With wrapper name, inverted', expectAll(
+test('With wrapper name, inverted', catchAll(
     fn() => v::not(v::keyOptional('foo', v::intType())->setName('Wrapper'))->setName('Not')->assert(['foo' => 12]),
-    'Wrapper must not be an integer',
-    '- Wrapper must not be an integer',
-    ['foo' => 'Wrapper must not be an integer'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Wrapper must not be an integer')
+        ->and($fullMessage)->toBe('- Wrapper must not be an integer')
+        ->and($messages)->toBe(['foo' => 'Wrapper must not be an integer'])
 ));
 
-test('With "Not" name, inverted', expectAll(
+test('With "Not" name, inverted', catchAll(
     fn() => v::not(v::keyOptional('foo', v::intType()))->setName('Not')->assert(['foo' => 12]),
-    'Not must not be an integer',
-    '- Not must not be an integer',
-    ['foo' => 'Not must not be an integer'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Not must not be an integer')
+        ->and($fullMessage)->toBe('- Not must not be an integer')
+        ->and($messages)->toBe(['foo' => 'Not must not be an integer'])
 ));
 
-test('With template, default', expectAll(
+test('With template, default', catchAll(
     fn() => v::keyOptional('foo', v::intType())->assert(['foo' => 'string'], 'That key is off-key'),
-    'That key is off-key',
-    '- That key is off-key',
-    ['foo' => 'That key is off-key'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('That key is off-key')
+        ->and($fullMessage)->toBe('- That key is off-key')
+        ->and($messages)->toBe(['foo' => 'That key is off-key'])
 ));
 
-test('With template, inverted', expectAll(
+test('With template, inverted', catchAll(
     fn() => v::not(v::keyOptional('foo', v::intType()))->assert(['foo' => 12], 'No off-key key'),
-    'No off-key key',
-    '- No off-key key',
-    ['foo' => 'No off-key key'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('No off-key key')
+        ->and($fullMessage)->toBe('- No off-key key')
+        ->and($messages)->toBe(['foo' => 'No off-key key'])
 ));

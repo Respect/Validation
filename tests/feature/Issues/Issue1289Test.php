@@ -16,7 +16,7 @@ use Respect\Validation\Rules\StringType;
 use Respect\Validation\Rules\StringVal;
 use Respect\Validation\Validator;
 
-test('https://github.com/Respect/Validation/issues/1289', expectAll(
+test('https://github.com/Respect/Validation/issues/1289', catchAll(
     fn() => Validator::create(
         new Each(
             Validator::create(
@@ -38,30 +38,31 @@ test('https://github.com/Respect/Validation/issues/1289', expectAll(
             ),
         ),
     )
-        ->assert([
-            [
-                'default' => 2,
-                'description' => [],
-                'children' => ['nope'],
+            ->assert([
+                [
+                    'default' => 2,
+                    'description' => [],
+                    'children' => ['nope'],
+                ],
+            ]),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.0.default` must be a string')
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+            - `.0` must pass the rules
+              - `.default` must pass one of the rules
+                - `.default` must be a string
+                - `.default` must be a boolean
+              - `.description` must be a string value
+            FULL_MESSAGE)
+        ->and($messages)->toBe([
+            0 => [
+                '__root__' => '`.0` must pass the rules',
+                'default' => [
+                    '__root__' => '`.default` must pass one of the rules',
+                    'stringType' => '`.default` must be a string',
+                    'boolType' => '`.default` must be a boolean',
+                ],
+                'description' => '`.description` must be a string value',
             ],
-        ]),
-    '`.0.default` must be a string',
-    <<<'FULL_MESSAGE'
-    - `.0` must pass the rules
-      - `.default` must pass one of the rules
-        - `.default` must be a string
-        - `.default` must be a boolean
-      - `.description` must be a string value
-    FULL_MESSAGE,
-    [
-        0 => [
-            '__root__' => '`.0` must pass the rules',
-            'default' => [
-                '__root__' => '`.default` must pass one of the rules',
-                'stringType' => '`.default` must be a string',
-                'boolType' => '`.default` must be a boolean',
-            ],
-            'description' => '`.description` must be a string value',
-        ],
-    ],
+        ])
 ));

@@ -7,45 +7,50 @@
 
 declare(strict_types=1);
 
-test('Default', expectAll(
+test('Default', catchAll(
     fn() => v::min(v::equals(1))->assert([2, 3]),
-    'The minimum of `[2, 3]` must be equal to 1',
-    '- The minimum of `[2, 3]` must be equal to 1',
-    ['minEquals' => 'The minimum of `[2, 3]` must be equal to 1'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The minimum of `[2, 3]` must be equal to 1')
+        ->and($fullMessage)->toBe('- The minimum of `[2, 3]` must be equal to 1')
+        ->and($messages)->toBe(['minEquals' => 'The minimum of `[2, 3]` must be equal to 1'])
 ));
 
-test('Inverted', expectAll(
+test('Inverted', catchAll(
     fn() => v::not(v::min(v::equals(1)))->assert([1, 2, 3]),
-    'The minimum of `[1, 2, 3]` must not be equal to 1',
-    '- The minimum of `[1, 2, 3]` must not be equal to 1',
-    ['notMinEquals' => 'The minimum of `[1, 2, 3]` must not be equal to 1'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The minimum of `[1, 2, 3]` must not be equal to 1')
+        ->and($fullMessage)->toBe('- The minimum of `[1, 2, 3]` must not be equal to 1')
+        ->and($messages)->toBe(['notMinEquals' => 'The minimum of `[1, 2, 3]` must not be equal to 1'])
 ));
 
-test('With template', expectAll(
+test('With template', catchAll(
     fn() => v::min(v::equals(1))->assert([2, 3], 'That did not go as planned'),
-    'That did not go as planned',
-    '- That did not go as planned',
-    ['minEquals' => 'That did not go as planned'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('That did not go as planned')
+        ->and($fullMessage)->toBe('- That did not go as planned')
+        ->and($messages)->toBe(['minEquals' => 'That did not go as planned'])
 ));
 
-test('With name', expectAll(
+test('With name', catchAll(
     fn() => v::min(v::equals(1))->setName('Options')->assert([2, 3]),
-    'The minimum of Options must be equal to 1',
-    '- The minimum of Options must be equal to 1',
-    ['minEquals' => 'The minimum of Options must be equal to 1'],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The minimum of Options must be equal to 1')
+        ->and($fullMessage)->toBe('- The minimum of Options must be equal to 1')
+        ->and($messages)->toBe(['minEquals' => 'The minimum of Options must be equal to 1'])
 ));
 
-test('Chained wrapped rule', expectAll(
+test('Chained wrapped rule', catchAll(
     fn() => v::min(v::between(5, 7)->odd())->assert([2, 3, 4]),
-    'The minimum of `[2, 3, 4]` must be between 5 and 7',
-    <<<'FULL_MESSAGE'
-    - `[2, 3, 4]` must pass all the rules
-      - The minimum of `[2, 3, 4]` must be between 5 and 7
-      - The minimum of `[2, 3, 4]` must be an odd number
-    FULL_MESSAGE,
-    [
-        '__root__' => '`[2, 3, 4]` must pass all the rules',
-        'minBetween' => 'The minimum of `[2, 3, 4]` must be between 5 and 7',
-        'minOdd' => 'The minimum of `[2, 3, 4]` must be an odd number',
-    ],
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('The minimum of `[2, 3, 4]` must be between 5 and 7')
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+        - `[2, 3, 4]` must pass all the rules
+          - The minimum of `[2, 3, 4]` must be between 5 and 7
+          - The minimum of `[2, 3, 4]` must be an odd number
+        FULL_MESSAGE)
+        ->and($messages)->toBe([
+            '__root__' => '`[2, 3, 4]` must pass all the rules',
+            'minBetween' => 'The minimum of `[2, 3, 4]` must be between 5 and 7',
+            'minOdd' => 'The minimum of `[2, 3, 4]` must be an odd number',
+        ])
 ));

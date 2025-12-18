@@ -7,42 +7,42 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::alnum()->assert('abc%1'),
-    '"abc%1" must contain only letters (a-z) and digits (0-9)',
+    fn (string $message) => expect($message)->toBe('"abc%1" must contain only letters (a-z) and digits (0-9)'),
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::alnum(' ')->assert('abc%2'),
-    '"abc%2" must contain only letters (a-z), digits (0-9), and " "',
+    fn (string $message) => expect($message)->toBe('"abc%2" must contain only letters (a-z), digits (0-9), and " "'),
 ));
 
-test('Scenario #3', expectMessage(
+test('Scenario #3', catchMessage(
     fn() => v::not(v::alnum())->assert('abcd3'),
-    '"abcd3" must not contain letters (a-z) or digits (0-9)',
+    fn (string $message) => expect($message)->toBe('"abcd3" must not contain letters (a-z) or digits (0-9)'),
 ));
 
-test('Scenario #4', expectMessage(
+test('Scenario #4', catchMessage(
     fn() => v::not(v::alnum('% '))->assert('abc%4'),
-    '"abc%4" must not contain letters (a-z), digits (0-9), or "% "',
+    fn (string $message) => expect($message)->toBe('"abc%4" must not contain letters (a-z), digits (0-9), or "% "'),
 ));
 
-test('Scenario #5', expectFullMessage(
+test('Scenario #5', catchFullMessage(
     fn() => v::alnum()->assert('abc^1'),
-    '- "abc^1" must contain only letters (a-z) and digits (0-9)',
+    fn (string $fullMessage) => expect($fullMessage)->toBe('- "abc^1" must contain only letters (a-z) and digits (0-9)'),
 ));
 
-test('Scenario #6', expectFullMessage(
+test('Scenario #6', catchFullMessage(
     fn() => v::not(v::alnum())->assert('abcd2'),
-    '- "abcd2" must not contain letters (a-z) or digits (0-9)',
+    fn (string $fullMessage) => expect($fullMessage)->toBe('- "abcd2" must not contain letters (a-z) or digits (0-9)'),
 ));
 
-test('Scenario #7', expectFullMessage(
+test('Scenario #7', catchFullMessage(
     fn() => v::alnum('* &%')->assert('abc^3'),
-    '- "abc^3" must contain only letters (a-z), digits (0-9), and "* &%"',
+    fn (string $fullMessage) => expect($fullMessage)->toBe('- "abc^3" must contain only letters (a-z), digits (0-9), and "* &%"'),
 ));
 
-test('Scenario #8', expectFullMessage(
+test('Scenario #8', catchFullMessage(
     fn() => v::not(v::alnum('^'))->assert('abc^4'),
-    '- "abc^4" must not contain letters (a-z), digits (0-9), or "^"',
+    fn (string $fullMessage) => expect($fullMessage)->toBe('- "abc^4" must not contain letters (a-z), digits (0-9), or "^"'),
 ));

@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::uppercase()->assert('lowercase'),
-    '"lowercase" must contain only uppercase letters',
+    fn(string $message) => expect($message)->toBe('"lowercase" must contain only uppercase letters')
 ));
 
-test('Scenario #2', expectFullMessage(
+test('Scenario #2', catchFullMessage(
     fn() => v::uppercase()->assert('lowercase'),
-    '- "lowercase" must contain only uppercase letters',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "lowercase" must contain only uppercase letters')
 ));
 
-test('Scenario #3', expectMessage(
+test('Scenario #3', catchMessage(
     fn() => v::not(v::uppercase())->assert('UPPERCASE'),
-    '"UPPERCASE" must not contain only uppercase letters',
+    fn(string $message) => expect($message)->toBe('"UPPERCASE" must not contain only uppercase letters')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::uppercase())->assert('UPPERCASE'),
-    '- "UPPERCASE" must not contain only uppercase letters',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "UPPERCASE" must not contain only uppercase letters')
 ));

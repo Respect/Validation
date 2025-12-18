@@ -7,48 +7,46 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessages(
-    function (): void {
-        v::create()
-            ->key(
-                'mysql',
-                v::create()
-                    ->key('host', v::stringType())
-                    ->key('user', v::stringType())
-                    ->key('password', v::stringType())
-                    ->key('schema', v::stringType()),
-            )
-            ->key(
-                'postgresql',
-                v::create()
-                    ->key('host', v::stringType())
-                    ->key('user', v::stringType())
-                    ->key('password', v::stringType())
-                    ->key('schema', v::stringType()),
-            )
-            ->assert(
-                [
-                    'mysql' => [
-                        'host' => 42,
-                        'schema' => 42,
-                    ],
-                    'postgresql' => [
-                        'user' => 42,
-                        'password' => 42,
-                    ],
+test('Scenario #1', catchMessages(
+    fn () => v::create()
+        ->key(
+            'mysql',
+            v::create()
+                ->key('host', v::stringType())
+                ->key('user', v::stringType())
+                ->key('password', v::stringType())
+                ->key('schema', v::stringType()),
+        )
+        ->key(
+            'postgresql',
+            v::create()
+                ->key('host', v::stringType())
+                ->key('user', v::stringType())
+                ->key('password', v::stringType())
+                ->key('schema', v::stringType()),
+        )
+        ->assert(
+            [
+                'mysql' => [
+                    'host' => 42,
+                    'schema' => 42,
                 ],
-                [
-                    'mysql' => [
-                        'user' => 'Value should be a MySQL username',
-                        'host' => '`{{name}}` should be a MySQL host',
-                    ],
-                    'postgresql' => [
-                        'schema' => 'You must provide a valid PostgreSQL schema',
-                    ],
+                'postgresql' => [
+                    'user' => 42,
+                    'password' => 42,
                 ],
-            );
-    },
-    [
+            ],
+            [
+                'mysql' => [
+                    'user' => 'Value should be a MySQL username',
+                    'host' => '`{{name}}` should be a MySQL host',
+                ],
+                'postgresql' => [
+                    'schema' => 'You must provide a valid PostgreSQL schema',
+                ],
+            ],
+        ),
+    fn(array $messages) => expect($messages)->toBe([
         '__root__' => '`["mysql": ["host": 42, "schema": 42], "postgresql": ["user": 42, "password": 42]]` must pass all the rules',
         'mysql' => [
             '__root__' => '`.mysql` must pass all the rules',
@@ -64,5 +62,5 @@ test('Scenario #1', expectMessages(
             'password' => '`.password` must be a string',
             'schema' => 'You must provide a valid PostgreSQL schema',
         ],
-    ],
+    ])
 ));

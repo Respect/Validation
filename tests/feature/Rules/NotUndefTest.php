@@ -7,42 +7,42 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::notUndef()->assert(null),
-    '`null` must be defined',
+    fn(string $message) => expect($message)->toBe('`null` must be defined')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::notUndef())->assert(0),
-    '0 must be undefined',
+    fn(string $message) => expect($message)->toBe('0 must be undefined')
 ));
 
-test('Scenario #3', expectMessage(
+test('Scenario #3', catchMessage(
     fn() => v::notUndef()->setName('Field')->assert(null),
-    'Field must be defined',
+    fn(string $message) => expect($message)->toBe('Field must be defined')
 ));
 
-test('Scenario #4', expectMessage(
+test('Scenario #4', catchMessage(
     fn() => v::not(v::notUndef()->setName('Field'))->assert([]),
-    'Field must be undefined',
+    fn(string $message) => expect($message)->toBe('Field must be undefined')
 ));
 
-test('Scenario #5', expectFullMessage(
+test('Scenario #5', catchFullMessage(
     fn() => v::notUndef()->assert(''),
-    '- "" must be defined',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "" must be defined')
 ));
 
-test('Scenario #6', expectFullMessage(
+test('Scenario #6', catchFullMessage(
     fn() => v::not(v::notUndef())->assert([]),
-    '- `[]` must be undefined',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `[]` must be undefined')
 ));
 
-test('Scenario #7', expectFullMessage(
+test('Scenario #7', catchFullMessage(
     fn() => v::notUndef()->setName('Field')->assert(''),
-    '- Field must be defined',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- Field must be defined')
 ));
 
-test('Scenario #8', expectFullMessage(
+test('Scenario #8', catchFullMessage(
     fn() => v::not(v::notUndef()->setName('Field'))->assert([]),
-    '- Field must be undefined',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- Field must be undefined')
 ));

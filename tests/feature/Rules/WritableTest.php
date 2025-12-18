@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::writable()->assert('/path/of/a/valid/writable/file.txt'),
-    '"/path/of/a/valid/writable/file.txt" must be writable',
+    fn(string $message) => expect($message)->toBe('"/path/of/a/valid/writable/file.txt" must be writable')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::writable())->assert('tests/fixtures/valid-image.png'),
-    '"tests/fixtures/valid-image.png" must not be writable',
+    fn(string $message) => expect($message)->toBe('"tests/fixtures/valid-image.png" must not be writable')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::writable()->assert([]),
-    '- `[]` must be writable',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `[]` must be writable')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::writable())->assert('tests/fixtures/invalid-image.png'),
-    '- "tests/fixtures/invalid-image.png" must not be writable',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "tests/fixtures/invalid-image.png" must not be writable')
 ));

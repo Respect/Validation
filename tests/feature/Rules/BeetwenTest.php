@@ -7,32 +7,32 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::between(1, 2)->assert(0),
-    '0 must be between 1 and 2',
+    fn(string $message) => expect($message)->toBe('0 must be between 1 and 2')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::between('yesterday', 'tomorrow'))->assert('today'),
-    '"today" must not be between "yesterday" and "tomorrow"',
+    fn(string $message) => expect($message)->toBe('"today" must not be between "yesterday" and "tomorrow"')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::between('a', 'c')->assert('d'),
-    '- "d" must be between "a" and "c"',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "d" must be between "a" and "c"')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::between(-INF, INF))->assert(0),
-    '- 0 must not be between `-INF` and `INF`',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- 0 must not be between `-INF` and `INF`')
 ));
 
-test('Scenario #5', expectFullMessage(
+test('Scenario #5', catchFullMessage(
     fn() => v::not(v::between('a', 'b'))->assert('a'),
-    '- "a" must not be between "a" and "b"',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "a" must not be between "a" and "b"')
 ));
 
-test('Scenario #6', expectFullMessage(
+test('Scenario #6', catchFullMessage(
     fn() => v::not(v::between(1, 42))->assert(41),
-    '- 41 must not be between 1 and 42',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- 41 must not be between 1 and 42')
 ));

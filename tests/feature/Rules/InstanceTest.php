@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::instance(DateTime::class)->assert(''),
-    '"" must be an instance of `DateTime`',
+    fn(string $message) => expect($message)->toBe('"" must be an instance of `DateTime`')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::instance(Traversable::class))->assert(new ArrayObject()),
-    '`ArrayObject { getArrayCopy() => [] }` must not be an instance of `Traversable`',
+    fn(string $message) => expect($message)->toBe('`ArrayObject { getArrayCopy() => [] }` must not be an instance of `Traversable`')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::instance(ArrayIterator::class)->assert(new stdClass()),
-    '- `stdClass {}` must be an instance of `ArrayIterator`',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `stdClass {}` must be an instance of `ArrayIterator`')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::instance(stdClass::class))->assert(new stdClass()),
-    '- `stdClass {}` must not be an instance of `stdClass`',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `stdClass {}` must not be an instance of `stdClass`')
 ));

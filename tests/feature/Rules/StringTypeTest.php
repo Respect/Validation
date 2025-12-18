@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::stringType()->assert(42),
-    '42 must be a string',
+    fn(string $message) => expect($message)->toBe('42 must be a string')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::stringType())->assert('foo'),
-    '"foo" must not be a string',
+    fn(string $message) => expect($message)->toBe('"foo" must not be a string')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::stringType()->assert(true),
-    '- `true` must be a string',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `true` must be a string')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::stringType())->assert('bar'),
-    '- "bar" must not be a string',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "bar" must not be a string')
 ));

@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::boolVal()->assert('ok'),
-    '"ok" must be a boolean value',
+    fn(string $message) => expect($message)->toBe('"ok" must be a boolean value')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::boolVal())->assert('yes'),
-    '"yes" must not be a boolean value',
+    fn(string $message) => expect($message)->toBe('"yes" must not be a boolean value')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::boolVal()->assert('yep'),
-    '- "yep" must be a boolean value',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "yep" must be a boolean value')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::boolVal())->assert('on'),
-    '- "on" must not be a boolean value',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "on" must not be a boolean value')
 ));

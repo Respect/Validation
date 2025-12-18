@@ -7,42 +7,42 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::vowel()->assert('b'),
-    '"b" must consist of vowels only',
+    fn(string $message) => expect($message)->toBe('"b" must consist of vowels only')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::vowel('c')->assert('d'),
-    '"d" must consist of vowels and "c"',
+    fn(string $message) => expect($message)->toBe('"d" must consist of vowels and "c"')
 ));
 
-test('Scenario #3', expectMessage(
+test('Scenario #3', catchMessage(
     fn() => v::not(v::vowel())->assert('a'),
-    '"a" must not consist of vowels only',
+    fn(string $message) => expect($message)->toBe('"a" must not consist of vowels only')
 ));
 
-test('Scenario #4', expectMessage(
+test('Scenario #4', catchMessage(
     fn() => v::not(v::vowel('f'))->assert('e'),
-    '"e" must not consist of vowels or "f"',
+    fn(string $message) => expect($message)->toBe('"e" must not consist of vowels or "f"')
 ));
 
-test('Scenario #5', expectFullMessage(
+test('Scenario #5', catchFullMessage(
     fn() => v::vowel()->assert('g'),
-    '- "g" must consist of vowels only',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "g" must consist of vowels only')
 ));
 
-test('Scenario #6', expectFullMessage(
+test('Scenario #6', catchFullMessage(
     fn() => v::vowel('h')->assert('j'),
-    '- "j" must consist of vowels and "h"',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "j" must consist of vowels and "h"')
 ));
 
-test('Scenario #7', expectFullMessage(
+test('Scenario #7', catchFullMessage(
     fn() => v::not(v::vowel())->assert('i'),
-    '- "i" must not consist of vowels only',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "i" must not consist of vowels only')
 ));
 
-test('Scenario #8', expectFullMessage(
+test('Scenario #8', catchFullMessage(
     fn() => v::not(v::vowel('k'))->assert('o'),
-    '- "o" must not consist of vowels or "k"',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "o" must not consist of vowels or "k"')
 ));

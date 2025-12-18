@@ -7,22 +7,22 @@
 
 declare(strict_types=1);
 
-test('Scenario #1', expectMessage(
+test('Scenario #1', catchMessage(
     fn() => v::greaterThanOrEqual(INF)->assert(10),
-    '10 must be greater than or equal to `INF`',
+    fn(string $message) => expect($message)->toBe('10 must be greater than or equal to `INF`')
 ));
 
-test('Scenario #2', expectMessage(
+test('Scenario #2', catchMessage(
     fn() => v::not(v::greaterThanOrEqual(5))->assert(INF),
-    '`INF` must be less than 5',
+    fn(string $message) => expect($message)->toBe('`INF` must be less than 5')
 ));
 
-test('Scenario #3', expectFullMessage(
+test('Scenario #3', catchFullMessage(
     fn() => v::greaterThanOrEqual('today')->assert('yesterday'),
-    '- "yesterday" must be greater than or equal to "today"',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "yesterday" must be greater than or equal to "today"')
 ));
 
-test('Scenario #4', expectFullMessage(
+test('Scenario #4', catchFullMessage(
     fn() => v::not(v::greaterThanOrEqual('a'))->assert('z'),
-    '- "z" must be less than "a"',
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "z" must be less than "a"')
 ));
