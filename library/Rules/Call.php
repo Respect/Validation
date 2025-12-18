@@ -14,7 +14,6 @@ use ErrorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
-use Respect\Validation\Rules\Core\Standard;
 use Throwable;
 
 use function call_user_func;
@@ -26,7 +25,7 @@ use function set_error_handler;
     '{{input}} must be a suitable argument for {{callable}}',
     '{{input}} must not be a suitable argument for {{callable}}',
 )]
-final class Call extends Standard
+final class Call implements Rule
 {
     /**
      * @var callable

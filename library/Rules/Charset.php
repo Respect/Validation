@@ -13,7 +13,7 @@ use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function array_diff;
 use function array_merge;
@@ -28,7 +28,7 @@ use function mb_list_encodings;
     '{{name}} must only contain characters from the {{charset|raw}} charset',
     '{{name}} must not contain any characters from the {{charset|raw}} charset',
 )]
-final class Charset extends Standard
+final class Charset implements Rule
 {
     /** @var non-empty-array<string> */
     private readonly array $charset;

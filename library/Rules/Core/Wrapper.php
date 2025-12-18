@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules\Core;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 
-abstract class Wrapper extends Standard
+abstract class Wrapper implements Rule
 {
     public function __construct(
         protected readonly Rule $rule

@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function is_string;
 use function trim;
@@ -22,7 +22,7 @@ use function trim;
     '{{name}} must not be empty',
     '{{name}} must be empty',
 )]
-final class NotEmpty extends Standard
+final class NotEmpty implements Rule
 {
     public function evaluate(mixed $input): Result
     {

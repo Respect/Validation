@@ -14,7 +14,7 @@ use DateTimeInterface;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function date;
 use function is_scalar;
@@ -31,7 +31,7 @@ use function strtotime;
     '{{name}} must not be a valid date/time in the format {{sample}}',
     self::TEMPLATE_FORMAT,
 )]
-final class DateTime extends Standard
+final class DateTime implements Rule
 {
     use CanValidateDateTime;
 

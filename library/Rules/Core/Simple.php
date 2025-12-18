@@ -10,8 +10,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Result;
+use Respect\Validation\Rule;
 
-abstract class Simple extends Standard
+abstract class Simple implements Rule
 {
     abstract public function isValid(mixed $input): bool;
 

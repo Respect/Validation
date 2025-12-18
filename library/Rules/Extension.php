@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 use SplFileInfo;
 
 use function is_string;
@@ -25,7 +25,7 @@ use const PATHINFO_EXTENSION;
     '{{name}} must have {{extension}} extension',
     '{{name}} must not have {{extension}} extension',
 )]
-final class Extension extends Standard
+final class Extension implements Rule
 {
     public function __construct(
         private readonly string $extension

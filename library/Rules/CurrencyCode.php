@@ -14,7 +14,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 use Sokil\IsoCodes\Database\Currencies;
 
 use function class_exists;
@@ -25,7 +25,7 @@ use function in_array;
     '{{name}} must be a valid currency code',
     '{{name}} must not be a valid currency code',
 )]
-final class CurrencyCode extends Standard
+final class CurrencyCode implements Rule
 {
     private readonly Currencies $currencies;
 

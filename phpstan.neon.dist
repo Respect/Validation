@@ -12,9 +12,7 @@ parameters:
     - message: '/Call to an undefined method .+::expectException\(\)/'
       path: tests/Pest.php
     - message: '/Undefined variable: \$this/'
-      path: tests/feature
-    - message: '/Variable \$this might not be defined./'
-      path: tests/feature
+      path: tests/feature/Rules/SizeTest.php
     - message: '/Undefined variable: \$this/'
       path: tests/Pest.php
     - message: '/Method .+\\TestingStringifier::stringify\(\) never returns null so it can be removed from the return type./'

@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function is_array;
 use function is_string;
@@ -25,7 +25,7 @@ use function reset;
     '{{name}} must start with {{startValue}}',
     '{{name}} must not start with {{startValue}}',
 )]
-final class StartsWith extends Standard
+final class StartsWith implements Rule
 {
     public function __construct(
         private readonly mixed $startValue,

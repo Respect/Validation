@@ -12,14 +12,14 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be an instance of {{class|quote}}',
     '{{name}} must not be an instance of {{class|quote}}',
 )]
-final class Instance extends Standard
+final class Instance implements Rule
 {
     /** @param class-string $class */
     public function __construct(

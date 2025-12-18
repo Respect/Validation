@@ -13,7 +13,7 @@ use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function array_keys;
 use function is_string;
@@ -31,7 +31,7 @@ use function preg_match;
     '{{name}} must not be a valid {{service|raw}} video URL',
     self::TEMPLATE_SERVICE,
 )]
-final class VideoUrl extends Standard
+final class VideoUrl implements Rule
 {
     public const TEMPLATE_SERVICE = '__service__';
 

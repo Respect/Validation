@@ -17,7 +17,6 @@ use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
-use Respect\Validation\Rules\Core\Standard;
 use Throwable;
 
 use function in_array;
@@ -44,7 +43,7 @@ use function ucfirst;
     'For comparison with {{now|raw}}, {{name}} must not be a valid datetime in the format {{sample|raw}}',
     self::TEMPLATE_WRONG_FORMAT
 )]
-final class DateTimeDiff extends Standard
+final class DateTimeDiff implements Rule
 {
     use CanValidateDateTime;
 

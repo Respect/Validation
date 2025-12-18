@@ -14,7 +14,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 use Sokil\IsoCodes\Database\Countries;
 
 use function class_exists;
@@ -26,7 +26,7 @@ use function is_string;
     '{{name}} must be a valid country code',
     '{{name}} must not be a valid country code',
 )]
-final class CountryCode extends Standard
+final class CountryCode implements Rule
 {
     private readonly Countries $countries;
 

@@ -13,7 +13,6 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
-use Respect\Validation\Rules\Core\Standard;
 
 use function array_pop;
 use function count;
@@ -25,7 +24,7 @@ use function mb_substr_count;
     '{{name}} must be a valid domain',
     '{{name}} must not be a valid domain',
 )]
-final class Domain extends Standard
+final class Domain implements Rule
 {
     private readonly Rule $genericRule;
 

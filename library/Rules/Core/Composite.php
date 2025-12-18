@@ -13,7 +13,7 @@ use Respect\Validation\Rule;
 
 use function array_merge;
 
-abstract class Composite extends Standard
+abstract class Composite implements Rule
 {
     /** @var non-empty-array<Rule> */
     protected readonly array $rules;

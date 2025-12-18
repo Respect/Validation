@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function end;
 use function is_array;
@@ -25,7 +25,7 @@ use function mb_strrpos;
     '{{name}} must end with {{endValue}}',
     '{{name}} must not end with {{endValue}}',
 )]
-final class EndsWith extends Standard
+final class EndsWith implements Rule
 {
     public function __construct(
         private readonly mixed $endValue,

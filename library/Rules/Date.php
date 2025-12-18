@@ -14,7 +14,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function date;
 use function is_scalar;
@@ -26,7 +26,7 @@ use function strtotime;
     '{{name}} must be a valid date in the format {{sample}}',
     '{{name}} must not be a valid date in the format {{sample}}',
 )]
-final class Date extends Standard
+final class Date implements Rule
 {
     use CanValidateDateTime;
 

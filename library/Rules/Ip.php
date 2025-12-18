@@ -13,7 +13,7 @@ use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function bccomp;
 use function explode;
@@ -41,7 +41,7 @@ use const FILTER_VALIDATE_IP;
     '{{name}} must not be an IP address in the {{range|raw}} range',
     self::TEMPLATE_NETWORK_RANGE,
 )]
-final class Ip extends Standard
+final class Ip implements Rule
 {
     public const TEMPLATE_NETWORK_RANGE = '__network_range__';
 

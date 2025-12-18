@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function abs;
 use function is_integer;
@@ -23,7 +23,7 @@ use function is_numeric;
     '{{name}} must be a factor of {{dividend|raw}}',
     '{{name}} must not be a factor of {{dividend|raw}}',
 )]
-final class Factor extends Standard
+final class Factor implements Rule
 {
     public function __construct(
         private readonly int $dividend

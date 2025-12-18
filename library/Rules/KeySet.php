@@ -16,7 +16,6 @@ use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\KeyRelated;
 use Respect\Validation\Rules\Core\Reducer;
-use Respect\Validation\Rules\Core\Standard;
 use Respect\Validation\Validator;
 
 use function array_diff;
@@ -46,7 +45,7 @@ use function array_slice;
     '{{name}} contains no missing keys',
     self::TEMPLATE_MISSING_KEYS
 )]
-final class KeySet extends Standard
+final class KeySet implements Rule
 {
     public const TEMPLATE_BOTH = '__both__';
     public const TEMPLATE_EXTRA_KEYS = '__extra_keys__';

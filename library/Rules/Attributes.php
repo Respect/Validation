@@ -15,10 +15,9 @@ use ReflectionObject;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Reducer;
-use Respect\Validation\Rules\Core\Standard;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
-final class Attributes extends Standard
+final class Attributes implements Rule
 {
     public function evaluate(mixed $input): Result
     {

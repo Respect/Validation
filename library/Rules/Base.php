@@ -13,7 +13,7 @@ use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function mb_strlen;
 use function mb_substr;
@@ -24,7 +24,7 @@ use function preg_match;
     '{{name}} must be a number in base {{base|raw}}',
     '{{name}} must not be a number in base {{base|raw}}',
 )]
-final class Base extends Standard
+final class Base implements Rule
 {
     public function __construct(
         private readonly int $base,

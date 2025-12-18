@@ -12,14 +12,14 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{name}} must be identical to {{compareTo}}',
     '{{name}} must not be identical to {{compareTo}}',
 )]
-final class Identical extends Standard
+final class Identical implements Rule
 {
     public function __construct(
         private readonly mixed $compareTo

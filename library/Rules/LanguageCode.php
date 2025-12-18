@@ -14,7 +14,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 use Sokil\IsoCodes\Database\Countries;
 use Sokil\IsoCodes\Database\Languages;
 
@@ -27,7 +27,7 @@ use function is_string;
     '{{name}} must be a valid language code',
     '{{name}} must not be a valid language code',
 )]
-final class LanguageCode extends Standard
+final class LanguageCode implements Rule
 {
     private readonly Languages $languages;
 

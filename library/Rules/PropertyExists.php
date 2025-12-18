@@ -13,7 +13,7 @@ use Attribute;
 use ReflectionObject;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function is_object;
 
@@ -22,7 +22,7 @@ use function is_object;
     '{{name}} must be present',
     '{{name}} must not be present',
 )]
-final class PropertyExists extends Standard
+final class PropertyExists implements Rule
 {
     public function __construct(
         private readonly string $propertyName

@@ -16,7 +16,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 use Sokil\IsoCodes\Database\Countries;
 
 use function class_exists;
@@ -33,7 +33,7 @@ use function is_scalar;
     '{{name}} must not be a valid telephone number for country {{countryName|trans}}',
     self::TEMPLATE_FOR_COUNTRY,
 )]
-final class Phone extends Standard
+final class Phone implements Rule
 {
     public const TEMPLATE_FOR_COUNTRY = '__for_country__';
     public const TEMPLATE_INTERNATIONAL = '__international__';

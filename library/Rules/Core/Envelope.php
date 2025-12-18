@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules\Core;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 
-abstract class Envelope extends Standard
+abstract class Envelope implements Rule
 {
     /** @param array<string, mixed> $parameters */
     public function __construct(

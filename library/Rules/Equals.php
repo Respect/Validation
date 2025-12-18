@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function is_scalar;
 
@@ -21,7 +21,7 @@ use function is_scalar;
     '{{name}} must be equal to {{compareTo}}',
     '{{name}} must not be equal to {{compareTo}}',
 )]
-final class Equals extends Standard
+final class Equals implements Rule
 {
     public function __construct(
         private readonly mixed $compareTo

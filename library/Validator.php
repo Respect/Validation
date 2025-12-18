@@ -129,22 +129,6 @@ final class Validator implements Rule, Nameable
         return $this->rules;
     }
 
-    /**
-     * @deprecated Use {@see isValid()} instead.
-     */
-    public function validate(mixed $input): bool
-    {
-        return $this->evaluate($input)->hasPassed;
-    }
-
-    /**
-     * @deprecated Use {@see assert()} instead.
-     */
-    public function check(mixed $input): void
-    {
-        $this->assert($input);
-    }
-
     public function getName(): ?string
     {
         return $this->getRule()->getName() ?? $this->name;

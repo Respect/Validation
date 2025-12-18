@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function is_scalar;
 use function preg_match;
@@ -22,7 +22,7 @@ use function preg_match;
     '{{name}} must match the pattern {{regex|quote}}',
     '{{name}} must not match the pattern {{regex|quote}}',
 )]
-final class Regex extends Standard
+final class Regex implements Rule
 {
     public function __construct(
         private readonly string $regex

@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 
 use function in_array;
 use function is_array;
@@ -24,7 +24,7 @@ use function mb_strpos;
     '{{name}} must be in {{haystack}}',
     '{{name}} must not be in {{haystack}}',
 )]
-final class In extends Standard
+final class In implements Rule
 {
     public function __construct(
         private readonly mixed $haystack,

@@ -15,7 +15,7 @@ use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rules\Core\Standard;
+use Respect\Validation\Rule;
 use Sokil\IsoCodes\Database\Countries;
 use Sokil\IsoCodes\Database\Subdivisions;
 
@@ -26,7 +26,7 @@ use function class_exists;
     '{{name}} must be a subdivision code of {{countryName|trans}}',
     '{{name}} must not be a subdivision code of {{countryName|trans}}',
 )]
-final class SubdivisionCode extends Standard
+final class SubdivisionCode implements Rule
 {
     use CanValidateUndefined;
 
