@@ -241,8 +241,6 @@ interface PropertyChain
 
     public function propertyNotEmpty(string $propertyName): Chain;
 
-    public function propertyNotOptional(string $propertyName): Chain;
-
     public function propertyNotUndef(string $propertyName): Chain;
 
     public function propertyNullType(string $propertyName): Chain;

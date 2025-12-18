@@ -70,14 +70,6 @@ function addMethodToInterface(
         $method->addComment(preg_replace('@(/\*\* *| +\* +| +\*/)@', '', $commend));
     }
 
-    if ($originalName === 'Optional') {
-        $method->addComment('@deprecated Use {@see undefOr()} instead.');
-    }
-
-    if ($originalName === 'Nullable') {
-        $method->addComment('@deprecated Use {@see nullOr()} instead.');
-    }
-
     foreach ($reflrectionConstructor->getParameters() as $reflectionParameter) {
         if ($reflectionParameter->isVariadic()) {
             $method->setVariadic();
@@ -163,9 +155,7 @@ function overwriteFile(string $content, string $basename): void
         'KeyExists',
         'KeyOptional',
         'KeySet',
-        'Optional',
         'NullOr',
-        'Nullable',
         'UndefOr',
         'Property',
         'PropertyExists',
@@ -180,10 +170,10 @@ function overwriteFile(string $content, string $basename): void
         ['Length', 'length', $numberRelatedRules, []],
         ['Max', 'max', $numberRelatedRules, []],
         ['Min', 'min', $numberRelatedRules, []],
-        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotUndef', 'NotOptional', 'NullOr', 'UndefOr', 'Optional', 'Attributes', 'Templated', 'Named']],
-        ['NullOr', 'nullOr', [], ['Nullable', 'NullOr', 'Optional', 'NotOptional', 'NotUndef', 'UndefOr', 'Templated', 'Named']],
+        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotUndef', 'NullOr', 'UndefOr', 'Attributes', 'Templated', 'Named']],
+        ['NullOr', 'nullOr', [], ['NullOr', 'NotUndef', 'UndefOr', 'Templated', 'Named']],
         ['Property', 'property', [], $structureRelatedRules],
-        ['UndefOr', 'undefOr', [], ['Nullable', 'NullOr', 'NotOptional', 'NotUndef', 'Optional', 'UndefOr', 'Attributes', 'Templated', 'Named']],
+        ['UndefOr', 'undefOr', [], ['NullOr', 'NotUndef', 'UndefOr', 'Attributes', 'Templated', 'Named']],
         ['', null, [], []],
     ];
 
@@ -199,15 +189,6 @@ function overwriteFile(string $content, string $basename): void
             continue;
         }
         $names[$reflection->getShortName()] = $reflection;
-        if ($className === UndefOr::class) {
-            $names['Optional'] = $reflection;
-        }
-        if ($className === NullOr::class) {
-            $names['Nullable'] = $reflection;
-        }
-        if ($className === NotUndef::class) {
-            $names['NotOptional'] = $reflection;
-        }
     }
     ksort($names);
 

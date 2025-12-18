@@ -241,8 +241,6 @@ interface KeyBuilder
 
     public static function keyNotEmpty(int|string $key): Chain;
 
-    public static function keyNotOptional(int|string $key): Chain;
-
     public static function keyNotUndef(int|string $key): Chain;
 
     public static function keyNullType(int|string $key): Chain;

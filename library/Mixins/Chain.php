@@ -266,18 +266,11 @@ interface Chain extends
 
     public function notEmpty(): Chain;
 
-    public function notOptional(): Chain;
-
     public function notUndef(): Chain;
 
     public function nullOr(Rule $rule): Chain;
 
     public function nullType(): Chain;
-
-    /**
-     * @deprecated Use {@see nullOr()} instead.
-     */
-    public function nullable(Rule $rule): Chain;
 
     public function number(): Chain;
 
@@ -288,11 +281,6 @@ interface Chain extends
     public function odd(): Chain;
 
     public function oneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
-
-    /**
-     * @deprecated Use {@see undefOr()} instead.
-     */
-    public function optional(Rule $rule): Chain;
 
     public function perfectSquare(): Chain;
 

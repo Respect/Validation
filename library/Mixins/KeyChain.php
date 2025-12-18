@@ -241,8 +241,6 @@ interface KeyChain
 
     public function keyNotEmpty(int|string $key): Chain;
 
-    public function keyNotOptional(int|string $key): Chain;
-
     public function keyNotUndef(int|string $key): Chain;
 
     public function keyNullType(int|string $key): Chain;

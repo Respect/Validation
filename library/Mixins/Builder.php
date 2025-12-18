@@ -261,18 +261,11 @@ interface Builder extends
 
     public static function notEmpty(): Chain;
 
-    public static function notOptional(): Chain;
-
     public static function notUndef(): Chain;
 
     public static function nullOr(Rule $rule): Chain;
 
     public static function nullType(): Chain;
-
-    /**
-     * @deprecated Use {@see nullOr()} instead.
-     */
-    public static function nullable(Rule $rule): Chain;
 
     public static function number(): Chain;
 
@@ -283,11 +276,6 @@ interface Builder extends
     public static function odd(): Chain;
 
     public static function oneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
-
-    /**
-     * @deprecated Use {@see undefOr()} instead.
-     */
-    public static function optional(Rule $rule): Chain;
 
     public static function perfectSquare(): Chain;
 

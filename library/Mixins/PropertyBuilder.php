@@ -245,8 +245,6 @@ interface PropertyBuilder
 
     public static function propertyNotEmpty(string $propertyName): Chain;
 
-    public static function propertyNotOptional(string $propertyName): Chain;
-
     public static function propertyNotUndef(string $propertyName): Chain;
 
     public static function propertyNullType(string $propertyName): Chain;

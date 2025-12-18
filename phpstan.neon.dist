@@ -17,30 +17,6 @@ parameters:
       path: tests/feature
     - message: '/Undefined variable: \$this/'
       path: tests/Pest.php
-    - message: '/Call to deprecated method optional\(\).+/'
-      path: tests/feature/Transformers/AliasesTest.php
-    - message: '/Call to an undefined static method Respect\\Validation\\Validator::(min|max)Age\(\)./'
-      path: tests/feature/Transformers/Deprecated/AgeRuleTest.php
-    - message: '/Static method Respect\\Validation\\Mixins\\Builder::.+Of\(\) invoked with \d parameters?, at least 2 required/'
-      path: tests/feature/Transformers/Deprecated/CompositeArgumentsTest.php
-    - message: '/Call to an undefined static method Respect\\Validation\\Validator::attribute\(\)./'
-      path: tests/feature/Transformers/Deprecated/AttributeRuleTest.php
-    - message: '/Static method Respect\\Validation\\Mixins\\Builder::key\(\) invoked with \d parameters?, 2 required/'
-      path: tests/feature/Transformers/Deprecated/KeyArgumentsTest.php
-    - message: '/Call to an undefined static method Respect\\Validation\\Validator::keyNested\(\)./'
-      path: tests/feature/Transformers/Deprecated/KeyNestedRuleTest.php
-    - message: '/Call to an undefined static method Respect\\Validation\\Validator::keyValue\(\)./'
-      path: tests/feature/Transformers/Deprecated/KeyValueRuleTest.php
-    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\Builder::length\(\) expects Respect\\Validation\\Rule.+/'
-      path: tests/feature/Transformers/Deprecated/LengthArgumentsTest.php
-    - message: '/Static method Respect\\Validation\\Mixins\\Builder::length\(\) invoked with \d parameters, 1 required/'
-      path: tests/feature/Transformers/Deprecated/LengthArgumentsTest.php
-    - message: '/Parameter #1 \$rule of static method Respect\\Validation\\Mixins\\Builder::(min|max)\(\) expects Respect\\Validation\\Rule.+/'
-      path: tests/feature/Transformers/Deprecated/MinAndMaxArgumentsTest.php
-    - message: '/Parameter #(1|2) \$(unit|rule) of static method Respect\\Validation\\Mixins\\Builder::size\(\) expects .+/'
-      path: tests/feature/Transformers/Deprecated/SizeArgumentsTest.php
-    - message: '/Call to an undefined static method Respect\\Validation\\Validator::type\(\)./'
-      path: tests/feature/Transformers/Deprecated/TypeRuleTest.php
     - message: '/Method .+\\TestingStringifier::stringify\(\) never returns null so it can be removed from the return type./'
       path: tests/library/Message/TestingStringifier.php
     - message: '/Parameter #1 \$messages of class .+\\ArrayTranslator constructor expects array<string, string>, array<string, int> given./'
