@@ -15,7 +15,7 @@ use Respect\Validation\Message\ArrayFormatter;
 use Respect\Validation\Message\Formatter\FirstResultStringFormatter;
 use Respect\Validation\Message\Formatter\NestedArrayFormatter;
 use Respect\Validation\Message\Formatter\NestedListStringFormatter;
-use Respect\Validation\Message\StandardRenderer;
+use Respect\Validation\Message\InterpolationRenderer;
 use Respect\Validation\Message\StringFormatter;
 use Respect\Validation\Message\Translator;
 use Respect\Validation\Message\Translator\DummyTranslator;
@@ -75,7 +75,7 @@ final class ValidatorDefaultsTest extends TestCase
         $first = ValidatorDefaults::getRenderer();
         $second = ValidatorDefaults::getRenderer();
 
-        self::assertInstanceOf(StandardRenderer::class, $first);
+        self::assertInstanceOf(InterpolationRenderer::class, $first);
         self::assertSame($first, $second);
     }
 

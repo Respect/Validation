@@ -23,7 +23,7 @@ use function is_string;
 use function preg_replace_callback;
 use function print_r;
 
-final class StandardRenderer implements Renderer
+final class InterpolationRenderer implements Renderer
 {
     /** @var array<string, array<Template>> */
     private array $templates = [];

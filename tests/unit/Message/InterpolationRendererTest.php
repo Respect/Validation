@@ -19,13 +19,13 @@ use Respect\Validation\Test\TestCase;
 
 use function sprintf;
 
-#[CoversClass(StandardRenderer::class)]
-final class StandardRendererTest extends TestCase
+#[CoversClass(InterpolationRenderer::class)]
+final class InterpolationRendererTest extends TestCase
 {
     #[Test]
     public function itShouldRenderResultWithCustomTemplate(): void
     {
-        $renderer = new StandardRenderer(new TestingStringifier());
+        $renderer = new InterpolationRenderer(new TestingStringifier());
 
         $result = (new ResultBuilder())->template('This is my template')->build();
 
@@ -37,7 +37,7 @@ final class StandardRendererTest extends TestCase
     {
         $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $key = 'foo';
         $value = true;
@@ -58,7 +58,7 @@ final class StandardRendererTest extends TestCase
     {
         $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $key = 'foo';
         $value = 0.1;
@@ -79,7 +79,7 @@ final class StandardRendererTest extends TestCase
     {
         $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $key = 'foo';
         $value = false;
@@ -100,7 +100,7 @@ final class StandardRendererTest extends TestCase
     {
         $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $key = 'foo';
         $value = 'original';
@@ -122,7 +122,7 @@ final class StandardRendererTest extends TestCase
     {
         $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $value = 'original';
 
@@ -142,7 +142,7 @@ final class StandardRendererTest extends TestCase
     {
         $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $value = true;
 
@@ -160,7 +160,7 @@ final class StandardRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultProcessingNameAsSomeParameterInTheTemplate(): void
     {
-        $renderer = new StandardRenderer(new TestingStringifier());
+        $renderer = new InterpolationRenderer(new TestingStringifier());
 
         $name = 'my name';
 
@@ -180,7 +180,7 @@ final class StandardRendererTest extends TestCase
     {
         $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $input = 42;
 
@@ -200,7 +200,7 @@ final class StandardRendererTest extends TestCase
     {
         $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $input = 42;
 
@@ -222,7 +222,7 @@ final class StandardRendererTest extends TestCase
 
         $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $result = (new ResultBuilder())
             ->template('Will replace {{name}}')
@@ -241,7 +241,7 @@ final class StandardRendererTest extends TestCase
     {
         $stringifier = new TestingStringifier();
 
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $input = 'real input';
 
@@ -260,7 +260,7 @@ final class StandardRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultProcessingNonExistingParameters(): void
     {
-        $renderer = new StandardRenderer(new TestingStringifier());
+        $renderer = new InterpolationRenderer(new TestingStringifier());
 
         $result = (new ResultBuilder())
             ->template('Will not replace {{unknown}}')
@@ -275,7 +275,7 @@ final class StandardRendererTest extends TestCase
         $template = 'This is my template with {{foo}}';
         $translations = [$template => 'This is my translated template with {{foo}}'];
 
-        $renderer = new StandardRenderer(new TestingStringifier());
+        $renderer = new InterpolationRenderer(new TestingStringifier());
         $translator = new ArrayTranslator($translations);
 
         $result = (new ResultBuilder())
@@ -289,7 +289,7 @@ final class StandardRendererTest extends TestCase
     public function itShouldRenderResultWithNonCustomTemplate(): void
     {
         $stringifier = new TestingStringifier();
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $result = (new ResultBuilder())->build();
 
@@ -303,7 +303,7 @@ final class StandardRendererTest extends TestCase
     public function itShouldRenderResultWithNonCustomTemplateAndInvertedMode(): void
     {
         $stringifier = new TestingStringifier();
-        $renderer = new StandardRenderer($stringifier);
+        $renderer = new InterpolationRenderer($stringifier);
 
         $result = (new ResultBuilder())->hasInvertedMode()->build();
 
@@ -316,7 +316,7 @@ final class StandardRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultWithNonCustomTemplateWhenCannotFindAttachedTemplate(): void
     {
-        $renderer = new StandardRenderer(new TestingStringifier());
+        $renderer = new InterpolationRenderer(new TestingStringifier());
 
         $result = (new ResultBuilder())->template('__not_standard__')->hasInvertedMode()->build();
 
@@ -329,7 +329,7 @@ final class StandardRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultWithItsAdjacentsWhenItHasNoCustomTemplate(): void
     {
-        $renderer = new StandardRenderer(new TestingStringifier());
+        $renderer = new InterpolationRenderer(new TestingStringifier());
 
         $result = (new ResultBuilder())->template('__1st__')
             ->adjacent(
@@ -355,7 +355,7 @@ final class StandardRendererTest extends TestCase
             ->adjacent((new ResultBuilder())->template('and this is a adjacent')->build())
             ->build();
 
-        $renderer = new StandardRenderer(new TestingStringifier());
+        $renderer = new InterpolationRenderer(new TestingStringifier());
 
         self::assertSame($template, $renderer->render($result, new DummyTranslator()));
     }

@@ -14,8 +14,8 @@ use Respect\Validation\Message\Formatter\FirstResultStringFormatter;
 use Respect\Validation\Message\Formatter\NestedArrayFormatter;
 use Respect\Validation\Message\Formatter\NestedListStringFormatter;
 use Respect\Validation\Message\Formatter\TemplateResolver;
+use Respect\Validation\Message\InterpolationRenderer;
 use Respect\Validation\Message\Renderer;
-use Respect\Validation\Message\StandardRenderer;
 use Respect\Validation\Message\StringFormatter;
 use Respect\Validation\Message\Translator;
 use Respect\Validation\Message\Translator\DummyTranslator;
@@ -61,7 +61,7 @@ final class ValidatorDefaults
     public static function getRenderer(): Renderer
     {
         if (self::$renderer === null) {
-            self::$renderer = new StandardRenderer();
+            self::$renderer = new InterpolationRenderer();
         }
 
         return self::$renderer;
