@@ -29,7 +29,7 @@ final class InterpolationRenderer implements Renderer
     private array $templates = [];
 
     public function __construct(
-        private readonly Stringifier $stringifier = new StandardStringifier(),
+        private readonly Stringifier $stringifier = new ValidationStringifier(),
     ) {
     }
 

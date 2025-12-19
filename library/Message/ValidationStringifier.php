@@ -34,7 +34,7 @@ use Respect\Stringifier\Stringifiers\ThrowableObjectStringifier;
 use Respect\Validation\Message\Stringifier\ListedStringifier;
 use Respect\Validation\Message\Stringifier\QuotedStringifier;
 
-final readonly class StandardStringifier implements Stringifier
+final readonly class ValidationStringifier implements Stringifier
 {
     private const int MAXIMUM_DEPTH = 3;
     private const int MAXIMUM_NUMBER_OF_ITEMS = 5;
