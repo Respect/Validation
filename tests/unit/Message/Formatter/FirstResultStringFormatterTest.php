@@ -7,15 +7,58 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Message\StandardFormatter;
+namespace Respect\Validation\Message\Formatter;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Message\StandardFormatter\ResultCreator;
+use Respect\Validation\Message\Translator\DummyTranslator;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Test\Builders\ResultBuilder;
+use Respect\Validation\Test\Message\TestingMessageRenderer;
+use Respect\Validation\Test\TestCase;
+use stdClass;
 
-trait MainProvider
+use function Respect\Stringifier\stringify;
+use function sprintf;
+
+#[CoversClass(FirstResultStringFormatter::class)]
+final class FirstResultStringFormatterTest extends TestCase
 {
     use ResultCreator;
+
+    /** @param array<string, mixed> $templates */
+    #[Test]
+    #[DataProvider('provideForMain')]
+    public function itShouldFormatMainMessage(Result $result, string $expected, array $templates = []): void
+    {
+        $formatter = new FirstResultStringFormatter(
+            renderer: new TestingMessageRenderer(),
+            templateResolver: new TemplateResolver(),
+        );
+
+        self::assertSame($expected, $formatter->format($result, $templates, new DummyTranslator()));
+    }
+
+    #[Test]
+    public function itShouldThrowAnExceptionWhenTryingToFormatAndTemplateIsInvalid(): void
+    {
+        $formatter = new FirstResultStringFormatter(
+            renderer: new TestingMessageRenderer(),
+            templateResolver: new TemplateResolver(),
+        );
+        $result = (new ResultBuilder())->id('foo')->build();
+
+        $template = new stdClass();
+
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage(sprintf('Template for "foo" must be a string, %s given', stringify($template)));
+
+        $formatter->format($result, ['foo' => $template], new DummyTranslator());
+    }
 
     /** @return array<string, array{0: Result, 1: string, 2?: array<string, mixed>}> */
     public static function provideForMain(): array
@@ -47,7 +90,7 @@ trait MainProvider
                         (new ResultBuilder())->id('1st')->template('__2nd_original__')->build(),
                     )
                     ->build(),
-                'Parent custom',
+                '1st custom',
                 [
                     '__root__' => 'Parent custom',
                     '1st' => '1st custom',

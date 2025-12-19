@@ -7,14 +7,57 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Message\StandardFormatter;
+namespace Respect\Validation\Message\Formatter;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Message\StandardFormatter\ResultCreator;
+use Respect\Validation\Message\Translator\DummyTranslator;
 use Respect\Validation\Result;
 use Respect\Validation\Test\Builders\ResultBuilder;
+use Respect\Validation\Test\Message\TestingMessageRenderer;
+use Respect\Validation\Test\TestCase;
+use stdClass;
 
-trait FullProvider
+use function Respect\Stringifier\stringify;
+use function sprintf;
+
+#[CoversClass(NestedListStringFormatter::class)]
+final class NestedListStringFormatterTest extends TestCase
 {
     use ResultCreator;
+
+    /** @param array<string, mixed> $templates */
+    #[Test]
+    #[DataProvider('provideForFull')]
+    public function itShouldFormatFullMessage(Result $result, string $expected, array $templates = []): void
+    {
+        $formatter = new NestedListStringFormatter(
+            renderer: new TestingMessageRenderer(),
+            templateResolver: new TemplateResolver(),
+        );
+
+        self::assertSame($expected, $formatter->format($result, $templates, new DummyTranslator()));
+    }
+
+    #[Test]
+    public function itShouldThrowAnExceptionWhenTryingToFormatAndTemplateIsInvalid(): void
+    {
+        $formatter = new NestedListStringFormatter(
+            renderer: new TestingMessageRenderer(),
+            templateResolver: new TemplateResolver(),
+        );
+        $result = (new ResultBuilder())->id('foo')->build();
+
+        $template = new stdClass();
+
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage(sprintf('Template for "foo" must be a string, %s given', stringify($template)));
+
+        $formatter->format($result, ['foo' => $template], new DummyTranslator());
+    }
 
     /** @return array<string, array{0: Result, 1: string, 2?: array<string, mixed>}> */
     public static function provideForFull(): array
@@ -211,53 +254,13 @@ trait FullProvider
                     ],
                 ],
             ],
-            'with children with the same id, without templates' => [
-                self::singleLevelChildrenWithSameId(),
-                <<<'FULL_MESSAGE'
-                - __parent_original__
-                  - __1st_original__
-                  - __2nd_original__
-                  - __3rd_original__
-                FULL_MESSAGE,
-            ],
-            'with children with the same id, with templates' => [
-                self::singleLevelChildrenWithSameId(),
-                <<<'FULL_MESSAGE'
-                - Parent custom
-                  - 1st custom
-                  - 2nd custom
-                  - 3rd custom
-                FULL_MESSAGE,
-                [
-                    'parent' => [
-                        '__root__' => 'Parent custom',
-                        'child.1' => '1st custom',
-                        'child.2' => '2nd custom',
-                        'child.3' => '3rd custom',
-                    ],
-                ],
-            ],
-            'with children with the same id, with partial templates' => [
-                self::singleLevelChildrenWithSameId(),
-                <<<'FULL_MESSAGE'
-                - __parent_original__
-                  - 1st custom
-                  - 2nd custom
-                  - __3rd_original__
-                FULL_MESSAGE,
-                [
-                    'parent' => [
-                        'child.1' => '1st custom',
-                        'child.2' => '2nd custom',
-                    ],
-                ],
-            ],
             'with siblings that dot not have only one child' => [
                 self::multiLevelChildrenWithSiblingsThatHaveOnlyOneChild(),
                 <<<'FULL_MESSAGE'
                 - __parent_original__
                   - __1st_original__
                     - __1st_1st_original__
+                    - __1st_2nd_original__
                   - __2nd_original__
                     - __2nd_1st_original__
                 FULL_MESSAGE,

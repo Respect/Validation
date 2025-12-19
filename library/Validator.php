@@ -10,7 +10,8 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Message\Formatter;
+use Respect\Validation\Message\ArrayFormatter;
+use Respect\Validation\Message\StringFormatter;
 use Respect\Validation\Message\Translator;
 use Respect\Validation\Mixins\Builder;
 use Respect\Validation\Rules\Core\Nameable;
@@ -37,8 +38,11 @@ final class Validator implements Rule, Nameable
     /** @param array<string> $ignoredBacktracePaths */
     public function __construct(
         private readonly Factory $factory,
-        private readonly Formatter $formatter,
+        private readonly StringFormatter $mainMessageFormatter,
+        private readonly StringFormatter $fullMessageFormatter,
+        private readonly ArrayFormatter $messagesFormatter,
         private readonly Translator $translator,
+        private readonly ResultFilter $resultFilter,
         private readonly array $ignoredBacktracePaths,
     ) {
     }
@@ -47,8 +51,11 @@ final class Validator implements Rule, Nameable
     {
         $validator = new self(
             ValidatorDefaults::getFactory(),
-            ValidatorDefaults::getFormatter(),
+            ValidatorDefaults::getMainMessageFormatter(),
+            ValidatorDefaults::getFullMessageFormatter(),
+            ValidatorDefaults::getMessagesFormatter(),
             ValidatorDefaults::getTranslator(),
+            new OnlyFailedChildrenResultFilter(),
             ValidatorDefaults::getIgnoredBacktracePaths(),
         );
         $validator->rules = $rules;
@@ -87,10 +94,12 @@ final class Validator implements Rule, Nameable
             $templates = ['__root__' => $this->getTemplate()];
         }
 
+        $failedResult = $this->resultFilter->filter($result);
+
         $exception = new ValidationException(
-            $this->formatter->main($result, $templates, $this->translator),
-            $this->formatter->full($result, $templates, $this->translator),
-            $this->formatter->array($result, $templates, $this->translator),
+            $this->mainMessageFormatter->format($failedResult, $templates, $this->translator),
+            $this->fullMessageFormatter->format($failedResult, $templates, $this->translator),
+            $this->messagesFormatter->format($failedResult, $templates, $this->translator),
             $this->ignoredBacktracePaths,
         );
 

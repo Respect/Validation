@@ -7,14 +7,60 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Message\StandardFormatter;
+namespace Respect\Validation\Message\Formatter;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Exceptions\ComponentException;
+use Respect\Validation\Message\StandardFormatter\ResultCreator;
+use Respect\Validation\Message\Translator\DummyTranslator;
 use Respect\Validation\Result;
 use Respect\Validation\Test\Builders\ResultBuilder;
+use Respect\Validation\Test\Message\TestingMessageRenderer;
+use Respect\Validation\Test\TestCase;
+use stdClass;
 
-trait ArrayProvider
+use function Respect\Stringifier\stringify;
+use function sprintf;
+
+#[CoversClass(NestedArrayFormatter::class)]
+final class NestedArrayFormatterTest extends TestCase
 {
     use ResultCreator;
+
+    /**
+     * @param array<string, mixed> $expected
+     * @param array<string, mixed> $templates
+     */
+    #[Test]
+    #[DataProvider('provideForArray')]
+    public function itShouldFormatArrayMessage(Result $result, array $expected, array $templates = []): void
+    {
+        $formatter = new NestedArrayFormatter(
+            renderer: new TestingMessageRenderer(),
+            templateResolver: new TemplateResolver(),
+        );
+
+        self::assertSame($expected, $formatter->format($result, $templates, new DummyTranslator()));
+    }
+
+    #[Test]
+    public function itShouldThrowAnExceptionWhenTryingToFormatAndTemplateIsInvalid(): void
+    {
+        $formatter = new NestedArrayFormatter(
+            renderer: new TestingMessageRenderer(),
+            templateResolver: new TemplateResolver(),
+        );
+        $result = (new ResultBuilder())->id('foo')->build();
+
+        $template = new stdClass();
+
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage(sprintf('Template for "foo" must be a string, %s given', stringify($template)));
+
+        $formatter->format($result, ['foo' => $template], new DummyTranslator());
+    }
 
     /** @return array<string, array{0: Result, 1: array<string, mixed>, 2?: array<string, mixed>}> */
     public static function provideForArray(): array
@@ -178,43 +224,6 @@ trait ArrayProvider
                     '1st' => '1st custom',
                     '2nd' => ['2nd_2nd' => '2nd > 2nd custom'],
                     '3rd' => '3rd custom',
-                ],
-            ],
-            'with children with the same id, without templates' => [
-                self::singleLevelChildrenWithSameId(),
-                [
-                    '__root__' => '__parent_original__',
-                    'child.1' => '__1st_original__',
-                    'child.2' => '__2nd_original__',
-                    'child.3' => '__3rd_original__',
-                ],
-            ],
-            'with children with the same id, with templates' => [
-                self::singleLevelChildrenWithSameId(),
-                [
-                    '__root__' => 'Parent custom',
-                    'child.1' => '1st custom',
-                    'child.2' => '2nd custom',
-                    'child.3' => '3rd custom',
-                ],
-                [
-                    '__root__' => 'Parent custom',
-                    'child.1' => '1st custom',
-                    'child.2' => '2nd custom',
-                    'child.3' => '3rd custom',
-                ],
-            ],
-            'with children with the same id, with partial templates' => [
-                self::singleLevelChildrenWithSameId(),
-                [
-                    '__root__' => '__parent_original__',
-                    'child.1' => '1st custom',
-                    'child.2' => '2nd custom',
-                    'child.3' => '__3rd_original__',
-                ],
-                [
-                    'child.1' => '1st custom',
-                    'child.2' => '2nd custom',
                 ],
             ],
         ];

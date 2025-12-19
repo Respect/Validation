@@ -37,6 +37,8 @@ final class ResultBuilder
     /** @var array<Result> */
     private array $children = [];
 
+    private string|int|null $path = null;
+
     public function __construct()
     {
         $this->rule = Stub::daze();
@@ -54,9 +56,16 @@ final class ResultBuilder
             $this->name,
             $this->id,
             $this->adjacent,
-            null,
+            $this->path,
             ...$this->children,
         );
+    }
+
+    public function withPath(string|int|null $path): self
+    {
+        $this->path = $path;
+
+        return $this;
     }
 
     public function hasPassed(bool $hasPassed): self
