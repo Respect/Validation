@@ -33,7 +33,7 @@ final class StandardRenderer implements Renderer
     ) {
     }
 
-    public function render(Result $result, Translator $translator, string|null $template = null): string
+    public function render(Result $result, Translator $translator): string
     {
         $parameters = $result->parameters;
         $parameters['path'] = $result->path !== null ? Quoted::fromPath($result->path) : null;
@@ -51,7 +51,7 @@ final class StandardRenderer implements Renderer
 
                 return $this->placeholder($matches[1], $parameters[$matches[1]], $translator, $matches[3] ?? null);
             },
-            $translator->translate($template ?? $this->getTemplateMessage($result)),
+            $translator->translate($this->getTemplateMessage($result)),
         );
 
         if (!$result->hasCustomTemplate() && $result->adjacent !== null) {

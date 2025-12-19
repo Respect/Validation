@@ -33,18 +33,6 @@ final class StandardRendererTest extends TestCase
     }
 
     #[Test]
-    public function itShouldRenderResultOverwritingCustomTemplateWhenTemplateIsPassedAsAnArgument(): void
-    {
-        $renderer = new StandardRenderer(new TestingStringifier());
-
-        $template = 'This is my brand new template';
-
-        $result = (new ResultBuilder())->template('This is my template')->build();
-
-        self::assertSame($template, $renderer->render($result, new DummyTranslator(), $template));
-    }
-
-    #[Test]
     public function itShouldRenderResultProcessingParametersInTheTemplate(): void
     {
         $stringifier = new TestingStringifier();
