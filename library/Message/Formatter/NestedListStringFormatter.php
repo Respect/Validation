@@ -11,7 +11,6 @@ namespace Respect\Validation\Message\Formatter;
 
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\StringFormatter;
-use Respect\Validation\Message\Translator;
 use Respect\Validation\Result;
 
 use function array_filter;
@@ -26,23 +25,22 @@ use const PHP_EOL;
 final readonly class NestedListStringFormatter implements StringFormatter
 {
     public function __construct(
-        private Renderer $renderer,
         private TemplateResolver $templateResolver,
     ) {
     }
 
     /** @param array<string|int, mixed> $templates */
-    public function format(Result $result, array $templates, Translator $translator): string
+    public function format(Result $result, Renderer $renderer, array $templates): string
     {
-        return $this->formatRecursively($result, $templates, $translator, 0);
+        return $this->formatRecursively($result, $renderer, $templates, 0);
     }
 
     /** @param array<string|int, mixed> $templates */
     private function formatRecursively(
         Result $result,
+        Renderer $renderer,
         array $templates,
-        Translator $translator,
-        int $depth = 0,
+        int $depth,
         Result ...$siblings,
     ): string {
         $matchedTemplates = $this->templateResolver->selectMatches($result, $templates);
@@ -55,12 +53,11 @@ final readonly class NestedListStringFormatter implements StringFormatter
             $formatted .= sprintf(
                 '%s- %s' . PHP_EOL,
                 $indentation,
-                $this->renderer->render(
+                $renderer->render(
                     $this->templateResolver->resolve(
                         $result->withoutParentPath(),
                         $matchedTemplates,
                     ),
-                    $translator,
                 ),
             );
             $depth++;
@@ -70,8 +67,8 @@ final readonly class NestedListStringFormatter implements StringFormatter
             foreach ($result->children as $child) {
                 $formatted .= $this->formatRecursively(
                     $displayedName === $child->name ? $child->withoutName() : $child,
+                    $renderer,
                     $matchedTemplates,
-                    $translator,
                     $depth,
                     ...array_filter($result->children, static fn(Result $sibling) => $sibling !== $child),
                 );

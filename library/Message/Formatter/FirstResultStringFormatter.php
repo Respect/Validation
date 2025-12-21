@@ -11,31 +11,25 @@ namespace Respect\Validation\Message\Formatter;
 
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\StringFormatter;
-use Respect\Validation\Message\Translator;
 use Respect\Validation\Result;
 
 final readonly class FirstResultStringFormatter implements StringFormatter
 {
     public function __construct(
-        private Renderer $renderer,
         private TemplateResolver $templateResolver,
     ) {
     }
 
     /** @param array<string|int, mixed> $templates */
-    public function format(Result $result, array $templates, Translator $translator): string
+    public function format(Result $result, Renderer $renderer, array $templates): string
     {
         $matchedTemplates = $this->templateResolver->selectMatches($result, $templates);
         if (!$this->templateResolver->hasMatch($result, $matchedTemplates)) {
             foreach ($result->children as $child) {
-                return $this->format(
-                    $child,
-                    $matchedTemplates,
-                    $translator,
-                );
+                return $this->format($child, $renderer, $matchedTemplates);
             }
         }
 
-        return $this->renderer->render($this->templateResolver->resolve($result, $matchedTemplates), $translator);
+        return $renderer->render($this->templateResolver->resolve($result, $matchedTemplates));
     }
 }

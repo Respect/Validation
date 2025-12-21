@@ -10,12 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Test\Message;
 
 use Respect\Validation\Message\Renderer;
-use Respect\Validation\Message\Translator;
 use Respect\Validation\Result;
 
 final class TestingMessageRenderer implements Renderer
 {
-    public function render(Result $result, Translator $translator): string
+    public function render(Result $result): string
     {
         return $result->template;
     }

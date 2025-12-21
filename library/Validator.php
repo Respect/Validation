@@ -11,8 +11,8 @@ namespace Respect\Validation;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\ArrayFormatter;
+use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\StringFormatter;
-use Respect\Validation\Message\Translator;
 use Respect\Validation\Mixins\Builder;
 use Respect\Validation\Rules\Core\Nameable;
 use Respect\Validation\Rules\Core\Reducer;
@@ -38,10 +38,10 @@ final class Validator implements Rule, Nameable
     /** @param array<string> $ignoredBacktracePaths */
     public function __construct(
         private readonly Factory $factory,
+        private readonly Renderer $renderer,
         private readonly StringFormatter $mainMessageFormatter,
         private readonly StringFormatter $fullMessageFormatter,
         private readonly ArrayFormatter $messagesFormatter,
-        private readonly Translator $translator,
         private readonly ResultFilter $resultFilter,
         private readonly array $ignoredBacktracePaths,
     ) {
@@ -89,9 +89,9 @@ final class Validator implements Rule, Nameable
         $failedResult = $this->resultFilter->filter($result);
 
         $exception = new ValidationException(
-            $this->mainMessageFormatter->format($failedResult, $templates, $this->translator),
-            $this->fullMessageFormatter->format($failedResult, $templates, $this->translator),
-            $this->messagesFormatter->format($failedResult, $templates, $this->translator),
+            $this->mainMessageFormatter->format($failedResult, $this->renderer, $templates),
+            $this->fullMessageFormatter->format($failedResult, $this->renderer, $templates),
+            $this->messagesFormatter->format($failedResult, $this->renderer, $templates),
             $this->ignoredBacktracePaths,
         );
 

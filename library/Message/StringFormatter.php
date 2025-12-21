@@ -14,5 +14,5 @@ use Respect\Validation\Result;
 interface StringFormatter
 {
     /** @param array<string, mixed> $templates */
-    public function format(Result $result, array $templates, Translator $translator): string;
+    public function format(Result $result, Renderer $renderer, array $templates): string;
 }

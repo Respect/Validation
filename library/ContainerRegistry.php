@@ -51,10 +51,10 @@ final class ContainerRegistry
             'respect.validation.ignored_backtrace_paths' => [__DIR__ . '/Validator.php'],
             Validator::class => factory(static fn(Container $container) => new Validator(
                 $container->get(Factory::class),
+                $container->get(Renderer::class),
                 $container->get('respect.validation.formatter.message'),
                 $container->get('respect.validation.formatter.full_message'),
                 $container->get('respect.validation.formatter.messages'),
-                $container->get(Translator::class),
                 $container->get(ResultFilter::class),
                 $container->get('respect.validation.ignored_backtrace_paths'),
             )),

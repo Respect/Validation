@@ -13,5 +13,5 @@ use Respect\Validation\Result;
 
 interface Renderer
 {
-    public function render(Result $result, Translator $translator): string;
+    public function render(Result $result): string;
 }

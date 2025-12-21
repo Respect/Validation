@@ -14,7 +14,6 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Message\StandardFormatter\ResultCreator;
-use Respect\Validation\Message\Translator\DummyTranslator;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Test\Builders\ResultBuilder;
@@ -35,21 +34,17 @@ final class FirstResultStringFormatterTest extends TestCase
     #[DataProvider('provideForMain')]
     public function itShouldFormatMainMessage(Result $result, string $expected, array $templates = []): void
     {
-        $formatter = new FirstResultStringFormatter(
-            renderer: new TestingMessageRenderer(),
-            templateResolver: new TemplateResolver(),
-        );
+        $renderer = new TestingMessageRenderer();
+        $formatter = new FirstResultStringFormatter(new TemplateResolver());
 
-        self::assertSame($expected, $formatter->format($result, $templates, new DummyTranslator()));
+        self::assertSame($expected, $formatter->format($result, $renderer, $templates));
     }
 
     #[Test]
     public function itShouldThrowAnExceptionWhenTryingToFormatAndTemplateIsInvalid(): void
     {
-        $formatter = new FirstResultStringFormatter(
-            renderer: new TestingMessageRenderer(),
-            templateResolver: new TemplateResolver(),
-        );
+        $renderer = new TestingMessageRenderer();
+        $formatter = new FirstResultStringFormatter(new TemplateResolver());
         $result = (new ResultBuilder())->id('foo')->build();
 
         $template = new stdClass();
@@ -57,7 +52,7 @@ final class FirstResultStringFormatterTest extends TestCase
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage(sprintf('Template for "foo" must be a string, %s given', stringify($template)));
 
-        $formatter->format($result, ['foo' => $template], new DummyTranslator());
+        $formatter->format($result, $renderer, ['foo' => $template]);
     }
 
     /** @return array<string, array{0: Result, 1: string, 2?: array<string, mixed>}> */

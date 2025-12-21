@@ -31,29 +31,30 @@ final class InterpolationRenderer implements Renderer
     private array $templates = [];
 
     public function __construct(
+        private readonly Translator $translator,
         private readonly Stringifier $stringifier = new ValidationStringifier(),
     ) {
     }
 
-    public function render(Result $result, Translator $translator): string
+    public function render(Result $result): string
     {
         $parameters = ['path' => $result->path, 'input' => $result->input, 'name' => $this->getName($result)];
         $parameters += $result->parameters;
 
         $rendered = (string) preg_replace_callback(
             '/{{(\w+)(\|([^}]+))?}}/',
-            function (array $matches) use ($parameters, $translator) {
+            function (array $matches) use ($parameters) {
                 if (!isset($parameters[$matches[1]])) {
                     return $matches[0];
                 }
 
-                return $this->placeholder($matches[1], $parameters[$matches[1]], $translator, $matches[3] ?? null);
+                return $this->placeholder($matches[1], $parameters[$matches[1]], $matches[3] ?? null);
             },
-            $translator->translate($this->getTemplateMessage($result)),
+            $this->translator->translate($this->getTemplateMessage($result)),
         );
 
         if (!$result->hasCustomTemplate() && $result->adjacent !== null) {
-            $rendered .= ' ' . $this->render($result->adjacent, $translator);
+            $rendered .= ' ' . $this->render($result->adjacent);
         }
 
         return $rendered;
@@ -75,19 +76,18 @@ final class InterpolationRenderer implements Renderer
     private function placeholder(
         string $name,
         mixed $value,
-        Translator $translator,
         string|null $modifier = null,
     ): string {
         if ($modifier === 'quote' && is_string($value)) {
-            return $this->placeholder($name, new Quoted($value), $translator);
+            return $this->placeholder($name, new Quoted($value));
         }
 
         if ($modifier === 'listOr' && is_array($value)) {
-            return $this->placeholder($name, new Listed($value, $translator->translate('or')), $translator);
+            return $this->placeholder($name, new Listed($value, $this->translator->translate('or')));
         }
 
         if ($modifier === 'listAnd' && is_array($value)) {
-            return $this->placeholder($name, new Listed($value, $translator->translate('and')), $translator);
+            return $this->placeholder($name, new Listed($value, $this->translator->translate('and')));
         }
 
         if ($modifier === 'raw' && is_scalar($value)) {
@@ -95,7 +95,7 @@ final class InterpolationRenderer implements Renderer
         }
 
         if ($modifier === 'trans' && is_string($value)) {
-            return $translator->translate($value);
+            return $this->translator->translate($value);
         }
 
         return $this->stringifier->stringify($value, 0) ?? print_r($value, true);

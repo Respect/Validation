@@ -11,7 +11,6 @@ namespace Respect\Validation\Message\Formatter;
 
 use Respect\Validation\Message\ArrayFormatter;
 use Respect\Validation\Message\Renderer;
-use Respect\Validation\Message\Translator;
 use Respect\Validation\Result;
 
 use function count;
@@ -20,7 +19,6 @@ use function current;
 final readonly class NestedArrayFormatter implements ArrayFormatter
 {
     public function __construct(
-        private Renderer $renderer,
         private TemplateResolver $templateResolver,
     ) {
     }
@@ -30,14 +28,13 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
      *
      * @return array<string|int, mixed>
      */
-    public function format(Result $result, array $templates, Translator $translator): array
+    public function format(Result $result, Renderer $renderer, array $templates): array
     {
         $matchedTemplates = $this->templateResolver->selectMatches($result, $templates);
         if (count($result->children) === 0 || $this->templateResolver->hasMatch($result, $matchedTemplates)) {
             return [
-                $result->path->value ?? $result->id->value => $this->renderer->render(
+                $result->path->value ?? $result->id->value => $renderer->render(
                     $this->templateResolver->resolve($result->withoutParentPath(), $matchedTemplates),
-                    $translator,
                 ),
             ];
         }
@@ -47,8 +44,8 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
             $key = $child->path->value ?? $child->id->value;
             $messages[$key] = $this->format(
                 $child->withoutParentPath()->withoutName(),
+                $renderer,
                 $this->templateResolver->selectMatches($child, $matchedTemplates),
-                $translator,
             );
             if (count($messages[$key]) !== 1) {
                 continue;
@@ -59,9 +56,8 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
 
         if (count($messages) > 1) {
             $self = [
-                '__root__' => $this->renderer->render(
+                '__root__' => $renderer->render(
                     $this->templateResolver->resolve($result->withoutParentPath(), $matchedTemplates),
-                    $translator,
                 ),
             ];
 

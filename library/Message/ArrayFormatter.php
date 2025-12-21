@@ -18,5 +18,5 @@ interface ArrayFormatter
      *
      * @return array<string, mixed>
      */
-    public function format(Result $result, array $templates, Translator $translator): array;
+    public function format(Result $result, Renderer $renderer, array $templates): array;
 }
