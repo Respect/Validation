@@ -11,9 +11,9 @@ namespace Respect\Validation\Message;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Message\Placeholder\Name;
 use Respect\Validation\Message\Translator\ArrayTranslator;
 use Respect\Validation\Message\Translator\DummyTranslator;
+use Respect\Validation\Name;
 use Respect\Validation\Test\Builders\ResultBuilder;
 use Respect\Validation\Test\Message\TestingStringifier;
 use Respect\Validation\Test\TestCase;

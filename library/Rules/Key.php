@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Attribute;
-use Respect\Validation\Message\Placeholder\Path;
+use Respect\Validation\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\KeyRelated;

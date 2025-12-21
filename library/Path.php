@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Message\Placeholder;
+namespace Respect\Validation;
 
 final class Path
 {

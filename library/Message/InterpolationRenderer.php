@@ -12,8 +12,8 @@ namespace Respect\Validation\Message;
 use ReflectionClass;
 use Respect\Stringifier\Stringifier;
 use Respect\Validation\Message\Placeholder\Listed;
-use Respect\Validation\Message\Placeholder\Name;
 use Respect\Validation\Message\Placeholder\Quoted;
+use Respect\Validation\Name;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 

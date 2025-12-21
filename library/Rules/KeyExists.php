@@ -11,8 +11,8 @@ namespace Respect\Validation\Rules;
 
 use ArrayAccess;
 use Attribute;
-use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\KeyRelated;

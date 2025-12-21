@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Builders;
 
-use Respect\Validation\Message\Placeholder\Id;
-use Respect\Validation\Message\Placeholder\Name;
-use Respect\Validation\Message\Placeholder\Path;
+use Respect\Validation\Id;
+use Respect\Validation\Name;
+use Respect\Validation\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Test\Rules\Stub;

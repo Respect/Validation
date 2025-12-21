@@ -9,9 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-use Respect\Validation\Message\Placeholder\Id;
-use Respect\Validation\Message\Placeholder\Name;
-use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Rules\Core\Nameable;
 
 use function array_filter;

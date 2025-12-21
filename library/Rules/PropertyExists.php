@@ -11,8 +11,8 @@ namespace Respect\Validation\Rules;
 
 use Attribute;
 use ReflectionObject;
-use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\Message\Template;
+use Respect\Validation\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 

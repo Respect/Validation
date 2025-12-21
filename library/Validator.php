@@ -11,7 +11,6 @@ namespace Respect\Validation;
 
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\ArrayFormatter;
-use Respect\Validation\Message\Placeholder\Name;
 use Respect\Validation\Message\StringFormatter;
 use Respect\Validation\Message\Translator;
 use Respect\Validation\Mixins\Builder;

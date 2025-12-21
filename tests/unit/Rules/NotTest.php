@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Message\Placeholder\Id;
+use Respect\Validation\Id;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
 

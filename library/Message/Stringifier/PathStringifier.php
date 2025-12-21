@@ -11,7 +11,7 @@ namespace Respect\Validation\Message\Stringifier;
 
 use Respect\Stringifier\Quoter;
 use Respect\Stringifier\Stringifier;
-use Respect\Validation\Message\Placeholder\Path;
+use Respect\Validation\Path;
 
 use function array_reverse;
 use function implode;

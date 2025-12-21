@@ -11,8 +11,8 @@ namespace Respect\Validation\Message\Formatter;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Message\Placeholder\Path;
 use Respect\Validation\OnlyFailedChildrenResultFilter;
+use Respect\Validation\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Test\Builders\ResultBuilder;
 use Respect\Validation\Test\TestCase;

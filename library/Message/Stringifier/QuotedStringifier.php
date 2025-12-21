@@ -26,6 +26,6 @@ final readonly class QuotedStringifier implements Stringifier
             return null;
         }
 
-        return $this->quoter->quote($raw->getValue(), $depth);
+        return $this->quoter->quote($raw->value, $depth);
     }
 }

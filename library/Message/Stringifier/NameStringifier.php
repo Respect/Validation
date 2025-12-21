@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Message\Stringifier;
 
 use Respect\Stringifier\Stringifier;
-use Respect\Validation\Message\Placeholder\Name;
+use Respect\Validation\Name;
 
 use function sprintf;
 

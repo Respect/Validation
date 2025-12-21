@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Core;
 
-use Respect\Validation\Message\Placeholder\Name;
+use Respect\Validation\Name;
 
 interface Nameable
 {

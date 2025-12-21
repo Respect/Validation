@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use ReflectionAttribute;
 use ReflectionObject;
-use Respect\Validation\Message\Placeholder\Id;
+use Respect\Validation\Id;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Reducer;

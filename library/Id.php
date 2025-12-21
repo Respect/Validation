@@ -7,9 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Message\Placeholder;
-
-use Respect\Validation\Rule;
+namespace Respect\Validation;
 
 use function lcfirst;
 use function strrchr;

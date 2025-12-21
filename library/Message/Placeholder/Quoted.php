@@ -12,17 +12,7 @@ namespace Respect\Validation\Message\Placeholder;
 final readonly class Quoted
 {
     public function __construct(
-        private string $value,
+        public string $value,
     ) {
-    }
-
-    public static function fromPath(int|string $path): self
-    {
-        return new self('.' . $path);
-    }
-
-    public function getValue(): string
-    {
-        return $this->value;
     }
 }

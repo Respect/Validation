@@ -37,7 +37,7 @@ final class QuotedStringifierTest extends TestCase
         $quoter = new StandardQuoter(1);
         $stringifier = new QuotedStringifier($quoter);
 
-        $expected = $quoter->quote($quoted->getValue(), 0);
+        $expected = $quoter->quote($quoted->value, 0);
         $actual = $stringifier->stringify($quoted, 0);
 
         self::assertSame($expected, $actual);
