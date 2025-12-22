@@ -1,0 +1,44 @@
+<?php
+
+/*
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
+ */
+
+declare(strict_types=1);
+
+namespace Respect\Validation;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Test\TestCase;
+
+#[Group('core')]
+#[CoversClass(ContainerRegistry::class)]
+final class ContainerRegistryTest extends TestCase
+{
+    #[Test]
+    #[DoesNotPerformAssertions]
+    public function itTheCreatedContainerShouldBeAbleToProvideAnInstanceOfValidator(): void
+    {
+        $container = ContainerRegistry::createContainer();
+        $container->get(Validator::class);
+    }
+
+    #[Test]
+    public function itAlwaysReturnsTheSameInstanceOfTheContainer(): void
+    {
+        self::assertSame(ContainerRegistry::getContainer(), ContainerRegistry::getContainer());
+    }
+
+    #[Test]
+    public function itAllowsOverwritingTheContainer(): void
+    {
+        $newContainer = ContainerRegistry::createContainer();
+        ContainerRegistry::setContainer($newContainer);
+
+        self::assertSame($newContainer, ContainerRegistry::getContainer());
+    }
+}

@@ -19,7 +19,7 @@ test('Should overwrite file and line in the Validator class', function (): void 
     }
 });
 
-test('Should overwrite file and line via the ValidatorDefaults class', function (): void {
+test('Should overwrite file and line in ValidationException', function (): void {
     try {
         MyValidator::assertIntType('string');
     } catch (ValidationException $e) {

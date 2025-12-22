@@ -38,10 +38,10 @@ use Respect\Validation\Message\Stringifier\QuotedStringifier;
 
 final readonly class ValidationStringifier implements Stringifier
 {
+    public const int MAXIMUM_LENGTH = 120;
     private const int MAXIMUM_DEPTH = 3;
     private const int MAXIMUM_NUMBER_OF_ITEMS = 5;
     private const int MAXIMUM_NUMBER_OF_PROPERTIES = self::MAXIMUM_NUMBER_OF_ITEMS;
-    private const int MAXIMUM_LENGTH = 120;
 
     private Stringifier $stringifier;
 

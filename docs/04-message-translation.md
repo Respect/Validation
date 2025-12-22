@@ -1,28 +1,25 @@
 # Message translation
 
-You're able to translate message templates with Validation.
+We use dependency injection container to create Validators with all their dependencies. One of these dependencies is the `Translator`, which is responsible for translating validation messages.
+
+You can use different translators to translate validation messages into different languages, by overwriting the default container in `ContainerRegistry`, passing the translator you desire.
+
+Luckily, the `ContainerRegistry` has method that creates a pre-configured container using [php-di/php-di](https://php-di.org/). That means you just need to overwrite that service. 
 
 ```php
+use Respect\Validation\ContainerRegistry;
+use Respect\Validation\Message\Translator;
 use Respect\Validation\Message\Translator\GettextTranslator;
-use Respect\Validation\ValidatorDefaults;
 
-ValidatorDefaults::setTranslator(new GettextTranslator());
+$container = ContainerRegistry::createContainer(); // returns `DI\Container`
+$container->set(Translator::class, new GettextTranslator());
+
+ContainerRegistry::setContainer($container);
 ```
 
 After that, if you call the methods `getMessage()`, `getMessages()`, or `getFullMessage()` from the `ValidationException`, the messages will be translated. The example above will work if you have `gettext` properly configured.
 
-For non-static usage, pass the translator directly to the `Validator` constructor:
-
-```php
-use Respect\Validation\Factory;
-use Respect\Validation\Message\StandardFormatter;
-use Respect\Validation\Message\Translator\GettextTranslator;
-use Respect\Validation\Validator;
-
-$translator = new GettextTranslator();
-
-$validator = new Validator(new Factory(), new StandardFormatter(), $translator);
-```
+The `ContainerRegistry` follows the [PSR-11](https://www.php-fig.org/psr/psr-11/) standard, so you can use any container that implements this standard.
 
 ## Supported translators
 

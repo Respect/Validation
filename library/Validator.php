@@ -49,15 +49,7 @@ final class Validator implements Rule, Nameable
 
     public static function create(Rule ...$rules): self
     {
-        $validator = new self(
-            ValidatorDefaults::getFactory(),
-            ValidatorDefaults::getMainMessageFormatter(),
-            ValidatorDefaults::getFullMessageFormatter(),
-            ValidatorDefaults::getMessagesFormatter(),
-            ValidatorDefaults::getTranslator(),
-            new OnlyFailedChildrenResultFilter(),
-            ValidatorDefaults::getIgnoredBacktracePaths(),
-        );
+        $validator = ContainerRegistry::getContainer()->get(ValidatorFactory::class)->create();
         $validator->rules = $rules;
 
         return $validator;
