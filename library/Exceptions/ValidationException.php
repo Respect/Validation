@@ -18,8 +18,8 @@ use function realpath;
 final class ValidationException extends InvalidArgumentException implements Exception
 {
     /**
-     * @param array<string, mixed> $messages
-     * @param array<string>        $ignoredBacktracePaths
+     * @param array<string|int, mixed> $messages
+     * @param array<string>            $ignoredBacktracePaths
      */
     public function __construct(
         string $message,
@@ -37,7 +37,7 @@ final class ValidationException extends InvalidArgumentException implements Exce
         return $this->fullMessage;
     }
 
-    /** @return array<string, mixed> */
+    /** @return array<string|int, mixed> */
     public function getMessages(): array
     {
         return $this->messages;

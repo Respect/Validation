@@ -19,6 +19,8 @@ use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 use Throwable;
 
+use function uniqid;
+
 #[CoversClass(Validator::class)]
 final class ValidatorTest extends TestCase
 {
@@ -148,5 +150,101 @@ final class ValidatorTest extends TestCase
         $validator = Validator::create(Stub::fail(1));
         $validator->setTemplates(['__root__' => 'This is my pre-defined template']);
         $validator->assert('whatever', $template);
+    }
+
+    #[Test]
+    public function itShouldValidateAndReturnValidResultQueryWhenValidationPasses(): void
+    {
+        $validator = Validator::create(Stub::pass(1));
+
+        $resultQuery = $validator->validate('whatever');
+
+        self::assertTrue($resultQuery->isValid());
+    }
+
+    #[Test]
+    public function itShouldValidateAndReturnInvalidResultQueryWhenValidationFails(): void
+    {
+        $validator = Validator::create(Stub::fail(1));
+
+        $resultQuery = $validator->validate('whatever');
+
+        self::assertFalse($resultQuery->isValid());
+    }
+
+    #[Test]
+    public function itShouldValidateUsingStringTemplateWhenProvided(): void
+    {
+        $template = uniqid();
+
+        $validator = Validator::create(Stub::fail(1));
+
+        $resultQuery = $validator->validate('whatever', $template);
+
+        self::assertSame($template, $resultQuery->toMessage());
+    }
+
+    #[Test]
+    public function itShouldValidateUsingArrayTemplatesWhenProvided(): void
+    {
+        $template = uniqid();
+
+        $validator = Validator::create(Stub::fail(1));
+
+        $resultQuery = $validator->validate('whatever', ['stub' => $template]);
+
+        self::assertSame($template, $resultQuery->toMessage());
+    }
+
+    #[Test]
+    public function itShouldValidateUsingPreDefinedTemplateFromSetTemplate(): void
+    {
+        $template = uniqid();
+
+        $validator = Validator::create(Stub::fail(1));
+        $validator->setTemplate($template);
+
+        $resultQuery = $validator->validate('whatever');
+
+        self::assertSame($template, $resultQuery->toMessage());
+    }
+
+    #[Test]
+    public function itShouldValidateUsingPreDefinedTemplatesFromSetTemplates(): void
+    {
+        $template = uniqid();
+
+        $validator = Validator::create(Stub::fail(1));
+        $validator->setTemplates(['stub' => $template]);
+
+        $resultQuery = $validator->validate('whatever');
+
+        self::assertSame($template, $resultQuery->toMessage());
+    }
+
+    #[Test]
+    public function itShouldValidateOverridingPreDefinedTemplateWithStringTemplate(): void
+    {
+        $overrideTemplate = uniqid();
+
+        $validator = Validator::create(Stub::fail(1));
+        $validator->setTemplate('This should be overridden');
+
+        $resultQuery = $validator->validate('whatever', $overrideTemplate);
+
+        self::assertSame($overrideTemplate, $resultQuery->toMessage());
+    }
+
+    #[Test]
+    public function itShouldValidateOverridingPreDefinedTemplatesWithArrayTemplates(): void
+    {
+        $overrideTemplate = uniqid();
+
+        $validator = Validator::create(Stub::fail(1));
+        $validator->setTemplates(['stub' => 'This should be overridden']);
+
+        $resultQuery = $validator->validate('whatever', ['stub' => $overrideTemplate]);
+
+        self::assertSame($overrideTemplate, $resultQuery->toMessage());
     }
 }

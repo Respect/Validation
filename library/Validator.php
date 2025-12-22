@@ -60,12 +60,18 @@ final class Validator implements Rule, Nameable
         return $this->getRule()->evaluate($input);
     }
 
+    /** @param array<string|int, mixed>|string|null $template */
+    public function validate(mixed $input, array|string|null $template = null): ResultQuery
+    {
+        return $this->toResultQuery($this->evaluate($input), $template);
+    }
+
     public function isValid(mixed $input): bool
     {
         return $this->evaluate($input)->hasPassed;
     }
 
-    /** @param array<string, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
+    /** @param array<string|int, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
     public function assert(mixed $input, array|string|Throwable|callable|null $template = null): void
     {
         $result = $this->evaluate($input);
@@ -77,29 +83,20 @@ final class Validator implements Rule, Nameable
             throw $template;
         }
 
-        $failedResult = $this->resultFilter->filter($result);
-
-        $templates = $this->templates;
-        if (is_array($template)) {
-            $templates = $template;
-        } elseif (is_string($template)) {
-            $failedResult = $failedResult->withTemplate($template);
-        } elseif ($this->getTemplate() != null) {
-            $failedResult = $failedResult->withTemplate($this->getTemplate());
-        }
+        $resultQuery = $this->toResultQuery($result, is_callable($template) ? null : $template);
 
         $exception = new ValidationException(
-            $this->mainMessageFormatter->format($failedResult, $this->renderer, $templates),
-            $this->fullMessageFormatter->format($failedResult, $this->renderer, $templates),
-            $this->messagesFormatter->format($failedResult, $this->renderer, $templates),
+            $resultQuery->toMessage(),
+            $resultQuery->toFullMessage(),
+            $resultQuery->toArrayMessages(),
             $this->ignoredBacktracePaths,
         );
 
-        if (!is_callable($template)) {
-            throw $exception;
+        if (is_callable($template)) {
+            throw $template($exception);
         }
 
-        throw $template($exception);
+        throw $exception;
     }
 
     /** @param array<string|int, mixed> $templates */
@@ -159,6 +156,25 @@ final class Validator implements Rule, Nameable
         $this->template = $template;
 
         return $this;
+    }
+
+    /** @param array<string|int, mixed>|string|null $template */
+    private function toResultQuery(Result $result, array|string|null $template): ResultQuery
+    {
+        if (is_string($template)) {
+            $result = $result->withTemplate($template);
+        } elseif ($this->getTemplate() != null) {
+            $result = $result->withTemplate($this->getTemplate());
+        }
+
+        return new ResultQuery(
+            $this->resultFilter->filter($result),
+            $this->renderer,
+            $this->mainMessageFormatter,
+            $this->fullMessageFormatter,
+            $this->messagesFormatter,
+            is_array($template) ? $template : $this->templates,
+        );
     }
 
     /** @param mixed[] $arguments */
