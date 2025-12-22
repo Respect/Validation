@@ -13,5 +13,6 @@ use Respect\Validation\Result;
 
 interface Renderer
 {
-    public function render(Result $result): string;
+    /** @param array<string|int, mixed> $templates */
+    public function render(Result $result, array $templates): string;
 }

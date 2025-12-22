@@ -52,16 +52,16 @@ test('https://github.com/Respect/Validation/issues/1289', catchAll(
         ->and($message)->toBe('`.0.default` must be a string')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - `.0` must pass the rules
-              - `.default` must pass one of the rules
-                - `.default` must be a string
-                - `.default` must be a boolean
-              - `.description` must be a string value
+              - `.0.default` must pass one of the rules
+                - `.0.default` must be a string
+                - `.0.default` must be a boolean
+              - `.0.description` must be a string value
             FULL_MESSAGE)
         ->and($messages)->toBe([
             0 => [
                 '__root__' => '`.0` must pass the rules',
-                'default' => '`.default` must be a boolean',
-                'description' => '`.description` must be a string value',
+                'default' => '`.0.default` must be a boolean',
+                'description' => '`.0.description` must be a string value',
             ],
         ]),
 ));

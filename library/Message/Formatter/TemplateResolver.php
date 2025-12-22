@@ -9,56 +9,89 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Message\Formatter;
 
-use Respect\Validation\Exceptions\ComponentException;
+use ReflectionClass;
+use Respect\Validation\Message\Template;
+use Respect\Validation\Path;
 use Respect\Validation\Result;
+use Respect\Validation\Rule;
 
-use function array_filter;
-use function count;
+use function array_reduce;
+use function array_reverse;
 use function is_array;
 use function is_string;
-use function Respect\Stringifier\stringify;
-use function sprintf;
 
-final readonly class TemplateResolver
+final class TemplateResolver
 {
+    /** @var array<string, array<Template>> */
+    private array $templates = [];
+
     /** @param array<string|int, mixed> $templates */
-    public function resolve(Result $result, array $templates): Result
+    public function getGivenTemplate(Result $result, array $templates): string|null
     {
         if ($result->hasCustomTemplate()) {
-            return $result;
+            return $result->template;
         }
 
-        foreach ([...$this->getKeys($result), '__root__'] as $key) {
-            if (!isset($templates[$key])) {
+        if ($result->path !== null) {
+            $templates = $this->filterByPath($result->path, $templates);
+        }
+
+        foreach ([$result->path?->value, $result->name?->value, $result->id->value, '__root__'] as $key) {
+            if ($key === null || !isset($templates[$key])) {
                 continue;
             }
 
             if (is_string($templates[$key])) {
-                return $result->withTemplate($templates[$key]);
+                return $templates[$key];
             }
-
-            throw new ComponentException(
-                sprintf('Template for "%s" must be a string, %s given', $key, stringify($templates[$key])),
-            );
         }
 
-        return $result;
+        return null;
     }
 
-    /** @param array<string|int, mixed> $templates */
-    public function hasMatch(Result $result, array $templates): bool
+    public function getRuleTemplate(Result $result): string
     {
-        foreach ($this->getKeys($result) as $key) {
-            if (isset($templates[$key]) && is_string($templates[$key])) {
-                return true;
+        foreach ($this->extractTemplates($result->rule) as $template) {
+            if ($template->id !== $result->template) {
+                continue;
+            }
+
+            if ($result->hasInvertedMode) {
+                return $template->inverted;
+            }
+
+            return $template->default;
+        }
+
+        return $result->template;
+    }
+
+    /** @return array<Template> */
+    private function extractTemplates(Rule $rule): array
+    {
+        if (!isset($this->templates[$rule::class])) {
+            $reflection = new ReflectionClass($rule);
+            foreach ($reflection->getAttributes(Template::class) as $attribute) {
+                $this->templates[$rule::class][] = $attribute->newInstance();
             }
         }
 
-        if (count($templates) !== 1) {
-            return false;
+        return $this->templates[$rule::class] ?? [];
+    }
+
+    /**
+     * @param array<string|int> $nodes
+     *
+     * @return non-empty-array<string|int>
+     */
+    private function getNodes(Path $path, array $nodes = []): array
+    {
+        $nodes[] = $path->value;
+        if ($path->parent !== null) {
+            return $this->getNodes($path->parent, $nodes);
         }
 
-        return isset($templates['__root__']) && is_string($templates['__root__']);
+        return $nodes;
     }
 
     /**
@@ -66,23 +99,12 @@ final readonly class TemplateResolver
      *
      * @return array<string|int, mixed>
      */
-    public function selectMatches(Result $result, array $templates): array
+    private function filterByPath(Path $path, array $templates): array
     {
-        foreach ($this->getKeys($result) as $key) {
-            if ($key !== null && isset($templates[$key]) && is_array($templates[$key])) {
-                return $templates[$key];
-            }
-        }
-
-        return $templates;
-    }
-
-    /** @return non-empty-array<string|int> */
-    private function getKeys(Result $result): array
-    {
-        return array_filter(
-            [$result->path?->value, $result->name?->value, $result->id->value],
-            static fn($key) => $key !== null,
+        return array_reduce(
+            array_reverse($this->getNodes($path)),
+            static fn(array $carry, $node) => isset($carry[$node]) && is_array($carry[$node]) ? $carry[$node] : $carry,
+            $templates,
         );
     }
 }

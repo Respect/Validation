@@ -80,14 +80,14 @@ test('With nested key that fails validation', catchAll(
         ->and($message)->toBe('`.vegetables.root` (<- Vegetables) must be a string')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Vegetables must pass all the rules
-          - `.root` must be a string
-          - `.stems` must be a string
-          - `.fruits` must be present
+          - `.vegetables.root` must be a string
+          - `.vegetables.stems` must be a string
+          - `.vegetables.fruits` must be present
         FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => 'Vegetables must pass all the rules',
-            'root' => '`.root` must be a string',
-            'stems' => '`.stems` must be a string',
-            'fruits' => '`.fruits` must be present',
+            'root' => '`.vegetables.root` must be a string',
+            'stems' => '`.vegetables.stems` must be a string',
+            'fruits' => '`.vegetables.fruits` must be present',
         ]),
 ));

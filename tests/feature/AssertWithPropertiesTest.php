@@ -43,8 +43,8 @@ test('Scenario #1', catchFullMessage(
     fn(string $fullMessage) => expect($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - the given data must pass all the rules
           - `.mysql` must pass the rules
-            - `.host` must be a string
+            - `.mysql.host` must be a string
           - `.postgresql` must pass the rules
-            - `.user` must be a string
+            - `.postgresql.user` must be a string
         FULL_MESSAGE),
 ));

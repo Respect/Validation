@@ -91,8 +91,16 @@ test('With a single template', catchAll(
     fn() => v::allOf(v::stringType(), v::arrayType())->assert(5, 'This is a single template'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('This is a single template')
-        ->and($fullMessage)->toBe('- This is a single template')
-        ->and($messages)->toBe(['allOf' => 'This is a single template']),
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+            - This is a single template
+              - 5 must be a string
+              - 5 must be an array
+            FULL_MESSAGE)
+        ->and($messages)->toBe([
+            '__root__' => 'This is a single template',
+            'stringType' => '5 must be a string',
+            'arrayType' => '5 must be an array',
+        ]),
 ));
 
 test('With multiple templates', catchAll(

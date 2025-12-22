@@ -45,13 +45,13 @@ test('https://github.com/Respect/Validation/issues/796', catchAll(
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - the given data must pass all the rules
               - `.mysql` must pass the rules
-                - `.host` must be a string
+                - `.mysql.host` must be a string
               - `.postgresql` must pass the rules
-                - `.user` must be a string
+                - `.postgresql.user` must be a string
             FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => 'the given data must pass all the rules',
-            'mysql' => '`.host` must be a string',
-            'postgresql' => '`.user` must be a string',
+            'mysql' => '`.mysql.host` must be a string',
+            'postgresql' => '`.postgresql.user` must be a string',
         ]),
 ));

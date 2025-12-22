@@ -133,22 +133,6 @@ final readonly class Result
         ]);
     }
 
-    public function withoutParentPath(): self
-    {
-        if ($this->path === null || $this->path->isOrphan()) {
-            return $this;
-        }
-
-        return clone ($this, [
-            'path' => new Path($this->path->value),
-            'adjacent' => $this->adjacent?->withoutParentPath(),
-            'children' => array_map(
-                fn(Result $child) => $child->path === $this->path ? $child->withoutParentPath() : $child,
-                $this->children,
-            ),
-        ]);
-    }
-
     public function withoutName(): self
     {
         if ($this->name === null) {

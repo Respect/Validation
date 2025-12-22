@@ -9,13 +9,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Message;
 
-use ReflectionClass;
 use Respect\Stringifier\Stringifier;
+use Respect\Validation\Message\Formatter\TemplateResolver;
 use Respect\Validation\Message\Placeholder\Listed;
 use Respect\Validation\Message\Placeholder\Quoted;
 use Respect\Validation\Name;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 
 use function array_key_exists;
 use function is_array;
@@ -25,21 +24,23 @@ use function is_string;
 use function preg_replace_callback;
 use function print_r;
 
-final class InterpolationRenderer implements Renderer
+final readonly class InterpolationRenderer implements Renderer
 {
-    /** @var array<string, array<Template>> */
-    private array $templates = [];
-
     public function __construct(
-        private readonly Translator $translator,
-        private readonly Stringifier $stringifier = new ValidationStringifier(),
+        private Translator $translator,
+        private Stringifier $stringifier = new ValidationStringifier(),
+        private TemplateResolver $templateResolver = new TemplateResolver(),
     ) {
     }
 
-    public function render(Result $result): string
+    /** @param array<string|int, mixed> $templates */
+    public function render(Result $result, array $templates): string
     {
         $parameters = ['path' => $result->path, 'input' => $result->input, 'name' => $this->getName($result)];
         $parameters += $result->parameters;
+
+        $givenTemplate = $this->templateResolver->getGivenTemplate($result, $templates);
+        $ruleTemplate = $this->templateResolver->getRuleTemplate($result);
 
         $rendered = (string) preg_replace_callback(
             '/{{(\w+)(\|([^}]+))?}}/',
@@ -50,27 +51,14 @@ final class InterpolationRenderer implements Renderer
 
                 return $this->placeholder($matches[1], $parameters[$matches[1]], $matches[3] ?? null);
             },
-            $this->translator->translate($this->getTemplateMessage($result)),
+            $this->translator->translate($givenTemplate ?? $ruleTemplate),
         );
 
-        if (!$result->hasCustomTemplate() && $result->adjacent !== null) {
-            $rendered .= ' ' . $this->render($result->adjacent);
+        if (!$result->hasCustomTemplate() && $givenTemplate === null && $result->adjacent !== null) {
+            $rendered .= ' ' . $this->render($result->adjacent, $templates);
         }
 
         return $rendered;
-    }
-
-    /** @return array<Template> */
-    private function extractTemplates(Rule $rule): array
-    {
-        if (!isset($this->templates[$rule::class])) {
-            $reflection = new ReflectionClass($rule);
-            foreach ($reflection->getAttributes(Template::class) as $attribute) {
-                $this->templates[$rule::class][] = $attribute->newInstance();
-            }
-        }
-
-        return $this->templates[$rule::class] ?? [];
     }
 
     private function placeholder(
@@ -99,27 +87,6 @@ final class InterpolationRenderer implements Renderer
         }
 
         return $this->stringifier->stringify($value, 0) ?? print_r($value, true);
-    }
-
-    private function getTemplateMessage(Result $result): string
-    {
-        if ($result->hasCustomTemplate()) {
-            return $result->template;
-        }
-
-        foreach ($this->extractTemplates($result->rule) as $template) {
-            if ($template->id !== $result->template) {
-                continue;
-            }
-
-            if ($result->hasInvertedMode) {
-                return $template->inverted;
-            }
-
-            return $template->default;
-        }
-
-        return $result->template;
     }
 
     private function getName(Result $result): Name

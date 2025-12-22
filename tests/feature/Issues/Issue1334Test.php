@@ -27,24 +27,24 @@ test('https://github.com/Respect/Validation/issues/1334', catchAll(
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - Each item in `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]` must be valid
               - `.0` must pass the rules
-                - `.street` must be present
-                - `.other` must pass the rules
-                  - `.other` must be a string or must be null
+                - `.0.street` must be present
+                - `.0.other` must pass the rules
+                  - `.0.other` must be a string or must be null
               - `.1` must pass the rules
-                - `.street` must not be empty
+                - `.1.street` must not be empty
               - `.2` must pass the rules
-                - `.street` must be a string
+                - `.2.street` must be a string
             FULL_MESSAGE)
         ->and($messages)->toBe([
             'each' => [
                 '__root__' => 'Each item in `[["region": "Oregon", "country": "USA", "other": 123], ["street": "", "region": "Oregon", "country": "USA"], ["s ... ]` must be valid',
                 0 => [
                     '__root__' => '`.0` must pass the rules',
-                    'street' => '`.street` must be present',
-                    'other' => '`.other` must be a string or must be null',
+                    'street' => '`.0.street` must be present',
+                    'other' => '`.0.other` must be a string or must be null',
                 ],
-                1 => '`.street` must not be empty',
-                2 => '`.street` must be a string',
+                1 => '`.1.street` must not be empty',
+                2 => '`.2.street` must be a string',
             ],
         ]),
 ));

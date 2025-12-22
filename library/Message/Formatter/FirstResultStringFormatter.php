@@ -15,21 +15,15 @@ use Respect\Validation\Result;
 
 final readonly class FirstResultStringFormatter implements StringFormatter
 {
-    public function __construct(
-        private TemplateResolver $templateResolver,
-    ) {
-    }
-
     /** @param array<string|int, mixed> $templates */
     public function format(Result $result, Renderer $renderer, array $templates): string
     {
-        $matchedTemplates = $this->templateResolver->selectMatches($result, $templates);
-        if (!$this->templateResolver->hasMatch($result, $matchedTemplates)) {
+        if (!$result->hasCustomTemplate()) {
             foreach ($result->children as $child) {
-                return $this->format($child, $renderer, $matchedTemplates);
+                return $this->format($child, $renderer, $templates);
             }
         }
 
-        return $renderer->render($this->templateResolver->resolve($result, $matchedTemplates));
+        return $renderer->render($result, $templates);
     }
 }

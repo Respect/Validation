@@ -18,11 +18,6 @@ use function current;
 
 final readonly class NestedArrayFormatter implements ArrayFormatter
 {
-    public function __construct(
-        private TemplateResolver $templateResolver,
-    ) {
-    }
-
     /**
      * @param array<string|int, mixed> $templates
      *
@@ -30,12 +25,9 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
      */
     public function format(Result $result, Renderer $renderer, array $templates): array
     {
-        $matchedTemplates = $this->templateResolver->selectMatches($result, $templates);
-        if (count($result->children) === 0 || $this->templateResolver->hasMatch($result, $matchedTemplates)) {
+        if (count($result->children) === 0) {
             return [
-                $result->path->value ?? $result->id->value => $renderer->render(
-                    $this->templateResolver->resolve($result->withoutParentPath(), $matchedTemplates),
-                ),
+                $result->path->value ?? $result->id->value => $renderer->render($result, $templates),
             ];
         }
 
@@ -43,9 +35,9 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
         foreach ($result->children as $child) {
             $key = $child->path->value ?? $child->id->value;
             $messages[$key] = $this->format(
-                $child->withoutParentPath()->withoutName(),
+                $child->withoutName(),
                 $renderer,
-                $this->templateResolver->selectMatches($child, $matchedTemplates),
+                $templates,
             );
             if (count($messages[$key]) !== 1) {
                 continue;
@@ -55,13 +47,7 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
         }
 
         if (count($messages) > 1) {
-            $self = [
-                '__root__' => $renderer->render(
-                    $this->templateResolver->resolve($result->withoutParentPath(), $matchedTemplates),
-                ),
-            ];
-
-            return $self + $messages;
+            return ['__root__' => $renderer->render($result, $templates)] + $messages;
         }
 
         return $messages;

@@ -30,7 +30,7 @@ final class InterpolationRendererTest extends TestCase
 
         $result = (new ResultBuilder())->template('This is my template')->build();
 
-        self::assertSame($result->template, $renderer->render($result));
+        self::assertSame($result->template, $renderer->render($result, []));
     }
 
     #[Test]
@@ -50,7 +50,7 @@ final class InterpolationRendererTest extends TestCase
 
         self::assertSame(
             'Will replace ' . $stringifier->stringify($value, 0),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -71,7 +71,7 @@ final class InterpolationRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s and 0.1', $stringifier->stringify($value, 0)),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -92,7 +92,7 @@ final class InterpolationRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s and 0', $stringifier->stringify($value, 0)),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -113,7 +113,7 @@ final class InterpolationRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s and %s', $stringifier->stringify($value, 0), $translation),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -133,7 +133,7 @@ final class InterpolationRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s', $stringifier->stringify(new Name($value), 0) ?? 'FAILED'),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -156,7 +156,7 @@ final class InterpolationRendererTest extends TestCase
                 'Will replace %s',
                 $stringifier->stringify(new Name((string) $stringifier->stringify($value, 0)), 0),
             ),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -175,7 +175,7 @@ final class InterpolationRendererTest extends TestCase
 
         self::assertSame(
             'Will replace ' . $stringifier->stringify(new Name($name), 0),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -198,7 +198,7 @@ final class InterpolationRendererTest extends TestCase
                 'Will replace %s',
                 $stringifier->stringify(new Name((string) $stringifier->stringify($input, 0)), 0),
             ),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -218,7 +218,7 @@ final class InterpolationRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s', $stringifier->stringify($input, 0)),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -239,7 +239,7 @@ final class InterpolationRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s', $stringifier->stringify(new Name($parameterNameValue), 0)),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -260,7 +260,7 @@ final class InterpolationRendererTest extends TestCase
 
         self::assertSame(
             sprintf('Will replace %s', $stringifier->stringify($input, 0)),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -273,7 +273,7 @@ final class InterpolationRendererTest extends TestCase
             ->template('Will not replace {{unknown}}')
             ->build();
 
-        self::assertSame('Will not replace {{unknown}}', $renderer->render($result));
+        self::assertSame('Will not replace {{unknown}}', $renderer->render($result, []));
     }
 
     #[Test]
@@ -289,7 +289,7 @@ final class InterpolationRendererTest extends TestCase
             ->template($template)
             ->build();
 
-        self::assertSame($translations[$template], $renderer->render($result));
+        self::assertSame($translations[$template], $renderer->render($result, []));
     }
 
     #[Test]
@@ -305,7 +305,7 @@ final class InterpolationRendererTest extends TestCase
                 '%s must be a valid stub',
                 $stringifier->stringify(new Name((string) $stringifier->stringify($result->input, 0)), 0),
             ),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -322,7 +322,7 @@ final class InterpolationRendererTest extends TestCase
                 '%s must not be a valid stub',
                 $stringifier->stringify(new Name((string) $stringifier->stringify($result->input, 0)), 0),
             ),
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -335,7 +335,7 @@ final class InterpolationRendererTest extends TestCase
 
         self::assertSame(
             $result->template,
-            $renderer->render($result),
+            $renderer->render($result, []),
         );
     }
 
@@ -356,7 +356,7 @@ final class InterpolationRendererTest extends TestCase
 
         $expect = '__1st__ __2nd__ __3rd__';
 
-        self::assertSame($expect, $renderer->render($result));
+        self::assertSame($expect, $renderer->render($result, []));
     }
 
     #[Test]
@@ -370,6 +370,6 @@ final class InterpolationRendererTest extends TestCase
 
         $renderer = new InterpolationRenderer(new DummyTranslator(), new TestingStringifier());
 
-        self::assertSame($template, $renderer->render($result));
+        self::assertSame($template, $renderer->render($result, []));
     }
 }

@@ -31,22 +31,12 @@ test('Inverted', catchAll(
         ->and($messages)->toBe(['notIntType' => 'Template in "Templated"']),
 ));
 
-test('Template in Validator', catchAll(
-    fn() => v::templated(v::stringType(), 'Template in "Templated"')
-        ->setTemplate('Template in "Validator"')
-        ->assert(12),
-    fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('Template in "Templated"')
-        ->and($fullMessage)->toBe('- Template in "Templated"')
-        ->and($messages)->toBe(['stringType' => 'Template in "Templated"']),
-));
-
 test('Template passed to Validator::assert()', catchAll(
     fn() => v::templated(v::stringType(), 'Template in "Templated"')->assert(10, 'Template in "Validator::assert"'),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('Template in "Templated"')
-        ->and($fullMessage)->toBe('- Template in "Templated"')
-        ->and($messages)->toBe(['stringType' => 'Template in "Templated"']),
+        ->and($message)->toBe('Template in "Validator::assert"')
+        ->and($fullMessage)->toBe('- Template in "Validator::assert"')
+        ->and($messages)->toBe(['stringType' => 'Template in "Validator::assert"']),
 ));
 
 test('With bound', catchAll(

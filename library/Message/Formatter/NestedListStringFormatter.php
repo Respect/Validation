@@ -24,11 +24,6 @@ use const PHP_EOL;
 
 final readonly class NestedListStringFormatter implements StringFormatter
 {
-    public function __construct(
-        private TemplateResolver $templateResolver,
-    ) {
-    }
-
     /** @param array<string|int, mixed> $templates */
     public function format(Result $result, Renderer $renderer, array $templates): string
     {
@@ -43,37 +38,24 @@ final readonly class NestedListStringFormatter implements StringFormatter
         int $depth,
         Result ...$siblings,
     ): string {
-        $matchedTemplates = $this->templateResolver->selectMatches($result, $templates);
-
         $formatted = '';
         $displayedName = null;
         if ($this->isVisible($result, ...$siblings)) {
             $indentation = str_repeat(' ', $depth * 2);
             $displayedName = $result->name;
-            $formatted .= sprintf(
-                '%s- %s' . PHP_EOL,
-                $indentation,
-                $renderer->render(
-                    $this->templateResolver->resolve(
-                        $result->withoutParentPath(),
-                        $matchedTemplates,
-                    ),
-                ),
-            );
+            $formatted .= sprintf('%s- %s' . PHP_EOL, $indentation, $renderer->render($result, $templates));
             $depth++;
         }
 
-        if (!$this->templateResolver->hasMatch($result, $matchedTemplates)) {
-            foreach ($result->children as $child) {
-                $formatted .= $this->formatRecursively(
-                    $displayedName === $child->name ? $child->withoutName() : $child,
-                    $renderer,
-                    $matchedTemplates,
-                    $depth,
-                    ...array_filter($result->children, static fn(Result $sibling) => $sibling !== $child),
-                );
-                $formatted .= PHP_EOL;
-            }
+        foreach ($result->children as $child) {
+            $formatted .= $this->formatRecursively(
+                $displayedName === $child->name ? $child->withoutName() : $child,
+                $renderer,
+                $templates,
+                $depth,
+                ...array_filter($result->children, static fn(Result $sibling) => $sibling !== $child),
+            );
+            $formatted .= PHP_EOL;
         }
 
         return rtrim($formatted, PHP_EOL);

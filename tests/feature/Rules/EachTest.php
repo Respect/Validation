@@ -188,8 +188,18 @@ test('With template, default', catchAll(
         ->assert(['a', 'b', 'c']),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('All items should have been integers')
-        ->and($fullMessage)->toBe('- All items should have been integers')
-        ->and($messages)->toBe(['each' => 'All items should have been integers']),
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+            - All items should have been integers
+              - `.0` must be an integer
+              - `.1` must be an integer
+              - `.2` must be an integer
+            FULL_MESSAGE)
+        ->and($messages)->toBe([
+            '__root__' => 'All items should have been integers',
+            0 => '`.0` must be an integer',
+            1 => '`.1` must be an integer',
+            2 => '`.2` must be an integer',
+        ]),
 ));
 
 test('with template, inverted', catchAll(
@@ -198,19 +208,27 @@ test('with template, inverted', catchAll(
         ->assert([1, 2, 3]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('All items should not have been integers')
-        ->and($fullMessage)->toBe('- All items should not have been integers')
-        ->and($messages)->toBe(['notEach' => 'All items should not have been integers']),
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+            - All items should not have been integers
+              - `.0` must not be an integer
+              - `.1` must not be an integer
+              - `.2` must not be an integer
+            FULL_MESSAGE)
+        ->and($messages)->toBe([
+            '__root__' => 'All items should not have been integers',
+            0 => '`.0` must not be an integer',
+            1 => '`.1` must not be an integer',
+            2 => '`.2` must not be an integer',
+        ]),
 ));
 
 test('With array template, default', catchAll(
     fn() => v::each(v::intType())
         ->setTemplates([
-            'each' => [
-                '__root__' => 'Here a sequence of items that did not pass the validation',
-                0 => 'First item should have been an integer',
-                1 => 'Second item should have been an integer',
-                2 => 'Third item should have been an integer',
-            ],
+            '__root__' => 'Here a sequence of items that did not pass the validation',
+            0 => 'First item should have been an integer',
+            1 => 'Second item should have been an integer',
+            2 => 'Third item should have been an integer',
         ])
         ->assert(['a', 'b', 'c']),
     fn(string $message, string $fullMessage, array $messages) => expect()
@@ -233,12 +251,10 @@ test('With array template and name, default', catchAll(
     fn() => v::each(v::intType()->setName('Wrapped'))
                 ->setName('Wrapper')
                 ->setTemplates([
-                    'Wrapped' => [
-                        '__root__' => 'Here a sequence of items that did not pass the validation',
-                        0 => 'First item should have been an integer',
-                        1 => 'Second item should have been an integer',
-                        2 => 'Third item should have been an integer',
-                    ],
+                    '__root__' => 'Here a sequence of items that did not pass the validation',
+                    0 => 'First item should have been an integer',
+                    1 => 'Second item should have been an integer',
+                    2 => 'Third item should have been an integer',
                 ])
                 ->assert(['a', 'b', 'c']),
     fn(string $message, string $fullMessage, array $messages) => expect()
@@ -284,21 +300,21 @@ test('Multiple nested rules', catchAll(
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - Each item in `[["not_int": "wrong"], ["my_int": 2], "not an array"]` must be valid
           - `.0` must pass the rules
-            - `.my_int` must be present
+            - `.0.my_int` must be present
           - `.1` must pass the rules
-            - `.my_int` must be an odd number
+            - `.1.my_int` must be an odd number
           - `.2` must pass all the rules
             - `.2` must be an array
-            - `.my_int` must be present
+            - `.2.my_int` must be present
         FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => 'Each item in `[["not_int": "wrong"], ["my_int": 2], "not an array"]` must be valid',
-            0 => '`.my_int` must be present',
-            1 => '`.my_int` must be an odd number',
+            0 => '`.0.my_int` must be present',
+            1 => '`.1.my_int` must be an odd number',
             2 => [
                 '__root__' => '`.2` must pass all the rules',
                 2 => '`.2` must be an array',
-                'my_int' => '`.my_int` must be present',
+                'my_int' => '`.2.my_int` must be present',
             ],
         ]),
 ));

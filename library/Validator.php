@@ -28,7 +28,7 @@ final class Validator implements Rule, Nameable
     /** @var array<Rule> */
     private array $rules = [];
 
-    /** @var array<string, mixed> */
+    /** @var array<string|int, mixed> */
     private array $templates = [];
 
     private Name|null $name = null;
@@ -77,16 +77,16 @@ final class Validator implements Rule, Nameable
             throw $template;
         }
 
+        $failedResult = $this->resultFilter->filter($result);
+
         $templates = $this->templates;
         if (is_array($template)) {
             $templates = $template;
         } elseif (is_string($template)) {
-            $templates = ['__root__' => $template];
+            $failedResult = $failedResult->withTemplate($template);
         } elseif ($this->getTemplate() != null) {
-            $templates = ['__root__' => $this->getTemplate()];
+            $failedResult = $failedResult->withTemplate($this->getTemplate());
         }
-
-        $failedResult = $this->resultFilter->filter($result);
 
         $exception = new ValidationException(
             $this->mainMessageFormatter->format($failedResult, $this->renderer, $templates),
@@ -102,7 +102,7 @@ final class Validator implements Rule, Nameable
         throw $template($exception);
     }
 
-    /** @param array<string, mixed> $templates */
+    /** @param array<string|int, mixed> $templates */
     public function setTemplates(array $templates): self
     {
         $this->templates = $templates;
