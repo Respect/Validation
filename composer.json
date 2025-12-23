@@ -59,14 +59,14 @@
     "autoload": {
         "psr-4": {
             "Respect\\Validation\\": "library/"
-        }
+        },
+        "files": ["aliases.php"]
     },
     "autoload-dev": {
         "psr-4": {
             "Respect\\Validation\\": "tests/unit/",
             "Respect\\Validation\\Test\\": "tests/library/"
-        },
-        "files": ["tests/aliases.php"]
+        }
     },
     "scripts": {
         "docheader": "vendor/bin/docheader check library/ tests/",

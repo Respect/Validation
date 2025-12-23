@@ -1,10 +1,9 @@
 # Feature Guide
 
-We'll use `v` as an alias for `Respect\Validation\Validator` to keep things simple:
+The `Validator` class is the core of Respect\Validation, offering a fluent interface for building validation rules.
 
-```php
-use Respect\Validation\Validator as v;
-```
+For convenience, the `Validator` class is aliased as `v`. This means you can write `v::intType()` instead of `\Respect\Validation\Validator::intType()`.
+
 
 ## Validating using booleans
 
