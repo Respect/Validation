@@ -21,6 +21,8 @@ parameters:
       path: tests/unit/Message/Translator/ArrayTranslatorTest.php
     - message: '/Access to an undefined property PHPUnit\\Framework\\TestCase/'
       path: tests/feature/Rules/SizeTest.php
+    - message: '/Property Respect\\Validation\\Test\\Stubs\\.+::\$[a-zA-Z]+ is never read, only written./'
+      path: tests/library/Stubs
   level: 8
   treatPhpDocTypesAsCertain: false
   paths:

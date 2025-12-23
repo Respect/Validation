@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Attribute;
+use ReflectionClass;
 use ReflectionObject;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
@@ -33,19 +34,24 @@ final readonly class PropertyExists implements Rule
     public function evaluate(mixed $input): Result
     {
         return new Result(
-            $this->hasProperty($input),
+            is_object($input) && $this->hasProperty($input),
             $input,
             $this,
             path: new Path($this->propertyName),
         );
     }
 
-    private function hasProperty(mixed $input): bool
+    private function hasProperty(object $object): bool
     {
-        if (!is_object($input)) {
-            return false;
+        $reflection = new ReflectionObject($object);
+        while ($reflection instanceof ReflectionClass) {
+            if ($reflection->hasProperty($this->propertyName)) {
+                return true;
+            }
+
+            $reflection = $reflection->getParentClass();
         }
 
-        return (new ReflectionObject($input))->hasProperty($this->propertyName);
+        return false;
     }
 }

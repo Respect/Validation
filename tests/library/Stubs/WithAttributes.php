@@ -15,7 +15,7 @@ use Respect\Validation\Rules as Rule;
     new Rule\Property('email', new Rule\NotUndef()),
     new Rule\Property('phone', new Rule\NotUndef()),
 )]
-final class WithAttributes
+final class WithAttributes extends ParentWithAttributes
 {
     public function __construct(
         #[Rule\NotEmpty]
@@ -23,11 +23,10 @@ final class WithAttributes
         #[Rule\Date('Y-m-d')]
         #[Rule\DateTimeDiff('years', new Rule\LessThanOrEqual(25))]
         public string $birthdate,
-        #[Rule\Email]
-        public string|null $email = null,
-        #[Rule\Phone]
-        public string|null $phone = null,
-        public string|null $address = null,
+        string|null $email = null,
+        string|null $phone = null,
+        string|null $address = null,
     ) {
+        parent::__construct($email, $phone, $address);
     }
 }

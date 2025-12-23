@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules;
 
 use Attribute;
+use ReflectionClass;
 use ReflectionObject;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
@@ -34,15 +35,23 @@ final class Property extends Wrapper
         }
 
         return $this->rule
-            ->evaluate($this->extractPropertyValue($input, $this->propertyName))
+            ->evaluate($this->getPropertyValue($input, $this->propertyName))
             ->withPath(new Path($this->propertyName));
     }
 
-    private function extractPropertyValue(object $input, string $property): mixed
+    private function getPropertyValue(object $object, string $propertyName): mixed
     {
-        $reflectionObject = new ReflectionObject($input);
-        $reflectionProperty = $reflectionObject->getProperty($property);
+        $reflection = new ReflectionObject($object);
+        while ($reflection instanceof ReflectionClass) {
+            if ($reflection->hasProperty($propertyName)) {
+                $property = $reflection->getProperty($propertyName);
 
-        return $reflectionProperty->isInitialized($input) ? $reflectionProperty->getValue($input) : null;
+                return $property->isInitialized($object) ? $property->getValue($object) : null;
+            }
+
+            $reflection = $reflection->getParentClass();
+        }
+
+        return null;
     }
 }

@@ -46,20 +46,20 @@ test('Multiple attributes, all failed', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.name` must not be empty')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
-            - `Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$birthdate="not a date" +$email="not an email" +$phone ... }` must pass the rules
+            - `Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$birthdate="not a date" #$phone="not a phone number" + ... }` must pass the rules
               - `.name` must not be empty
               - `.birthdate` must pass all the rules
                 - `.birthdate` must be a valid date in the format "2005-12-30"
                 - For comparison with now, `.birthdate` must be a valid datetime
-              - `.email` must be a valid email address or must be null
               - `.phone` must be a valid telephone number or must be null
+              - `.email` must be a valid email address or must be null
             FULL_MESSAGE)
         ->and($messages)->toBe([
-            '__root__' => '`Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$birthdate="not a date" +$email="not an email" +$phone ... }` must pass the rules',
+            '__root__' => '`Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$birthdate="not a date" #$phone="not a phone number" + ... }` must pass the rules',
             'name' => '`.name` must not be empty',
             'birthdate' => 'For comparison with now, `.birthdate` must be a valid datetime',
-            'email' => '`.email` must be a valid email address or must be null',
             'phone' => '`.phone` must be a valid telephone number or must be null',
+            'email' => '`.email` must be a valid email address or must be null',
         ]),
 ));
 
@@ -68,13 +68,13 @@ test('Failed attributes on the class', catchAll(
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.email` must be defined')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
-        - `Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$birthdate="2024-06-23" +$email=null +$phone=n ... }` must pass at least one of the rules
+        - `Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$birthdate="2024-06-23" #$phone=null +$address ... }` must pass at least one of the rules
           - `.email` must be defined
           - `.phone` must be defined
         FULL_MESSAGE)
         ->and($messages)->toBe([
             'anyOf' => [
-                '__root__' => '`Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$birthdate="2024-06-23" +$email=null +$phone=n ... }` must pass at least one of the rules',
+                '__root__' => '`Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$birthdate="2024-06-23" #$phone=null +$address ... }` must pass at least one of the rules',
                 'email' => '`.email` must be defined',
                 'phone' => '`.phone` must be defined',
             ],
