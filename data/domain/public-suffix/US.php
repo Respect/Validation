@@ -161,7 +161,6 @@ return [
     'LIB.MI.US',
     'LIB.MN.US',
     'LIB.MO.US',
-    'LIB.MS.US',
     'LIB.MT.US',
     'LIB.NC.US',
     'LIB.ND.US',

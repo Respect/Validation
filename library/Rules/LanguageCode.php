@@ -199,7 +199,7 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'got'], // Gothic
         ['', 'grb'], // Grebo
         ['', 'grc'], // Greek, Ancient (to 1453)
-        ['el', 'gre'], // Greek, Modern (1453-)
+        ['el', 'gre'], // Modern Greek (1453-)
         ['gn', 'grn'], // Guarani
         ['', 'gsw'], // Swiss German; Alemannic; Alsatian
         ['gu', 'guj'], // Gujarati
@@ -338,17 +338,17 @@ final class LanguageCode extends AbstractEnvelope
         ['', 'nap'], // Neapolitan
         ['na', 'nau'], // Nauru
         ['nv', 'nav'], // Navajo; Navaho
-        ['nr', 'nbl'], // Ndebele, South; South Ndebele
-        ['nd', 'nde'], // Ndebele, North; North Ndebele
+        ['nr', 'nbl'], // South Ndebele
+        ['nd', 'nde'], // North Ndebele
         ['ng', 'ndo'], // Ndonga
         ['', 'nds'], // Low German; Low Saxon; German, Low; Saxon, Low
         ['ne', 'nep'], // Nepali
-        ['', 'new'], // Nepal Bhasa; Newari
+        ['', 'new'], // Nepal Bhasa; Newar; Newari
         ['', 'nia'], // Nias
         ['', 'nic'], // Niger-Kordofanian languages
         ['', 'niu'], // Niuean
-        ['nn', 'nno'], // Norwegian Nynorsk; Nynorsk, Norwegian
-        ['nb', 'nob'], // Bokmål, Norwegian; Norwegian Bokmål
+        ['nn', 'nno'], // Norwegian Nynorsk
+        ['nb', 'nob'], // Norwegian Bokmål
         ['', 'nog'], // Nogai
         ['', 'non'], // Norse, Old
         ['no', 'nor'], // Norwegian
