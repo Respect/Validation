@@ -118,7 +118,7 @@ final readonly class Result
         }
 
         if ($this->path !== null) {
-            $this->path->withParent($path);
+            $this->path->parent = $path;
 
             return $this;
         }
@@ -160,11 +160,15 @@ final readonly class Result
 
     public function withName(Name $name): self
     {
+        if ($this->path !== null && $this->name?->path !== $this->path) {
+            $name = $name->withPath($this->path);
+        }
+
         return clone($this, [
             'name' => $this->name ?? $name,
             'adjacent' => $this->adjacent?->withName($name),
             'children' => array_map(
-                static fn(Result $child) => $child->withName($child->name ?? $name),
+                static fn(Result $child) => $child->path === null ? $child->withName($child->name ?? $name) : $child,
                 $this->children,
             ),
         ]);
@@ -173,7 +177,14 @@ final readonly class Result
     public function withNameFrom(Rule $rule): self
     {
         if ($rule instanceof Nameable && $rule->getName() !== null) {
-            return $this->withName($rule->getName());
+            return clone($this, [
+                'name' => $this->name ?? $rule->getName(),
+                'adjacent' => $this->adjacent?->withNameFrom($rule),
+                'children' => array_map(
+                    static fn(Result $child) => $child->withNameFrom($rule),
+                    $this->children,
+                ),
+            ]);
         }
 
         return $this;

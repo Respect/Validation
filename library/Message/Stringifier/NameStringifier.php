@@ -27,7 +27,7 @@ final readonly class NameStringifier implements Stringifier
             return null;
         }
 
-        if ($raw->path === null || $raw->path->isOrphan()) {
+        if ($raw->path === null) {
             return $raw->value;
         }
 

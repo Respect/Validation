@@ -26,9 +26,9 @@ test('Inverted mode', catchAll(
 test('Custom name', catchAll(
     fn() => v::propertyExists('foo')->setName('Custom name')->assert((object) ['bar' => 'baz']),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('Custom name must be present')
-        ->and($fullMessage)->toBe('- Custom name must be present')
-        ->and($messages)->toBe(['foo' => 'Custom name must be present']),
+        ->and($message)->toBe('`.foo` (<- Custom name) must be present')
+        ->and($fullMessage)->toBe('- `.foo` (<- Custom name) must be present')
+        ->and($messages)->toBe(['foo' => '`.foo` (<- Custom name) must be present']),
 ));
 
 test('Custom template', catchAll(

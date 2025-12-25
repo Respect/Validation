@@ -45,7 +45,7 @@ final readonly class InterpolationRenderer implements Renderer
         $rendered = (string) preg_replace_callback(
             '/{{(\w+)(\|([^}]+))?}}/',
             function (array $matches) use ($parameters) {
-                if (!isset($parameters[$matches[1]])) {
+                if (!array_key_exists($matches[1], $parameters)) {
                     return $matches[0];
                 }
 
@@ -89,24 +89,24 @@ final readonly class InterpolationRenderer implements Renderer
         return $this->stringifier->stringify($value, 0) ?? print_r($value, true);
     }
 
-    private function getName(Result $result): Name
+    private function getName(Result $result): mixed
     {
         if (array_key_exists('name', $result->parameters) && is_string($result->parameters['name'])) {
             return new Name($result->parameters['name']);
         }
 
         if (array_key_exists('name', $result->parameters)) {
-            return new Name((string) $this->stringifier->stringify($result->parameters['name'], 0));
+            return $result->parameters['name'];
         }
 
         if ($result->name !== null) {
-            return $result->path ? $result->name->withPath($result->path) : $result->name;
+            return $result->name;
         }
 
         if ($result->path?->value !== null) {
-            return new Name((string) $this->stringifier->stringify($result->path, 0));
+            return $result->path;
         }
 
-        return new Name((string) $this->stringifier->stringify($result->input, 0));
+        return $result->input;
     }
 }

@@ -7,8 +7,6 @@ parameters:
       # Why: SimpleXMLElement is weird and doesn't implement anything ArrayAccess-like
       message: '/Instanceof between mixed and SimpleXMLElement will always evaluate to false\./'
       path: library/Rules/ArrayVal.php
-    - message: '/Call to an undefined method .+::(skip|throws)\(\)/'
-      path: tests/feature
     - message: '/Call to an undefined method .+::expectException\(\)/'
       path: tests/Pest.php
     - message: '/Undefined variable: \$this/'

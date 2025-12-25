@@ -35,4 +35,4 @@ test('https://github.com/Respect/Validation/issues/179', catchAll(
             'host' => '`.host` must be a string',
             'user' => '`.user` must be present',
         ]),
-))->skip('This still needs to be fixed in order to pass.');
+));

@@ -127,7 +127,7 @@ test('With wrapper name, default', catchAll(
             1 => '`.1` must be an integer',
             2 => '`.2` must be an integer',
         ]),
-))->skip('This still needs to be fixed in order to pass.');
+));
 
 test('With wrapper name, inverted', catchAll(
     fn() => v::not(v::each(v::intType())->setName('Wrapper'))->setName('Not')->assert([1, 2, 3]),
@@ -145,7 +145,7 @@ test('With wrapper name, inverted', catchAll(
             1 => '`.1` must not be an integer',
             2 => '`.2` must not be an integer',
         ]),
-))->skip('This still needs to be fixed in order to pass.');
+));
 
 test('With Not name, inverted', catchAll(
     fn() => v::not(v::each(v::intType()))->setName('Not')->assert([1, 2, 3]),
@@ -163,7 +163,7 @@ test('With Not name, inverted', catchAll(
             1 => '`.1` must not be an integer',
             2 => '`.2` must not be an integer',
         ]),
-))->skip('This still needs to be fixed in order to pass.');
+));
 
 test('With template, non-iterable', catchAll(
     fn() => v::each(v::intType())->setTemplate('You should have passed an iterable')->assert(null),

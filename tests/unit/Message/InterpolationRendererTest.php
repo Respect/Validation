@@ -154,7 +154,7 @@ final class InterpolationRendererTest extends TestCase
         self::assertSame(
             sprintf(
                 'Will replace %s',
-                $stringifier->stringify(new Name((string) $stringifier->stringify($value, 0)), 0),
+                $stringifier->stringify($value, 0),
             ),
             $renderer->render($result, []),
         );
@@ -196,7 +196,7 @@ final class InterpolationRendererTest extends TestCase
         self::assertSame(
             sprintf(
                 'Will replace %s',
-                $stringifier->stringify(new Name((string) $stringifier->stringify($input, 0)), 0),
+                $stringifier->stringify($input, 0),
             ),
             $renderer->render($result, []),
         );
@@ -303,7 +303,7 @@ final class InterpolationRendererTest extends TestCase
         self::assertSame(
             sprintf(
                 '%s must be a valid stub',
-                $stringifier->stringify(new Name((string) $stringifier->stringify($result->input, 0)), 0),
+                $stringifier->stringify($result->input, 0),
             ),
             $renderer->render($result, []),
         );
@@ -320,7 +320,7 @@ final class InterpolationRendererTest extends TestCase
         self::assertSame(
             sprintf(
                 '%s must not be a valid stub',
-                $stringifier->stringify(new Name((string) $stringifier->stringify($result->input, 0)), 0),
+                $stringifier->stringify($result->input, 0),
             ),
             $renderer->render($result, []),
         );
