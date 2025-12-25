@@ -32,11 +32,11 @@ final class TemplateResolver
             return $result->template;
         }
 
-        if ($result->path !== null) {
-            $templates = $this->filterByPath($result->path, $templates);
+        if ($result->subject->path !== null) {
+            $templates = $this->filterByPath($result->subject->path, $templates);
         }
 
-        foreach ([$result->path?->value, $result->name?->value, $result->id->value, '__root__'] as $key) {
+        foreach ([$result->subject->path?->value, $result->subject->name?->value, $result->id->value, '__root__'] as $key) {
             if ($key === null || !isset($templates[$key])) {
                 continue;
             }

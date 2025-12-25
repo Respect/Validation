@@ -11,6 +11,7 @@ namespace Respect\Validation\Message\Formatter;
 
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\StringFormatter;
+use Respect\Validation\Name;
 use Respect\Validation\Result;
 
 use function array_filter;
@@ -27,7 +28,7 @@ final readonly class NestedListStringFormatter implements StringFormatter
     /** @param array<string|int, mixed> $templates */
     public function format(Result $result, Renderer $renderer, array $templates): string
     {
-        return $this->formatRecursively($result, $renderer, $templates, 0);
+        return $this->formatRecursively($result, $renderer, $templates, 0, null);
     }
 
     /** @param array<string|int, mixed> $templates */
@@ -36,23 +37,31 @@ final readonly class NestedListStringFormatter implements StringFormatter
         Renderer $renderer,
         array $templates,
         int $depth,
+        Name|null $displayedName,
         Result ...$siblings,
     ): string {
         $formatted = '';
-        $displayedName = null;
         if ($this->isVisible($result, ...$siblings)) {
             $indentation = str_repeat(' ', $depth * 2);
-            $displayedName = $result->name;
-            $formatted .= sprintf('%s- %s' . PHP_EOL, $indentation, $renderer->render($result, $templates));
+            $formatted .= sprintf(
+                '%s- %s' . PHP_EOL,
+                $indentation,
+                $renderer->render(
+                    $displayedName === $result->subject->name ? $result->withoutName() : $result,
+                    $templates,
+                ),
+            );
+            $displayedName ??= $result->subject->name;
             $depth++;
         }
 
         foreach ($result->children as $child) {
             $formatted .= $this->formatRecursively(
-                $displayedName === $child->name ? $child->withoutName() : $child,
+                $child,
                 $renderer,
                 $templates,
                 $depth,
+                $displayedName,
                 ...array_filter($result->children, static fn(Result $sibling) => $sibling !== $child),
             );
             $formatted .= PHP_EOL;
