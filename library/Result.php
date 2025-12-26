@@ -21,24 +21,32 @@ final readonly class Result
     /** @var array<Result> */
     public array $children;
 
-    public Id $id;
-
     /** @param array<string, mixed> $parameters */
     public function __construct(
         public bool $hasPassed,
         public mixed $input,
         public Rule $rule,
+        public Id $id,
         public array $parameters = [],
         public string $template = Rule::TEMPLATE_STANDARD,
         public bool $hasInvertedMode = false,
         public Name|null $name = null,
-        Id|null $id = null,
         public Result|null $adjacent = null,
         public Path|null $path = null,
         Result ...$children,
     ) {
-        $this->id = $id ?? Id::fromRule($rule);
         $this->children = $children;
+    }
+
+    /** @param array<string, mixed> $parameters */
+    public static function of(
+        bool $hasPassed,
+        mixed $input,
+        Rule $rule,
+        array $parameters = [],
+        string $template = Rule::TEMPLATE_STANDARD,
+    ): self {
+        return new self($hasPassed, $input, $rule, Id::fromRule($rule), $parameters, $template);
     }
 
     /** @param array<string, mixed> $parameters */
@@ -48,7 +56,7 @@ final readonly class Result
         array $parameters = [],
         string $template = Rule::TEMPLATE_STANDARD,
     ): self {
-        return new self(false, $input, $rule, $parameters, $template);
+        return self::of(false, $input, $rule, $parameters, $template);
     }
 
     /** @param array<string, mixed> $parameters */
@@ -58,35 +66,25 @@ final readonly class Result
         array $parameters = [],
         string $template = Rule::TEMPLATE_STANDARD,
     ): self {
-        return new self(true, $input, $rule, $parameters, $template);
+        return self::of(true, $input, $rule, $parameters, $template);
     }
 
-    /** @param array<string, mixed> $parameters */
-    public static function fromAdjacent(
-        mixed $input,
-        string $prefix,
-        Rule $rule,
-        Result $adjacent,
-        array $parameters = [],
-        string $template = Rule::TEMPLATE_STANDARD,
-    ): Result {
-        if ($adjacent->allowsAdjacent()) {
-            return (new Result(
-                $adjacent->hasPassed,
-                $input,
-                $rule,
-                $parameters,
-                $template,
-                id: $adjacent->id->withPrefix($prefix),
-            ))->withAdjacent($adjacent->withInput($input));
+    public function asAdjacentOf(Result $result, string $prefix): Result
+    {
+        if ($this->allowsAdjacent()) {
+            return clone ($result, [
+                'id' => $this->id->withPrefix($prefix),
+                'adjacent' => $this->withInput($result->input),
+            ]);
         }
 
-        $childrenAsAdjacent = array_map(
-            static fn(Result $child) => self::fromAdjacent($input, $prefix, $rule, $child, $parameters, $template),
-            $adjacent->children,
-        );
-
-        return $adjacent->withInput($input)->withChildren(...$childrenAsAdjacent);
+        return clone ($this, [
+            'input' => $result->input,
+            'children' => array_map(
+                static fn(Result $child) => $child->asAdjacentOf($result, $prefix),
+                $this->children,
+            ),
+        ]);
     }
 
     public function withTemplate(string $template): self

@@ -60,7 +60,7 @@ final class VideoUrl implements Rule
         }
 
         if ($this->service !== null) {
-            return new Result($this->isValid($this->service, $input), $input, $this, $parameters, $template);
+            return Result::of($this->isValid($this->service, $input), $input, $this, $parameters, $template);
         }
 
         foreach (array_keys(self::SERVICES) as $service) {

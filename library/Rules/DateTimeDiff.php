@@ -81,13 +81,17 @@ final readonly class DateTimeDiff implements Rule
 
         $nowPlaceholder = $this->nowParameter($now);
 
-        return Result::fromAdjacent(
-            $input,
+        $result = $this->rule->evaluate($this->comparisonValue($now, $compareTo));
+
+        return $result->asAdjacentOf(
+            Result::of(
+                $result->hasPassed,
+                $input,
+                $this,
+                ['type' => $this->type, 'now' => $nowPlaceholder],
+                $nowPlaceholder === 'now' ? self::TEMPLATE_STANDARD : self::TEMPLATE_CUSTOMIZED,
+            ),
             'dateTimeDiff',
-            $this,
-            $this->rule->evaluate($this->comparisonValue($now, $compareTo)),
-            ['type' => $this->type, 'now' => $nowPlaceholder],
-            $nowPlaceholder === 'now' ? self::TEMPLATE_STANDARD : self::TEMPLATE_CUSTOMIZED,
         );
     }
 

@@ -47,7 +47,7 @@ final readonly class Charset implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return new Result(
+        return Result::of(
             in_array(mb_detect_encoding($input, $this->charset, true), $this->charset),
             $input,
             $this,

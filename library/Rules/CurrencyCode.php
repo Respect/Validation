@@ -61,6 +61,6 @@ final readonly class CurrencyCode implements Rule
             'numeric' => $this->currencies->getByNumericCode($input),
         };
 
-        return new Result($currency !== null, $input, $this);
+        return Result::of($currency !== null, $input, $this);
     }
 }

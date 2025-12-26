@@ -18,6 +18,6 @@ abstract class Simple implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return new Result($this->isValid($input), $input, $this);
+        return Result::of($this->isValid($input), $input, $this);
     }
 }

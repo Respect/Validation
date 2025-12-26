@@ -31,7 +31,7 @@ final class ResultBuilder
 
     private Name|null $name = null;
 
-    private Id|null $id = null;
+    private Id $id;
 
     private Rule $rule;
 
@@ -45,6 +45,7 @@ final class ResultBuilder
     public function __construct()
     {
         $this->rule = Stub::daze();
+        $this->id = Id::fromRule($this->rule);
     }
 
     public function build(): Result
@@ -53,11 +54,11 @@ final class ResultBuilder
             $this->hasPassed,
             $this->input,
             $this->rule,
+            $this->id,
             $this->parameters,
             $this->template,
             $this->hasInvertedMode,
             $this->name,
-            $this->id,
             $this->adjacent,
             $this->path,
             ...$this->children,

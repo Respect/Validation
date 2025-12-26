@@ -23,6 +23,6 @@ abstract class Envelope implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return new Result($this->rule->evaluate($input)->hasPassed, $input, $this, $this->parameters);
+        return Result::of($this->rule->evaluate($input)->hasPassed, $input, $this, $this->parameters);
     }
 }

@@ -33,12 +33,8 @@ final readonly class PropertyExists implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return new Result(
-            is_object($input) && $this->hasProperty($input),
-            $input,
-            $this,
-            path: new Path($this->propertyName),
-        );
+        return Result::of(is_object($input) && $this->hasProperty($input), $input, $this)
+            ->withPath(new Path($this->propertyName));
     }
 
     private function hasProperty(object $object): bool

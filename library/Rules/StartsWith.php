@@ -37,10 +37,10 @@ final readonly class StartsWith implements Rule
     {
         $parameters = ['startValue' => $this->startValue];
         if ($this->identical) {
-            return new Result($this->validateIdentical($input), $input, $this, $parameters);
+            return Result::of($this->validateIdentical($input), $input, $this, $parameters);
         }
 
-        return new Result($this->validateEquals($input), $input, $this, $parameters);
+        return Result::of($this->validateEquals($input), $input, $this, $parameters);
     }
 
     protected function validateEquals(mixed $input): bool

@@ -36,6 +36,6 @@ final readonly class Regex implements Rule
             return Result::failed($input, $this, $parameters);
         }
 
-        return new Result(preg_match($this->regex, (string) $input) === 1, $input, $this, $parameters);
+        return Result::of(preg_match($this->regex, (string) $input) === 1, $input, $this, $parameters);
     }
 }

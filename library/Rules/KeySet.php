@@ -85,7 +85,9 @@ final readonly class KeySet implements Rule
         )));
         $keysResult = $keys->evaluate($input);
 
-        return (new Result($keysResult->hasPassed, $input, $this, [], $this->getTemplateFromKeys(array_keys($input))))
+        $template = $this->getTemplateFromKeys(array_keys($input));
+
+        return Result::of($keysResult->hasPassed, $input, $this, [], $template)
             ->withChildren(...($keysResult->children === [] ? [$keysResult] : $keysResult->children));
     }
 

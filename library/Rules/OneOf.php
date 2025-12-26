@@ -58,6 +58,6 @@ final class OneOf extends Composite
             );
         }
 
-        return (new Result($valid, $input, $this, [], $template))->withChildren(...$children);
+        return Result::of($valid, $input, $this, [], $template)->withChildren(...$children);
     }
 }

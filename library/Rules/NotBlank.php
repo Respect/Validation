@@ -30,7 +30,7 @@ final class NotBlank implements Rule
 {
     public function evaluate(mixed $input): Result
     {
-        return new Result($this->isBlank($input), $input, $this);
+        return Result::of($this->isBlank($input), $input, $this);
     }
 
     private function isBlank(mixed $input): bool

@@ -79,7 +79,7 @@ final readonly class CreditCard implements Rule
             return Result::failed($input, $this, $parameters, $template);
         }
 
-        return new Result(
+        return Result::of(
             preg_match(self::BRAND_REGEX_LIST[$this->brand], $filteredInput) > 0,
             $input,
             $this,

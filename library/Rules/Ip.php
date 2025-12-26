@@ -74,11 +74,11 @@ final class Ip implements Rule
         }
 
         if ($this->mask) {
-            return new Result($this->belongsToSubnet($input), $input, $this, $parameters, $template);
+            return Result::of($this->belongsToSubnet($input), $input, $this, $parameters, $template);
         }
 
         if ($this->startAddress && $this->endAddress) {
-            return new Result($this->verifyNetwork($input), $input, $this, $parameters, $template);
+            return Result::of($this->verifyNetwork($input), $input, $this, $parameters, $template);
         }
 
         return Result::passed($input, $this, $parameters, $template);

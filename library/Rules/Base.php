@@ -38,7 +38,7 @@ final readonly class Base implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return new Result(
+        return Result::of(
             (bool) preg_match('@^[' . mb_substr($this->chars, 0, $this->base) . ']+$@', (string) $input),
             $input,
             $this,

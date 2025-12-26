@@ -45,6 +45,6 @@ final readonly class Time implements Rule
             return Result::failed($input, $this, $parameters);
         }
 
-        return new Result($this->isDateTime($this->format, (string) $input), $input, $this, $parameters);
+        return Result::of($this->isDateTime($this->format, (string) $input), $input, $this, $parameters);
     }
 }

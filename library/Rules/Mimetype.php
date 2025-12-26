@@ -49,7 +49,7 @@ final readonly class Mimetype implements Rule
             return Result::failed($input, $this, $parameters);
         }
 
-        return new Result(
+        return Result::of(
             $this->mimetype === $this->fileInfo->file($input, FILEINFO_MIME_TYPE),
             $input,
             $this,

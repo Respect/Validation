@@ -32,7 +32,7 @@ final readonly class Equals implements Rule
     {
         $parameters = ['compareTo' => $this->compareTo];
         if (is_scalar($input) === is_scalar($this->compareTo)) {
-            return new Result($input == $this->compareTo, $input, $this, $parameters);
+            return Result::of($input == $this->compareTo, $input, $this, $parameters);
         }
 
         return Result::failed($input, $this, $parameters);

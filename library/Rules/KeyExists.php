@@ -39,7 +39,7 @@ final class KeyExists implements Rule, KeyRelated
 
     public function evaluate(mixed $input): Result
     {
-        return new Result($this->hasKey($input), $input, $this, path: new Path($this->key));
+        return Result::of($this->hasKey($input), $input, $this)->withPath(new Path($this->key));
     }
 
     private function hasKey(mixed $input): bool

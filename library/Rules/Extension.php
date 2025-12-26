@@ -36,13 +36,13 @@ final readonly class Extension implements Rule
     {
         $parameters = ['extension' => $this->extension];
         if ($input instanceof SplFileInfo) {
-            return new Result($this->extension === $input->getExtension(), $input, $this, $parameters);
+            return Result::of($this->extension === $input->getExtension(), $input, $this, $parameters);
         }
 
         if (!is_string($input)) {
             return Result::failed($input, $this, $parameters);
         }
 
-        return new Result($this->extension === pathinfo($input, PATHINFO_EXTENSION), $input, $this, $parameters);
+        return Result::of($this->extension === pathinfo($input, PATHINFO_EXTENSION), $input, $this, $parameters);
     }
 }

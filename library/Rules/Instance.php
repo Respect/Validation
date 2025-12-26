@@ -29,6 +29,6 @@ final readonly class Instance implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return new Result($input instanceof $this->class, $input, $this, ['class' => $this->class]);
+        return Result::of($input instanceof $this->class, $input, $this, ['class' => $this->class]);
     }
 }

@@ -26,6 +26,6 @@ final class NotUndef implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return new Result($this->isUndefined($input) === false, $input, $this);
+        return Result::of($this->isUndefined($input) === false, $input, $this);
     }
 }

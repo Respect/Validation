@@ -73,7 +73,7 @@ final class Uuid implements Rule
 
         $hasPassed = $this->version ? $uuidVersion === $this->version : $uuidVersion !== null;
 
-        return new Result($hasPassed, $input, $this, $parameters, $template);
+        return Result::of($hasPassed, $input, $this, $parameters, $template);
     }
 
     private function isSupportedVersion(int $version): bool

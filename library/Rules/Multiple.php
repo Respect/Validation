@@ -30,9 +30,9 @@ final readonly class Multiple implements Rule
     {
         $parameters = ['multipleOf' => $this->multipleOf];
         if ($this->multipleOf == 0) {
-            return new Result($input == 0, $input, $this, $parameters);
+            return Result::of($input == 0, $input, $this, $parameters);
         }
 
-        return new Result($input % $this->multipleOf == 0, $input, $this, $parameters);
+        return Result::of($input % $this->multipleOf == 0, $input, $this, $parameters);
     }
 }

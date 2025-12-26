@@ -54,7 +54,7 @@ final class Domain implements Rule
             }
         }
 
-        return new Result($this->partsRule->evaluate($parts)->hasPassed, $input, $this);
+        return Result::of($this->partsRule->evaluate($parts)->hasPassed, $input, $this);
     }
 
     private function createGenericRule(): Circuit

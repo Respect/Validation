@@ -28,6 +28,6 @@ final readonly class Identical implements Rule
 
     public function evaluate(mixed $input): Result
     {
-        return new Result($input === $this->compareTo, $input, $this, ['compareTo' => $this->compareTo]);
+        return Result::of($input === $this->compareTo, $input, $this, ['compareTo' => $this->compareTo]);
     }
 }

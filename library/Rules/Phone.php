@@ -78,7 +78,7 @@ final class Phone implements Rule
             return Result::failed($input, $this, $parameters, $template);
         }
 
-        return new Result($this->isValidPhone((string) $input), $input, $this, $parameters, $template);
+        return Result::of($this->isValidPhone((string) $input), $input, $this, $parameters, $template);
     }
 
     private function isValidPhone(string $input): bool

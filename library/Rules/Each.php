@@ -38,8 +38,6 @@ final class Each extends FilteredNonEmptyArray
             true,
         );
 
-        return (new Result($hasPassed, $input, $this))
-            ->withChildren(...$children)
-            ->withNameFrom($this->rule);
+        return Result::of($hasPassed, $input, $this)->withChildren(...$children)->withNameFrom($this->rule);
     }
 }

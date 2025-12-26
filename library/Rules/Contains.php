@@ -37,14 +37,14 @@ final readonly class Contains implements Rule
     {
         $parameters = ['containsValue' => $this->containsValue];
         if (is_array($input)) {
-            return new Result(in_array($this->containsValue, $input, $this->identical), $input, $this, $parameters);
+            return Result::of(in_array($this->containsValue, $input, $this->identical), $input, $this, $parameters);
         }
 
         if (!is_scalar($input) || !is_scalar($this->containsValue)) {
             return Result::failed($input, $this, $parameters);
         }
 
-        return new Result(
+        return Result::of(
             $this->validateString((string) $input, (string) $this->containsValue),
             $input,
             $this,

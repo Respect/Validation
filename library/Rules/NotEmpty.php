@@ -30,6 +30,6 @@ final class NotEmpty implements Rule
             $input = trim($input);
         }
 
-        return new Result(!empty($input), $input, $this);
+        return Result::of(!empty($input), $input, $this);
     }
 }

@@ -43,7 +43,12 @@ final class Length extends Wrapper
                 ->withId($this->rule->evaluate($input)->id->withPrefix('length'));
         }
 
-        return Result::fromAdjacent($input, 'length', $this, $this->rule->evaluate($length));
+        $result = $this->rule->evaluate($length);
+
+        return $result->asAdjacentOf(
+            Result::of($result->hasPassed, $input, $this),
+            'length',
+        );
     }
 
     private function extractLength(mixed $input): int|null

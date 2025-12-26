@@ -44,7 +44,7 @@ abstract class FilteredString implements Rule
         $filteredInput = $this->filter($stringInput);
         $isValid = $filteredInput === '' || $this->isValid($filteredInput);
 
-        return new Result($isValid, $input, $this, $parameters, $template);
+        return Result::of($isValid, $input, $this, $parameters, $template);
     }
 
     abstract protected function isValid(string $input): bool;

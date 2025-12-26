@@ -65,6 +65,6 @@ final readonly class SubdivisionCode implements Rule
             return Result::passed($input, $this, $parameters);
         }
 
-        return new Result($subdivision !== null, $input, $this, $parameters);
+        return Result::of($subdivision !== null, $input, $this, $parameters);
     }
 }

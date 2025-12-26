@@ -39,7 +39,7 @@ final readonly class Decimal implements Rule
             return Result::failed($input, $this, $parameters);
         }
 
-        return new Result($this->isValidDecimal($input), $input, $this, $parameters);
+        return Result::of($this->isValidDecimal($input), $input, $this, $parameters);
     }
 
     private function isValidDecimal(mixed $input): bool

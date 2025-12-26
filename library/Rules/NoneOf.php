@@ -49,6 +49,6 @@ final class NoneOf extends Composite
             $template = self::TEMPLATE_ALL;
         }
 
-        return (new Result($valid, $input, $this, [], $template))->withChildren(...$children);
+        return Result::of($valid, $input, $this, [], $template)->withChildren(...$children);
     }
 }

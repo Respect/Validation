@@ -72,7 +72,10 @@ final class Size extends Wrapper
         $result = $this->rule->evaluate($this->getSize($input) / self::DATA_STORAGE_UNITS[$this->unit]['bytes']);
         $parameters = ['unit' => self::DATA_STORAGE_UNITS[$this->unit]['name']];
 
-        return Result::fromAdjacent($input, 'size', $this, $result, $parameters);
+        return $result->asAdjacentOf(
+            Result::of($result->hasPassed, $input, $this, $parameters),
+            'size',
+        );
     }
 
     private function getSize(mixed $input): int|null

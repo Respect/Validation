@@ -67,6 +67,6 @@ final readonly class LanguageCode implements Rule
             'alpha-3' => $this->languages->getByAlpha3($input),
         };
 
-        return new Result($currency !== null, $input, $this);
+        return Result::of($currency !== null, $input, $this);
     }
 }

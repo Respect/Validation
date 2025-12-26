@@ -36,10 +36,10 @@ final readonly class In implements Rule
     {
         $parameters = ['haystack' => $this->haystack];
         if ($this->compareIdentical) {
-            return new Result($this->validateIdentical($input), $input, $this, $parameters);
+            return Result::of($this->validateIdentical($input), $input, $this, $parameters);
         }
 
-        return new Result($this->validateEquals($input), $input, $this, $parameters);
+        return Result::of($this->validateEquals($input), $input, $this, $parameters);
     }
 
     private function validateEquals(mixed $input): bool

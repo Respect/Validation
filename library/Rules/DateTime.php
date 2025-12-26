@@ -47,7 +47,7 @@ final class DateTime implements Rule
         $template = $this->format !== null ? self::TEMPLATE_FORMAT : self::TEMPLATE_STANDARD;
         $parameters = ['sample' => date($this->format ?: 'c', strtotime('2005-12-30 01:02:03'))];
         if ($input instanceof DateTimeInterface) {
-            return new Result($this->format === null, $input, $this, $parameters, $template);
+            return Result::of($this->format === null, $input, $this, $parameters, $template);
         }
 
         if (!is_scalar($input)) {
@@ -55,9 +55,9 @@ final class DateTime implements Rule
         }
 
         if ($this->format === null) {
-            return new Result(strtotime((string) $input) !== false, $input, $this, $parameters, $template);
+            return Result::of(strtotime((string) $input) !== false, $input, $this, $parameters, $template);
         }
 
-        return new Result($this->isDateTime($this->format, (string) $input), $input, $this, $parameters, $template);
+        return Result::of($this->isDateTime($this->format, (string) $input), $input, $this, $parameters, $template);
     }
 }

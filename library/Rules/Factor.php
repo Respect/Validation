@@ -50,6 +50,6 @@ final readonly class Factor implements Rule
 
         // The dividend divided by the input must be an integer if input is a
         // factor of the dividend.
-        return new Result(is_int($dividend / $input), $input, $this, $parameters);
+        return Result::of(is_int($dividend / $input), $input, $this, $parameters);
     }
 }

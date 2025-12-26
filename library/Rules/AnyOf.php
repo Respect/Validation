@@ -34,6 +34,6 @@ final class AnyOf extends Composite
             false,
         );
 
-        return (new Result($valid, $input, $this))->withChildren(...$children);
+        return Result::of($valid, $input, $this)->withChildren(...$children);
     }
 }

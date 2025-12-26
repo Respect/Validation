@@ -33,7 +33,7 @@ abstract class Comparison implements Rule
             return Result::failed($input, $this, $parameters);
         }
 
-        return new Result($this->compare($left, $right), $input, $this, $parameters);
+        return Result::of($this->compare($left, $right), $input, $this, $parameters);
     }
 
     abstract protected function compare(mixed $left, mixed $right): bool;

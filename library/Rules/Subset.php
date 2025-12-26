@@ -37,6 +37,6 @@ final readonly class Subset implements Rule
             return Result::failed($input, $this, $parameters);
         }
 
-        return new Result(array_diff($input, $this->superset) === [], $input, $this, $parameters);
+        return Result::of(array_diff($input, $this->superset) === [], $input, $this, $parameters);
     }
 }
