@@ -33,13 +33,13 @@ use function in_array;
     self::TEMPLATE_CUSTOMIZED,
 )]
 #[Template(
-    'For comparison with {{now|raw}}, {{name}} must be a valid datetime',
-    'For comparison with {{now|raw}}, {{name}} must not be a valid datetime',
+    'For comparison with {{now|raw}}, {{subject}} must be a valid datetime',
+    'For comparison with {{now|raw}}, {{subject}} must not be a valid datetime',
     self::TEMPLATE_NOT_A_DATE,
 )]
 #[Template(
-    'For comparison with {{now|raw}}, {{name}} must be a valid datetime in the format {{sample|raw}}',
-    'For comparison with {{now|raw}}, {{name}} must not be a valid datetime in the format {{sample|raw}}',
+    'For comparison with {{now|raw}}, {{subject}} must be a valid datetime in the format {{sample|raw}}',
+    'For comparison with {{now|raw}}, {{subject}} must not be a valid datetime in the format {{sample|raw}}',
     self::TEMPLATE_WRONG_FORMAT,
 )]
 final readonly class DateTimeDiff implements Rule

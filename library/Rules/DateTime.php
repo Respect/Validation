@@ -22,13 +22,13 @@ use function strtotime;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid date/time',
-    '{{name}} must not be a valid date/time',
+    '{{subject}} must be a valid date/time',
+    '{{subject}} must not be a valid date/time',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be a valid date/time in the format {{sample}}',
-    '{{name}} must not be a valid date/time in the format {{sample}}',
+    '{{subject}} must be a valid date/time in the format {{sample}}',
+    '{{subject}} must not be a valid date/time in the format {{sample}}',
     self::TEMPLATE_FORMAT,
 )]
 final class DateTime implements Rule

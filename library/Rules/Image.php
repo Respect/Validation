@@ -23,8 +23,8 @@ use const FILEINFO_MIME_TYPE;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid image file',
-    '{{name}} must not be a valid image file',
+    '{{subject}} must be a valid image file',
+    '{{subject}} must not be a valid image file',
 )]
 final class Image extends Simple
 {

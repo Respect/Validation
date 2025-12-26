@@ -26,17 +26,17 @@ Message template for this validator includes `{{containsValue}}`.
 
 ### `Contains::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-|------------|---------------------------------------------|
-| `default`  | {{name}} must contain {{containsValue}}     |
-| `inverted` | {{name}} must not contain {{containsValue}} |
+| Mode       | Template                                       |
+| ---------- | ---------------------------------------------- |
+| `default`  | {{subject}} must contain {{containsValue}}     |
+| `inverted` | {{subject}} must not contain {{containsValue}} |
 
 ## Template placeholders
 
 | Placeholder     | Description                                                      |
-|-----------------|------------------------------------------------------------------|
+| --------------- | ---------------------------------------------------------------- |
 | `containsValue` |                                                                  |
-| `name`          | The validated input or the custom validator name (if specified). |
+| `subject`       | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -46,10 +46,11 @@ Message template for this validator includes `{{containsValue}}`.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [ContainsAny](ContainsAny.md)

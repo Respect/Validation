@@ -20,8 +20,8 @@ use function is_scalar;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a directory',
-    '{{name}} must not be a directory',
+    '{{subject}} must be a directory',
+    '{{subject}} must not be a directory',
 )]
 final class Directory extends Simple
 {

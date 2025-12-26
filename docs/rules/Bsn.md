@@ -12,16 +12,16 @@ v::bsn()->isValid('612890053'); // true
 
 ### `Bsn::TEMPLATE_STANDARD`
 
-| Mode       | Template                         |
-|------------|----------------------------------|
-| `default`  | {{name}} must be a valid BSN     |
-| `inverted` | {{name}} must not be a valid BSN |
+| Mode       | Template                            |
+| ---------- | ----------------------------------- |
+| `default`  | {{subject}} must be a valid BSN     |
+| `inverted` | {{subject}} must not be a valid BSN |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -30,10 +30,11 @@ v::bsn()->isValid('612890053'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   1.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Cnh](Cnh.md)

@@ -14,25 +14,25 @@ v::allOf(v::intVal(), v::positive())->isValid(15); // true
 
 Used when some rules must be failed.
 
-| Mode       | Template                     |
-|------------|------------------------------|
-| `default`  | {{name}} must pass the rules |
-| `inverted` | {{name}} must pass the rules |
+| Mode       | Template                        |
+| ---------- | ------------------------------- |
+| `default`  | {{subject}} must pass the rules |
+| `inverted` | {{subject}} must pass the rules |
 
 ### `AllOf::TEMPLATE_ALL`
 
 Used when all rules have failed.
 
-| Mode       | Template                         |
-|------------|----------------------------------|
-| `default`  | {{name}} must pass all the rules |
-| `inverted` | {{name}} must pass all the rules |
+| Mode       | Template                            |
+| ---------- | ----------------------------------- |
+| `default`  | {{subject}} must pass all the rules |
+| `inverted` | {{subject}} must pass all the rules |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -42,11 +42,12 @@ Used when all rules have failed.
 ## Changelog
 
 | Version | Description                             |
-|--------:|-----------------------------------------|
+| ------: | --------------------------------------- |
 |   3.0.0 | Require at least two rules to be passed |
 |   0.3.9 | Created                                 |
 
-***
+---
+
 See also:
 
 - [AnyOf](AnyOf.md)

@@ -21,8 +21,8 @@ use function is_object;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be present',
-    '{{name}} must not be present',
+    '{{subject}} must be present',
+    '{{subject}} must not be present',
 )]
 final readonly class PropertyExists implements Rule
 {

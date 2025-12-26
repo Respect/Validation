@@ -17,13 +17,13 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must consist of vowels only',
-    '{{name}} must not consist of vowels only',
+    '{{subject}} must consist of vowels only',
+    '{{subject}} must not consist of vowels only',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must consist of vowels and {{additionalChars}}',
-    '{{name}} must not consist of vowels or {{additionalChars}}',
+    '{{subject}} must consist of vowels and {{additionalChars}}',
+    '{{subject}} must not consist of vowels or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Vowel extends FilteredString

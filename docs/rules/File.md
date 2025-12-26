@@ -19,16 +19,16 @@ v::file()->isValid(new SplFileInfo('file.txt'));
 
 ### `File::TEMPLATE_STANDARD`
 
-| Mode       | Template                         |
-|------------|----------------------------------|
-| `default`  | {{name}} must be a valid file    |
-| `inverted` | {{name}} must be an invalid file |
+| Mode       | Template                            |
+| ---------- | ----------------------------------- |
+| `default`  | {{subject}} must be a valid file    |
+| `inverted` | {{subject}} must be an invalid file |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -37,10 +37,11 @@ v::file()->isValid(new SplFileInfo('file.txt'));
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.5.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Directory](Directory.md)

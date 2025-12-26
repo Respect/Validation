@@ -14,17 +14,17 @@ Accepted data storage units are `B`, `KB`, `MB`, `GB`, `TB`, `PB`, `EB`, `ZB`, a
 
 This validator will accept:
 
-* `string` file paths
-* `SplFileInfo` objects (see [SplFileInfo][])
-* `Psr\Http\Message\UploadedFileInterface` objects (see [PSR-7][])
-* `Psr\Http\Message\StreamInterface` objects (see [PSR-7][])
+- `string` file paths
+- `SplFileInfo` objects (see [SplFileInfo][])
+- `Psr\Http\Message\UploadedFileInterface` objects (see [PSR-7][])
+- `Psr\Http\Message\StreamInterface` objects (see [PSR-7][])
 
 ## Templates
 
 ### `Size::TEMPLATE_STANDARD`
 
 | Mode       | Template                           |
-|------------|------------------------------------|
+| ---------- | ---------------------------------- |
 | `default`  | The size in {{unit&#124;trans}} of |
 | `inverted` | The size in {{unit&#124;trans}} of |
 
@@ -42,16 +42,16 @@ v::size('KB', v::not(v::equals(56)))->assert('filename.txt')
 
 Used when the input is not a valid file path, a `SplFileInfo` object, or a PSR-7 interface.
 
-| Mode       | Template                                                                           |
-|------------|------------------------------------------------------------------------------------|
-| `default`  | {{name}} must be a filename or an instance of SplFileInfo or a PSR-7 interface     |
-| `inverted` | {{name}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface |
+| Mode       | Template                                                                              |
+| ---------- | ------------------------------------------------------------------------------------- |
+| `default`  | {{subject}} must be a filename or an instance of SplFileInfo or a PSR-7 interface     |
+| `inverted` | {{subject}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 | `unit`      | The name of the storage unit (bytes, kilobytes, etc.)            |
 
 ## Categorization
@@ -62,12 +62,13 @@ Used when the input is not a valid file path, a `SplFileInfo` object, or a PSR-7
 ## Changelog
 
 | Version | Description             |
-|--------:|-------------------------|
+| ------: | ----------------------- |
 |   3.0.0 | Became a transformation |
 |   2.1.0 | Add [PSR-7][] support   |
 |   1.0.0 | Created                 |
 
-***
+---
+
 See also:
 
 - [Directory](Directory.md)

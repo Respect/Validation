@@ -12,16 +12,16 @@ v::json()->isValid('{"foo":"bar"}'); // true
 
 ### `Json::TEMPLATE_STANDARD`
 
-| Mode       | Template                                 |
-|------------|------------------------------------------|
-| `default`  | {{name}} must be a valid JSON string     |
-| `inverted` | {{name}} must not be a valid JSON string |
+| Mode       | Template                                    |
+| ---------- | ------------------------------------------- |
+| `default`  | {{subject}} must be a valid JSON string     |
+| `inverted` | {{subject}} must not be a valid JSON string |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -30,10 +30,11 @@ v::json()->isValid('{"foo":"bar"}'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Domain](Domain.md)

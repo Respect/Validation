@@ -16,8 +16,8 @@ use Respect\Validation\Rules\Core\Simple;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an iterable value',
-    '{{name}} must not be an iterable value',
+    '{{subject}} must be an iterable value',
+    '{{subject}} must not be an iterable value',
 )]
 final class IterableVal extends Simple
 {

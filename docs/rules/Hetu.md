@@ -18,16 +18,16 @@ The validation is case-sensitive.
 
 ### `Hetu::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                    |
-|------------|-------------------------------------------------------------|
-| `default`  | {{name}} must be a valid Finnish personal identity code     |
-| `inverted` | {{name}} must not be a valid Finnish personal identity code |
+| Mode       | Template                                                       |
+| ---------- | -------------------------------------------------------------- |
+| `default`  | {{subject}} must be a valid Finnish personal identity code     |
+| `inverted` | {{subject}} must not be a valid Finnish personal identity code |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -36,10 +36,11 @@ The validation is case-sensitive.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   3.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Cnh](Cnh.md)

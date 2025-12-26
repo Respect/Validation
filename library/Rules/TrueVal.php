@@ -20,8 +20,8 @@ use const FILTER_VALIDATE_BOOLEAN;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must evaluate to `true`',
-    '{{name}} must not evaluate to `true`',
+    '{{subject}} must evaluate to `true`',
+    '{{subject}} must not evaluate to `true`',
 )]
 final class TrueVal extends Simple
 {

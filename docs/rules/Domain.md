@@ -9,7 +9,7 @@ Validates whether the input is a valid domain name or not.
 v::domain()->isValid('google.com');
 ```
 
-You can skip *top level domain* (TLD) checks to validate internal
+You can skip _top level domain_ (TLD) checks to validate internal
 domain names:
 
 ```php
@@ -33,16 +33,16 @@ Messages for this validator will reflect rules above.
 
 ### `Domain::TEMPLATE_STANDARD`
 
-| Mode       | Template                            |
-|------------|-------------------------------------|
-| `default`  | {{name}} must be a valid domain     |
-| `inverted` | {{name}} must not be a valid domain |
+| Mode       | Template                               |
+| ---------- | -------------------------------------- |
+| `default`  | {{subject}} must be a valid domain     |
+| `inverted` | {{subject}} must not be a valid domain |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -51,11 +51,12 @@ Messages for this validator will reflect rules above.
 ## Changelog
 
 | Version | Description             |
-|--------:|-------------------------|
+| ------: | ----------------------- |
 |   0.6.0 | Allow to skip TLD check |
 |   0.3.9 | Created                 |
 
-***
+---
+
 See also:
 
 - [Ip](Ip.md)

@@ -17,13 +17,13 @@ use function ctype_space;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must contain only space characters',
-    '{{name}} must not contain space characters',
+    '{{subject}} must contain only space characters',
+    '{{subject}} must not contain space characters',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must contain only space characters and {{additionalChars}}',
-    '{{name}} must not contain space characters or {{additionalChars}}',
+    '{{subject}} must contain only space characters and {{additionalChars}}',
+    '{{subject}} must not contain space characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Space extends FilteredString

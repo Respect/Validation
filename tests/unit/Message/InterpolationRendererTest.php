@@ -127,7 +127,7 @@ final class InterpolationRendererTest extends TestCase
         $value = 'original';
 
         $result = (new ResultBuilder())
-            ->template('Will replace {{name}}')
+            ->template('Will replace {{subject}}')
             ->parameters(['name' => $value])
             ->build();
 
@@ -147,7 +147,7 @@ final class InterpolationRendererTest extends TestCase
         $value = true;
 
         $result = (new ResultBuilder())
-            ->template('Will replace {{name}}')
+            ->template('Will replace {{subject}}')
             ->parameters(['name' => $value])
             ->build();
 
@@ -169,7 +169,7 @@ final class InterpolationRendererTest extends TestCase
         $name = 'my name';
 
         $result = (new ResultBuilder())
-            ->template('Will replace {{name}}')
+            ->template('Will replace {{subject}}')
             ->name($name)
             ->build();
 
@@ -189,7 +189,7 @@ final class InterpolationRendererTest extends TestCase
         $input = 42;
 
         $result = (new ResultBuilder())
-            ->template('Will replace {{name}}')
+            ->template('Will replace {{subject}}')
             ->input($input)
             ->build();
 
@@ -232,7 +232,7 @@ final class InterpolationRendererTest extends TestCase
         $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
 
         $result = (new ResultBuilder())
-            ->template('Will replace {{name}}')
+            ->template('Will replace {{subject}}')
             ->name('real name')
             ->parameters(['name' => $parameterNameValue])
             ->build();

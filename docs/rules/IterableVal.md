@@ -2,7 +2,7 @@
 
 - `IterableVal()`
 
-Validates whether the input is an iterable value, in other words,  if you can iterate over it with the [foreach][] language construct.
+Validates whether the input is an iterable value, in other words, if you can iterate over it with the [foreach][] language construct.
 
 ```php
 v::iterableVal()->isValid([]); // true
@@ -19,16 +19,16 @@ This rule doesn't behave as PHP's [is_iterable() function because it considers t
 
 ### `IterableVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                               |
-|------------|----------------------------------------|
-| `default`  | {{name}} must be an iterable value     |
-| `inverted` | {{name}} must not be an iterable value |
+| Mode       | Template                                  |
+| ---------- | ----------------------------------------- |
+| `default`  | {{subject}} must be an iterable value     |
+| `inverted` | {{subject}} must not be an iterable value |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -37,12 +37,13 @@ This rule doesn't behave as PHP's [is_iterable() function because it considers t
 ## Changelog
 
 | Version | Description                                  |
-|--------:|----------------------------------------------|
+| ------: | -------------------------------------------- |
 |   3.0.0 | Renamed from `IterableType` to `IterableVal` |
 |   1.0.8 | Renamed from `Iterable` to `IterableType`    |
 |   1.0.0 | Created as `Iterable`                        |
 
-***
+---
+
 See also:
 
 - [ArrayType](ArrayType.md)

@@ -26,8 +26,8 @@ use function strlen;
 /** @see https://pt.wikipedia.org/wiki/N%C3%BAmero_de_identifica%C3%A7%C3%A3o_fiscal */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a Portuguese NIF',
-    '{{name}} must not be a Portuguese NIF',
+    '{{subject}} must be a Portuguese NIF',
+    '{{subject}} must not be a Portuguese NIF',
 )]
 final class PortugueseNif extends Simple
 {

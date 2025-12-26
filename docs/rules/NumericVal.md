@@ -16,16 +16,16 @@ purpose use the [Number](Number.md) rule.
 
 ### `NumericVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-|------------|--------------------------------------|
-| `default`  | {{name}} must be a numeric value     |
-| `inverted` | {{name}} must not be a numeric value |
+| Mode       | Template                                |
+| ---------- | --------------------------------------- |
+| `default`  | {{subject}} must be a numeric value     |
+| `inverted` | {{subject}} must not be a numeric value |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -35,11 +35,12 @@ purpose use the [Number](Number.md) rule.
 ## Changelog
 
 | Version | Description                            |
-|--------:|----------------------------------------|
+| ------: | -------------------------------------- |
 |   2.0.0 | Renamed from `Numeric` to `NumericVal` |
 |   0.3.9 | Created as `Numeric`                   |
 
-***
+---
+
 See also:
 
 - [Decimal](Decimal.md)

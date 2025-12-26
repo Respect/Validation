@@ -23,8 +23,8 @@ use function class_exists;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a subdivision code of {{countryName|trans}}',
-    '{{name}} must not be a subdivision code of {{countryName|trans}}',
+    '{{subject}} must be a subdivision code of {{countryName|trans}}',
+    '{{subject}} must not be a subdivision code of {{countryName|trans}}',
 )]
 final readonly class SubdivisionCode implements Rule
 {

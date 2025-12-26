@@ -13,16 +13,16 @@ v::finite()->isValid(10); // true
 
 ### `Finite::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-|------------|--------------------------------------|
-| `default`  | {{name}} must be a finite number     |
-| `inverted` | {{name}} must not be a finite number |
+| Mode       | Template                                |
+| ---------- | --------------------------------------- |
+| `default`  | {{subject}} must be a finite number     |
+| `inverted` | {{subject}} must not be a finite number |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -32,10 +32,11 @@ v::finite()->isValid(10); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   1.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Decimal](Decimal.md)

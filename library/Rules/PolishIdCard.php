@@ -20,8 +20,8 @@ use function preg_match;
 /** @see https://en.wikipedia.org/wiki/Polish_identity_card */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid Polish Identity Card number',
-    '{{name}} must not be a valid Polish Identity Card number',
+    '{{subject}} must be a valid Polish Identity Card number',
+    '{{subject}} must not be a valid Polish Identity Card number',
 )]
 final class PolishIdCard extends Simple
 {

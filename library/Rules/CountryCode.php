@@ -23,8 +23,8 @@ use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid country code',
-    '{{name}} must not be a valid country code',
+    '{{subject}} must be a valid country code',
+    '{{subject}} must not be a valid country code',
 )]
 final readonly class CountryCode implements Rule
 {

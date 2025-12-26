@@ -19,8 +19,8 @@ use function sqrt;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a perfect square number',
-    '{{name}} must not be a perfect square number',
+    '{{subject}} must be a perfect square number',
+    '{{subject}} must not be a perfect square number',
 )]
 final class PerfectSquare extends Simple
 {

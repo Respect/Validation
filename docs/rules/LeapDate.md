@@ -15,16 +15,16 @@ parameter is mandatory.
 
 ### `LeapDate::TEMPLATE_STANDARD`
 
-| Mode       | Template                           |
-|------------|------------------------------------|
-| `default`  | {{name}} must be a valid leap date |
-| `inverted` | {{name}} must not be a leap date   |
+| Mode       | Template                              |
+| ---------- | ------------------------------------- |
+| `default`  | {{subject}} must be a valid leap date |
+| `inverted` | {{subject}} must not be a leap date   |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,10 +33,11 @@ parameter is mandatory.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Date](Date.md)

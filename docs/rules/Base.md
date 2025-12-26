@@ -16,17 +16,17 @@ v::base(2)->isValid('0120122001'); // false
 
 ### `Base::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                |
-|------------|---------------------------------------------------------|
-| `default`  | {{name}} must be a number in base {{base&#124;raw}}     |
-| `inverted` | {{name}} must not be a number in base {{base&#124;raw}} |
+| Mode       | Template                                                   |
+| ---------- | ---------------------------------------------------------- |
+| `default`  | {{subject}} must be a number in base {{base&#124;raw}}     |
+| `inverted` | {{subject}} must not be a number in base {{base&#124;raw}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
+| ----------- | ---------------------------------------------------------------- |
 | `base`      | The base passed to the constructor of the rule.                  |
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -35,10 +35,11 @@ v::base(2)->isValid('0120122001'); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.5.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Base64](Base64.md)

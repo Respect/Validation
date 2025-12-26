@@ -19,16 +19,16 @@ v::exists()->isValid(new SplFileInfo('file.txt'));
 
 ### `Exists::TEMPLATE_STANDARD`
 
-| Mode       | Template                              |
-|------------|---------------------------------------|
-| `default`  | {{name}} must be an existing file     |
-| `inverted` | {{name}} must not be an existing file |
+| Mode       | Template                                 |
+| ---------- | ---------------------------------------- |
+| `default`  | {{subject}} must be an existing file     |
+| `inverted` | {{subject}} must not be an existing file |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -37,10 +37,11 @@ v::exists()->isValid(new SplFileInfo('file.txt'));
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.5.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Directory](Directory.md)

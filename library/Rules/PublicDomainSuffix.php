@@ -23,8 +23,8 @@ use function strtoupper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a public domain suffix',
-    '{{name}} must not be a public domain suffix',
+    '{{subject}} must be a public domain suffix',
+    '{{subject}} must not be a public domain suffix',
 )]
 final class PublicDomainSuffix extends Simple
 {

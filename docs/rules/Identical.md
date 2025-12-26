@@ -15,17 +15,17 @@ Message template for this validator includes `{{compareTo}}`.
 
 ### `Identical::TEMPLATE_STANDARD`
 
-| Mode       | Template                                        |
-|------------|-------------------------------------------------|
-| `default`  | {{name}} must be identical to {{compareTo}}     |
-| `inverted` | {{name}} must not be identical to {{compareTo}} |
+| Mode       | Template                                           |
+| ---------- | -------------------------------------------------- |
+| `default`  | {{subject}} must be identical to {{compareTo}}     |
+| `inverted` | {{subject}} must not be identical to {{compareTo}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
+| ----------- | ---------------------------------------------------------------- |
 | `compareTo` | Value to be compared against the input.                          |
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -34,10 +34,11 @@ Message template for this validator includes `{{compareTo}}`.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   1.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Contains](Contains.md)

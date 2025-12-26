@@ -14,16 +14,16 @@ Message template for this validator includes `{{regex}}`.
 
 ### `Regex::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                 |
-|------------|----------------------------------------------------------|
-| `default`  | {{name}} must match the pattern `{{regex&#124;raw}}`     |
-| `inverted` | {{name}} must not match the pattern `{{regex&#124;raw}}` |
+| Mode       | Template                                                    |
+| ---------- | ----------------------------------------------------------- |
+| `default`  | {{subject}} must match the pattern `{{regex&#124;raw}}`     |
+| `inverted` | {{subject}} must not match the pattern `{{regex&#124;raw}}` |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 | `regex`     |                                                                  |
 
 ## Categorization
@@ -33,10 +33,11 @@ Message template for this validator includes `{{regex}}`.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Alnum](Alnum.md)

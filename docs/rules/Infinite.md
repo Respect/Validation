@@ -12,16 +12,16 @@ v::infinite()->isValid(INF); // true
 
 ### `Infinite::TEMPLATE_STANDARD`
 
-| Mode       | Template                                |
-|------------|-----------------------------------------|
-| `default`  | {{name}} must be an infinite number     |
-| `inverted` | {{name}} must not be an infinite number |
+| Mode       | Template                                   |
+| ---------- | ------------------------------------------ |
+| `default`  | {{subject}} must be an infinite number     |
+| `inverted` | {{subject}} must not be an infinite number |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -31,10 +31,11 @@ v::infinite()->isValid(INF); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   1.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Decimal](Decimal.md)

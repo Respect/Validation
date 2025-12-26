@@ -19,7 +19,7 @@ test('https://github.com/Respect/Validation/issues/1477', catchAll(
                     return false;
                 }
             },
-            '{{name}} is not good!',
+            '{{subject}} is not good!',
         ),
     )->assert(['Address' => 'cvejvn']),
     fn(string $message, string $fullMessage, array $messages) => expect()

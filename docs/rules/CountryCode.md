@@ -27,16 +27,16 @@ When no set is defined, the rule uses `'alpha-2'` (`CountryCode::ALPHA2`).
 
 ### `CountryCode::TEMPLATE_STANDARD`
 
-| Mode       | Template                                  |
-|------------|-------------------------------------------|
-| `default`  | {{name}} must be a valid country code     |
-| `inverted` | {{name}} must not be a valid country code |
+| Mode       | Template                                     |
+| ---------- | -------------------------------------------- |
+| `default`  | {{subject}} must be a valid country code     |
+| `inverted` | {{subject}} must not be a valid country code |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -46,12 +46,13 @@ When no set is defined, the rule uses `'alpha-2'` (`CountryCode::ALPHA2`).
 ## Changelog
 
 | Version | Description                                                       |
-|--------:|-------------------------------------------------------------------|
+| ------: | ----------------------------------------------------------------- |
 |   3.0.0 | Require [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] |
 |   2.0.0 | Became case-sensitive                                             |
 |   0.5.0 | Created                                                           |
 
-***
+---
+
 See also:
 
 - [CurrencyCode](CurrencyCode.md)

@@ -25,8 +25,8 @@ use function mb_list_encodings;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must only contain characters from the {{charset|raw}} charset',
-    '{{name}} must not contain any characters from the {{charset|raw}} charset',
+    '{{subject}} must only contain characters from the {{charset|raw}} charset',
+    '{{subject}} must not contain any characters from the {{charset|raw}} charset',
 )]
 final readonly class Charset implements Rule
 {

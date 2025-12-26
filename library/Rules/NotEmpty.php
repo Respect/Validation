@@ -19,8 +19,8 @@ use function trim;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must not be empty',
-    '{{name}} must be empty',
+    '{{subject}} must not be empty',
+    '{{subject}} must be empty',
 )]
 final class NotEmpty implements Rule
 {

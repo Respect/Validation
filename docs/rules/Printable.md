@@ -13,24 +13,24 @@ v::printable()->isValid('LMKA0$% _123'); // true
 
 ### `Printable::TEMPLATE_STANDARD`
 
-| Mode       | Template                                        |
-|------------|-------------------------------------------------|
-| `default`  | {{name}} must contain only printable characters |
-| `inverted` | {{name}} must not contain printable characters  |
+| Mode       | Template                                           |
+| ---------- | -------------------------------------------------- |
+| `default`  | {{subject}} must contain only printable characters |
+| `inverted` | {{subject}} must not contain printable characters  |
 
 ### `Printable::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                                |
-|------------|-------------------------------------------------------------------------|
-| `default`  | {{name}} must contain only printable characters and {{additionalChars}} |
-| `inverted` | {{name}} must not contain printable characters or {{additionalChars}}   |
+| Mode       | Template                                                                   |
+| ---------- | -------------------------------------------------------------------------- |
+| `default`  | {{subject}} must contain only printable characters and {{additionalChars}} |
+| `inverted` | {{subject}} must not contain printable characters or {{additionalChars}}   |
 
 ## Template placeholders
 
 | Placeholder       | Description                                                      |
-|-------------------|------------------------------------------------------------------|
+| ----------------- | ---------------------------------------------------------------- |
 | `additionalChars` | Additional characters that are considered valid.                 |
-| `name`            | The validated input or the custom validator name (if specified). |
+| `subject`         | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -39,10 +39,11 @@ v::printable()->isValid('LMKA0$% _123'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.5.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Control](Control.md)

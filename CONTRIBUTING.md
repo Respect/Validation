@@ -16,20 +16,21 @@ learn that just by looking at other rules. Pick the simple ones like `ArrayType`
 to begin.
 
 Before writing anything, feature or bug fix:
+
 - Check if there is already an issue related to it (opened or closed) and if
   someone is already working on that;
-    - If there is not, [open an issue][] and notify everybody that you're going
-      to work on that;
-    - If there is, create a comment to notify everybody that you're going to
-      work on that.
+  - If there is not, [open an issue][] and notify everybody that you're going
+    to work on that;
+  - If there is, create a comment to notify everybody that you're going to
+    work on that.
 - Make sure that what you need is not done yet
 
 ## Adding a new validator
 
 A common validator (rule) on Respect\Validation is composed of three classes:
 
-  * `library/Rules/YourRuleName.php`: the rule itself
-  * `tests/unit/Rules/YourRuleNameTest.php`: tests for the rule
+- `library/Rules/YourRuleName.php`: the rule itself
+- `tests/unit/Rules/YourRuleNameTest.php`: tests for the rule
 
 The classes are pretty straightforward. In the sample below, we're going to
 create a validator that validates if a string is equal to "Hello World".
@@ -65,8 +66,8 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
 #[Template(
-    '{{name}} must be a Hello World',
-    '{{name}} must not be a Hello World',
+    '{{subject}} must be a Hello World',
+    '{{subject}} must not be a Hello World',
 )]
 final class HelloWorld extends Simple
 {
@@ -155,6 +156,7 @@ After run `composer install` on the library's root directory you must run PHPUni
 ### Linux
 
 You can test the project using the commands:
+
 ```sh
 $ vendor/bin/phpunit
 ```
@@ -168,6 +170,7 @@ $ composer phpunit
 ### Windows
 
 You can test the project using the commands:
+
 ```sh
 > vendor\bin\phpunit
 ```
@@ -187,5 +190,5 @@ and changing it according to your needs.
 [data provider]: https://phpunit.de/manual/current/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers "PHPUnit Data Providers"
 [open an issue]: http://github.com/Respect/Validation/issues
 [PHP-FIG]: http://www.php-fig.org "PHP Framework Interop Group"
-[project documentation]: https://respect-validation.readthedocs.io/ "Respect\Validation documentation"
+[project documentation]: https://respect-validation.readthedocs.io/ "Respect\\Validation documentation"
 [pull requests]: http://help.github.com/pull-requests "GitHub pull requests"

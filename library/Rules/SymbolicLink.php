@@ -19,8 +19,8 @@ use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a symbolic link',
-    '{{name}} must not be a symbolic link',
+    '{{subject}} must be a symbolic link',
+    '{{subject}} must not be a symbolic link',
 )]
 final class SymbolicLink extends Simple
 {

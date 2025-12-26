@@ -12,16 +12,16 @@ v::executable()->isValid('script.sh'); // true
 
 ### `Executable::TEMPLATE_STANDARD`
 
-| Mode       | Template                                |
-|------------|-----------------------------------------|
-| `default`  | {{name}} must be an executable file     |
-| `inverted` | {{name}} must not be an executable file |
+| Mode       | Template                                   |
+| ---------- | ------------------------------------------ |
+| `default`  | {{subject}} must be an executable file     |
+| `inverted` | {{subject}} must not be an executable file |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -30,10 +30,11 @@ v::executable()->isValid('script.sh'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.7.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Directory](Directory.md)

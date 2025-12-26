@@ -32,7 +32,7 @@ test('Custom name', catchAll(
 ));
 
 test('Custom template', catchAll(
-    fn() => v::propertyExists('foo')->assert((object) ['bar' => 'baz'], 'Custom template for {{name}}'),
+    fn() => v::propertyExists('foo')->assert((object) ['bar' => 'baz'], 'Custom template for {{subject}}'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Custom template for `.foo`')
         ->and($fullMessage)->toBe('- Custom template for `.foo`')

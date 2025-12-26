@@ -14,16 +14,16 @@ v::arrayType()->isValid(new ArrayObject()); // false
 
 ### `ArrayType::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-|------------|-------------------------------|
-| `default`  | {{name}} must be an array     |
-| `inverted` | {{name}} must not be an array |
+| Mode       | Template                         |
+| ---------- | -------------------------------- |
+| `default`  | {{subject}} must be an array     |
+| `inverted` | {{subject}} must not be an array |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,10 +33,11 @@ v::arrayType()->isValid(new ArrayObject()); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   1.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [ArrayVal](ArrayVal.md)

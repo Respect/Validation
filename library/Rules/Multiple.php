@@ -16,8 +16,8 @@ use Respect\Validation\Rule;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a multiple of {{multipleOf}}',
-    '{{name}} must not be a multiple of {{multipleOf}}',
+    '{{subject}} must be a multiple of {{multipleOf}}',
+    '{{subject}} must not be a multiple of {{multipleOf}}',
 )]
 final readonly class Multiple implements Rule
 {

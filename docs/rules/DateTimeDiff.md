@@ -21,13 +21,13 @@ v::dateTimeDiff('months', v::between(1, 18))->isValid('5 months ago'); // true
 
 The supported types are:
 
-* `years`
-* `months`
-* `days`
-* `hours`
-* `minutes`
-* `seconds`
-* `microseconds`
+- `years`
+- `months`
+- `days`
+- `hours`
+- `minutes`
+- `seconds`
+- `microseconds`
 
 ## Templates
 
@@ -46,7 +46,7 @@ v::not(v::dateTimeDiff('years', v::lessThan(8)))->assert('7 year ago')
 Used when `$format` and `$now` are not defined.
 
 | Mode       | Template                                          |
-|------------|---------------------------------------------------|
+| ---------- | ------------------------------------------------- |
 | `default`  | The number of {{type&#124;trans}} between now and |
 | `inverted` | The number of {{type&#124;trans}} between now and |
 
@@ -55,7 +55,7 @@ Used when `$format` and `$now` are not defined.
 Used when `$format` or `$now` are defined.
 
 | Mode       | Template                                                       |
-|------------|----------------------------------------------------------------|
+| ---------- | -------------------------------------------------------------- |
 | `default`  | The number of {{type&#124;trans}} between {{now&#124;raw}} and |
 | `inverted` | The number of {{type&#124;trans}} between {{now&#124;raw}} and |
 
@@ -63,16 +63,16 @@ Used when `$format` or `$now` are defined.
 
 Used when the input cannot be parsed with the given format.
 
-| Mode       | Template                                                                                                      |
-|------------|---------------------------------------------------------------------------------------------------------------|
-| `default`  | For comparison with {{now&#124;raw}}, {{name}} must be a valid datetime in the format {{sample&#124;raw}}     |
-| `inverted` | For comparison with {{now&#124;raw}}, {{name}} must not be a valid datetime in the format {{sample&#124;raw}} |
+| Mode       | Template                                                                                                         |
+| ---------- | ---------------------------------------------------------------------------------------------------------------- |
+| `default`  | For comparison with {{now&#124;raw}}, {{subject}} must be a valid datetime in the format {{sample&#124;raw}}     |
+| `inverted` | For comparison with {{now&#124;raw}}, {{subject}} must not be a valid datetime in the format {{sample&#124;raw}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 | `now`       | The date and time that is considered as now.                     |
 | `sample`    | A sample of the datetime.                                        |
 | `type`      | The type of interval (years, months, etc.).                      |
@@ -95,10 +95,11 @@ v::dateTimeDiff('years', v::equals(2))->assert('1 year ago', [
 ## Changelog
 
 | Version | Description                                |
-|--------:|--------------------------------------------|
+| ------: | ------------------------------------------ |
 |   3.0.0 | Created from `Age`, `MinAge`, and `MaxAge` |
 
-***
+---
+
 See also:
 
 - [Date](Date.md)

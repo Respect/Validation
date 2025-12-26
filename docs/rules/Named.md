@@ -26,7 +26,7 @@ This rule does not have any templates, as it will use the template of the given 
 
 | Placeholder | Description                           |
 |-------------|---------------------------------------|
-| `name`      | The value that you define as `$name`. |
+| `subject`      | The value that you define as `$name`. |
 
 ## Categorization
 

@@ -19,8 +19,8 @@ use function count;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must contain at least one value from {{needles}}',
-    '{{name}} must not contain any value from {{needles}}',
+    '{{subject}} must contain at least one value from {{needles}}',
+    '{{subject}} must not contain any value from {{needles}}',
 )]
 final class ContainsAny extends Envelope
 {

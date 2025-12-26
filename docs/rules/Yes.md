@@ -29,7 +29,7 @@ Be careful when using `$locale` as `TRUE` because the it's very permissive:
 v::yes(true)->isValid('Yydoesnotmatter'); // true
 ```
 
-Besides that, with `$locale` as  `TRUE` it will consider any character starting
+Besides that, with `$locale` as `TRUE` it will consider any character starting
 with "Y" as valid:
 
 ```php
@@ -41,16 +41,16 @@ v::yes(true)->isValid('Yes'); // true
 
 ### `Yes::TEMPLATE_STANDARD`
 
-| Mode       | Template                              |
-|------------|---------------------------------------|
-| `default`  | {{name}} must be similar to "Yes"     |
-| `inverted` | {{name}} must not be similar to "Yes" |
+| Mode       | Template                                 |
+| ---------- | ---------------------------------------- |
+| `default`  | {{subject}} must be similar to "Yes"     |
+| `inverted` | {{subject}} must not be similar to "Yes" |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -59,10 +59,11 @@ v::yes(true)->isValid('Yes'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.7.0 | Created     |
 
-***
+---
+
 See also:
 
 - [BoolType](BoolType.md)

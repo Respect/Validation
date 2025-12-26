@@ -27,17 +27,17 @@ Message template for this validator includes `{{endValue}}`.
 
 ### `EndsWith::TEMPLATE_STANDARD`
 
-| Mode       | Template                                |
-|------------|-----------------------------------------|
-| `default`  | {{name}} must end with {{endValue}}     |
-| `inverted` | {{name}} must not end with {{endValue}} |
+| Mode       | Template                                   |
+| ---------- | ------------------------------------------ |
+| `default`  | {{subject}} must end with {{endValue}}     |
+| `inverted` | {{subject}} must not end with {{endValue}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
+| ----------- | ---------------------------------------------------------------- |
 | `endValue`  |                                                                  |
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -47,10 +47,11 @@ Message template for this validator includes `{{endValue}}`.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Contains](Contains.md)

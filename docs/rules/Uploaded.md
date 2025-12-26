@@ -12,16 +12,16 @@ v::uploaded()->isValid('/path/of/an/uploaded/file'); // true
 
 ### `Uploaded::TEMPLATE_STANDARD`
 
-| Mode       | Template                              |
-|------------|---------------------------------------|
-| `default`  | {{name}} must be an uploaded file     |
-| `inverted` | {{name}} must not be an uploaded file |
+| Mode       | Template                                 |
+| ---------- | ---------------------------------------- |
+| `default`  | {{subject}} must be an uploaded file     |
+| `inverted` | {{subject}} must not be an uploaded file |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -30,11 +30,12 @@ v::uploaded()->isValid('/path/of/an/uploaded/file'); // true
 ## Changelog
 
 | Version | Description       |
-|--------:|-------------------|
+| ------: | ----------------- |
 |   2.1.0 | Add PSR-7 support |
 |   0.5.0 | Created           |
 
-***
+---
+
 See also:
 
 - [Directory](Directory.md)

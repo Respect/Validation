@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Envelope;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid Roman numeral',
-    '{{name}} must not be a valid Roman numeral',
+    '{{subject}} must be a valid Roman numeral',
+    '{{subject}} must not be a valid Roman numeral',
 )]
 final class Roman extends Envelope
 {

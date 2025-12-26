@@ -25,24 +25,24 @@ v::alpha()->uppercase()->isValid('example'); // false
 
 ### `Alpha::TEMPLATE_STANDARD`
 
-| Mode       | Template                                 |
-|------------|------------------------------------------|
-| `default`  | {{name}} must contain only letters (a-z) |
-| `inverted` | {{name}} must not contain letters (a-z)  |
+| Mode       | Template                                    |
+| ---------- | ------------------------------------------- |
+| `default`  | {{subject}} must contain only letters (a-z) |
+| `inverted` | {{subject}} must not contain letters (a-z)  |
 
 ### `Alpha::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                         |
-|------------|------------------------------------------------------------------|
-| `default`  | {{name}} must contain only letters (a-z) and {{additionalChars}} |
-| `inverted` | {{name}} must not contain letters (a-z) or {{additionalChars}}   |
+| Mode       | Template                                                            |
+| ---------- | ------------------------------------------------------------------- |
+| `default`  | {{subject}} must contain only letters (a-z) and {{additionalChars}} |
+| `inverted` | {{subject}} must not contain letters (a-z) or {{additionalChars}}   |
 
 ## Template placeholders
 
 | Placeholder       | Description                                                      |
-|-------------------|------------------------------------------------------------------|
+| ----------------- | ---------------------------------------------------------------- |
 | `additionalChars` | Additional characters that are considered valid.                 |
-| `name`            | The validated input or the custom validator name (if specified). |
+| `subject`         | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -51,11 +51,12 @@ v::alpha()->uppercase()->isValid('example'); // false
 ## Changelog
 
 | Version | Description                               |
-|--------:|-------------------------------------------|
+| ------: | ----------------------------------------- |
 |   2.0.0 | Removed support to whitespaces by default |
 |   0.3.9 | Created                                   |
 
-***
+---
+
 See also:
 
 - [Alnum](Alnum.md)

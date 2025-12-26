@@ -17,8 +17,8 @@ use Respect\Validation\Rules\Core\Envelope;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be between {{minValue}} and {{maxValue}}',
-    '{{name}} must not be between {{minValue}} and {{maxValue}}',
+    '{{subject}} must be between {{minValue}} and {{maxValue}}',
+    '{{subject}} must not be between {{minValue}} and {{maxValue}}',
 )]
 final class Between extends Envelope
 {

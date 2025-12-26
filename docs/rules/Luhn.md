@@ -13,16 +13,16 @@ v::luhn()->isValid('respect!'); // false
 
 ### `Luhn::TEMPLATE_STANDARD`
 
-| Mode       | Template                                 |
-|------------|------------------------------------------|
-| `default`  | {{name}} must be a valid Luhn number     |
-| `inverted` | {{name}} must not be a valid Luhn number |
+| Mode       | Template                                    |
+| ---------- | ------------------------------------------- |
+| `default`  | {{subject}} must be a valid Luhn number     |
+| `inverted` | {{subject}} must not be a valid Luhn number |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -31,10 +31,11 @@ v::luhn()->isValid('respect!'); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [CreditCard](CreditCard.md)

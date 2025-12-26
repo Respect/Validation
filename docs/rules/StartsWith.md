@@ -29,16 +29,16 @@ Message template for this validator includes `{{startValue}}`.
 
 ### `StartsWith::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-|------------|---------------------------------------------|
-| `default`  | {{name}} must start with {{startValue}}     |
-| `inverted` | {{name}} must not start with {{startValue}} |
+| Mode       | Template                                       |
+| ---------- | ---------------------------------------------- |
+| `default`  | {{subject}} must start with {{startValue}}     |
+| `inverted` | {{subject}} must not start with {{startValue}} |
 
 ## Template placeholders
 
 | Placeholder  | Description                                                      |
-|--------------|------------------------------------------------------------------|
-| `name`       | The validated input or the custom validator name (if specified). |
+| ------------ | ---------------------------------------------------------------- |
+| `subject`    | The validated input or the custom validator name (if specified). |
 | `startValue` |                                                                  |
 
 ## Categorization
@@ -49,10 +49,11 @@ Message template for this validator includes `{{startValue}}`.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Contains](Contains.md)

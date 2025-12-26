@@ -18,23 +18,23 @@ v::propertyExists('website')->isValid($object); // false
 
 This rule will validate public, private, protected, uninitialised, and static properties.
 
-* To validate a property against a given rule requiring the property to exist, use [Property](Property.md) instead.
-* To validate a property against a given rule only if the property exists, use [PropertyOptional](PropertyOptional.md) instead.
+- To validate a property against a given rule requiring the property to exist, use [Property](Property.md) instead.
+- To validate a property against a given rule only if the property exists, use [PropertyOptional](PropertyOptional.md) instead.
 
 ## Templates
 
 ### `PropertyExists::TEMPLATE_STANDARD`
 
-| Mode       | Template                     |
-|------------|------------------------------|
-| `default`  | {{name}} must be present     |
-| `inverted` | {{name}} must not be present |
+| Mode       | Template                        |
+| ---------- | ------------------------------- |
+| `default`  | {{subject}} must be present     |
+| `inverted` | {{subject}} must not be present |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Caveats
 
@@ -65,10 +65,11 @@ v::property('foo', v::alwaysValid()->setName('Custom name'))->assert([]);
 ## Changelog
 
 | Version | Description                          |
-|--------:|--------------------------------------|
+| ------: | ------------------------------------ |
 |   3.0.0 | Created from [Property](Property.md) |
 
-***
+---
+
 See also:
 
 - [Attributes](Attributes.md)

@@ -20,8 +20,8 @@ use function sprintf;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid ISBN',
-    '{{name}} must not be a valid ISBN',
+    '{{subject}} must be a valid ISBN',
+    '{{subject}} must not be a valid ISBN',
 )]
 final class Isbn extends Simple
 {

@@ -21,8 +21,8 @@ use function mb_substr_count;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid domain',
-    '{{name}} must not be a valid domain',
+    '{{subject}} must be a valid domain',
+    '{{subject}} must not be a valid domain',
 )]
 final class Domain implements Rule
 {

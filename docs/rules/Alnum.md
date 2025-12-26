@@ -30,24 +30,24 @@ of extra chars passed as the parameter.
 
 ### `Alnum::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                  |
-|------------|-----------------------------------------------------------|
-| `default`  | {{name}} must contain only letters (a-z) and digits (0-9) |
-| `inverted` | {{name}} must not contain letters (a-z) or digits (0-9)   |
+| Mode       | Template                                                     |
+| ---------- | ------------------------------------------------------------ |
+| `default`  | {{subject}} must contain only letters (a-z) and digits (0-9) |
+| `inverted` | {{subject}} must not contain letters (a-z) or digits (0-9)   |
 
 ### `Alnum::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                                        |
-|------------|---------------------------------------------------------------------------------|
-| `default`  | {{name}} must contain only letters (a-z), digits (0-9), and {{additionalChars}} |
-| `inverted` | {{name}} must not contain letters (a-z), digits (0-9), or {{additionalChars}}   |
+| Mode       | Template                                                                           |
+| ---------- | ---------------------------------------------------------------------------------- |
+| `default`  | {{subject}} must contain only letters (a-z), digits (0-9), and {{additionalChars}} |
+| `inverted` | {{subject}} must not contain letters (a-z), digits (0-9), or {{additionalChars}}   |
 
 ## Template placeholders
 
 | Placeholder       | Description                                                      |
-|-------------------|------------------------------------------------------------------|
+| ----------------- | ---------------------------------------------------------------- |
 | `additionalChars` | Additional characters that are considered valid.                 |
-| `name`            | The validated input or the custom validator name (if specified). |
+| `subject`         | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -56,11 +56,12 @@ of extra chars passed as the parameter.
 ## Changelog
 
 | Version | Description                               |
-|--------:|-------------------------------------------|
+| ------: | ----------------------------------------- |
 |   2.0.0 | Removed support to whitespaces by default |
 |   0.3.9 | Created                                   |
 
-***
+---
+
 See also:
 
 - [Alpha](Alpha.md)

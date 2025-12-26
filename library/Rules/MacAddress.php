@@ -18,8 +18,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid MAC address',
-    '{{name}} must not be a valid MAC address',
+    '{{subject}} must be a valid MAC address',
+    '{{subject}} must not be a valid MAC address',
 )]
 final class MacAddress extends Simple
 {

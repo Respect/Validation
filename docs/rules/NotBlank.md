@@ -30,16 +30,16 @@ It's similar to [NotEmpty](NotEmpty.md) but it's way more strict.
 
 ### `NotBlank::TEMPLATE_STANDARD`
 
-| Mode       | Template                   |
-|------------|----------------------------|
-| `default`  | {{name}} must not be blank |
-| `inverted` | {{name}} must be blank     |
+| Mode       | Template                      |
+| ---------- | ----------------------------- |
+| `default`  | {{subject}} must not be blank |
+| `inverted` | {{subject}} must be blank     |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -48,10 +48,11 @@ It's similar to [NotEmpty](NotEmpty.md) but it's way more strict.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   1.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [NoWhitespace](NoWhitespace.md)

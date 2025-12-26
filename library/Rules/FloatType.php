@@ -17,8 +17,8 @@ use function is_float;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be float',
-    '{{name}} must not be float',
+    '{{subject}} must be float',
+    '{{subject}} must not be float',
 )]
 final class FloatType extends Simple
 {

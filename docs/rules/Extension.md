@@ -14,17 +14,17 @@ This rule is case-sensitive.
 
 ### `Extension::TEMPLATE_STANDARD`
 
-| Mode       | Template                                       |
-|------------|------------------------------------------------|
-| `default`  | {{name}} must have {{extension}} extension     |
-| `inverted` | {{name}} must not have {{extension}} extension |
+| Mode       | Template                                          |
+| ---------- | ------------------------------------------------- |
+| `default`  | {{subject}} must have {{extension}} extension     |
+| `inverted` | {{subject}} must not have {{extension}} extension |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
+| ----------- | ---------------------------------------------------------------- |
 | `extension` |                                                                  |
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,10 +33,11 @@ This rule is case-sensitive.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   1.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Directory](Directory.md)

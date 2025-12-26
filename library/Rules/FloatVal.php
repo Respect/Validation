@@ -20,8 +20,8 @@ use const FILTER_VALIDATE_FLOAT;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a float value',
-    '{{name}} must not be a float value',
+    '{{subject}} must be a float value',
+    '{{subject}} must not be a float value',
 )]
 final class FloatVal extends Simple
 {

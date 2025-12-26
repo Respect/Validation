@@ -30,8 +30,8 @@ use const FILTER_VALIDATE_URL;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be valid',
-    '{{name}} must not be valid',
+    '{{subject}} must be valid',
+    '{{subject}} must not be valid',
 )]
 final class FilterVar extends Envelope
 {

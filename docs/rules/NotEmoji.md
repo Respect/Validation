@@ -18,24 +18,24 @@ means the longer the text the longer it takes to perform the check.
 However, the validator will break the execution as soon as it finds the
 first emoji or until it checks the whole text.
 
-*Note: this validator will check the Emoji as they are defined in
+_Note: this validator will check the Emoji as they are defined in
 Unicode V11 check the following link for more details
-[Unicode v11](https://unicode.org/emoji/charts/full-emoji-list.html)*
+[Unicode v11](https://unicode.org/emoji/charts/full-emoji-list.html)_
 
 ## Templates
 
 ### `NotEmoji::TEMPLATE_STANDARD`
 
-| Mode       | Template                           |
-|------------|------------------------------------|
-| `default`  | {{name}} must not contain an emoji |
-| `inverted` | {{name}} must contain an emoji     |
+| Mode       | Template                              |
+| ---------- | ------------------------------------- |
+| `default`  | {{subject}} must not contain an emoji |
+| `inverted` | {{subject}} must contain an emoji     |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -44,10 +44,11 @@ Unicode V11 check the following link for more details
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Alnum](Alnum.md)

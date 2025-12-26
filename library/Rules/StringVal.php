@@ -19,8 +19,8 @@ use function method_exists;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a string value',
-    '{{name}} must not be a string value',
+    '{{subject}} must be a string value',
+    '{{subject}} must not be a string value',
 )]
 final class StringVal extends Simple
 {

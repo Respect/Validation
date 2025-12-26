@@ -21,8 +21,8 @@ use const YESEXPR;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be similar to "Yes"',
-    '{{name}} must not be similar to "Yes"',
+    '{{subject}} must be similar to "Yes"',
+    '{{subject}} must not be similar to "Yes"',
 )]
 final class Yes extends Simple
 {

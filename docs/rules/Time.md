@@ -7,18 +7,18 @@ Validates whether an input is a time or not. The `$format` argument should be in
 accordance to PHP's [date()](http://php.net/date) function, but only those are
 allowed:
 
-Format  | Description                                        | Values
---------|----------------------------------------------------|--------
-`g`     | 12-hour format of an hour without leading zeros    | 1 through 12
-`G`     | 24-hour format of an hour without leading zeros    | 0 through 23
-`h`     | 12-hour format of an hour with leading zeros       | 01 through 12
-`H`     | 24-hour format of an hour with leading zeros       | 00 through 23
-`i`     | Minutes with leading zeros                         | 00 to 59
-`s`     | Seconds, with leading zeros                        | 00 through 59
-`u`     | Microseconds                                       | 000000 through 999999
-`v`     | Milliseconds                                       | 000 through 999
-`a`     | Lowercase Ante meridiem and Post meridiem          | am or pm
-`A`     | Uppercase Ante meridiem and Post meridiem          | AM or PM
+| Format | Description                                     | Values                |
+| ------ | ----------------------------------------------- | --------------------- |
+| `g`    | 12-hour format of an hour without leading zeros | 1 through 12          |
+| `G`    | 24-hour format of an hour without leading zeros | 0 through 23          |
+| `h`    | 12-hour format of an hour with leading zeros    | 01 through 12         |
+| `H`    | 24-hour format of an hour with leading zeros    | 00 through 23         |
+| `i`    | Minutes with leading zeros                      | 00 to 59              |
+| `s`    | Seconds, with leading zeros                     | 00 through 59         |
+| `u`    | Microseconds                                    | 000000 through 999999 |
+| `v`    | Milliseconds                                    | 000 through 999       |
+| `a`    | Lowercase Ante meridiem and Post meridiem       | am or pm              |
+| `A`    | Uppercase Ante meridiem and Post meridiem       | AM or PM              |
 
 When a `$format` is not given its default value is `H:i:s`.
 
@@ -38,16 +38,16 @@ v::time()->isValid(new DateTimeImmutable()); // false
 
 ### `Time::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                   |
-|------------|------------------------------------------------------------|
-| `default`  | {{name}} must be a valid time in the format {{sample}}     |
-| `inverted` | {{name}} must not be a valid time in the format {{sample}} |
+| Mode       | Template                                                      |
+| ---------- | ------------------------------------------------------------- |
+| `default`  | {{subject}} must be a valid time in the format {{sample}}     |
+| `inverted` | {{subject}} must not be a valid time in the format {{sample}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 | `sample`    |                                                                  |
 
 ## Categorization
@@ -57,10 +57,11 @@ v::time()->isValid(new DateTimeImmutable()); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Date](Date.md)

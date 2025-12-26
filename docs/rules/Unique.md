@@ -15,16 +15,16 @@ v::unique()->isValid([1, 2, 3, 1]); // false
 
 ### `Unique::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-|------------|--------------------------------------|
-| `default`  | {{name}} must not contain duplicates |
-| `inverted` | {{name}} must contain duplicates     |
+| Mode       | Template                                |
+| ---------- | --------------------------------------- |
+| `default`  | {{subject}} must not contain duplicates |
+| `inverted` | {{subject}} must contain duplicates     |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,10 +33,11 @@ v::unique()->isValid([1, 2, 3, 1]); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [ArrayType](ArrayType.md)

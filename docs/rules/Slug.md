@@ -14,16 +14,16 @@ v::slug()->isValid('my-wordpress-title-'); // false
 
 ### `Slug::TEMPLATE_STANDARD`
 
-| Mode       | Template                          |
-|------------|-----------------------------------|
-| `default`  | {{name}} must be a valid slug     |
-| `inverted` | {{name}} must not be a valid slug |
+| Mode       | Template                             |
+| ---------- | ------------------------------------ |
+| `default`  | {{subject}} must be a valid slug     |
+| `inverted` | {{subject}} must not be a valid slug |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -32,10 +32,11 @@ v::slug()->isValid('my-wordpress-title-'); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [PhpLabel](PhpLabel.md)

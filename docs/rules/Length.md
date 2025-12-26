@@ -27,7 +27,7 @@ v::length(v::equals(0))->isValid(new SplPriorityQueue()); // true
 Used when it's possible to get the length of the input.
 
 | Mode       | Template      |
-|------------|---------------|
+| ---------- | ------------- |
 | `default`  | The length of |
 | `inverted` | The length of |
 
@@ -45,16 +45,16 @@ v::not(v::length(v::equals(4)))->assert('rose');
 
 Used when it's impossible to get the length of the input.
 
-| Mode       | Template                                           |
-|------------|----------------------------------------------------|
-| `default`  | {{name}} must be a countable value or a string     |
-| `inverted` | {{name}} must not be a countable value or a string |
+| Mode       | Template                                              |
+| ---------- | ----------------------------------------------------- |
+| `default`  | {{subject}} must be a countable value or a string     |
+| `inverted` | {{subject}} must not be a countable value or a string |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -64,11 +64,12 @@ Used when it's impossible to get the length of the input.
 ## Changelog
 
 | Version | Description             |
-|--------:|-------------------------|
+| ------: | ----------------------- |
 |   3.0.0 | Became a transformation |
 |   0.3.9 | Created                 |
 
-***
+---
+
 See also:
 
 - [Between](Between.md)

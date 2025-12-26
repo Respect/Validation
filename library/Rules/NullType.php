@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Simple;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be null',
-    '{{name}} must not be null',
+    '{{subject}} must be null',
+    '{{subject}} must not be null',
 )]
 final class NullType extends Simple
 {

@@ -39,7 +39,7 @@ test('Scenario #1', catchMessages(
             [
                 'mysql' => [
                     'user' => 'Value should be a MySQL username',
-                    'host' => '`{{name}}` should be a MySQL host',
+                    'host' => '`{{subject}}` should be a MySQL host',
                 ],
                 'postgresql' => ['schema' => 'You must provide a valid PostgreSQL schema'],
             ],

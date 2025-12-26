@@ -19,18 +19,18 @@ Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 
 ### `Between::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                   |
-|------------|------------------------------------------------------------|
-| `default`  | {{name}} must be between {{minValue}} and {{maxValue}}     |
-| `inverted` | {{name}} must not be between {{minValue}} and {{maxValue}} |
+| Mode       | Template                                                      |
+| ---------- | ------------------------------------------------------------- |
+| `default`  | {{subject}} must be between {{minValue}} and {{maxValue}}     |
+| `inverted` | {{subject}} must not be between {{minValue}} and {{maxValue}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
+| ----------- | ---------------------------------------------------------------- |
 | `maxValue`  | The minimum value passed to the rule.                            |
 | `minValue`  | The maximum value passed to the rule.                            |
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -39,12 +39,13 @@ Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 ## Changelog
 
 | Version | Description                 |
-|--------:|-----------------------------|
+| ------: | --------------------------- |
 |   2.0.0 | Became always inclusive     |
 |   1.0.0 | Became inclusive by default |
 |   0.3.9 | Created                     |
 
-***
+---
+
 See also:
 
 - [BetweenExclusive](BetweenExclusive.md)

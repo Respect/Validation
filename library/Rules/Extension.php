@@ -22,8 +22,8 @@ use const PATHINFO_EXTENSION;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must have {{extension}} extension',
-    '{{name}} must not have {{extension}} extension',
+    '{{subject}} must have {{extension}} extension',
+    '{{subject}} must not have {{extension}} extension',
 )]
 final readonly class Extension implements Rule
 {

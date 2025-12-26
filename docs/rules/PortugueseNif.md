@@ -13,16 +13,16 @@ v::portugueseNif()->isValid('220005245'); // false
 
 ### `PortugueseNif::TEMPLATE_STANDARD`
 
-| Mode       | Template                              |
-|------------|---------------------------------------|
-| `default`  | {{name}} must be a Portuguese NIF     |
-| `inverted` | {{name}} must not be a Portuguese NIF |
+| Mode       | Template                                 |
+| ---------- | ---------------------------------------- |
+| `default`  | {{subject}} must be a Portuguese NIF     |
+| `inverted` | {{subject}} must not be a Portuguese NIF |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -31,10 +31,11 @@ v::portugueseNif()->isValid('220005245'); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.2.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Bsn](Bsn.md)

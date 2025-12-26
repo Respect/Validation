@@ -21,8 +21,8 @@ use function str_split;
 /** @see https://en.wikipedia.org/wiki/National_identification_number#Finland */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid Finnish personal identity code',
-    '{{name}} must not be a valid Finnish personal identity code',
+    '{{subject}} must be a valid Finnish personal identity code',
+    '{{subject}} must not be a valid Finnish personal identity code',
 )]
 final class Hetu extends Simple
 {

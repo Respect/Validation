@@ -19,8 +19,8 @@ use function is_scalar;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an executable file',
-    '{{name}} must not be an executable file',
+    '{{subject}} must be an executable file',
+    '{{subject}} must not be an executable file',
 )]
 final class Executable extends Simple
 {

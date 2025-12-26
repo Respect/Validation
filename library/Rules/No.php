@@ -19,8 +19,8 @@ use const NOEXPR;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be similar to "No"',
-    '{{name}} must not be similar to "No"',
+    '{{subject}} must be similar to "No"',
+    '{{subject}} must not be similar to "No"',
 )]
 final class No extends Envelope
 {

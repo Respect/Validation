@@ -16,8 +16,8 @@ use Respect\Validation\Rule;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be identical to {{compareTo}}',
-    '{{name}} must not be identical to {{compareTo}}',
+    '{{subject}} must be identical to {{compareTo}}',
+    '{{subject}} must not be identical to {{compareTo}}',
 )]
 final readonly class Identical implements Rule
 {

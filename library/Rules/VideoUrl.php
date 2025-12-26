@@ -22,13 +22,13 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid video URL',
-    '{{name}} must not be a valid video URL',
+    '{{subject}} must be a valid video URL',
+    '{{subject}} must not be a valid video URL',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be a valid {{service|raw}} video URL',
-    '{{name}} must not be a valid {{service|raw}} video URL',
+    '{{subject}} must be a valid {{service|raw}} video URL',
+    '{{subject}} must not be a valid {{service|raw}} video URL',
     self::TEMPLATE_SERVICE,
 )]
 final class VideoUrl implements Rule

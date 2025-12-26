@@ -19,8 +19,8 @@ use function array_reduce;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    'Each item in {{name}} must be valid',
-    'Each item in {{name}} must be invalid',
+    'Each item in {{subject}} must be valid',
+    'Each item in {{subject}} must be invalid',
 )]
 final class Each extends FilteredNonEmptyArray
 {

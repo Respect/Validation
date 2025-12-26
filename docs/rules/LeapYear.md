@@ -14,16 +14,16 @@ This validator accepts DateTime instances as well.
 
 ### `LeapYear::TEMPLATE_STANDARD`
 
-| Mode       | Template                           |
-|------------|------------------------------------|
-| `default`  | {{name}} must be a valid leap year |
-| `inverted` | {{name}} must not be a leap year   |
+| Mode       | Template                              |
+| ---------- | ------------------------------------- |
+| `default`  | {{subject}} must be a valid leap year |
+| `inverted` | {{subject}} must not be a leap year   |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -32,10 +32,11 @@ This validator accepts DateTime instances as well.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Date](Date.md)

@@ -12,16 +12,16 @@ v::alwaysValid()->isValid('whatever'); // true
 
 ### `AlwaysValid::TEMPLATE_STANDARD`
 
-| Mode       | Template                 |
-|------------|--------------------------|
-| `default`  | {{name}} must be valid   |
-| `inverted` | {{name}} must be invalid |
+| Mode       | Template                    |
+| ---------- | --------------------------- |
+| `default`  | {{subject}} must be valid   |
+| `inverted` | {{subject}} must be invalid |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -30,10 +30,11 @@ v::alwaysValid()->isValid('whatever'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.5.0 | Created     |
 
-***
+---
+
 See also:
 
 - [AlwaysInvalid](AlwaysInvalid.md)

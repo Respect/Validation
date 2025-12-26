@@ -15,16 +15,16 @@ v::tld()->isValid('COM'); // true
 
 ### `Tld::TEMPLATE_STANDARD`
 
-| Mode       | Template                                           |
-|------------|----------------------------------------------------|
-| `default`  | {{name}} must be a valid top-level domain name     |
-| `inverted` | {{name}} must not be a valid top-level domain name |
+| Mode       | Template                                              |
+| ---------- | ----------------------------------------------------- |
+| `default`  | {{subject}} must be a valid top-level domain name     |
+| `inverted` | {{subject}} must not be a valid top-level domain name |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,10 +33,11 @@ v::tld()->isValid('COM'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [CountryCode](CountryCode.md)

@@ -22,16 +22,16 @@ v::not(v::numericVal())->alnum()->uppercase()->isValid('W3C'); // true
 
 ### `Uppercase::TEMPLATE_STANDARD`
 
-| Mode       | Template                                         |
-|------------|--------------------------------------------------|
-| `default`  | {{name}} must contain only uppercase letters     |
-| `inverted` | {{name}} must not contain only uppercase letters |
+| Mode       | Template                                            |
+| ---------- | --------------------------------------------------- |
+| `default`  | {{subject}} must contain only uppercase letters     |
+| `inverted` | {{subject}} must not contain only uppercase letters |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -40,10 +40,11 @@ v::not(v::numericVal())->alnum()->uppercase()->isValid('W3C'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Alnum](Alnum.md)

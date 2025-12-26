@@ -17,8 +17,8 @@ use Respect\Validation\Rule;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be defined',
-    '{{name}} must be undefined',
+    '{{subject}} must be defined',
+    '{{subject}} must be undefined',
 )]
 final class NotUndef implements Rule
 {

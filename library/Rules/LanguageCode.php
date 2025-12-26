@@ -24,8 +24,8 @@ use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid language code',
-    '{{name}} must not be a valid language code',
+    '{{subject}} must be a valid language code',
+    '{{subject}} must not be a valid language code',
 )]
 final readonly class LanguageCode implements Rule
 {

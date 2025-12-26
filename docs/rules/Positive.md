@@ -14,16 +14,16 @@ v::positive()->isValid(-15); // false
 
 ### `Positive::TEMPLATE_STANDARD`
 
-| Mode       | Template                               |
-|------------|----------------------------------------|
-| `default`  | {{name}} must be a positive number     |
-| `inverted` | {{name}} must not be a positive number |
+| Mode       | Template                                  |
+| ---------- | ----------------------------------------- |
+| `default`  | {{subject}} must be a positive number     |
+| `inverted` | {{subject}} must not be a positive number |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,11 +33,12 @@ v::positive()->isValid(-15); // false
 ## Changelog
 
 | Version | Description                          |
-|--------:|--------------------------------------|
+| ------: | ------------------------------------ |
 |   2.0.0 | Does not validate non-numeric values |
 |   0.3.9 | Created                              |
 
-***
+---
+
 See also:
 
 - [Negative](Negative.md)

@@ -25,13 +25,13 @@ use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid UUID',
-    '{{name}} must not be a valid UUID',
+    '{{subject}} must be a valid UUID',
+    '{{subject}} must not be a valid UUID',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be a valid UUID version {{version|raw}}',
-    '{{name}} must not be a valid UUID version {{version|raw}}',
+    '{{subject}} must be a valid UUID version {{version|raw}}',
+    '{{subject}} must not be a valid UUID version {{version|raw}}',
     self::TEMPLATE_VERSION,
 )]
 final class Uuid implements Rule

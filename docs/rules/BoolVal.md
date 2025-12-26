@@ -17,16 +17,16 @@ v::boolVal()->isValid(0); // true
 
 ### `BoolVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-|------------|--------------------------------------|
-| `default`  | {{name}} must be a boolean value     |
-| `inverted` | {{name}} must not be a boolean value |
+| Mode       | Template                                |
+| ---------- | --------------------------------------- |
+| `default`  | {{subject}} must be a boolean value     |
+| `inverted` | {{subject}} must not be a boolean value |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -36,10 +36,11 @@ v::boolVal()->isValid(0); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   1.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [BoolType](BoolType.md)

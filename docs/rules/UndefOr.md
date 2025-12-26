@@ -48,7 +48,7 @@ v::not(v::undefOr(v::alpha()))->assert("alpha");
 
 | Placeholder | Description                                                      |
 |-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`      | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 

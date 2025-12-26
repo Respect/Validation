@@ -34,7 +34,7 @@ empty, the validation will fail.
 
 | Placeholder | Description                                                      |
 |-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`      | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 

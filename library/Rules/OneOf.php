@@ -23,13 +23,13 @@ use function usort;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must pass one of the rules',
-    '{{name}} must pass one of the rules',
+    '{{subject}} must pass one of the rules',
+    '{{subject}} must pass one of the rules',
     self::TEMPLATE_NONE,
 )]
 #[Template(
-    '{{name}} must pass only one of the rules',
-    '{{name}} must pass only one of the rules',
+    '{{subject}} must pass only one of the rules',
+    '{{subject}} must pass only one of the rules',
     self::TEMPLATE_MORE_THAN_ONE,
 )]
 final class OneOf extends Composite

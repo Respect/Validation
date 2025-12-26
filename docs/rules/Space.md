@@ -13,24 +13,24 @@ v::space()->isValid('    '); // true
 
 ### `Space::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-|------------|---------------------------------------------|
-| `default`  | {{name}} must contain only space characters |
-| `inverted` | {{name}} must not contain space characters  |
+| Mode       | Template                                       |
+| ---------- | ---------------------------------------------- |
+| `default`  | {{subject}} must contain only space characters |
+| `inverted` | {{subject}} must not contain space characters  |
 
 ### `Space::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                            |
-|------------|---------------------------------------------------------------------|
-| `default`  | {{name}} must contain only space characters and {{additionalChars}} |
-| `inverted` | {{name}} must not contain space characters or {{additionalChars}}   |
+| Mode       | Template                                                               |
+| ---------- | ---------------------------------------------------------------------- |
+| `default`  | {{subject}} must contain only space characters and {{additionalChars}} |
+| `inverted` | {{subject}} must not contain space characters or {{additionalChars}}   |
 
 ## Template placeholders
 
 | Placeholder       | Description                                                      |
-|-------------------|------------------------------------------------------------------|
+| ----------------- | ---------------------------------------------------------------- |
 | `additionalChars` | Additional characters that are considered valid.                 |
-| `name`            | The validated input or the custom validator name (if specified). |
+| `subject`         | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -39,10 +39,11 @@ v::space()->isValid('    '); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.5.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Control](Control.md)

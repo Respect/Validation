@@ -18,8 +18,8 @@ use function mb_strtoupper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must contain only uppercase letters',
-    '{{name}} must not contain only uppercase letters',
+    '{{subject}} must contain only uppercase letters',
+    '{{subject}} must not contain only uppercase letters',
 )]
 final class Uppercase extends Simple
 {

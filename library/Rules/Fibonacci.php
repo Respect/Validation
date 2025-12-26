@@ -17,8 +17,8 @@ use function is_numeric;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid Fibonacci number',
-    '{{name}} must not be a valid Fibonacci number',
+    '{{subject}} must be a valid Fibonacci number',
+    '{{subject}} must not be a valid Fibonacci number',
 )]
 final class Fibonacci extends Simple
 {

@@ -23,13 +23,13 @@ use function str_split;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be sorted in ascending order',
-    '{{name}} must not be sorted in ascending order',
+    '{{subject}} must be sorted in ascending order',
+    '{{subject}} must not be sorted in ascending order',
     self::TEMPLATE_ASCENDING,
 )]
 #[Template(
-    '{{name}} must be sorted in descending order',
-    '{{name}} must not be sorted in descending order',
+    '{{subject}} must be sorted in descending order',
+    '{{subject}} must not be sorted in descending order',
     self::TEMPLATE_DESCENDING,
 )]
 final readonly class Sorted implements Rule

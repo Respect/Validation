@@ -23,8 +23,8 @@ use function trim;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must not be blank',
-    '{{name}} must be blank',
+    '{{subject}} must not be blank',
+    '{{subject}} must be blank',
 )]
 final class NotBlank implements Rule
 {

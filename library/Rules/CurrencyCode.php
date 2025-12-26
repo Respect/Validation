@@ -22,8 +22,8 @@ use function in_array;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid currency code',
-    '{{name}} must not be a valid currency code',
+    '{{subject}} must be a valid currency code',
+    '{{subject}} must not be a valid currency code',
 )]
 final readonly class CurrencyCode implements Rule
 {

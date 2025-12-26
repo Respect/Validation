@@ -18,8 +18,8 @@ use function is_numeric;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an infinite number',
-    '{{name}} must not be an infinite number',
+    '{{subject}} must be an infinite number',
+    '{{subject}} must not be an infinite number',
 )]
 final class Infinite extends Simple
 {

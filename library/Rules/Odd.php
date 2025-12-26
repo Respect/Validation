@@ -20,8 +20,8 @@ use const FILTER_VALIDATE_INT;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an odd number',
-    '{{name}} must be an even number',
+    '{{subject}} must be an odd number',
+    '{{subject}} must be an even number',
 )]
 final class Odd extends Simple
 {

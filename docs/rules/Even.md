@@ -14,16 +14,16 @@ Using `int()` before `even()` is a best practice.
 
 ### `Even::TEMPLATE_STANDARD`
 
-| Mode       | Template                        |
-|------------|---------------------------------|
-| `default`  | {{name}} must be an even number |
-| `inverted` | {{name}} must be an odd number  |
+| Mode       | Template                           |
+| ---------- | ---------------------------------- |
+| `default`  | {{subject}} must be an even number |
+| `inverted` | {{subject}} must be an odd number  |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -32,10 +32,11 @@ Using `int()` before `even()` is a best practice.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Multiple](Multiple.md)

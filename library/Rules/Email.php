@@ -24,8 +24,8 @@ use const FILTER_VALIDATE_EMAIL;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid email address',
-    '{{name}} must not be an email address',
+    '{{subject}} must be a valid email address',
+    '{{subject}} must not be an email address',
 )]
 final class Email extends Simple
 {

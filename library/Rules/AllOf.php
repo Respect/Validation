@@ -22,13 +22,13 @@ use function count;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must pass the rules',
-    '{{name}} must pass the rules',
+    '{{subject}} must pass the rules',
+    '{{subject}} must pass the rules',
     self::TEMPLATE_SOME,
 )]
 #[Template(
-    '{{name}} must pass all the rules',
-    '{{name}} must pass all the rules',
+    '{{subject}} must pass all the rules',
+    '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
 final class AllOf extends Composite

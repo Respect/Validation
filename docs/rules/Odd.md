@@ -15,16 +15,16 @@ Using `intVal()` before `odd()` is a best practice.
 
 ### `Odd::TEMPLATE_STANDARD`
 
-| Mode       | Template                        |
-|------------|---------------------------------|
-| `default`  | {{name}} must be an odd number  |
-| `inverted` | {{name}} must be an even number |
+| Mode       | Template                           |
+| ---------- | ---------------------------------- |
+| `default`  | {{subject}} must be an odd number  |
+| `inverted` | {{subject}} must be an even number |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,11 +33,12 @@ Using `intVal()` before `odd()` is a best practice.
 ## Changelog
 
 | Version | Description             |
-|--------:|-------------------------|
+| ------: | ----------------------- |
 |   2.0.0 | Only validates integers |
 |   0.3.9 | Created                 |
 
-***
+---
+
 See also:
 
 - [Even](Even.md)

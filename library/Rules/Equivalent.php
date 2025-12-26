@@ -18,8 +18,8 @@ use function mb_strtoupper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be equivalent to {{compareTo}}',
-    '{{name}} must not be equivalent to {{compareTo}}',
+    '{{subject}} must be equivalent to {{compareTo}}',
+    '{{subject}} must not be equivalent to {{compareTo}}',
 )]
 final class Equivalent extends Comparison
 {

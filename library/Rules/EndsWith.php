@@ -22,8 +22,8 @@ use function mb_strrpos;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must end with {{endValue}}',
-    '{{name}} must not end with {{endValue}}',
+    '{{subject}} must end with {{endValue}}',
+    '{{subject}} must not end with {{endValue}}',
 )]
 final readonly class EndsWith implements Rule
 {

@@ -18,8 +18,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must not contain whitespaces',
-    '{{name}} must contain at least one whitespace',
+    '{{subject}} must not contain whitespaces',
+    '{{subject}} must contain at least one whitespace',
 )]
 final class NoWhitespace extends Simple
 {

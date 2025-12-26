@@ -26,16 +26,16 @@ Message template for this validator includes `{{needles}}`.
 
 ### `ContainsAny::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                  |
-|------------|-----------------------------------------------------------|
-| `default`  | {{name}} must contain at least one value from {{needles}} |
-| `inverted` | {{name}} must not contain any value from {{needles}}      |
+| Mode       | Template                                                     |
+| ---------- | ------------------------------------------------------------ |
+| `default`  | {{subject}} must contain at least one value from {{needles}} |
+| `inverted` | {{subject}} must not contain any value from {{needles}}      |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 | `needles`   |                                                                  |
 
 ## Categorization
@@ -46,10 +46,11 @@ Message template for this validator includes `{{needles}}`.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [AnyOf](AnyOf.md)

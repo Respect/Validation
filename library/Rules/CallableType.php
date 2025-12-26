@@ -17,8 +17,8 @@ use function is_callable;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a callable',
-    '{{name}} must not be a callable',
+    '{{subject}} must be a callable',
+    '{{subject}} must not be a callable',
 )]
 final class CallableType extends Simple
 {

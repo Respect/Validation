@@ -12,16 +12,16 @@ v::stringType()->isValid('hi'); // true
 
 ### `StringType::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-|------------|-------------------------------|
-| `default`  | {{name}} must be a string     |
-| `inverted` | {{name}} must not be a string |
+| Mode       | Template                         |
+| ---------- | -------------------------------- |
+| `default`  | {{subject}} must be a string     |
+| `inverted` | {{subject}} must not be a string |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -31,11 +31,12 @@ v::stringType()->isValid('hi'); // true
 ## Changelog
 
 | Version | Description                           |
-|--------:|---------------------------------------|
+| ------: | ------------------------------------- |
 |   1.0.0 | Renamed from `String` to `StringType` |
 |   0.3.9 | Created as `String`                   |
 
-***
+---
+
 See also:
 
 - [Alnum](Alnum.md)

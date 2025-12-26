@@ -12,16 +12,16 @@ v::readable()->isValid('file.txt'); // true
 
 ### `Readable::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-|------------|-------------------------------|
-| `default`  | {{name}} must be readable     |
-| `inverted` | {{name}} must not be readable |
+| Mode       | Template                         |
+| ---------- | -------------------------------- |
+| `default`  | {{subject}} must be readable     |
+| `inverted` | {{subject}} must not be readable |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -30,11 +30,12 @@ v::readable()->isValid('file.txt'); // true
 ## Changelog
 
 | Version | Description       |
-|--------:|-------------------|
+| ------: | ----------------- |
 |   2.1.0 | Add PSR-7 support |
 |   0.5.0 | Created           |
 
-***
+---
+
 See also:
 
 - [Directory](Directory.md)

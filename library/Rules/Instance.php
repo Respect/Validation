@@ -16,8 +16,8 @@ use Respect\Validation\Rule;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an instance of {{class|quote}}',
-    '{{name}} must not be an instance of {{class|quote}}',
+    '{{subject}} must be an instance of {{class|quote}}',
+    '{{subject}} must not be an instance of {{class|quote}}',
 )]
 final readonly class Instance implements Rule
 {

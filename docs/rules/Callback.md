@@ -16,16 +16,16 @@ v::callback(
 
 ### `Callback::TEMPLATE_STANDARD`
 
-| Mode       | Template                 |
-|------------|--------------------------|
-| `default`  | {{name}} must be valid   |
-| `inverted` | {{name}} must be invalid |
+| Mode       | Template                    |
+| ---------- | --------------------------- |
+| `default`  | {{subject}} must be valid   |
+| `inverted` | {{subject}} must be invalid |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -34,10 +34,11 @@ v::callback(
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Call](Call.md)

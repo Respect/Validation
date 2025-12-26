@@ -17,13 +17,13 @@ use function ctype_graph;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must contain only graphical characters',
-    '{{name}} must not contain graphical characters',
+    '{{subject}} must contain only graphical characters',
+    '{{subject}} must not contain graphical characters',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must contain only graphical characters and {{additionalChars}}',
-    '{{name}} must not contain graphical characters or {{additionalChars}}',
+    '{{subject}} must contain only graphical characters and {{additionalChars}}',
+    '{{subject}} must not contain graphical characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Graph extends FilteredString

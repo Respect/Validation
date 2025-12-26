@@ -12,16 +12,16 @@ v::nfeAccessKey()->isValid('31841136830118868211870485416765268625116906'); // t
 
 ### `NfeAccessKey::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-|------------|---------------------------------------------|
-| `default`  | {{name}} must be a valid NFe access key     |
-| `inverted` | {{name}} must not be a valid NFe access key |
+| Mode       | Template                                       |
+| ---------- | ---------------------------------------------- |
+| `default`  | {{subject}} must be a valid NFe access key     |
+| `inverted` | {{subject}} must not be a valid NFe access key |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -30,10 +30,11 @@ v::nfeAccessKey()->isValid('31841136830118868211870485416765268625116906'); // t
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.6.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Cnh](Cnh.md)

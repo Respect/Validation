@@ -14,16 +14,16 @@ v::floatType()->isValid(0e5); // true
 
 ### `FloatType::TEMPLATE_STANDARD`
 
-| Mode       | Template                   |
-|------------|----------------------------|
-| `default`  | {{name}} must be float     |
-| `inverted` | {{name}} must not be float |
+| Mode       | Template                      |
+| ---------- | ----------------------------- |
+| `default`  | {{subject}} must be float     |
+| `inverted` | {{subject}} must not be float |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,10 +33,11 @@ v::floatType()->isValid(0e5); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   1.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [ArrayType](ArrayType.md)

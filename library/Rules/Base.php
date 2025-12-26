@@ -21,8 +21,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a number in base {{base|raw}}',
-    '{{name}} must not be a number in base {{base|raw}}',
+    '{{subject}} must be a number in base {{base|raw}}',
+    '{{subject}} must not be a number in base {{base|raw}}',
 )]
 final readonly class Base implements Rule
 {

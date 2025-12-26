@@ -19,8 +19,8 @@ use function count;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be valid',
-    '{{name}} must be invalid',
+    '{{subject}} must be valid',
+    '{{subject}} must be invalid',
 )]
 final class Callback extends Simple
 {

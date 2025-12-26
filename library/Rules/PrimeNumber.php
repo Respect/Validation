@@ -19,8 +19,8 @@ use function sqrt;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a prime number',
-    '{{name}} must not be a prime number',
+    '{{subject}} must be a prime number',
+    '{{subject}} must not be a prime number',
 )]
 final class PrimeNumber extends Simple
 {

@@ -15,16 +15,16 @@ This is most useful when chaining with other validators such as `Alnum()`
 
 ### `NoWhitespace::TEMPLATE_STANDARD`
 
-| Mode       | Template                                      |
-|------------|-----------------------------------------------|
-| `default`  | {{name}} must not contain whitespaces         |
-| `inverted` | {{name}} must contain at least one whitespace |
+| Mode       | Template                                         |
+| ---------- | ------------------------------------------------ |
+| `default`  | {{subject}} must not contain whitespaces         |
+| `inverted` | {{subject}} must contain at least one whitespace |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,10 +33,11 @@ This is most useful when chaining with other validators such as `Alnum()`
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Alnum](Alnum.md)

@@ -24,13 +24,13 @@ use function is_scalar;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid telephone number',
-    '{{name}} must not be a valid telephone number',
+    '{{subject}} must be a valid telephone number',
+    '{{subject}} must not be a valid telephone number',
     self::TEMPLATE_INTERNATIONAL,
 )]
 #[Template(
-    '{{name}} must be a valid telephone number for country {{countryName|trans}}',
-    '{{name}} must not be a valid telephone number for country {{countryName|trans}}',
+    '{{subject}} must be a valid telephone number for country {{countryName|trans}}',
+    '{{subject}} must not be a valid telephone number for country {{countryName|trans}}',
     self::TEMPLATE_FOR_COUNTRY,
 )]
 final class Phone implements Rule

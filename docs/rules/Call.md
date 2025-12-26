@@ -56,7 +56,7 @@ v::call(
 |-------------|------------------------------------------------------------------|
 | `callable`  |                                                                  |
 | `input`     |                                                                  |
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`      | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 

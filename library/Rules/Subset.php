@@ -19,8 +19,8 @@ use function is_array;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be subset of {{superset}}',
-    '{{name}} must not be subset of {{superset}}',
+    '{{subject}} must be subset of {{superset}}',
+    '{{subject}} must not be subset of {{superset}}',
 )]
 final readonly class Subset implements Rule
 {

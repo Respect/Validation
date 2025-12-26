@@ -15,16 +15,16 @@ v::countable()->isValid('string'); // false
 
 ### `Countable::TEMPLATE_STANDARD`
 
-| Mode       | Template                               |
-|------------|----------------------------------------|
-| `default`  | {{name}} must be a countable value     |
-| `inverted` | {{name}} must not be a countable value |
+| Mode       | Template                                  |
+| ---------- | ----------------------------------------- |
+| `default`  | {{subject}} must be a countable value     |
+| `inverted` | {{subject}} must not be a countable value |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,10 +33,11 @@ v::countable()->isValid('string'); // false
 ## Changelog
 
 | Version | Description             |
-|--------:|-------------------------|
+| ------: | ----------------------- |
 |   1.0.0 | Created from `ArrayVal` |
 
-***
+---
+
 See also:
 
 - [ArrayType](ArrayType.md)

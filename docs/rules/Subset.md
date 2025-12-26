@@ -13,16 +13,16 @@ v::subset([1, 2])->isValid([1, 2, 3]); // false
 
 ### `Subset::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-|------------|---------------------------------------------|
-| `default`  | {{name}} must be subset of {{superset}}     |
-| `inverted` | {{name}} must not be subset of {{superset}} |
+| Mode       | Template                                       |
+| ---------- | ---------------------------------------------- |
+| `default`  | {{subject}} must be subset of {{superset}}     |
+| `inverted` | {{subject}} must not be subset of {{superset}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 | `superset`  |                                                                  |
 
 ## Categorization
@@ -32,10 +32,11 @@ v::subset([1, 2])->isValid([1, 2, 3]); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [ArrayType](ArrayType.md)

@@ -34,13 +34,13 @@ use const PHP_INT_MAX;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an IP address',
-    '{{name}} must not be an IP address',
+    '{{subject}} must be an IP address',
+    '{{subject}} must not be an IP address',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be an IP address in the {{range|raw}} range',
-    '{{name}} must not be an IP address in the {{range|raw}} range',
+    '{{subject}} must be an IP address in the {{range|raw}} range',
+    '{{subject}} must not be an IP address in the {{range|raw}} range',
     self::TEMPLATE_NETWORK_RANGE,
 )]
 final class Ip implements Rule

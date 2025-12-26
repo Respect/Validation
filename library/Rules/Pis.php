@@ -20,8 +20,8 @@ use function preg_replace;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid PIS number',
-    '{{name}} must not be a valid PIS number',
+    '{{subject}} must be a valid PIS number',
+    '{{subject}} must not be a valid PIS number',
 )]
 final class Pis extends Simple
 {

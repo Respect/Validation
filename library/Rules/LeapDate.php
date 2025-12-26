@@ -19,8 +19,8 @@ use function is_scalar;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid leap date',
-    '{{name}} must not be a leap date',
+    '{{subject}} must be a valid leap date',
+    '{{subject}} must not be a leap date',
 )]
 final class LeapDate extends Simple
 {

@@ -19,8 +19,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must match the pattern {{regex|quote}}',
-    '{{name}} must not match the pattern {{regex|quote}}',
+    '{{subject}} must match the pattern {{regex|quote}}',
+    '{{subject}} must not match the pattern {{regex|quote}}',
 )]
 final readonly class Regex implements Rule
 {

@@ -36,7 +36,7 @@ final readonly class InterpolationRenderer implements Renderer
     /** @param array<string|int, mixed> $templates */
     public function render(Result $result, array $templates): string
     {
-        $parameters = ['path' => $result->path, 'input' => $result->input, 'name' => $this->getName($result)];
+        $parameters = ['path' => $result->path, 'input' => $result->input, 'subject' => $this->getName($result)];
         $parameters += $result->parameters;
 
         $givenTemplate = $this->templateResolver->getGivenTemplate($result, $templates);

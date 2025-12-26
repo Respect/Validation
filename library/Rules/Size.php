@@ -29,8 +29,8 @@ use function is_string;
     Size::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be a filename or an instance of SplFileInfo or a PSR-7 interface',
-    '{{name}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface',
+    '{{subject}} must be a filename or an instance of SplFileInfo or a PSR-7 interface',
+    '{{subject}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface',
     self::TEMPLATE_WRONG_TYPE,
 )]
 final class Size extends Wrapper

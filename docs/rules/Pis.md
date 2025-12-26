@@ -16,16 +16,16 @@ v::pis()->isValid('12003406788'); // true
 
 ### `Pis::TEMPLATE_STANDARD`
 
-| Mode       | Template                                |
-|------------|-----------------------------------------|
-| `default`  | {{name}} must be a valid PIS number     |
-| `inverted` | {{name}} must not be a valid PIS number |
+| Mode       | Template                                   |
+| ---------- | ------------------------------------------ |
+| `default`  | {{subject}} must be a valid PIS number     |
+| `inverted` | {{subject}} must not be a valid PIS number |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -34,10 +34,11 @@ v::pis()->isValid('12003406788'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Cnh](Cnh.md)

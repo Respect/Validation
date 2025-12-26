@@ -22,8 +22,8 @@ use function is_array;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be present',
-    '{{name}} must not be present',
+    '{{subject}} must be present',
+    '{{subject}} must not be present',
 )]
 final class KeyExists implements Rule, KeyRelated
 {

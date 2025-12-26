@@ -17,8 +17,8 @@ use const FILTER_VALIDATE_URL;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a URL',
-    '{{name}} must not be a URL',
+    '{{subject}} must be a URL',
+    '{{subject}} must not be a URL',
 )]
 final class Url extends Envelope
 {

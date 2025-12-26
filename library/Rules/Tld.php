@@ -19,8 +19,8 @@ use function mb_strtoupper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid top-level domain name',
-    '{{name}} must not be a valid top-level domain name',
+    '{{subject}} must be a valid top-level domain name',
+    '{{subject}} must not be a valid top-level domain name',
 )]
 final class Tld extends Simple
 {

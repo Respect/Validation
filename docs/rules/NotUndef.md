@@ -33,16 +33,16 @@ v::notUndef()->isValid(new stdClass()); // true
 
 ### `NotUndef::TEMPLATE_STANDARD`
 
-| Mode       | Template                   |
-|------------|----------------------------|
-| `default`  | {{name}} must be defined   |
-| `inverted` | {{name}} must be undefined |
+| Mode       | Template                      |
+| ---------- | ----------------------------- |
+| `default`  | {{subject}} must be defined   |
+| `inverted` | {{subject}} must be undefined |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -51,11 +51,12 @@ v::notUndef()->isValid(new stdClass()); // true
 ## Changelog
 
 | Version | Description                              |
-|--------:|------------------------------------------|
+| ------: | ---------------------------------------- |
 |   3.0.0 | Renamed from "NotOptional" to "NotUndef" |
 |   1.0.0 | Created                                  |
 
-***
+---
+
 See also:
 
 - [NoWhitespace](NoWhitespace.md)

@@ -12,16 +12,16 @@ v::nullType()->isValid(null); // true
 
 ### `NullType::TEMPLATE_STANDARD`
 
-| Mode       | Template                  |
-|------------|---------------------------|
-| `default`  | {{name}} must be null     |
-| `inverted` | {{name}} must not be null |
+| Mode       | Template                     |
+| ---------- | ---------------------------- |
+| `default`  | {{subject}} must be null     |
+| `inverted` | {{subject}} must not be null |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -30,11 +30,12 @@ v::nullType()->isValid(null); // true
 ## Changelog
 
 | Version | Description                            |
-|--------:|----------------------------------------|
+| ------: | -------------------------------------- |
 |   1.0.0 | Renamed from `NullValue` to `NullType` |
 |   0.3.9 | Created as `NullValue`                 |
 
-***
+---
+
 See also:
 
 - [ArrayType](ArrayType.md)

@@ -22,8 +22,8 @@ use function var_export;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must have {{decimals}} decimals',
-    '{{name}} must not have {{decimals}} decimals',
+    '{{subject}} must have {{decimals}} decimals',
+    '{{subject}} must not have {{decimals}} decimals',
 )]
 final readonly class Decimal implements Rule
 {

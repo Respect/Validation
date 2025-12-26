@@ -14,24 +14,24 @@ v::control()->isValid("\n\r\t"); // true
 
 ### `Control::TEMPLATE_STANDARD`
 
-| Mode       | Template                                      |
-|------------|-----------------------------------------------|
-| `default`  | {{name}} must only contain control characters |
-| `inverted` | {{name}} must not contain control characters  |
+| Mode       | Template                                         |
+| ---------- | ------------------------------------------------ |
+| `default`  | {{subject}} must only contain control characters |
+| `inverted` | {{subject}} must not contain control characters  |
 
 ### `Control::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                              |
-|------------|-----------------------------------------------------------------------|
-| `default`  | {{name}} must only contain control characters and {{additionalChars}} |
-| `inverted` | {{name}} must not contain control characters or {{additionalChars}}   |
+| Mode       | Template                                                                 |
+| ---------- | ------------------------------------------------------------------------ |
+| `default`  | {{subject}} must only contain control characters and {{additionalChars}} |
+| `inverted` | {{subject}} must not contain control characters or {{additionalChars}}   |
 
 ## Template placeholders
 
 | Placeholder       | Description                                                      |
-|-------------------|------------------------------------------------------------------|
+| ----------------- | ---------------------------------------------------------------- |
 | `additionalChars` | Additional characters that are considered valid.                 |
-| `name`            | The validated input or the custom validator name (if specified). |
+| `subject`         | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -40,11 +40,12 @@ v::control()->isValid("\n\r\t"); // true
 ## Changelog
 
 | Version | Description                       |
-|--------:|-----------------------------------|
+| ------: | --------------------------------- |
 |   2.0.0 | Renamed from `Cntrl` to `Control` |
 |   0.5.0 | Created                           |
 
-***
+---
+
 See also:
 
 - [Alnum](Alnum.md)

@@ -23,8 +23,8 @@ use const FILEINFO_MIME_TYPE;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must have the {{mimetype}} MIME type',
-    '{{name}} must not have the {{mimetype}} MIME type',
+    '{{subject}} must have the {{mimetype}} MIME type',
+    '{{subject}} must not have the {{mimetype}} MIME type',
 )]
 final readonly class Mimetype implements Rule
 {

@@ -23,8 +23,8 @@ use const JSON_ERROR_NONE;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid JSON string',
-    '{{name}} must not be a valid JSON string',
+    '{{subject}} must be a valid JSON string',
+    '{{subject}} must not be a valid JSON string',
 )]
 final class Json extends Simple
 {

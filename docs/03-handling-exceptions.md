@@ -1,6 +1,7 @@
 # Handling exceptions
 
 The `Validator::assert()` method simplifies exception handling by throwing `ValidationException` exceptions when validation fails. These exceptions provide detailed feedback on what went wrong.
+
 ## Full exception message
 
 The `getFullMessage()` method will return a full comprehensive explanation of rules that didn't pass in a nested Markdown list format.
@@ -51,6 +52,7 @@ Array
 ```
 
 When validating with [Key](rules/Key.md) or [Property](rules/Property.md) the keys of will correspond to the name of the key or property that failed the validation.
+
 ## Custom templates
 
 You can tailor the messages to better suit your needs.
@@ -100,7 +102,7 @@ use Respect\Validation\Validator as v;
 
 $validator = v::alnum()->lowercase();
 $validator->setTemplates([
-    '__root__' => '{{name}} is not valid',
+    '__root__' => '{{subject}} is not valid',
     'alnum' => 'Usernames must contain only letters and digits',
     'lowercase' => 'Usernames must be lowercase',
 ]);

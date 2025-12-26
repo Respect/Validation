@@ -29,16 +29,16 @@ empty, the validation will fail.
 
 ### `Each::TEMPLATE_STANDARD`
 
-| Mode       | Template                              |
-|------------|---------------------------------------|
-| `default`  | Each item in {{name}} must be valid   |
-| `inverted` | Each item in {{name}} must be invalid |
+| Mode       | Template                                 |
+| ---------- | ---------------------------------------- |
+| `default`  | Each item in {{subject}} must be valid   |
+| `inverted` | Each item in {{subject}} must be invalid |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -49,12 +49,13 @@ empty, the validation will fail.
 ## Changelog
 
 | Version | Description                                                 |
-|--------:|-------------------------------------------------------------|
+| ------: | ----------------------------------------------------------- |
 |   3.0.0 | Rejected `stdClass`, non-iterable. or empty iterable values |
 |   2.0.0 | Remove support for key validation                           |
 |   0.3.9 | Created                                                     |
 
-***
+---
+
 See also:
 
 - [ArrayVal](ArrayVal.md)

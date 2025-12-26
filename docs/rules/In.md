@@ -26,17 +26,17 @@ Message template for this validator includes `{{haystack}}`.
 
 ### `In::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-|------------|--------------------------------------|
-| `default`  | {{name}} must be in {{haystack}}     |
-| `inverted` | {{name}} must not be in {{haystack}} |
+| Mode       | Template                                |
+| ---------- | --------------------------------------- |
+| `default`  | {{subject}} must be in {{haystack}}     |
+| `inverted` | {{subject}} must not be in {{haystack}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
+| ----------- | ---------------------------------------------------------------- |
 | `haystack`  |                                                                  |
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -47,10 +47,11 @@ Message template for this validator includes `{{haystack}}`.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Contains](Contains.md)

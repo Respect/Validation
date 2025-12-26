@@ -18,8 +18,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid PESEL',
-    '{{name}} must not be a valid PESEL',
+    '{{subject}} must be a valid PESEL',
+    '{{subject}} must not be a valid PESEL',
 )]
 final class Pesel extends Simple
 {

@@ -11,7 +11,7 @@ v::publicDomainSuffix->isValid('nom.br'); // true
 v::publicDomainSuffix->isValid('invalid.com'); // false
 ```
 
-This rule will not match top level domains such as `tk`. 
+This rule will not match top level domains such as `tk`.
 If you want to match either, use a combination with `Tld`:
 
 ```php
@@ -22,16 +22,16 @@ v::oneOf(v::tld(), v::publicDomainSuffix())->isValid('tk'); // true
 
 ### `PublicDomainSuffix::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-|------------|---------------------------------------------|
-| `default`  | {{name}} must be a public domain suffix     |
-| `inverted` | {{name}} must not be a public domain suffix |
+| Mode       | Template                                       |
+| ---------- | ---------------------------------------------- |
+| `default`  | {{subject}} must be a public domain suffix     |
+| `inverted` | {{subject}} must not be a public domain suffix |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -40,10 +40,11 @@ v::oneOf(v::tld(), v::publicDomainSuffix())->isValid('tk'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.3.0 | Created     |
 
-***
+---
+
 See also:
 
 - [CountryCode](CountryCode.md)

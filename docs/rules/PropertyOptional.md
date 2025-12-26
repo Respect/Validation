@@ -45,7 +45,7 @@ v::objectType()->propertyOptional('name', v::notEmpty())->isValid('Not an object
 
 | Placeholder | Description                                                      |
 |-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`      | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 

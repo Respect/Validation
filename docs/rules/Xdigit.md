@@ -19,24 +19,24 @@ v::xdigit()->isValid('0x1f'); // false
 
 ### `Xdigit::TEMPLATE_STANDARD`
 
-| Mode       | Template                                          |
-|------------|---------------------------------------------------|
-| `default`  | {{name}} must only contain hexadecimal digits     |
-| `inverted` | {{name}} must not only contain hexadecimal digits |
+| Mode       | Template                                             |
+| ---------- | ---------------------------------------------------- |
+| `default`  | {{subject}} must only contain hexadecimal digits     |
+| `inverted` | {{subject}} must not only contain hexadecimal digits |
 
 ### `Xdigit::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                            |
-|------------|---------------------------------------------------------------------|
-| `default`  | {{name}} must contain hexadecimal digits and {{additionalChars}}    |
-| `inverted` | {{name}} must not contain hexadecimal digits or {{additionalChars}} |
+| Mode       | Template                                                               |
+| ---------- | ---------------------------------------------------------------------- |
+| `default`  | {{subject}} must contain hexadecimal digits and {{additionalChars}}    |
+| `inverted` | {{subject}} must not contain hexadecimal digits or {{additionalChars}} |
 
 ## Template placeholders
 
 | Placeholder       | Description                                                      |
-|-------------------|------------------------------------------------------------------|
+| ----------------- | ---------------------------------------------------------------- |
 | `additionalChars` | Additional characters that are considered valid.                 |
-| `name`            | The validated input or the custom validator name (if specified). |
+| `subject`         | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -45,10 +45,11 @@ v::xdigit()->isValid('0x1f'); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.5.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Alnum](Alnum.md)

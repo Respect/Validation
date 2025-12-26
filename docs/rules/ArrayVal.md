@@ -15,16 +15,16 @@ v::arrayVal()->isValid(new SimpleXMLElement('<xml></xml>')); // true
 
 ### `ArrayVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                            |
-|------------|-------------------------------------|
-| `default`  | {{name}} must be an array value     |
-| `inverted` | {{name}} must not be an array value |
+| Mode       | Template                               |
+| ---------- | -------------------------------------- |
+| `default`  | {{subject}} must be an array value     |
+| `inverted` | {{subject}} must not be an array value |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -34,12 +34,13 @@ v::arrayVal()->isValid(new SimpleXMLElement('<xml></xml>')); // true
 ## Changelog
 
 | Version | Description                                                                                  |
-|--------:|----------------------------------------------------------------------------------------------|
+| ------: | -------------------------------------------------------------------------------------------- |
 |   2.0.0 | `SimpleXMLElement` is also considered as valid                                               |
 |   1.0.0 | Renamed from `Arr` to `ArrayVal` and validate only if the input can be used as an array (#1) |
 |   0.3.9 | Created as `Arr`                                                                             |
 
-***
+---
+
 See also:
 
 - [ArrayType](ArrayType.md)

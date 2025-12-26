@@ -17,8 +17,8 @@ use Respect\Validation\Rules\Core\Envelope;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be greater than {{minValue}} and less than {{maxValue}}',
-    '{{name}} must not be greater than {{minValue}} or less than {{maxValue}}',
+    '{{subject}} must be greater than {{minValue}} and less than {{maxValue}}',
+    '{{subject}} must not be greater than {{minValue}} or less than {{maxValue}}',
 )]
 final class BetweenExclusive extends Envelope
 {

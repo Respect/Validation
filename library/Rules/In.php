@@ -21,8 +21,8 @@ use function mb_strpos;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be in {{haystack}}',
-    '{{name}} must not be in {{haystack}}',
+    '{{subject}} must be in {{haystack}}',
+    '{{subject}} must not be in {{haystack}}',
 )]
 final readonly class In implements Rule
 {

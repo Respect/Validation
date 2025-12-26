@@ -27,7 +27,7 @@ This rule does not have any templates, as you must define the templates yourself
 
 | Placeholder | Description                                                      |
 |-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`      | The validated input or the custom validator name (if specified). |
 
 
 ## Categorization

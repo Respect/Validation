@@ -12,6 +12,7 @@ v::keySet(
 ```
 
 It will validate the keys in the array with the rules passed in the constructor.
+
 ```php
 v::keySet(
     v::key('foo', v::intVal())
@@ -23,6 +24,7 @@ v::keySet(
 ```
 
 Extra keys are not allowed:
+
 ```php
 v::keySet(
     v::key('foo', v::intVal())
@@ -30,6 +32,7 @@ v::keySet(
 ```
 
 Missing required keys are not allowed:
+
 ```php
 v::keySet(
     v::key('foo', v::intVal()),
@@ -39,6 +42,7 @@ v::keySet(
 ```
 
 Missing non-required keys are allowed:
+
 ```php
 v::keySet(
     v::key('foo', v::intVal()),
@@ -48,6 +52,7 @@ v::keySet(
 ```
 
 Alternatively, you can pass a chain of key-related rules to `keySet()`:
+
 ```php
 v::keySet(
     v::create()
@@ -65,37 +70,37 @@ The keys' order is not considered in the validation.
 
 ### `KeySet::TEMPLATE_STANDARD`
 
-| Mode       | Template                   |
-|------------|----------------------------|
-| `default`  | {{name}} validation failed |
-| `inverted` | {{name}} validation passed |
+| Mode       | Template                      |
+| ---------- | ----------------------------- |
+| `default`  | {{subject}} validation failed |
+| `inverted` | {{subject}} validation passed |
 
 ### `KeySet::TEMPLATE_BOTH`
 
-| Mode       | Template                                      |
-|------------|-----------------------------------------------|
-| `default`  | {{name}} contains both missing and extra keys |
-| `inverted` | {{name}} contains no missing or extra keys.   |
+| Mode       | Template                                         |
+| ---------- | ------------------------------------------------ |
+| `default`  | {{subject}} contains both missing and extra keys |
+| `inverted` | {{subject}} contains no missing or extra keys.   |
 
 ### `KeySet::TEMPLATE_EXTRA_KEYS`
 
-| Mode       | Template                        |
-|------------|---------------------------------|
-| `default`  | {{name}} contains extra keys    |
-| `inverted` | {{name}} contains no extra keys |
+| Mode       | Template                           |
+| ---------- | ---------------------------------- |
+| `default`  | {{subject}} contains extra keys    |
+| `inverted` | {{subject}} contains no extra keys |
 
 ### `KeySet::TEMPLATE_MISSING_KEYS`
 
-| Mode       | Template                          |
-|------------|-----------------------------------|
-| `default`  | {{name}} contains missing keys    |
-| `inverted` | {{name}} contains no missing keys |
+| Mode       | Template                             |
+| ---------- | ------------------------------------ |
+| `default`  | {{subject}} contains missing keys    |
+| `inverted` | {{subject}} contains no missing keys |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -106,12 +111,13 @@ The keys' order is not considered in the validation.
 ## Changelog
 
 | Version | Description                                           |
-|--------:|-------------------------------------------------------|
+| ------: | ----------------------------------------------------- |
 |   3.0.0 | Requires at least one key-related rule                |
 |   2.3.0 | KeySet is NonNegatable, fixed message with extra keys |
 |   1.0.0 | Created                                               |
 
-***
+---
+
 See also:
 
 - [ArrayVal](ArrayVal.md)

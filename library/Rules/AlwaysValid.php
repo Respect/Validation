@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Simple;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be valid',
-    '{{name}} must be invalid',
+    '{{subject}} must be valid',
+    '{{subject}} must be invalid',
 )]
 final class AlwaysValid extends Simple
 {

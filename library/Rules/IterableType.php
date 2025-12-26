@@ -17,8 +17,8 @@ use function is_iterable;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be iterable',
-    '{{name}} must not iterable',
+    '{{subject}} must be iterable',
+    '{{subject}} must not iterable',
 )]
 final class IterableType extends Simple
 {

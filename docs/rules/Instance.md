@@ -15,17 +15,17 @@ Message template for this validator includes `{{instanceName}}`.
 
 ### `Instance::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                 |
-|------------|----------------------------------------------------------|
-| `default`  | {{name}} must be an instance of `{{class&#124;raw}}`     |
-| `inverted` | {{name}} must not be an instance of `{{class&#124;raw}}` |
+| Mode       | Template                                                    |
+| ---------- | ----------------------------------------------------------- |
+| `default`  | {{subject}} must be an instance of `{{class&#124;raw}}`     |
+| `inverted` | {{subject}} must not be an instance of `{{class&#124;raw}}` |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
+| ----------- | ---------------------------------------------------------------- |
 | `class`     |                                                                  |
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -34,10 +34,11 @@ Message template for this validator includes `{{instanceName}}`.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Countable](Countable.md)

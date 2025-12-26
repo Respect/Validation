@@ -20,8 +20,8 @@ use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be readable',
-    '{{name}} must not be readable',
+    '{{subject}} must be readable',
+    '{{subject}} must not be readable',
 )]
 final class Readable extends Simple
 {

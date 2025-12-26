@@ -18,8 +18,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid PHP label',
-    '{{name}} must not be a valid PHP label',
+    '{{subject}} must be a valid PHP label',
+    '{{subject}} must not be a valid PHP label',
 )]
 final class PhpLabel extends Simple
 {

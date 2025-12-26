@@ -22,8 +22,8 @@ use function reset;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must start with {{startValue}}',
-    '{{name}} must not start with {{startValue}}',
+    '{{subject}} must start with {{startValue}}',
+    '{{subject}} must not start with {{startValue}}',
 )]
 final readonly class StartsWith implements Rule
 {

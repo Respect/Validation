@@ -15,13 +15,13 @@ use Respect\Validation\Rules\Core\Simple;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be valid',
-    '{{name}} must be invalid',
+    '{{subject}} must be valid',
+    '{{subject}} must be invalid',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} is invalid',
-    '{{name}} is valid',
+    '{{subject}} is invalid',
+    '{{subject}} is valid',
     self::TEMPLATE_SIMPLE,
 )]
 final class AlwaysInvalid extends Simple

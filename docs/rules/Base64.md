@@ -13,16 +13,16 @@ v::base64()->isValid('respect!'); // false
 
 ### `Base64::TEMPLATE_STANDARD`
 
-| Mode       | Template                                     |
-|------------|----------------------------------------------|
-| `default`  | {{name}} must be a base64 encoded string     |
-| `inverted` | {{name}} must not be a base64 encoded string |
+| Mode       | Template                                        |
+| ---------- | ----------------------------------------------- |
+| `default`  | {{subject}} must be a base64 encoded string     |
+| `inverted` | {{subject}} must not be a base64 encoded string |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -31,10 +31,11 @@ v::base64()->isValid('respect!'); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Base](Base.md)

@@ -23,8 +23,8 @@ use function strtotime;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid time in the format {{sample}}',
-    '{{name}} must not be a valid time in the format {{sample}}',
+    '{{subject}} must be a valid time in the format {{sample}}',
+    '{{subject}} must not be a valid time in the format {{sample}}',
 )]
 final readonly class Time implements Rule
 {

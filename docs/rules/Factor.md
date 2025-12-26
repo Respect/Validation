@@ -14,17 +14,17 @@ v::factor(4)->isValid(3); // false
 
 ### `Factor::TEMPLATE_STANDARD`
 
-| Mode       | Template                                               |
-|------------|--------------------------------------------------------|
-| `default`  | {{name}} must be a factor of {{dividend&#124;raw}}     |
-| `inverted` | {{name}} must not be a factor of {{dividend&#124;raw}} |
+| Mode       | Template                                                  |
+| ---------- | --------------------------------------------------------- |
+| `default`  | {{subject}} must be a factor of {{dividend&#124;raw}}     |
+| `inverted` | {{subject}} must not be a factor of {{dividend&#124;raw}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
+| ----------- | ---------------------------------------------------------------- |
 | `dividend`  |                                                                  |
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -34,10 +34,11 @@ v::factor(4)->isValid(3); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   1.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Decimal](Decimal.md)

@@ -22,13 +22,13 @@ use function preg_replace;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid credit card number',
-    '{{name}} must not be a valid credit card number',
+    '{{subject}} must be a valid credit card number',
+    '{{subject}} must not be a valid credit card number',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be a valid {{brand|raw}} credit card number',
-    '{{name}} must not be a valid {{brand|raw}} credit card number',
+    '{{subject}} must be a valid {{brand|raw}} credit card number',
+    '{{subject}} must not be a valid {{brand|raw}} credit card number',
     self::TEMPLATE_BRANDED,
 )]
 final readonly class CreditCard implements Rule

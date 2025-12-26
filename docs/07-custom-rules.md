@@ -4,7 +4,7 @@ You can also create and use your own rules. To do this, you will need to create
 a rule and an exception to go with the rule.
 
 To create a rule, you need to create a class that implements the `Rule` interface
-and is within the Rules `namespace`. It is  convenient to just extend the `Simple` or
+and is within the Rules `namespace`. It is convenient to just extend the `Simple` or
 `Standard` class. When the rule is called the logic inside the validate method will be
 executed. Here's how the class should look:
 
@@ -15,8 +15,8 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Rules\Core\Simple;
 
 #[Template(
-    '{{name}} is something',
-    '{{name}} is not something',
+    '{{subject}} is something',
+    '{{subject}} is not something',
 )]
 final class Something extends Simple
 {
@@ -27,7 +27,7 @@ final class Something extends Simple
 }
 ```
 
-The `'{{name}} is not something` message would be used then you call the rule
+The `'{{subject}} is not something` message would be used then you call the rule
 with the `not()`.
 
 All classes in Validation are created by the `Factory` class. If you want

@@ -22,8 +22,8 @@ use function mb_strpos;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must contain {{containsValue}}',
-    '{{name}} must not contain {{containsValue}}',
+    '{{subject}} must contain {{containsValue}}',
+    '{{subject}} must not contain {{containsValue}}',
 )]
 final readonly class Contains implements Rule
 {

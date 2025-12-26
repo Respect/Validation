@@ -17,8 +17,8 @@ use function is_object;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an object',
-    '{{name}} must not be an object',
+    '{{subject}} must be an object',
+    '{{subject}} must not be an object',
 )]
 final class ObjectType extends Simple
 {

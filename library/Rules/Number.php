@@ -18,8 +18,8 @@ use function is_numeric;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a valid number',
-    '{{name}} must not be a number',
+    '{{subject}} must be a valid number',
+    '{{subject}} must not be a number',
 )]
 final class Number extends Simple
 {

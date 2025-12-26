@@ -27,22 +27,22 @@ use function array_slice;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} validation failed',
-    '{{name}} validation passed',
+    '{{subject}} validation failed',
+    '{{subject}} validation passed',
 )]
 #[Template(
-    '{{name}} contains both missing and extra keys',
-    '{{name}} contains no missing or extra keys.',
+    '{{subject}} contains both missing and extra keys',
+    '{{subject}} contains no missing or extra keys.',
     self::TEMPLATE_BOTH,
 )]
 #[Template(
-    '{{name}} contains extra keys',
-    '{{name}} contains no extra keys',
+    '{{subject}} contains extra keys',
+    '{{subject}} contains no extra keys',
     self::TEMPLATE_EXTRA_KEYS,
 )]
 #[Template(
-    '{{name}} contains missing keys',
-    '{{name}} contains no missing keys',
+    '{{subject}} contains missing keys',
+    '{{subject}} contains no missing keys',
     self::TEMPLATE_MISSING_KEYS,
 )]
 final readonly class KeySet implements Rule

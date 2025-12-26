@@ -12,16 +12,16 @@ v::version()->isValid('1.0.0');
 
 ### `Version::TEMPLATE_STANDARD`
 
-| Mode       | Template                       |
-|------------|--------------------------------|
-| `default`  | {{name}} must be a version     |
-| `inverted` | {{name}} must not be a version |
+| Mode       | Template                          |
+| ---------- | --------------------------------- |
+| `default`  | {{subject}} must be a version     |
+| `inverted` | {{subject}} must not be a version |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -30,10 +30,11 @@ v::version()->isValid('1.0.0');
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Equals](Equals.md)

@@ -21,8 +21,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a factor of {{dividend|raw}}',
-    '{{name}} must not be a factor of {{dividend|raw}}',
+    '{{subject}} must be a factor of {{dividend|raw}}',
+    '{{subject}} must not be a factor of {{dividend|raw}}',
 )]
 final readonly class Factor implements Rule
 {

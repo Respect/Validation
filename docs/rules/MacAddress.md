@@ -13,16 +13,16 @@ v::macAddress()->isValid('af-AA-22-33-44-55'); // true
 
 ### `MacAddress::TEMPLATE_STANDARD`
 
-| Mode       | Template                                 |
-|------------|------------------------------------------|
-| `default`  | {{name}} must be a valid MAC address     |
-| `inverted` | {{name}} must not be a valid MAC address |
+| Mode       | Template                                    |
+| ---------- | ------------------------------------------- |
+| `default`  | {{subject}} must be a valid MAC address     |
+| `inverted` | {{subject}} must not be a valid MAC address |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -31,10 +31,11 @@ v::macAddress()->isValid('af-AA-22-33-44-55'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Domain](Domain.md)

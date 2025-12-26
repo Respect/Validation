@@ -9,16 +9,16 @@ Ignores non-digit chars, so use `->digit()` if needed.
 
 ### `Cnpj::TEMPLATE_STANDARD`
 
-| Mode       | Template                                 |
-|------------|------------------------------------------|
-| `default`  | {{name}} must be a valid CNPJ number     |
-| `inverted` | {{name}} must not be a valid CNPJ number |
+| Mode       | Template                                    |
+| ---------- | ------------------------------------------- |
+| `default`  | {{subject}} must be a valid CNPJ number     |
+| `inverted` | {{subject}} must not be a valid CNPJ number |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -27,10 +27,11 @@ Ignores non-digit chars, so use `->digit()` if needed.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Bsn](Bsn.md)

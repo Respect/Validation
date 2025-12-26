@@ -20,16 +20,16 @@ This rule relies on [fileinfo](http://php.net/fileinfo) PHP extension.
 
 ### `Image::TEMPLATE_STANDARD`
 
-| Mode       | Template                                |
-|------------|-----------------------------------------|
-| `default`  | {{name}} must be a valid image file     |
-| `inverted` | {{name}} must not be a valid image file |
+| Mode       | Template                                   |
+| ---------- | ------------------------------------------ |
+| `default`  | {{subject}} must be a valid image file     |
+| `inverted` | {{subject}} must not be a valid image file |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -38,10 +38,11 @@ This rule relies on [fileinfo](http://php.net/fileinfo) PHP extension.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   1.1.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Directory](Directory.md)

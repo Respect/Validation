@@ -51,7 +51,7 @@ This rule will validate public, private, protected, uninitialised, and static pr
 
 | Placeholder | Description                                                      |
 |-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`      | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 

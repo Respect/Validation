@@ -17,8 +17,8 @@ use function is_array;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an array',
-    '{{name}} must not be an array',
+    '{{subject}} must be an array',
+    '{{subject}} must not be an array',
 )]
 final class ArrayType extends Simple
 {

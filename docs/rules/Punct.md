@@ -13,24 +13,24 @@ v::punct()->isValid('&,.;[]'); // true
 
 ### `Punct::TEMPLATE_STANDARD`
 
-| Mode       | Template                                          |
-|------------|---------------------------------------------------|
-| `default`  | {{name}} must contain only punctuation characters |
-| `inverted` | {{name}} must not contain punctuation characters  |
+| Mode       | Template                                             |
+| ---------- | ---------------------------------------------------- |
+| `default`  | {{subject}} must contain only punctuation characters |
+| `inverted` | {{subject}} must not contain punctuation characters  |
 
 ### `Punct::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                                  |
-|------------|---------------------------------------------------------------------------|
-| `default`  | {{name}} must contain only punctuation characters and {{additionalChars}} |
-| `inverted` | {{name}} must not contain punctuation characters or {{additionalChars}}   |
+| Mode       | Template                                                                     |
+| ---------- | ---------------------------------------------------------------------------- |
+| `default`  | {{subject}} must contain only punctuation characters and {{additionalChars}} |
+| `inverted` | {{subject}} must not contain punctuation characters or {{additionalChars}}   |
 
 ## Template placeholders
 
 | Placeholder       | Description                                                      |
-|-------------------|------------------------------------------------------------------|
+| ----------------- | ---------------------------------------------------------------- |
 | `additionalChars` | Additional characters that are considered valid.                 |
-| `name`            | The validated input or the custom validator name (if specified). |
+| `subject`         | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -39,10 +39,11 @@ v::punct()->isValid('&,.;[]'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.5.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Control](Control.md)

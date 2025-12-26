@@ -17,8 +17,8 @@ use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a string',
-    '{{name}} must not be a string',
+    '{{subject}} must be a string',
+    '{{subject}} must not be a string',
 )]
 final class StringType extends Simple
 {

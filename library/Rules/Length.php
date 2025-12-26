@@ -27,8 +27,8 @@ use function mb_strlen;
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must be a countable value or a string',
-    '{{name}} must not be a countable value or a string',
+    '{{subject}} must be a countable value or a string',
+    '{{subject}} must not be a countable value or a string',
     self::TEMPLATE_WRONG_TYPE,
 )]
 final class Length extends Wrapper

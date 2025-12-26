@@ -17,8 +17,8 @@ use function is_resource;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a resource',
-    '{{name}} must not be a resource',
+    '{{subject}} must be a resource',
+    '{{subject}} must not be a resource',
 )]
 final class ResourceType extends Simple
 {

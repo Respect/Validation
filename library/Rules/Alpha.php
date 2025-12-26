@@ -17,13 +17,13 @@ use function ctype_alpha;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must contain only letters (a-z)',
-    '{{name}} must not contain letters (a-z)',
+    '{{subject}} must contain only letters (a-z)',
+    '{{subject}} must not contain letters (a-z)',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must contain only letters (a-z) and {{additionalChars}}',
-    '{{name}} must not contain letters (a-z) or {{additionalChars}}',
+    '{{subject}} must contain only letters (a-z) and {{additionalChars}}',
+    '{{subject}} must not contain letters (a-z) or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Alpha extends FilteredString

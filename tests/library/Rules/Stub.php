@@ -19,8 +19,8 @@ use function array_shift;
 use function rand;
 
 #[Template(
-    '{{name}} must be a valid stub',
-    '{{name}} must not be a valid stub',
+    '{{subject}} must be a valid stub',
+    '{{subject}} must not be a valid stub',
 )]
 final class Stub extends Simple
 {

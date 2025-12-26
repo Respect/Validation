@@ -13,15 +13,15 @@ use Respect\Validation\Message\Translator\ArrayTranslator;
 
 $container = ContainerRegistry::createContainer();
 $container->set(Translator::class, new ArrayTranslator([
-    '{{name}} must pass all the rules' => 'Todas as regras requeridas devem passar para {{name}}',
+    '{{subject}} must pass all the rules' => 'Todas as regras requeridas devem passar para {{subject}}',
     'The length of' => 'O comprimento de',
-    '{{name}} must be a string' => '{{name}} deve ser uma string',
-    '{{name}} must be between {{minValue}} and {{maxValue}}' => '{{name}} deve possuir de {{minValue}} a {{maxValue}} caracteres',
-    '{{name}} must be a valid telephone number for country {{countryName|trans}}' => '{{name}} deve ser um número de telefone válido para o país {{countryName|trans}}',
+    '{{subject}} must be a string' => '{{subject}} deve ser uma string',
+    '{{subject}} must be between {{minValue}} and {{maxValue}}' => '{{subject}} deve possuir de {{minValue}} a {{maxValue}} caracteres',
+    '{{subject}} must be a valid telephone number for country {{countryName|trans}}' => '{{subject}} deve ser um número de telefone válido para o país {{countryName|trans}}',
     'United States' => 'Estados Unidos',
     'years' => 'anos',
     'The number of {{type|trans}} between now and' => 'O número de {{type|trans}} entre agora e',
-    '{{name}} must be equal to {{compareTo}}' => '{{name}} deve ser igual a {{compareTo}}',
+    '{{subject}} must be equal to {{compareTo}}' => '{{subject}} deve ser igual a {{compareTo}}',
     'Your name must be {{haystack|listOr}}' => 'Seu nome deve ser {{haystack|listOr}}',
     'or' => 'ou',
     '{{haystack|listAnd}} are the only possible names' => '{{haystack|listAnd}} são os únicos nomes possíveis',

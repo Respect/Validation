@@ -20,25 +20,25 @@ character, one or the other, but not neither nor both.
 
 Used when none of the rules have passed.
 
-| Mode       | Template                            |
-|------------|-------------------------------------|
-| `default`  | {{name}} must pass one of the rules |
-| `inverted` | {{name}} must pass one of the rules |
+| Mode       | Template                               |
+| ---------- | -------------------------------------- |
+| `default`  | {{subject}} must pass one of the rules |
+| `inverted` | {{subject}} must pass one of the rules |
 
 ### `OneOf::TEMPLATE_MORE_THAN_ONE`
 
 Used when more than one rule has passed.
 
-| Mode       | Template                                 |
-|------------|------------------------------------------|
-| `default`  | {{name}} must pass only one of the rules |
-| `inverted` | {{name}} must pass only one of the rules |
+| Mode       | Template                                    |
+| ---------- | ------------------------------------------- |
+| `default`  | {{subject}} must pass only one of the rules |
+| `inverted` | {{subject}} must pass only one of the rules |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -48,11 +48,12 @@ Used when more than one rule has passed.
 ## Changelog
 
 | Version | Description                             |
-|--------:|-----------------------------------------|
+| ------: | --------------------------------------- |
 |   3.0.0 | Require at least two rules to be passed |
 |   0.3.9 | Created                                 |
 
-***
+---
+
 See also:
 
 - [AllOf](AllOf.md)

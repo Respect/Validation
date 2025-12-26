@@ -30,7 +30,7 @@ Be careful when using `$locale` as `TRUE` because the it's very permissive:
 v::no(true)->isValid('Never gonna give you up 🎵'); // true
 ```
 
-Besides that, with `$locale` as  `TRUE` it will consider any character starting
+Besides that, with `$locale` as `TRUE` it will consider any character starting
 with "N" as valid:
 
 ```php
@@ -42,16 +42,16 @@ v::no(true)->isValid('Yes'); // true
 
 ### `No::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-|------------|--------------------------------------|
-| `default`  | {{name}} must be similar to "No"     |
-| `inverted` | {{name}} must not be similar to "No" |
+| Mode       | Template                                |
+| ---------- | --------------------------------------- |
+| `default`  | {{subject}} must be similar to "No"     |
+| `inverted` | {{subject}} must not be similar to "No" |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -60,10 +60,11 @@ v::no(true)->isValid('Yes'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.7.0 | Created     |
 
-***
+---
+
 See also:
 
 - [BoolType](BoolType.md)

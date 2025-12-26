@@ -14,24 +14,24 @@ v::graph()->isValid('LKM@#$%4;'); // true
 
 ### `Graph::TEMPLATE_STANDARD`
 
-| Mode       | Template                                        |
-|------------|-------------------------------------------------|
-| `default`  | {{name}} must contain only graphical characters |
-| `inverted` | {{name}} must not contain graphical characters  |
+| Mode       | Template                                           |
+| ---------- | -------------------------------------------------- |
+| `default`  | {{subject}} must contain only graphical characters |
+| `inverted` | {{subject}} must not contain graphical characters  |
 
 ### `Graph::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                                |
-|------------|-------------------------------------------------------------------------|
-| `default`  | {{name}} must contain only graphical characters and {{additionalChars}} |
-| `inverted` | {{name}} must not contain graphical characters or {{additionalChars}}   |
+| Mode       | Template                                                                   |
+| ---------- | -------------------------------------------------------------------------- |
+| `default`  | {{subject}} must contain only graphical characters and {{additionalChars}} |
+| `inverted` | {{subject}} must not contain graphical characters or {{additionalChars}}   |
 
 ## Template placeholders
 
 | Placeholder       | Description                                                      |
-|-------------------|------------------------------------------------------------------|
+| ----------------- | ---------------------------------------------------------------- |
 | `additionalChars` | Additional characters that are considered valid.                 |
-| `name`            | The validated input or the custom validator name (if specified). |
+| `subject`         | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -40,10 +40,11 @@ v::graph()->isValid('LKM@#$%4;'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.5.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Printable](Printable.md)

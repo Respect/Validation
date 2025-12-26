@@ -18,8 +18,8 @@ use function is_numeric;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a finite number',
-    '{{name}} must not be a finite number',
+    '{{subject}} must be a finite number',
+    '{{subject}} must not be a finite number',
 )]
 final class Finite extends Simple
 {

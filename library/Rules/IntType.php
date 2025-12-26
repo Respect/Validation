@@ -17,8 +17,8 @@ use function is_int;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an integer',
-    '{{name}} must not be an integer',
+    '{{subject}} must be an integer',
+    '{{subject}} must not be an integer',
 )]
 final class IntType extends Simple
 {

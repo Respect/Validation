@@ -12,9 +12,9 @@ test('Scenario #1', catchMessages(
         ->noWhitespace()
         ->length(v::between(1, 15))
         ->assert('really messed up screen#name', [
-            'alnum' => '{{name}} must contain only letters and digits',
-            'noWhitespace' => '{{name}} cannot contain spaces',
-            'length' => '{{name}} must not have more than 15 chars',
+            'alnum' => '{{subject}} must contain only letters and digits',
+            'noWhitespace' => '{{subject}} cannot contain spaces',
+            'length' => '{{subject}} must not have more than 15 chars',
         ]),
     fn(array $messages) => expect($messages)->toBe([
         '__root__' => '"really messed up screen#name" must pass all the rules',

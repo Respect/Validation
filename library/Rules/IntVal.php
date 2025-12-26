@@ -19,8 +19,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an integer value',
-    '{{name}} must not be an integer value',
+    '{{subject}} must be an integer value',
+    '{{subject}} must not be an integer value',
 )]
 final class IntVal extends Simple
 {

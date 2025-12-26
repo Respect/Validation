@@ -17,8 +17,8 @@ use function is_scalar;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a scalar value',
-    '{{name}} must not be a scalar value',
+    '{{subject}} must be a scalar value',
+    '{{subject}} must not be a scalar value',
 )]
 final class ScalarVal extends Simple
 {

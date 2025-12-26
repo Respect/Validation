@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Envelope;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a hex RGB color',
-    '{{name}} must not be a hex RGB color',
+    '{{subject}} must be a hex RGB color',
+    '{{subject}} must not be a hex RGB color',
 )]
 final class HexRgbColor extends Envelope
 {

@@ -15,16 +15,16 @@ v::isbn()->isValid('978 10 596 52068 7'); // false
 
 ### `Isbn::TEMPLATE_STANDARD`
 
-| Mode       | Template                          |
-|------------|-----------------------------------|
-| `default`  | {{name}} must be a valid ISBN     |
-| `inverted` | {{name}} must not be a valid ISBN |
+| Mode       | Template                             |
+| ---------- | ------------------------------------ |
+| `default`  | {{subject}} must be a valid ISBN     |
+| `inverted` | {{subject}} must not be a valid ISBN |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,10 +33,11 @@ v::isbn()->isValid('978 10 596 52068 7'); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Imei](Imei.md)

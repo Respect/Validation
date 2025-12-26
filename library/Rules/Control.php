@@ -17,13 +17,13 @@ use function ctype_cntrl;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must only contain control characters',
-    '{{name}} must not contain control characters',
+    '{{subject}} must only contain control characters',
+    '{{subject}} must not contain control characters',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{name}} must only contain control characters and {{additionalChars}}',
-    '{{name}} must not contain control characters or {{additionalChars}}',
+    '{{subject}} must only contain control characters and {{additionalChars}}',
+    '{{subject}} must not contain control characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Control extends FilteredString

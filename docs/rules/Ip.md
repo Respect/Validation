@@ -37,23 +37,23 @@ v::ip('*', FILTER_FLAG_IPV6)->isValid('2001:0db8:85a3:08d3:1319:8a2e:0370:7334')
 
 ### `Ip::TEMPLATE_STANDARD`
 
-| Mode       | Template                           |
-|------------|------------------------------------|
-| `default`  | {{name}} must be an IP address     |
-| `inverted` | {{name}} must not be an IP address |
+| Mode       | Template                              |
+| ---------- | ------------------------------------- |
+| `default`  | {{subject}} must be an IP address     |
+| `inverted` | {{subject}} must not be an IP address |
 
 ### `Ip::TEMPLATE_NETWORK_RANGE`
 
-| Mode       | Template                                                           |
-|------------|--------------------------------------------------------------------|
-| `default`  | {{name}} must be an IP address in the {{range&#124;raw}} range     |
-| `inverted` | {{name}} must not be an IP address in the {{range&#124;raw}} range |
+| Mode       | Template                                                              |
+| ---------- | --------------------------------------------------------------------- |
+| `default`  | {{subject}} must be an IP address in the {{range&#124;raw}} range     |
+| `inverted` | {{subject}} must not be an IP address in the {{range&#124;raw}} range |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 | `range`     |                                                                  |
 
 ## Categorization
@@ -63,12 +63,13 @@ v::ip('*', FILTER_FLAG_IPV6)->isValid('2001:0db8:85a3:08d3:1319:8a2e:0370:7334')
 ## Changelog
 
 | Version | Description                                            |
-|--------:|--------------------------------------------------------|
+| ------: | ------------------------------------------------------ |
 |   2.0.0 | Allow to define range and options to the same instance |
 |   0.5.0 | Implemented IP range validation                        |
 |   0.3.9 | Created                                                |
 
-***
+---
+
 See also:
 
 - [Domain](Domain.md)

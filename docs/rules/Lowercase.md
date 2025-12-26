@@ -12,16 +12,16 @@ v::stringType()->lowercase()->isValid('xkcd'); // true
 
 ### `Lowercase::TEMPLATE_STANDARD`
 
-| Mode       | Template                                         |
-|------------|--------------------------------------------------|
-| `default`  | {{name}} must contain only lowercase letters     |
-| `inverted` | {{name}} must not contain only lowercase letters |
+| Mode       | Template                                            |
+| ---------- | --------------------------------------------------- |
+| `default`  | {{subject}} must contain only lowercase letters     |
+| `inverted` | {{subject}} must not contain only lowercase letters |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -30,10 +30,11 @@ v::stringType()->lowercase()->isValid('xkcd'); // true
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Alnum](Alnum.md)

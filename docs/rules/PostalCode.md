@@ -14,7 +14,6 @@ v::postalCode('PL')->isValid('99-300'); // true
 
 By default, `PostalCode` won't validate the format (puncts, spaces), unless you pass `$formatted = true`:
 
-
 ```php
 v::postalCode('BR', true)->isValid('02179000'); // false
 v::postalCode('BR', true)->isValid('02179-000'); // true
@@ -28,17 +27,17 @@ Extracted from [GeoNames](http://www.geonames.org/).
 
 ### `PostalCode::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                    |
-|------------|-------------------------------------------------------------|
-| `default`  | {{name}} must be a valid postal code on {{countryCode}}     |
-| `inverted` | {{name}} must not be a valid postal code on {{countryCode}} |
+| Mode       | Template                                                       |
+| ---------- | -------------------------------------------------------------- |
+| `default`  | {{subject}} must be a valid postal code on {{countryCode}}     |
+| `inverted` | {{subject}} must not be a valid postal code on {{countryCode}} |
 
 ## Template placeholders
 
 | Placeholder   | Description                                                      |
-|---------------|------------------------------------------------------------------|
+| ------------- | ---------------------------------------------------------------- |
 | `countryCode` |                                                                  |
-| `name`        | The validated input or the custom validator name (if specified). |
+| `subject`     | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -48,12 +47,13 @@ Extracted from [GeoNames](http://www.geonames.org/).
 ## Changelog
 
 | Version | Description                                       |
-|--------:|---------------------------------------------------|
+| ------: | ------------------------------------------------- |
 |   2.3.0 | Add option to validate formatting                 |
 |   2.2.4 | Cambodian postal codes now support 5 and 6 digits |
 |   0.7.0 | Created                                           |
 
-***
+---
+
 See also:
 
 - [CountryCode](CountryCode.md)

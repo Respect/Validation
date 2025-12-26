@@ -18,17 +18,17 @@ Message template for this validator includes `{{compareTo}}`.
 
 ### `GreaterThan::TEMPLATE_STANDARD`
 
-| Mode       | Template                                        |
-|------------|-------------------------------------------------|
-| `default`  | {{name}} must be greater than {{compareTo}}     |
-| `inverted` | {{name}} must not be greater than {{compareTo}} |
+| Mode       | Template                                           |
+| ---------- | -------------------------------------------------- |
+| `default`  | {{subject}} must be greater than {{compareTo}}     |
+| `inverted` | {{subject}} must not be greater than {{compareTo}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
+| ----------- | ---------------------------------------------------------------- |
 | `compareTo` | Value to be compared against the input.                          |
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -37,10 +37,11 @@ Message template for this validator includes `{{compareTo}}`.
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Between](Between.md)

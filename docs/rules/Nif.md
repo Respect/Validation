@@ -13,16 +13,16 @@ v::nif()->isValid('P6437358A'); // false
 
 ### `Nif::TEMPLATE_STANDARD`
 
-| Mode       | Template                         |
-|------------|----------------------------------|
-| `default`  | {{name}} must be a valid NIF     |
-| `inverted` | {{name}} must not be a valid NIF |
+| Mode       | Template                            |
+| ---------- | ----------------------------------- |
+| `default`  | {{subject}} must be a valid NIF     |
+| `inverted` | {{subject}} must not be a valid NIF |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -31,10 +31,11 @@ v::nif()->isValid('P6437358A'); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.2.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Bsn](Bsn.md)

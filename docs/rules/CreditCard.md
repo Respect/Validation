@@ -40,24 +40,24 @@ v::digit()->creditCard()->isValid('5376747397208720'); // true
 
 ### `CreditCard::TEMPLATE_STANDARD`
 
-| Mode       | Template                                        |
-|------------|-------------------------------------------------|
-| `default`  | {{name}} must be a valid credit card number     |
-| `inverted` | {{name}} must not be a valid credit card number |
+| Mode       | Template                                           |
+| ---------- | -------------------------------------------------- |
+| `default`  | {{subject}} must be a valid credit card number     |
+| `inverted` | {{subject}} must not be a valid credit card number |
 
 ### `CreditCard::TEMPLATE_BRANDED`
 
-| Mode       | Template                                                           |
-|------------|--------------------------------------------------------------------|
-| `default`  | {{name}} must be a valid {{brand&#124;raw}} credit card number     |
-| `inverted` | {{name}} must not be a valid {{brand&#124;raw}} credit card number |
+| Mode       | Template                                                              |
+| ---------- | --------------------------------------------------------------------- |
+| `default`  | {{subject}} must be a valid {{brand&#124;raw}} credit card number     |
+| `inverted` | {{subject}} must not be a valid {{brand&#124;raw}} credit card number |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
+| ----------- | ---------------------------------------------------------------- |
 | `brand`     |                                                                  |
-| `name`      | The validated input or the custom validator name (if specified). |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -66,12 +66,13 @@ v::digit()->creditCard()->isValid('5376747397208720'); // true
 ## Changelog
 
 | Version | Description                        |
-|--------:|------------------------------------|
+| ------: | ---------------------------------- |
 |   2.2.4 | RuPay is now supported as a brand  |
 |   1.1.0 | Allow the define credit card brand |
 |   0.3.9 | Created                            |
 
-***
+---
+
 See also:
 
 - [Decimal](Decimal.md)

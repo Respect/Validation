@@ -15,8 +15,8 @@ use Respect\Validation\Rules\Core\Comparison;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be less than {{compareTo}}',
-    '{{name}} must not be less than {{compareTo}}',
+    '{{subject}} must be less than {{compareTo}}',
+    '{{subject}} must not be less than {{compareTo}}',
 )]
 final class LessThan extends Comparison
 {

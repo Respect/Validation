@@ -17,16 +17,16 @@ so `AnyOf()` returns true.
 
 ### `AnyOf::TEMPLATE_STANDARD`
 
-| Mode       | Template                                     |
-|------------|----------------------------------------------|
-| `default`  | {{name}} must pass at least one of the rules |
-| `inverted` | {{name}} must pass at least one of the rules |
+| Mode       | Template                                        |
+| ---------- | ----------------------------------------------- |
+| `default`  | {{subject}} must pass at least one of the rules |
+| `inverted` | {{subject}} must pass at least one of the rules |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -36,11 +36,12 @@ so `AnyOf()` returns true.
 ## Changelog
 
 | Version | Description                             |
-|--------:|-----------------------------------------|
+| ------: | --------------------------------------- |
 |   3.0.0 | Require at least two rules to be passed |
 |   2.0.0 | Created                                 |
 
-***
+---
+
 See also:
 
 - [AllOf](AllOf.md)

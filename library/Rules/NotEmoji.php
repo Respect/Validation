@@ -19,8 +19,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must not contain an emoji',
-    '{{name}} must contain an emoji',
+    '{{subject}} must not contain an emoji',
+    '{{subject}} must contain an emoji',
 )]
 final class NotEmoji extends Simple
 {

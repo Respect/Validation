@@ -18,16 +18,16 @@ v::iban()->isValid(''); // false
 
 ### `Iban::TEMPLATE_STANDARD`
 
-| Mode       | Template                          |
-|------------|-----------------------------------|
-| `default`  | {{name}} must be a valid IBAN     |
-| `inverted` | {{name}} must not be a valid IBAN |
+| Mode       | Template                             |
+| ---------- | ------------------------------------ |
+| `default`  | {{subject}} must be a valid IBAN     |
+| `inverted` | {{subject}} must not be a valid IBAN |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -36,10 +36,11 @@ v::iban()->isValid(''); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [CreditCard](CreditCard.md)

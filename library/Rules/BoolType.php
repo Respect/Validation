@@ -17,8 +17,8 @@ use function is_bool;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a boolean',
-    '{{name}} must not be a boolean',
+    '{{subject}} must be a boolean',
+    '{{subject}} must not be a boolean',
 )]
 final class BoolType extends Simple
 {

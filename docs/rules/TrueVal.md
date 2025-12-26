@@ -19,16 +19,16 @@ v::trueVal()->isValid('2'); // false
 
 ### `TrueVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-|------------|--------------------------------------|
-| `default`  | {{name}} must evaluate to `true`     |
-| `inverted` | {{name}} must not evaluate to `true` |
+| Mode       | Template                                |
+| ---------- | --------------------------------------- |
+| `default`  | {{subject}} must evaluate to `true`     |
+| `inverted` | {{subject}} must not evaluate to `true` |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -37,11 +37,12 @@ v::trueVal()->isValid('2'); // false
 ## Changelog
 
 | Version | Description                      |
-|--------:|----------------------------------|
+| ------: | -------------------------------- |
 |   1.0.0 | Renamed from `True` to `TrueVal` |
 |   0.8.0 | Created as `True`                |
 
-***
+---
+
 See also:
 
 - [BoolType](BoolType.md)

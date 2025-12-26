@@ -14,16 +14,16 @@ v::symbolicLink()->isValid(new SplFileObject('/path/of/valid/symbolic/link')); /
 
 ### `SymbolicLink::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-|------------|--------------------------------------|
-| `default`  | {{name}} must be a symbolic link     |
-| `inverted` | {{name}} must not be a symbolic link |
+| Mode       | Template                                |
+| ---------- | --------------------------------------- |
+| `default`  | {{subject}} must be a symbolic link     |
+| `inverted` | {{subject}} must not be a symbolic link |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -32,10 +32,11 @@ v::symbolicLink()->isValid(new SplFileObject('/path/of/valid/symbolic/link')); /
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.5.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Directory](Directory.md)

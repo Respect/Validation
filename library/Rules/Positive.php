@@ -17,8 +17,8 @@ use function is_numeric;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be a positive number',
-    '{{name}} must not be a positive number',
+    '{{subject}} must be a positive number',
+    '{{subject}} must not be a positive number',
 )]
 final class Positive extends Simple
 {

@@ -20,8 +20,8 @@ use const SORT_REGULAR;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must not contain duplicates',
-    '{{name}} must contain duplicates',
+    '{{subject}} must not contain duplicates',
+    '{{subject}} must contain duplicates',
 )]
 final class Unique extends Simple
 {

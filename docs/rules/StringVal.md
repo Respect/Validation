@@ -18,16 +18,16 @@ v::stringVal()->isValid(new ClassWithToString()); // true if ClassWithToString i
 
 ### `StringVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                            |
-|------------|-------------------------------------|
-| `default`  | {{name}} must be a string value     |
-| `inverted` | {{name}} must not be a string value |
+| Mode       | Template                               |
+| ---------- | -------------------------------------- |
+| `default`  | {{subject}} must be a string value     |
+| `inverted` | {{subject}} must not be a string value |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -37,10 +37,11 @@ v::stringVal()->isValid(new ClassWithToString()); // true if ClassWithToString i
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Alnum](Alnum.md)

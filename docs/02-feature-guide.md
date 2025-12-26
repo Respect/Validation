@@ -19,6 +19,7 @@ if (v::intType()->positive()->isValid($input)) {
 ```
 
 Note that you can combine multiple rules for a complex validation.
+
 ## Validating using exceptions
 
 The `assert()` method throws an exception when validation fails. You can handle those exceptions with `try/catch` for more robust error handling.
@@ -33,24 +34,24 @@ v::intType()->positive()->assert($input);
 
 Respect\Validation offers over 150 rules, many of which are designed to address common scenarios. Here’s a quick guide to some specific use cases and the rules that make validation straightforward.
 
-* Using rules as **PHP Attributes**: [Attributes](rules/Attributes.md).
-* Validating **Arrays**: [Key](rules/Key.md), [KeyOptional](rules/KeyOptional.md), [KeyExists](rules/KeyExists.md).
-* Validating **Array structures**: [KeySet](rules/KeySet.md).
-* Validating **Object properties**: [Property](rules/Property.md), [PropertyOptional](rules/PropertyOptional.md), [PropertyExists](rules/PropertyExists.md).
-* Using **Conditional validation**: [NullOr](rules/NullOr.md), [UndefOr](rules/UndefOr.md), [When](rules/When.md).
-* Using **Grouped validation**: [AllOf](rules/AllOf.md), [AnyOf](rules/AnyOf.md), [NoneOf](rules/NoneOf.md), [OneOf](rules/OneOf.md)
-* Validating **Each** value in the input: [Each](rules/Each.md).
-* Validating the **Length** of the input: [Length](rules/Length.md).
-* Validating the **Maximum** value in the input: [Max](rules/Max.md).
-* Validating the **Minimum** value in the input: [Min](rules/Min.md).
-* Handling **Special cases**: [Lazy](rules/Lazy.md), [Circuit](rules/Circuit.md), [Call](rules/Call.md).
+- Using rules as **PHP Attributes**: [Attributes](rules/Attributes.md).
+- Validating **Arrays**: [Key](rules/Key.md), [KeyOptional](rules/KeyOptional.md), [KeyExists](rules/KeyExists.md).
+- Validating **Array structures**: [KeySet](rules/KeySet.md).
+- Validating **Object properties**: [Property](rules/Property.md), [PropertyOptional](rules/PropertyOptional.md), [PropertyExists](rules/PropertyExists.md).
+- Using **Conditional validation**: [NullOr](rules/NullOr.md), [UndefOr](rules/UndefOr.md), [When](rules/When.md).
+- Using **Grouped validation**: [AllOf](rules/AllOf.md), [AnyOf](rules/AnyOf.md), [NoneOf](rules/NoneOf.md), [OneOf](rules/OneOf.md)
+- Validating **Each** value in the input: [Each](rules/Each.md).
+- Validating the **Length** of the input: [Length](rules/Length.md).
+- Validating the **Maximum** value in the input: [Max](rules/Max.md).
+- Validating the **Minimum** value in the input: [Min](rules/Min.md).
+- Handling **Special cases**: [Lazy](rules/Lazy.md), [Circuit](rules/Circuit.md), [Call](rules/Call.md).
 
 ### Custom templates
 
 Define your own error message when the validation fails:
 
 ```php
-v::between(1, 256)->assert($input, '{{name}} is not what I was expecting');
+v::between(1, 256)->assert($input, '{{subject}} is not what I was expecting');
 ```
 
 ### Custom templates per rule
@@ -67,6 +68,7 @@ v::alnum()->lowercase()->assert($input, [
 ### Custom exception objects
 
 Integrate your own exception objects when the validation fails:
+
 ```php
 v::alnum()->assert($input, new DomainException('Not a valid username'));
 ```
@@ -87,7 +89,7 @@ v::alnum()->lowercase()->assert(
 
 ## Inverting validation rules
 
-Use the `not` prefix to invert a  validation rule.
+Use the `not` prefix to invert a validation rule.
 
 ```php
 v::notEquals('main')->assert($input);
@@ -109,7 +111,7 @@ $validator->assert('alexandre gaigalas');
 
 ## Customising validator names
 
-Template messages include the placeholder `{{name}}`, which defaults to the input. Use `setName()` to replace it with a more descriptive label.
+Template messages include the placeholder `{{subject}}`, which defaults to the input. Use `setName()` to replace it with a more descriptive label.
 
 ```php
 v::dateTime('Y-m-d')

@@ -15,16 +15,16 @@ v::polishIdCard()->isValid('AYW036731'); // false
 
 ### `PolishIdCard::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                 |
-|------------|----------------------------------------------------------|
-| `default`  | {{name}} must be a valid Polish Identity Card number     |
-| `inverted` | {{name}} must not be a valid Polish Identity Card number |
+| Mode       | Template                                                    |
+| ---------- | ----------------------------------------------------------- |
+| `default`  | {{subject}} must be a valid Polish Identity Card number     |
+| `inverted` | {{subject}} must not be a valid Polish Identity Card number |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -33,10 +33,11 @@ v::polishIdCard()->isValid('AYW036731'); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Nip](Nip.md)

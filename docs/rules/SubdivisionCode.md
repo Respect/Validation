@@ -17,17 +17,17 @@ v::subdivisionCode('US')->isValid('CA'); // true
 
 ### `SubdivisionCode::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                              |
-|------------|-----------------------------------------------------------------------|
-| `default`  | {{name}} must be a subdivision code of {{countryName&#124;trans}}     |
-| `inverted` | {{name}} must not be a subdivision code of {{countryName&#124;trans}} |
+| Mode       | Template                                                                 |
+| ---------- | ------------------------------------------------------------------------ |
+| `default`  | {{subject}} must be a subdivision code of {{countryName&#124;trans}}     |
+| `inverted` | {{subject}} must not be a subdivision code of {{countryName&#124;trans}} |
 
 ## Template placeholders
 
 | Placeholder   | Description                                                      |
-|---------------|------------------------------------------------------------------|
+| ------------- | ---------------------------------------------------------------- |
 | `countryName` |                                                                  |
-| `name`        | The validated input or the custom validator name (if specified). |
+| `subject`     | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -37,11 +37,12 @@ v::subdivisionCode('US')->isValid('CA'); // true
 ## Changelog
 
 | Version | Description                                                       |
-|--------:|-------------------------------------------------------------------|
+| ------: | ----------------------------------------------------------------- |
 |   3.0.0 | Require [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] |
 |   1.0.0 | Created                                                           |
 
-***
+---
+
 See also:
 
 - [Circuit](Circuit.md)

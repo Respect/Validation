@@ -20,8 +20,8 @@ use function is_writable;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be writable',
-    '{{name}} must not be writable',
+    '{{subject}} must be writable',
+    '{{subject}} must not be writable',
 )]
 final class Writable extends Simple
 {

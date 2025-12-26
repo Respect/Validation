@@ -16,16 +16,16 @@ v::nip()->isValid('164-58-65-777'); // false
 
 ### `Nip::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                      |
-|------------|---------------------------------------------------------------|
-| `default`  | {{name}} must be a valid Polish VAT identification number     |
-| `inverted` | {{name}} must not be a valid Polish VAT identification number |
+| Mode       | Template                                                         |
+| ---------- | ---------------------------------------------------------------- |
+| `default`  | {{subject}} must be a valid Polish VAT identification number     |
+| `inverted` | {{subject}} must not be a valid Polish VAT identification number |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `name`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -34,10 +34,11 @@ v::nip()->isValid('164-58-65-777'); // false
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   2.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Pesel](Pesel.md)

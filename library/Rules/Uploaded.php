@@ -21,8 +21,8 @@ use function is_uploaded_file;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be an uploaded file',
-    '{{name}} must not be an uploaded file',
+    '{{subject}} must be an uploaded file',
+    '{{subject}} must not be an uploaded file',
 )]
 final class Uploaded extends Simple
 {

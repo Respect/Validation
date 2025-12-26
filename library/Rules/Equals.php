@@ -18,8 +18,8 @@ use function is_scalar;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{name}} must be equal to {{compareTo}}',
-    '{{name}} must not be equal to {{compareTo}}',
+    '{{subject}} must be equal to {{compareTo}}',
+    '{{subject}} must not be equal to {{compareTo}}',
 )]
 final readonly class Equals implements Rule
 {
