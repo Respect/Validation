@@ -231,8 +231,6 @@ interface PropertyBuilder
 
     public static function propertyNotEmpty(string $propertyName): Chain;
 
-    public static function propertyNotUndef(string $propertyName): Chain;
-
     public static function propertyNullType(string $propertyName): Chain;
 
     public static function propertyNumber(string $propertyName): Chain;
@@ -312,6 +310,8 @@ interface PropertyBuilder
     public static function propertyTld(string $propertyName): Chain;
 
     public static function propertyTrueVal(string $propertyName): Chain;
+
+    public static function propertyUndef(string $propertyName): Chain;
 
     public static function propertyUnique(string $propertyName): Chain;
 

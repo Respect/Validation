@@ -45,5 +45,5 @@ See also:
 - [Blank](Blank.md)
 - [CreditCard](CreditCard.md)
 - [NotEmpty](NotEmpty.md)
-- [NotUndef](NotUndef.md)
+- [Undef](Undef.md)
 - [UndefOr](UndefOr.md)

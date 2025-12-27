@@ -311,6 +311,8 @@ interface NotChain
 
     public function notTrueVal(): Chain;
 
+    public function notUndef(): Chain;
+
     public function notUnique(): Chain;
 
     public function notUploaded(): Chain;

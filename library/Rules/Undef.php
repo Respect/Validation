@@ -17,15 +17,15 @@ use Respect\Validation\Rule;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be defined',
     '{{subject}} must be undefined',
+    '{{subject}} must be defined',
 )]
-final class NotUndef implements Rule
+final class Undef implements Rule
 {
     use CanValidateUndefined;
 
     public function evaluate(mixed $input): Result
     {
-        return Result::of($this->isUndefined($input) === false, $input, $this);
+        return Result::of($this->isUndefined($input), $input, $this);
     }
 }

@@ -251,8 +251,6 @@ interface Chain extends
 
     public function notEmpty(): Chain;
 
-    public function notUndef(): Chain;
-
     public function nullOr(Rule $rule): Chain;
 
     public function nullType(): Chain;
@@ -339,6 +337,8 @@ interface Chain extends
     public function tld(): Chain;
 
     public function trueVal(): Chain;
+
+    public function undef(): Chain;
 
     public function undefOr(Rule $rule): Chain;
 

@@ -67,7 +67,7 @@ See also:
 
 - [Blank](Blank.md)
 - [NotEmpty](NotEmpty.md)
-- [NotUndef](NotUndef.md)
 - [NoWhitespace](NoWhitespace.md)
 - [NullOr](NullOr.md)
 - [NullType](NullType.md)
+- [Undef](Undef.md)
