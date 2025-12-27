@@ -311,6 +311,8 @@ interface NotBuilder
 
     public static function notTrueVal(): Chain;
 
+    public static function notUndef(): Chain;
+
     public static function notUnique(): Chain;
 
     public static function notUploaded(): Chain;

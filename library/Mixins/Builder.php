@@ -248,8 +248,6 @@ interface Builder extends
 
     public static function notEmpty(): Chain;
 
-    public static function notUndef(): Chain;
-
     public static function nullOr(Rule $rule): Chain;
 
     public static function nullType(): Chain;
@@ -336,6 +334,8 @@ interface Builder extends
     public static function tld(): Chain;
 
     public static function trueVal(): Chain;
+
+    public static function undef(): Chain;
 
     public static function undefOr(Rule $rule): Chain;
 

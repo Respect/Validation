@@ -26,7 +26,7 @@ use Respect\Validation\Mixins\NotBuilder;
 use Respect\Validation\Mixins\NullOrBuilder;
 use Respect\Validation\Mixins\PropertyBuilder;
 use Respect\Validation\Mixins\UndefOrBuilder;
-use Respect\Validation\Rules\NotUndef;
+use Respect\Validation\Rules\Undef;
 use Respect\Validation\Rules\NullOr;
 use Respect\Validation\Rules\UndefOr;
 use Respect\Validation\Rule;
@@ -172,10 +172,10 @@ function overwriteFile(string $content, string $basename): void
         ['Length', 'length', $numberRelatedRules, []],
         ['Max', 'max', $numberRelatedRules, []],
         ['Min', 'min', $numberRelatedRules, []],
-        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotEmoji', 'NotUndef', 'NullOr', 'UndefOr', 'Attributes', 'Templated', 'Named']],
-        ['NullOr', 'nullOr', [], ['NullOr', 'Blank', 'NotUndef', 'UndefOr', 'Templated', 'Named']],
+        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotEmoji', 'NullOr', 'UndefOr', 'Attributes', 'Templated', 'Named']],
+        ['NullOr', 'nullOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Templated', 'Named']],
         ['Property', 'property', [], $structureRelatedRules],
-        ['UndefOr', 'undefOr', [], ['NullOr', 'Blank', 'NotUndef', 'UndefOr', 'Attributes', 'Templated', 'Named']],
+        ['UndefOr', 'undefOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Attributes', 'Templated', 'Named']],
         ['', null, [], []],
     ];
 

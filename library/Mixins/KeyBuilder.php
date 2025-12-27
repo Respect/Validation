@@ -227,8 +227,6 @@ interface KeyBuilder
 
     public static function keyNotEmpty(int|string $key): Chain;
 
-    public static function keyNotUndef(int|string $key): Chain;
-
     public static function keyNullType(int|string $key): Chain;
 
     public static function keyNumber(int|string $key): Chain;
@@ -304,6 +302,8 @@ interface KeyBuilder
     public static function keyTld(int|string $key): Chain;
 
     public static function keyTrueVal(int|string $key): Chain;
+
+    public static function keyUndef(int|string $key): Chain;
 
     public static function keyUnique(int|string $key): Chain;
 

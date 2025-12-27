@@ -46,7 +46,6 @@ See also:
 - [FloatType](FloatType.md)
 - [IntType](IntType.md)
 - [NotEmpty](NotEmpty.md)
-- [NotUndef](NotUndef.md)
 - [NullOr](NullOr.md)
 - [Number](Number.md)
 - [ObjectType](ObjectType.md)
@@ -54,4 +53,5 @@ See also:
 - [StringType](StringType.md)
 - [StringVal](StringVal.md)
 - [Type](Type.md)
+- [Undef](Undef.md)
 - [UndefOr](UndefOr.md)

@@ -227,8 +227,6 @@ interface PropertyChain
 
     public function propertyNotEmpty(string $propertyName): Chain;
 
-    public function propertyNotUndef(string $propertyName): Chain;
-
     public function propertyNullType(string $propertyName): Chain;
 
     public function propertyNumber(string $propertyName): Chain;
@@ -304,6 +302,8 @@ interface PropertyChain
     public function propertyTld(string $propertyName): Chain;
 
     public function propertyTrueVal(string $propertyName): Chain;
+
+    public function propertyUndef(string $propertyName): Chain;
 
     public function propertyUnique(string $propertyName): Chain;
 
