@@ -42,6 +42,8 @@ interface KeyBuilder
 
     public static function keyBetweenExclusive(int|string $key, mixed $minimum, mixed $maximum): Chain;
 
+    public static function keyBlank(int|string $key): Chain;
+
     public static function keyBoolType(int|string $key): Chain;
 
     public static function keyBoolVal(int|string $key): Chain;
@@ -220,8 +222,6 @@ interface KeyBuilder
     public static function keyNoneOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function keyNot(int|string $key, Rule $rule): Chain;
-
-    public static function keyNotBlank(int|string $key): Chain;
 
     public static function keyNotEmoji(int|string $key): Chain;
 

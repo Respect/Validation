@@ -15,16 +15,16 @@ use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 #[Group('rule')]
-#[CoversClass(NotBlank::class)]
-final class NotBlankTest extends RuleTestCase
+#[CoversClass(Blank::class)]
+final class BlankTest extends RuleTestCase
 {
-    /** @return iterable<array{NotBlank, mixed}> */
-    public static function providerForValidInput(): iterable
+    /** @return iterable<array{Blank, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
         $object = new stdClass();
         $object->foo = true;
 
-        $rule = new NotBlank();
+        $rule = new Blank();
 
         return [
             [$rule, 1],
@@ -35,10 +35,10 @@ final class NotBlankTest extends RuleTestCase
         ];
     }
 
-    /** @return iterable<array{NotBlank, mixed}> */
-    public static function providerForInvalidInput(): iterable
+    /** @return iterable<array{Blank, mixed}> */
+    public static function providerForValidInput(): iterable
     {
-        $rule = new NotBlank();
+        $rule = new Blank();
 
         return [
             [$rule, null],

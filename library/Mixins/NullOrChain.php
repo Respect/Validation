@@ -231,8 +231,6 @@ interface NullOrChain
 
     public function nullOrNot(Rule $rule): Chain;
 
-    public function nullOrNotBlank(): Chain;
-
     public function nullOrNotEmoji(): Chain;
 
     public function nullOrNotEmpty(): Chain;

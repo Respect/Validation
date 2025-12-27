@@ -42,8 +42,8 @@ See also:
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)
+- [Blank](Blank.md)
 - [CreditCard](CreditCard.md)
-- [NotBlank](NotBlank.md)
 - [NotEmpty](NotEmpty.md)
 - [NotUndef](NotUndef.md)
 - [UndefOr](UndefOr.md)

@@ -39,12 +39,12 @@ v::nullType()->isValid(null); // true
 See also:
 
 - [ArrayType](ArrayType.md)
+- [Blank](Blank.md)
 - [BoolType](BoolType.md)
 - [BoolVal](BoolVal.md)
 - [CallableType](CallableType.md)
 - [FloatType](FloatType.md)
 - [IntType](IntType.md)
-- [NotBlank](NotBlank.md)
 - [NotEmpty](NotEmpty.md)
 - [NotUndef](NotUndef.md)
 - [NullOr](NullOr.md)

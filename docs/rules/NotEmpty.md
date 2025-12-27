@@ -64,10 +64,10 @@ v::stringType()->notEmpty()->isValid("\t \n \r");  //false
 
 See also:
 
+- [Blank](Blank.md)
 - [Each](Each.md)
 - [Max](Max.md)
 - [Min](Min.md)
-- [NotBlank](NotBlank.md)
 - [NotUndef](NotUndef.md)
 - [NoWhitespace](NoWhitespace.md)
 - [NullType](NullType.md)

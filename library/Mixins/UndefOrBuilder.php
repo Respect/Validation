@@ -229,8 +229,6 @@ interface UndefOrBuilder
 
     public static function undefOrNot(Rule $rule): Chain;
 
-    public static function undefOrNotBlank(): Chain;
-
     public static function undefOrNotEmoji(): Chain;
 
     public static function undefOrNotEmpty(): Chain;

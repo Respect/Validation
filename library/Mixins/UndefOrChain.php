@@ -229,8 +229,6 @@ interface UndefOrChain
 
     public function undefOrNot(Rule $rule): Chain;
 
-    public function undefOrNotBlank(): Chain;
-
     public function undefOrNotEmoji(): Chain;
 
     public function undefOrNotEmpty(): Chain;

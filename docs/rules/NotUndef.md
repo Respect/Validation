@@ -59,7 +59,7 @@ v::notUndef()->isValid(new stdClass()); // true
 
 See also:
 
-- [NotBlank](NotBlank.md)
+- [Blank](Blank.md)
 - [NotEmpty](NotEmpty.md)
 - [NoWhitespace](NoWhitespace.md)
 - [NullType](NullType.md)

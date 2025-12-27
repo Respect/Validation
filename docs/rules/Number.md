@@ -42,11 +42,11 @@ v::number()->isValid(acos(8)); // false
 
 See also:
 
+- [Blank](Blank.md)
 - [BoolType](BoolType.md)
 - [CallableType](CallableType.md)
 - [FloatType](FloatType.md)
 - [IntType](IntType.md)
-- [NotBlank](NotBlank.md)
 - [NotEmpty](NotEmpty.md)
 - [NotUndef](NotUndef.md)
 - [NullType](NullType.md)

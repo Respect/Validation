@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
+use Respect\Validation\Name;
 use Respect\Validation\Rule;
 use Respect\Validation\Validator;
 
@@ -53,6 +54,8 @@ interface Chain extends
     public function between(mixed $minValue, mixed $maxValue): Chain;
 
     public function betweenExclusive(mixed $minimum, mixed $maximum): Chain;
+
+    public function blank(): Chain;
 
     public function boolType(): Chain;
 
@@ -226,7 +229,7 @@ interface Chain extends
 
     public function multiple(int $multipleOf): Chain;
 
-    public function named(Rule $rule, string $name): Chain;
+    public function named(Rule $rule, Name|string $name): Chain;
 
     public function negative(): Chain;
 
@@ -243,8 +246,6 @@ interface Chain extends
     public function noneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function not(Rule $rule): Chain;
-
-    public function notBlank(): Chain;
 
     public function notEmoji(): Chain;
 

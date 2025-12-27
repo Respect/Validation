@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
+use Respect\Validation\Name;
 use Respect\Validation\Rule;
 
 interface Builder extends
@@ -50,6 +51,8 @@ interface Builder extends
     public static function between(mixed $minValue, mixed $maxValue): Chain;
 
     public static function betweenExclusive(mixed $minimum, mixed $maximum): Chain;
+
+    public static function blank(): Chain;
 
     public static function boolType(): Chain;
 
@@ -223,7 +226,7 @@ interface Builder extends
 
     public static function multiple(int $multipleOf): Chain;
 
-    public static function named(Rule $rule, string $name): Chain;
+    public static function named(Rule $rule, Name|string $name): Chain;
 
     public static function negative(): Chain;
 
@@ -240,8 +243,6 @@ interface Builder extends
     public static function noneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function not(Rule $rule): Chain;
-
-    public static function notBlank(): Chain;
 
     public static function notEmoji(): Chain;
 

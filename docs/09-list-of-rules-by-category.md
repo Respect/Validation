@@ -159,9 +159,9 @@
 
 ## Miscellaneous
 
+- [Blank](rules/Blank.md)
 - [FilterVar](rules/FilterVar.md)
 - [Named](rules/Named.md)
-- [NotBlank](rules/NotBlank.md)
 - [NotEmpty](rules/NotEmpty.md)
 - [NotUndef](rules/NotUndef.md)
 - [Templated](rules/Templated.md)
@@ -315,6 +315,7 @@
 - [Base64](rules/Base64.md)
 - [Between](rules/Between.md)
 - [BetweenExclusive](rules/BetweenExclusive.md)
+- [Blank](rules/Blank.md)
 - [BoolType](rules/BoolType.md)
 - [BoolVal](rules/BoolVal.md)
 - [Bsn](rules/Bsn.md)
@@ -403,7 +404,6 @@
 - [No](rules/No.md)
 - [NoneOf](rules/NoneOf.md)
 - [Not](rules/Not.md)
-- [NotBlank](rules/NotBlank.md)
 - [NotEmoji](rules/NotEmoji.md)
 - [NotEmpty](rules/NotEmpty.md)
 - [NotUndef](rules/NotUndef.md)

@@ -41,6 +41,8 @@ interface NotChain
 
     public function notBetweenExclusive(mixed $minimum, mixed $maximum): Chain;
 
+    public function notBlank(): Chain;
+
     public function notBoolType(): Chain;
 
     public function notBoolVal(): Chain;

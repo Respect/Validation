@@ -42,6 +42,8 @@ interface PropertyBuilder
 
     public static function propertyBetweenExclusive(string $propertyName, mixed $minimum, mixed $maximum): Chain;
 
+    public static function propertyBlank(string $propertyName): Chain;
+
     public static function propertyBoolType(string $propertyName): Chain;
 
     public static function propertyBoolVal(string $propertyName): Chain;
@@ -224,8 +226,6 @@ interface PropertyBuilder
     public static function propertyNoneOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function propertyNot(string $propertyName, Rule $rule): Chain;
-
-    public static function propertyNotBlank(string $propertyName): Chain;
 
     public static function propertyNotEmoji(string $propertyName): Chain;
 

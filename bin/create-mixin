@@ -107,10 +107,12 @@ function addMethodToInterface(
 
         $defaultValue = $reflectionParameter->getDefaultValue();
         if (is_object($defaultValue)) {
+            $parameter->setDefaultValue(null);
+            $parameter->setNullable(true);
             continue;
         }
 
-        $parameter->setDefaultValue($reflectionParameter->getDefaultValue());
+        $parameter->setDefaultValue($defaultValue);
         $parameter->setNullable(false);
     }
 }
@@ -170,10 +172,10 @@ function overwriteFile(string $content, string $basename): void
         ['Length', 'length', $numberRelatedRules, []],
         ['Max', 'max', $numberRelatedRules, []],
         ['Min', 'min', $numberRelatedRules, []],
-        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotBlank', 'NotEmoji', 'NotUndef', 'NullOr', 'UndefOr', 'Attributes', 'Templated', 'Named']],
-        ['NullOr', 'nullOr', [], ['NullOr', 'NotUndef', 'UndefOr', 'Templated', 'Named']],
+        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotEmoji', 'NotUndef', 'NullOr', 'UndefOr', 'Attributes', 'Templated', 'Named']],
+        ['NullOr', 'nullOr', [], ['NullOr', 'Blank', 'NotUndef', 'UndefOr', 'Templated', 'Named']],
         ['Property', 'property', [], $structureRelatedRules],
-        ['UndefOr', 'undefOr', [], ['NullOr', 'NotUndef', 'UndefOr', 'Attributes', 'Templated', 'Named']],
+        ['UndefOr', 'undefOr', [], ['NullOr', 'Blank', 'NotUndef', 'UndefOr', 'Attributes', 'Templated', 'Named']],
         ['', null, [], []],
     ];
 

@@ -42,6 +42,8 @@ interface KeyChain
 
     public function keyBetweenExclusive(int|string $key, mixed $minimum, mixed $maximum): Chain;
 
+    public function keyBlank(int|string $key): Chain;
+
     public function keyBoolType(int|string $key): Chain;
 
     public function keyBoolVal(int|string $key): Chain;
@@ -220,8 +222,6 @@ interface KeyChain
     public function keyNoneOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function keyNot(int|string $key, Rule $rule): Chain;
-
-    public function keyNotBlank(int|string $key): Chain;
 
     public function keyNotEmoji(int|string $key): Chain;
 

@@ -42,6 +42,8 @@ interface PropertyChain
 
     public function propertyBetweenExclusive(string $propertyName, mixed $minimum, mixed $maximum): Chain;
 
+    public function propertyBlank(string $propertyName): Chain;
+
     public function propertyBoolType(string $propertyName): Chain;
 
     public function propertyBoolVal(string $propertyName): Chain;
@@ -220,8 +222,6 @@ interface PropertyChain
     public function propertyNoneOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function propertyNot(string $propertyName, Rule $rule): Chain;
-
-    public function propertyNotBlank(string $propertyName): Chain;
 
     public function propertyNotEmoji(string $propertyName): Chain;
 
