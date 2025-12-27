@@ -38,3 +38,5 @@ v::alwaysValid()->isValid('whatever'); // true
 See also:
 
 - [AlwaysInvalid](AlwaysInvalid.md)
+- [KeyExists](KeyExists.md)
+- [PropertyExists](PropertyExists.md)

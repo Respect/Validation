@@ -72,6 +72,7 @@ v::property('foo', v::alwaysValid()->setName('Custom name'))->assert([]);
 
 See also:
 
+- [AlwaysValid](AlwaysValid.md)
 - [Attributes](Attributes.md)
 - [Key](Key.md)
 - [KeyExists](KeyExists.md)

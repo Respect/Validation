@@ -4,7 +4,6 @@ The `Validator` class is the core of Respect\Validation, offering a fluent inter
 
 For convenience, the `Validator` class is aliased as `v`. This means you can write `v::intType()` instead of `\Respect\Validation\Validator::intType()`.
 
-
 ## Validating using booleans
 
 With the `isValid()` method, determine if your input meets a specific validation rule.

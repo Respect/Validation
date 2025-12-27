@@ -101,13 +101,6 @@
 - [Uploaded](rules/Uploaded.md)
 - [Writable](rules/Writable.md)
 
-## ISO codes
-
-- [CountryCode](rules/CountryCode.md)
-- [CurrencyCode](rules/CurrencyCode.md)
-- [LanguageCode](rules/LanguageCode.md)
-- [SubdivisionCode](rules/SubdivisionCode.md)
-
 ## Identifications
 
 - [Bsn](rules/Bsn.md)
@@ -136,6 +129,13 @@
 - [Tld](rules/Tld.md)
 - [Url](rules/Url.md)
 - [VideoUrl](rules/VideoUrl.md)
+
+## ISO codes
+
+- [CountryCode](rules/CountryCode.md)
+- [CurrencyCode](rules/CurrencyCode.md)
+- [LanguageCode](rules/LanguageCode.md)
+- [SubdivisionCode](rules/SubdivisionCode.md)
 
 ## Localization
 
@@ -235,8 +235,8 @@
 - [In](rules/In.md)
 - [Json](rules/Json.md)
 - [Lowercase](rules/Lowercase.md)
-- [NoWhitespace](rules/NoWhitespace.md)
 - [NotEmoji](rules/NotEmoji.md)
+- [NoWhitespace](rules/NoWhitespace.md)
 - [Phone](rules/Phone.md)
 - [PhpLabel](rules/PhpLabel.md)
 - [PostalCode](rules/PostalCode.md)
@@ -401,13 +401,13 @@
 - [Nif](rules/Nif.md)
 - [Nip](rules/Nip.md)
 - [No](rules/No.md)
-- [NoWhitespace](rules/NoWhitespace.md)
 - [NoneOf](rules/NoneOf.md)
 - [Not](rules/Not.md)
 - [NotBlank](rules/NotBlank.md)
 - [NotEmoji](rules/NotEmoji.md)
 - [NotEmpty](rules/NotEmpty.md)
 - [NotUndef](rules/NotUndef.md)
+- [NoWhitespace](rules/NoWhitespace.md)
 - [NullOr](rules/NullOr.md)
 - [NullType](rules/NullType.md)
 - [Number](rules/Number.md)

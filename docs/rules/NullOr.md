@@ -21,12 +21,13 @@ v::nullOrEmail()->isValid('not an email'); // false
 v::nullOrBetween(1, 3)->isValid(2); // true
 v::nullOrBetween(1, 3)->isValid(null); // true
 ```
+
 ## Templates
 
 ### `NullOr::TEMPLATE_STANDARD`
 
 | Mode       | Template             |
-|------------|----------------------|
+| ---------- | -------------------- |
 | `default`  | or must be null      |
 | `inverted` | and must not be null |
 
@@ -43,8 +44,8 @@ v::not(v::nullOr(v::alpha()))->assert("alpha");
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `subject`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -53,11 +54,12 @@ v::not(v::nullOr(v::alpha()))->assert("alpha");
 ## Changelog
 
 | Version | Description           |
-|--------:|-----------------------|
+| ------: | --------------------- |
 |   3.0.0 | Renamed to `NullOr`   |
 |   2.0.0 | Created as `Nullable` |
 
-***
+---
+
 See also:
 
 - [Attributes](Attributes.md)

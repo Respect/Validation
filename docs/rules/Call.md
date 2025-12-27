@@ -46,17 +46,17 @@ v::call(
 ### `Call::TEMPLATE_STANDARD`
 
 | Mode       | Template                                                   |
-|------------|------------------------------------------------------------|
+| ---------- | ---------------------------------------------------------- |
 | `default`  | {{input}} must be a suitable argument for {{callable}}     |
 | `inverted` | {{input}} must not be a suitable argument for {{callable}} |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
+| ----------- | ---------------------------------------------------------------- |
 | `callable`  |                                                                  |
 | `input`     |                                                                  |
-| `subject`      | The validated input or the custom validator name (if specified). |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -67,10 +67,11 @@ v::call(
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   0.3.9 | Created     |
 
-***
+---
+
 See also:
 
 - [Callback](Callback.md)

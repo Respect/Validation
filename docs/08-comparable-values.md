@@ -10,8 +10,8 @@ You can make comparison with the following data types:
 - Numeric types
 - Single character string
 - Primitive types in general: normal operation comparison made by PHP
-- Time string: [date and time format](http://php.net/datetime.formats) 
-that can be parsed by PHP
+- Time string: [date and time format](http://php.net/datetime.formats)
+  that can be parsed by PHP
 
 Below you can see some examples:
 

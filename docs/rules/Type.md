@@ -16,12 +16,13 @@ v::type('object')->isValid(new stdClass()); // true
 
 ## Changelog
 
-Version | Description
---------|-------------
-  2.0.0 | Became case-sensitive
-  0.8.0 | Created
+| Version | Description           |
+| ------- | --------------------- |
+| 2.0.0   | Became case-sensitive |
+| 0.8.0   | Created               |
 
-***
+---
+
 See also:
 
 - [ArrayType](ArrayType.md)

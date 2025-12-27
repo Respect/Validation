@@ -59,9 +59,9 @@ v::notUndef()->isValid(new stdClass()); // true
 
 See also:
 
-- [NoWhitespace](NoWhitespace.md)
 - [NotBlank](NotBlank.md)
 - [NotEmpty](NotEmpty.md)
+- [NoWhitespace](NoWhitespace.md)
 - [NullType](NullType.md)
 - [Number](Number.md)
 - [UndefOr](UndefOr.md)

@@ -49,10 +49,10 @@ create_rule_documentation()
   sed -nE '/^# /,/^## Changelog/p' "${filename}" | ggrep -E -v '^## Changelog'
 
   # "Changelog" section
-  sed -nE '/^## Changelog/,/^\*\*\*/p' "${filename}" | ggrep -Fv '***'
+  sed -nE '/^## Changelog/,/^---/p' "${filename}"
 
   # "See also" section
-  echo "***"
+  echo
   echo "See also:"
   echo
   echo "${related_links}"

@@ -4,7 +4,7 @@ We use dependency injection container to create Validators with all their depend
 
 You can use different translators to translate validation messages into different languages, by overwriting the default container in `ContainerRegistry`, passing the translator you desire.
 
-Luckily, the `ContainerRegistry` has method that creates a pre-configured container using [php-di/php-di](https://php-di.org/). That means you just need to overwrite that service. 
+Luckily, the `ContainerRegistry` has method that creates a pre-configured container using [php-di/php-di](https://php-di.org/). That means you just need to overwrite that service.
 
 ```php
 use Respect\Validation\ContainerRegistry;

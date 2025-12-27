@@ -25,8 +25,8 @@ This rule does not have any templates, as it will use the template of the given 
 ## Template placeholders
 
 | Placeholder | Description                           |
-|-------------|---------------------------------------|
-| `subject`      | The value that you define as `$name`. |
+| ----------- | ------------------------------------- |
+| `subject`   | The value that you define as `$name`. |
 
 ## Categorization
 
@@ -37,10 +37,11 @@ This rule does not have any templates, as it will use the template of the given 
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   3.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Attributes](Attributes.md)

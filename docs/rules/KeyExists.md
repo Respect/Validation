@@ -71,6 +71,7 @@ v::key('foo', v::alwaysValid()->setName('Custom name'))->assert([]);
 
 See also:
 
+- [AlwaysValid](AlwaysValid.md)
 - [ArrayType](ArrayType.md)
 - [ArrayVal](ArrayVal.md)
 - [Each](Each.md)

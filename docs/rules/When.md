@@ -25,8 +25,8 @@ When `$else` is not defined use [AlwaysInvalid](AlwaysInvalid.md)
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `subject`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -36,11 +36,12 @@ When `$else` is not defined use [AlwaysInvalid](AlwaysInvalid.md)
 ## Changelog
 
 | Version | Description                    |
-|--------:|--------------------------------|
+| ------: | ------------------------------ |
 |   0.8.0 | Allow to use rule without else |
 |   0.3.9 | Created                        |
 
-***
+---
+
 See also:
 
 - [AllOf](AllOf.md)

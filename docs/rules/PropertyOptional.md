@@ -36,16 +36,16 @@ v::propertyOptional('name', v::notEmpty())->isValid('Not an object'); // true
 v::objectType()->propertyOptional('name', v::notEmpty())->isValid('Not an object'); // false
 ```
 
-* To only validate if a property exists, use [PropertyExists](PropertyExists.md) instead.
-* To validate a property against a given rule requiring the property to exist, use [Property](Property.md) instead.
+- To only validate if a property exists, use [PropertyExists](PropertyExists.md) instead.
+- To validate a property against a given rule requiring the property to exist, use [Property](Property.md) instead.
 
 ## Templates
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `subject`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -56,10 +56,11 @@ v::objectType()->propertyOptional('name', v::notEmpty())->isValid('Not an object
 ## Changelog
 
 | Version | Description                          |
-|--------:|--------------------------------------|
+| ------: | ------------------------------------ |
 |   3.0.0 | Created from [Property](Property.md) |
 
-***
+---
+
 See also:
 
 - [Attributes](Attributes.md)

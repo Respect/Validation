@@ -30,7 +30,7 @@ v::undefOrBetween(1, 3)->isValid(2); // true
 ### `UndefOr::TEMPLATE_STANDARD`
 
 | Mode       | Template                  |
-|------------|---------------------------|
+| ---------- | ------------------------- |
 | `default`  | or must be undefined      |
 | `inverted` | and must not be undefined |
 
@@ -47,8 +47,8 @@ v::not(v::undefOr(v::alpha()))->assert("alpha");
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `subject`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -57,16 +57,17 @@ v::not(v::undefOr(v::alpha()))->assert("alpha");
 ## Changelog
 
 | Version | Description           |
-|--------:|-----------------------|
+| ------: | --------------------- |
 |   3.0.0 | Renamed to `UndefOr`  |
 |   1.0.0 | Created as `Optional` |
 
-***
+---
+
 See also:
 
-- [NoWhitespace](NoWhitespace.md)
 - [NotBlank](NotBlank.md)
 - [NotEmpty](NotEmpty.md)
 - [NotUndef](NotUndef.md)
+- [NoWhitespace](NoWhitespace.md)
 - [NullOr](NullOr.md)
 - [NullType](NullType.md)

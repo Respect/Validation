@@ -28,8 +28,8 @@ on the input itself (`$_POST`), but it will use any input that’s given to the 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `subject`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -39,10 +39,11 @@ on the input itself (`$_POST`), but it will use any input that’s given to the 
 ## Changelog
 
 | Version | Description             |
-|--------:|-------------------------|
+| ------: | ----------------------- |
 |   3.0.0 | Created from `KeyValue` |
 
-***
+---
+
 See also:
 
 - [Call](Call.md)

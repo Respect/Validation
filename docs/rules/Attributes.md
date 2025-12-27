@@ -70,9 +70,9 @@ v::attributes()->assert(new Person('', 'not a date', 'not an email', 'not a phon
 
 ## Caveats
 
-* If the object has no attributes, the validation will always pass.
-* When the property is nullable, this rule will wrap the rule on the property into [NullOr](NullOr.md) rule.
-* This rule has no templates because it uses the templates of the rules that are applied to the properties.
+- If the object has no attributes, the validation will always pass.
+- When the property is nullable, this rule will wrap the rule on the property into [NullOr](NullOr.md) rule.
+- This rule has no templates because it uses the templates of the rules that are applied to the properties.
 
 ## Categorization
 
@@ -82,10 +82,11 @@ v::attributes()->assert(new Person('', 'not a date', 'not an email', 'not a phon
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   3.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Named](Named.md)

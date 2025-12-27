@@ -37,16 +37,16 @@ v::key('email', v::email())->assert(['email' => 'not email']);
 
 ## Note
 
-* To validate if a key exists, use [KeyExists](KeyExists.md) instead.
-* To validate an array against a given rule if the key exists, use [KeyOptional](KeyOptional.md) instead.
+- To validate if a key exists, use [KeyExists](KeyExists.md) instead.
+- To validate an array against a given rule if the key exists, use [KeyOptional](KeyOptional.md) instead.
 
 ## Templates
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `subject`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -57,11 +57,12 @@ v::key('email', v::email())->assert(['email' => 'not email']);
 ## Changelog
 
 | Version | Description                                                          |
-|--------:|----------------------------------------------------------------------|
+| ------: | -------------------------------------------------------------------- |
 |   3.0.0 | Split by [KeyExists](KeyExists.md) and [KeyOptional](KeyOptional.md) |
 |   0.3.9 | Created                                                              |
 
-***
+---
+
 See also:
 
 - [ArrayVal](ArrayVal.md)

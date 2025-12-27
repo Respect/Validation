@@ -24,16 +24,16 @@ empty, the validation will fail.
 
 ### `Min::TEMPLATE_STANDARD`
 
-| Mode       | Template         |
-|------------|------------------|
+| Mode       | Template       |
+| ---------- | -------------- |
 | `default`  | The minimum of |
 | `inverted` | The minimum of |
 
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `subject`      | The validated input or the custom validator name (if specified). |
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -43,13 +43,14 @@ empty, the validation will fail.
 ## Changelog
 
 | Version | Description                 |
-|--------:|-----------------------------|
+| ------: | --------------------------- |
 |   3.0.0 | Became a transformation     |
 |   2.0.0 | Became always inclusive     |
 |   1.0.0 | Became inclusive by default |
 |   0.3.9 | Created                     |
 
-***
+---
+
 See also:
 
 - [Between](Between.md)

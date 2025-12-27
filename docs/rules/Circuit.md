@@ -33,10 +33,11 @@ This rule does not have any templates, because it will always return the result 
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   3.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [AllOf](AllOf.md)

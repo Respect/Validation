@@ -26,9 +26,8 @@ This rule does not have any templates, as you must define the templates yourself
 ## Template placeholders
 
 | Placeholder | Description                                                      |
-|-------------|------------------------------------------------------------------|
-| `subject`      | The validated input or the custom validator name (if specified). |
-
+| ----------- | ---------------------------------------------------------------- |
+| `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization
 
@@ -39,10 +38,11 @@ This rule does not have any templates, as you must define the templates yourself
 ## Changelog
 
 | Version | Description |
-|--------:|-------------|
+| ------: | ----------- |
 |   3.0.0 | Created     |
 
-***
+---
+
 See also:
 
 - [Attributes](Attributes.md)
