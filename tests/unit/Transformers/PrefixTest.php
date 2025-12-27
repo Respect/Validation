@@ -95,7 +95,7 @@ final class PrefixTest extends TestCase
             'not' => ['not'],
             'notEmoji' => ['notEmoji'],
             'notEmpty' => ['notEmpty'],
-            'notUndef' => ['notUndef'],
+            'undef' => ['undef'],
             'property' => ['property'],
             'propertyExists' => ['propertyExists'],
             'propertyOptional' => ['propertyOptional'],

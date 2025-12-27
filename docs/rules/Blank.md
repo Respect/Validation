@@ -56,8 +56,8 @@ It's similar to [NotEmpty](NotEmpty.md), but way stricter.
 See also:
 
 - [NotEmpty](NotEmpty.md)
-- [NotUndef](NotUndef.md)
 - [NoWhitespace](NoWhitespace.md)
 - [NullType](NullType.md)
 - [Number](Number.md)
+- [Undef](Undef.md)
 - [UndefOr](UndefOr.md)

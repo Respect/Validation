@@ -227,8 +227,6 @@ interface KeyChain
 
     public function keyNotEmpty(int|string $key): Chain;
 
-    public function keyNotUndef(int|string $key): Chain;
-
     public function keyNullType(int|string $key): Chain;
 
     public function keyNumber(int|string $key): Chain;
@@ -304,6 +302,8 @@ interface KeyChain
     public function keyTld(int|string $key): Chain;
 
     public function keyTrueVal(int|string $key): Chain;
+
+    public function keyUndef(int|string $key): Chain;
 
     public function keyUnique(int|string $key): Chain;
 

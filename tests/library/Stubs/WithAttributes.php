@@ -12,8 +12,8 @@ namespace Respect\Validation\Test\Stubs;
 use Respect\Validation\Rules as Rule;
 
 #[Rule\AnyOf(
-    new Rule\Property('email', new Rule\NotUndef()),
-    new Rule\Property('phone', new Rule\NotUndef()),
+    new Rule\Property('email', new Rule\Not(new Rule\Undef())),
+    new Rule\Property('phone', new Rule\Not(new Rule\Undef())),
 )]
 final class WithAttributes extends ParentWithAttributes
 {

@@ -163,8 +163,8 @@
 - [FilterVar](rules/FilterVar.md)
 - [Named](rules/Named.md)
 - [NotEmpty](rules/NotEmpty.md)
-- [NotUndef](rules/NotUndef.md)
 - [Templated](rules/Templated.md)
+- [Undef](rules/Undef.md)
 
 ## Nesting
 
@@ -406,7 +406,6 @@
 - [Not](rules/Not.md)
 - [NotEmoji](rules/NotEmoji.md)
 - [NotEmpty](rules/NotEmpty.md)
-- [NotUndef](rules/NotUndef.md)
 - [NoWhitespace](rules/NoWhitespace.md)
 - [NullOr](rules/NullOr.md)
 - [NullType](rules/NullType.md)
@@ -451,6 +450,7 @@
 - [Tld](rules/Tld.md)
 - [TrueVal](rules/TrueVal.md)
 - [Type](rules/Type.md)
+- [Undef](rules/Undef.md)
 - [UndefOr](rules/UndefOr.md)
 - [Unique](rules/Unique.md)
 - [Uploaded](rules/Uploaded.md)
