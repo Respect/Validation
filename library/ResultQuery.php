@@ -52,13 +52,13 @@ final readonly class ResultQuery implements Stringable
 
     public function findByName(string $name): self|null
     {
-        if ($this->result->name?->value === $name) {
+        if ($this->result->subject->name?->value === $name) {
             return $this;
         }
 
         foreach ($this->result->children as $child) {
             $resultQuery = clone ($this, ['result' => $child]);
-            if ($child->name?->value === $name) {
+            if ($child->subject->name?->value === $name) {
                 return $resultQuery;
             }
 
@@ -70,7 +70,7 @@ final readonly class ResultQuery implements Stringable
 
     public function findByPath(string|int $path): self|null
     {
-        if ($this->result->path?->value === $path) {
+        if ($this->result->subject->path?->value === $path) {
             return $this;
         }
 
@@ -78,7 +78,7 @@ final readonly class ResultQuery implements Stringable
         $currentPath = array_shift($paths);
 
         foreach ($this->result->children as $child) {
-            if ($child->path?->value !== $currentPath) {
+            if ($child->subject->path?->value !== $currentPath) {
                 continue;
             }
 

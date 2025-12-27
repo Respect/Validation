@@ -45,7 +45,7 @@ final class UndefOr extends Wrapper
         if ($result->allowsAdjacent()) {
             return $result
                 ->withId($result->id->withPrefix('undefOr'))
-                ->withAdjacent(Result::of($result->hasPassed, $result->input, $this));
+                ->withAdjacent(Result::of($result->hasPassed, $result->subject->input, $this));
         }
 
         return $result->withChildren(...array_map(fn(Result $child) => $this->enrichResult($child), $result->children));

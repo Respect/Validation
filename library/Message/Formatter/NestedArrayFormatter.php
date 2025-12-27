@@ -27,13 +27,13 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
     {
         if (count($result->children) === 0) {
             return [
-                $result->path->value ?? $result->id->value => $renderer->render($result, $templates),
+                $result->subject->path->value ?? $result->id->value => $renderer->render($result, $templates),
             ];
         }
 
         $messages = [];
         foreach ($result->children as $child) {
-            $key = $child->path->value ?? $child->id->value;
+            $key = $child->subject->path->value ?? $child->id->value;
             $messages[$key] = $this->format(
                 $child->withoutName(),
                 $renderer,

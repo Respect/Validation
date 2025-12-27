@@ -13,12 +13,6 @@ final readonly class Name
 {
     public function __construct(
         public string $value,
-        public Path|null $path = null,
     ) {
-    }
-
-    public function withPath(Path $path): Name
-    {
-        return new self($this->value, $path);
     }
 }
