@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('Scenario #1', catchFullMessage(
-    fn() => v::alnum()->noWhitespace()->lengthBetween(1, 15)->assert('really messed up screen#name'),
+    fn() => v::alnum()->notSpaced()->lengthBetween(1, 15)->assert('really messed up screen#name'),
     fn(string $fullMessage) => expect($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - "really messed up screen#name" must pass all the rules
           - "really messed up screen#name" must contain only letters (a-z) and digits (0-9)

@@ -59,7 +59,7 @@ See also:
 
 - [Blank](Blank.md)
 - [NotEmpty](NotEmpty.md)
-- [NoWhitespace](NoWhitespace.md)
 - [NullType](NullType.md)
 - [Number](Number.md)
+- [Spaced](Spaced.md)
 - [UndefOr](UndefOr.md)

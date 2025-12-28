@@ -3,7 +3,7 @@
 - `NotEmpty()`
 
 Validates wether the given input is not empty. This function also takes whitespace
-into account, use `noWhitespace()` if no spaces or linebreaks and other
+into account, use `notSpaced()` if no spaces or linebreaks and other
 whitespace anywhere in the input is desired.
 
 ```php
@@ -68,8 +68,8 @@ See also:
 - [Each](Each.md)
 - [Max](Max.md)
 - [Min](Min.md)
-- [NoWhitespace](NoWhitespace.md)
 - [NullType](NullType.md)
 - [Number](Number.md)
+- [Spaced](Spaced.md)
 - [Undef](Undef.md)
 - [UndefOr](UndefOr.md)

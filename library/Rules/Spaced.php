@@ -18,21 +18,17 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must not contain whitespaces',
     '{{subject}} must contain at least one whitespace',
+    '{{subject}} must not contain whitespaces',
 )]
-final class NoWhitespace extends Simple
+final class Spaced extends Simple
 {
     public function isValid(mixed $input): bool
     {
-        if ($input === null) {
-            return true;
-        }
-
-        if (is_scalar($input) === false) {
+        if (!is_scalar($input)) {
             return false;
         }
 
-        return !preg_match('#\s#', (string) $input);
+        return preg_match('/\s/', (string) $input) > 0;
     }
 }

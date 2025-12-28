@@ -221,8 +221,6 @@ interface PropertyBuilder
 
     public static function propertyNo(string $propertyName, bool $useLocale = false): Chain;
 
-    public static function propertyNoWhitespace(string $propertyName): Chain;
-
     public static function propertyNoneOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function propertyNot(string $propertyName, Rule $rule): Chain;
@@ -291,6 +289,8 @@ interface PropertyBuilder
     public static function propertySorted(string $propertyName, string $direction): Chain;
 
     public static function propertySpace(string $propertyName, string ...$additionalChars): Chain;
+
+    public static function propertySpaced(string $propertyName): Chain;
 
     public static function propertyStartsWith(string $propertyName, mixed $startValue, bool $identical = false): Chain;
 

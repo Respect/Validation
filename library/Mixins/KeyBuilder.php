@@ -217,8 +217,6 @@ interface KeyBuilder
 
     public static function keyNo(int|string $key, bool $useLocale = false): Chain;
 
-    public static function keyNoWhitespace(int|string $key): Chain;
-
     public static function keyNoneOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function keyNot(int|string $key, Rule $rule): Chain;
@@ -283,6 +281,8 @@ interface KeyBuilder
     public static function keySorted(int|string $key, string $direction): Chain;
 
     public static function keySpace(int|string $key, string ...$additionalChars): Chain;
+
+    public static function keySpaced(int|string $key): Chain;
 
     public static function keyStartsWith(int|string $key, mixed $startValue, bool $identical = false): Chain;
 

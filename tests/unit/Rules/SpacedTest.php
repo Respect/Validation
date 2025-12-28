@@ -15,13 +15,13 @@ use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 #[Group('rule')]
-#[CoversClass(NoWhitespace::class)]
-final class NoWhitespaceTest extends RuleTestCase
+#[CoversClass(Spaced::class)]
+final class SpacedTest extends RuleTestCase
 {
-    /** @return iterable<array{NoWhitespace, mixed}> */
-    public static function providerForValidInput(): iterable
+    /** @return iterable<array{Spaced, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
-        $rule = new NoWhitespace();
+        $rule = new Spaced();
 
         return [
             [$rule, ''],
@@ -29,17 +29,17 @@ final class NoWhitespaceTest extends RuleTestCase
             [$rule, 0],
             [$rule, 'wpoiur'],
             [$rule, 'Foo'],
+            [$rule, []],
+            [$rule, new stdClass()],
         ];
     }
 
-    /** @return iterable<array{NoWhitespace, mixed}> */
-    public static function providerForInvalidInput(): iterable
+    /** @return iterable<array{Spaced, mixed}> */
+    public static function providerForValidInput(): iterable
     {
-        $rule = new NoWhitespace();
+        $rule = new Spaced();
 
         return [
-            [$rule, []],
-            [$rule, new stdClass()],
             [$rule, ' '],
             [$rule, 'w poiur'],
             [$rule, '      '],

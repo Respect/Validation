@@ -61,7 +61,7 @@ final class Domain implements Rule
     {
         return new Circuit(
             new StringType(),
-            new NoWhitespace(),
+            new Not(new Spaced()),
             new Contains('.'),
             new Length(new GreaterThanOrEqual(3)),
         );

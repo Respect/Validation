@@ -7,22 +7,25 @@ or magic methods. We'll use a traditional dependency injection approach.
 ```php
 use Respect\Validation\Validator as v;
 
-$usernameValidator = v::alnum()->noWhitespace()->length(1, 15);
+$usernameValidator = v::alnum()->notSpaced()->length(1, 15);
 $usernameValidator->isValid('alganet'); // true
 ```
 
 If you `var_dump($usernameValidator)`, you'll see a composite of objects with
-`Respect\Validation\Rules\Alnum`, `Respect\Validation\Rules\NoWhitespace` and
+`Respect\Validation\Rules\Alnum`, `Respect\Validation\Rules\Spaced` wrapped in `Respect\Validation\Rules\Not` and
 `Respect\Validation\Rules\Length`. There is a specific object for each rule, and
 the chain only builds the structure. You can build it by yourself:
 
 ```php
 use Respect\Validation\Rules;
+use Respect\Validation\Validator;
 
-$usernameValidator = new Rules\AllOf(
+$usernameValidator = Validator::create(
     new Rules\Alnum(),
-    new Rules\NoWhitespace(),
-    new Rules\Length(1, 15)
+    new Rules\Not(
+        new Rules\Spaced(),
+    ),
+    new Rules\Length(1, 15),
 );
 $usernameValidator->isValid('alganet'); // true
 ```
@@ -33,12 +36,18 @@ container or test it in the way you want. Nesting is still possible:
 ```php
 use Respect\Validation\Rules;
 
-$usernameValidator = new Rules\AllOf(
-    new Rules\Alnum(),
-    new Rules\NoWhitespace(),
-    new Rules\Length(1, 15)
+$usernameValidator = Validator::create(
+    new Rules\Key(
+        'name',
+        new Rules\AllOf(
+            new Rules\Alnum(),
+            new Rules\Not(
+                new Rules\Spaced(),
+            ),
+            new Rules\Length(1, 15),
+        )
+    )
 );
-$userValidator = new Rules\Key('name', $usernameValidator);
 $userValidator->isValid(['name' => 'alganet']); // true
 ```
 
@@ -63,7 +72,7 @@ something complex and returns for you.
 
 > I really don't like static calls, can I avoid it?
 
-Yes. Just use `$validator = new Validator();` each time you want a new validator,
+Yes. Just use `$validator = Validator::create();` each time you want a new validator,
 and continue from there.
 
 > Do you have a static method for each rule?

@@ -225,8 +225,6 @@ interface NotBuilder
 
     public static function notNo(bool $useLocale = false): Chain;
 
-    public static function notNoWhitespace(): Chain;
-
     public static function notNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function notNullType(): Chain;
@@ -291,6 +289,8 @@ interface NotBuilder
     public static function notSorted(string $direction): Chain;
 
     public static function notSpace(string ...$additionalChars): Chain;
+
+    public static function notSpaced(): Chain;
 
     public static function notStartsWith(mixed $startValue, bool $identical = false): Chain;
 

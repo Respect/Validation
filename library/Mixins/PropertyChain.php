@@ -217,8 +217,6 @@ interface PropertyChain
 
     public function propertyNo(string $propertyName, bool $useLocale = false): Chain;
 
-    public function propertyNoWhitespace(string $propertyName): Chain;
-
     public function propertyNoneOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function propertyNot(string $propertyName, Rule $rule): Chain;
@@ -283,6 +281,8 @@ interface PropertyChain
     public function propertySorted(string $propertyName, string $direction): Chain;
 
     public function propertySpace(string $propertyName, string ...$additionalChars): Chain;
+
+    public function propertySpaced(string $propertyName): Chain;
 
     public function propertyStartsWith(string $propertyName, mixed $startValue, bool $identical = false): Chain;
 

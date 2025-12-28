@@ -225,8 +225,6 @@ interface NullOrBuilder
 
     public static function nullOrNo(bool $useLocale = false): Chain;
 
-    public static function nullOrNoWhitespace(): Chain;
-
     public static function nullOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function nullOrNot(Rule $rule): Chain;
@@ -297,6 +295,8 @@ interface NullOrBuilder
     public static function nullOrSorted(string $direction): Chain;
 
     public static function nullOrSpace(string ...$additionalChars): Chain;
+
+    public static function nullOrSpaced(): Chain;
 
     public static function nullOrStartsWith(mixed $startValue, bool $identical = false): Chain;
 

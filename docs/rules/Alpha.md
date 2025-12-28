@@ -66,7 +66,7 @@ See also:
 - [Digit](Digit.md)
 - [Lowercase](Lowercase.md)
 - [NotEmoji](NotEmoji.md)
-- [NoWhitespace](NoWhitespace.md)
 - [Regex](Regex.md)
+- [Spaced](Spaced.md)
 - [Uppercase](Uppercase.md)
 - [Vowel](Vowel.md)

@@ -241,8 +241,6 @@ interface Chain extends
 
     public function no(bool $useLocale = false): Chain;
 
-    public function noWhitespace(): Chain;
-
     public function noneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function not(Rule $rule): Chain;
@@ -315,6 +313,8 @@ interface Chain extends
     public function sorted(string $direction): Chain;
 
     public function space(string ...$additionalChars): Chain;
+
+    public function spaced(): Chain;
 
     public function startsWith(mixed $startValue, bool $identical = false): Chain;
 

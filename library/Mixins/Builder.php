@@ -238,8 +238,6 @@ interface Builder extends
 
     public static function no(bool $useLocale = false): Chain;
 
-    public static function noWhitespace(): Chain;
-
     public static function noneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function not(Rule $rule): Chain;
@@ -312,6 +310,8 @@ interface Builder extends
     public static function sorted(string $direction): Chain;
 
     public static function space(string ...$additionalChars): Chain;
+
+    public static function spaced(): Chain;
 
     public static function startsWith(mixed $startValue, bool $identical = false): Chain;
 

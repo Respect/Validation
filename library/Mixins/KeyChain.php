@@ -217,8 +217,6 @@ interface KeyChain
 
     public function keyNo(int|string $key, bool $useLocale = false): Chain;
 
-    public function keyNoWhitespace(int|string $key): Chain;
-
     public function keyNoneOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function keyNot(int|string $key, Rule $rule): Chain;
@@ -283,6 +281,8 @@ interface KeyChain
     public function keySorted(int|string $key, string $direction): Chain;
 
     public function keySpace(int|string $key, string ...$additionalChars): Chain;
+
+    public function keySpaced(int|string $key): Chain;
 
     public function keyStartsWith(int|string $key, mixed $startValue, bool $identical = false): Chain;
 

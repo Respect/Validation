@@ -30,7 +30,7 @@ The current supported brands are:
 - RuPay (`'RuPay'` or `CreditCard::RUPAY`)
 
 It ignores any non-numeric characters, use [Digit](Digit.md),
-[NoWhitespace](NoWhitespace.md), or [Regex](Regex.md) when appropriate.
+[Spaced](Spaced.md), or [Regex](Regex.md) when appropriate.
 
 ```php
 v::digit()->creditCard()->isValid('5376747397208720'); // true
@@ -79,5 +79,5 @@ See also:
 - [Digit](Digit.md)
 - [Iban](Iban.md)
 - [Luhn](Luhn.md)
-- [NoWhitespace](NoWhitespace.md)
 - [Regex](Regex.md)
+- [Spaced](Spaced.md)

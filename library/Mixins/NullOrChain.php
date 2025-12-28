@@ -225,8 +225,6 @@ interface NullOrChain
 
     public function nullOrNo(bool $useLocale = false): Chain;
 
-    public function nullOrNoWhitespace(): Chain;
-
     public function nullOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function nullOrNot(Rule $rule): Chain;
@@ -297,6 +295,8 @@ interface NullOrChain
     public function nullOrSorted(string $direction): Chain;
 
     public function nullOrSpace(string ...$additionalChars): Chain;
+
+    public function nullOrSpaced(): Chain;
 
     public function nullOrStartsWith(mixed $startValue, bool $identical = false): Chain;
 

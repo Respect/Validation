@@ -223,8 +223,6 @@ interface UndefOrChain
 
     public function undefOrNo(bool $useLocale = false): Chain;
 
-    public function undefOrNoWhitespace(): Chain;
-
     public function undefOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function undefOrNot(Rule $rule): Chain;
@@ -295,6 +293,8 @@ interface UndefOrChain
     public function undefOrSorted(string $direction): Chain;
 
     public function undefOrSpace(string ...$additionalChars): Chain;
+
+    public function undefOrSpaced(): Chain;
 
     public function undefOrStartsWith(mixed $startValue, bool $identical = false): Chain;
 
