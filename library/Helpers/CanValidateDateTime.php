@@ -11,7 +11,6 @@ namespace Respect\Validation\Helpers;
 
 use DateTime;
 use DateTimeZone;
-
 use function checkdate;
 use function date_default_timezone_get;
 use function date_parse_from_format;
@@ -33,7 +32,7 @@ trait CanValidateDateTime
 
         if ($this->isDateFormat($format)) {
             $formattedDate = DateTime::createFromFormat(
-                '!'.$format,
+                '!' . $format,
                 $value,
                 new DateTimeZone(date_default_timezone_get()),
             );
@@ -63,7 +62,7 @@ trait CanValidateDateTime
     private function isDateInformation(array $info): bool
     {
         if ($info['day']) {
-            return checkdate((int) $info['month'], $info['day'], (int) $info['year']);
+            return checkdate((int)$info['month'], $info['day'], (int)$info['year']);
         }
 
         return checkdate($info['month'] ?: 1, 1, $info['year'] ?: 1);
