@@ -14,6 +14,8 @@ use Respect\Validation\Rule;
 
 interface NullOrBuilder
 {
+    public static function nullOrAll(Rule $rule): Chain;
+
     public static function nullOrAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function nullOrAlnum(string ...$additionalChars): Chain;

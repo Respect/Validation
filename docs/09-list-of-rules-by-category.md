@@ -43,6 +43,7 @@
 
 ## Comparisons
 
+- [All](rules/All.md)
 - [Between](rules/Between.md)
 - [BetweenExclusive](rules/BetweenExclusive.md)
 - [Equals](rules/Equals.md)
@@ -270,6 +271,7 @@
 
 ## Transformations
 
+- [All](rules/All.md)
 - [Call](rules/Call.md)
 - [Each](rules/Each.md)
 - [Length](rules/Length.md)
@@ -302,6 +304,7 @@
 
 ## Alphabetically
 
+- [All](rules/All.md)
 - [AllOf](rules/AllOf.md)
 - [Alnum](rules/Alnum.md)
 - [Alpha](rules/Alpha.md)

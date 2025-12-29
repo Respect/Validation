@@ -17,6 +17,7 @@ use Respect\Validation\Validator;
 /** @mixin Validator */
 interface Chain extends
     Rule,
+    AllChain,
     KeyChain,
     LengthChain,
     MaxChain,
@@ -26,6 +27,8 @@ interface Chain extends
     PropertyChain,
     UndefOrChain
 {
+    public function all(Rule $rule): Chain;
+
     public function allOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function alnum(string ...$additionalChars): Chain;
