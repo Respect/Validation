@@ -221,7 +221,7 @@ interface KeyBuilder
 
     public static function keyNot(int|string $key, Rule $rule): Chain;
 
-    public static function keyNotEmoji(int|string $key): Chain;
+    public static function keyEmoji(int|string $key): Chain;
 
     public static function keyNotEmpty(int|string $key): Chain;
 

@@ -221,7 +221,7 @@ interface PropertyChain
 
     public function propertyNot(string $propertyName, Rule $rule): Chain;
 
-    public function propertyNotEmoji(string $propertyName): Chain;
+    public function propertyEmoji(string $propertyName): Chain;
 
     public function propertyNotEmpty(string $propertyName): Chain;
 

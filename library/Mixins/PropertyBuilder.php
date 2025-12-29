@@ -225,7 +225,7 @@ interface PropertyBuilder
 
     public static function propertyNot(string $propertyName, Rule $rule): Chain;
 
-    public static function propertyNotEmoji(string $propertyName): Chain;
+    public static function propertyEmoji(string $propertyName): Chain;
 
     public static function propertyNotEmpty(string $propertyName): Chain;
 

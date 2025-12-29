@@ -8,34 +8,31 @@ require __DIR__ . '/../vendor/autoload.php';
 use Nette\PhpGenerator\InterfaceType;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\Printer;
-use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Mixins\KeyChain;
-use Respect\Validation\Mixins\LengthChain;
-use Respect\Validation\Mixins\MaxChain;
-use Respect\Validation\Mixins\MinChain;
-use Respect\Validation\Mixins\NotChain;
-use Respect\Validation\Mixins\NullOrChain;
-use Respect\Validation\Mixins\PropertyChain;
-use Respect\Validation\Mixins\UndefOrChain;
 use Respect\Validation\Mixins\Chain;
 use Respect\Validation\Mixins\KeyBuilder;
+use Respect\Validation\Mixins\KeyChain;
 use Respect\Validation\Mixins\LengthBuilder;
+use Respect\Validation\Mixins\LengthChain;
 use Respect\Validation\Mixins\MaxBuilder;
+use Respect\Validation\Mixins\MaxChain;
 use Respect\Validation\Mixins\MinBuilder;
+use Respect\Validation\Mixins\MinChain;
 use Respect\Validation\Mixins\NotBuilder;
+use Respect\Validation\Mixins\NotChain;
 use Respect\Validation\Mixins\NullOrBuilder;
+use Respect\Validation\Mixins\NullOrChain;
 use Respect\Validation\Mixins\PropertyBuilder;
+use Respect\Validation\Mixins\PropertyChain;
 use Respect\Validation\Mixins\UndefOrBuilder;
-use Respect\Validation\Rules\Undef;
-use Respect\Validation\Rules\NullOr;
-use Respect\Validation\Rules\UndefOr;
+use Respect\Validation\Mixins\UndefOrChain;
 use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 function addMethodToInterface(
     string $originalName,
     InterfaceType $interfaceType,
     ReflectionClass $reflection,
-    ?string $prefix,
+    string|null $prefix,
     array $allowList,
     array $denyList,
 ): void {
@@ -65,6 +62,7 @@ function addMethodToInterface(
     if ($reflrectionConstructor === null) {
         return;
     }
+
     $commend = $reflrectionConstructor->getDocComment();
     if ($commend) {
         $method->addComment(preg_replace('@(/\*\* *| +\* +| +\*/)@', '', $commend));
@@ -83,13 +81,15 @@ function addMethodToInterface(
             }
         } elseif ($type instanceof ReflectionNamedType) {
             $types[] = $type->getName();
-            if (            str_starts_with($type->getName(), 'Sokil')
+            if (
+                str_starts_with($type->getName(), 'Sokil')
                 || str_starts_with($type->getName(), 'Egulias')
                 || $type->getName() === 'finfo'
             ) {
                 continue;
             }
         }
+
         $parameter = $method->addParameter($reflectionParameter->getName());
         $parameter->setType(implode('|', $types));
 
@@ -121,7 +121,7 @@ function overwriteFile(string $content, string $basename): void
 {
     file_put_contents(sprintf('%s/../library/Mixins/%s.php', __DIR__, $basename), implode(PHP_EOL . PHP_EOL, [
         '<?php',
-        file_get_contents(__DIR__.'/../.docheader'),
+        file_get_contents(__DIR__ . '/../.docheader'),
         'declare(strict_types=1);',
         preg_replace('/extends (.+, )+/', 'extends' . PHP_EOL . '\1', $content),
     ]));
@@ -172,7 +172,7 @@ function overwriteFile(string $content, string $basename): void
         ['Length', 'length', $numberRelatedRules, []],
         ['Max', 'max', $numberRelatedRules, []],
         ['Min', 'min', $numberRelatedRules, []],
-        ['Not', 'not', [], ['Not', 'NotEmpty', 'NotEmoji', 'NullOr', 'UndefOr', 'Attributes', 'Templated', 'Named']],
+        ['Not', 'not', [], ['Not', 'NotEmpty', 'NullOr', 'UndefOr', 'Attributes', 'Templated', 'Named']],
         ['NullOr', 'nullOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Templated', 'Named']],
         ['Property', 'property', [], $structureRelatedRules],
         ['UndefOr', 'undefOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Attributes', 'Templated', 'Named']],
@@ -190,8 +190,10 @@ function overwriteFile(string $content, string $basename): void
         if ($reflection->isAbstract()) {
             continue;
         }
+
         $names[$reflection->getShortName()] = $reflection;
     }
+
     ksort($names);
 
     foreach ($mixins as [$name, $prefix, $allowList, $denyList]) {
@@ -213,7 +215,7 @@ function overwriteFile(string $content, string $basename): void
             $chainedInterface->addExtend(NullOrChain::class);
             $chainedInterface->addExtend(PropertyChain::class);
             $chainedInterface->addExtend(UndefOrChain::class);
-            $chainedInterface->addComment('@mixin \\' . \Respect\Validation\Validator::class);
+            $chainedInterface->addComment('@mixin \\' . Validator::class);
 
             $staticInterface->addExtend(KeyBuilder::class);
             $staticInterface->addExtend(LengthBuilder::class);
@@ -237,5 +239,5 @@ function overwriteFile(string $content, string $basename): void
         overwriteFile($printer->printNamespace($chainedNamespace), $chainedInterface->getName());
     }
 
-    shell_exec(__DIR__.'/../vendor/bin/phpcbf');
+    shell_exec(__DIR__ . '/../vendor/bin/phpcbf ' . __DIR__ . '/../library/Mixins');
 })();

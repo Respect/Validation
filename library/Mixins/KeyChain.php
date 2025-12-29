@@ -221,7 +221,7 @@ interface KeyChain
 
     public function keyNot(int|string $key, Rule $rule): Chain;
 
-    public function keyNotEmoji(int|string $key): Chain;
+    public function keyEmoji(int|string $key): Chain;
 
     public function keyNotEmpty(int|string $key): Chain;
 

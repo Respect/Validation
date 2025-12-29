@@ -27,7 +27,7 @@ final class Prefix implements Transformer
         'min',
         'minAge',
         'not',
-        'notEmoji',
+        'emoji',
         'notEmpty',
         'undef',
         'nullOr',

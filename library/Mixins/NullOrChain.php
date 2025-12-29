@@ -229,7 +229,7 @@ interface NullOrChain
 
     public function nullOrNot(Rule $rule): Chain;
 
-    public function nullOrNotEmoji(): Chain;
+    public function nullOrEmoji(): Chain;
 
     public function nullOrNotEmpty(): Chain;
 

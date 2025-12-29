@@ -242,7 +242,7 @@ interface Builder extends
 
     public static function not(Rule $rule): Chain;
 
-    public static function notEmoji(): Chain;
+    public static function emoji(): Chain;
 
     public static function notEmpty(): Chain;
 

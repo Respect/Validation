@@ -245,7 +245,7 @@ interface Chain extends
 
     public function not(Rule $rule): Chain;
 
-    public function notEmoji(): Chain;
+    public function emoji(): Chain;
 
     public function notEmpty(): Chain;
 
