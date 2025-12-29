@@ -18,7 +18,7 @@ use Respect\Validation\Rules as Rule;
 final class WithAttributes extends ParentWithAttributes
 {
     public function __construct(
-        #[Rule\NotEmpty]
+        #[Rule\Not(new Rule\Undef())]
         public string $name,
         #[Rule\Date('Y-m-d')]
         #[Rule\DateTimeDiff('years', new Rule\LessThanOrEqual(25))]

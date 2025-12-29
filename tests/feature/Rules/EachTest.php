@@ -18,9 +18,9 @@ test('Non-iterable', catchAll(
 test('Empty', catchAll(
     fn() => v::each(v::intType())->assert([]),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('`[]` must not be empty')
-        ->and($fullMessage)->toBe('- `[]` must not be empty')
-        ->and($messages)->toBe(['each' => '`[]` must not be empty']),
+        ->and($message)->toBe('The length of `[]` must be greater than 0')
+        ->and($fullMessage)->toBe('- The length of `[]` must be greater than 0')
+        ->and($messages)->toBe(['each' => 'The length of `[]` must be greater than 0']),
 ));
 
 test('Default', catchAll(
@@ -70,9 +70,9 @@ test('With name, non-iterable', catchAll(
 test('With name, empty', catchAll(
     fn() => v::each(v::intType()->setName('Wrapped'))->assert([]),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('Wrapped must not be empty')
-        ->and($fullMessage)->toBe('- Wrapped must not be empty')
-        ->and($messages)->toBe(['each' => 'Wrapped must not be empty']),
+        ->and($message)->toBe('The length of Wrapped must be greater than 0')
+        ->and($fullMessage)->toBe('- The length of Wrapped must be greater than 0')
+        ->and($messages)->toBe(['each' => 'The length of Wrapped must be greater than 0']),
 ));
 
 test('With name, default', catchAll(

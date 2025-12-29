@@ -15,13 +15,13 @@ use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
 #[Group('rule')]
-#[CoversClass(NotEmpty::class)]
-final class NotEmptyTest extends RuleTestCase
+#[CoversClass(Falsy::class)]
+final class FalsyTest extends RuleTestCase
 {
-    /** @return iterable<array{NotEmpty, mixed}> */
-    public static function providerForValidInput(): iterable
+    /** @return iterable<array{Falsy, mixed}> */
+    public static function providerForInvalidInput(): iterable
     {
-        $rule = new NotEmpty();
+        $rule = new Falsy();
 
         return [
             [$rule, 1],
@@ -29,18 +29,18 @@ final class NotEmptyTest extends RuleTestCase
             [$rule, [5]],
             [$rule, [0]],
             [$rule, new stdClass()],
+            [$rule, '    '],
+            [$rule, "\n"],
         ];
     }
 
-    /** @return iterable<array{NotEmpty, mixed}> */
-    public static function providerForInvalidInput(): iterable
+    /** @return iterable<array{Falsy, mixed}> */
+    public static function providerForValidInput(): iterable
     {
-        $rule = new NotEmpty();
+        $rule = new Falsy();
 
         return [
             [$rule, ''],
-            [$rule, '    '],
-            [$rule, "\n"],
             [$rule, false],
             [$rule, null],
             [$rule, []],

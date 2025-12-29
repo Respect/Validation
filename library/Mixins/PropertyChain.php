@@ -110,6 +110,8 @@ interface PropertyChain
 
     public function propertyEmail(string $propertyName): Chain;
 
+    public function propertyEmoji(string $propertyName): Chain;
+
     public function propertyEndsWith(string $propertyName, mixed $endValue, bool $identical = false): Chain;
 
     public function propertyEquals(string $propertyName, mixed $compareTo): Chain;
@@ -125,6 +127,8 @@ interface PropertyChain
     public function propertyFactor(string $propertyName, int $dividend): Chain;
 
     public function propertyFalseVal(string $propertyName): Chain;
+
+    public function propertyFalsy(string $propertyName): Chain;
 
     public function propertyFibonacci(string $propertyName): Chain;
 
@@ -220,10 +224,6 @@ interface PropertyChain
     public function propertyNoneOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function propertyNot(string $propertyName, Rule $rule): Chain;
-
-    public function propertyEmoji(string $propertyName): Chain;
-
-    public function propertyNotEmpty(string $propertyName): Chain;
 
     public function propertyNullType(string $propertyName): Chain;
 

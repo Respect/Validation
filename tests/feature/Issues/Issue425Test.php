@@ -10,8 +10,8 @@ declare(strict_types=1);
 test('https://github.com/Respect/Validation/issues/425', catchAll(
     function (): void {
         $validator = v::create()
-            ->key('age', v::intType()->notEmpty()->noneOf(v::stringType(), v::arrayType()))
-            ->key('reference', v::stringType()->notEmpty()->lengthBetween(1, 50));
+            ->key('age', v::intType()->notBlank()->noneOf(v::stringType(), v::arrayType()))
+            ->key('reference', v::stringType()->notBlank()->lengthBetween(1, 50));
         $validator->assert(['age' => 1]);
     },
     fn(string $message, string $fullMessage, array $messages) => expect()

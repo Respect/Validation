@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 test('https://github.com/Respect/Validation/issues/1334', catchAll(
     function (): void {
-        v::notEmpty()->iterableType()->each(
-            v::key('street', v::stringType()->notEmpty())
-                ->key('region', v::stringType()->notEmpty())
-                ->key('country', v::stringType()->notEmpty())
-                ->keyOptional('other', v::nullOr(v::notEmpty()->stringType())),
+        v::notBlank()->iterableType()->each(
+            v::key('street', v::stringType()->notBlank())
+                ->key('region', v::stringType()->notBlank())
+                ->key('country', v::stringType()->notBlank())
+                ->keyOptional('other', v::nullOr(v::notBlank()->stringType())),
         )->assert(
             [
                 ['region' => 'Oregon', 'country' => 'USA', 'other' => 123],
@@ -31,7 +31,7 @@ test('https://github.com/Respect/Validation/issues/1334', catchAll(
                 - `.0.other` must pass the rules
                   - `.0.other` must be a string or must be null
               - `.1` must pass the rules
-                - `.1.street` must not be empty
+                - `.1.street` must not be blank
               - `.2` must pass the rules
                 - `.2.street` must be a string
             FULL_MESSAGE)
@@ -43,7 +43,7 @@ test('https://github.com/Respect/Validation/issues/1334', catchAll(
                     'street' => '`.0.street` must be present',
                     'other' => '`.0.other` must be a string or must be null',
                 ],
-                1 => '`.1.street` must not be empty',
+                1 => '`.1.street` must not be blank',
                 2 => '`.2.street` must be a string',
             ],
         ]),

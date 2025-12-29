@@ -17,8 +17,7 @@ v::max(v::greaterThan(15))->isValid([4, 8, 12]); // false
 
 ## Note
 
-This rule uses [IterableType](IterableType.md) and [NotEmpty](NotEmpty.md) internally. If an input is non-iterable or
-empty, the validation will fail.
+This rule uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail.
 
 ## Templates
 
@@ -56,6 +55,7 @@ See also:
 - [Between](Between.md)
 - [BetweenExclusive](BetweenExclusive.md)
 - [DateTimeDiff](DateTimeDiff.md)
+- [Falsy](Falsy.md)
 - [GreaterThan](GreaterThan.md)
 - [GreaterThanOrEqual](GreaterThanOrEqual.md)
 - [IterableType](IterableType.md)
@@ -63,4 +63,3 @@ See also:
 - [LessThan](LessThan.md)
 - [LessThanOrEqual](LessThanOrEqual.md)
 - [Min](Min.md)
-- [NotEmpty](NotEmpty.md)

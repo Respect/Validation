@@ -18,9 +18,9 @@ test('Non-iterable', catchAll(
 test('Empty', catchAll(
     fn() => v::max(v::negative())->assert([]),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('`[]` must not be empty')
-        ->and($fullMessage)->toBe('- `[]` must not be empty')
-        ->and($messages)->toBe(['max' => '`[]` must not be empty']),
+        ->and($message)->toBe('The length of `[]` must be greater than 0')
+        ->and($fullMessage)->toBe('- The length of `[]` must be greater than 0')
+        ->and($messages)->toBe(['max' => 'The length of `[]` must be greater than 0']),
 ));
 
 test('Default', catchAll(

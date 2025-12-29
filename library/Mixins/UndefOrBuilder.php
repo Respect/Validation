@@ -106,6 +106,8 @@ interface UndefOrBuilder
 
     public static function undefOrEmail(): Chain;
 
+    public static function undefOrEmoji(): Chain;
+
     public static function undefOrEndsWith(mixed $endValue, bool $identical = false): Chain;
 
     public static function undefOrEquals(mixed $compareTo): Chain;
@@ -123,6 +125,8 @@ interface UndefOrBuilder
     public static function undefOrFactor(int $dividend): Chain;
 
     public static function undefOrFalseVal(): Chain;
+
+    public static function undefOrFalsy(): Chain;
 
     public static function undefOrFibonacci(): Chain;
 
@@ -226,10 +230,6 @@ interface UndefOrBuilder
     public static function undefOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function undefOrNot(Rule $rule): Chain;
-
-    public static function undefOrEmoji(): Chain;
-
-    public static function undefOrNotEmpty(): Chain;
 
     public static function undefOrNullType(): Chain;
 

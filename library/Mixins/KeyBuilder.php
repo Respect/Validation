@@ -110,6 +110,8 @@ interface KeyBuilder
 
     public static function keyEmail(int|string $key): Chain;
 
+    public static function keyEmoji(int|string $key): Chain;
+
     public static function keyEndsWith(int|string $key, mixed $endValue, bool $identical = false): Chain;
 
     public static function keyEquals(int|string $key, mixed $compareTo): Chain;
@@ -125,6 +127,8 @@ interface KeyBuilder
     public static function keyFactor(int|string $key, int $dividend): Chain;
 
     public static function keyFalseVal(int|string $key): Chain;
+
+    public static function keyFalsy(int|string $key): Chain;
 
     public static function keyFibonacci(int|string $key): Chain;
 
@@ -220,10 +224,6 @@ interface KeyBuilder
     public static function keyNoneOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function keyNot(int|string $key, Rule $rule): Chain;
-
-    public static function keyEmoji(int|string $key): Chain;
-
-    public static function keyNotEmpty(int|string $key): Chain;
 
     public static function keyNullType(int|string $key): Chain;
 

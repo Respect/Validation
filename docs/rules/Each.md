@@ -22,8 +22,7 @@ v::call('array_keys', v::each(v::stringType()))->isValid($releaseDates); // true
 
 ## Note
 
-This rule uses [IterableType](IterableType.md) and [NotEmpty](NotEmpty.md) internally. If an input is non-iterable or
-empty, the validation will fail.
+This rule uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail. 
 
 ## Templates
 
@@ -60,11 +59,11 @@ See also:
 
 - [ArrayVal](ArrayVal.md)
 - [Call](Call.md)
+- [Falsy](Falsy.md)
 - [IterableType](IterableType.md)
 - [IterableVal](IterableVal.md)
 - [Key](Key.md)
 - [KeyExists](KeyExists.md)
 - [KeyOptional](KeyOptional.md)
 - [Min](Min.md)
-- [NotEmpty](NotEmpty.md)
 - [Unique](Unique.md)

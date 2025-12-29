@@ -14,22 +14,15 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Rule;
 
-use function is_string;
-use function trim;
-
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must not be empty',
-    '{{subject}} must be empty',
+    '{{subject}} must be falsy',
+    '{{subject}} must not be falsy',
 )]
-final class NotEmpty implements Rule
+final class Falsy implements Rule
 {
     public function evaluate(mixed $input): Result
     {
-        if (is_string($input)) {
-            $input = trim($input);
-        }
-
-        return Result::of(!empty($input), $input, $this);
+        return Result::of(empty($input), $input, $this);
     }
 }

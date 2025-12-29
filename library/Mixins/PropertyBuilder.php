@@ -114,6 +114,8 @@ interface PropertyBuilder
 
     public static function propertyEmail(string $propertyName): Chain;
 
+    public static function propertyEmoji(string $propertyName): Chain;
+
     public static function propertyEndsWith(string $propertyName, mixed $endValue, bool $identical = false): Chain;
 
     public static function propertyEquals(string $propertyName, mixed $compareTo): Chain;
@@ -129,6 +131,8 @@ interface PropertyBuilder
     public static function propertyFactor(string $propertyName, int $dividend): Chain;
 
     public static function propertyFalseVal(string $propertyName): Chain;
+
+    public static function propertyFalsy(string $propertyName): Chain;
 
     public static function propertyFibonacci(string $propertyName): Chain;
 
@@ -224,10 +228,6 @@ interface PropertyBuilder
     public static function propertyNoneOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function propertyNot(string $propertyName, Rule $rule): Chain;
-
-    public static function propertyEmoji(string $propertyName): Chain;
-
-    public static function propertyNotEmpty(string $propertyName): Chain;
 
     public static function propertyNullType(string $propertyName): Chain;
 

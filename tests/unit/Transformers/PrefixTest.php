@@ -93,7 +93,6 @@ final class PrefixTest extends TestCase
             'min' => ['min'],
             'minAge' => ['minAge'],
             'not' => ['not'],
-            'notEmpty' => ['notEmpty'],
             'undef' => ['undef'],
             'property' => ['property'],
             'propertyExists' => ['propertyExists'],

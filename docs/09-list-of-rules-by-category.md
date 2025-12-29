@@ -160,9 +160,9 @@
 ## Miscellaneous
 
 - [Blank](rules/Blank.md)
+- [Falsy](rules/Falsy.md)
 - [FilterVar](rules/FilterVar.md)
 - [Named](rules/Named.md)
-- [NotEmpty](rules/NotEmpty.md)
 - [Templated](rules/Templated.md)
 - [Undef](rules/Undef.md)
 
@@ -354,6 +354,7 @@
 - [Extension](rules/Extension.md)
 - [Factor](rules/Factor.md)
 - [FalseVal](rules/FalseVal.md)
+- [Falsy](rules/Falsy.md)
 - [Fibonacci](rules/Fibonacci.md)
 - [File](rules/File.md)
 - [FilterVar](rules/FilterVar.md)
@@ -405,7 +406,6 @@
 - [No](rules/No.md)
 - [NoneOf](rules/NoneOf.md)
 - [Not](rules/Not.md)
-- [NotEmpty](rules/NotEmpty.md)
 - [NullOr](rules/NullOr.md)
 - [NullType](rules/NullType.md)
 - [Number](rules/Number.md)

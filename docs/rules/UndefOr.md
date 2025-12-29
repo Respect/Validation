@@ -66,7 +66,7 @@ v::not(v::undefOr(v::alpha()))->assert("alpha");
 See also:
 
 - [Blank](Blank.md)
-- [NotEmpty](NotEmpty.md)
+- [Falsy](Falsy.md)
 - [NullOr](NullOr.md)
 - [NullType](NullType.md)
 - [Spaced](Spaced.md)

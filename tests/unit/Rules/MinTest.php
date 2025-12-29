@@ -77,6 +77,7 @@ final class MinTest extends TestCase
             '3 integers' => [[1, 2, 3], 1],
             '2 integers' => [[2, 3], 2],
             '1 integer' => [[3], 3],
+            '1 integer with value `0`' => [[0], 0],
             '3 characters' => [['a', 'b', 'c'], 'a'],
             '2 characters' => [['b', 'c'], 'b'],
             '1 character' => [['c'], 'c'],

@@ -108,6 +108,8 @@ interface NullOrBuilder
 
     public static function nullOrEmail(): Chain;
 
+    public static function nullOrEmoji(): Chain;
+
     public static function nullOrEndsWith(mixed $endValue, bool $identical = false): Chain;
 
     public static function nullOrEquals(mixed $compareTo): Chain;
@@ -125,6 +127,8 @@ interface NullOrBuilder
     public static function nullOrFactor(int $dividend): Chain;
 
     public static function nullOrFalseVal(): Chain;
+
+    public static function nullOrFalsy(): Chain;
 
     public static function nullOrFibonacci(): Chain;
 
@@ -228,10 +232,6 @@ interface NullOrBuilder
     public static function nullOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function nullOrNot(Rule $rule): Chain;
-
-    public static function nullOrEmoji(): Chain;
-
-    public static function nullOrNotEmpty(): Chain;
 
     public static function nullOrNullType(): Chain;
 

@@ -12,9 +12,9 @@ use Respect\Validation\Test\Stubs\WithAttributes;
 test('Default', catchAll(
     fn() => v::attributes()->assert(new WithAttributes('', '2024-06-23', 'john.doe@gmail.com')),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('`.name` must not be empty')
-        ->and($fullMessage)->toBe('- `.name` must not be empty')
-        ->and($messages)->toBe(['name' => '`.name` must not be empty']),
+        ->and($message)->toBe('`.name` must be defined')
+        ->and($fullMessage)->toBe('- `.name` must be defined')
+        ->and($messages)->toBe(['name' => '`.name` must be defined']),
 ));
 
 test('Inverted', catchAll(
@@ -44,10 +44,10 @@ test('Nullable', catchAll(
 test('Multiple attributes, all failed', catchAll(
     fn() => v::attributes()->assert(new WithAttributes('', 'not a date', 'not an email', 'not a phone number')),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('`.name` must not be empty')
+        ->and($message)->toBe('`.name` must be defined')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - `Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$birthdate="not a date" #$phone="not a phone number" + ... }` must pass the rules
-              - `.name` must not be empty
+              - `.name` must be defined
               - `.birthdate` must pass all the rules
                 - `.birthdate` must be a valid date in the format "2005-12-30"
                 - For comparison with now, `.birthdate` must be a valid datetime
@@ -56,7 +56,7 @@ test('Multiple attributes, all failed', catchAll(
             FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => '`Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$birthdate="not a date" #$phone="not a phone number" + ... }` must pass the rules',
-            'name' => '`.name` must not be empty',
+            'name' => '`.name` must be defined',
             'birthdate' => 'For comparison with now, `.birthdate` must be a valid datetime',
             'phone' => '`.phone` must be a valid telephone number or must be null',
             'email' => '`.email` must be a valid email address or must be null',

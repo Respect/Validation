@@ -172,7 +172,7 @@ function overwriteFile(string $content, string $basename): void
         ['Length', 'length', $numberRelatedRules, []],
         ['Max', 'max', $numberRelatedRules, []],
         ['Min', 'min', $numberRelatedRules, []],
-        ['Not', 'not', [], ['Not', 'NotEmpty', 'NullOr', 'UndefOr', 'Attributes', 'Templated', 'Named']],
+        ['Not', 'not', [], ['Not', 'NullOr', 'UndefOr', 'Attributes', 'Templated', 'Named']],
         ['NullOr', 'nullOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Templated', 'Named']],
         ['Property', 'property', [], $structureRelatedRules],
         ['UndefOr', 'undefOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Attributes', 'Templated', 'Named']],

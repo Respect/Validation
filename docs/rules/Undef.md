@@ -4,6 +4,8 @@
 
 Validates if the given input is undefined. By _undefined_ we consider `null` or an empty string (`''`).
 
+We recommend you to check [Comparing empty values](../comparing-empty-values.md) for more details.
+
 ```php
 v::undef()->isValid(''); // true
 v::undef()->isValid(null); // true
@@ -58,7 +60,7 @@ v::undef()->isValid(new stdClass()); // false
 See also:
 
 - [Blank](Blank.md)
-- [NotEmpty](NotEmpty.md)
+- [Falsy](Falsy.md)
 - [NullType](NullType.md)
 - [Number](Number.md)
 - [Spaced](Spaced.md)

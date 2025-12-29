@@ -50,6 +50,6 @@ See also:
 - [Alpha](Alpha.md)
 - [Blank](Blank.md)
 - [CreditCard](CreditCard.md)
-- [NotEmpty](NotEmpty.md)
+- [Falsy](Falsy.md)
 - [Undef](Undef.md)
 - [UndefOr](UndefOr.md)

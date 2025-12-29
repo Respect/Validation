@@ -17,11 +17,11 @@ test('https://github.com/Respect/Validation/issues/1469', catchAll(
                     ->arrayVal()
                     ->each(
                         v::keySet(
-                            v::key('product_title', v::stringVal()->notEmpty()),
-                            v::key('quantity', v::intVal()->notEmpty()),
+                            v::key('product_title', v::stringVal()->notBlank()),
+                            v::key('quantity', v::intVal()->notBlank()),
                         ),
                     )
-                    ->notEmpty(),
+                    ->notBlank(),
             ),
         )
         ->assert([

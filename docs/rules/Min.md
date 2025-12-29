@@ -17,8 +17,7 @@ v::min(v::lessThan(3))->isValid([4, 8, 12]); // false
 
 ## Note
 
-This rule uses [IterableType](IterableType.md) and [NotEmpty](NotEmpty.md) internally. If an input is non-iterable or
-empty, the validation will fail.
+This rule uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail.
 
 ## Templates
 
@@ -57,10 +56,10 @@ See also:
 - [BetweenExclusive](BetweenExclusive.md)
 - [DateTimeDiff](DateTimeDiff.md)
 - [Each](Each.md)
+- [Falsy](Falsy.md)
 - [GreaterThan](GreaterThan.md)
 - [GreaterThanOrEqual](GreaterThanOrEqual.md)
 - [Length](Length.md)
 - [LessThan](LessThan.md)
 - [LessThanOrEqual](LessThanOrEqual.md)
 - [Max](Max.md)
-- [NotEmpty](NotEmpty.md)

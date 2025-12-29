@@ -108,6 +108,8 @@ interface NotBuilder
 
     public static function notEmail(): Chain;
 
+    public static function notEmoji(): Chain;
+
     public static function notEndsWith(mixed $endValue, bool $identical = false): Chain;
 
     public static function notEquals(mixed $compareTo): Chain;
@@ -125,6 +127,8 @@ interface NotBuilder
     public static function notFactor(int $dividend): Chain;
 
     public static function notFalseVal(): Chain;
+
+    public static function notFalsy(): Chain;
 
     public static function notFibonacci(): Chain;
 

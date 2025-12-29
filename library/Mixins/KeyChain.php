@@ -110,6 +110,8 @@ interface KeyChain
 
     public function keyEmail(int|string $key): Chain;
 
+    public function keyEmoji(int|string $key): Chain;
+
     public function keyEndsWith(int|string $key, mixed $endValue, bool $identical = false): Chain;
 
     public function keyEquals(int|string $key, mixed $compareTo): Chain;
@@ -125,6 +127,8 @@ interface KeyChain
     public function keyFactor(int|string $key, int $dividend): Chain;
 
     public function keyFalseVal(int|string $key): Chain;
+
+    public function keyFalsy(int|string $key): Chain;
 
     public function keyFibonacci(int|string $key): Chain;
 
@@ -220,10 +224,6 @@ interface KeyChain
     public function keyNoneOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function keyNot(int|string $key, Rule $rule): Chain;
-
-    public function keyEmoji(int|string $key): Chain;
-
-    public function keyNotEmpty(int|string $key): Chain;
 
     public function keyNullType(int|string $key): Chain;
 

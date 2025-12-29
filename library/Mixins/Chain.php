@@ -122,6 +122,8 @@ interface Chain extends
 
     public function email(): Chain;
 
+    public function emoji(): Chain;
+
     public function endsWith(mixed $endValue, bool $identical = false): Chain;
 
     public function equals(mixed $compareTo): Chain;
@@ -139,6 +141,8 @@ interface Chain extends
     public function factor(int $dividend): Chain;
 
     public function falseVal(): Chain;
+
+    public function falsy(): Chain;
 
     public function fibonacci(): Chain;
 
@@ -244,10 +248,6 @@ interface Chain extends
     public function noneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function not(Rule $rule): Chain;
-
-    public function emoji(): Chain;
-
-    public function notEmpty(): Chain;
 
     public function nullOr(Rule $rule): Chain;
 

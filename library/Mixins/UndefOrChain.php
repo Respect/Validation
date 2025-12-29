@@ -106,6 +106,8 @@ interface UndefOrChain
 
     public function undefOrEmail(): Chain;
 
+    public function undefOrEmoji(): Chain;
+
     public function undefOrEndsWith(mixed $endValue, bool $identical = false): Chain;
 
     public function undefOrEquals(mixed $compareTo): Chain;
@@ -123,6 +125,8 @@ interface UndefOrChain
     public function undefOrFactor(int $dividend): Chain;
 
     public function undefOrFalseVal(): Chain;
+
+    public function undefOrFalsy(): Chain;
 
     public function undefOrFibonacci(): Chain;
 
@@ -226,10 +230,6 @@ interface UndefOrChain
     public function undefOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function undefOrNot(Rule $rule): Chain;
-
-    public function undefOrEmoji(): Chain;
-
-    public function undefOrNotEmpty(): Chain;
 
     public function undefOrNullType(): Chain;
 

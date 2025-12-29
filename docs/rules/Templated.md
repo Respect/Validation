@@ -10,7 +10,7 @@ v::templated(v::email(), 'You must provide a valid email to signup')->assert('no
 // Message: You must provide a valid email to signup
 
 v::templated(
-    v::notEmpty(),
+    v::notBlank(),
     'The author of the page {{title}} is empty, please fill it up.',
     ['title' => 'Feature Guide']
 )->assert('');

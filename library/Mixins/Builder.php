@@ -119,6 +119,8 @@ interface Builder extends
 
     public static function email(): Chain;
 
+    public static function emoji(): Chain;
+
     public static function endsWith(mixed $endValue, bool $identical = false): Chain;
 
     public static function equals(mixed $compareTo): Chain;
@@ -136,6 +138,8 @@ interface Builder extends
     public static function factor(int $dividend): Chain;
 
     public static function falseVal(): Chain;
+
+    public static function falsy(): Chain;
 
     public static function fibonacci(): Chain;
 
@@ -241,10 +245,6 @@ interface Builder extends
     public static function noneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function not(Rule $rule): Chain;
-
-    public static function emoji(): Chain;
-
-    public static function notEmpty(): Chain;
 
     public static function nullOr(Rule $rule): Chain;
 

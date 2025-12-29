@@ -39,7 +39,7 @@ final class ValidatorTest extends TestCase
         $validator = Validator::create();
 
         // @phpstan-ignore-next-line
-        self::assertSame($validator, $validator->not($validator->notEmpty()));
+        self::assertSame($validator, $validator->not($validator->falsy()));
     }
 
     #[Test]

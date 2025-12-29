@@ -108,6 +108,8 @@ interface NotChain
 
     public function notEmail(): Chain;
 
+    public function notEmoji(): Chain;
+
     public function notEndsWith(mixed $endValue, bool $identical = false): Chain;
 
     public function notEquals(mixed $compareTo): Chain;
@@ -125,6 +127,8 @@ interface NotChain
     public function notFactor(int $dividend): Chain;
 
     public function notFalseVal(): Chain;
+
+    public function notFalsy(): Chain;
 
     public function notFibonacci(): Chain;
 

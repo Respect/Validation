@@ -4,6 +4,8 @@
 
 Validates if the given input is a blank value (`null`, zeros, empty strings or empty arrays, recursively).
 
+We recommend you to check [Comparing empty values](../comparing-empty-values.md) for more details.
+
 ```php
 v::blank()->isValid(null); // true
 v::blank()->isValid(''); // true
@@ -23,7 +25,7 @@ v::blank()->isValid([[''], [0]]); // true
 v::blank()->isValid(new stdClass()); // true
 ```
 
-It's similar to [NotEmpty](NotEmpty.md), but way stricter.
+It's similar to [Falsy](Falsy.md), but way stricter.
 
 ## Templates
 
@@ -55,7 +57,7 @@ It's similar to [NotEmpty](NotEmpty.md), but way stricter.
 
 See also:
 
-- [NotEmpty](NotEmpty.md)
+- [Falsy](Falsy.md)
 - [NullType](NullType.md)
 - [Number](Number.md)
 - [Spaced](Spaced.md)

@@ -9,15 +9,15 @@ When the `$if` validates, returns validation for `$then`.
 When the `$if` doesn't validate, returns validation for `$else`, if defined.
 
 ```php
-v::when(v::intVal(), v::positive(), v::notEmpty())->isValid(1); // true
-v::when(v::intVal(), v::positive(), v::notEmpty())->isValid('not empty'); // true
+v::when(v::intVal(), v::positive(), v::notBlank())->isValid(1); // true
+v::when(v::intVal(), v::positive(), v::notBlank())->isValid('non-blank string'); // true
 
-v::when(v::intVal(), v::positive(), v::notEmpty())->isValid(-1); // false
-v::when(v::intVal(), v::positive(), v::notEmpty())->isValid(''); // false
+v::when(v::intVal(), v::positive(), v::notBlank())->isValid(-1); // false
+v::when(v::intVal(), v::positive(), v::notBlank())->isValid(''); // false
 ```
 
 In the sample above, if `$input` is an integer, then it must be positive.
-If `$input` is not an integer, then it must not be empty.
+If `$input` is not an integer, then it must not be blank.
 When `$else` is not defined use [AlwaysInvalid](AlwaysInvalid.md)
 
 ## Templates

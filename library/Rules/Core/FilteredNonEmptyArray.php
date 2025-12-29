@@ -10,8 +10,12 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Result;
+use Respect\Validation\Rules\Circuit;
+use Respect\Validation\Rules\GreaterThan;
 use Respect\Validation\Rules\IterableType;
-use Respect\Validation\Rules\NotEmpty;
+use Respect\Validation\Rules\Length;
+use Respect\Validation\Rules\Not;
+use Respect\Validation\Rules\Undef;
 
 use function is_array;
 use function iterator_to_array;
@@ -26,9 +30,13 @@ abstract class FilteredNonEmptyArray extends Wrapper
         }
 
         $array = $this->toArray($input);
-        $notEmptyResult = (new NotEmpty())->evaluate($array);
-        if (!$notEmptyResult->hasPassed) {
-            return $notEmptyResult->withIdFrom($this)->withNameFrom($this->rule);
+        $rule = new Circuit(
+            new Not(new Undef()),
+            new Length(new GreaterThan(0)),
+        );
+        $result = $rule->evaluate($array);
+        if (!$result->hasPassed) {
+            return $result->withIdFrom($this)->withNameFrom($this->rule);
         }
 
         // @phpstan-ignore-next-line
