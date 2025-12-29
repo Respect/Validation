@@ -14,6 +14,8 @@ use Respect\Validation\Rule;
 
 interface UndefOrChain
 {
+    public function undefOrAll(Rule $rule): Chain;
+
     public function undefOrAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function undefOrAlnum(string ...$additionalChars): Chain;

@@ -9,6 +9,14 @@ declare(strict_types=1);
 
 date_default_timezone_set('UTC');
 
+test('All', catchAll(
+    fn() => v::allStringType()->assert(['foo', 12, 'bar']),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('Every item in `["foo", 12, "bar"]` must be a string')
+        ->and($fullMessage)->toBe('- Every item in `["foo", 12, "bar"]` must be a string')
+        ->and($messages)->toBe(['allStringType' => 'Every item in `["foo", 12, "bar"]` must be a string']),
+));
+
 test('Key', catchAll(
     fn() => v::keyEquals('foo', 12)->assert(['foo' => 10]),
     fn(string $message, string $fullMessage, array $messages) => expect()

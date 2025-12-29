@@ -14,6 +14,7 @@ use Respect\Validation\Name;
 use Respect\Validation\Rule;
 
 interface Builder extends
+    AllBuilder,
     KeyBuilder,
     LengthBuilder,
     MaxBuilder,
@@ -23,6 +24,8 @@ interface Builder extends
     PropertyBuilder,
     UndefOrBuilder
 {
+    public static function all(Rule $rule): Chain;
+
     public static function allOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function alnum(string ...$additionalChars): Chain;

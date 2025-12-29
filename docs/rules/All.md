@@ -1,0 +1,55 @@
+# All
+
+- `All(Rule $rule)`
+
+Validates all items of the input against a given rule.
+
+```php
+v::all(v::intType())->isValid([1, 2, 3]); // true
+v::all(v::intType())->isValid([1, 2, '3']); // false
+```
+
+This rule is similar to [Each](Each.md), but as opposed to the former, it displays a single message when asserting an input.
+
+## Note
+
+This rule uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail.
+
+## Templates
+
+### `All::TEMPLATE_STANDARD`
+
+| Mode       | Template      |
+| ---------- | ------------- |
+| `default`  | Every item in |
+| `inverted` | Every item in |
+
+This template serve as message prefixes.:
+
+```php
+v::all(v::floatType())->assert([1.5, 2]);
+// Message: Every item in `[1.5, 2]` must be float
+
+v::not(v::all(v::intType()))->assert([1, 2, -3]);
+// Message: Every item in `[1, 2, -3]` must not be an integer
+```
+
+## Categorization
+
+- Comparisons
+- Transformations
+
+## Changelog
+
+| Version | Description |
+| ------: | ----------- |
+|   3.0.0 | Created     |
+
+---
+
+See also:
+
+- [Each](Each.md)
+- [Length](Length.md)
+- [Max](Max.md)
+- [Min](Min.md)

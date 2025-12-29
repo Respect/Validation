@@ -8,6 +8,8 @@ require __DIR__ . '/../vendor/autoload.php';
 use Nette\PhpGenerator\InterfaceType;
 use Nette\PhpGenerator\PhpNamespace;
 use Nette\PhpGenerator\Printer;
+use Respect\Validation\Mixins\AllBuilder;
+use Respect\Validation\Mixins\AllChain;
 use Respect\Validation\Mixins\Chain;
 use Respect\Validation\Mixins\KeyBuilder;
 use Respect\Validation\Mixins\KeyChain;
@@ -168,6 +170,7 @@ function overwriteFile(string $content, string $basename): void
     ];
 
     $mixins = [
+        ['All', 'all', [], ['All', ...$structureRelatedRules]],
         ['Key', 'key', [], $structureRelatedRules],
         ['Length', 'length', $numberRelatedRules, []],
         ['Max', 'max', $numberRelatedRules, []],
@@ -207,6 +210,7 @@ function overwriteFile(string $content, string $basename): void
 
         if ($name === '') {
             $chainedInterface->addExtend(Rule::class);
+            $chainedInterface->addExtend(AllChain::class);
             $chainedInterface->addExtend(KeyChain::class);
             $chainedInterface->addExtend(LengthChain::class);
             $chainedInterface->addExtend(MaxChain::class);
@@ -217,6 +221,7 @@ function overwriteFile(string $content, string $basename): void
             $chainedInterface->addExtend(UndefOrChain::class);
             $chainedInterface->addComment('@mixin \\' . Validator::class);
 
+            $staticInterface->addExtend(AllBuilder::class);
             $staticInterface->addExtend(KeyBuilder::class);
             $staticInterface->addExtend(LengthBuilder::class);
             $staticInterface->addExtend(MaxBuilder::class);

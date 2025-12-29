@@ -14,6 +14,8 @@ use Respect\Validation\Rule;
 
 interface NotChain
 {
+    public function notAll(Rule $rule): Chain;
+
     public function notAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public function notAlnum(string ...$additionalChars): Chain;
