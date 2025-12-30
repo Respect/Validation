@@ -24,6 +24,8 @@ final class ResultBuilder
 
     private bool $hasInvertedMode = false;
 
+    private bool $hasPrecedentName = true;
+
     private string $template = Rule::TEMPLATE_STANDARD;
 
     /** @var array<string, mixed> */
@@ -58,6 +60,7 @@ final class ResultBuilder
             $this->parameters,
             $this->template,
             $this->hasInvertedMode,
+            $this->hasPrecedentName,
             $this->name,
             $this->adjacent,
             $this->path,

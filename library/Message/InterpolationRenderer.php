@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Message;
 
 use Respect\Validation\Message\Formatter\TemplateResolver;
-use Respect\Validation\Name;
+use Respect\Validation\Message\Placeholder\Subject;
 use Respect\Validation\Result;
 
 use function array_key_exists;
@@ -31,7 +31,7 @@ final readonly class InterpolationRenderer implements Renderer
     /** @param array<string|int, mixed> $templates */
     public function render(Result $result, array $templates): string
     {
-        $parameters = ['path' => $result->path, 'input' => $result->input, 'subject' => $this->getName($result)];
+        $parameters = ['path' => $result->path, 'input' => $result->input, 'subject' => Subject::fromResult($result)];
         $parameters += $result->parameters;
 
         $givenTemplate = $this->templateResolver->getGivenTemplate($result, $templates);
@@ -64,26 +64,5 @@ final readonly class InterpolationRenderer implements Renderer
         }
 
         return $this->modifier->modify($parameters[$name], $pipe);
-    }
-
-    private function getName(Result $result): mixed
-    {
-        if (array_key_exists('name', $result->parameters) && is_string($result->parameters['name'])) {
-            return new Name($result->parameters['name']);
-        }
-
-        if (array_key_exists('name', $result->parameters)) {
-            return $result->parameters['name'];
-        }
-
-        if ($result->name !== null) {
-            return $result->name;
-        }
-
-        if ($result->path?->value !== null) {
-            return $result->path;
-        }
-
-        return $result->input;
     }
 }

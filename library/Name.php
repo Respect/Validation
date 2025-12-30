@@ -16,9 +16,4 @@ final readonly class Name
         public Path|null $path = null,
     ) {
     }
-
-    public function withPath(Path $path): Name
-    {
-        return new self($this->value, $path);
-    }
 }

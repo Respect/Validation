@@ -11,9 +11,9 @@ namespace Respect\Validation\Message;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Message\Placeholder\Subject;
 use Respect\Validation\Message\Translator\ArrayTranslator;
 use Respect\Validation\Message\Translator\DummyTranslator;
-use Respect\Validation\Name;
 use Respect\Validation\Test\Builders\ResultBuilder;
 use Respect\Validation\Test\Message\TestingModifier;
 use Respect\Validation\Test\TestCase;
@@ -74,47 +74,6 @@ final class InterpolationRendererTest extends TestCase
     }
 
     #[Test]
-    public function itShouldRenderResultProcessingNameParameterWhenItIsInTheTemplateAndItIsString(): void
-    {
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
-
-        $value = 'original';
-
-        $result = (new ResultBuilder())
-            ->template('Will replace {{subject}}')
-            ->parameters(['name' => $value])
-            ->build();
-
-        self::assertSame(
-            sprintf('Will replace %s', $modifier->modify(new Name($value), null)),
-            $renderer->render($result, []),
-        );
-    }
-
-    #[Test]
-    public function itShouldRenderResultProcessingNameParameterWhenItIsInTheTemplateAndItIsNotString(): void
-    {
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
-
-        $value = true;
-
-        $result = (new ResultBuilder())
-            ->template('Will replace {{subject}}')
-            ->parameters(['name' => $value])
-            ->build();
-
-        self::assertSame(
-            sprintf(
-                'Will replace %s',
-                $modifier->modify($value, null),
-            ),
-            $renderer->render($result, []),
-        );
-    }
-
-    #[Test]
     public function itShouldRenderResultProcessingNameAsSomeParameterInTheTemplate(): void
     {
         $modifier = new TestingModifier();
@@ -127,8 +86,10 @@ final class InterpolationRendererTest extends TestCase
             ->name($name)
             ->build();
 
+        $subject = Subject::fromResult($result);
+
         self::assertSame(
-            'Will replace ' . $modifier->modify(new Name($name), null),
+            'Will replace ' . $modifier->modify($subject, null),
             $renderer->render($result, []),
         );
     }
@@ -146,10 +107,12 @@ final class InterpolationRendererTest extends TestCase
             ->input($input)
             ->build();
 
+        $subject = Subject::fromResult($result);
+
         self::assertSame(
             sprintf(
                 'Will replace %s',
-                $modifier->modify($input, null),
+                $modifier->modify($subject, null),
             ),
             $renderer->render($result, []),
         );
@@ -188,8 +151,10 @@ final class InterpolationRendererTest extends TestCase
             ->parameters(['name' => $parameterNameValue])
             ->build();
 
+        $subject = Subject::fromResult($result);
+
         self::assertSame(
-            sprintf('Will replace %s', $modifier->modify(new Name($parameterNameValue), null)),
+            sprintf('Will replace %s', $modifier->modify($subject, null)),
             $renderer->render($result, []),
         );
     }
@@ -253,10 +218,12 @@ final class InterpolationRendererTest extends TestCase
 
         $result = (new ResultBuilder())->build();
 
+        $subject = Subject::fromResult($result);
+
         self::assertSame(
             sprintf(
                 '%s must be a valid stub',
-                $modifier->modify($result->input, null),
+                $modifier->modify($subject, null),
             ),
             $renderer->render($result, []),
         );
@@ -271,10 +238,12 @@ final class InterpolationRendererTest extends TestCase
 
         $result = (new ResultBuilder())->hasInvertedMode()->build();
 
+        $subject = Subject::fromResult($result);
+
         self::assertSame(
             sprintf(
                 '%s must not be a valid stub',
-                $modifier->modify($result->input, null),
+                $modifier->modify($subject, null),
             ),
             $renderer->render($result, []),
         );

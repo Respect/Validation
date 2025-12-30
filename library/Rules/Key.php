@@ -38,6 +38,6 @@ final class Key extends Wrapper implements KeyRelated
             return $keyExistsResult->withNameFrom($this->rule);
         }
 
-        return $this->rule->evaluate($input[$this->key])->withPath(new Path($this->key));
+        return $this->rule->evaluate($input[$this->key])->withPath($keyExistsResult->path ?? new Path($this->key));
     }
 }

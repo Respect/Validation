@@ -36,7 +36,7 @@ final class Property extends Wrapper
 
         return $this->rule
             ->evaluate($this->getPropertyValue($input, $this->propertyName))
-            ->withPath(new Path($this->propertyName));
+            ->withPath($propertyExistsResult->path ?? new Path($this->propertyName));
     }
 
     private function getPropertyValue(object $object, string $propertyName): mixed

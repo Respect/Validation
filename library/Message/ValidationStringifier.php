@@ -35,6 +35,7 @@ use Respect\Validation\Message\Stringifier\ListedStringifier;
 use Respect\Validation\Message\Stringifier\NameStringifier;
 use Respect\Validation\Message\Stringifier\PathStringifier;
 use Respect\Validation\Message\Stringifier\QuotedStringifier;
+use Respect\Validation\Message\Stringifier\SubjectStringifier;
 
 final readonly class ValidationStringifier implements Stringifier
 {
@@ -95,7 +96,8 @@ final readonly class ValidationStringifier implements Stringifier
         $stringifier->prependStringifier(new PathStringifier($quoter));
         $stringifier->prependStringifier(new QuotedStringifier($quoter));
         $stringifier->prependStringifier(new ListedStringifier($stringifier));
-        $stringifier->prependStringifier(new NameStringifier($stringifier));
+        $stringifier->prependStringifier(new NameStringifier());
+        $stringifier->prependStringifier(new SubjectStringifier($stringifier));
 
         return $stringifier;
     }

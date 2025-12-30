@@ -30,6 +30,7 @@ final readonly class Result
         public array $parameters = [],
         public string $template = Rule::TEMPLATE_STANDARD,
         public bool $hasInvertedMode = false,
+        public bool $hasPrecedentName = true,
         public Name|null $name = null,
         public Result|null $adjacent = null,
         public Path|null $path = null,
@@ -124,6 +125,7 @@ final readonly class Result
         return clone($this, [
             'path' => $path,
             'adjacent' => $this->adjacent?->withPath($path),
+            'hasPrecedentName' => $this->name !== null,
             'children' => array_map(
                 static fn(Result $child) => $child->withPath($path),
                 $this->children,
@@ -149,24 +151,20 @@ final readonly class Result
 
     public function withChildren(Result ...$children): self
     {
-        if ($this->path === null) {
-            return clone($this, ['children' => $children]);
-        }
-
-        return clone($this, ['children' => array_map(fn(Result $child) => $child->withPath($this->path), $children)]);
+        return clone($this, ['children' => $children]);
     }
 
     public function withName(Name $name): self
     {
-        if ($this->path !== null && $this->name?->path !== $this->path) {
-            $name = $name->withPath($this->path);
+        if ($this->name !== null) {
+            return $this;
         }
 
         return clone($this, [
-            'name' => $this->name ?? $name,
+            'name' => $name,
             'adjacent' => $this->adjacent?->withName($name),
             'children' => array_map(
-                static fn(Result $child) => $child->path === null ? $child->withName($child->name ?? $name) : $child,
+                static fn(Result $child) => $child->withName($name),
                 $this->children,
             ),
         ]);
@@ -174,18 +172,19 @@ final readonly class Result
 
     public function withNameFrom(Rule $rule): self
     {
-        if ($rule instanceof Nameable && $rule->getName() !== null) {
-            return clone($this, [
-                'name' => $this->name ?? $rule->getName(),
-                'adjacent' => $this->adjacent?->withNameFrom($rule),
-                'children' => array_map(
-                    static fn(Result $child) => $child->withNameFrom($rule),
-                    $this->children,
-                ),
-            ]);
+        if (!$rule instanceof Nameable || $rule->getName() === null) {
+            return $this;
         }
 
-        return $this;
+        return clone($this, [
+            'name' => $this->name ?? $rule->getName(),
+            'hasPrecedentName' => true,
+            'adjacent' => $this->adjacent?->withNameFrom($rule),
+            'children' => array_map(
+                static fn(Result $child) => $child->withNameFrom($rule),
+                $this->children,
+            ),
+        ]);
     }
 
     public function withInput(mixed $input): self
