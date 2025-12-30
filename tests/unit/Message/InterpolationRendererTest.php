@@ -15,7 +15,7 @@ use Respect\Validation\Message\Translator\ArrayTranslator;
 use Respect\Validation\Message\Translator\DummyTranslator;
 use Respect\Validation\Name;
 use Respect\Validation\Test\Builders\ResultBuilder;
-use Respect\Validation\Test\Message\TestingStringifier;
+use Respect\Validation\Test\Message\TestingModifier;
 use Respect\Validation\Test\TestCase;
 
 use function sprintf;
@@ -26,7 +26,7 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultWithCustomTemplate(): void
     {
-        $renderer = new InterpolationRenderer(new DummyTranslator(), new TestingStringifier());
+        $renderer = new InterpolationRenderer(new DummyTranslator(), new TestingModifier());
 
         $result = (new ResultBuilder())->template('This is my template')->build();
 
@@ -36,9 +36,8 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultProcessingParametersInTheTemplate(): void
     {
-        $stringifier = new TestingStringifier();
-
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
 
         $key = 'foo';
         $value = true;
@@ -49,70 +48,27 @@ final class InterpolationRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            'Will replace ' . $stringifier->stringify($value, 0),
+            'Will replace ' . $modifier->modify($value, null),
             $renderer->render($result, []),
         );
     }
 
     #[Test]
-    public function itShouldRenderResultProcessingRawParametersInTheTemplate(): void
+    public function itShouldRenderResultProcessingModifierParametersInTheTemplate(): void
     {
-        $stringifier = new TestingStringifier();
-
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
 
         $key = 'foo';
         $value = 0.1;
 
         $result = (new ResultBuilder())
-            ->template(sprintf('Will replace {{%1$s}} and {{%1$s|raw}}', $key))
+            ->template(sprintf('Will replace {{%1$s}} and {{%1$s|modifier}}', $key))
             ->parameters([$key => $value])
             ->build();
 
         self::assertSame(
-            sprintf('Will replace %s and 0.1', $stringifier->stringify($value, 0)),
-            $renderer->render($result, []),
-        );
-    }
-
-    #[Test]
-    public function itShouldRenderResultProcessingRawBooleanParametersInTheTemplate(): void
-    {
-        $stringifier = new TestingStringifier();
-
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
-
-        $key = 'foo';
-        $value = false;
-
-        $result = (new ResultBuilder())
-            ->template(sprintf('Will replace {{%1$s}} and {{%1$s|raw}}', $key))
-            ->parameters([$key => $value])
-            ->build();
-
-        self::assertSame(
-            sprintf('Will replace %s and 0', $stringifier->stringify($value, 0)),
-            $renderer->render($result, []),
-        );
-    }
-
-    #[Test]
-    public function itShouldRenderResultProcessingTranslatableParametersInTheTemplate(): void
-    {
-        $key = 'foo';
-        $value = 'original';
-        $translation = 'translated';
-
-        $stringifier = new TestingStringifier();
-        $renderer = new InterpolationRenderer(new ArrayTranslator([$value => $translation]), $stringifier);
-
-        $result = (new ResultBuilder())
-            ->template(sprintf('Will replace {{%1$s}} and {{%1$s|trans}}', $key))
-            ->parameters([$key => $value])
-            ->build();
-
-        self::assertSame(
-            sprintf('Will replace %s and %s', $stringifier->stringify($value, 0), $translation),
+            sprintf('Will replace %s and %s', $modifier->modify($value, null), $modifier->modify($value, 'modifier')),
             $renderer->render($result, []),
         );
     }
@@ -120,9 +76,8 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultProcessingNameParameterWhenItIsInTheTemplateAndItIsString(): void
     {
-        $stringifier = new TestingStringifier();
-
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
 
         $value = 'original';
 
@@ -132,7 +87,7 @@ final class InterpolationRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            sprintf('Will replace %s', $stringifier->stringify(new Name($value), 0) ?? 'FAILED'),
+            sprintf('Will replace %s', $modifier->modify(new Name($value), null)),
             $renderer->render($result, []),
         );
     }
@@ -140,9 +95,8 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultProcessingNameParameterWhenItIsInTheTemplateAndItIsNotString(): void
     {
-        $stringifier = new TestingStringifier();
-
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
 
         $value = true;
 
@@ -154,7 +108,7 @@ final class InterpolationRendererTest extends TestCase
         self::assertSame(
             sprintf(
                 'Will replace %s',
-                $stringifier->stringify($value, 0),
+                $modifier->modify($value, null),
             ),
             $renderer->render($result, []),
         );
@@ -163,8 +117,8 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultProcessingNameAsSomeParameterInTheTemplate(): void
     {
-        $stringifier = new TestingStringifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
 
         $name = 'my name';
 
@@ -174,7 +128,7 @@ final class InterpolationRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            'Will replace ' . $stringifier->stringify(new Name($name), 0),
+            'Will replace ' . $modifier->modify(new Name($name), null),
             $renderer->render($result, []),
         );
     }
@@ -182,9 +136,8 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultProcessingInputAsNameWhenResultHasNoName(): void
     {
-        $stringifier = new TestingStringifier();
-
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
 
         $input = 42;
 
@@ -196,7 +149,7 @@ final class InterpolationRendererTest extends TestCase
         self::assertSame(
             sprintf(
                 'Will replace %s',
-                $stringifier->stringify($input, 0),
+                $modifier->modify($input, null),
             ),
             $renderer->render($result, []),
         );
@@ -205,9 +158,8 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultProcessingInputAsSomeParameterInTheTemplate(): void
     {
-        $stringifier = new TestingStringifier();
-
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
 
         $input = 42;
 
@@ -217,7 +169,7 @@ final class InterpolationRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            sprintf('Will replace %s', $stringifier->stringify($input, 0)),
+            sprintf('Will replace %s', $modifier->modify($input, null)),
             $renderer->render($result, []),
         );
     }
@@ -227,9 +179,8 @@ final class InterpolationRendererTest extends TestCase
     {
         $parameterNameValue = 'fake name';
 
-        $stringifier = new TestingStringifier();
-
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
 
         $result = (new ResultBuilder())
             ->template('Will replace {{subject}}')
@@ -238,7 +189,7 @@ final class InterpolationRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            sprintf('Will replace %s', $stringifier->stringify(new Name($parameterNameValue), 0)),
+            sprintf('Will replace %s', $modifier->modify(new Name($parameterNameValue), null)),
             $renderer->render($result, []),
         );
     }
@@ -246,9 +197,8 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultNotOverwritingInputParameterWithRealInput(): void
     {
-        $stringifier = new TestingStringifier();
-
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
 
         $input = 'real input';
 
@@ -259,7 +209,7 @@ final class InterpolationRendererTest extends TestCase
             ->build();
 
         self::assertSame(
-            sprintf('Will replace %s', $stringifier->stringify($input, 0)),
+            sprintf('Will replace %s', $modifier->modify($input, null)),
             $renderer->render($result, []),
         );
     }
@@ -267,7 +217,8 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultProcessingNonExistingParameters(): void
     {
-        $renderer = new InterpolationRenderer(new DummyTranslator(), new TestingStringifier());
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
 
         $result = (new ResultBuilder())
             ->template('Will not replace {{unknown}}')
@@ -283,7 +234,8 @@ final class InterpolationRendererTest extends TestCase
         $translations = [$template => 'This is my translated template with {{foo}}'];
 
         $translator = new ArrayTranslator($translations);
-        $renderer = new InterpolationRenderer($translator, new TestingStringifier());
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer($translator, $modifier);
 
         $result = (new ResultBuilder())
             ->template($template)
@@ -295,15 +247,16 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultWithNonCustomTemplate(): void
     {
-        $stringifier = new TestingStringifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
+        $translator = new DummyTranslator();
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer($translator, $modifier);
 
         $result = (new ResultBuilder())->build();
 
         self::assertSame(
             sprintf(
                 '%s must be a valid stub',
-                $stringifier->stringify($result->input, 0),
+                $modifier->modify($result->input, null),
             ),
             $renderer->render($result, []),
         );
@@ -312,15 +265,16 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultWithNonCustomTemplateAndInvertedMode(): void
     {
-        $stringifier = new TestingStringifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $stringifier);
+        $translator = new DummyTranslator();
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer($translator, $modifier);
 
         $result = (new ResultBuilder())->hasInvertedMode()->build();
 
         self::assertSame(
             sprintf(
                 '%s must not be a valid stub',
-                $stringifier->stringify($result->input, 0),
+                $modifier->modify($result->input, null),
             ),
             $renderer->render($result, []),
         );
@@ -329,7 +283,9 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultWithNonCustomTemplateWhenCannotFindAttachedTemplate(): void
     {
-        $renderer = new InterpolationRenderer(new DummyTranslator(), new TestingStringifier());
+        $translator = new DummyTranslator();
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer($translator, $modifier);
 
         $result = (new ResultBuilder())->template('__not_standard__')->hasInvertedMode()->build();
 
@@ -342,7 +298,9 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultWithItsAdjacentsWhenItHasNoCustomTemplate(): void
     {
-        $renderer = new InterpolationRenderer(new DummyTranslator(), new TestingStringifier());
+        $translator = new DummyTranslator();
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer($translator, $modifier);
 
         $result = (new ResultBuilder())->template('__1st__')
             ->adjacent(
@@ -368,7 +326,9 @@ final class InterpolationRendererTest extends TestCase
             ->adjacent((new ResultBuilder())->template('and this is a adjacent')->build())
             ->build();
 
-        $renderer = new InterpolationRenderer(new DummyTranslator(), new TestingStringifier());
+        $translator = new DummyTranslator();
+        $modifier = new TestingModifier();
+        $renderer = new InterpolationRenderer($translator, $modifier);
 
         self::assertSame($template, $renderer->render($result, []));
     }

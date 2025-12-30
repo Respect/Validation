@@ -9,26 +9,21 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Message;
 
-use Respect\Stringifier\Stringifier;
 use Respect\Validation\Message\Formatter\TemplateResolver;
-use Respect\Validation\Message\Placeholder\Listed;
-use Respect\Validation\Message\Placeholder\Quoted;
 use Respect\Validation\Name;
 use Respect\Validation\Result;
 
 use function array_key_exists;
-use function is_array;
-use function is_bool;
-use function is_scalar;
+use function array_pad;
+use function assert;
 use function is_string;
 use function preg_replace_callback;
-use function print_r;
 
 final readonly class InterpolationRenderer implements Renderer
 {
     public function __construct(
         private Translator $translator,
-        private Stringifier $stringifier = new ValidationStringifier(),
+        private Modifier $modifier,
         private TemplateResolver $templateResolver = new TemplateResolver(),
     ) {
     }
@@ -44,13 +39,7 @@ final readonly class InterpolationRenderer implements Renderer
 
         $rendered = (string) preg_replace_callback(
             '/{{(\w+)(\|([^}]+))?}}/',
-            function (array $matches) use ($parameters) {
-                if (!array_key_exists($matches[1], $parameters)) {
-                    return $matches[0];
-                }
-
-                return $this->placeholder($matches[1], $parameters[$matches[1]], $matches[3] ?? null);
-            },
+            fn(array $matches) => $this->processPlaceholder($parameters, $matches),
             $this->translator->translate($givenTemplate ?? $ruleTemplate),
         );
 
@@ -61,32 +50,20 @@ final readonly class InterpolationRenderer implements Renderer
         return $rendered;
     }
 
-    private function placeholder(
-        string $name,
-        mixed $value,
-        string|null $modifier = null,
-    ): string {
-        if ($modifier === 'quote' && is_string($value)) {
-            return $this->placeholder($name, new Quoted($value));
+    /**
+     * @param array<string, mixed>    $parameters
+     * @param array<int, string|null> $matches
+     */
+    private function processPlaceholder(array $parameters, array $matches): string
+    {
+        [$placeholder, $name, , $pipe] = array_pad($matches, 4, null);
+        assert(is_string($placeholder));
+        assert(is_string($name));
+        if (!array_key_exists($name, $parameters)) {
+            return $placeholder;
         }
 
-        if ($modifier === 'listOr' && is_array($value)) {
-            return $this->placeholder($name, new Listed($value, $this->translator->translate('or')));
-        }
-
-        if ($modifier === 'listAnd' && is_array($value)) {
-            return $this->placeholder($name, new Listed($value, $this->translator->translate('and')));
-        }
-
-        if ($modifier === 'raw' && is_scalar($value)) {
-            return is_bool($value) ? (string) (int) $value : (string) $value;
-        }
-
-        if ($modifier === 'trans' && is_string($value)) {
-            return $this->translator->translate($value);
-        }
-
-        return $this->stringifier->stringify($value, 0) ?? print_r($value, true);
+        return $this->modifier->modify($parameters[$name], $pipe);
     }
 
     private function getName(Result $result): mixed
