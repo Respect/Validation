@@ -53,11 +53,6 @@ and will natively have support for chaining and everything else.
 ```php
 <?php
 
-/*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- * SPDX-License-Identifier: MIT
- */
-
 declare(strict_types=1);
 
 namespace Respect\Validation\Rules;
@@ -94,11 +89,6 @@ first item of the arrays:
 
 ```php
 <?php
-
-/*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- * SPDX-License-Identifier: MIT
- */
 
 declare(strict_types=1);
 

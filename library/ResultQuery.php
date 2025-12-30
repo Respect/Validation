@@ -2,11 +2,6 @@
 
 declare(strict_types=1);
 
-/*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
- * SPDX-License-Identifier: MIT
- */
-
 namespace Respect\Validation;
 
 use Respect\Validation\Message\ArrayFormatter;
