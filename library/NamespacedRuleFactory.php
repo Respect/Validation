@@ -13,7 +13,6 @@ use ReflectionClass;
 use ReflectionException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
-use Respect\Validation\Transformers\Prefix;
 use Respect\Validation\Transformers\RuleSpec;
 use Respect\Validation\Transformers\Transformer;
 
@@ -22,26 +21,22 @@ use function sprintf;
 use function trim;
 use function ucfirst;
 
-final class Factory
+final readonly class NamespacedRuleFactory implements RuleFactory
 {
-    /** @var string[] */
-    private array $rulesNamespaces = ['Respect\\Validation\\Rules'];
-
+    /** @param array<int, string> $rulesNamespaces */
     public function __construct(
-        private readonly Transformer $transformer = new Prefix(),
+        private Transformer $transformer,
+        private array $rulesNamespaces,
     ) {
     }
 
     public function withRuleNamespace(string $rulesNamespace): self
     {
-        $clone = clone $this;
-        $clone->rulesNamespaces[] = trim($rulesNamespace, '\\');
-
-        return $clone;
+        return clone ($this, ['rulesNamespaces' => [trim($rulesNamespace, '\\'), ...$this->rulesNamespaces]]);
     }
 
-    /** @param mixed[] $arguments */
-    public function rule(string $ruleName, array $arguments = []): Rule
+    /** @param array<int, mixed> $arguments */
+    public function create(string $ruleName, array $arguments = []): Rule
     {
         return $this->createRuleSpec($this->transformer->transform(new RuleSpec($ruleName, $arguments)));
     }
@@ -56,7 +51,7 @@ final class Factory
         return $rule;
     }
 
-    /** @param mixed[] $arguments */
+    /** @param array<int, mixed> $arguments */
     private function createRule(string $ruleName, array $arguments = []): Rule
     {
         foreach ($this->rulesNamespaces as $namespace) {

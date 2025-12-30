@@ -45,7 +45,6 @@ final class ContainerRegistry
     {
         return new Container([
             Transformer::class => create(Prefix::class),
-            Factory::class => autowire(Factory::class),
             TemplateResolver::class => create(TemplateResolver::class),
             Quoter::class => create(StandardQuoter::class)->constructor(ValidationStringifier::MAXIMUM_LENGTH),
             Stringifier::class => create(ValidationStringifier::class),
@@ -56,6 +55,11 @@ final class ContainerRegistry
             'respect.validation.formatter.full_message' => autowire(NestedListStringFormatter::class),
             'respect.validation.formatter.messages' => autowire(NestedArrayFormatter::class),
             'respect.validation.ignored_backtrace_paths' => [__DIR__ . '/Validator.php'],
+            'respect.validation.rule_factory.namespaces' => ['Respect\\Validation\\Rules'],
+            RuleFactory::class => factory(static fn(Container $container) => new NamespacedRuleFactory(
+                $container->get(Transformer::class),
+                $container->get('respect.validation.rule_factory.namespaces'),
+            )),
             Modifier::class => factory(static fn(Container $container) => new TransModifier(
                 $container->get(Translator::class),
                 new ListOrModifier(
@@ -71,7 +75,7 @@ final class ContainerRegistry
                 ),
             )),
             Validator::class => factory(static fn(Container $container) => new Validator(
-                $container->get(Factory::class),
+                $container->get(RuleFactory::class),
                 $container->get(Renderer::class),
                 $container->get('respect.validation.formatter.message'),
                 $container->get('respect.validation.formatter.full_message'),
