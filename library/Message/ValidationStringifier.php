@@ -11,7 +11,6 @@ namespace Respect\Validation\Message;
 
 use DateTimeInterface;
 use Respect\Stringifier\Quoter;
-use Respect\Stringifier\Quoters\StandardQuoter;
 use Respect\Stringifier\Stringifier;
 use Respect\Stringifier\Stringifiers\ArrayObjectStringifier;
 use Respect\Stringifier\Stringifiers\ArrayStringifier;
@@ -47,7 +46,7 @@ final readonly class ValidationStringifier implements Stringifier
     private Stringifier $stringifier;
 
     public function __construct(
-        private Quoter $quoter = new StandardQuoter(self::MAXIMUM_LENGTH),
+        private Quoter $quoter,
     ) {
         $this->stringifier = $this->createStringifier($quoter);
     }

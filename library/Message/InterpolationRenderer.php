@@ -24,7 +24,7 @@ final readonly class InterpolationRenderer implements Renderer
     public function __construct(
         private Translator $translator,
         private Modifier $modifier,
-        private TemplateResolver $templateResolver = new TemplateResolver(),
+        private TemplateResolver $templateResolver,
     ) {
     }
 

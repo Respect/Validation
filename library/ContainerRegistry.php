@@ -47,7 +47,7 @@ final class ContainerRegistry
             Transformer::class => create(Prefix::class),
             TemplateResolver::class => create(TemplateResolver::class),
             Quoter::class => create(StandardQuoter::class)->constructor(ValidationStringifier::MAXIMUM_LENGTH),
-            Stringifier::class => create(ValidationStringifier::class),
+            Stringifier::class => autowire(ValidationStringifier::class),
             Translator::class => autowire(DummyTranslator::class),
             Renderer::class => autowire(InterpolationRenderer::class),
             ResultFilter::class => create(OnlyFailedChildrenResultFilter::class),

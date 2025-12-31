@@ -11,6 +11,7 @@ namespace Respect\Validation\Message;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Message\Formatter\TemplateResolver;
 use Respect\Validation\Message\Placeholder\Subject;
 use Respect\Validation\Message\Translator\ArrayTranslator;
 use Respect\Validation\Message\Translator\DummyTranslator;
@@ -26,7 +27,7 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultWithCustomTemplate(): void
     {
-        $renderer = new InterpolationRenderer(new DummyTranslator(), new TestingModifier());
+        $renderer = new InterpolationRenderer(new DummyTranslator(), new TestingModifier(), new TemplateResolver());
 
         $result = (new ResultBuilder())->template('This is my template')->build();
 
@@ -37,7 +38,7 @@ final class InterpolationRendererTest extends TestCase
     public function itShouldRenderResultProcessingParametersInTheTemplate(): void
     {
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
 
         $key = 'foo';
         $value = true;
@@ -57,7 +58,7 @@ final class InterpolationRendererTest extends TestCase
     public function itShouldRenderResultProcessingModifierParametersInTheTemplate(): void
     {
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
 
         $key = 'foo';
         $value = 0.1;
@@ -77,7 +78,7 @@ final class InterpolationRendererTest extends TestCase
     public function itShouldRenderResultProcessingNameAsSomeParameterInTheTemplate(): void
     {
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
 
         $name = 'my name';
 
@@ -98,7 +99,7 @@ final class InterpolationRendererTest extends TestCase
     public function itShouldRenderResultProcessingInputAsNameWhenResultHasNoName(): void
     {
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
 
         $input = 42;
 
@@ -122,7 +123,7 @@ final class InterpolationRendererTest extends TestCase
     public function itShouldRenderResultProcessingInputAsSomeParameterInTheTemplate(): void
     {
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
 
         $input = 42;
 
@@ -143,7 +144,7 @@ final class InterpolationRendererTest extends TestCase
         $parameterNameValue = 'fake name';
 
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
 
         $result = (new ResultBuilder())
             ->template('Will replace {{subject}}')
@@ -163,7 +164,7 @@ final class InterpolationRendererTest extends TestCase
     public function itShouldRenderResultNotOverwritingInputParameterWithRealInput(): void
     {
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
 
         $input = 'real input';
 
@@ -183,7 +184,7 @@ final class InterpolationRendererTest extends TestCase
     public function itShouldRenderResultProcessingNonExistingParameters(): void
     {
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier);
+        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
 
         $result = (new ResultBuilder())
             ->template('Will not replace {{unknown}}')
@@ -200,7 +201,7 @@ final class InterpolationRendererTest extends TestCase
 
         $translator = new ArrayTranslator($translations);
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier);
+        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
 
         $result = (new ResultBuilder())
             ->template($template)
@@ -214,7 +215,7 @@ final class InterpolationRendererTest extends TestCase
     {
         $translator = new DummyTranslator();
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier);
+        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
 
         $result = (new ResultBuilder())->build();
 
@@ -234,7 +235,7 @@ final class InterpolationRendererTest extends TestCase
     {
         $translator = new DummyTranslator();
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier);
+        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
 
         $result = (new ResultBuilder())->hasInvertedMode()->build();
 
@@ -254,7 +255,7 @@ final class InterpolationRendererTest extends TestCase
     {
         $translator = new DummyTranslator();
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier);
+        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
 
         $result = (new ResultBuilder())->template('__not_standard__')->hasInvertedMode()->build();
 
@@ -269,7 +270,7 @@ final class InterpolationRendererTest extends TestCase
     {
         $translator = new DummyTranslator();
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier);
+        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
 
         $result = (new ResultBuilder())->template('__1st__')
             ->adjacent(
@@ -297,7 +298,7 @@ final class InterpolationRendererTest extends TestCase
 
         $translator = new DummyTranslator();
         $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier);
+        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
 
         self::assertSame($template, $renderer->render($result, []));
     }
