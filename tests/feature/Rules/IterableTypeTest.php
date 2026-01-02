@@ -32,7 +32,7 @@ test('With template', catchAll(
 ));
 
 test('With name', catchAll(
-    fn() => v::named(v::iterableType(), 'Options')->assert(null),
+    fn() => v::named('Options', v::iterableType())->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Options must be iterable')
         ->and($fullMessage)->toBe('- Options must be iterable')

@@ -16,12 +16,12 @@ test('https://github.com/Respect/Validation/issues/179', catchAll(
         ];
 
         $validator = v::named(
+            'Settings',
             v::arrayType()
                 ->key('host', v::stringType())
                 ->key('user', v::stringType())
                 ->key('password', v::stringType())
                 ->key('schema', v::stringType()),
-            'Settings',
         );
         $validator->assert($config);
     },

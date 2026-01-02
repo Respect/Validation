@@ -112,8 +112,6 @@ $validator->assert('alexandre gaigalas');
 Template messages include the placeholder `{{subject}}`, which defaults to the input. Use `setName()` to replace it with a more descriptive label.
 
 ```php
-v::named(
-        v::dateTime('Y-m-d')->between('1980-02-02', 'now'),
-        'Age'
-    )->assert($input);
+v::named('Age', v::dateTime('Y-m-d')->between('1980-02-02', 'now'))
+    ->assert($input);
 ```

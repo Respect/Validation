@@ -233,7 +233,7 @@ interface Builder extends
 
     public static function multiple(int $multipleOf): Chain;
 
-    public static function named(Rule $rule, Name|string $name): Chain;
+    public static function named(Name|string $name, Rule $rule): Chain;
 
     public static function negative(): Chain;
 

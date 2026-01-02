@@ -10,9 +10,9 @@ declare(strict_types=1);
 date_default_timezone_set('UTC');
 
 test('Scenario #1', catchFullMessage(
-    fn() => v::named(v::init()
+    fn() => v::named('User Subscription Form', v::init()
         ->key('username', v::length(v::between(2, 32)))
-        ->key('birthdate', v::dateTime()), 'User Subscription Form')
+        ->key('birthdate', v::dateTime()))
         ->assert(['username' => '0', 'birthdate' => 'Whatever']),
     fn(string $fullMessage) => expect($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - User Subscription Form must pass all the rules

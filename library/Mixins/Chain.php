@@ -236,7 +236,7 @@ interface Chain extends
 
     public function multiple(int $multipleOf): Chain;
 
-    public function named(Rule $rule, Name|string $name): Chain;
+    public function named(Name|string $name, Rule $rule): Chain;
 
     public function negative(): Chain;
 

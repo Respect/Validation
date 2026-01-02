@@ -1,11 +1,11 @@
 # Named
 
-- `Named(Rule $rule, string $name)`
+- `Named(string $name, Rule $rule)`
 
 Validates the input with the given rule, and uses the custom name in the error message.
 
 ```php
-v::named(v::email(), 'Your email')->assert('not an email');
+v::named('Your email', v::email())->assert('not an email');
 // Message: Your email must be a valid email address
 ```
 

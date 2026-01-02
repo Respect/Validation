@@ -40,7 +40,7 @@ test('With template', catchAll(
 ));
 
 test('With wrapper name', catchAll(
-    fn() => v::named(v::length(v::equals(3)), 'Cactus')->assert('peyote'),
+    fn() => v::named('Cactus', v::length(v::equals(3)))->assert('peyote'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The length of Cactus must be equal to 3')
         ->and($fullMessage)->toBe('- The length of Cactus must be equal to 3')

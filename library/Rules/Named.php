@@ -23,7 +23,7 @@ final class Named extends Wrapper implements Nameable
 {
     private readonly Name $name;
 
-    public function __construct(Rule $rule, string|Name $name)
+    public function __construct(string|Name $name, Rule $rule)
     {
         parent::__construct($rule);
 

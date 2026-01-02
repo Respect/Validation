@@ -45,14 +45,14 @@ When no custom name is set, the path is displayed as `{{name}}`. When a custom n
 v::keyExists('foo')->assert([]);
 // Message: `.foo` must be present
 
-v::named(v::keyExists('foo'), 'Custom name')->assert([]);
+v::named('Custom name', v::keyExists('foo'))->assert([]);
 // Message: `.foo` (<- Custom name) must be present
 ```
 
 If you want to display only a custom name while checking if a key exists, use [Key](Key.md) with [AlwaysValid](AlwaysValid.md):
 
 ```php
-v::key('foo', v::named(v::alwaysValid(), 'Custom name')->assert([]);
+v::key('foo', v::named('Custom name', v::alwaysValid())->assert([]);
 // Message: Custom name must be present
 ```
 

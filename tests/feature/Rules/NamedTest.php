@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('Default', catchAll(
-    fn() => v::named(v::stringType(), 'Potato')->assert(12),
+    fn() => v::named('Potato', v::stringType())->assert(12),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Potato must be a string')
         ->and($fullMessage)->toBe('- Potato must be a string')
@@ -16,7 +16,7 @@ test('Default', catchAll(
 ));
 
 test('Inverted', catchAll(
-    fn() => v::not(v::named(v::intType(), 'Zucchini'))->assert(12),
+    fn() => v::not(v::named('Zucchini', v::intType()))->assert(12),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Zucchini must not be an integer')
         ->and($fullMessage)->toBe('- Zucchini must not be an integer')
@@ -24,7 +24,7 @@ test('Inverted', catchAll(
 ));
 
 test('Template in Validator', catchAll(
-    fn() => v::named(v::named(v::stringType(), 'Eggplant'), 'Mushroom')
+    fn() => v::named('Mushroom', v::named('Eggplant', v::stringType()))
         ->assert(12),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Eggplant must be a string')
@@ -33,7 +33,7 @@ test('Template in Validator', catchAll(
 ));
 
 test('With bound', catchAll(
-    fn() => v::named(v::attributes(), 'Pumpkin')->assert(null),
+    fn() => v::named('Pumpkin', v::attributes())->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Pumpkin must be an object')
         ->and($fullMessage)->toBe('- Pumpkin must be an object')
@@ -41,7 +41,7 @@ test('With bound', catchAll(
 ));
 
 test('With key that does not exist', catchAll(
-    fn() => v::key('vegetable', v::named(v::stringType(), 'Paprika'))->assert([]),
+    fn() => v::key('vegetable', v::named('Paprika', v::stringType()))->assert([]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Paprika must be present')
         ->and($fullMessage)->toBe('- Paprika must be present')
@@ -49,7 +49,7 @@ test('With key that does not exist', catchAll(
 ));
 
 test('With property that does not exist', catchAll(
-    fn() => v::key('vegetable', v::named(v::stringType(), 'Broccoli'))->assert((object) []),
+    fn() => v::key('vegetable', v::named('Broccoli', v::stringType()))->assert((object) []),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Broccoli must be present')
         ->and($fullMessage)->toBe('- Broccoli must be present')
@@ -57,7 +57,7 @@ test('With property that does not exist', catchAll(
 ));
 
 test('With key that fails validation', catchAll(
-    fn() => v::key('vegetable', v::named(v::stringType(), 'Artichoke'))->assert(['vegetable' => 12]),
+    fn() => v::key('vegetable', v::named('Artichoke', v::stringType()))->assert(['vegetable' => 12]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Artichoke must be a string')
         ->and($fullMessage)->toBe('- Artichoke must be a string')
@@ -68,11 +68,11 @@ test('With nested key that fails validation', catchAll(
     fn() => v::key(
         'vegetables',
         v::named(
+            'Vegetables',
             v::init()
                 ->key('root', v::stringType())
                 ->key('stems', v::stringType())
                 ->keyExists('fruits'),
-            'Vegetables',
         ),
     )->assert(['vegetables' => ['root' => 12, 'stems' => 12]]),
     fn(string $message, string $fullMessage, array $messages) => expect()

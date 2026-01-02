@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('https://github.com/Respect/Validation/issues/796', catchAll(
-    fn() => v::named(v::init()
+    fn() => v::named('the given data', v::init()
         ->key(
             'mysql',
             v::init()
@@ -24,7 +24,7 @@ test('https://github.com/Respect/Validation/issues/796', catchAll(
                 ->key('user', v::stringType())
                 ->key('password', v::stringType())
                 ->key('schema', v::stringType()),
-        ), 'the given data')
+        ))
         ->assert([
             'mysql' => [
                 'host' => 42,
