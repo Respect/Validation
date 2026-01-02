@@ -48,11 +48,11 @@ test('DateTimeDiff', catchMessage(
 ));
 
 test('Using "listOr"', catchMessage(
-    fn() => v::templated(v::in(['Respect', 'Validation']), 'Your name must be {{haystack|listOr}}')->assert(''),
+    fn() => v::templated('Your name must be {{haystack|listOr}}', v::in(['Respect', 'Validation']))->assert(''),
     fn(string $message) => expect($message)->toBe('Seu nome deve ser "Respect" ou "Validation"'),
 ));
 
 test('Using "listAnd"', catchMessage(
-    fn() => v::templated(v::in(['Respect', 'Validation']), '{{haystack|listAnd}} are the only possible names')->assert(''),
+    fn() => v::templated('{{haystack|listAnd}} are the only possible names', v::in(['Respect', 'Validation']))->assert(''),
     fn(string $message) => expect($message)->toBe('"Respect" e "Validation" são os únicos nomes possíveis'),
 ));

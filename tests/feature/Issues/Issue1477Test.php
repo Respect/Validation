@@ -13,13 +13,13 @@ test('https://github.com/Respect/Validation/issues/1477', catchAll(
     fn() => v::key(
         'Address',
         v::templated(
+            '{{subject}} is not good!',
             new class extends Simple {
                 public function isValid(mixed $input): bool
                 {
                     return false;
                 }
             },
-            '{{subject}} is not good!',
         ),
     )->assert(['Address' => 'cvejvn']),
     fn(string $message, string $fullMessage, array $messages) => expect()

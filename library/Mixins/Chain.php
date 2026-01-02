@@ -333,7 +333,7 @@ interface Chain extends
     public function symbolicLink(): Chain;
 
     /** @param array<string, mixed> $parameters */
-    public function templated(Rule $rule, string $template, array $parameters = []): Chain;
+    public function templated(string $template, Rule $rule, array $parameters = []): Chain;
 
     public function time(string $format = 'H:i:s'): Chain;
 

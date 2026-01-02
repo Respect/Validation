@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('Template as a string in the chain', catchAll(
-    fn() => v::templated(v::alwaysInvalid(), 'My string template in the chain')->assert(1),
+    fn() => v::templated('My string template in the chain', v::alwaysInvalid())->assert(1),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('My string template in the chain')
         ->and($fullMessage)->toBe('- My string template in the chain')

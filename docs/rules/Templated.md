@@ -1,17 +1,17 @@
 # Templated
 
-- `Templated(Rule $rule, string $template)`
-- `Templated(Rule $rule, string $template, array<string, mixed> $parameters)`
+- `Templated(string $template, Rule $rule)`
+- `Templated(string $template, Rule $rule, array<string, mixed> $parameters)`
 
 Defines a rule with a custom message template.
 
 ```php
-v::templated(v::email(), 'You must provide a valid email to signup')->assert('not an email');
+v::templated('You must provide a valid email to signup', v::email())->assert('not an email');
 // Message: You must provide a valid email to signup
 
 v::templated(
-    v::notBlank(),
     'The author of the page {{title}} is empty, please fill it up.',
+    v::notBlank(),
     ['title' => 'Feature Guide']
 )->assert('');
 // Message: The author of the page "Feature Guide" is empty, please fill it up.
