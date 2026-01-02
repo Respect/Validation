@@ -83,7 +83,6 @@ final class ContainerRegistry
                 $container->get(ResultFilter::class),
                 $container->get('respect.validation.ignored_backtrace_paths'),
             )),
-            ValidatorFactory::class => autowire(CloneValidatorFactory::class),
         ]);
     }
 

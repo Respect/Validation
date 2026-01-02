@@ -34,16 +34,16 @@ final class ValidatorTest extends TestCase
     #[Test]
     public function shouldReturnValidatorInstanceWhenTheNotRuleIsCalledWithArguments(): void
     {
-        $validator = Validator::create();
+        $validator = Validator::init();
 
         // @phpstan-ignore-next-line
-        self::assertSame($validator, $validator->not($validator->falsy()));
+        self::assertNotSame($validator, $validator->not($validator->falsy()));
     }
 
     #[Test]
     public function itShouldProxyResultWithTheIsValidMethod(): void
     {
-        $validator = Validator::create(Stub::fail(1));
+        $validator = Validator::init(Stub::fail(1));
 
         self::assertFalse($validator->isValid('whatever'));
     }
@@ -52,7 +52,7 @@ final class ValidatorTest extends TestCase
     #[DoesNotPerformAssertions]
     public function itShouldAssertAndNotThrowAnExceptionWhenValidatorPasses(): void
     {
-        $validator = Validator::create(Stub::pass(1));
+        $validator = Validator::init(Stub::pass(1));
         $validator->assert('whatever');
     }
 
@@ -61,7 +61,7 @@ final class ValidatorTest extends TestCase
     {
         $this->expectException(ValidationException::class);
 
-        $validator = Validator::create(Stub::fail(1));
+        $validator = Validator::init(Stub::fail(1));
         $validator->assert('whatever');
     }
 
@@ -72,14 +72,14 @@ final class ValidatorTest extends TestCase
 
         $this->expectExceptionMessage($template);
 
-        $validator = Validator::create(Stub::fail(1));
+        $validator = Validator::init(Stub::fail(1));
         $validator->assert('whatever', $template);
     }
 
     #[Test]
     public function itShouldValidateAndReturnValidResultQueryWhenValidationPasses(): void
     {
-        $validator = Validator::create(Stub::pass(1));
+        $validator = Validator::init(Stub::pass(1));
 
         $resultQuery = $validator->validate('whatever');
 
@@ -89,7 +89,7 @@ final class ValidatorTest extends TestCase
     #[Test]
     public function itShouldValidateAndReturnInvalidResultQueryWhenValidationFails(): void
     {
-        $validator = Validator::create(Stub::fail(1));
+        $validator = Validator::init(Stub::fail(1));
 
         $resultQuery = $validator->validate('whatever');
 
@@ -101,7 +101,7 @@ final class ValidatorTest extends TestCase
     {
         $template = uniqid();
 
-        $validator = Validator::create(Stub::fail(1));
+        $validator = Validator::init(Stub::fail(1));
 
         $resultQuery = $validator->validate('whatever', $template);
 
@@ -113,7 +113,7 @@ final class ValidatorTest extends TestCase
     {
         $template = uniqid();
 
-        $validator = Validator::create(Stub::fail(1));
+        $validator = Validator::init(Stub::fail(1));
 
         $resultQuery = $validator->validate('whatever', ['stub' => $template]);
 
@@ -126,14 +126,14 @@ final class ValidatorTest extends TestCase
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('No rules have been added to this validator.');
 
-        $validator = Validator::create();
+        $validator = Validator::init();
         $validator->evaluate('whatever');
     }
 
     #[Test]
     public function itShouldEvaluateAndReturnResultWhenOneRuleIsAdded(): void
     {
-        $validator = Validator::create(Stub::pass(1));
+        $validator = Validator::init(Stub::pass(1));
 
         $result = $validator->evaluate('whatever');
 
@@ -143,7 +143,7 @@ final class ValidatorTest extends TestCase
     #[Test]
     public function itShouldEvaluateAndReturnResultWhenMultipleRulesAreAdded(): void
     {
-        $validator = Validator::create(Stub::pass(1), Stub::fail(2));
+        $validator = Validator::init(Stub::pass(1), Stub::fail(2));
 
         $result = $validator->evaluate('whatever');
 
@@ -153,7 +153,7 @@ final class ValidatorTest extends TestCase
     #[Test]
     public function itShouldEvaluateAndReturnResultWhenSingleFailingRuleIsAdded(): void
     {
-        $validator = Validator::create(Stub::fail(1));
+        $validator = Validator::init(Stub::fail(1));
 
         $result = $validator->evaluate('whatever');
 

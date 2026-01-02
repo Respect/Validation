@@ -55,7 +55,7 @@ Alternatively, you can pass a chain of key-related rules to `keySet()`:
 
 ```php
 v::keySet(
-    v::create()
+    v::init()
         ->key('foo', v::intVal())
         ->key('bar', v::stringType())
         ->keyOptional('baz', v::boolType())

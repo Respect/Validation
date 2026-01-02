@@ -13,7 +13,7 @@ $arr = [
 ];
 
 test('https://github.com/Respect/Validation/issues/446', catchAll(
-    fn() => v::create()
+    fn() => v::init()
         ->key('name', v::lengthBetween(2, 32))
         ->key('email', v::email())
         ->assert($arr),

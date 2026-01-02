@@ -17,9 +17,9 @@ use Respect\Validation\Rules\StringVal;
 use Respect\Validation\Validator;
 
 test('https://github.com/Respect/Validation/issues/1289', catchAll(
-    fn() => Validator::create(
+    fn() => Validator::init(
         new Each(
-            Validator::create(
+            Validator::init(
                 new KeyOptional(
                     'default',
                     new OneOf(

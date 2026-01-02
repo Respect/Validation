@@ -12,7 +12,7 @@ use Respect\Validation\Test\Stubs\CountableStub;
 $input = 'http://www.google.com/search?q=respect.github.com';
 
 test('https://github.com/Respect/Validation/issues/799 | #1', catchAll(
-    fn() => v::create()
+    fn() => v::init()
         ->call(
             [new CountableStub(1), 'count'],
             v::arrayVal()->key('scheme', v::startsWith('https')),
@@ -33,7 +33,7 @@ test('https://github.com/Respect/Validation/issues/799 | #1', catchAll(
 ));
 
 test('https://github.com/Respect/Validation/issues/799 | #2', catchAll(
-    fn() => v::create()
+    fn() => v::init()
         ->call(
             fn($url) => parse_url((string) $url),
             v::arrayVal()->key('scheme', v::startsWith('https')),

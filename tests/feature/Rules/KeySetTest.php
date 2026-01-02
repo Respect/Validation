@@ -207,7 +207,7 @@ test('multiple rules / all failed validation', catchAll(
 
 test('multiple rules / single missing key / single failed validation', catchAll(
     fn() => v::keySet(
-        v::create()
+        v::init()
             ->key('foo', v::intType())
             ->key('bar', v::intType())
             ->key('baz', v::intType()),

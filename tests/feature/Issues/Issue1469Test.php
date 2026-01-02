@@ -8,12 +8,12 @@
 declare(strict_types=1);
 
 test('https://github.com/Respect/Validation/issues/1469', catchAll(
-    fn() => v::create()
+    fn() => v::init()
         ->arrayVal()
         ->keySet(
             v::key(
                 'order_items',
-                v::create()
+                v::init()
                     ->arrayVal()
                     ->each(
                         v::keySet(

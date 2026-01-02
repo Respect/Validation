@@ -8,12 +8,12 @@
 declare(strict_types=1);
 
 test('Scenario #1', catchMessages(
-    fn() => v::create()
-        ->key('mysql', v::create()
+    fn() => v::init()
+        ->key('mysql', v::init()
             ->key('host', v::stringType())
             ->key('user', v::stringType())->key('password', v::stringType())
             ->key('schema', v::stringType()))
-        ->key('postgresql', v::create()
+        ->key('postgresql', v::init()
             ->key('host', v::stringType())
             ->key('user', v::stringType())
             ->key('password', v::stringType())

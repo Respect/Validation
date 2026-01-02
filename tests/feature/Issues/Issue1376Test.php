@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('https://github.com/Respect/Validation/issues/1376', catchAll(
-    fn() => v::create()
+    fn() => v::init()
         ->property('title', v::lengthBetween(2, 3)->stringType())
         ->property('description', v::stringType())
         ->property('author', v::intType()->lengthBetween(1, 2))

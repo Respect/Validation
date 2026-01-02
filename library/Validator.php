@@ -26,29 +26,32 @@ use function is_callable;
 use function is_string;
 
 /** @mixin Builder */
-final class Validator implements Rule, Nameable
+final readonly class Validator implements Rule, Nameable
 {
     /** @var array<Rule> */
-    private array $rules = [];
+    private array $rules;
 
     /** @param array<string> $ignoredBacktracePaths */
     public function __construct(
-        private readonly RuleFactory $ruleFactory,
-        private readonly Renderer $renderer,
-        private readonly StringFormatter $mainMessageFormatter,
-        private readonly StringFormatter $fullMessageFormatter,
-        private readonly ArrayFormatter $messagesFormatter,
-        private readonly ResultFilter $resultFilter,
-        private readonly array $ignoredBacktracePaths,
+        private RuleFactory $ruleFactory,
+        private Renderer $renderer,
+        private StringFormatter $mainMessageFormatter,
+        private StringFormatter $fullMessageFormatter,
+        private ArrayFormatter $messagesFormatter,
+        private ResultFilter $resultFilter,
+        private array $ignoredBacktracePaths,
+        Rule ...$rules,
     ) {
+        $this->rules = $rules;
     }
 
-    public static function create(Rule ...$rules): self
+    public static function init(Rule ...$rules): self
     {
-        $validator = ContainerRegistry::getContainer()->get(ValidatorFactory::class)->create();
-        $validator->rules = $rules;
+        if ($rules === []) {
+            return ContainerRegistry::getContainer()->get(self::class);
+        }
 
-        return $validator;
+        return ContainerRegistry::getContainer()->get(self::class)->with(...$rules);
     }
 
     public function evaluate(mixed $input): Result
@@ -101,11 +104,9 @@ final class Validator implements Rule, Nameable
         throw $exception;
     }
 
-    public function addRule(Rule $rule): self
+    public function with(Rule $rule, Rule ...$rules): self
     {
-        $this->rules[] = $rule;
-
-        return $this;
+        return clone ($this, ['rules' => [...$this->rules, $rule, ...$rules]]);
     }
 
     /** @return array<Rule> */
@@ -136,15 +137,15 @@ final class Validator implements Rule, Nameable
         );
     }
 
-    /** @param mixed[] $arguments */
+    /** @param array<int, mixed> $arguments */
     public static function __callStatic(string $ruleName, array $arguments): self
     {
-        return self::create()->__call($ruleName, $arguments);
+        return self::init()->__call($ruleName, $arguments);
     }
 
-    /** @param mixed[] $arguments */
+    /** @param array<int, mixed> $arguments */
     public function __call(string $ruleName, array $arguments): self
     {
-        return $this->addRule($this->ruleFactory->create($ruleName, $arguments));
+        return $this->with($this->ruleFactory->create($ruleName, $arguments));
     }
 }

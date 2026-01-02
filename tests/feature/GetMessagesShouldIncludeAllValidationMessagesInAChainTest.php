@@ -10,7 +10,7 @@ declare(strict_types=1);
 date_default_timezone_set('UTC');
 
 test('Scenario #1', catchMessages(
-    fn() => v::create()
+    fn() => v::init()
         ->key('username', v::lengthBetween(2, 32))->key('birthdate', v::dateTime())
         ->key('password', v::notBlank())
         ->key('email', v::email())

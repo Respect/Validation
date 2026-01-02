@@ -8,10 +8,10 @@
 declare(strict_types=1);
 
 test('https://github.com/Respect/Validation/issues/796', catchAll(
-    fn() => v::named(v::create()
+    fn() => v::named(v::init()
         ->key(
             'mysql',
-            v::create()
+            v::init()
                 ->key('host', v::stringType())
                 ->key('user', v::stringType())
                 ->key('password', v::stringType())
@@ -19,7 +19,7 @@ test('https://github.com/Respect/Validation/issues/796', catchAll(
         )
         ->key(
             'postgresql',
-            v::create()
+            v::init()
                 ->key('host', v::stringType())
                 ->key('user', v::stringType())
                 ->key('password', v::stringType())

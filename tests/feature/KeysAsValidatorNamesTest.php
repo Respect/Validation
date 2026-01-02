@@ -10,7 +10,7 @@ declare(strict_types=1);
 date_default_timezone_set('UTC');
 
 test('Scenario #1', catchFullMessage(
-    fn() => v::named(v::create()
+    fn() => v::named(v::init()
         ->key('username', v::length(v::between(2, 32)))
         ->key('birthdate', v::dateTime()), 'User Subscription Form')
         ->assert(['username' => '0', 'birthdate' => 'Whatever']),

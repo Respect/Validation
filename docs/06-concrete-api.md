@@ -20,7 +20,7 @@ the chain only builds the structure. You can build it by yourself:
 use Respect\Validation\Rules;
 use Respect\Validation\Validator;
 
-$usernameValidator = Validator::create(
+$usernameValidator = Validator::init(
     new Rules\Alnum(),
     new Rules\Not(
         new Rules\Spaced(),

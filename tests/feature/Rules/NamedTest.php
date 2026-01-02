@@ -68,7 +68,7 @@ test('With nested key that fails validation', catchAll(
     fn() => v::key(
         'vegetables',
         v::named(
-            v::create()
+            v::init()
                 ->key('root', v::stringType())
                 ->key('stems', v::stringType())
                 ->keyExists('fruits'),
