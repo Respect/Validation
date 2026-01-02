@@ -40,7 +40,7 @@ test('Inverted', catchAll(
 ));
 
 test('With wrapped name, default', catchAll(
-    fn() => v::max(v::negative()->setName('Wrapped'))->setName('Wrapper')->assert([1, 2, 3]),
+    fn() => v::named(v::max(v::named(v::negative(), 'Wrapped')), 'Wrapper')->assert([1, 2, 3]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The maximum of Wrapped must be a negative number')
         ->and($fullMessage)->toBe('- The maximum of Wrapped must be a negative number')
@@ -48,7 +48,7 @@ test('With wrapped name, default', catchAll(
 ));
 
 test('With wrapper name, default', catchAll(
-    fn() => v::max(v::negative())->setName('Wrapper')->assert([1, 2, 3]),
+    fn() => v::named(v::max(v::negative()), 'Wrapper')->assert([1, 2, 3]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The maximum of Wrapper must be a negative number')
         ->and($fullMessage)->toBe('- The maximum of Wrapper must be a negative number')
@@ -56,7 +56,7 @@ test('With wrapper name, default', catchAll(
 ));
 
 test('With wrapped name, inverted', catchAll(
-    fn() => v::not(v::max(v::negative()->setName('Wrapped')))->setName('Wrapper')->assert([-3, -2, -1]),
+    fn() => v::named(v::not(v::max(v::named(v::negative(), 'Wrapped'))), 'Wrapper')->assert([-3, -2, -1]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The maximum of Wrapped must not be a negative number')
         ->and($fullMessage)->toBe('- The maximum of Wrapped must not be a negative number')
@@ -64,7 +64,7 @@ test('With wrapped name, inverted', catchAll(
 ));
 
 test('With wrapper name, inverted', catchAll(
-    fn() => v::not(v::max(v::negative()))->setName('Wrapper')->assert([-3, -2, -1]),
+    fn() => v::named(v::not(v::max(v::negative())), 'Wrapper')->assert([-3, -2, -1]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The maximum of Wrapper must not be a negative number')
         ->and($fullMessage)->toBe('- The maximum of Wrapper must not be a negative number')

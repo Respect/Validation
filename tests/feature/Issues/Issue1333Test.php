@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('https://github.com/Respect/Validation/issues/1333', catchAll(
-    fn() => v::notSpaced()->email()->setName('User Email')->assert('not email'),
+    fn() => v::named(v::notSpaced()->email(), 'User Email')->assert('not email'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('User Email must not contain whitespaces')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'

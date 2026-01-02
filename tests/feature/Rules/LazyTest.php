@@ -28,9 +28,9 @@ test('Inverted', catchAll(
 ));
 
 test('With created name, default', catchAll(
-    fn() => v::lazy(
-        fn() => v::intType()->setName('Created'),
-    )->setName('Wrapper')->assert(true),
+    fn() => v::named(v::lazy(
+        fn() => v::named(v::intType(), 'Created'),
+    ), 'Wrapper')->assert(true),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Created must be an integer')
         ->and($fullMessage)->toBe('- Created must be an integer')
@@ -38,9 +38,9 @@ test('With created name, default', catchAll(
 ));
 
 test('With wrapper name, default', catchAll(
-    fn() => v::lazy(
+    fn() => v::named(v::lazy(
         fn() => v::intType(),
-    )->setName('Wrapper')->assert(true),
+    ), 'Wrapper')->assert(true),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapper must be an integer')
         ->and($fullMessage)->toBe('- Wrapper must be an integer')
@@ -48,9 +48,9 @@ test('With wrapper name, default', catchAll(
 ));
 
 test('With created name, inverted', catchAll(
-    fn() => v::not(v::lazy(
-        fn() => v::intType()->setName('Created'),
-    )->setName('Wrapped'))->setName('Not')->assert(2),
+    fn() => v::named(v::not(v::named(v::lazy(
+        fn() => v::named(v::intType(), 'Created'),
+    ), 'Wrapped')), 'Not')->assert(2),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Created must not be an integer')
         ->and($fullMessage)->toBe('- Created must not be an integer')
@@ -58,9 +58,9 @@ test('With created name, inverted', catchAll(
 ));
 
 test('With wrapper name, inverted', catchAll(
-    fn() => v::not(v::lazy(
+    fn() => v::named(v::not(v::named(v::lazy(
         fn() => v::intType(),
-    )->setName('Wrapped'))->setName('Not')->assert(2),
+    ), 'Wrapped')), 'Not')->assert(2),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must not be an integer')
         ->and($fullMessage)->toBe('- Wrapped must not be an integer')
@@ -68,9 +68,9 @@ test('With wrapper name, inverted', catchAll(
 ));
 
 test('With not name, inverted', catchAll(
-    fn() => v::not(v::lazy(
+    fn() => v::named(v::not(v::lazy(
         fn() => v::intType(),
-    ))->setName('Not')->assert(2),
+    )), 'Not')->assert(2),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Not must not be an integer')
         ->and($fullMessage)->toBe('- Not must not be an integer')

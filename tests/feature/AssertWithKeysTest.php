@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('Scenario #1', catchFullMessage(
-    fn() => v::create()
+    fn() => v::named(v::create()
         ->key(
             'mysql',
             v::create()
@@ -24,8 +24,7 @@ test('Scenario #1', catchFullMessage(
                 ->key('user', v::stringType())
                 ->key('password', v::stringType())
                 ->key('schema', v::stringType()),
-        )
-        ->setName('the given data')
+        ), 'the given data')
         ->assert([
             'mysql' => [
                 'host' => 42,

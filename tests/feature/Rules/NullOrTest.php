@@ -40,7 +40,7 @@ test('Inverted nullined', catchAll(
 ));
 
 test('Inverted nullined, wrapped name', catchAll(
-    fn() => v::not(v::nullOr(v::alpha()->setName('Wrapped')))->assert(null),
+    fn() => v::not(v::nullOr(v::named(v::alpha(), 'Wrapped')))->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must not contain letters (a-z) and must not be null')
         ->and($fullMessage)->toBe('- Wrapped must not contain letters (a-z) and must not be null')
@@ -48,7 +48,7 @@ test('Inverted nullined, wrapped name', catchAll(
 ));
 
 test('Inverted nullined, wrapper name', catchAll(
-    fn() => v::not(v::nullOr(v::alpha())->setName('Wrapper'))->assert(null),
+    fn() => v::not(v::named(v::nullOr(v::alpha()), 'Wrapper'))->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapper must not contain letters (a-z) and must not be null')
         ->and($fullMessage)->toBe('- Wrapper must not contain letters (a-z) and must not be null')
@@ -56,7 +56,7 @@ test('Inverted nullined, wrapper name', catchAll(
 ));
 
 test('Inverted nullined, not name', catchAll(
-    fn() => v::not(v::nullOr(v::alpha()))->setName('Not')->assert(null),
+    fn() => v::named(v::not(v::nullOr(v::alpha())), 'Not')->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Not must not contain letters (a-z) and must not be null')
         ->and($fullMessage)->toBe('- Not must not contain letters (a-z) and must not be null')

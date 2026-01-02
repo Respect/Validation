@@ -32,7 +32,7 @@ test('Default with inverted failing rule', catchAll(
 ));
 
 test('With wrapped name, default', catchAll(
-    fn() => v::circuit(v::alwaysValid(), v::trueVal()->setName('Wrapped'))->setName('Wrapper')->assert(false),
+    fn() => v::named(v::circuit(v::alwaysValid(), v::named(v::trueVal(), 'Wrapped')), 'Wrapper')->assert(false),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must evaluate to `true`')
         ->and($fullMessage)->toBe('- Wrapped must evaluate to `true`')
@@ -40,7 +40,7 @@ test('With wrapped name, default', catchAll(
 ));
 
 test('With wrapper name, default', catchAll(
-    fn() => v::circuit(v::alwaysValid(), v::trueVal())->setName('Wrapper')->assert(false),
+    fn() => v::named(v::circuit(v::alwaysValid(), v::trueVal()), 'Wrapper')->assert(false),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapper must evaluate to `true`')
         ->and($fullMessage)->toBe('- Wrapper must evaluate to `true`')
@@ -48,7 +48,7 @@ test('With wrapper name, default', catchAll(
 ));
 
 test('With the name set in the wrapped rule of an inverted failing rule', catchAll(
-    fn() => v::circuit(v::alwaysValid(), v::not(v::trueVal()->setName('Wrapped'))->setName('Not'))->setName('Wrapper')->assert(true),
+    fn() => v::named(v::circuit(v::alwaysValid(), v::named(v::not(v::named(v::trueVal(), 'Wrapped')), 'Not')), 'Wrapper')->assert(true),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must not evaluate to `true`')
         ->and($fullMessage)->toBe('- Wrapped must not evaluate to `true`')
@@ -56,7 +56,7 @@ test('With the name set in the wrapped rule of an inverted failing rule', catchA
 ));
 
 test('With the name set in an inverted failing rule', catchAll(
-    fn() => v::circuit(v::alwaysValid(), v::not(v::trueVal())->setName('Not'))->setName('Wrapper')->assert(true),
+    fn() => v::named(v::circuit(v::alwaysValid(), v::named(v::not(v::trueVal()), 'Not')), 'Wrapper')->assert(true),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Not must not evaluate to `true`')
         ->and($fullMessage)->toBe('- Not must not evaluate to `true`')
@@ -64,7 +64,7 @@ test('With the name set in an inverted failing rule', catchAll(
 ));
 
 test('With the name set in the "circuit" that has an inverted failing rule', catchAll(
-    fn() => v::circuit(v::alwaysValid(), v::not(v::trueVal()))->setName('Wrapper')->assert(true),
+    fn() => v::named(v::circuit(v::alwaysValid(), v::not(v::trueVal())), 'Wrapper')->assert(true),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapper must not evaluate to `true`')
         ->and($fullMessage)->toBe('- Wrapper must not evaluate to `true`')

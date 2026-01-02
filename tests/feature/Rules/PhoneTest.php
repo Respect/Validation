@@ -32,7 +32,7 @@ test('Inverted', catchAll(
 ));
 
 test('Default with name', catchAll(
-    fn() => v::phone()->setName('Phone')->assert('123'),
+    fn() => v::named(v::phone(), 'Phone')->assert('123'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Phone must be a valid telephone number')
         ->and($fullMessage)->toBe('- Phone must be a valid telephone number')
@@ -40,7 +40,7 @@ test('Default with name', catchAll(
 ));
 
 test('Country-specific with name', catchAll(
-    fn() => v::phone('US')->setName('Phone')->assert('123'),
+    fn() => v::named(v::phone('US'), 'Phone')->assert('123'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Phone must be a valid telephone number for country United States')
         ->and($fullMessage)->toBe('- Phone must be a valid telephone number for country United States')

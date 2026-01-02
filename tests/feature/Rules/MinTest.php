@@ -32,7 +32,7 @@ test('With template', catchAll(
 ));
 
 test('With name', catchAll(
-    fn() => v::min(v::equals(1))->setName('Options')->assert([2, 3]),
+    fn() => v::named(v::min(v::equals(1)), 'Options')->assert([2, 3]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The minimum of Options must be equal to 1')
         ->and($fullMessage)->toBe('- The minimum of Options must be equal to 1')

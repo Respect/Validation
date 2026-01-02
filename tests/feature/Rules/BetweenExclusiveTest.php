@@ -32,7 +32,7 @@ test('With template', catchAll(
 ));
 
 test('With name', catchAll(
-    fn() => v::betweenExclusive(1, 10)->setName('Range')->assert(10),
+    fn() => v::named(v::betweenExclusive(1, 10), 'Range')->assert(10),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Range must be greater than 1 and less than 10')
         ->and($fullMessage)->toBe('- Range must be greater than 1 and less than 10')

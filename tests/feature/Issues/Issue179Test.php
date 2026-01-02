@@ -15,12 +15,14 @@ test('https://github.com/Respect/Validation/issues/179', catchAll(
             'schema' => 'my_schema',
         ];
 
-        $validator = v::arrayType();
-        $validator->setName('Settings');
-        $validator->key('host', v::stringType());
-        $validator->key('user', v::stringType());
-        $validator->key('password', v::stringType());
-        $validator->key('schema', v::stringType());
+        $validator = v::named(
+            v::arrayType()
+                ->key('host', v::stringType())
+                ->key('user', v::stringType())
+                ->key('password', v::stringType())
+                ->key('schema', v::stringType()),
+            'Settings',
+        );
         $validator->assert($config);
     },
     fn(string $message, string $fullMessage, array $messages) => expect()

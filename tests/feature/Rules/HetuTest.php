@@ -32,7 +32,7 @@ test('With template', catchAll(
 ));
 
 test('With name', catchAll(
-    fn() => v::hetu()->setName('Hetu')->assert('010106A901O'),
+    fn() => v::named(v::hetu(), 'Hetu')->assert('010106A901O'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Hetu must be a valid Finnish personal identity code')
         ->and($fullMessage)->toBe('- Hetu must be a valid Finnish personal identity code')

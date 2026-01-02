@@ -24,7 +24,7 @@ test('Inverted mode', catchAll(
 ));
 
 test('Custom name', catchAll(
-    fn() => v::keyExists('foo')->setName('Custom name')->assert(['bar' => 'baz']),
+    fn() => v::named(v::keyExists('foo'), 'Custom name')->assert(['bar' => 'baz']),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` (<- Custom name) must be present')
         ->and($fullMessage)->toBe('- `.foo` (<- Custom name) must be present')

@@ -40,7 +40,7 @@ test('Inverted undefined', catchAll(
 ));
 
 test('Inverted undefined, wrapped name', catchAll(
-    fn() => v::not(v::undefOr(v::alpha()->setName('Wrapped')))->assert(null),
+    fn() => v::not(v::undefOr(v::named(v::alpha(), 'Wrapped')))->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must not contain letters (a-z) and must not be undefined')
         ->and($fullMessage)->toBe('- Wrapped must not contain letters (a-z) and must not be undefined')
@@ -48,7 +48,7 @@ test('Inverted undefined, wrapped name', catchAll(
 ));
 
 test('Inverted undefined, wrapper name', catchAll(
-    fn() => v::not(v::undefOr(v::alpha())->setName('Wrapper'))->assert(null),
+    fn() => v::not(v::named(v::undefOr(v::alpha()), 'Wrapper'))->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapper must not contain letters (a-z) and must not be undefined')
         ->and($fullMessage)->toBe('- Wrapper must not contain letters (a-z) and must not be undefined')
@@ -56,7 +56,7 @@ test('Inverted undefined, wrapper name', catchAll(
 ));
 
 test('Inverted undefined, not name', catchAll(
-    fn() => v::not(v::undefOr(v::alpha()))->setName('Not')->assert(null),
+    fn() => v::named(v::not(v::undefOr(v::alpha())), 'Not')->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Not must not contain letters (a-z) and must not be undefined')
         ->and($fullMessage)->toBe('- Not must not contain letters (a-z) and must not be undefined')

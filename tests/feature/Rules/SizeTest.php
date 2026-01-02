@@ -47,7 +47,7 @@ test('Inverted', catchAll(
 ));
 
 test('Wrapped with name', catchAll(
-    fn() => v::size('KB', v::lessThan(2)->setName('Wrapped'))->assert($this->file2Kb->url()),
+    fn() => v::size('KB', v::named(v::lessThan(2), 'Wrapped'))->assert($this->file2Kb->url()),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The size in kilobytes of Wrapped must be less than 2')
         ->and($fullMessage)->toBe('- The size in kilobytes of Wrapped must be less than 2')
@@ -55,7 +55,7 @@ test('Wrapped with name', catchAll(
 ));
 
 test('Wrapper with name', catchAll(
-    fn() => v::size('KB', v::lessThan(2))->setName('Wrapper')->assert($this->file2Kb->url()),
+    fn() => v::named(v::size('KB', v::lessThan(2)), 'Wrapper')->assert($this->file2Kb->url()),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The size in kilobytes of Wrapper must be less than 2')
         ->and($fullMessage)->toBe('- The size in kilobytes of Wrapper must be less than 2')

@@ -24,8 +24,7 @@ test('Inverted', catchAll(
 ));
 
 test('Template in Validator', catchAll(
-    fn() => v::named(v::stringType(), 'Eggplant')
-        ->setName('Mushroom')
+    fn() => v::named(v::named(v::stringType(), 'Eggplant'), 'Mushroom')
         ->assert(12),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Eggplant must be a string')

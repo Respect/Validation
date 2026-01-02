@@ -40,7 +40,7 @@ test('Double-inverted with missing property', catchAll(
 ));
 
 test('With wrapped name, missing property', catchAll(
-    fn() => v::property('foo', v::intType()->setName('Wrapped'))->assert(new stdClass()),
+    fn() => v::property('foo', v::named(v::intType(), 'Wrapped'))->assert(new stdClass()),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must be present')
         ->and($fullMessage)->toBe('- Wrapped must be present')
@@ -48,7 +48,7 @@ test('With wrapped name, missing property', catchAll(
 ));
 
 test('With wrapped name, default', catchAll(
-    fn() => v::property('foo', v::intType()->setName('Wrapped'))->setName('Wrapper')->assert((object) ['foo' => 'string']),
+    fn() => v::named(v::property('foo', v::named(v::intType(), 'Wrapped')), 'Wrapper')->assert((object) ['foo' => 'string']),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must be an integer')
         ->and($fullMessage)->toBe('- Wrapped must be an integer')
@@ -56,10 +56,9 @@ test('With wrapped name, default', catchAll(
 ));
 
 test('With wrapped name, inverted', catchAll(
-    fn() => v::not(
-        v::property('foo', v::intType()->setName('Wrapped'))->setName('Wrapper'),
-    )
-            ->setName('Not')
+    fn() => v::named(v::not(
+        v::named(v::property('foo', v::named(v::intType(), 'Wrapped')), 'Wrapper'),
+    ), 'Not')
             ->assert((object) ['foo' => 12]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must not be an integer')
@@ -68,7 +67,7 @@ test('With wrapped name, inverted', catchAll(
 ));
 
 test('With wrapper name, default', catchAll(
-    fn() => v::property('foo', v::intType())->setName('Wrapper')->assert((object) ['foo' => 'string']),
+    fn() => v::named(v::property('foo', v::intType()), 'Wrapper')->assert((object) ['foo' => 'string']),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` (<- Wrapper) must be an integer')
         ->and($fullMessage)->toBe('- `.foo` (<- Wrapper) must be an integer')
@@ -76,7 +75,7 @@ test('With wrapper name, default', catchAll(
 ));
 
 test('With wrapper name, missing property', catchAll(
-    fn() => v::property('foo', v::intType())->setName('Wrapper')->assert(new stdClass()),
+    fn() => v::named(v::property('foo', v::intType()), 'Wrapper')->assert(new stdClass()),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` (<- Wrapper) must be present')
         ->and($fullMessage)->toBe('- `.foo` (<- Wrapper) must be present')
@@ -84,7 +83,7 @@ test('With wrapper name, missing property', catchAll(
 ));
 
 test('With wrapper name, inverted', catchAll(
-    fn() => v::not(v::property('foo', v::intType())->setName('Wrapper'))->setName('Not')
+    fn() => v::named(v::not(v::named(v::property('foo', v::intType()), 'Wrapper')), 'Not')
             ->assert((object) ['foo' => 12]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` (<- Wrapper) must not be an integer')
@@ -93,7 +92,7 @@ test('With wrapper name, inverted', catchAll(
 ));
 
 test('With "Not" name, inverted', catchAll(
-    fn() => v::not(v::property('foo', v::intType()))->setName('Not')->assert((object) ['foo' => 12]),
+    fn() => v::named(v::not(v::property('foo', v::intType())), 'Not')->assert((object) ['foo' => 12]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.foo` (<- Not) must not be an integer')
         ->and($fullMessage)->toBe('- `.foo` (<- Not) must not be an integer')

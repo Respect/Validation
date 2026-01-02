@@ -31,8 +31,6 @@ final class Validator implements Rule, Nameable
     /** @var array<string|int, mixed> */
     private array $templates = [];
 
-    private Name|null $name = null;
-
     private string|null $template = null;
 
     /** @param array<string> $ignoredBacktracePaths */
@@ -117,10 +115,6 @@ final class Validator implements Rule, Nameable
     public function getRule(): Reducer
     {
         $reducer = new Reducer(...$this->rules);
-        if ($this->name !== null) {
-            $reducer = $reducer->withName($this->name);
-        }
-
         if ($this->template !== null) {
             $reducer = $reducer->withTemplate($this->template);
         }
@@ -136,14 +130,7 @@ final class Validator implements Rule, Nameable
 
     public function getName(): Name|null
     {
-        return $this->getRule()->getName() ?? $this->name;
-    }
-
-    public function setName(string $name): static
-    {
-        $this->name = new Name($name);
-
-        return $this;
+        return $this->getRule()->getName();
     }
 
     public function getTemplate(): string|null

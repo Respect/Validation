@@ -60,7 +60,7 @@ test('Inverted', catchAll(
 ));
 
 test('With name, non-iterable', catchAll(
-    fn() => v::each(v::intType()->setName('Wrapped'))->assert(null),
+    fn() => v::each(v::named(v::intType(), 'Wrapped'))->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must be iterable')
         ->and($fullMessage)->toBe('- Wrapped must be iterable')
@@ -68,7 +68,7 @@ test('With name, non-iterable', catchAll(
 ));
 
 test('With name, empty', catchAll(
-    fn() => v::each(v::intType()->setName('Wrapped'))->assert([]),
+    fn() => v::each(v::named(v::intType(), 'Wrapped'))->assert([]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The length of Wrapped must be greater than 0')
         ->and($fullMessage)->toBe('- The length of Wrapped must be greater than 0')
@@ -76,7 +76,7 @@ test('With name, empty', catchAll(
 ));
 
 test('With name, default', catchAll(
-    fn() => v::each(v::intType()->setName('Wrapped'))->setName('Wrapper')->assert(['a', 'b', 'c']),
+    fn() => v::named(v::each(v::named(v::intType(), 'Wrapped')), 'Wrapper')->assert(['a', 'b', 'c']),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -94,7 +94,7 @@ test('With name, default', catchAll(
 ));
 
 test('With name, inverted', catchAll(
-    fn() => v::not(v::each(v::intType()->setName('Wrapped'))->setName('Wrapper'))->setName('Not')->assert([1, 2, 3]),
+    fn() => v::named(v::not(v::named(v::each(v::named(v::intType(), 'Wrapped')), 'Wrapper')), 'Not')->assert([1, 2, 3]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -112,7 +112,7 @@ test('With name, inverted', catchAll(
 ));
 
 test('With wrapper name, default', catchAll(
-    fn() => v::each(v::intType())->setName('Wrapper')->assert(['a', 'b', 'c']),
+    fn() => v::named(v::each(v::intType()), 'Wrapper')->assert(['a', 'b', 'c']),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.0` (<- Wrapper) must be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -130,7 +130,7 @@ test('With wrapper name, default', catchAll(
 ));
 
 test('With wrapper name, inverted', catchAll(
-    fn() => v::not(v::each(v::intType())->setName('Wrapper'))->setName('Not')->assert([1, 2, 3]),
+    fn() => v::named(v::not(v::named(v::each(v::intType()), 'Wrapper')), 'Not')->assert([1, 2, 3]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.0` (<- Wrapper) must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -148,7 +148,7 @@ test('With wrapper name, inverted', catchAll(
 ));
 
 test('With Not name, inverted', catchAll(
-    fn() => v::not(v::each(v::intType()))->setName('Not')->assert([1, 2, 3]),
+    fn() => v::named(v::not(v::each(v::intType())), 'Not')->assert([1, 2, 3]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.0` (<- Not) must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -248,15 +248,14 @@ test('With array template, default', catchAll(
 ));
 
 test('With array template and name, default', catchAll(
-    fn() => v::each(v::intType()->setName('Wrapped'))
-                ->setName('Wrapper')
-                ->setTemplates([
-                    '__root__' => 'Here a sequence of items that did not pass the validation',
-                    0 => 'First item should have been an integer',
-                    1 => 'Second item should have been an integer',
-                    2 => 'Third item should have been an integer',
-                ])
-                ->assert(['a', 'b', 'c']),
+    fn() => v::named(v::each(v::named(v::intType(), 'Wrapped')), 'Wrapper')
+        ->setTemplates([
+            '__root__' => 'Here a sequence of items that did not pass the validation',
+            0 => 'First item should have been an integer',
+            1 => 'Second item should have been an integer',
+            2 => 'Third item should have been an integer',
+        ])
+        ->assert(['a', 'b', 'c']),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('First item should have been an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'

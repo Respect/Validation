@@ -46,14 +46,14 @@ When no custom name is set, the path is displayed as `{{name}}`. When a custom n
 v::propertyExists('foo')->assert([]);
 // Message: `.foo` must be present
 
-v::propertyExists('foo')->setName('Custom name')->assert([]);
+v::named(v::propertyExists('foo'), 'Custom name')->assert([]);
 // Message: `.foo` (<- Custom name) must be present
 ```
 
 If you want to display only a custom name while checking if a property exists, use [Property](Property.md) with [AlwaysValid](AlwaysValid.md):
 
 ```php
-v::property('foo', v::alwaysValid()->setName('Custom name'))->assert([]);
+v::property('foo', v::named(v::alwaysValid(), 'Custom name'))->assert([]);
 // Message: Custom name must be present
 ```
 

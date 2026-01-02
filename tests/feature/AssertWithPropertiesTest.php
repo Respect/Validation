@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('Scenario #1', catchFullMessage(
-    fn() => v::create()
+    fn() => v::named(v::create()
         ->property(
             'mysql',
             v::create()
@@ -24,8 +24,7 @@ test('Scenario #1', catchFullMessage(
                 ->property('user', v::stringType())
                 ->property('password', v::stringType())
                 ->property('schema', v::stringType()),
-        )
-        ->setName('the given data')
+        ), 'the given data')
         ->assert(json_decode((string) json_encode([
             'mysql' => [
                 'host' => 42,
