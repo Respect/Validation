@@ -66,18 +66,6 @@ final class ValidatorTest extends TestCase
     }
 
     #[Test]
-    public function itShouldAssertUsingThePreDefinedTemplatesInTheChain(): void
-    {
-        $templates = ['stub' => 'This is my pre-defined template'];
-
-        $this->expectExceptionMessage($templates['stub']);
-
-        $validator = Validator::create(Stub::fail(1));
-        $validator->setTemplates($templates);
-        $validator->assert('whatever');
-    }
-
-    #[Test]
     public function itShouldAssertUsingTheGivingStringTemplate(): void
     {
         $template = 'This is my new template';
@@ -85,30 +73,6 @@ final class ValidatorTest extends TestCase
         $this->expectExceptionMessage($template);
 
         $validator = Validator::create(Stub::fail(1));
-        $validator->assert('whatever', $template);
-    }
-
-    #[Test]
-    public function itShouldAssertUsingTheGivingArrayTemplateWithTheRuleNameAsKey(): void
-    {
-        $template = ['stub' => 'This is my new template'];
-
-        $this->expectExceptionMessage($template['stub']);
-
-        $validator = Validator::create(Stub::fail(1));
-        $validator->setTemplates(['stub' => 'This is my pre-defined template']);
-        $validator->assert('whatever', $template);
-    }
-
-    #[Test]
-    public function itShouldAssertUsingTheGivingArrayTemplateWithRootKey(): void
-    {
-        $template = ['__root__' => 'This is my new template'];
-
-        $this->expectExceptionMessage($template['__root__']);
-
-        $validator = Validator::create(Stub::fail(1));
-        $validator->setTemplates(['__root__' => 'This is my pre-defined template']);
         $validator->assert('whatever', $template);
     }
 
@@ -154,32 +118,6 @@ final class ValidatorTest extends TestCase
         $resultQuery = $validator->validate('whatever', ['stub' => $template]);
 
         self::assertSame($template, $resultQuery->toMessage());
-    }
-
-    #[Test]
-    public function itShouldValidateUsingPreDefinedTemplatesFromSetTemplates(): void
-    {
-        $template = uniqid();
-
-        $validator = Validator::create(Stub::fail(1));
-        $validator->setTemplates(['stub' => $template]);
-
-        $resultQuery = $validator->validate('whatever');
-
-        self::assertSame($template, $resultQuery->toMessage());
-    }
-
-    #[Test]
-    public function itShouldValidateOverridingPreDefinedTemplatesWithArrayTemplates(): void
-    {
-        $overrideTemplate = uniqid();
-
-        $validator = Validator::create(Stub::fail(1));
-        $validator->setTemplates(['stub' => 'This should be overridden']);
-
-        $resultQuery = $validator->validate('whatever', ['stub' => $overrideTemplate]);
-
-        self::assertSame($overrideTemplate, $resultQuery->toMessage());
     }
 
     #[Test]

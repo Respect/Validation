@@ -222,13 +222,12 @@ test('with template, inverted', catchAll(
 
 test('With array template, default', catchAll(
     fn() => v::each(v::intType())
-        ->setTemplates([
+        ->assert(['a', 'b', 'c'], [
             '__root__' => 'Here a sequence of items that did not pass the validation',
             0 => 'First item should have been an integer',
             1 => 'Second item should have been an integer',
             2 => 'Third item should have been an integer',
-        ])
-        ->assert(['a', 'b', 'c']),
+        ]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('First item should have been an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -247,13 +246,12 @@ test('With array template, default', catchAll(
 
 test('With array template and name, default', catchAll(
     fn() => v::named(v::each(v::named(v::intType(), 'Wrapped')), 'Wrapper')
-        ->setTemplates([
+        ->assert(['a', 'b', 'c'], [
             '__root__' => 'Here a sequence of items that did not pass the validation',
             0 => 'First item should have been an integer',
             1 => 'Second item should have been an integer',
             2 => 'Third item should have been an integer',
-        ])
-        ->assert(['a', 'b', 'c']),
+        ]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('First item should have been an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'

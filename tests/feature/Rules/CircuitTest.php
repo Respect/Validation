@@ -82,8 +82,7 @@ test('With template', catchAll(
 
 test('With multiple templates', catchAll(
     fn() => v::circuit(v::alwaysValid(), v::trueVal())
-        ->setTemplates(['trueVal' => 'Clever clowns craft circuit clever clocks'])
-        ->assert(false),
+        ->assert(false, ['trueVal' => 'Clever clowns craft circuit clever clocks']),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Clever clowns craft circuit clever clocks')
         ->and($fullMessage)->toBe('- Clever clowns craft circuit clever clocks')

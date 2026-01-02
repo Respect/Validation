@@ -141,12 +141,12 @@ test('Without adjacent result', catchAll(
 ));
 
 test('Without adjacent result with templates', catchAll(
-    fn() => v::dateTimeDiff('years', v::primeNumber()->between(2, 5))->setTemplates([
+    fn() => v::dateTimeDiff('years', v::primeNumber()->between(2, 5))->assert('1 year ago', [
         'dateTimeDiff' => [
             'primeNumber' => 'Interval must be a valid prime number',
             'between' => 'Interval must be between 2 and 5',
         ],
-    ])->assert('1 year ago'),
+    ]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('The number of years between now and "1 year ago" must be a prime number')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'

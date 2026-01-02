@@ -16,7 +16,7 @@ test('Template as a string in the chain', catchAll(
 ));
 
 test('Template as an array in the chain', catchAll(
-    fn() => v::alwaysInvalid()->setTemplates(['alwaysInvalid' => 'My array template in the chain'])->assert(1),
+    fn() => v::alwaysInvalid()->assert(1, ['alwaysInvalid' => 'My array template in the chain']),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('My array template in the chain')
         ->and($fullMessage)->toBe('- My array template in the chain')

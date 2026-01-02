@@ -31,9 +31,6 @@ final class Validator implements Rule, Nameable
     /** @var array<Rule> */
     private array $rules = [];
 
-    /** @var array<string|int, mixed> */
-    private array $templates = [];
-
     /** @param array<string> $ignoredBacktracePaths */
     public function __construct(
         private readonly RuleFactory $ruleFactory,
@@ -104,14 +101,6 @@ final class Validator implements Rule, Nameable
         throw $exception;
     }
 
-    /** @param array<string|int, mixed> $templates */
-    public function setTemplates(array $templates): self
-    {
-        $this->templates = $templates;
-
-        return $this;
-    }
-
     public function addRule(Rule $rule): self
     {
         $this->rules[] = $rule;
@@ -143,7 +132,7 @@ final class Validator implements Rule, Nameable
             $this->mainMessageFormatter,
             $this->fullMessageFormatter,
             $this->messagesFormatter,
-            is_array($template) ? $template : $this->templates,
+            is_array($template) ? $template : [],
         );
     }
 
