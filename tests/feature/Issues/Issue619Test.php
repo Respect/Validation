@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('https://github.com/Respect/Validation/issues/619', catchAll(
-    fn() => v::instance(stdClass::class)->setTemplate('invalid object')->assert('test'),
+    fn() => v::templated(v::instance(stdClass::class), 'invalid object')->assert('test'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('invalid object')
         ->and($fullMessage)->toBe('- invalid object')

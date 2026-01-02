@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Test;
@@ -17,7 +16,6 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
-use Throwable;
 
 use function uniqid;
 
@@ -77,44 +75,6 @@ final class ValidatorTest extends TestCase
         $validator = Validator::create(Stub::fail(1));
         $validator->setTemplates($templates);
         $validator->assert('whatever');
-    }
-
-    #[Test]
-    public function itShouldAssertUsingThePreDefinedTemplateInTheChain(): void
-    {
-        $template = 'This is my pre-defined template';
-
-        $this->expectExceptionMessage($template);
-
-        $validator = Validator::create(Stub::fail(1));
-        $validator->setTemplate($template);
-        $validator->assert('whatever');
-    }
-
-    #[Test]
-    public function itShouldAssertUsingTheGivingCallableEvenWhenRuleAlreadyHasTemplate(): void
-    {
-        $predefinedTemplate = 'Current template';
-
-        $template = static fn(Throwable $exception) => new Exception('My exception: ' . $exception->getMessage());
-
-        $this->expectExceptionMessage('My exception: ' . $predefinedTemplate);
-
-        $validator = Validator::create(Stub::fail(1));
-        $validator->setTemplate($predefinedTemplate);
-        $validator->assert('whatever', $template);
-    }
-
-    #[Test]
-    public function itShouldAssertUsingTheGivingExceptionEvenWhenRuleAlreadyHasTemplate(): void
-    {
-        $template = new Exception('This is a test');
-
-        $this->expectExceptionObject($template);
-
-        $validator = Validator::create(Stub::fail(1));
-        $validator->setTemplate('This wont be used');
-        $validator->assert('whatever', $template);
     }
 
     #[Test]
@@ -197,19 +157,6 @@ final class ValidatorTest extends TestCase
     }
 
     #[Test]
-    public function itShouldValidateUsingPreDefinedTemplateFromSetTemplate(): void
-    {
-        $template = uniqid();
-
-        $validator = Validator::create(Stub::fail(1));
-        $validator->setTemplate($template);
-
-        $resultQuery = $validator->validate('whatever');
-
-        self::assertSame($template, $resultQuery->toMessage());
-    }
-
-    #[Test]
     public function itShouldValidateUsingPreDefinedTemplatesFromSetTemplates(): void
     {
         $template = uniqid();
@@ -223,19 +170,6 @@ final class ValidatorTest extends TestCase
     }
 
     #[Test]
-    public function itShouldValidateOverridingPreDefinedTemplateWithStringTemplate(): void
-    {
-        $overrideTemplate = uniqid();
-
-        $validator = Validator::create(Stub::fail(1));
-        $validator->setTemplate('This should be overridden');
-
-        $resultQuery = $validator->validate('whatever', $overrideTemplate);
-
-        self::assertSame($overrideTemplate, $resultQuery->toMessage());
-    }
-
-    #[Test]
     public function itShouldValidateOverridingPreDefinedTemplatesWithArrayTemplates(): void
     {
         $overrideTemplate = uniqid();
@@ -246,5 +180,45 @@ final class ValidatorTest extends TestCase
         $resultQuery = $validator->validate('whatever', ['stub' => $overrideTemplate]);
 
         self::assertSame($overrideTemplate, $resultQuery->toMessage());
+    }
+
+    #[Test]
+    public function itShouldEvaluateAndThrowExceptionWhenNoRulesAreAdded(): void
+    {
+        $this->expectException(ComponentException::class);
+        $this->expectExceptionMessage('No rules have been added to this validator.');
+
+        $validator = Validator::create();
+        $validator->evaluate('whatever');
+    }
+
+    #[Test]
+    public function itShouldEvaluateAndReturnResultWhenOneRuleIsAdded(): void
+    {
+        $validator = Validator::create(Stub::pass(1));
+
+        $result = $validator->evaluate('whatever');
+
+        self::assertTrue($result->hasPassed);
+    }
+
+    #[Test]
+    public function itShouldEvaluateAndReturnResultWhenMultipleRulesAreAdded(): void
+    {
+        $validator = Validator::create(Stub::pass(1), Stub::fail(2));
+
+        $result = $validator->evaluate('whatever');
+
+        self::assertFalse($result->hasPassed);
+    }
+
+    #[Test]
+    public function itShouldEvaluateAndReturnResultWhenSingleFailingRuleIsAdded(): void
+    {
+        $validator = Validator::create(Stub::fail(1));
+
+        $result = $validator->evaluate('whatever');
+
+        self::assertFalse($result->hasPassed);
     }
 }

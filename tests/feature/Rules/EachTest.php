@@ -166,7 +166,7 @@ test('With Not name, inverted', catchAll(
 ));
 
 test('With template, non-iterable', catchAll(
-    fn() => v::each(v::intType())->setTemplate('You should have passed an iterable')->assert(null),
+    fn() => v::templated(v::each(v::intType()), 'You should have passed an iterable')->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('You should have passed an iterable')
         ->and($fullMessage)->toBe('- You should have passed an iterable')
@@ -174,7 +174,7 @@ test('With template, non-iterable', catchAll(
 ));
 
 test('With template, empty', catchAll(
-    fn() => v::each(v::intType())->setTemplate('You should have passed an non-empty')
+    fn() => v::templated(v::each(v::intType()), 'You should have passed an non-empty')
         ->assert([]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('You should have passed an non-empty')
@@ -183,8 +183,7 @@ test('With template, empty', catchAll(
 ));
 
 test('With template, default', catchAll(
-    fn() => v::each(v::intType())
-        ->setTemplate('All items should have been integers')
+    fn() => v::templated(v::each(v::intType()), 'All items should have been integers')
         ->assert(['a', 'b', 'c']),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('All items should have been integers')
@@ -203,8 +202,7 @@ test('With template, default', catchAll(
 ));
 
 test('with template, inverted', catchAll(
-    fn() => v::not(v::each(v::intType()))
-        ->setTemplate('All items should not have been integers')
+    fn() => v::templated(v::not(v::each(v::intType())), 'All items should not have been integers')
         ->assert([1, 2, 3]),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('All items should not have been integers')

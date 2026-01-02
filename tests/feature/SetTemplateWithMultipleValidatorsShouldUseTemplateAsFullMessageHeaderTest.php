@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('Scenario #1', catchFullMessage(
-    fn() => v::callback('is_string')->between(1, 2)->setTemplate('{{subject}} is not tasty')->assert('something'),
+    fn() => v::templated(v::callback('is_string')->between(1, 2), '{{subject}} is not tasty')->assert('something'),
     fn(string $fullMessage) => expect($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - "something" is not tasty
           - "something" must be between 1 and 2

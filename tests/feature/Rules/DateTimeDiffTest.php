@@ -85,7 +85,7 @@ test('With custom $now', catchAll(
 ));
 
 test('With custom template', catchAll(
-    fn() => v::dateTimeDiff('years', v::equals(2)->setTemplate('Custom template'))->assert('1 year ago'),
+    fn() => v::dateTimeDiff('years', v::templated(v::equals(2), 'Custom template'))->assert('1 year ago'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Custom template')
         ->and($fullMessage)->toBe('- Custom template')
@@ -109,7 +109,7 @@ test('Wrapping "not"', catchAll(
 ));
 
 test('Wrapped with custom template', catchAll(
-    fn() => v::dateTimeDiff('years', v::equals(2)->setTemplate('Wrapped with custom template'))->assert('1 year ago'),
+    fn() => v::dateTimeDiff('years', v::templated(v::equals(2), 'Wrapped with custom template'))->assert('1 year ago'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapped with custom template')
         ->and($fullMessage)->toBe('- Wrapped with custom template')
@@ -117,7 +117,7 @@ test('Wrapped with custom template', catchAll(
 ));
 
 test('Wrapper with custom template', catchAll(
-    fn() => v::dateTimeDiff('years', v::equals(2))->setTemplate('Wrapper with custom template')->assert('1 year ago'),
+    fn() => v::templated(v::dateTimeDiff('years', v::equals(2)), 'Wrapper with custom template')->assert('1 year ago'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Wrapper with custom template')
         ->and($fullMessage)->toBe('- Wrapper with custom template')

@@ -9,15 +9,18 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\ArrayFormatter;
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\StringFormatter;
 use Respect\Validation\Mixins\Builder;
+use Respect\Validation\Rules\AllOf;
 use Respect\Validation\Rules\Core\Nameable;
-use Respect\Validation\Rules\Core\Reducer;
 use Throwable;
 
+use function count;
+use function current;
 use function is_array;
 use function is_callable;
 use function is_string;
@@ -30,8 +33,6 @@ final class Validator implements Rule, Nameable
 
     /** @var array<string|int, mixed> */
     private array $templates = [];
-
-    private string|null $template = null;
 
     /** @param array<string> $ignoredBacktracePaths */
     public function __construct(
@@ -55,7 +56,13 @@ final class Validator implements Rule, Nameable
 
     public function evaluate(mixed $input): Result
     {
-        return $this->getRule()->evaluate($input);
+        $rule = match (count($this->rules)) {
+            0 => throw new ComponentException('No rules have been added to this validator.'),
+            1 => current($this->rules),
+            default => new AllOf(...$this->rules),
+        };
+
+        return $rule->evaluate($input);
     }
 
     /** @param array<string|int, mixed>|string|null $template */
@@ -112,16 +119,6 @@ final class Validator implements Rule, Nameable
         return $this;
     }
 
-    public function getRule(): Reducer
-    {
-        $reducer = new Reducer(...$this->rules);
-        if ($this->template !== null) {
-            $reducer = $reducer->withTemplate($this->template);
-        }
-
-        return $reducer;
-    }
-
     /** @return array<Rule> */
     public function getRules(): array
     {
@@ -130,32 +127,18 @@ final class Validator implements Rule, Nameable
 
     public function getName(): Name|null
     {
-        return $this->getRule()->getName();
-    }
+        if (count($this->rules) === 1 && current($this->rules) instanceof Nameable) {
+            return current($this->rules)->getName();
+        }
 
-    public function getTemplate(): string|null
-    {
-        return $this->template;
-    }
-
-    public function setTemplate(string $template): static
-    {
-        $this->template = $template;
-
-        return $this;
+        return null;
     }
 
     /** @param array<string|int, mixed>|string|null $template */
     private function toResultQuery(Result $result, array|string|null $template): ResultQuery
     {
-        if (is_string($template)) {
-            $result = $result->withTemplate($template);
-        } elseif ($this->getTemplate() != null) {
-            $result = $result->withTemplate($this->getTemplate());
-        }
-
         return new ResultQuery(
-            $this->resultFilter->filter($result),
+            $this->resultFilter->filter(is_string($template) ? $result->withTemplate($template) : $result),
             $this->renderer,
             $this->mainMessageFormatter,
             $this->fullMessageFormatter,

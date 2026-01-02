@@ -72,8 +72,7 @@ test('With the name set in the "circuit" that has an inverted failing rule', cat
 ));
 
 test('With template', catchAll(
-    fn() => v::circuit(v::alwaysValid(), v::trueVal())
-        ->setTemplate('Circuit cool cats cunningly continuous cookies')
+    fn() => v::templated(v::circuit(v::alwaysValid(), v::trueVal()), 'Circuit cool cats cunningly continuous cookies')
         ->assert(false),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Circuit cool cats cunningly continuous cookies')

@@ -10,6 +10,6 @@ declare(strict_types=1);
 use Respect\Validation\Validator;
 
 test('Scenario #1', catchMessage(function (): void {
-    Validator::callback('is_int')->between(1, 2)->setTemplate('{{subject}} is not tasty')->assert('something');
+    v::templated(Validator::callback('is_int')->between(1, 2), '{{subject}} is not tasty')->assert('something');
 },
 fn(string $message) => expect($message)->toBe('"something" is not tasty')));

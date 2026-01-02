@@ -24,7 +24,7 @@ test('Inverted', catchAll(
 ));
 
 test('With template', catchAll(
-    fn() => v::betweenExclusive(1, 10)->setTemplate('Bewildered bees buzzed between blooming begonias')->assert(12),
+    fn() => v::templated(v::betweenExclusive(1, 10), 'Bewildered bees buzzed between blooming begonias')->assert(12),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('Bewildered bees buzzed between blooming begonias')
         ->and($fullMessage)->toBe('- Bewildered bees buzzed between blooming begonias')

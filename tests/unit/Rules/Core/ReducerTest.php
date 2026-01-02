@@ -41,20 +41,4 @@ final class ReducerTest extends TestCase
 
         self::assertEquals(new AllOf($rule1, $rule2, $rule3), $result->rule);
     }
-
-    #[Test]
-    public function shouldCreateWithTemplate(): void
-    {
-        $rule = Stub::any(1);
-
-        $template = 'This is my template';
-
-        $reducer = new Reducer($rule);
-        $withTemplated = $reducer->withTemplate($template);
-
-        $result = $withTemplated->evaluate(null);
-
-        self::assertSame($rule, $result->rule);
-        self::assertSame($template, $result->template);
-    }
 }
