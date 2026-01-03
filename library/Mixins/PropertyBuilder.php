@@ -14,6 +14,8 @@ use Respect\Validation\Rule;
 
 interface PropertyBuilder
 {
+    public static function propertyAll(string $propertyName, Rule $rule): Chain;
+
     public static function propertyAllOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function propertyAlnum(string $propertyName, string ...$additionalChars): Chain;

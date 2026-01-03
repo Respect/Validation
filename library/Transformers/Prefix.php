@@ -17,6 +17,8 @@ use function substr;
 final class Prefix implements Transformer
 {
     private const array RULES_TO_SKIP = [
+        'all',
+        'allOf',
         'key',
         'keyExists',
         'keyOptional',
@@ -47,6 +49,10 @@ final class Prefix implements Transformer
             $wrapperArguments = [$ruleSpec->arguments[0]];
 
             return new RuleSpec(substr($ruleSpec->name, 3), $arguments, new RuleSpec('key', $wrapperArguments));
+        }
+
+        if (str_starts_with($ruleSpec->name, 'all')) {
+            return new RuleSpec(substr($ruleSpec->name, 3), $ruleSpec->arguments, new RuleSpec('all'));
         }
 
         if (str_starts_with($ruleSpec->name, 'length')) {

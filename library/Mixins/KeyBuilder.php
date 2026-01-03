@@ -14,6 +14,8 @@ use Respect\Validation\Rule;
 
 interface KeyBuilder
 {
+    public static function keyAll(int|string $key, Rule $rule): Chain;
+
     public static function keyAllOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
 
     public static function keyAlnum(int|string $key, string ...$additionalChars): Chain;
