@@ -1,0 +1,37 @@
+name: Auto-create Patch Version
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - "2.4"
+
+permissions:
+  contents: write
+
+jobs:
+  create-patch-version:
+    name: Create Patch Version
+    runs-on: ubuntu-latest
+    
+    # Only run if PR was merged and the title contains "Update Regional Information"
+    if: |
+      github.event.pull_request.merged == true &&
+      contains(github.event.pull_request.title, 'Update Regional Information')
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          fetch-depth: 0
+
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+          RELEASE_BRANCHES: ${{ github.event.pull_request.base.ref }}
+          TAG_CONTEXT: branch
+
