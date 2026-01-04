@@ -5,6 +5,10 @@ on:
   schedule:
     - cron:  '0 0 * * *'
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   update-regional-information:
     name: Update Regional Information
@@ -27,6 +31,7 @@ jobs:
         run: bin/update-domain-suffixes
 
       - name: Create pull request
+        id: cpr
         uses: peter-evans/create-pull-request@v8
         with:
           committer: The Respect Panda <therespectpanda@gmail.com>
@@ -35,3 +40,10 @@ jobs:
           title: Update Regional Information
           base: ${{ secrets.LAST_MINOR_VERSION }}
           branch: "workflows/update-regional-information"
+
+      - name: Enable auto-merge for PR
+        if: steps.cpr.outputs.pull-request-number
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          merge-method: rebase
