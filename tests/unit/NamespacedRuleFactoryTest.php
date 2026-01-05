@@ -25,7 +25,7 @@ use function assert;
 use function sprintf;
 
 #[Group('core')]
-#[CoversClass(NamespacedRuleFactory::class)]
+#[CoversClass(NamespacedValidatorFactory::class)]
 final class NamespacedRuleFactoryTest extends TestCase
 {
     private const string TEST_RULES_NAMESPACE = 'Respect\\Validation\\Test\\Rules';
@@ -33,7 +33,7 @@ final class NamespacedRuleFactoryTest extends TestCase
     #[Test]
     public function shouldCreateRuleByNameBasedOnNamespace(): void
     {
-        $factory = new NamespacedRuleFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
+        $factory = new NamespacedValidatorFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
 
         self::assertInstanceOf(Valid::class, $factory->create('valid'));
     }
@@ -41,8 +41,8 @@ final class NamespacedRuleFactoryTest extends TestCase
     #[Test]
     public function shouldLookUpToAllNamespacesUntilRuleIsFound(): void
     {
-        $factory = (new NamespacedRuleFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]))
-            ->withRuleNamespace(__NAMESPACE__);
+        $factory = (new NamespacedValidatorFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]))
+            ->withNamespace(__NAMESPACE__);
 
         self::assertInstanceOf(Valid::class, $factory->create('valid'));
     }
@@ -52,7 +52,7 @@ final class NamespacedRuleFactoryTest extends TestCase
     {
         $constructorArguments = [true, false, true, false];
 
-        $factory = new NamespacedRuleFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
+        $factory = new NamespacedValidatorFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
         $validator = $factory->create('stub', $constructorArguments);
         assert($validator instanceof Stub);
 
@@ -62,7 +62,7 @@ final class NamespacedRuleFactoryTest extends TestCase
     #[Test]
     public function shouldThrowsAnExceptionWhenRuleIsInvalid(): void
     {
-        $factory = new NamespacedRuleFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
+        $factory = new NamespacedValidatorFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
 
         $this->expectException(InvalidClassException::class);
         $this->expectExceptionMessage(sprintf('"%s" must be an instance of "%s"', Invalid::class, Validator::class));
@@ -73,7 +73,7 @@ final class NamespacedRuleFactoryTest extends TestCase
     #[Test]
     public function shouldThrowsAnExceptionWhenRuleIsNotInstantiable(): void
     {
-        $factory = new NamespacedRuleFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
+        $factory = new NamespacedValidatorFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
 
         $this->expectException(InvalidClassException::class);
         $this->expectExceptionMessage(sprintf('"%s" must be instantiable', MyAbstractClass::class));
@@ -84,7 +84,7 @@ final class NamespacedRuleFactoryTest extends TestCase
     #[Test]
     public function shouldThrowsAnExceptionWhenRuleIsNotFound(): void
     {
-        $factory = new NamespacedRuleFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
+        $factory = new NamespacedValidatorFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
 
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('"nonExistingRule" is not a valid rule name');

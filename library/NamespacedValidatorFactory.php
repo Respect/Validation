@@ -21,7 +21,7 @@ use function sprintf;
 use function trim;
 use function ucfirst;
 
-final readonly class NamespacedRuleFactory implements RuleFactory
+final readonly class NamespacedValidatorFactory implements ValidatorFactory
 {
     /** @param array<int, string> $rulesNamespaces */
     public function __construct(
@@ -30,7 +30,7 @@ final readonly class NamespacedRuleFactory implements RuleFactory
     ) {
     }
 
-    public function withRuleNamespace(string $rulesNamespace): self
+    public function withNamespace(string $rulesNamespace): self
     {
         return clone ($this, ['rulesNamespaces' => [trim($rulesNamespace, '\\'), ...$this->rulesNamespaces]]);
     }

@@ -37,7 +37,7 @@ default `Factory`.
 ```php
 Factory::setDefaultInstance(
     (new Factory())
-        ->withRuleNamespace('My\\Validation\\Rules')
+        ->withNamespace('My\\Validation\\Rules')
 );
 v::something(); // Try to load "My\Validation\Rules\Something" if any
 ```

@@ -33,7 +33,7 @@ final readonly class ValidatorBuilder implements Validator, Nameable
 
     /** @param array<string> $ignoredBacktracePaths */
     public function __construct(
-        private RuleFactory $ruleFactory,
+        private ValidatorFactory $validatorFactory,
         private Renderer $renderer,
         private StringFormatter $mainMessageFormatter,
         private StringFormatter $fullMessageFormatter,
@@ -146,6 +146,6 @@ final readonly class ValidatorBuilder implements Validator, Nameable
     /** @param array<int, mixed> $arguments */
     public function __call(string $ruleName, array $arguments): self
     {
-        return $this->with($this->ruleFactory->create($ruleName, $arguments));
+        return $this->with($this->validatorFactory->create($ruleName, $arguments));
     }
 }

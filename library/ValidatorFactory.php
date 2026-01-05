@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-interface RuleFactory
+interface ValidatorFactory
 {
     /** @param array<int, mixed> $arguments */
     public function create(string $ruleName, array $arguments = []): Validator;
