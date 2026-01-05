@@ -24,7 +24,7 @@ final class ContainerRegistryTest extends TestCase
     public function itTheCreatedContainerShouldBeAbleToProvideAnInstanceOfValidator(): void
     {
         $container = ContainerRegistry::createContainer();
-        $container->get(Validator::class);
+        $container->get(ValidatorBuilder::class);
     }
 
     #[Test]

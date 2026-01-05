@@ -11,7 +11,7 @@ namespace Respect\Validation\Test\Stubs;
 
 use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Validator;
+use Respect\Validation\ValidatorBuilder;
 
 final class MyValidator
 {
@@ -27,7 +27,7 @@ final class MyValidator
         ContainerRegistry::setContainer($container);
 
         try {
-            Validator::intType()->assert($input);
+            ValidatorBuilder::intType()->assert($input);
         } catch (ValidationException $exception) {
             // This is a workaround to avoid changing exceptions that are thrown in other places.
             ContainerRegistry::setContainer($defaultContainer);

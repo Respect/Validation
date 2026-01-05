@@ -16,7 +16,7 @@ use Respect\Validation\Result;
 use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\KeyRelated;
 use Respect\Validation\Rules\Core\Reducer;
-use Respect\Validation\Validator;
+use Respect\Validation\ValidatorBuilder;
 
 use function array_diff;
 use function array_filter;
@@ -105,7 +105,7 @@ final readonly class KeySet implements Rule
                 continue;
             }
 
-            if (!$rule instanceof Validator) {
+            if (!$rule instanceof ValidatorBuilder) {
                 throw new InvalidRuleConstructorException('You must provide only key-related rules');
             }
 

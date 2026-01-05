@@ -7,8 +7,8 @@
 
 declare(strict_types=1);
 
-use Respect\Validation\Validator;
+use Respect\Validation\ValidatorBuilder;
 
 if (!class_exists('v')) {
-    class_alias(Validator::class, 'v');
+    class_alias(ValidatorBuilder::class, 'v');
 }

@@ -12,9 +12,9 @@ namespace Respect\Validation\Mixins;
 use DateTimeImmutable;
 use Respect\Validation\Name;
 use Respect\Validation\Rule;
-use Respect\Validation\Validator;
+use Respect\Validation\ValidatorBuilder;
 
-/** @mixin Validator */
+/** @mixin ValidatorBuilder */
 interface Chain extends
     Rule,
     AllChain,

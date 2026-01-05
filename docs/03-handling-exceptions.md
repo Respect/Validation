@@ -1,6 +1,6 @@
 # Handling exceptions
 
-The `Validator::assert()` method simplifies exception handling by throwing `ValidationException` exceptions when validation fails. These exceptions provide detailed feedback on what went wrong.
+The `ValidatorBuilder::assert()` method simplifies exception handling by throwing `ValidationException` exceptions when validation fails. These exceptions provide detailed feedback on what went wrong.
 
 ## Full exception message
 
@@ -8,7 +8,7 @@ The `getFullMessage()` method will return a full comprehensive explanation of ru
 
 ```php
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Validator as v;
+use Respect\Validation\ValidatorBuilder as v;
 
 try {
     v::alnum()->lowercase()->assert('The Respect Panda');
@@ -31,7 +31,7 @@ Retrieve validation messages in array format using `getMessages()`.
 
 ```php
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Validator as v;
+use Respect\Validation\ValidatorBuilder as v;
 
 try {
     v::alnum()->lowercase()->assert('The Respect Panda');
@@ -63,7 +63,7 @@ Pass custom templates directly to the `assert()` method for one-off use cases.
 
 ```php
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Validator as v;
+use Respect\Validation\ValidatorBuilder as v;
 
 try {
     v::alnum()
@@ -98,7 +98,7 @@ Define templates within a validator so you can reuse the same templates easily.
 
 ```php
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Validator as v;
+use Respect\Validation\ValidatorBuilder as v;
 
 $validator = v::alnum()->lowercase();
 $validator->setTemplates([

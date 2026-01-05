@@ -14,12 +14,12 @@ use Respect\Validation\Rules\KeyOptional;
 use Respect\Validation\Rules\OneOf;
 use Respect\Validation\Rules\StringType;
 use Respect\Validation\Rules\StringVal;
-use Respect\Validation\Validator;
+use Respect\Validation\ValidatorBuilder;
 
 test('https://github.com/Respect/Validation/issues/1289', catchAll(
-    fn() => Validator::init(
+    fn() => ValidatorBuilder::init(
         new Each(
-            Validator::init(
+            ValidatorBuilder::init(
                 new KeyOptional(
                     'default',
                     new OneOf(

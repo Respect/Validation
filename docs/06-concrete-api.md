@@ -5,7 +5,7 @@ document we're gonna explore the Respect\Validation API without fluent interface
 or magic methods. We'll use a traditional dependency injection approach.
 
 ```php
-use Respect\Validation\Validator as v;
+use Respect\Validation\ValidatorBuilder as v;
 
 $usernameValidator = v::alnum()->notSpaced()->length(1, 15);
 $usernameValidator->isValid('alganet'); // true
@@ -18,9 +18,9 @@ the chain only builds the structure. You can build it by yourself:
 
 ```php
 use Respect\Validation\Rules;
-use Respect\Validation\Validator;
+use Respect\Validation\ValidatorBuilder;
 
-$usernameValidator = Validator::init(
+$usernameValidator = ValidatorBuilder::init(
     new Rules\Alnum(),
     new Rules\Not(
         new Rules\Spaced(),
@@ -36,7 +36,7 @@ container or test it in the way you want. Nesting is still possible:
 ```php
 use Respect\Validation\Rules;
 
-$usernameValidator = Validator::create(
+$usernameValidator = ValidatorBuilder::init(
     new Rules\Key(
         'name',
         new Rules\AllOf(
@@ -62,7 +62,7 @@ live), and it's only job is to make rule construction terse and fluent.
 
 > Is `v` in `v::something` a class name?
 
-No! The class is `Respect\Validation\Validator`, we suggest `v` as a very short alias.
+No! The class is `Respect\Validation\ValidatorBuilder`, we suggest `v` as a very short alias.
 
 > Is `v::something()` a static call?
 
@@ -72,7 +72,7 @@ something complex and returns for you.
 
 > I really don't like static calls, can I avoid it?
 
-Yes. Just use `$validator = Validator::create();` each time you want a new validator,
+Yes. Just use `$validator = ValidatorBuilder::create();` each time you want a new validator,
 and continue from there.
 
 > Do you have a static method for each rule?

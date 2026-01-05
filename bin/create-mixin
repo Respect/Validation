@@ -28,7 +28,7 @@ use Respect\Validation\Mixins\PropertyChain;
 use Respect\Validation\Mixins\UndefOrBuilder;
 use Respect\Validation\Mixins\UndefOrChain;
 use Respect\Validation\Rule;
-use Respect\Validation\Validator;
+use Respect\Validation\ValidatorBuilder;
 
 function addMethodToInterface(
     string $originalName,
@@ -219,7 +219,7 @@ function overwriteFile(string $content, string $basename): void
             $chainedInterface->addExtend(NullOrChain::class);
             $chainedInterface->addExtend(PropertyChain::class);
             $chainedInterface->addExtend(UndefOrChain::class);
-            $chainedInterface->addComment('@mixin \\' . Validator::class);
+            $chainedInterface->addComment('@mixin \\' . ValidatorBuilder::class);
 
             $staticInterface->addExtend(AllBuilder::class);
             $staticInterface->addExtend(KeyBuilder::class);

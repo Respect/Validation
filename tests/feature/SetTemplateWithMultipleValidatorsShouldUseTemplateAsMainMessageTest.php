@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 
-use Respect\Validation\Validator;
+use Respect\Validation\ValidatorBuilder;
 
 test('Scenario #1', catchMessage(function (): void {
-    v::templated('{{subject}} is not tasty', Validator::callback('is_int')->between(1, 2))->assert('something');
+    v::templated('{{subject}} is not tasty', ValidatorBuilder::callback('is_int')->between(1, 2))->assert('something');
 },
 fn(string $message) => expect($message)->toBe('"something" is not tasty')));

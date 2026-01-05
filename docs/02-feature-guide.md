@@ -1,8 +1,8 @@
 # Feature Guide
 
-The `Validator` class is the core of Respect\Validation, offering a fluent interface for building validation rules.
+The `ValidatorBuilder` class is the core of Respect\Validation, offering a fluent interface for building validation rules.
 
-For convenience, the `Validator` class is aliased as `v`. This means you can write `v::intType()` instead of `\Respect\Validation\Validator::intType()`.
+For convenience, the `ValidatorBuilder` class is aliased as `v`. This means you can write `v::intType()` instead of `\Respect\Validation\ValidatorBuilder::intType()`.
 
 ## Validating using booleans
 
@@ -76,7 +76,7 @@ v::alnum()->assert($input, new DomainException('Not a valid username'));
 Provide a callable that creates an exception object to be used when the validation fails:
 
 ```php
-use Respect\Validation\Validator as v;
+use Respect\Validation\ValidatorBuilder as v;
 use Respect\Validation\Exceptions\ValidationException;
 
 v::alnum()->lowercase()->assert(
