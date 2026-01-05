@@ -14,7 +14,7 @@ v::image()->isValid('image.png'); // true
 All the validations above must return `false` if the input is not a valid file
 or of the MIME doesn't match with the file extension.
 
-This rule relies on [fileinfo](http://php.net/fileinfo) PHP extension.
+This validator relies on [fileinfo](http://php.net/fileinfo) PHP extension.
 
 ## Templates
 

@@ -26,17 +26,17 @@ abstract class FilteredNonEmptyArray extends Wrapper
     {
         $iterableResult = (new IterableType())->evaluate($input);
         if (!$iterableResult->hasPassed) {
-            return $iterableResult->withIdFrom($this)->withNameFrom($this->rule);
+            return $iterableResult->withIdFrom($this)->withNameFrom($this->validator);
         }
 
         $array = $this->toArray($input);
-        $rule = new Circuit(
+        $validator = new Circuit(
             new Not(new Undef()),
             new Length(new GreaterThan(0)),
         );
-        $result = $rule->evaluate($array);
+        $result = $validator->evaluate($array);
         if (!$result->hasPassed) {
-            return $result->withIdFrom($this)->withNameFrom($this->rule);
+            return $result->withIdFrom($this)->withNameFrom($this->validator);
         }
 
         // @phpstan-ignore-next-line

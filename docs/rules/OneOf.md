@@ -1,6 +1,6 @@
 # OneOf
 
-- `OneOf(Rule $rule1, Rule $rule2, Rule ...$rule)`
+- `OneOf(Validator $validator1, Validator $validator2, Validator ...$validator)`
 
 Will validate if exactly one inner validator passes.
 
@@ -18,7 +18,7 @@ character, one or the other, but not neither nor both.
 
 ### `OneOf::TEMPLATE_NONE`
 
-Used when none of the rules have passed.
+Used when none of the validators have passed.
 
 | Mode       | Template                               |
 | ---------- | -------------------------------------- |
@@ -27,7 +27,7 @@ Used when none of the rules have passed.
 
 ### `OneOf::TEMPLATE_MORE_THAN_ONE`
 
-Used when more than one rule has passed.
+Used when more than one validator has passed.
 
 | Mode       | Template                                    |
 | ---------- | ------------------------------------------- |
@@ -47,10 +47,10 @@ Used when more than one rule has passed.
 
 ## Changelog
 
-| Version | Description                             |
-| ------: | --------------------------------------- |
-|   3.0.0 | Require at least two rules to be passed |
-|   0.3.9 | Created                                 |
+| Version | Description                                  |
+| ------: | -------------------------------------------- |
+|   3.0.0 | Require at least two validators to be passed |
+|   0.3.9 | Created                                      |
 
 ---
 

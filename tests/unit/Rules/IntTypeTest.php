@@ -15,33 +15,33 @@ use Respect\Validation\Test\RuleTestCase;
 
 use const PHP_INT_MAX;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(IntType::class)]
 final class IntTypeTest extends RuleTestCase
 {
     /** @return iterable<array{IntType, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new IntType();
+        $validator = new IntType();
 
         return [
-            [$rule, 0],
-            [$rule, 123456],
-            [$rule, PHP_INT_MAX],
-            [$rule, PHP_INT_MAX * -1],
+            [$validator, 0],
+            [$validator, 123456],
+            [$validator, PHP_INT_MAX],
+            [$validator, PHP_INT_MAX * -1],
         ];
     }
 
     /** @return iterable<array{IntType, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new IntType();
+        $validator = new IntType();
 
         return [
-            [$rule, '1'],
-            [$rule, 1.0],
-            [$rule, PHP_INT_MAX + 1],
-            [$rule, true],
+            [$validator, '1'],
+            [$validator, 1.0],
+            [$validator, PHP_INT_MAX + 1],
+            [$validator, true],
         ];
     }
 }

@@ -18,8 +18,8 @@ final class Circuit extends Composite
 {
     public function evaluate(mixed $input): Result
     {
-        foreach ($this->rules as $rule) {
-            $result = $rule->evaluate($input);
+        foreach ($this->validators as $validator) {
+            $result = $validator->evaluate($input);
             if (!$result->hasPassed) {
                 return $result;
             }

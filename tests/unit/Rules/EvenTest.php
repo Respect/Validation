@@ -15,7 +15,7 @@ use Respect\Validation\Test\RuleTestCase;
 
 use const INF;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Even::class)]
 final class EvenTest extends RuleTestCase
 {

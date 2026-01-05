@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Multiple::class)]
 final class MultipleTest extends RuleTestCase
 {

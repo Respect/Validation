@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\TestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(IterableType::class)]
 final class IterableTypeTest extends TestCase
 {
@@ -24,17 +24,17 @@ final class IterableTypeTest extends TestCase
     #[DataProvider('providerForIterableTypes')]
     public function itShouldValidateIterableTypes(iterable $input): void
     {
-        $rule = new IterableType();
+        $validator = new IterableType();
 
-        self::assertValidInput($rule, $input);
+        self::assertValidInput($validator, $input);
     }
 
     #[Test]
     #[DataProvider('providerForNonIterableTypes')]
     public function itShouldInvalidateNonIterableTypes(mixed $input): void
     {
-        $rule = new IterableType();
+        $validator = new IterableType();
 
-        self::assertInvalidInput($rule, $input);
+        self::assertInvalidInput($validator, $input);
     }
 }

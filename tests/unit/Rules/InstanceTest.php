@@ -19,7 +19,7 @@ use SplFileInfo;
 use stdClass;
 use Traversable;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Instance::class)]
 final class InstanceTest extends RuleTestCase
 {

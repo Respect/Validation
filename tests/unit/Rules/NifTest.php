@@ -23,77 +23,77 @@ final class NifTest extends RuleTestCase
     /** @return iterable<array{Nif, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Nif();
+        $validator = new Nif();
 
         return [
             // DNI
-            [$rule, '71110316C'],
-            [$rule, '99977944A'],
-            [$rule, '70963442R'],
-            [$rule, '49294492H'],
-            [$rule, '11381116A'],
+            [$validator, '71110316C'],
+            [$validator, '99977944A'],
+            [$validator, '70963442R'],
+            [$validator, '49294492H'],
+            [$validator, '11381116A'],
 
             // NIE
-            [$rule, 'X0425894A'],
-            [$rule, 'Y4819664M'],
-            [$rule, 'Y7407711T'],
-            [$rule, 'Y1168744J'],
-            [$rule, 'Y1168744J'],
+            [$validator, 'X0425894A'],
+            [$validator, 'Y4819664M'],
+            [$validator, 'Y7407711T'],
+            [$validator, 'Y1168744J'],
+            [$validator, 'Y1168744J'],
 
             // CIF
-            [$rule, 'B56109770'],
-            [$rule, 'V8002614I'],
-            [$rule, 'R1332622H'],
-            [$rule, 'Q6771656C'],
-            [$rule, 'F3148958F'],
-            [$rule, 'Q8703717B'],
+            [$validator, 'B56109770'],
+            [$validator, 'V8002614I'],
+            [$validator, 'R1332622H'],
+            [$validator, 'Q6771656C'],
+            [$validator, 'F3148958F'],
+            [$validator, 'Q8703717B'],
         ];
     }
 
     /** @return iterable<array{Nif, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Nif();
+        $validator = new Nif();
 
         return [
             // DNI
-            [$rule, '71110316c'],
-            [$rule, '36822315D'],
-            [$rule, '43901481F'],
-            [$rule, '67931854U'],
-            [$rule, '20890122T'],
-            [$rule, '28799818A'],
+            [$validator, '71110316c'],
+            [$validator, '36822315D'],
+            [$validator, '43901481F'],
+            [$validator, '67931854U'],
+            [$validator, '20890122T'],
+            [$validator, '28799818A'],
 
             // NIE
-            [$rule, 'x0425894a'],
-            [$rule, 'Y3012039X'],
-            [$rule, 'Z2448415H'],
-            [$rule, 'Y7225582L'],
-            [$rule, 'Y9613245P'],
-            [$rule, 'X3155250B'],
+            [$validator, 'x0425894a'],
+            [$validator, 'Y3012039X'],
+            [$validator, 'Z2448415H'],
+            [$validator, 'Y7225582L'],
+            [$validator, 'Y9613245P'],
+            [$validator, 'X3155250B'],
 
             // CIF
-            [$rule, 'B56109771'],
-            [$rule, 'v8002614i'],
-            [$rule, 'C0325664D'],
-            [$rule, 'R27038239'],
-            [$rule, 'P6437358A'],
-            [$rule, 'W9188340B'],
-            [$rule, 'E05172860'],
+            [$validator, 'B56109771'],
+            [$validator, 'v8002614i'],
+            [$validator, 'C0325664D'],
+            [$validator, 'R27038239'],
+            [$validator, 'P6437358A'],
+            [$validator, 'W9188340B'],
+            [$validator, 'E05172860'],
 
             // No regex match
-            [$rule, ''],
-            [$rule, 'I05172860'],
-            [$rule, 'T2448415H'],
+            [$validator, ''],
+            [$validator, 'I05172860'],
+            [$validator, 'T2448415H'],
 
             // Weird types
-            [$rule, []],
-            [$rule, true],
-            [$rule, 1],
-            [$rule, 0.5],
-            [$rule, null],
-            [$rule, new stdClass()],
-            [$rule, stream_context_create()],
+            [$validator, []],
+            [$validator, true],
+            [$validator, 1],
+            [$validator, 0.5],
+            [$validator, null],
+            [$validator, new stdClass()],
+            [$validator, stream_context_create()],
         ];
     }
 }

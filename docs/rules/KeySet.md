@@ -1,6 +1,6 @@
 # KeySet
 
-- `KeySet(KeyRelated $rule, KeyRelated ...$rules)`
+- `KeySet(KeyRelated $validator, KeyRelated ...$validators)`
 
 Validates a keys in a defined structure.
 
@@ -11,7 +11,7 @@ v::keySet(
 )->isValid(['foo' => 'whatever', 'bar' => 'something']); // true
 ```
 
-It will validate the keys in the array with the rules passed in the constructor.
+It will validate the keys in the array with the validators passed in the constructor.
 
 ```php
 v::keySet(
@@ -51,7 +51,7 @@ v::keySet(
 )->isValid(['foo' => 42, 'bar' => 'String']); // true
 ```
 
-Alternatively, you can pass a chain of key-related rules to `keySet()`:
+Alternatively, you can pass a chain of key-related validators to `keySet()`:
 
 ```php
 v::keySet(
@@ -62,7 +62,7 @@ v::keySet(
 )->isValid(['foo' => 42, 'bar' => 'String']); // true
 ```
 
-It is not possible to negate `keySet()` rules with `not()`.
+It is not possible to negate `keySet()` validators with `not()`.
 
 The keys' order is not considered in the validation.
 
@@ -112,7 +112,7 @@ The keys' order is not considered in the validation.
 
 | Version | Description                                           |
 | ------: | ----------------------------------------------------- |
-|   3.0.0 | Requires at least one key-related rule                |
+|   3.0.0 | Requires at least one key-related validator           |
 |   2.3.0 | KeySet is NonNegatable, fixed message with extra keys |
 |   1.0.0 | Created                                               |
 

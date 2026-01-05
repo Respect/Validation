@@ -13,7 +13,7 @@ use Attribute;
 use ErrorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 use Throwable;
 
 use function call_user_func;
@@ -25,14 +25,14 @@ use function set_error_handler;
     '{{input}} must be a suitable argument for {{callable}}',
     '{{input}} must not be a suitable argument for {{callable}}',
 )]
-final class Call implements Rule
+final class Call implements Validator
 {
     /** @var callable */
     private $callable;
 
     public function __construct(
         callable $callable,
-        private readonly Rule $rule,
+        private readonly Validator $validator,
     ) {
         $this->callable = $callable;
     }
@@ -44,7 +44,7 @@ final class Call implements Rule
         });
 
         try {
-            $result = $this->rule->evaluate(call_user_func($this->callable, $input));
+            $result = $this->validator->evaluate(call_user_func($this->callable, $input));
         } catch (Throwable) {
             $result = Result::failed($input, $this, ['callable' => $this->callable]);
         }

@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Blank::class)]
 final class BlankTest extends RuleTestCase
 {
@@ -24,39 +24,39 @@ final class BlankTest extends RuleTestCase
         $object = new stdClass();
         $object->foo = true;
 
-        $rule = new Blank();
+        $validator = new Blank();
 
         return [
-            [$rule, 1],
-            [$rule, ' oi'],
-            [$rule, [5]],
-            [$rule, [1]],
-            [$rule, $object],
+            [$validator, 1],
+            [$validator, ' oi'],
+            [$validator, [5]],
+            [$validator, [1]],
+            [$validator, $object],
         ];
     }
 
     /** @return iterable<array{Blank, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Blank();
+        $validator = new Blank();
 
         return [
-            [$rule, null],
-            [$rule, ''],
-            [$rule, []],
-            [$rule, ' '],
-            [$rule, 0],
-            [$rule, '0'],
-            [$rule, 0],
-            [$rule, '0.0'],
-            [$rule, false],
-            [$rule, ['']],
-            [$rule, [' ']],
-            [$rule, [0]],
-            [$rule, ['0']],
-            [$rule, [false]],
-            [$rule, [[''], [0]]],
-            [$rule, new stdClass()],
+            [$validator, null],
+            [$validator, ''],
+            [$validator, []],
+            [$validator, ' '],
+            [$validator, 0],
+            [$validator, '0'],
+            [$validator, 0],
+            [$validator, '0.0'],
+            [$validator, false],
+            [$validator, ['']],
+            [$validator, [' ']],
+            [$validator, [0]],
+            [$validator, ['0']],
+            [$validator, [false]],
+            [$validator, [[''], [0]]],
+            [$validator, new stdClass()],
         ];
     }
 }

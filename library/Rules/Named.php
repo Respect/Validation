@@ -12,9 +12,9 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Name;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Nameable;
 use Respect\Validation\Rules\Core\Wrapper;
+use Respect\Validation\Validator;
 
 use function is_string;
 
@@ -23,9 +23,9 @@ final class Named extends Wrapper implements Nameable
 {
     private readonly Name $name;
 
-    public function __construct(string|Name $name, Rule $rule)
+    public function __construct(string|Name $name, Validator $validator)
     {
-        parent::__construct($rule);
+        parent::__construct($validator);
 
         $this->name = is_string($name) ? new Name($name) : $name;
     }
@@ -37,6 +37,6 @@ final class Named extends Wrapper implements Nameable
 
     public function evaluate(mixed $input): Result
     {
-        return $this->rule->evaluate($input)->withName($this->name);
+        return $this->validator->evaluate($input)->withName($this->name);
     }
 }

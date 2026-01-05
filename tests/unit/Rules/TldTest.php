@@ -14,38 +14,38 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Tld::class)]
 final class TldTest extends RuleTestCase
 {
     /** @return iterable<array{Tld, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Tld();
+        $validator = new Tld();
 
         return [
-            [$rule, 'br'],
-            [$rule, 'cafe'],
-            [$rule, 'com'],
-            [$rule, 'democrat'],
-            [$rule, 'eu'],
-            [$rule, 'gmbh'],
-            [$rule, 'us'],
+            [$validator, 'br'],
+            [$validator, 'cafe'],
+            [$validator, 'com'],
+            [$validator, 'democrat'],
+            [$validator, 'eu'],
+            [$validator, 'gmbh'],
+            [$validator, 'us'],
         ];
     }
 
     /** @return iterable<array{Tld, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Tld();
+        $validator = new Tld();
 
         return [
-            [$rule, '1'],
-            [$rule, 1.0],
-            [$rule, 'wrongtld'],
-            [$rule, []],
-            [$rule, new stdClass()],
-            [$rule, true],
+            [$validator, '1'],
+            [$validator, 1.0],
+            [$validator, 'wrongtld'],
+            [$validator, []],
+            [$validator, new stdClass()],
+            [$validator, true],
         ];
     }
 }

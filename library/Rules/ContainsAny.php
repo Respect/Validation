@@ -31,10 +31,10 @@ final class ContainsAny extends Envelope
             throw new InvalidRuleConstructorException('At least one value must be provided');
         }
 
-        $rules = $this->getRules($needles, $identical);
+        $validators = $this->getValidators($needles, $identical);
 
         parent::__construct(
-            count($rules) === 1 ? $rules[0] : new AnyOf(...$rules),
+            count($validators) === 1 ? $validators[0] : new AnyOf(...$validators),
             ['needles' => $needles],
         );
     }
@@ -44,7 +44,7 @@ final class ContainsAny extends Envelope
      *
      * @return Contains[]
      */
-    private function getRules(array $needles, bool $identical): array
+    private function getValidators(array $needles, bool $identical): array
     {
         return array_map(
             static function ($needle) use ($identical): Contains {

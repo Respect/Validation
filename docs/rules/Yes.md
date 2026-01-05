@@ -13,7 +13,7 @@ v::yes()->isValid('Yep'); // true
 v::yes()->isValid('Yes'); // true
 ```
 
-This rule is case insensitive.
+This validator is case insensitive.
 
 If `$locale` is `TRUE`, it will use the value of [nl_langinfo][] with `YESEXPR`
 constant, meaning that it will validate the input using your current location:

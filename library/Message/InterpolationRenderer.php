@@ -35,7 +35,7 @@ final readonly class InterpolationRenderer implements Renderer
         $parameters += $result->parameters;
 
         $givenTemplate = $this->templateResolver->getGivenTemplate($result, $templates);
-        $ruleTemplate = $this->templateResolver->getRuleTemplate($result);
+        $ruleTemplate = $this->templateResolver->getValidatorTemplate($result);
 
         $rendered = (string) preg_replace_callback(
             '/{{(\w+)(\|([^}]+))?}}/',

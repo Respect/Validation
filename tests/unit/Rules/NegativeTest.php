@@ -14,41 +14,41 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Negative::class)]
 final class NegativeTest extends RuleTestCase
 {
     /** @return iterable<array{Negative, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Negative();
+        $validator = new Negative();
 
         return [
-            [$rule, '-1.44'],
-            [$rule, -1e-5],
-            [$rule, -10],
+            [$validator, '-1.44'],
+            [$validator, -1e-5],
+            [$validator, -10],
         ];
     }
 
     /** @return iterable<array{Negative, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Negative();
+        $validator = new Negative();
 
         return [
-            [$rule, ''],
-            [$rule, []],
-            [$rule, new stdClass()],
-            [$rule, 0],
-            [$rule, -0],
-            [$rule, null],
-            [$rule, 'a'],
-            [$rule, ' '],
-            [$rule, 'Foo'],
-            [$rule, 16],
-            [$rule, '165'],
-            [$rule, 123456],
-            [$rule, 1e10],
+            [$validator, ''],
+            [$validator, []],
+            [$validator, new stdClass()],
+            [$validator, 0],
+            [$validator, -0],
+            [$validator, null],
+            [$validator, 'a'],
+            [$validator, ' '],
+            [$validator, 'Foo'],
+            [$validator, 16],
+            [$validator, '165'],
+            [$validator, 123456],
+            [$validator, 1e10],
         ];
     }
 }

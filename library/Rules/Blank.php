@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 use stdClass;
 
 use function array_filter;
@@ -26,7 +26,7 @@ use function trim;
     '{{subject}} must be blank',
     '{{subject}} must not be blank',
 )]
-final class Blank implements Rule
+final class Blank implements Validator
 {
     public function evaluate(mixed $input): Result
     {

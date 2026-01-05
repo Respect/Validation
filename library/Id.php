@@ -21,9 +21,9 @@ final readonly class Id
     ) {
     }
 
-    public static function fromRule(Rule $rule): self
+    public static function fromValidator(Validator $validator): self
     {
-        return new self(lcfirst(substr((string) strrchr($rule::class, '\\'), 1)));
+        return new self(lcfirst(substr((string) strrchr($validator::class, '\\'), 1)));
     }
 
     public function withPrefix(string $prefix): self

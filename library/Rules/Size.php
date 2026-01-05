@@ -15,8 +15,8 @@ use Psr\Http\Message\UploadedFileInterface;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Wrapper;
+use Respect\Validation\Validator;
 use SplFileInfo;
 
 use function filesize;
@@ -52,13 +52,13 @@ final class Size extends Wrapper
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function __construct(
         private readonly string $unit,
-        Rule $rule,
+        Validator $validator,
     ) {
         if (!isset(self::DATA_STORAGE_UNITS[$unit])) {
             throw new InvalidRuleConstructorException('"%s" is not a recognized data storage unit.', $unit);
         }
 
-        parent::__construct($rule);
+        parent::__construct($validator);
     }
 
     public function evaluate(mixed $input): Result
@@ -66,10 +66,10 @@ final class Size extends Wrapper
         $size = $this->getSize($input);
         if ($size === null) {
             return Result::failed($input, $this, [], self::TEMPLATE_WRONG_TYPE)
-                ->withId($this->rule->evaluate($input)->id->withPrefix('size'));
+                ->withId($this->validator->evaluate($input)->id->withPrefix('size'));
         }
 
-        $result = $this->rule->evaluate($this->getSize($input) / self::DATA_STORAGE_UNITS[$this->unit]['bytes']);
+        $result = $this->validator->evaluate($this->getSize($input) / self::DATA_STORAGE_UNITS[$this->unit]['bytes']);
         $parameters = ['unit' => self::DATA_STORAGE_UNITS[$this->unit]['name']];
 
         return $result->asAdjacentOf(

@@ -21,7 +21,7 @@ use Respect\Validation\Test\RuleTestCase;
 use function date_default_timezone_get;
 use function date_default_timezone_set;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(DateTime::class)]
 final class DateTimeTest extends RuleTestCase
 {
@@ -33,9 +33,9 @@ final class DateTimeTest extends RuleTestCase
 
         date_default_timezone_set($timezone);
 
-        $rule = new DateTime($format);
+        $validator = new DateTime($format);
 
-        self::assertValidInput($rule, $input);
+        self::assertValidInput($validator, $input);
 
         date_default_timezone_set($currentTimezone);
     }

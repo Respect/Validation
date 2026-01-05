@@ -23,7 +23,7 @@ use function tmpfile;
 use const FILEINFO_MIME_TYPE;
 use const PHP_INT_MAX;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Mimetype::class)]
 final class MimetypeTest extends RuleTestCase
 {
@@ -44,9 +44,9 @@ final class MimetypeTest extends RuleTestCase
             ->with($filename, FILEINFO_MIME_TYPE)
             ->willReturn($mimetype);
 
-        $rule = new Mimetype($mimetype, $fileInfoMock);
+        $validator = new Mimetype($mimetype, $fileInfoMock);
 
-        self::assertValidInput($rule, $filename);
+        self::assertValidInput($validator, $filename);
     }
 
     /** @return iterable<array{Mimetype, mixed}> */

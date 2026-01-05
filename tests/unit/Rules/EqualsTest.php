@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Equals::class)]
 final class EqualsTest extends RuleTestCase
 {

@@ -4,7 +4,7 @@ The `ValidatorBuilder::assert()` method simplifies exception handling by throwin
 
 ## Full exception message
 
-The `getFullMessage()` method will return a full comprehensive explanation of rules that didn't pass in a nested Markdown list format.
+The `getFullMessage()` method will return a full comprehensive explanation of validators that didn't pass in a nested Markdown list format.
 
 ```php
 use Respect\Validation\Exceptions\ValidationException;

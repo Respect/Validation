@@ -8,7 +8,7 @@ Validates whether the characters in the input are uppercase.
 v::uppercase()->isValid('W3C'); // true
 ```
 
-This rule does not validate if the input a numeric value, so `123` and `%` will
+This validator does not validate if the input a numeric value, so `123` and `%` will
 be valid. Please add more validations to the chain if you want to refine your
 validation.
 

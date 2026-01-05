@@ -12,14 +12,14 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be falsy',
     '{{subject}} must not be falsy',
 )]
-final class Falsy implements Rule
+final class Falsy implements Validator
 {
     public function evaluate(mixed $input): Result
     {

@@ -12,5 +12,5 @@ namespace Respect\Validation;
 interface RuleFactory
 {
     /** @param array<int, mixed> $arguments */
-    public function create(string $ruleName, array $arguments = []): Rule;
+    public function create(string $ruleName, array $arguments = []): Validator;
 }

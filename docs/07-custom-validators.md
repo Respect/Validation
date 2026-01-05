@@ -1,11 +1,11 @@
-# Custom rules
+# Custom validators
 
-You can also create and use your own rules. To do this, you will need to create
-a rule and an exception to go with the rule.
+You can also create and use your own validators. To do this, you will need to create
+a validator and an exception to go with the validator.
 
-To create a rule, you need to create a class that implements the `Rule` interface
+To create a validator, you need to create a class that implements the `Validator` interface
 and is within the Rules `namespace`. It is convenient to just extend the `Simple` or
-`Standard` class. When the rule is called the logic inside the validate method will be
+`Standard` class. When the validator is called the logic inside the validate method will be
 executed. Here's how the class should look:
 
 ```php
@@ -27,11 +27,11 @@ final class Something extends Simple
 }
 ```
 
-The `'{{subject}} is not something` message would be used then you call the rule
+The `'{{subject}} is not something` message would be used then you call the validator
 with the `not()`.
 
 All classes in Validation are created by the `Factory` class. If you want
-Validation to execute your rule (or rules) in the chain, you must overwrite the
+Validation to execute your validator (or validators) in the chain, you must overwrite the
 default `Factory`.
 
 ```php

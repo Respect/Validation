@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Emoji::class)]
 final class EmojiTest extends RuleTestCase
 {

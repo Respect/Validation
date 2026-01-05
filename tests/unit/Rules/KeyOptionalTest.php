@@ -16,7 +16,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(KeyOptional::class)]
 final class KeyOptionalTest extends TestCase
 {
@@ -24,9 +24,9 @@ final class KeyOptionalTest extends TestCase
     #[DataProvider('providerForNonArrayValues')]
     public function itShouldAlwaysValidateNonArrayValues(mixed $input): void
     {
-        $rule = new KeyOptional(0, Stub::daze());
+        $validator = new KeyOptional(0, Stub::daze());
 
-        self::assertValidInput($rule, $input);
+        self::assertValidInput($validator, $input);
     }
 
     /** @param array<mixed> $input  */
@@ -34,9 +34,9 @@ final class KeyOptionalTest extends TestCase
     #[DataProvider('providerForArrayWithMissingKeys')]
     public function itShouldAlwaysValidateMissingKeys(int|string $key, array $input): void
     {
-        $rule = new KeyOptional($key, Stub::daze());
+        $validator = new KeyOptional($key, Stub::daze());
 
-        self::assertValidInput($rule, $input);
+        self::assertValidInput($validator, $input);
     }
 
     /** @param array<mixed> $input  */
@@ -46,8 +46,8 @@ final class KeyOptionalTest extends TestCase
     {
         $wrapped = Stub::pass(1);
 
-        $rule = new KeyOptional($key, $wrapped);
-        $rule->evaluate($input);
+        $validator = new KeyOptional($key, $wrapped);
+        $validator->evaluate($input);
 
         self::assertEquals($wrapped->inputs, [$input[$key]]);
     }

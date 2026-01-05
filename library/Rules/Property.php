@@ -14,27 +14,27 @@ use ReflectionClass;
 use ReflectionObject;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Wrapper;
+use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 final class Property extends Wrapper
 {
     public function __construct(
         private readonly string $propertyName,
-        Rule $rule,
+        Validator $validator,
     ) {
-        parent::__construct($rule);
+        parent::__construct($validator);
     }
 
     public function evaluate(mixed $input): Result
     {
         $propertyExistsResult = (new PropertyExists($this->propertyName))->evaluate($input);
         if (!$propertyExistsResult->hasPassed) {
-            return $propertyExistsResult->withNameFrom($this->rule);
+            return $propertyExistsResult->withNameFrom($this->validator);
         }
 
-        return $this->rule
+        return $this->validator
             ->evaluate($this->getPropertyValue($input, $this->propertyName))
             ->withPath($propertyExistsResult->path ?? new Path($this->propertyName));
     }

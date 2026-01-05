@@ -12,14 +12,14 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be a multiple of {{multipleOf}}',
     '{{subject}} must not be a multiple of {{multipleOf}}',
 )]
-final readonly class Multiple implements Rule
+final readonly class Multiple implements Validator
 {
     public function __construct(
         private int $multipleOf,

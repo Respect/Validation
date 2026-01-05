@@ -17,6 +17,6 @@ final class ConcreteFilteredNonEmptyArray extends FilteredNonEmptyArray
     /** @param non-empty-array<mixed> $input */
     protected function evaluateNonEmptyArray(array $input): Result
     {
-        return $this->rule->evaluate($input);
+        return $this->validator->evaluate($input);
     }
 }

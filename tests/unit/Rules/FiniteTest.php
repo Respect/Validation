@@ -19,7 +19,7 @@ use function acos;
 use const INF;
 use const PHP_INT_MAX;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Finite::class)]
 final class FiniteTest extends RuleTestCase
 {

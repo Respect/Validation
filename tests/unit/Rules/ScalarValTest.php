@@ -16,40 +16,40 @@ use stdClass;
 
 use function tmpfile;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(ScalarVal::class)]
 final class ScalarValTest extends RuleTestCase
 {
     /** @return iterable<array{ScalarVal, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new ScalarVal();
+        $validator = new ScalarVal();
 
         return [
-            [$rule, '6'],
-            [$rule, 'String'],
-            [$rule, 1.0],
-            [$rule, 42],
-            [$rule, false],
-            [$rule, true],
+            [$validator, '6'],
+            [$validator, 'String'],
+            [$validator, 1.0],
+            [$validator, 42],
+            [$validator, false],
+            [$validator, true],
         ];
     }
 
     /** @return iterable<array{ScalarVal, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new ScalarVal();
+        $validator = new ScalarVal();
 
         return [
-            [$rule, []],
+            [$validator, []],
             [
-                $rule,
+                $validator,
                 static function (): void {
                 },
             ],
-            [$rule, new stdClass()],
-            [$rule, null],
-            [$rule, tmpfile()],
+            [$validator, new stdClass()],
+            [$validator, null],
+            [$validator, tmpfile()],
         ];
     }
 }

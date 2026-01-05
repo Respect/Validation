@@ -5,7 +5,7 @@
 
 Validates whether the input is language code based on [ISO 639][].
 
-**This rule requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
+**This validator requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
 
 ```php
 v::languageCode()->isValid('pt'); // true
@@ -15,7 +15,7 @@ v::languageCode('alpha-3')->isValid('ita'); // true
 v::languageCode('alpha-3')->isValid('eng'); // true
 ```
 
-This rule supports the two[ISO 639][] sets:
+This validator supports the two[ISO 639][] sets:
 
 - `alpha-2`
 - `alpha-3`

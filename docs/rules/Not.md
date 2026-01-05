@@ -1,8 +1,8 @@
 # Not
 
-- `Not(Rule $rule)`
+- `Not(Validator $validator)`
 
-Negates any rule.
+Negates any validator.
 
 ```php
 v::not(v::ip())->isValid('foo'); // true
@@ -16,7 +16,7 @@ You can negate complex, grouped or chained validators as well:
 v::not(v::intVal()->positive())->isValid(-1.5); // true
 ```
 
-Each other validation has custom messages for negated rules.
+Each other validation has custom messages for negated validators.
 
 ## Templates
 

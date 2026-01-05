@@ -13,7 +13,7 @@ use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function array_keys;
 use function is_scalar;
@@ -31,7 +31,7 @@ use function preg_replace;
     '{{subject}} must not be a valid {{brand|raw}} credit card number',
     self::TEMPLATE_BRANDED,
 )]
-final readonly class CreditCard implements Rule
+final readonly class CreditCard implements Validator
 {
     public const string TEMPLATE_BRANDED = '__branded__';
     public const string ANY = 'Any';

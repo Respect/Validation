@@ -17,8 +17,8 @@ v::keyExists(5)->isValid(new ArrayObject(['a', 'b', 'c'])); // false
 
 ## Notes
 
-- To validate an array against a given rule if the key exists, use [KeyOptional](KeyOptional.md) instead.
-- To validate an array against a given rule requiring the key to exist, use [Key](Key.md) instead.
+- To validate an array against a given validator if the key exists, use [KeyOptional](KeyOptional.md) instead.
+- To validate an array against a given validator requiring the key to exist, use [Key](Key.md) instead.
 
 ## Templates
 
@@ -37,7 +37,7 @@ v::keyExists(5)->isValid(new ArrayObject(['a', 'b', 'c'])); // false
 
 ## Caveats
 
-`KeyExists` defines the given `$key` as the path, and because it is a standalone rule without children, it's not possible to display a fully custom name with it.
+`KeyExists` defines the given `$key` as the path, and because it is a standalone validator without children, it's not possible to display a fully custom name with it.
 
 When no custom name is set, the path is displayed as `{{name}}`. When a custom name is set, the validation engine prepends the path to the custom name:
 

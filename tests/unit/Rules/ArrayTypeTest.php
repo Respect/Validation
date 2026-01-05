@@ -22,26 +22,26 @@ final class ArrayTypeTest extends RuleTestCase
     /** @return iterable<array{ArrayType, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new ArrayType();
+        $validator = new ArrayType();
 
         return [
-            [$rule, []],
-            [$rule, [1, 2, 3]],
+            [$validator, []],
+            [$validator, [1, 2, 3]],
         ];
     }
 
     /** @return iterable<array{ArrayType, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new ArrayType();
+        $validator = new ArrayType();
 
         return [
-            [$rule, 'test'],
-            [$rule, 1],
-            [$rule, 1.0],
-            [$rule, true],
-            [$rule, new ArrayObject()],
-            [$rule, new ArrayIterator()],
+            [$validator, 'test'],
+            [$validator, 1],
+            [$validator, 1.0],
+            [$validator, true],
+            [$validator, new ArrayObject()],
+            [$validator, new ArrayIterator()],
         ];
     }
 }

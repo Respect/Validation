@@ -16,7 +16,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Key::class)]
 final class KeyTest extends TestCase
 {
@@ -24,9 +24,9 @@ final class KeyTest extends TestCase
     #[DataProvider('providerForNonArrayValues')]
     public function itShouldAlwaysInvalidateNonArrayValues(mixed $input): void
     {
-        $rule = new Key(0, Stub::daze());
+        $validator = new Key(0, Stub::daze());
 
-        self::assertInvalidInput($rule, $input);
+        self::assertInvalidInput($validator, $input);
     }
 
     /** @param array<mixed> $input  */
@@ -34,9 +34,9 @@ final class KeyTest extends TestCase
     #[DataProvider('providerForArrayWithMissingKeys')]
     public function itShouldInvalidateMissingKeys(int|string $key, array $input): void
     {
-        $rule = new Key($key, Stub::daze());
+        $validator = new Key($key, Stub::daze());
 
-        self::assertInvalidInput($rule, $input);
+        self::assertInvalidInput($validator, $input);
     }
 
     /** @param array<mixed> $input  */
@@ -46,8 +46,8 @@ final class KeyTest extends TestCase
     {
         $wrapped = Stub::pass(1);
 
-        $rule = new Key($key, $wrapped);
-        $rule->evaluate($input);
+        $validator = new Key($key, $wrapped);
+        $validator->evaluate($input);
 
         self::assertEquals($wrapped->inputs, [$input[$key]]);
     }
@@ -56,8 +56,8 @@ final class KeyTest extends TestCase
     public function itShouldReturnDefinedKey(): void
     {
         $key = 'toodaloo';
-        $rule = new Key($key, Stub::daze());
+        $validator = new Key($key, Stub::daze());
 
-        self::assertSame($key, $rule->getKey());
+        self::assertSame($key, $validator->getKey());
     }
 }

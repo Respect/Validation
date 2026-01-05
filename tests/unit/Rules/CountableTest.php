@@ -18,33 +18,33 @@ use stdClass;
 
 use const PHP_INT_MAX;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Countable::class)]
 final class CountableTest extends RuleTestCase
 {
     /** @return iterable<array{Countable, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Countable();
+        $validator = new Countable();
 
         return [
-            [$rule, []],
-            [$rule, new ArrayObject()],
-            [$rule, new ArrayIterator()],
+            [$validator, []],
+            [$validator, new ArrayObject()],
+            [$validator, new ArrayIterator()],
         ];
     }
 
     /** @return iterable<array{Countable, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Countable();
+        $validator = new Countable();
 
         return [
-            [$rule, '1'],
-            [$rule, 1.0],
-            [$rule, new stdClass()],
-            [$rule, PHP_INT_MAX],
-            [$rule, true],
+            [$validator, '1'],
+            [$validator, 1.0],
+            [$validator, new stdClass()],
+            [$validator, PHP_INT_MAX],
+            [$validator, true],
         ];
     }
 }

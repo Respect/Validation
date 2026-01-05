@@ -10,13 +10,17 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 interface NullOrBuilder
 {
-    public static function nullOrAll(Rule $rule): Chain;
+    public static function nullOrAll(Validator $validator): Chain;
 
-    public static function nullOrAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function nullOrAllOf(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function nullOrAlnum(string ...$additionalChars): Chain;
 
@@ -26,7 +30,11 @@ interface NullOrBuilder
 
     public static function nullOrAlwaysValid(): Chain;
 
-    public static function nullOrAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function nullOrAnyOf(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function nullOrArrayType(): Chain;
 
@@ -51,7 +59,7 @@ interface NullOrBuilder
 
     public static function nullOrBsn(): Chain;
 
-    public static function nullOrCall(callable $callable, Rule $rule): Chain;
+    public static function nullOrCall(callable $callable, Validator $validator): Chain;
 
     public static function nullOrCallableType(): Chain;
 
@@ -59,7 +67,11 @@ interface NullOrBuilder
 
     public static function nullOrCharset(string $charset, string ...$charsets): Chain;
 
-    public static function nullOrCircuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function nullOrCircuit(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function nullOrCnh(): Chain;
 
@@ -93,7 +105,7 @@ interface NullOrBuilder
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public static function nullOrDateTimeDiff(
         string $type,
-        Rule $rule,
+        Validator $validator,
         string|null $format = null,
         DateTimeImmutable|null $now = null,
     ): Chain;
@@ -106,7 +118,7 @@ interface NullOrBuilder
 
     public static function nullOrDomain(bool $tldCheck = true): Chain;
 
-    public static function nullOrEach(Rule $rule): Chain;
+    public static function nullOrEach(Validator $validator): Chain;
 
     public static function nullOrEmail(): Chain;
 
@@ -183,25 +195,25 @@ interface NullOrBuilder
 
     public static function nullOrJson(): Chain;
 
-    public static function nullOrKey(string|int $key, Rule $rule): Chain;
+    public static function nullOrKey(string|int $key, Validator $validator): Chain;
 
     public static function nullOrKeyExists(string|int $key): Chain;
 
-    public static function nullOrKeyOptional(string|int $key, Rule $rule): Chain;
+    public static function nullOrKeyOptional(string|int $key, Validator $validator): Chain;
 
-    public static function nullOrKeySet(Rule $rule, Rule ...$rules): Chain;
+    public static function nullOrKeySet(Validator $validator, Validator ...$validators): Chain;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function nullOrLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /** @param callable(mixed): Rule $ruleCreator */
-    public static function nullOrLazy(callable $ruleCreator): Chain;
+    /** @param callable(mixed): Validator $validatorCreator */
+    public static function nullOrLazy(callable $validatorCreator): Chain;
 
     public static function nullOrLeapDate(string $format): Chain;
 
     public static function nullOrLeapYear(): Chain;
 
-    public static function nullOrLength(Rule $rule): Chain;
+    public static function nullOrLength(Validator $validator): Chain;
 
     public static function nullOrLessThan(mixed $compareTo): Chain;
 
@@ -213,11 +225,11 @@ interface NullOrBuilder
 
     public static function nullOrMacAddress(): Chain;
 
-    public static function nullOrMax(Rule $rule): Chain;
+    public static function nullOrMax(Validator $validator): Chain;
 
     public static function nullOrMimetype(string $mimetype): Chain;
 
-    public static function nullOrMin(Rule $rule): Chain;
+    public static function nullOrMin(Validator $validator): Chain;
 
     public static function nullOrMultiple(int $multipleOf): Chain;
 
@@ -231,9 +243,13 @@ interface NullOrBuilder
 
     public static function nullOrNo(bool $useLocale = false): Chain;
 
-    public static function nullOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function nullOrNoneOf(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
-    public static function nullOrNot(Rule $rule): Chain;
+    public static function nullOrNot(Validator $validator): Chain;
 
     public static function nullOrNullType(): Chain;
 
@@ -245,7 +261,11 @@ interface NullOrBuilder
 
     public static function nullOrOdd(): Chain;
 
-    public static function nullOrOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function nullOrOneOf(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function nullOrPerfectSquare(): Chain;
 
@@ -269,11 +289,11 @@ interface NullOrBuilder
 
     public static function nullOrPrintable(string ...$additionalChars): Chain;
 
-    public static function nullOrProperty(string $propertyName, Rule $rule): Chain;
+    public static function nullOrProperty(string $propertyName, Validator $validator): Chain;
 
     public static function nullOrPropertyExists(string $propertyName): Chain;
 
-    public static function nullOrPropertyOptional(string $propertyName, Rule $rule): Chain;
+    public static function nullOrPropertyOptional(string $propertyName, Validator $validator): Chain;
 
     public static function nullOrPublicDomainSuffix(): Chain;
 
@@ -290,7 +310,7 @@ interface NullOrBuilder
     public static function nullOrScalarVal(): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
-    public static function nullOrSize(string $unit, Rule $rule): Chain;
+    public static function nullOrSize(string $unit, Validator $validator): Chain;
 
     public static function nullOrSlug(): Chain;
 
@@ -335,7 +355,7 @@ interface NullOrBuilder
 
     public static function nullOrVowel(string ...$additionalChars): Chain;
 
-    public static function nullOrWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
+    public static function nullOrWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function nullOrWritable(): Chain;
 

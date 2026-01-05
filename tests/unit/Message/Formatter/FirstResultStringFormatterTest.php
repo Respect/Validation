@@ -14,10 +14,10 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Message\StandardFormatter\ResultCreator;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Test\Builders\ResultBuilder;
 use Respect\Validation\Test\Message\TestingMessageRenderer;
 use Respect\Validation\Test\TestCase;
+use Respect\Validation\Validator;
 
 #[CoversClass(FirstResultStringFormatter::class)]
 final class FirstResultStringFormatterTest extends TestCase
@@ -41,7 +41,7 @@ final class FirstResultStringFormatterTest extends TestCase
         return [
             'without children' => [
                 (new ResultBuilder())->build(),
-                Rule::TEMPLATE_STANDARD,
+                Validator::TEMPLATE_STANDARD,
             ],
             'with children' => [
                 (new ResultBuilder())

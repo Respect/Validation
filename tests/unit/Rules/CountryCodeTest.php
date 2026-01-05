@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(CountryCode::class)]
 final class CountryCodeTest extends RuleTestCase
 {

@@ -16,11 +16,11 @@ use ReflectionObject;
 use ReflectionProperty;
 use Respect\Validation\Id;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Reducer;
+use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
-final class Attributes implements Rule
+final class Attributes implements Validator
 {
     public function evaluate(mixed $input): Result
     {
@@ -31,36 +31,36 @@ final class Attributes implements Rule
         }
 
         $reflection = new ReflectionObject($input);
-        $rules = [...$this->getClassRules($reflection), ...$this->getPropertyRules($reflection)];
-        if ($rules === []) {
+        $validators = [...$this->getClassRules($reflection), ...$this->getPropertyRules($reflection)];
+        if ($validators === []) {
             return (new AlwaysValid())->evaluate($input)->withId($id);
         }
 
-        return (new Reducer(...$rules))->evaluate($input)->withId($id);
+        return (new Reducer(...$validators))->evaluate($input)->withId($id);
     }
 
-    /** @return array<Rule> */
+    /** @return array<Validator> */
     private function getClassRules(ReflectionObject $reflection): array
     {
-        $rules = [];
+        $validators = [];
         while ($reflection instanceof ReflectionClass) {
-            foreach ($reflection->getAttributes(Rule::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
-                $rules[] = $attribute->newInstance();
+            foreach ($reflection->getAttributes(Validator::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
+                $validators[] = $attribute->newInstance();
             }
 
             $reflection = $reflection->getParentClass();
         }
 
-        return $rules;
+        return $validators;
     }
 
-    /** @return array<Rule> */
+    /** @return array<Validator> */
     private function getPropertyRules(ReflectionObject $reflection): array
     {
-        $rules = [];
+        $validators = [];
         foreach ($this->getProperties($reflection) as $propertyName => $property) {
             $propertyRules = [];
-            foreach ($property->getAttributes(Rule::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
+            foreach ($property->getAttributes(Validator::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
                 $propertyRules[] = $attribute->newInstance();
             }
 
@@ -71,10 +71,10 @@ final class Attributes implements Rule
             $allowsNull = $property->getType()?->allowsNull() ?? false;
 
             $childRule = new Reducer(...$propertyRules);
-            $rules[] = new Property($propertyName, $allowsNull ? new NullOr($childRule) : $childRule);
+            $validators[] = new Property($propertyName, $allowsNull ? new NullOr($childRule) : $childRule);
         }
 
-        return $rules;
+        return $validators;
     }
 
     /** @return array<ReflectionProperty> */

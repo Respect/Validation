@@ -16,7 +16,7 @@ domain names:
 v::domain(false)->isValid('dev.machine.local');
 ```
 
-This is a composite validator, it validates several rules
+This is a composite validator, it validates several validators
 internally:
 
 - If input is an IP address, it fails.
@@ -27,7 +27,7 @@ internally:
 - Each part must be alphanumeric and not start with an hyphen.
 - [PunnyCode][] is accepted for [Internationalizing Domain Names in Applications][IDNA].
 
-Messages for this validator will reflect rules above.
+Messages for this validator will reflect validators above.
 
 ## Templates
 

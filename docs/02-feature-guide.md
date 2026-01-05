@@ -1,12 +1,12 @@
 # Feature Guide
 
-The `ValidatorBuilder` class is the core of Respect\Validation, offering a fluent interface for building validation rules.
+The `ValidatorBuilder` class is the core of Respect\Validation, offering a fluent interface for building validators.
 
 For convenience, the `ValidatorBuilder` class is aliased as `v`. This means you can write `v::intType()` instead of `\Respect\Validation\ValidatorBuilder::intType()`.
 
 ## Validating using booleans
 
-With the `isValid()` method, determine if your input meets a specific validation rule.
+With the `isValid()` method, determine if your input meets a specific validator.
 
 ```php
 if (v::intType()->positive()->isValid($input)) {
@@ -16,7 +16,7 @@ if (v::intType()->positive()->isValid($input)) {
 }
 ```
 
-Note that you can combine multiple rules for a complex validation.
+Note that you can combine multiple validators for a complex validation.
 
 ## Validating using exceptions
 
@@ -30,9 +30,9 @@ v::intType()->positive()->assert($input);
 
 ## Smart validation
 
-Respect\Validation offers over 150 rules, many of which are designed to address common scenarios. Here’s a quick guide to some specific use cases and the rules that make validation straightforward.
+Respect\Validation offers over 150 validators, many of which are designed to address common scenarios. Here's a quick guide to some specific use cases and the validators that make validation straightforward.
 
-- Using rules as **PHP Attributes**: [Attributes](rules/Attributes.md).
+- Using validators as **PHP Attributes**: [Attributes](rules/Attributes.md).
 - Validating **Arrays**: [Key](rules/Key.md), [KeyOptional](rules/KeyOptional.md), [KeyExists](rules/KeyExists.md).
 - Validating **Array structures**: [KeySet](rules/KeySet.md).
 - Validating **Object properties**: [Property](rules/Property.md), [PropertyOptional](rules/PropertyOptional.md), [PropertyExists](rules/PropertyExists.md).
@@ -52,9 +52,9 @@ Define your own error message when the validation fails:
 v::between(1, 256)->assert($input, '{{subject}} is not what I was expecting');
 ```
 
-### Custom templates per rule
+### Custom templates per validator
 
-Provide unique messages for each rule in a chain:
+Provide unique messages for each validator in a chain:
 
 ```php
 v::alnum()->lowercase()->assert($input, [
@@ -85,15 +85,15 @@ v::alnum()->lowercase()->assert(
 );
 ```
 
-## Inverting validation rules
+## Inverting validators
 
-Use the `not` prefix to invert a validation rule.
+Use the `not` prefix to invert a validator.
 
 ```php
 v::notEquals('main')->assert($input);
 ```
 
-For more details, check the [Not](rules/Not.md) rule documentation.
+For more details, check the [Not](rules/Not.md) validator documentation.
 
 ## Reusing validators
 

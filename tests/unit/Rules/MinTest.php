@@ -17,7 +17,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Min::class)]
 final class MinTest extends TestCase
 {
@@ -25,9 +25,9 @@ final class MinTest extends TestCase
     #[DataProvider('providerForNonIterableTypes')]
     public function itShouldInvalidateNonIterableValues(mixed $input): void
     {
-        $rule = new Min(Stub::daze());
+        $validator = new Min(Stub::daze());
 
-        self::assertInvalidInput($rule, $input);
+        self::assertInvalidInput($validator, $input);
     }
 
     /** @param iterable<mixed> $input */
@@ -35,9 +35,9 @@ final class MinTest extends TestCase
     #[DataProvider('providerForEmptyIterableValues')]
     public function itShouldInvalidateEmptyIterableValues(iterable $input): void
     {
-        $rule = new Min(Stub::daze());
+        $validator = new Min(Stub::daze());
 
-        self::assertInvalidInput($rule, $input);
+        self::assertInvalidInput($validator, $input);
     }
 
     /** @param iterable<mixed> $input */
@@ -45,9 +45,9 @@ final class MinTest extends TestCase
     #[DataProvider('providerForNonEmptyIterableValues')]
     public function itShouldValidateNonEmptyIterableValuesWhenWrappedRulePasses(iterable $input): void
     {
-        $rule = new Min(Stub::pass(1));
+        $validator = new Min(Stub::pass(1));
 
-        self::assertValidInput($rule, $input);
+        self::assertValidInput($validator, $input);
     }
 
     /** @param iterable<mixed> $input */
@@ -57,8 +57,8 @@ final class MinTest extends TestCase
     {
         $wrapped = Stub::pass(1);
 
-        $rule = new Min($wrapped);
-        $rule->evaluate($input);
+        $validator = new Min($wrapped);
+        $validator->evaluate($input);
 
         self::assertSame($min, $wrapped->inputs[0]);
     }

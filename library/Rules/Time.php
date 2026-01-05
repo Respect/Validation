@@ -14,7 +14,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function date;
 use function is_scalar;
@@ -26,7 +26,7 @@ use function strtotime;
     '{{subject}} must be a valid time in the format {{sample}}',
     '{{subject}} must not be a valid time in the format {{sample}}',
 )]
-final readonly class Time implements Rule
+final readonly class Time implements Validator
 {
     use CanValidateDateTime;
 

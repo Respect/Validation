@@ -25,7 +25,7 @@ final class NullOr extends Wrapper
 {
     public function evaluate(mixed $input): Result
     {
-        $result = $this->rule->evaluate($input);
+        $result = $this->validator->evaluate($input);
         if ($input !== null) {
             return $this->enrichResult($result);
         }

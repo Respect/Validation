@@ -1,4 +1,4 @@
-# List of rules by category
+# List of validators by category
 
 ## Arrays
 

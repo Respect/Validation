@@ -12,18 +12,18 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\KeyRelated;
 use Respect\Validation\Rules\Core\Wrapper;
+use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 final class Key extends Wrapper implements KeyRelated
 {
     public function __construct(
         private readonly int|string $key,
-        Rule $rule,
+        Validator $validator,
     ) {
-        parent::__construct($rule);
+        parent::__construct($validator);
     }
 
     public function getKey(): int|string
@@ -35,9 +35,9 @@ final class Key extends Wrapper implements KeyRelated
     {
         $keyExistsResult = (new KeyExists($this->key))->evaluate($input);
         if (!$keyExistsResult->hasPassed) {
-            return $keyExistsResult->withNameFrom($this->rule);
+            return $keyExistsResult->withNameFrom($this->validator);
         }
 
-        return $this->rule->evaluate($input[$this->key])->withPath($keyExistsResult->path ?? new Path($this->key));
+        return $this->validator->evaluate($input[$this->key])->withPath($keyExistsResult->path ?? new Path($this->key));
     }
 }

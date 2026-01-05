@@ -12,8 +12,8 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Composite;
+use Respect\Validation\Validator;
 
 use function array_filter;
 use function array_map;
@@ -39,8 +39,8 @@ final class NoneOf extends Composite
     public function evaluate(mixed $input): Result
     {
         $children = array_map(
-            static fn(Rule $rule) => $rule->evaluate($input)->withToggledModeAndValidation(),
-            $this->rules,
+            static fn(Validator $validator) => $validator->evaluate($input)->withToggledModeAndValidation(),
+            $this->validators,
         );
         $valid = array_reduce($children, static fn(bool $carry, Result $result) => $carry && $result->hasPassed, true);
         $failed = array_filter($children, static fn(Result $result): bool => !$result->hasPassed);

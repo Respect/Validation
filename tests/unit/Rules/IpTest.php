@@ -21,7 +21,7 @@ use function extension_loaded;
 use const FILTER_FLAG_IPV6;
 use const FILTER_FLAG_NO_PRIV_RANGE;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Ip::class)]
 final class IpTest extends RuleTestCase
 {

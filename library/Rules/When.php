@@ -11,15 +11,15 @@ namespace Respect\Validation\Rules;
 
 use Attribute;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final readonly class When implements Rule
+final readonly class When implements Validator
 {
     public function __construct(
-        private Rule $when,
-        private Rule $then,
-        private Rule $else = new Templated(AlwaysInvalid::TEMPLATE_SIMPLE, new AlwaysInvalid()),
+        private Validator $when,
+        private Validator $then,
+        private Validator $else = new Templated(AlwaysInvalid::TEMPLATE_SIMPLE, new AlwaysInvalid()),
     ) {
     }
 

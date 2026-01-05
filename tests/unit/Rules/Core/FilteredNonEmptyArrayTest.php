@@ -43,14 +43,14 @@ final class FilteredNonEmptyArrayTest extends TestCase
     #[Test]
     public function itShouldEvaluateNonEmptyIterables(): void
     {
-        $rule = Stub::pass(1);
+        $validator = Stub::pass(1);
 
         $input = [1, 2, 3];
 
-        $sut = new ConcreteFilteredNonEmptyArray($rule);
+        $sut = new ConcreteFilteredNonEmptyArray($validator);
         $sut->evaluate($input);
 
-        self::assertSame([$input], $rule->inputs);
+        self::assertSame([$input], $validator->inputs);
     }
 
     #[Test]

@@ -11,8 +11,8 @@ namespace Respect\Validation\Rules;
 
 use Attribute;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Wrapper;
+use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 final class Templated extends Wrapper
@@ -20,15 +20,15 @@ final class Templated extends Wrapper
     /** @param array<string, mixed> $parameters */
     public function __construct(
         private readonly string $template,
-        Rule $rule,
+        Validator $validator,
         private readonly array $parameters = [],
     ) {
-        parent::__construct($rule);
+        parent::__construct($validator);
     }
 
     public function evaluate(mixed $input): Result
     {
-        $result = $this->rule->evaluate($input);
+        $result = $this->validator->evaluate($input);
         if ($result->hasCustomTemplate()) {
             return $result;
         }

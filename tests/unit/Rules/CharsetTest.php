@@ -17,7 +17,7 @@ use Respect\Validation\Test\RuleTestCase;
 
 use function mb_convert_encoding;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Charset::class)]
 final class CharsetTest extends RuleTestCase
 {
@@ -48,11 +48,11 @@ final class CharsetTest extends RuleTestCase
     /** @return iterable<array{Charset, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Charset('ASCII');
+        $validator = new Charset('ASCII');
 
         return [
-            [$rule, '日本国'],
-            [$rule, 'açaí'],
+            [$validator, '日本国'],
+            [$validator, 'açaí'],
         ];
     }
 }

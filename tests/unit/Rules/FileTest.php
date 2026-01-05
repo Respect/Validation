@@ -18,7 +18,7 @@ use stdClass;
 
 use const PHP_INT_MAX;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(File::class)]
 final class FileTest extends RuleTestCase
 {

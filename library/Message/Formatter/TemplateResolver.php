@@ -13,7 +13,7 @@ use ReflectionClass;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function array_reduce;
 use function array_reverse;
@@ -49,9 +49,9 @@ final class TemplateResolver
         return null;
     }
 
-    public function getRuleTemplate(Result $result): string
+    public function getValidatorTemplate(Result $result): string
     {
-        foreach ($this->extractTemplates($result->rule) as $template) {
+        foreach ($this->extractTemplates($result->validator) as $template) {
             if ($template->id !== $result->template) {
                 continue;
             }
@@ -67,16 +67,16 @@ final class TemplateResolver
     }
 
     /** @return array<Template> */
-    private function extractTemplates(Rule $rule): array
+    private function extractTemplates(Validator $validator): array
     {
-        if (!isset($this->templates[$rule::class])) {
-            $reflection = new ReflectionClass($rule);
+        if (!isset($this->templates[$validator::class])) {
+            $reflection = new ReflectionClass($validator);
             foreach ($reflection->getAttributes(Template::class) as $attribute) {
-                $this->templates[$rule::class][] = $attribute->newInstance();
+                $this->templates[$validator::class][] = $attribute->newInstance();
             }
         }
 
-        return $this->templates[$rule::class] ?? [];
+        return $this->templates[$validator::class] ?? [];
     }
 
     /**

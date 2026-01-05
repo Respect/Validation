@@ -16,7 +16,7 @@ use stdClass;
 
 use function extension_loaded;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Iban::class)]
 final class IbanTest extends RuleTestCase
 {

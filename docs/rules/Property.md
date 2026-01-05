@@ -1,8 +1,8 @@
 # Property
 
-- `Property(string $propertyName, Rule $rule)`
+- `Property(string $propertyName, Validator $validator)`
 
-Validates an object property against a given rule.
+Validates an object property against a given validator.
 
 ```php
 $object = new stdClass;
@@ -40,10 +40,10 @@ v::property('name', v::uppercase())->assert($object);
 
 ## Note
 
-This rule will validate public, private, protected, uninitialised, and static properties.
+This validator will validate public, private, protected, uninitialised, and static properties.
 
 - To only validate if a property exists, use [PropertyExists](PropertyExists.md) instead.
-- To validate a property against a given rule only if the property exists, use [PropertyOptional](PropertyOptional.md) instead.
+- To validate a property against a given validator only if the property exists, use [PropertyOptional](PropertyOptional.md) instead.
 
 ## Templates
 

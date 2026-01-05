@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function abs;
 use function is_int;
@@ -24,7 +24,7 @@ use function preg_match;
     '{{subject}} must be a factor of {{dividend|raw}}',
     '{{subject}} must not be a factor of {{dividend|raw}}',
 )]
-final readonly class Factor implements Rule
+final readonly class Factor implements Validator
 {
     public function __construct(
         private int $dividend,

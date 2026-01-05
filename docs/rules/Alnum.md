@@ -17,7 +17,7 @@ v::alnum('%', ',')->isValid('10,5%'); // true
 ```
 
 You can restrict case using the [Lowercase](Lowercase.md) and
-[Uppercase](Uppercase.md) rules.
+[Uppercase](Uppercase.md) validators.
 
 ```php
 v::alnum()->uppercase()->isValid('example'); // false

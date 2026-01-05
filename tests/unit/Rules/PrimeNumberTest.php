@@ -13,44 +13,44 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(PrimeNumber::class)]
 final class PrimeNumberTest extends RuleTestCase
 {
     /** @return iterable<array{PrimeNumber, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new PrimeNumber();
+        $validator = new PrimeNumber();
 
         return [
-            [$rule, 3],
-            [$rule, 5],
-            [$rule, 7],
-            [$rule, '3'],
-            [$rule, '5'],
-            [$rule, '+7'],
+            [$validator, 3],
+            [$validator, 5],
+            [$validator, 7],
+            [$validator, '3'],
+            [$validator, '5'],
+            [$validator, '+7'],
         ];
     }
 
     /** @return iterable<array{PrimeNumber, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new PrimeNumber();
+        $validator = new PrimeNumber();
 
         return [
-            [$rule, ''],
-            [$rule, null],
-            [$rule, 0],
-            [$rule, 10],
-            [$rule, 25],
-            [$rule, 36],
-            [$rule, -1],
-            [$rule, '-1'],
-            [$rule, '25'],
-            [$rule, '0'],
-            [$rule, 'a'],
-            [$rule, ' '],
-            [$rule, 'Foo'],
+            [$validator, ''],
+            [$validator, null],
+            [$validator, 0],
+            [$validator, 10],
+            [$validator, 25],
+            [$validator, 36],
+            [$validator, -1],
+            [$validator, '-1'],
+            [$validator, '25'],
+            [$validator, '0'],
+            [$validator, 'a'],
+            [$validator, ' '],
+            [$validator, 'Foo'],
         ];
     }
 }

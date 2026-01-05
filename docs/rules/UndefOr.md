@@ -1,10 +1,10 @@
 # UndefOr
 
-- `UndefOr(Rule $rule)`
+- `UndefOr(Validator $validator)`
 
-Validates the input using a defined rule when the input is not `null` or an empty string (`''`).
+Validates the input using a defined validator when the input is not `null` or an empty string (`''`).
 
-This rule can be particularly useful when validating form fields.
+This validator can be particularly useful when validating form fields.
 
 ## Usage
 
@@ -18,7 +18,7 @@ v::undefOr(v::alpha())->isValid('has1number'); // false
 
 ## Prefix
 
-For convenience, you can use the `undefOr` as a prefix to any rule:
+For convenience, you can use the `undefOr` as a prefix to any validator:
 
 ```php
 v::undefOrEmail()->isValid('not an email'); // false
@@ -34,7 +34,7 @@ v::undefOrBetween(1, 3)->isValid(2); // true
 | `default`  | or must be undefined      |
 | `inverted` | and must not be undefined |
 
-The templates from this rule serve as message suffixes:
+The templates from this validator serve as message suffixes:
 
 ```php
 v::undefOr(v::alpha())->assert('has1number');

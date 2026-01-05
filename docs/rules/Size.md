@@ -1,6 +1,6 @@
 # Size
 
-- `Size(string $unit, Rule $rule)`
+- `Size(string $unit, Validator $validator)`
 
 Validates whether the input is a file that is of a certain size or not.
 

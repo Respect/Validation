@@ -14,36 +14,36 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(PublicDomainSuffix::class)]
 final class PublicDomainSuffixTest extends RuleTestCase
 {
     /** @return iterable<array{PublicDomainSuffix, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new PublicDomainSuffix();
+        $validator = new PublicDomainSuffix();
 
         return [
-            [$rule, ''],
-            [$rule, 'co.uk'],
-            [$rule, 'nom.br'],
-            [$rule, 'WWW.CK'],
+            [$validator, ''],
+            [$validator, 'co.uk'],
+            [$validator, 'nom.br'],
+            [$validator, 'WWW.CK'],
         ];
     }
 
     /** @return iterable<array{PublicDomainSuffix, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new PublicDomainSuffix();
+        $validator = new PublicDomainSuffix();
 
         return [
-            [$rule, []],
-            [$rule, null],
-            [$rule, new stdClass()],
-            [$rule, 'NONONONONONONONONON'],
-            [$rule, 'NONONONONONONONONON.uk'],
-            [$rule, 'invalid.com'],
-            [$rule, 'tk'],
+            [$validator, []],
+            [$validator, null],
+            [$validator, new stdClass()],
+            [$validator, 'NONONONONONONONONON'],
+            [$validator, 'NONONONONONONONONON.uk'],
+            [$validator, 'invalid.com'],
+            [$validator, 'tk'],
         ];
     }
 }

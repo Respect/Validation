@@ -25,7 +25,7 @@ use const FILTER_VALIDATE_FLOAT;
 use const FILTER_VALIDATE_INT;
 use const FILTER_VALIDATE_URL;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(FilterVar::class)]
 final class FilterVarTest extends RuleTestCase
 {

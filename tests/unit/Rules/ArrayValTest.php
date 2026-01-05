@@ -23,28 +23,28 @@ final class ArrayValTest extends RuleTestCase
     /** @return iterable<array{ArrayVal, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new ArrayVal();
+        $validator = new ArrayVal();
 
         return [
-            [$rule, []],
-            [$rule, [1, 2, 3]],
-            [$rule, new ArrayObject()],
-            [$rule, new SimpleXMLElement('<foo></foo>')],
+            [$validator, []],
+            [$validator, [1, 2, 3]],
+            [$validator, new ArrayObject()],
+            [$validator, new SimpleXMLElement('<foo></foo>')],
         ];
     }
 
     /** @return iterable<array{ArrayVal, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new ArrayVal();
+        $validator = new ArrayVal();
 
         return [
-            [$rule, ''],
-            [$rule, null],
-            [$rule, 121],
-            [$rule, new stdClass()],
-            [$rule, false],
-            [$rule, 'aaa'],
+            [$validator, ''],
+            [$validator, null],
+            [$validator, 121],
+            [$validator, new stdClass()],
+            [$validator, false],
+            [$validator, 'aaa'],
         ];
     }
 }

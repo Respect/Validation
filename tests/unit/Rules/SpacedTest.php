@@ -14,37 +14,37 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Spaced::class)]
 final class SpacedTest extends RuleTestCase
 {
     /** @return iterable<array{Spaced, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Spaced();
+        $validator = new Spaced();
 
         return [
-            [$rule, ''],
-            [$rule, null],
-            [$rule, 0],
-            [$rule, 'wpoiur'],
-            [$rule, 'Foo'],
-            [$rule, []],
-            [$rule, new stdClass()],
+            [$validator, ''],
+            [$validator, null],
+            [$validator, 0],
+            [$validator, 'wpoiur'],
+            [$validator, 'Foo'],
+            [$validator, []],
+            [$validator, new stdClass()],
         ];
     }
 
     /** @return iterable<array{Spaced, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Spaced();
+        $validator = new Spaced();
 
         return [
-            [$rule, ' '],
-            [$rule, 'w poiur'],
-            [$rule, '      '],
-            [$rule, "Foo\nBar"],
-            [$rule, "Foo\tBar"],
+            [$validator, ' '],
+            [$validator, 'w poiur'],
+            [$validator, '      '],
+            [$validator, "Foo\nBar"],
+            [$validator, "Foo\tBar"],
         ];
     }
 }

@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(AnyOf::class)]
 final class AnyOfTest extends RuleTestCase
 {

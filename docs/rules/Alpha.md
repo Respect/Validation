@@ -15,7 +15,7 @@ v::alpha('-', '\'')->isValid('\'s-Gravenhage'); // true
 ```
 
 You can restrict case using the [Lowercase](Lowercase.md) and
-[Uppercase](Uppercase.md) rules.
+[Uppercase](Uppercase.md) validators.
 
 ```php
 v::alpha()->uppercase()->isValid('example'); // false

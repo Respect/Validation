@@ -1,8 +1,8 @@
 # NullOr
 
-- `NullOr(Rule $rule)`
+- `NullOr(Validator $validator)`
 
-Validates the input using a defined rule when the input is not `null`.
+Validates the input using a defined validator when the input is not `null`.
 
 ## Usage
 
@@ -14,7 +14,7 @@ v::nullable(v::email())->isValid('not an email'); // false
 
 ## Prefix
 
-For convenience, you can use `nullOr` as a prefix to any rule:
+For convenience, you can use `nullOr` as a prefix to any validator:
 
 ```php
 v::nullOrEmail()->isValid('not an email'); // false
@@ -31,7 +31,7 @@ v::nullOrBetween(1, 3)->isValid(null); // true
 | `default`  | or must be null      |
 | `inverted` | and must not be null |
 
-The templates from this rule serve as message suffixes:
+The templates from this validator serve as message suffixes:
 
 ```php
 v::nullOr(v::alpha())->assert('has1number');

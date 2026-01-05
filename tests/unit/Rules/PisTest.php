@@ -14,56 +14,56 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Pis::class)]
 final class PisTest extends RuleTestCase
 {
     /** @return iterable<array{Pis, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Pis();
+        $validator = new Pis();
 
         return [
-            [$rule, '120.4454.683-5'],
-            [$rule, '120.8995.084-8'],
-            [$rule, '120.5146.8577'],
-            [$rule, '120.01842459'],
-            [$rule, '1.2.0.7.9.8.1.6.7.8.2'],
-            [$rule, '12044546835'],
-            [$rule, '12089950848'],
-            [$rule, '12051468577'],
-            [$rule, '12001842459'],
-            [$rule, '12079816782'],
-            [$rule, 12079816782],
+            [$validator, '120.4454.683-5'],
+            [$validator, '120.8995.084-8'],
+            [$validator, '120.5146.8577'],
+            [$validator, '120.01842459'],
+            [$validator, '1.2.0.7.9.8.1.6.7.8.2'],
+            [$validator, '12044546835'],
+            [$validator, '12089950848'],
+            [$validator, '12051468577'],
+            [$validator, '12001842459'],
+            [$validator, '12079816782'],
+            [$validator, 12079816782],
         ];
     }
 
     /** @return iterable<array{Pis, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Pis();
+        $validator = new Pis();
 
         return [
-            [$rule, ''],
-            [$rule, '000.0000.000-0'],
-            [$rule, '111.2222.444-5'],
-            [$rule, '999999999.99'],
-            [$rule, '8.8.8.8.8.8.8.8.8.8.8'],
-            [$rule, '693-3129-110-1'],
-            [$rule, '698.1131-111.2'],
-            [$rule, '11111111111'],
-            [$rule, '22222222222'],
-            [$rule, '12345678901'],
-            [$rule, '99299929384'],
-            [$rule, '84434895894'],
-            [$rule, '44242340002'],
-            [$rule, '1'],
-            [$rule, '22'],
-            [$rule, '123'],
-            [$rule, '992999999999929384'],
-            [$rule, false],
-            [$rule, []],
-            [$rule, new stdClass()],
+            [$validator, ''],
+            [$validator, '000.0000.000-0'],
+            [$validator, '111.2222.444-5'],
+            [$validator, '999999999.99'],
+            [$validator, '8.8.8.8.8.8.8.8.8.8.8'],
+            [$validator, '693-3129-110-1'],
+            [$validator, '698.1131-111.2'],
+            [$validator, '11111111111'],
+            [$validator, '22222222222'],
+            [$validator, '12345678901'],
+            [$validator, '99299929384'],
+            [$validator, '84434895894'],
+            [$validator, '44242340002'],
+            [$validator, '1'],
+            [$validator, '22'],
+            [$validator, '123'],
+            [$validator, '992999999999929384'],
+            [$validator, false],
+            [$validator, []],
+            [$validator, new stdClass()],
         ];
     }
 }

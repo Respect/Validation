@@ -11,7 +11,7 @@ namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
 use Respect\Validation\Name;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 interface Builder extends
     AllBuilder,
@@ -24,9 +24,9 @@ interface Builder extends
     PropertyBuilder,
     UndefOrBuilder
 {
-    public static function all(Rule $rule): Chain;
+    public static function all(Validator $validator): Chain;
 
-    public static function allOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function allOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function alnum(string ...$additionalChars): Chain;
 
@@ -36,7 +36,7 @@ interface Builder extends
 
     public static function alwaysValid(): Chain;
 
-    public static function anyOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function anyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function arrayType(): Chain;
 
@@ -63,7 +63,7 @@ interface Builder extends
 
     public static function bsn(): Chain;
 
-    public static function call(callable $callable, Rule $rule): Chain;
+    public static function call(callable $callable, Validator $validator): Chain;
 
     public static function callableType(): Chain;
 
@@ -71,7 +71,7 @@ interface Builder extends
 
     public static function charset(string $charset, string ...$charsets): Chain;
 
-    public static function circuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function circuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function cnh(): Chain;
 
@@ -105,7 +105,7 @@ interface Builder extends
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public static function dateTimeDiff(
         string $type,
-        Rule $rule,
+        Validator $validator,
         string|null $format = null,
         DateTimeImmutable|null $now = null,
     ): Chain;
@@ -118,7 +118,7 @@ interface Builder extends
 
     public static function domain(bool $tldCheck = true): Chain;
 
-    public static function each(Rule $rule): Chain;
+    public static function each(Validator $validator): Chain;
 
     public static function email(): Chain;
 
@@ -195,25 +195,25 @@ interface Builder extends
 
     public static function json(): Chain;
 
-    public static function key(string|int $key, Rule $rule): Chain;
+    public static function key(string|int $key, Validator $validator): Chain;
 
     public static function keyExists(string|int $key): Chain;
 
-    public static function keyOptional(string|int $key, Rule $rule): Chain;
+    public static function keyOptional(string|int $key, Validator $validator): Chain;
 
-    public static function keySet(Rule $rule, Rule ...$rules): Chain;
+    public static function keySet(Validator $validator, Validator ...$validators): Chain;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function languageCode(string $set = 'alpha-2'): Chain;
 
-    /** @param callable(mixed): Rule $ruleCreator */
-    public static function lazy(callable $ruleCreator): Chain;
+    /** @param callable(mixed): Validator $validatorCreator */
+    public static function lazy(callable $validatorCreator): Chain;
 
     public static function leapDate(string $format): Chain;
 
     public static function leapYear(): Chain;
 
-    public static function length(Rule $rule): Chain;
+    public static function length(Validator $validator): Chain;
 
     public static function lessThan(mixed $compareTo): Chain;
 
@@ -225,15 +225,15 @@ interface Builder extends
 
     public static function macAddress(): Chain;
 
-    public static function max(Rule $rule): Chain;
+    public static function max(Validator $validator): Chain;
 
     public static function mimetype(string $mimetype): Chain;
 
-    public static function min(Rule $rule): Chain;
+    public static function min(Validator $validator): Chain;
 
     public static function multiple(int $multipleOf): Chain;
 
-    public static function named(Name|string $name, Rule $rule): Chain;
+    public static function named(Name|string $name, Validator $validator): Chain;
 
     public static function negative(): Chain;
 
@@ -245,11 +245,11 @@ interface Builder extends
 
     public static function no(bool $useLocale = false): Chain;
 
-    public static function noneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function noneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public static function not(Rule $rule): Chain;
+    public static function not(Validator $validator): Chain;
 
-    public static function nullOr(Rule $rule): Chain;
+    public static function nullOr(Validator $validator): Chain;
 
     public static function nullType(): Chain;
 
@@ -261,7 +261,7 @@ interface Builder extends
 
     public static function odd(): Chain;
 
-    public static function oneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function oneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function perfectSquare(): Chain;
 
@@ -285,11 +285,11 @@ interface Builder extends
 
     public static function printable(string ...$additionalChars): Chain;
 
-    public static function property(string $propertyName, Rule $rule): Chain;
+    public static function property(string $propertyName, Validator $validator): Chain;
 
     public static function propertyExists(string $propertyName): Chain;
 
-    public static function propertyOptional(string $propertyName, Rule $rule): Chain;
+    public static function propertyOptional(string $propertyName, Validator $validator): Chain;
 
     public static function publicDomainSuffix(): Chain;
 
@@ -306,7 +306,7 @@ interface Builder extends
     public static function scalarVal(): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
-    public static function size(string $unit, Rule $rule): Chain;
+    public static function size(string $unit, Validator $validator): Chain;
 
     public static function slug(): Chain;
 
@@ -330,7 +330,7 @@ interface Builder extends
     public static function symbolicLink(): Chain;
 
     /** @param array<string, mixed> $parameters */
-    public static function templated(string $template, Rule $rule, array $parameters = []): Chain;
+    public static function templated(string $template, Validator $validator, array $parameters = []): Chain;
 
     public static function time(string $format = 'H:i:s'): Chain;
 
@@ -340,7 +340,7 @@ interface Builder extends
 
     public static function undef(): Chain;
 
-    public static function undefOr(Rule $rule): Chain;
+    public static function undefOr(Validator $validator): Chain;
 
     public static function unique(): Chain;
 
@@ -358,7 +358,7 @@ interface Builder extends
 
     public static function vowel(string ...$additionalChars): Chain;
 
-    public static function when(Rule $when, Rule $then, Rule|null $else = null): Chain;
+    public static function when(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function writable(): Chain;
 

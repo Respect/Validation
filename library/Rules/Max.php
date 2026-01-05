@@ -23,7 +23,7 @@ final class Max extends FilteredNonEmptyArray
     /** @param non-empty-array<mixed> $input */
     protected function evaluateNonEmptyArray(array $input): Result
     {
-        $result = $this->rule->evaluate(max($input));
+        $result = $this->validator->evaluate(max($input));
 
         return $result->asAdjacentOf(
             Result::of($result->hasPassed, $input, $this),

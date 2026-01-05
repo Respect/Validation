@@ -23,9 +23,9 @@ final class AlwaysValidTest extends TestCase
     #[DataProvider('providerForValidInput')]
     public function itAlwaysBeValid(mixed $input): void
     {
-        $rule = new AlwaysValid();
+        $validator = new AlwaysValid();
 
-        self::assertTrue($rule->evaluate($input)->hasPassed);
+        self::assertTrue($validator->evaluate($input)->hasPassed);
     }
 
     /** @return mixed[][] */

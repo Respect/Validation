@@ -17,7 +17,7 @@ use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Image::class)]
 final class ImageTest extends RuleTestCase
 {
@@ -33,36 +33,36 @@ final class ImageTest extends RuleTestCase
             ->with($input)
             ->willReturn('image/gif');
 
-        $rule = new Image($finfo);
+        $validator = new Image($finfo);
 
-        self::assertValidInput($rule, $input);
+        self::assertValidInput($validator, $input);
     }
 
     /** @return iterable<array{Image, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Image();
+        $validator = new Image();
 
         return [
-            [$rule, self::fixture('valid-image.gif')],
-            [$rule, self::fixture('valid-image.jpg')],
-            [$rule, self::fixture('valid-image.png')],
-            [$rule, new SplFileInfo(self::fixture('valid-image.gif'))],
-            [$rule, new SplFileInfo(self::fixture('valid-image.jpg'))],
-            [$rule, new SplFileObject(self::fixture('valid-image.png'))],
+            [$validator, self::fixture('valid-image.gif')],
+            [$validator, self::fixture('valid-image.jpg')],
+            [$validator, self::fixture('valid-image.png')],
+            [$validator, new SplFileInfo(self::fixture('valid-image.gif'))],
+            [$validator, new SplFileInfo(self::fixture('valid-image.jpg'))],
+            [$validator, new SplFileObject(self::fixture('valid-image.png'))],
         ];
     }
 
     /** @return iterable<array{Image, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Image();
+        $validator = new Image();
 
         return [
-            [$rule, self::fixture('invalid-image.png')],
-            [$rule, 'asdf'],
-            [$rule, 1],
-            [$rule, true],
+            [$validator, self::fixture('invalid-image.png')],
+            [$validator, 'asdf'],
+            [$validator, 1],
+            [$validator, true],
         ];
     }
 }

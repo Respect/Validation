@@ -16,53 +16,53 @@ use stdClass;
 
 use const PHP_INT_MAX;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(IntVal::class)]
 final class IntValTest extends RuleTestCase
 {
     /** @return iterable<array{IntVal, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new IntVal();
+        $validator = new IntVal();
 
         return [
-            [$rule, 16],
-            [$rule, '165'],
-            [$rule, 123456],
-            [$rule, PHP_INT_MAX],
-            [$rule, '06'],
-            [$rule, '09'],
-            [$rule, '0'],
-            [$rule, '00'],
-            [$rule, 0b101010],
-            [$rule, 0x2a],
-            [$rule, '089'],
-            [$rule, -42],
-            [$rule, '-42'],
-            [$rule, '-042'],
+            [$validator, 16],
+            [$validator, '165'],
+            [$validator, 123456],
+            [$validator, PHP_INT_MAX],
+            [$validator, '06'],
+            [$validator, '09'],
+            [$validator, '0'],
+            [$validator, '00'],
+            [$validator, 0b101010],
+            [$validator, 0x2a],
+            [$validator, '089'],
+            [$validator, -42],
+            [$validator, '-42'],
+            [$validator, '-042'],
         ];
     }
 
     /** @return iterable<array{IntVal, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new IntVal();
+        $validator = new IntVal();
 
         return [
-            [$rule, ''],
-            [$rule, new stdClass()],
-            [$rule, []],
-            [$rule, null],
-            [$rule, 'a'],
-            [$rule, '1.0'],
-            [$rule, 1.0],
-            [$rule, ' '],
-            [$rule, true],
-            [$rule, false],
-            [$rule, 'Foo'],
-            [$rule, '1.44'],
-            [$rule, 1e-5],
-            [$rule, '089ab'],
+            [$validator, ''],
+            [$validator, new stdClass()],
+            [$validator, []],
+            [$validator, null],
+            [$validator, 'a'],
+            [$validator, '1.0'],
+            [$validator, 1.0],
+            [$validator, ' '],
+            [$validator, true],
+            [$validator, false],
+            [$validator, 'Foo'],
+            [$validator, '1.44'],
+            [$validator, 1e-5],
+            [$validator, '089ab'],
         ];
     }
 }

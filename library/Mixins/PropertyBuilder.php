@@ -10,13 +10,18 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 interface PropertyBuilder
 {
-    public static function propertyAll(string $propertyName, Rule $rule): Chain;
+    public static function propertyAll(string $propertyName, Validator $validator): Chain;
 
-    public static function propertyAllOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function propertyAllOf(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function propertyAlnum(string $propertyName, string ...$additionalChars): Chain;
 
@@ -26,7 +31,12 @@ interface PropertyBuilder
 
     public static function propertyAlwaysValid(string $propertyName): Chain;
 
-    public static function propertyAnyOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function propertyAnyOf(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function propertyArrayType(string $propertyName): Chain;
 
@@ -52,7 +62,7 @@ interface PropertyBuilder
 
     public static function propertyBsn(string $propertyName): Chain;
 
-    public static function propertyCall(string $propertyName, callable $callable, Rule $rule): Chain;
+    public static function propertyCall(string $propertyName, callable $callable, Validator $validator): Chain;
 
     public static function propertyCallableType(string $propertyName): Chain;
 
@@ -60,7 +70,12 @@ interface PropertyBuilder
 
     public static function propertyCharset(string $propertyName, string $charset, string ...$charsets): Chain;
 
-    public static function propertyCircuit(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function propertyCircuit(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function propertyCnh(string $propertyName): Chain;
 
@@ -99,7 +114,7 @@ interface PropertyBuilder
     public static function propertyDateTimeDiff(
         string $propertyName,
         string $type,
-        Rule $rule,
+        Validator $validator,
         string|null $format = null,
         DateTimeImmutable|null $now = null,
     ): Chain;
@@ -112,7 +127,7 @@ interface PropertyBuilder
 
     public static function propertyDomain(string $propertyName, bool $tldCheck = true): Chain;
 
-    public static function propertyEach(string $propertyName, Rule $rule): Chain;
+    public static function propertyEach(string $propertyName, Validator $validator): Chain;
 
     public static function propertyEmail(string $propertyName): Chain;
 
@@ -190,14 +205,14 @@ interface PropertyBuilder
     /** @param "alpha-2"|"alpha-3" $set */
     public static function propertyLanguageCode(string $propertyName, string $set = 'alpha-2'): Chain;
 
-    /** @param callable(mixed): Rule $ruleCreator */
-    public static function propertyLazy(string $propertyName, callable $ruleCreator): Chain;
+    /** @param callable(mixed): Validator $validatorCreator */
+    public static function propertyLazy(string $propertyName, callable $validatorCreator): Chain;
 
     public static function propertyLeapDate(string $propertyName, string $format): Chain;
 
     public static function propertyLeapYear(string $propertyName): Chain;
 
-    public static function propertyLength(string $propertyName, Rule $rule): Chain;
+    public static function propertyLength(string $propertyName, Validator $validator): Chain;
 
     public static function propertyLessThan(string $propertyName, mixed $compareTo): Chain;
 
@@ -209,11 +224,11 @@ interface PropertyBuilder
 
     public static function propertyMacAddress(string $propertyName): Chain;
 
-    public static function propertyMax(string $propertyName, Rule $rule): Chain;
+    public static function propertyMax(string $propertyName, Validator $validator): Chain;
 
     public static function propertyMimetype(string $propertyName, string $mimetype): Chain;
 
-    public static function propertyMin(string $propertyName, Rule $rule): Chain;
+    public static function propertyMin(string $propertyName, Validator $validator): Chain;
 
     public static function propertyMultiple(string $propertyName, int $multipleOf): Chain;
 
@@ -227,9 +242,14 @@ interface PropertyBuilder
 
     public static function propertyNo(string $propertyName, bool $useLocale = false): Chain;
 
-    public static function propertyNoneOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function propertyNoneOf(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
-    public static function propertyNot(string $propertyName, Rule $rule): Chain;
+    public static function propertyNot(string $propertyName, Validator $validator): Chain;
 
     public static function propertyNullType(string $propertyName): Chain;
 
@@ -241,7 +261,12 @@ interface PropertyBuilder
 
     public static function propertyOdd(string $propertyName): Chain;
 
-    public static function propertyOneOf(string $propertyName, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function propertyOneOf(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function propertyPerfectSquare(string $propertyName): Chain;
 
@@ -284,7 +309,7 @@ interface PropertyBuilder
     public static function propertyScalarVal(string $propertyName): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
-    public static function propertySize(string $propertyName, string $unit, Rule $rule): Chain;
+    public static function propertySize(string $propertyName, string $unit, Validator $validator): Chain;
 
     public static function propertySlug(string $propertyName): Chain;
 
@@ -294,7 +319,11 @@ interface PropertyBuilder
 
     public static function propertySpaced(string $propertyName): Chain;
 
-    public static function propertyStartsWith(string $propertyName, mixed $startValue, bool $identical = false): Chain;
+    public static function propertyStartsWith(
+        string $propertyName,
+        mixed $startValue,
+        bool $identical = false,
+    ): Chain;
 
     public static function propertyStringType(string $propertyName): Chain;
 
@@ -331,7 +360,12 @@ interface PropertyBuilder
 
     public static function propertyVowel(string $propertyName, string ...$additionalChars): Chain;
 
-    public static function propertyWhen(string $propertyName, Rule $when, Rule $then, Rule|null $else = null): Chain;
+    public static function propertyWhen(
+        string $propertyName,
+        Validator $when,
+        Validator $then,
+        Validator|null $else = null,
+    ): Chain;
 
     public static function propertyWritable(string $propertyName): Chain;
 

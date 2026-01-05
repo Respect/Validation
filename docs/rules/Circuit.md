@@ -1,12 +1,12 @@
 # Circuit
 
-- `Circuit(Rule $rule1, Rule $rule2, Rule ...$rule)`
+- `Circuit(Validator $validator1, Validator $validator2, Validator ...$validator)`
 
-Validates the input against a series of rules until the first fails.
+Validates the input against a series of validators until the first fails.
 
-This rule can be handy for getting the least error messages possible from a chain.
+This validator can be handy for getting the least error messages possible from a chain.
 
-This rule can be helpful in combinations with [Lazy](Lazy.md). An excellent example is when you want to validate a
+This validator can be helpful in combinations with [Lazy](Lazy.md). An excellent example is when you want to validate a
 country code and a subdivision code.
 
 ```php
@@ -22,7 +22,7 @@ would then have to write `v::key('countryCode', v::countryCode())` twice in your
 
 ## Templates
 
-This rule does not have any templates, because it will always return the result of the first rule that fails. When all the validation rules pass, it will return the result of the last rule of the circuit.
+This validator does not have any templates, because it will always return the result of the first validator that fails. When all the validators pass, it will return the result of the last validator of the circuit.
 
 ## Categorization
 

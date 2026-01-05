@@ -21,7 +21,7 @@ use function uniqid;
 
 use const PHP_INT_MAX;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Factor::class)]
 final class FactorTest extends RuleTestCase
 {

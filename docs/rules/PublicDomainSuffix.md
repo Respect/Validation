@@ -11,7 +11,7 @@ v::publicDomainSuffix->isValid('nom.br'); // true
 v::publicDomainSuffix->isValid('invalid.com'); // false
 ```
 
-This rule will not match top level domains such as `tk`.
+This validator will not match top level domains such as `tk`.
 If you want to match either, use a combination with `Tld`:
 
 ```php

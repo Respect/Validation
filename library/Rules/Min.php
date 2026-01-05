@@ -23,7 +23,7 @@ final class Min extends FilteredNonEmptyArray
     /** @param non-empty-array<mixed> $input */
     protected function evaluateNonEmptyArray(array $input): Result
     {
-        $result = $this->rule->evaluate(min($input));
+        $result = $this->validator->evaluate(min($input));
 
         return $result->asAdjacentOf(
             Result::of($result->hasPassed, $input, $this),

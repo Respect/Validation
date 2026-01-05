@@ -20,7 +20,7 @@ use Respect\Validation\Test\RuleTestCase;
 use function array_map;
 use function iterator_to_array;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(DateTimeDiff::class)]
 final class DateTimeDiffTest extends RuleTestCase
 {

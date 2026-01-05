@@ -25,17 +25,17 @@ final class EnvelopeTest extends TestCase
     #[Test]
     public function itShouldValidateUsingTheInnerRule(): void
     {
-        $rule = new ConcreteEnvelope(Stub::pass(1), []);
+        $validator = new ConcreteEnvelope(Stub::pass(1), []);
 
-        self::assertTrue($rule->evaluate('something')->hasPassed);
+        self::assertTrue($validator->evaluate('something')->hasPassed);
     }
 
     #[Test]
     public function itShouldInvalidateUsingTheInnerRule(): void
     {
-        $rule = new ConcreteEnvelope(Stub::fail(1), []);
+        $validator = new ConcreteEnvelope(Stub::fail(1), []);
 
-        self::assertFalse($rule->evaluate('something')->hasPassed);
+        self::assertFalse($validator->evaluate('something')->hasPassed);
     }
 
     #[Test]
@@ -44,8 +44,8 @@ final class EnvelopeTest extends TestCase
         $input = 'value';
         $parameters = ['foo' => true, 'bar' => false, 'baz' => 42];
 
-        $rule = new ConcreteEnvelope(Stub::fail(1), $parameters);
-        $result = $rule->evaluate($input);
+        $validator = new ConcreteEnvelope(Stub::fail(1), $parameters);
+        $result = $validator->evaluate($input);
 
         self::assertEquals($parameters, array_intersect_key($parameters, $result->parameters));
     }

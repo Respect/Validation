@@ -25,7 +25,7 @@ use SplFileInfo;
 
 use function uniqid;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Size::class)]
 final class SizeTest extends TestCase
 {
@@ -55,8 +55,8 @@ final class SizeTest extends TestCase
             ->at($this->root);
 
         $wrapped = Stub::pass(1);
-        $rule = new Size('KB', $wrapped);
-        $rule->evaluate($file->url());
+        $validator = new Size('KB', $wrapped);
+        $validator->evaluate($file->url());
 
         self::assertSame([2], $wrapped->inputs);
     }
@@ -69,8 +69,8 @@ final class SizeTest extends TestCase
             ->at($this->root);
 
         $wrapped = Stub::pass(1);
-        $rule = new Size('GB', $wrapped);
-        $rule->evaluate(new SplFileInfo($file->url()));
+        $validator = new Size('GB', $wrapped);
+        $validator->evaluate(new SplFileInfo($file->url()));
 
         self::assertSame([1], $wrapped->inputs);
     }
@@ -81,8 +81,8 @@ final class SizeTest extends TestCase
         $file = UploadedFileStub::createWithSize(1024);
 
         $wrapped = Stub::pass(1);
-        $rule = new Size('KB', $wrapped);
-        $rule->evaluate($file);
+        $validator = new Size('KB', $wrapped);
+        $validator->evaluate($file);
 
         self::assertSame([1], $wrapped->inputs);
     }
@@ -93,8 +93,8 @@ final class SizeTest extends TestCase
         $file = StreamStub::createWithSize(2 * 1024 ** 2);
 
         $wrapped = Stub::pass(1);
-        $rule = new Size('MB', $wrapped);
-        $rule->evaluate($file);
+        $validator = new Size('MB', $wrapped);
+        $validator->evaluate($file);
 
         self::assertSame([2], $wrapped->inputs);
     }

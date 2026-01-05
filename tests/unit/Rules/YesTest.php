@@ -23,7 +23,7 @@ use function sprintf;
 use const LC_ALL;
 use const PHP_INT_MAX;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Yes::class)]
 final class YesTest extends RuleTestCase
 {

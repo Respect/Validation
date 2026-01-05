@@ -13,7 +13,7 @@ use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function bccomp;
 use function explode;
@@ -43,7 +43,7 @@ use const PHP_INT_MAX;
     '{{subject}} must not be an IP address in the {{range|raw}} range',
     self::TEMPLATE_NETWORK_RANGE,
 )]
-final class Ip implements Rule
+final class Ip implements Validator
 {
     public const string TEMPLATE_NETWORK_RANGE = '__network_range__';
 

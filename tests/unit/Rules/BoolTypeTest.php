@@ -14,35 +14,35 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(BoolType::class)]
 final class BoolTypeTest extends RuleTestCase
 {
     /** @return iterable<array{BoolType, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new BoolType();
+        $validator = new BoolType();
 
         return [
-            [$rule, true],
-            [$rule, false],
+            [$validator, true],
+            [$validator, false],
         ];
     }
 
     /** @return iterable<array{BoolType, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new BoolType();
+        $validator = new BoolType();
 
         return [
-            [$rule, ''],
-            [$rule, 'foo'],
-            [$rule, 123123],
-            [$rule, new stdClass()],
-            [$rule, []],
-            [$rule, 1],
-            [$rule, 0],
-            [$rule, null],
+            [$validator, ''],
+            [$validator, 'foo'],
+            [$validator, 123123],
+            [$validator, new stdClass()],
+            [$validator, []],
+            [$validator, 1],
+            [$validator, 0],
+            [$validator, null],
         ];
     }
 }

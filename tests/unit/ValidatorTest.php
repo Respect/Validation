@@ -124,7 +124,7 @@ final class ValidatorTest extends TestCase
     public function itShouldEvaluateAndThrowExceptionWhenNoRulesAreAdded(): void
     {
         $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage('No rules have been added to this validator.');
+        $this->expectExceptionMessage('No validators have been added.');
 
         $validator = ValidatorBuilder::init();
         $validator->evaluate('whatever');

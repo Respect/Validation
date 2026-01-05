@@ -20,7 +20,7 @@ use Respect\Validation\Test\TestCase;
 use function count;
 use function mb_strlen;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Length::class)]
 final class LengthTest extends TestCase
 {
@@ -36,9 +36,9 @@ final class LengthTest extends TestCase
     public function itShouldValidateStringTypes(string $input): void
     {
         $wrapped = Stub::pass(1);
-        $rule = new Length($wrapped);
+        $validator = new Length($wrapped);
 
-        self::assertValidInput($rule, $input);
+        self::assertValidInput($validator, $input);
         self::assertEquals(mb_strlen($input), $wrapped->inputs[0]);
     }
 
@@ -47,9 +47,9 @@ final class LengthTest extends TestCase
     public function itShouldValidateCountable(mixed $input): void
     {
         $wrapped = Stub::pass(1);
-        $rule = new Length($wrapped);
+        $validator = new Length($wrapped);
 
-        self::assertValidInput($rule, $input);
+        self::assertValidInput($validator, $input);
         self::assertEquals(count($input), $wrapped->inputs[0]);
     }
 

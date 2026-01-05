@@ -9,8 +9,8 @@ v::numericVal()->isValid(-12); // true
 v::numericVal()->isValid('135.0'); // true
 ```
 
-This rule doesn't validate if the input is a valid number, for that
-purpose use the [Number](Number.md) rule.
+This validator doesn't validate if the input is a valid number, for that
+purpose use the [Number](Number.md) validator.
 
 ## Templates
 

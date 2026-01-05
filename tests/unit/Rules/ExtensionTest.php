@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Extension::class)]
 final class ExtensionTest extends RuleTestCase
 {

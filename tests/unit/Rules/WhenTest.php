@@ -16,7 +16,7 @@ use Respect\Validation\Test\RuleTestCase;
 
 use function rand;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(When::class)]
 final class WhenTest extends RuleTestCase
 {

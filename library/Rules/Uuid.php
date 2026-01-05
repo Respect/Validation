@@ -17,7 +17,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 use Throwable;
 
 use function class_exists;
@@ -34,7 +34,7 @@ use function is_string;
     '{{subject}} must not be a valid UUID version {{version|raw}}',
     self::TEMPLATE_VERSION,
 )]
-final class Uuid implements Rule
+final class Uuid implements Validator
 {
     public const string TEMPLATE_VERSION = '__version__';
 

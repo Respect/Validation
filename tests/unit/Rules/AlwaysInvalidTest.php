@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\TestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(AlwaysInvalid::class)]
 final class AlwaysInvalidTest extends TestCase
 {
@@ -23,9 +23,9 @@ final class AlwaysInvalidTest extends TestCase
     #[DataProvider('providerForInvalidInput')]
     public function itShouldAlwaysBeInvalid(mixed $input): void
     {
-        $rule = new AlwaysInvalid();
+        $validator = new AlwaysInvalid();
 
-        self::assertFalse($rule->evaluate($input)->hasPassed);
+        self::assertFalse($validator->evaluate($input)->hasPassed);
     }
 
     /** @return mixed[][] */

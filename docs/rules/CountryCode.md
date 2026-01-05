@@ -5,7 +5,7 @@
 
 Validates whether the input is a country code in [ISO 3166-1][] standard.
 
-**This rule requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
+**This validator requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
 
 ```php
 v::countryCode()->isValid('BR'); // true
@@ -15,13 +15,13 @@ v::countryCode('alpha-3')->isValid('USA'); // true
 v::countryCode('numeric')->isValid('504'); // true
 ```
 
-This rule supports the three sets of country codes:
+This validator supports the three sets of country codes:
 
 - ISO 3166-1 alpha-2: `alpha-2`
 - ISO 3166-1 alpha-3: `alpha-3`
 - ISO 3166-1 numeric: `numeric`
 
-When no set is defined, the rule uses `'alpha-2'` (`CountryCode::ALPHA2`).
+When no set is defined, the validator uses `'alpha-2'` (`CountryCode::ALPHA2`).
 
 ## Templates
 

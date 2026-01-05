@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function in_array;
 use function is_array;
@@ -25,7 +25,7 @@ use function mb_strpos;
     '{{subject}} must contain {{containsValue}}',
     '{{subject}} must not contain {{containsValue}}',
 )]
-final readonly class Contains implements Rule
+final readonly class Contains implements Validator
 {
     public function __construct(
         private mixed $containsValue,

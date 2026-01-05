@@ -13,46 +13,46 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(PerfectSquare::class)]
 final class PerfectSquareTest extends RuleTestCase
 {
     /** @return iterable<array{PerfectSquare, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new PerfectSquare();
+        $validator = new PerfectSquare();
 
         return [
-            [$rule, 1],
-            [$rule, 9],
-            [$rule, 25],
-            [$rule, '25'],
-            [$rule, 400],
-            [$rule, '400'],
-            [$rule, '0'],
-            [$rule, 81],
-            [$rule, 0],
-            [$rule, 2500],
+            [$validator, 1],
+            [$validator, 9],
+            [$validator, 25],
+            [$validator, '25'],
+            [$validator, 400],
+            [$validator, '400'],
+            [$validator, '0'],
+            [$validator, 81],
+            [$validator, 0],
+            [$validator, 2500],
         ];
     }
 
     /** @return iterable<array{PerfectSquare, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new PerfectSquare();
+        $validator = new PerfectSquare();
 
         return [
-            [$rule, 250],
-            [$rule, ''],
-            [$rule, null],
-            [$rule, 7],
-            [$rule, -1],
-            [$rule, 6],
-            [$rule, 2],
-            [$rule, '-1'],
-            [$rule, 'a'],
-            [$rule, ' '],
-            [$rule, 'Foo'],
+            [$validator, 250],
+            [$validator, ''],
+            [$validator, null],
+            [$validator, 7],
+            [$validator, -1],
+            [$validator, 6],
+            [$validator, 2],
+            [$validator, '-1'],
+            [$validator, 'a'],
+            [$validator, ' '],
+            [$validator, 'Foo'],
         ];
     }
 }

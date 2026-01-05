@@ -12,16 +12,16 @@ v::intVal()->isValid(0b101010); // true
 v::intVal()->isValid(0x2a); // true
 ```
 
-This rule will consider as valid any input that PHP can convert to an integer,
+This validator will consider as valid any input that PHP can convert to an integer,
 but that does not contain non-integer values. That way, one can safely use the
-value this rule validates, without having surprises.
+value this validator validates, without having surprises.
 
 ```php
 v::intVal()->isValid(true); // false
 v::intVal()->isValid('89a'); // false
 ```
 
-Even though PHP can cast the values above as integers, this rule will not
+Even though PHP can cast the values above as integers, this validator will not
 consider them as valid.
 
 ## Templates

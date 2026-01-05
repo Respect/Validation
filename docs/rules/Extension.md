@@ -8,7 +8,7 @@ Validates if the file extension matches the expected one:
 v::extension('png')->isValid('image.png'); // true
 ```
 
-This rule is case-sensitive.
+This validator is case-sensitive.
 
 ## Templates
 

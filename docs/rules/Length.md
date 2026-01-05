@@ -1,8 +1,8 @@
 # Length
 
-- `Length(Rule $rule)`
+- `Length(Validator $validator)`
 
-Validates the length of the given input against a given rule.
+Validates the length of the given input against a given validator.
 
 ```php
 v::length(v::between(1, 5))->isValid('abc'); // true
@@ -12,7 +12,7 @@ v::length(v::greaterThan(5))->isValid('abcdef'); // true
 v::length(v::lessThan(5))->isValid('abc'); // true
 ```
 
-This rule can be used to validate the length of strings, arrays, and objects that implement the `Countable` interface.
+This validator can be used to validate the length of strings, arrays, and objects that implement the `Countable` interface.
 
 ```php
 v::length(v::greaterThanOrEqual(3))->isValid([1, 2, 3]); // true

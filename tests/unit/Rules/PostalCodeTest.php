@@ -15,24 +15,24 @@ use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\RuleTestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(PostalCode::class)]
 final class PostalCodeTest extends RuleTestCase
 {
     #[Test]
     public function shouldValidateEmptyStringsWhenUsingDefaultPattern(): void
     {
-        $rule = new PostalCode('ZW');
+        $validator = new PostalCode('ZW');
 
-        self::assertValidInput($rule, '');
+        self::assertValidInput($validator, '');
     }
 
     #[Test]
     public function shouldNotValidateNonEmptyStringsWhenUsingDefaultPattern(): void
     {
-        $rule = new PostalCode('ZW');
+        $validator = new PostalCode('ZW');
 
-        self::assertInvalidInput($rule, ' ');
+        self::assertInvalidInput($validator, ' ');
     }
 
     #[Test]

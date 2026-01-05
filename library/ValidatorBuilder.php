@@ -26,10 +26,10 @@ use function is_callable;
 use function is_string;
 
 /** @mixin Builder */
-final readonly class ValidatorBuilder implements Rule, Nameable
+final readonly class ValidatorBuilder implements Validator, Nameable
 {
-    /** @var array<Rule> */
-    private array $rules;
+    /** @var array<Validator> */
+    private array $validators;
 
     /** @param array<string> $ignoredBacktracePaths */
     public function __construct(
@@ -40,29 +40,29 @@ final readonly class ValidatorBuilder implements Rule, Nameable
         private ArrayFormatter $messagesFormatter,
         private ResultFilter $resultFilter,
         private array $ignoredBacktracePaths,
-        Rule ...$rules,
+        Validator ...$validators,
     ) {
-        $this->rules = $rules;
+        $this->validators = $validators;
     }
 
-    public static function init(Rule ...$rules): self
+    public static function init(Validator ...$validators): self
     {
-        if ($rules === []) {
+        if ($validators === []) {
             return ContainerRegistry::getContainer()->get(self::class);
         }
 
-        return ContainerRegistry::getContainer()->get(self::class)->with(...$rules);
+        return ContainerRegistry::getContainer()->get(self::class)->with(...$validators);
     }
 
     public function evaluate(mixed $input): Result
     {
-        $rule = match (count($this->rules)) {
-            0 => throw new ComponentException('No rules have been added to this validator.'),
-            1 => current($this->rules),
-            default => new AllOf(...$this->rules),
+        $validator = match (count($this->validators)) {
+            0 => throw new ComponentException('No validators have been added.'),
+            1 => current($this->validators),
+            default => new AllOf(...$this->validators),
         };
 
-        return $rule->evaluate($input);
+        return $validator->evaluate($input);
     }
 
     /** @param array<string|int, mixed>|string|null $template */
@@ -104,21 +104,21 @@ final readonly class ValidatorBuilder implements Rule, Nameable
         throw $exception;
     }
 
-    public function with(Rule $rule, Rule ...$rules): self
+    public function with(Validator $validator, Validator ...$validators): self
     {
-        return clone ($this, ['rules' => [...$this->rules, $rule, ...$rules]]);
+        return clone ($this, ['validators' => [...$this->validators, $validator, ...$validators]]);
     }
 
-    /** @return array<Rule> */
-    public function getRules(): array
+    /** @return array<Validator> */
+    public function getValidators(): array
     {
-        return $this->rules;
+        return $this->validators;
     }
 
     public function getName(): Name|null
     {
-        if (count($this->rules) === 1 && current($this->rules) instanceof Nameable) {
-            return current($this->rules)->getName();
+        if (count($this->validators) === 1 && current($this->validators) instanceof Nameable) {
+            return current($this->validators)->getName();
         }
 
         return null;

@@ -10,13 +10,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 interface NotBuilder
 {
-    public static function notAll(Rule $rule): Chain;
+    public static function notAll(Validator $validator): Chain;
 
-    public static function notAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function notAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function notAlnum(string ...$additionalChars): Chain;
 
@@ -26,7 +26,7 @@ interface NotBuilder
 
     public static function notAlwaysValid(): Chain;
 
-    public static function notAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function notAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function notArrayType(): Chain;
 
@@ -51,7 +51,7 @@ interface NotBuilder
 
     public static function notBsn(): Chain;
 
-    public static function notCall(callable $callable, Rule $rule): Chain;
+    public static function notCall(callable $callable, Validator $validator): Chain;
 
     public static function notCallableType(): Chain;
 
@@ -59,7 +59,7 @@ interface NotBuilder
 
     public static function notCharset(string $charset, string ...$charsets): Chain;
 
-    public static function notCircuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function notCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function notCnh(): Chain;
 
@@ -93,7 +93,7 @@ interface NotBuilder
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public static function notDateTimeDiff(
         string $type,
-        Rule $rule,
+        Validator $validator,
         string|null $format = null,
         DateTimeImmutable|null $now = null,
     ): Chain;
@@ -106,7 +106,7 @@ interface NotBuilder
 
     public static function notDomain(bool $tldCheck = true): Chain;
 
-    public static function notEach(Rule $rule): Chain;
+    public static function notEach(Validator $validator): Chain;
 
     public static function notEmail(): Chain;
 
@@ -183,25 +183,25 @@ interface NotBuilder
 
     public static function notJson(): Chain;
 
-    public static function notKey(string|int $key, Rule $rule): Chain;
+    public static function notKey(string|int $key, Validator $validator): Chain;
 
     public static function notKeyExists(string|int $key): Chain;
 
-    public static function notKeyOptional(string|int $key, Rule $rule): Chain;
+    public static function notKeyOptional(string|int $key, Validator $validator): Chain;
 
-    public static function notKeySet(Rule $rule, Rule ...$rules): Chain;
+    public static function notKeySet(Validator $validator, Validator ...$validators): Chain;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function notLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /** @param callable(mixed): Rule $ruleCreator */
-    public static function notLazy(callable $ruleCreator): Chain;
+    /** @param callable(mixed): Validator $validatorCreator */
+    public static function notLazy(callable $validatorCreator): Chain;
 
     public static function notLeapDate(string $format): Chain;
 
     public static function notLeapYear(): Chain;
 
-    public static function notLength(Rule $rule): Chain;
+    public static function notLength(Validator $validator): Chain;
 
     public static function notLessThan(mixed $compareTo): Chain;
 
@@ -213,11 +213,11 @@ interface NotBuilder
 
     public static function notMacAddress(): Chain;
 
-    public static function notMax(Rule $rule): Chain;
+    public static function notMax(Validator $validator): Chain;
 
     public static function notMimetype(string $mimetype): Chain;
 
-    public static function notMin(Rule $rule): Chain;
+    public static function notMin(Validator $validator): Chain;
 
     public static function notMultiple(int $multipleOf): Chain;
 
@@ -231,7 +231,7 @@ interface NotBuilder
 
     public static function notNo(bool $useLocale = false): Chain;
 
-    public static function notNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function notNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function notNullType(): Chain;
 
@@ -243,7 +243,7 @@ interface NotBuilder
 
     public static function notOdd(): Chain;
 
-    public static function notOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function notOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function notPerfectSquare(): Chain;
 
@@ -267,11 +267,11 @@ interface NotBuilder
 
     public static function notPrintable(string ...$additionalChars): Chain;
 
-    public static function notProperty(string $propertyName, Rule $rule): Chain;
+    public static function notProperty(string $propertyName, Validator $validator): Chain;
 
     public static function notPropertyExists(string $propertyName): Chain;
 
-    public static function notPropertyOptional(string $propertyName, Rule $rule): Chain;
+    public static function notPropertyOptional(string $propertyName, Validator $validator): Chain;
 
     public static function notPublicDomainSuffix(): Chain;
 
@@ -288,7 +288,7 @@ interface NotBuilder
     public static function notScalarVal(): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
-    public static function notSize(string $unit, Rule $rule): Chain;
+    public static function notSize(string $unit, Validator $validator): Chain;
 
     public static function notSlug(): Chain;
 
@@ -335,7 +335,7 @@ interface NotBuilder
 
     public static function notVowel(string ...$additionalChars): Chain;
 
-    public static function notWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
+    public static function notWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function notWritable(): Chain;
 

@@ -18,7 +18,7 @@ use Respect\Validation\Test\TestCase;
 
 use function rand;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Circuit::class)]
 final class CircuitTest extends TestCase
 {
@@ -33,9 +33,9 @@ final class CircuitTest extends TestCase
     #[DataProvider('providerForFailingRules')]
     public function itShouldExecuteRulesInSequenceUntilOneFails(Stub ...$stub): void
     {
-        $rule = new Circuit(...$stub);
+        $validator = new Circuit(...$stub);
 
-        self::assertInvalidInput($rule, rand());
+        self::assertInvalidInput($validator, rand());
     }
 
     #[Test]
@@ -43,9 +43,9 @@ final class CircuitTest extends TestCase
     {
         $input = rand();
 
-        $rule = new Circuit(Stub::fail(1), Stub::daze());
+        $validator = new Circuit(Stub::fail(1), Stub::daze());
 
-        $actual = $rule->evaluate($input);
+        $actual = $validator->evaluate($input);
         $expected = Stub::fail(1)->evaluate($input);
 
         self::assertEquals($expected, $actual);

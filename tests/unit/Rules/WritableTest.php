@@ -19,7 +19,7 @@ use stdClass;
 
 use function chmod;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Writable::class)]
 final class WritableTest extends RuleTestCase
 {
@@ -45,24 +45,24 @@ final class WritableTest extends RuleTestCase
     /** @return iterable<array{Writable, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Writable();
+        $validator = new Writable();
         $filename = self::fixture('non-writable');
 
         chmod($filename, 0555);
 
         return [
-            'unwritable PSR-7 stream' => [$rule, StreamStub::createUnwritable()],
-            'unwritable filename' => [$rule, $filename],
-            'unwritable SplFileInfo file' => [$rule, new SplFileInfo($filename)],
-            'unwritable SplFileObject file' => [$rule, new SplFileObject($filename)],
-            'invalid filename' => [$rule, '/path/of/a/valid/writable/file.txt'],
-            'empty string' => [$rule, ''],
-            'boolean true' => [$rule, true],
-            'boolean false' => [$rule, false],
-            'integer' => [$rule, 123456],
-            'float' => [$rule, 1.1111],
-            'instance of stdClass' => [$rule, new stdClass()],
-            'array' => [$rule, []],
+            'unwritable PSR-7 stream' => [$validator, StreamStub::createUnwritable()],
+            'unwritable filename' => [$validator, $filename],
+            'unwritable SplFileInfo file' => [$validator, new SplFileInfo($filename)],
+            'unwritable SplFileObject file' => [$validator, new SplFileObject($filename)],
+            'invalid filename' => [$validator, '/path/of/a/valid/writable/file.txt'],
+            'empty string' => [$validator, ''],
+            'boolean true' => [$validator, true],
+            'boolean false' => [$validator, false],
+            'integer' => [$validator, 123456],
+            'float' => [$validator, 1.1111],
+            'instance of stdClass' => [$validator, new stdClass()],
+            'array' => [$validator, []],
         ];
     }
 }

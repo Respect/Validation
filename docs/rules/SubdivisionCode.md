@@ -6,7 +6,7 @@ Validates subdivision country codes according to [ISO 3166-2][].
 
 The `$countryCode` must be a country in [ISO 3166-1 alpha-2][] format.
 
-**This rule requires [sokil/php-isocodes][] and [php-isocodes-db-only][] to be installed.**
+**This validator requires [sokil/php-isocodes][] and [php-isocodes-db-only][] to be installed.**
 
 ```php
 v::subdivisionCode('BR')->isValid('SP'); // true

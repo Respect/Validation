@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-interface Rule
+interface Validator
 {
     public const string TEMPLATE_STANDARD = '__standard__';
 

@@ -16,7 +16,7 @@ use Respect\Validation\Test\Stubs\StreamStub;
 use SplFileInfo;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Readable::class)]
 final class ReadableTest extends RuleTestCase
 {
@@ -24,12 +24,12 @@ final class ReadableTest extends RuleTestCase
     public static function providerForValidInput(): iterable
     {
         $file = self::fixture('valid-image.gif');
-        $rule = new Readable();
+        $validator = new Readable();
 
         return [
-            [$rule, $file],
-            [$rule, new SplFileInfo($file)],
-            [$rule, StreamStub::create()],
+            [$validator, $file],
+            [$validator, new SplFileInfo($file)],
+            [$validator, StreamStub::create()],
         ];
     }
 
@@ -37,13 +37,13 @@ final class ReadableTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         $file = self::fixture('invalid-image.gif');
-        $rule = new Readable();
+        $validator = new Readable();
 
         return [
-            [$rule, $file],
-            [$rule, new SplFileInfo($file)],
-            [$rule, new stdClass()],
-            [$rule, StreamStub::createUnreadable()],
+            [$validator, $file],
+            [$validator, new SplFileInfo($file)],
+            [$validator, new stdClass()],
+            [$validator, StreamStub::createUnreadable()],
         ];
     }
 }

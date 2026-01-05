@@ -15,7 +15,7 @@ use ReflectionObject;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function is_object;
 
@@ -24,7 +24,7 @@ use function is_object;
     '{{subject}} must be present',
     '{{subject}} must not be present',
 )]
-final readonly class PropertyExists implements Rule
+final readonly class PropertyExists implements Validator
 {
     public function __construct(
         private string $propertyName,

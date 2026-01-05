@@ -12,9 +12,9 @@ namespace Respect\Validation\Rules\Core;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Rule;
 use Respect\Validation\Test\Rules\Core\ConcreteSimple;
 use Respect\Validation\Test\TestCase;
+use Respect\Validation\Validator;
 
 #[Group('core')]
 #[CoversClass(Simple::class)]
@@ -23,24 +23,24 @@ final class SimpleTest extends TestCase
     #[Test]
     public function itShouldEvaluateUsingTheValidateMethod(): void
     {
-        $rule = new ConcreteSimple();
+        $validator = new ConcreteSimple();
 
-        self::assertTrue($rule->evaluate('any')->hasPassed);
+        self::assertTrue($validator->evaluate('any')->hasPassed);
     }
 
     #[Test]
     public function itShouldEvaluateReturningTheCurrentRule(): void
     {
-        $rule = new ConcreteSimple();
+        $validator = new ConcreteSimple();
 
-        self::assertSame($rule, $rule->evaluate('any')->rule);
+        self::assertSame($validator, $validator->evaluate('any')->validator);
     }
 
     #[Test]
     public function itShouldEvaluateReturningTheStandardTemplate(): void
     {
-        $rule = new ConcreteSimple();
+        $validator = new ConcreteSimple();
 
-        self::assertSame(Rule::TEMPLATE_STANDARD, $rule->evaluate('any')->template);
+        self::assertSame(Validator::TEMPLATE_STANDARD, $validator->evaluate('any')->template);
     }
 }

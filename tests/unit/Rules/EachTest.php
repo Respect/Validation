@@ -16,7 +16,7 @@ use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Each::class)]
 final class EachTest extends RuleTestCase
 {

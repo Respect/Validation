@@ -17,7 +17,7 @@ use SplFileObject;
 
 use function tmpfile;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(SymbolicLink::class)]
 final class SymbolicLinkTest extends RuleTestCase
 {

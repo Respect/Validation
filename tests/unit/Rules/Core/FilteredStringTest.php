@@ -26,26 +26,26 @@ final class FilteredStringTest extends TestCase
     #[DataProvider('providerForNonScalarValues')]
     public function itShouldAlwaysInvalidateNonScalarValues(mixed $input): void
     {
-        $rule = new ConcreteFilteredString();
+        $validator = new ConcreteFilteredString();
 
-        self::assertInvalidInput($rule, $input);
+        self::assertInvalidInput($validator, $input);
     }
 
     #[Test]
     #[DataProvider('providerForEmptyScalarValues')]
     public function itShouldAlwaysInvalidateEmptyStrings(mixed $input): void
     {
-        $rule = new ConcreteFilteredString();
+        $validator = new ConcreteFilteredString();
 
-        self::assertInvalidInput($rule, $input);
+        self::assertInvalidInput($validator, $input);
     }
 
     #[Test]
     #[DataProvider('providerForNonScalarValues')]
     public function itShouldPassStandardTemplateAndEmptyParametersWhenInputIsNonScalar(mixed $input): void
     {
-        $rule = new ConcreteFilteredString();
-        $result = $rule->evaluate($input);
+        $validator = new ConcreteFilteredString();
+        $result = $validator->evaluate($input);
 
         self::assertEmpty($result->parameters);
         self::assertEquals(ConcreteFilteredString::TEMPLATE_STANDARD, $result->template);
@@ -55,9 +55,9 @@ final class FilteredStringTest extends TestCase
     #[DataProvider('providerForEmptyScalarValues')]
     public function itShouldPassStandardTemplateAndEmptyParametersWhenInputIsAnEmptyStrings(mixed $input): void
     {
-        $rule = new ConcreteFilteredString();
+        $validator = new ConcreteFilteredString();
 
-        self::assertInvalidInput($rule, $input);
+        self::assertInvalidInput($validator, $input);
     }
 
     #[Test]
@@ -66,8 +66,8 @@ final class FilteredStringTest extends TestCase
     {
         $additionalChars = ['a', 'b', 'c'];
 
-        $rule = new ConcreteFilteredString(...$additionalChars);
-        $result = $rule->evaluate($input);
+        $validator = new ConcreteFilteredString(...$additionalChars);
+        $result = $validator->evaluate($input);
 
         self::assertEquals(['additionalChars' => implode($additionalChars)], $result->parameters);
         self::assertEquals(ConcreteFilteredString::TEMPLATE_EXTRA, $result->template);
@@ -79,8 +79,8 @@ final class FilteredStringTest extends TestCase
     {
         $additionalChars = ['a', 'b', 'c'];
 
-        $rule = new ConcreteFilteredString(...$additionalChars);
-        $result = $rule->evaluate($input);
+        $validator = new ConcreteFilteredString(...$additionalChars);
+        $result = $validator->evaluate($input);
 
         self::assertEquals(['additionalChars' => implode($additionalChars)], $result->parameters);
         self::assertEquals(ConcreteFilteredString::TEMPLATE_EXTRA, $result->template);
@@ -90,19 +90,19 @@ final class FilteredStringTest extends TestCase
     #[DataProvider('providerForNonEmptyStringTypes')]
     public function itShouldFilterNothingWhenHasNoAdditionalCharacters(string $input): void
     {
-        $rule = new ConcreteFilteredString();
-        $rule->evaluate($input);
+        $validator = new ConcreteFilteredString();
+        $validator->evaluate($input);
 
-        self::assertSame($input, $rule->lastFilteredInput);
+        self::assertSame($input, $validator->lastFilteredInput);
     }
 
     #[Test]
     public function itShouldAlwaysValidateAllCharactersAreRemovedFromInput(): void
     {
         $input = 'abc';
-        $rule = new ConcreteFilteredString($input);
+        $validator = new ConcreteFilteredString($input);
 
-        self::assertValidInput($rule, $input);
+        self::assertValidInput($validator, $input);
     }
 
     #[Test]
@@ -112,10 +112,10 @@ final class FilteredStringTest extends TestCase
         string $input,
         string $expectedInput,
     ): void {
-        $rule = new ConcreteFilteredString($additionalChars);
-        $rule->evaluate($input);
+        $validator = new ConcreteFilteredString($additionalChars);
+        $validator->evaluate($input);
 
-        self::assertSame($expectedInput, $rule->lastFilteredInput);
+        self::assertSame($expectedInput, $validator->lastFilteredInput);
     }
 
     /** @return array<array<string>> */

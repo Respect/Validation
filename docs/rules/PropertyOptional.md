@@ -1,8 +1,8 @@
 # PropertyOptional
 
-- `PropertyOptional(string $propertyName, Rule $rule)`
+- `PropertyOptional(string $propertyName, Validator $validator)`
 
-Validates an object property against a given rule only if the property exists.
+Validates an object property against a given validator only if the property exists.
 
 ```php
 $object = new stdClass;
@@ -27,7 +27,7 @@ v::propertyOptional('email', v::endsWith('@example.com'))->assert($object);
 
 ## Note
 
-This rule will validate public, private, protected, uninitialised, and static properties. However, it will pass for
+This validator will validate public, private, protected, uninitialised, and static properties. However, it will pass for
 anything that is not an object because it will always pass when it doesn't find a property in the input. If you want to
 ensure the input is an object, use [ObjectType](ObjectType.md) with it.
 
@@ -37,7 +37,7 @@ v::objectType()->propertyOptional('name', v::notBlank())->isValid('Not an object
 ```
 
 - To only validate if a property exists, use [PropertyExists](PropertyExists.md) instead.
-- To validate a property against a given rule requiring the property to exist, use [Property](Property.md) instead.
+- To validate a property against a given validator requiring the property to exist, use [Property](Property.md) instead.
 
 ## Templates
 

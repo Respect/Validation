@@ -13,7 +13,7 @@ use Attribute;
 use finfo;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 use SplFileInfo;
 
 use function is_file;
@@ -26,7 +26,7 @@ use const FILEINFO_MIME_TYPE;
     '{{subject}} must have the {{mimetype}} MIME type',
     '{{subject}} must not have the {{mimetype}} MIME type',
 )]
-final readonly class Mimetype implements Rule
+final readonly class Mimetype implements Validator
 {
     public function __construct(
         private string $mimetype,

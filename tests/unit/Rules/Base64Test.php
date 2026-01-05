@@ -15,14 +15,14 @@ use Respect\Validation\Test\RuleTestCase;
 
 use function implode;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Base64::class)]
 final class Base64Test extends RuleTestCase
 {
     /** @return iterable<array{Base64, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Base64();
+        $validator = new Base64();
 
         $lines = [
             'TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz',
@@ -33,37 +33,37 @@ final class Base64Test extends RuleTestCase
         ];
 
         return [
-            [$rule, 'YW55IGNhcm5hbCBwbGVhc3VyZS4='],
-            [$rule, 'YW55IGNhcm5hbCBwbGVhc3VyZQ=='],
-            [$rule, 'YW55IGNhcm5hbCBwbGVhc3Vy'],
-            [$rule, 'YW55IGNhcm5hbCBwbGVhc3U='],
-            [$rule, 'YW55IGNhcm5hbCBwbGVhcw=='],
-            [$rule, 'cGxlYXN1cmUu'],
-            [$rule, 'bGVhc3VyZS4='],
-            [$rule, 'ZWFzdXJlLg=='],
-            [$rule, 'YXN1cmUu'],
-            [$rule, 'c3VyZS4='],
-            [$rule, 'WeJcFMQ/8+8QJ/w0hHh+0g=='],
-            [$rule, implode("\n", $lines)],
-            [$rule, implode("\r\n", $lines)],
+            [$validator, 'YW55IGNhcm5hbCBwbGVhc3VyZS4='],
+            [$validator, 'YW55IGNhcm5hbCBwbGVhc3VyZQ=='],
+            [$validator, 'YW55IGNhcm5hbCBwbGVhc3Vy'],
+            [$validator, 'YW55IGNhcm5hbCBwbGVhc3U='],
+            [$validator, 'YW55IGNhcm5hbCBwbGVhcw=='],
+            [$validator, 'cGxlYXN1cmUu'],
+            [$validator, 'bGVhc3VyZS4='],
+            [$validator, 'ZWFzdXJlLg=='],
+            [$validator, 'YXN1cmUu'],
+            [$validator, 'c3VyZS4='],
+            [$validator, 'WeJcFMQ/8+8QJ/w0hHh+0g=='],
+            [$validator, implode("\n", $lines)],
+            [$validator, implode("\r\n", $lines)],
         ];
     }
 
     /** @return iterable<array{Base64, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Base64();
+        $validator = new Base64();
 
         return [
-            [$rule, []],
-            [$rule, 1.2],
-            [$rule, false],
-            [$rule, 123],
-            [$rule, null],
-            [$rule, ''],
-            [$rule, 'hello!'],
-            [$rule, '=c3VyZS4'],
-            [$rule, 'YW55IGNhcm5hbCBwbGVhc3VyZ==='],
+            [$validator, []],
+            [$validator, 1.2],
+            [$validator, false],
+            [$validator, 123],
+            [$validator, null],
+            [$validator, ''],
+            [$validator, 'hello!'],
+            [$validator, '=c3VyZS4'],
+            [$validator, 'YW55IGNhcm5hbCBwbGVhc3VyZ==='],
         ];
     }
 }

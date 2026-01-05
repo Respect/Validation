@@ -14,41 +14,41 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Undef::class)]
 final class UndefTest extends RuleTestCase
 {
     /** @return iterable<array{Undef, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Undef();
+        $validator = new Undef();
 
         return [
-            [$rule, []],
-            [$rule, ' '],
-            [$rule, 0],
-            [$rule, '0'],
-            [$rule, 0],
-            [$rule, '0.0'],
-            [$rule, false],
-            [$rule, ['']],
-            [$rule, [' ']],
-            [$rule, [0]],
-            [$rule, ['0']],
-            [$rule, [false]],
-            [$rule, [[''], [0]]],
-            [$rule, new stdClass()],
+            [$validator, []],
+            [$validator, ' '],
+            [$validator, 0],
+            [$validator, '0'],
+            [$validator, 0],
+            [$validator, '0.0'],
+            [$validator, false],
+            [$validator, ['']],
+            [$validator, [' ']],
+            [$validator, [0]],
+            [$validator, ['0']],
+            [$validator, [false]],
+            [$validator, [[''], [0]]],
+            [$validator, new stdClass()],
         ];
     }
 
     /** @return iterable<array{Undef, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Undef();
+        $validator = new Undef();
 
         return [
-            [$rule, null],
-            [$rule, ''],
+            [$validator, null],
+            [$validator, ''],
         ];
     }
 }

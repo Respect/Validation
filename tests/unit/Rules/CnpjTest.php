@@ -13,58 +13,58 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Cnpj::class)]
 final class CnpjTest extends RuleTestCase
 {
     /** @return iterable<array{Cnpj, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Cnpj();
+        $validator = new Cnpj();
 
         return [
-            [$rule, '32.063.364/0001-07'],
-            [$rule, '24.663.454/0001-00'],
-            [$rule, '57.535.083/0001-30'],
-            [$rule, '24.760.428/0001-09'],
-            [$rule, '27.355.204/0001-00'],
-            [$rule, '36.310.327/0001-07'],
-            [$rule, '38175021000110'],
-            [$rule, '37550610000179'],
-            [$rule, '12774546000189'],
-            [$rule, '77456211000168'],
-            [$rule, '02023077000102'],
+            [$validator, '32.063.364/0001-07'],
+            [$validator, '24.663.454/0001-00'],
+            [$validator, '57.535.083/0001-30'],
+            [$validator, '24.760.428/0001-09'],
+            [$validator, '27.355.204/0001-00'],
+            [$validator, '36.310.327/0001-07'],
+            [$validator, '38175021000110'],
+            [$validator, '37550610000179'],
+            [$validator, '12774546000189'],
+            [$validator, '77456211000168'],
+            [$validator, '02023077000102'],
         ];
     }
 
     /** @return iterable<array{Cnpj, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Cnpj();
+        $validator = new Cnpj();
 
         return [
-            [$rule, '12.345.678/9012-34'],
-            [$rule, '11.111.111/1111-11'],
-            [$rule, '00000000000000'],
-            [$rule, '11111111111111'],
-            [$rule, '22222222222222'],
-            [$rule, '33333333333333'],
-            [$rule, '44444444444444'],
-            [$rule, '55555555555555'],
-            [$rule, '66666666666666'],
-            [$rule, '77777777777777'],
-            [$rule, '88888888888888'],
-            [$rule, '99999999999999'],
-            [$rule, '12345678900123'],
-            [$rule, '99299929384987'],
-            [$rule, '84434895894444'],
-            [$rule, '44242340000000'],
-            [$rule, '1'],
-            [$rule, '22'],
-            [$rule, '123'],
-            [$rule, '992999999999929384'],
-            [$rule, '99-010-0.'],
-            [$rule, null],
+            [$validator, '12.345.678/9012-34'],
+            [$validator, '11.111.111/1111-11'],
+            [$validator, '00000000000000'],
+            [$validator, '11111111111111'],
+            [$validator, '22222222222222'],
+            [$validator, '33333333333333'],
+            [$validator, '44444444444444'],
+            [$validator, '55555555555555'],
+            [$validator, '66666666666666'],
+            [$validator, '77777777777777'],
+            [$validator, '88888888888888'],
+            [$validator, '99999999999999'],
+            [$validator, '12345678900123'],
+            [$validator, '99299929384987'],
+            [$validator, '84434895894444'],
+            [$validator, '44242340000000'],
+            [$validator, '1'],
+            [$validator, '22'],
+            [$validator, '123'],
+            [$validator, '992999999999929384'],
+            [$validator, '99-010-0.'],
+            [$validator, null],
         ];
     }
 }

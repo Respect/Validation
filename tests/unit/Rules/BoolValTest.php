@@ -13,37 +13,37 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(BoolVal::class)]
 final class BoolValTest extends RuleTestCase
 {
     /** @return iterable<array{BoolVal, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new BoolVal();
+        $validator = new BoolVal();
 
         return [
-            [$rule, true],
-            [$rule, 1],
-            [$rule, 'on'],
-            [$rule, 'yes'],
-            [$rule, 0],
-            [$rule, false],
-            [$rule, 'off'],
-            [$rule, 'no '],
-            [$rule, ''],
+            [$validator, true],
+            [$validator, 1],
+            [$validator, 'on'],
+            [$validator, 'yes'],
+            [$validator, 0],
+            [$validator, false],
+            [$validator, 'off'],
+            [$validator, 'no '],
+            [$validator, ''],
         ];
     }
 
     /** @return iterable<array{BoolVal, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new BoolVal();
+        $validator = new BoolVal();
 
         return [
-            [$rule, 'ok'],
-            [$rule, 'yep'],
-            [$rule, 10],
+            [$validator, 'ok'],
+            [$validator, 'yep'],
+            [$validator, 10],
         ];
     }
 }

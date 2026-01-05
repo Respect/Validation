@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Rules;
 
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
-abstract class MyAbstractClass implements Rule
+abstract class MyAbstractClass implements Validator
 {
 }

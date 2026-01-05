@@ -17,34 +17,34 @@ use stdClass;
 
 use const INF;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(CallableType::class)]
 final class CallableTypeTest extends RuleTestCase
 {
     /** @return iterable<array{CallableType, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new CallableType();
+        $validator = new CallableType();
 
         return [
-            [$rule, static fn() => null],
-            [$rule, 'trim'],
-            [$rule, WithMethods::class . '::publicStaticMethod'],
-            [$rule, [new WithMethods(), 'publicMethod']],
+            [$validator, static fn() => null],
+            [$validator, 'trim'],
+            [$validator, WithMethods::class . '::publicStaticMethod'],
+            [$validator, [new WithMethods(), 'publicMethod']],
         ];
     }
 
     /** @return iterable<array{CallableType, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new CallableType();
+        $validator = new CallableType();
 
         return [
-            [$rule, ' '],
-            [$rule, INF],
-            [$rule, []],
-            [$rule, new stdClass()],
-            [$rule, null],
+            [$validator, ' '],
+            [$validator, INF],
+            [$validator, []],
+            [$validator, new stdClass()],
+            [$validator, null],
         ];
     }
 }

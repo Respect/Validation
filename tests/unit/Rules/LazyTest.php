@@ -17,7 +17,7 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Lazy::class)]
 final class LazyTest extends TestCase
 {
@@ -25,12 +25,12 @@ final class LazyTest extends TestCase
     public function itShouldThrowAnExceptionWhenRuleCreatorDoesNotReturnRule(): void
     {
         // @phpstan-ignore-next-line
-        $rule = new Lazy(static fn() => null);
+        $validator = new Lazy(static fn() => null);
 
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('Lazy failed because it could not create the rule');
 
-        $rule->evaluate('something');
+        $validator->evaluate('something');
     }
 
     #[Test]
@@ -53,8 +53,8 @@ final class LazyTest extends TestCase
     {
         $expected = Stub::fail(1)->evaluate($input);
 
-        $rule = new Lazy(static fn($creatorInput) => Stub::fail(1));
-        $actual = $rule->evaluate($input);
+        $validator = new Lazy(static fn($creatorInput) => Stub::fail(1));
+        $actual = $validator->evaluate($input);
 
         self::assertEquals($expected, $actual);
     }

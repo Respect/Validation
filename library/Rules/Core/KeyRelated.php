@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Core;
 
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
-interface KeyRelated extends Rule
+interface KeyRelated extends Validator
 {
     public function getKey(): int|string;
 }

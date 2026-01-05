@@ -12,8 +12,8 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\Composite;
+use Respect\Validation\Validator;
 
 use function array_map;
 use function array_reduce;
@@ -27,7 +27,7 @@ final class AnyOf extends Composite
 {
     public function evaluate(mixed $input): Result
     {
-        $children = array_map(static fn(Rule $rule) => $rule->evaluate($input), $this->rules);
+        $children = array_map(static fn(Validator $validator) => $validator->evaluate($input), $this->validators);
         $valid = array_reduce(
             $children,
             static fn(bool $carry, Result $result) => $carry || $result->hasPassed,

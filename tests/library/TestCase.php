@@ -10,10 +10,10 @@ declare(strict_types=1);
 namespace Respect\Validation\Test;
 
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
-use Respect\Validation\Rule;
 use Respect\Validation\Test\Stubs\WithProperties;
 use Respect\Validation\Test\Stubs\WithStaticProperties;
 use Respect\Validation\Test\Stubs\WithUninitialized;
+use Respect\Validation\Validator;
 use stdClass;
 
 use function implode;
@@ -36,30 +36,30 @@ abstract class TestCase extends PHPUnitTestCase
         return implode('/', $parts);
     }
 
-    public static function assertValidInput(Rule $rule, mixed $input): void
+    public static function assertValidInput(Validator $validator, mixed $input): void
     {
-        $result = $rule->evaluate($input);
+        $result = $validator->evaluate($input);
 
         self::assertTrue(
             $result->hasPassed,
             sprintf(
                 '%s should pass with input %s and parameters %s',
-                substr((string) strrchr($rule::class, '\\'), 1),
+                substr((string) strrchr($validator::class, '\\'), 1),
                 stringify($input),
                 stringify($result->parameters),
             ),
         );
     }
 
-    public static function assertInvalidInput(Rule $rule, mixed $input): void
+    public static function assertInvalidInput(Validator $validator, mixed $input): void
     {
-        $result = $rule->evaluate($input);
+        $result = $validator->evaluate($input);
 
         self::assertFalse(
             $result->hasPassed,
             sprintf(
                 '%s should fail with input %s and parameters %s',
-                substr((string) strrchr($rule::class, '\\'), 1),
+                substr((string) strrchr($validator::class, '\\'), 1),
                 stringify($input),
                 stringify($result->parameters),
             ),

@@ -11,9 +11,9 @@ namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Helpers\CanCompareValues;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
-abstract class Comparison implements Rule
+abstract class Comparison implements Validator
 {
     use CanCompareValues;
 

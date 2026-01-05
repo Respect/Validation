@@ -15,23 +15,23 @@ use Respect\Validation\Test\RuleTestCase;
 
 use function chr;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Printable::class)]
 final class PrintableTest extends RuleTestCase
 {
     /** @return iterable<array{Printable, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Printable();
+        $validator = new Printable();
 
         return [
-            [$rule, ' '],
-            [$rule, 'LKA#@%.54'],
-            [$rule, 'foobar'],
-            [$rule, '16-50'],
-            [$rule, '123'],
-            [$rule, 'foo bar'],
-            [$rule, '#$%&*_'],
+            [$validator, ' '],
+            [$validator, 'LKA#@%.54'],
+            [$validator, 'foobar'],
+            [$validator, '16-50'],
+            [$validator, '123'],
+            [$validator, 'foo bar'],
+            [$validator, '#$%&*_'],
             [new Printable("\t\n"), "\t\n "],
             [new Printable("\v\r"), "\v\r "],
         ];
@@ -40,13 +40,13 @@ final class PrintableTest extends RuleTestCase
     /** @return iterable<array{Printable, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Printable();
+        $validator = new Printable();
 
         return [
-            [$rule, ''],
-            [$rule, null],
-            [$rule, 'foo' . chr(7) . 'bar'],
-            [$rule, 'foo' . chr(10) . 'bar'],
+            [$validator, ''],
+            [$validator, null],
+            [$validator, 'foo' . chr(7) . 'bar'],
+            [$validator, 'foo' . chr(10) . 'bar'],
         ];
     }
 }

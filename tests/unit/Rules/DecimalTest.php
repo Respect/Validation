@@ -19,7 +19,7 @@ use function sqrt;
 
 use const NAN;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Decimal::class)]
 final class DecimalTest extends RuleTestCase
 {

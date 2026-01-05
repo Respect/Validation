@@ -13,14 +13,14 @@ use Attribute;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be undefined',
     '{{subject}} must be defined',
 )]
-final class Undef implements Rule
+final class Undef implements Validator
 {
     use CanValidateUndefined;
 

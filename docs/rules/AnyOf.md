@@ -1,6 +1,6 @@
 # AnyOf
 
-- `AnyOf(Rule $rule1, Rule $rule2, Rule ...$rule)`
+- `AnyOf(Validator $validator1, Validator $validator2, Validator ...$validator)`
 
 This is a group validator that acts as an OR operator.
 
@@ -35,10 +35,10 @@ so `AnyOf()` returns true.
 
 ## Changelog
 
-| Version | Description                             |
-| ------: | --------------------------------------- |
-|   3.0.0 | Require at least two rules to be passed |
-|   2.0.0 | Created                                 |
+| Version | Description                                   |
+| ------: | --------------------------------------------- |
+|   3.0.0 | Require at least two validators to be defined |
+|   2.0.0 | Created                                       |
 
 ---
 

@@ -27,7 +27,7 @@ use Respect\Validation\Mixins\PropertyBuilder;
 use Respect\Validation\Mixins\PropertyChain;
 use Respect\Validation\Mixins\UndefOrBuilder;
 use Respect\Validation\Mixins\UndefOrChain;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 use Respect\Validation\ValidatorBuilder;
 
 function addMethodToInterface(
@@ -130,7 +130,7 @@ function overwriteFile(string $content, string $basename): void
 }
 
 (static function (): void {
-    $numberRelatedRules = [
+    $numberRelatedValidators = [
         'Between',
         'BetweenExclusive',
         'Equals',
@@ -153,7 +153,7 @@ function overwriteFile(string $content, string $basename): void
         'PrimeNumber',
     ];
 
-    $structureRelatedRules = [
+    $structureRelatedValidators = [
         'Exists',
         'Key',
         'KeyExists',
@@ -170,14 +170,14 @@ function overwriteFile(string $content, string $basename): void
     ];
 
     $mixins = [
-        ['All', 'all', [], ['All', ...$structureRelatedRules]],
-        ['Key', 'key', [], $structureRelatedRules],
-        ['Length', 'length', $numberRelatedRules, []],
-        ['Max', 'max', $numberRelatedRules, []],
-        ['Min', 'min', $numberRelatedRules, []],
+        ['All', 'all', [], ['All', ...$structureRelatedValidators]],
+        ['Key', 'key', [], $structureRelatedValidators],
+        ['Length', 'length', $numberRelatedValidators, []],
+        ['Max', 'max', $numberRelatedValidators, []],
+        ['Min', 'min', $numberRelatedValidators, []],
         ['Not', 'not', [], ['Not', 'NullOr', 'UndefOr', 'Attributes', 'Templated', 'Named']],
         ['NullOr', 'nullOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Templated', 'Named']],
-        ['Property', 'property', [], $structureRelatedRules],
+        ['Property', 'property', [], $structureRelatedValidators],
         ['UndefOr', 'undefOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Attributes', 'Templated', 'Named']],
         ['', null, [], []],
     ];
@@ -201,15 +201,15 @@ function overwriteFile(string $content, string $basename): void
 
     foreach ($mixins as [$name, $prefix, $allowList, $denyList]) {
         $chainedNamespace = new PhpNamespace('Respect\\Validation\\Mixins');
-        $chainedNamespace->addUse(Rule::class);
+        $chainedNamespace->addUse(Validator::class);
         $chainedInterface = $chainedNamespace->addInterface($name . 'Chain');
 
         $staticNamespace = new PhpNamespace('Respect\\Validation\\Mixins');
-        $staticNamespace->addUse(Rule::class);
+        $staticNamespace->addUse(Validator::class);
         $staticInterface = $staticNamespace->addInterface($name . 'Builder');
 
         if ($name === '') {
-            $chainedInterface->addExtend(Rule::class);
+            $chainedInterface->addExtend(Validator::class);
             $chainedInterface->addExtend(AllChain::class);
             $chainedInterface->addExtend(KeyChain::class);
             $chainedInterface->addExtend(LengthChain::class);
@@ -238,7 +238,7 @@ function overwriteFile(string $content, string $basename): void
         }
 
         $printer = new Printer();
-        $printer->wrapLength = 117;
+        $printer->wrapLength = 115;
 
         overwriteFile($printer->printNamespace($staticNamespace), $staticInterface->getName());
         overwriteFile($printer->printNamespace($chainedNamespace), $chainedInterface->getName());

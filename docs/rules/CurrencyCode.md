@@ -5,13 +5,13 @@
 
 Validates an [ISO 4217][] currency code.
 
-**This rule requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
+**This validator requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
 
 ```php
 v::currencyCode()->isValid('GBP'); // true
 ```
 
-This rule supports the two [ISO 4217][] sets:
+This validator supports the two [ISO 4217][] sets:
 
 - `alpha-3`
 - `numeric`

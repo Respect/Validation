@@ -21,9 +21,9 @@ final class KeyExistsTest extends TestCase
     #[DataProvider('providerForNonArrayValues')]
     public function itShouldAlwaysInvalidateNonArrayValues(mixed $input): void
     {
-        $rule = new KeyExists(0);
+        $validator = new KeyExists(0);
 
-        self::assertInvalidInput($rule, $input);
+        self::assertInvalidInput($validator, $input);
     }
 
     /** @param array<mixed> $input  */
@@ -31,9 +31,9 @@ final class KeyExistsTest extends TestCase
     #[DataProvider('providerForArrayWithMissingKeys')]
     public function itShouldInvalidateMissingKeys(int|string $key, array $input): void
     {
-        $rule = new KeyExists($key);
+        $validator = new KeyExists($key);
 
-        self::assertInvalidInput($rule, $input);
+        self::assertInvalidInput($validator, $input);
     }
 
     /** @param array<mixed> $input  */
@@ -41,8 +41,8 @@ final class KeyExistsTest extends TestCase
     #[DataProvider('providerForArrayWithExistingKeys')]
     public function itShouldValidateExistingKeys(int|string $key, array $input): void
     {
-        $rule = new KeyExists($key);
+        $validator = new KeyExists($key);
 
-        self::assertValidInput($rule, $input);
+        self::assertValidInput($validator, $input);
     }
 }

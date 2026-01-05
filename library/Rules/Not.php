@@ -18,7 +18,7 @@ final class Not extends Wrapper
 {
     public function evaluate(mixed $input): Result
     {
-        $result = $this->rule->evaluate($input);
+        $result = $this->validator->evaluate($input);
 
         return $result
             ->withToggledModeAndValidation()

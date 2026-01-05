@@ -53,10 +53,10 @@ final class NamespacedRuleFactoryTest extends TestCase
         $constructorArguments = [true, false, true, false];
 
         $factory = new NamespacedRuleFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
-        $rule = $factory->create('stub', $constructorArguments);
-        assert($rule instanceof Stub);
+        $validator = $factory->create('stub', $constructorArguments);
+        assert($validator instanceof Stub);
 
-        self::assertSame($constructorArguments, $rule->validations);
+        self::assertSame($constructorArguments, $validator->validations);
     }
 
     #[Test]
@@ -65,7 +65,7 @@ final class NamespacedRuleFactoryTest extends TestCase
         $factory = new NamespacedRuleFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
 
         $this->expectException(InvalidClassException::class);
-        $this->expectExceptionMessage(sprintf('"%s" must be an instance of "%s"', Invalid::class, Rule::class));
+        $this->expectExceptionMessage(sprintf('"%s" must be an instance of "%s"', Invalid::class, Validator::class));
 
         $factory->create('invalid');
     }

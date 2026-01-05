@@ -1,6 +1,6 @@
 # Call
 
-- `Call(callable $callable, Rule $rule)`
+- `Call(callable $callable, Validator $validator)`
 
 Validates the return of a [callable][] for a given input.
 

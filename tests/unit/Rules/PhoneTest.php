@@ -17,7 +17,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\TestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Phone::class)]
 final class PhoneTest extends TestCase
 {

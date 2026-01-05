@@ -16,39 +16,39 @@ use stdClass;
 
 use function tmpfile;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Odd::class)]
 final class OddTest extends RuleTestCase
 {
     /** @return iterable<array{Odd, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Odd();
+        $validator = new Odd();
 
         return [
-            [$rule, -5],
-            [$rule, -1],
-            [$rule, 1],
-            [$rule, 13],
+            [$validator, -5],
+            [$validator, -1],
+            [$validator, 1],
+            [$validator, 13],
         ];
     }
 
     /** @return iterable<array{Odd, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Odd();
+        $validator = new Odd();
 
         return [
-            [$rule, []],
-            [$rule, new stdClass()],
-            [$rule, tmpfile()],
-            [$rule, true],
-            [$rule, false],
-            [$rule, ''],
-            [$rule, -2],
-            [$rule, -0],
-            [$rule, 0],
-            [$rule, 32],
+            [$validator, []],
+            [$validator, new stdClass()],
+            [$validator, tmpfile()],
+            [$validator, true],
+            [$validator, false],
+            [$validator, ''],
+            [$validator, -2],
+            [$validator, -0],
+            [$validator, 0],
+            [$validator, 32],
         ];
     }
 }

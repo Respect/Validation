@@ -25,7 +25,7 @@ final class CompositeTest extends TestCase
     {
         $expected = [Stub::daze(), Stub::daze(), Stub::daze()];
         $sut = new ConcreteComposite(...$expected);
-        $actual = $sut->getRules();
+        $actual = $sut->getValidators();
 
         self::assertCount(3, $actual);
         self::assertEquals($expected, $actual);

@@ -21,24 +21,24 @@ final class ReducerTest extends TestCase
     #[Test]
     public function shouldWrapTheSingleRule(): void
     {
-        $rule = Stub::any(1);
+        $validator = Stub::any(1);
 
-        $reducer = new Reducer($rule);
+        $reducer = new Reducer($validator);
         $result = $reducer->evaluate(null);
 
-        self::assertSame($rule, $result->rule);
+        self::assertSame($validator, $result->validator);
     }
 
     #[Test]
     public function shouldWrapWhenThereAreMultipleRules(): void
     {
-        $rule1 = Stub::any(1);
-        $rule2 = Stub::any(1);
-        $rule3 = Stub::any(1);
+        $validator1 = Stub::any(1);
+        $validator2 = Stub::any(1);
+        $validator3 = Stub::any(1);
 
-        $reducer = new Reducer($rule1, $rule2, $rule3);
+        $reducer = new Reducer($validator1, $validator2, $validator3);
         $result = $reducer->evaluate(null);
 
-        self::assertEquals(new AllOf($rule1, $rule2, $rule3), $result->rule);
+        self::assertEquals(new AllOf($validator1, $validator2, $validator3), $result->validator);
     }
 }

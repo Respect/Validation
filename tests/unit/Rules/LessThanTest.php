@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Stubs\CountableStub;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(LessThan::class)]
 final class LessThanTest extends RuleTestCase
 {

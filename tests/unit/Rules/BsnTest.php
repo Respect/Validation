@@ -14,51 +14,51 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Bsn::class)]
 final class BsnTest extends RuleTestCase
 {
     /** @return iterable<array{Bsn, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Bsn();
+        $validator = new Bsn();
 
         return [
-            [$rule, '612890053'],
-            [$rule, '087880532'],
-            [$rule, '386625918'],
-            [$rule, '601608021'],
-            [$rule, '254650703'],
-            [$rule, '478063441'],
-            [$rule, '478063441'],
-            [$rule, '187368429'],
-            [$rule, '541777348'],
-            [$rule, '254283883'],
+            [$validator, '612890053'],
+            [$validator, '087880532'],
+            [$validator, '386625918'],
+            [$validator, '601608021'],
+            [$validator, '254650703'],
+            [$validator, '478063441'],
+            [$validator, '478063441'],
+            [$validator, '187368429'],
+            [$validator, '541777348'],
+            [$validator, '254283883'],
         ];
     }
 
     /** @return iterable<array{Bsn, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Bsn();
+        $validator = new Bsn();
 
         return [
-            [$rule, []],
-            [$rule, new stdClass()],
-            [$rule, null],
-            [$rule, '1234567890'],
-            [$rule, '0987654321'],
-            [$rule, '13579024'],
-            [$rule, '612890054'],
-            [$rule, '854650703'],
-            [$rule, '283958721'],
-            [$rule, '231859081'],
-            [$rule, '189023323'],
-            [$rule, '238150912'],
-            [$rule, '382409678'],
-            [$rule, '38240.678'],
-            [$rule, '38240a678'],
-            [$rule, 'abcdefghi'],
+            [$validator, []],
+            [$validator, new stdClass()],
+            [$validator, null],
+            [$validator, '1234567890'],
+            [$validator, '0987654321'],
+            [$validator, '13579024'],
+            [$validator, '612890054'],
+            [$validator, '854650703'],
+            [$validator, '283958721'],
+            [$validator, '231859081'],
+            [$validator, '189023323'],
+            [$validator, '238150912'],
+            [$validator, '382409678'],
+            [$validator, '38240.678'],
+            [$validator, '38240a678'],
+            [$validator, 'abcdefghi'],
         ];
     }
 }

@@ -17,7 +17,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(All::class)]
 final class AllTest extends TestCase
 {
@@ -50,15 +50,15 @@ final class AllTest extends TestCase
     #[DataProvider('providerForValidInput')]
     public function shouldValidateValidInput(Stub $stub, mixed $input): void
     {
-        $rule = new All($stub);
-        self::assertValidInput($rule, $input);
+        $validator = new All($stub);
+        self::assertValidInput($validator, $input);
     }
 
     #[Test]
     #[DataProvider('providerForInvalidInput')]
     public function shouldValidateInvalidInput(Stub $stub, mixed $input): void
     {
-        $rule = new All($stub);
-        self::assertInvalidInput($rule, $input);
+        $validator = new All($stub);
+        self::assertInvalidInput($validator, $input);
     }
 }

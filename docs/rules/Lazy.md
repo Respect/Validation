@@ -1,10 +1,10 @@
 # Lazy
 
-- `Lazy(callable(mixed $input): Rule $ruleCreator)`
+- `Lazy(callable(mixed $input): Validator $validatorCreator)`
 
-Validates the input using a rule that is created from a callback.
+Validates the input using a validator that is created from a callback.
 
-This rule is particularly useful when creating rules that rely on the input. A good example is validating whether a
+This validator is particularly useful when creating validators that rely on the input. A good example is validating whether a
 `confirmation` field matches the `password` field when processing data from a form.
 
 ```php
@@ -12,16 +12,16 @@ v::key('confirmation', v::equals($_POST['password'] ?? null))->isValid($_POST);
 ```
 
 The issue with the code is that it’s hard to reuse because you’re relying upon the input itself (`$_POST`). That means
-you can create a chain of rules and use it everywhere.
+you can create a chain of validators and use it everywhere.
 
-The `lazy()` rule makes this job much simpler and more elegantly:
+The `lazy()` validator makes this job much simpler and more elegantly:
 
 ```php
 v::lazy(static fn($input) => v::key('confirmation', v::equals($input['password'] ?? null)))->isValid($_POST);
 ```
 
-The code above is similar to the first example, but the biggest difference is that the creation of the rule doesn't rely
-on the input itself (`$_POST`), but it will use any input that’s given to the rule
+The code above is similar to the first example, but the biggest difference is that the creation of the validator doesn't rely
+on the input itself (`$_POST`), but it will use any input that’s given to the validator
 
 ## Templates
 

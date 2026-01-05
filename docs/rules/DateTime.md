@@ -38,7 +38,7 @@ Message template for this validator includes `{{sample}}`.
 
 ## Formats
 
-Note that this rule validates whether the input **matches a given [DateTime::format()][] format** and **NOT if the input
+Note that this validator validates whether the input **matches a given [DateTime::format()][] format** and **NOT if the input
 can be parsed with a given [DateTimeImmutable::createFromFormat()][] format**. That makes the validation stricter but
 offers some limitations.
 

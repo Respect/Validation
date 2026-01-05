@@ -1,8 +1,8 @@
 # KeyOptional
 
-- `KeyOptional(int|string $key, Rule $rule)`
+- `KeyOptional(int|string $key, Validator $validator)`
 
-Validates the value of an array against a given rule when the key exists.
+Validates the value of an array against a given validator when the key exists.
 
 ```php
 v::keyOptional('name', v::stringType())->isValid([]); // true
@@ -23,7 +23,7 @@ v::keyOptional('age', v::intVal())->assert(['age' => 'Twenty-Five']);
 
 ## Note
 
-This rule will pass for anything that is not an array because it will always pass when it doesn't find a key. If you
+This validator will pass for anything that is not an array because it will always pass when it doesn't find a key. If you
 want to ensure the input is an array, use [ArrayType](ArrayType.md) with it.
 
 ```php
@@ -31,10 +31,10 @@ v::arrayType()->keyOptional('phone', v::phone())->assert('This is not an array')
 // message: "This is not an array" must be of type array
 ```
 
-Below are some other rules that are tightly related to `KeyOptional`:
+Below are some other validators that are tightly related to `KeyOptional`:
 
 - To validate if a key exists, use [KeyExists](KeyExists.md) instead.
-- To validate an array against a given rule requiring the key to exist, use [Key](Key.md) instead.
+- To validate an array against a given validator requiring the key to exist, use [Key](Key.md) instead.
 
 ## Templates
 

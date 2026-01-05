@@ -9,23 +9,23 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Rules\Core;
 
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function array_merge;
 
-abstract class Composite implements Rule
+abstract class Composite implements Validator
 {
-    /** @var non-empty-array<Rule> */
-    protected readonly array $rules;
+    /** @var non-empty-array<Validator> */
+    protected readonly array $validators;
 
-    public function __construct(Rule $rule1, Rule $rule2, Rule ...$rules)
+    public function __construct(Validator $validator1, Validator $validator2, Validator ...$validators)
     {
-        $this->rules = array_merge([$rule1, $rule2], $rules);
+        $this->validators = array_merge([$validator1, $validator2], $validators);
     }
 
-    /** @return non-empty-array<Rule> */
-    public function getRules(): array
+    /** @return non-empty-array<Validator> */
+    public function getValidators(): array
     {
-        return $this->rules;
+        return $this->validators;
     }
 }

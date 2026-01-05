@@ -18,7 +18,7 @@ use function tmpfile;
 
 use const PHP_INT_MAX;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(MacAddress::class)]
 final class MacAddressTest extends RuleTestCase
 {

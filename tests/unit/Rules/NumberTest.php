@@ -21,41 +21,41 @@ use const INF;
 use const NAN;
 use const PHP_INT_MAX;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Number::class)]
 final class NumberTest extends RuleTestCase
 {
     /** @return iterable<array{Number, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Number();
+        $validator = new Number();
 
         return [
-            [$rule, '42'],
-            [$rule, 123456],
-            [$rule, 0.00000000001],
-            [$rule, '0.5'],
-            [$rule, PHP_INT_MAX],
-            [$rule, -PHP_INT_MAX],
-            [$rule, INF],
-            [$rule, -INF],
+            [$validator, '42'],
+            [$validator, 123456],
+            [$validator, 0.00000000001],
+            [$validator, '0.5'],
+            [$validator, PHP_INT_MAX],
+            [$validator, -PHP_INT_MAX],
+            [$validator, INF],
+            [$validator, -INF],
         ];
     }
 
     /** @return iterable<array{Number, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Number();
+        $validator = new Number();
 
         return [
-            [$rule, acos(1.01)],
-            [$rule, sqrt(-1)],
-            [$rule, NAN],
-            [$rule, -NAN],
-            [$rule, false],
-            [$rule, true],
-            [$rule, []],
-            [$rule, new stdClass()],
+            [$validator, acos(1.01)],
+            [$validator, sqrt(-1)],
+            [$validator, NAN],
+            [$validator, -NAN],
+            [$validator, false],
+            [$validator, true],
+            [$validator, []],
+            [$validator, new stdClass()],
         ];
     }
 }

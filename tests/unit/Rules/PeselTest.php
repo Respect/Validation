@@ -14,45 +14,45 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Pesel::class)]
 final class PeselTest extends RuleTestCase
 {
     /** @return iterable<array{Pesel, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Pesel();
+        $validator = new Pesel();
 
         return [
-            [$rule, 0x4EADCD168], // 0x4EADCD168 === 21120209256
-            [$rule, 49040501580],
-            [$rule, '49040501580'],
-            [$rule, '39012110375'],
-            [$rule, '50083014540'],
-            [$rule, '69090515504'],
-            [$rule, '21120209256'],
-            [$rule, '01320613891'],
+            [$validator, 0x4EADCD168], // 0x4EADCD168 === 21120209256
+            [$validator, 49040501580],
+            [$validator, '49040501580'],
+            [$validator, '39012110375'],
+            [$validator, '50083014540'],
+            [$validator, '69090515504'],
+            [$validator, '21120209256'],
+            [$validator, '01320613891'],
         ];
     }
 
     /** @return iterable<array{Pesel, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Pesel();
+        $validator = new Pesel();
 
         return [
-            [$rule, null],
-            [$rule, []],
-            [$rule, new stdClass()],
-            [$rule, '1'],
-            [$rule, '22'],
-            [$rule, 'PESEL'],
-            [$rule, '0x4EADCD168'],
-            [$rule, 'PESEL123456'],
-            [$rule, '690905155.4'],
-            [$rule, '21120209251'],
-            [$rule, '21120209250'],
-            [$rule, '01320613890'],
+            [$validator, null],
+            [$validator, []],
+            [$validator, new stdClass()],
+            [$validator, '1'],
+            [$validator, '22'],
+            [$validator, 'PESEL'],
+            [$validator, '0x4EADCD168'],
+            [$validator, 'PESEL123456'],
+            [$validator, '690905155.4'],
+            [$validator, '21120209251'],
+            [$validator, '21120209250'],
+            [$validator, '01320613890'],
         ];
     }
 }

@@ -1,19 +1,19 @@
 # All
 
-- `All(Rule $rule)`
+- `All(Validator $validator)`
 
-Validates all items of the input against a given rule.
+Validates all items of the input against a given validator.
 
 ```php
 v::all(v::intType())->isValid([1, 2, 3]); // true
 v::all(v::intType())->isValid([1, 2, '3']); // false
 ```
 
-This rule is similar to [Each](Each.md), but as opposed to the former, it displays a single message when asserting an input.
+This validator is similar to [Each](Each.md), but as opposed to the former, it displays a single message when asserting an input.
 
 ## Note
 
-This rule uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail.
+This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail.
 
 ## Templates
 

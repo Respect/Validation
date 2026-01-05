@@ -25,7 +25,7 @@ v::base(2)->isValid('0120122001'); // false
 
 | Placeholder | Description                                                      |
 | ----------- | ---------------------------------------------------------------- |
-| `base`      | The base passed to the constructor of the rule.                  |
+| `base`      | The base passed to the constructor of the validator.             |
 | `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization

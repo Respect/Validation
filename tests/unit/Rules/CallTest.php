@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Call::class)]
 final class CallTest extends RuleTestCase
 {

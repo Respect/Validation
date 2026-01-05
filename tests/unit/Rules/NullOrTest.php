@@ -15,7 +15,7 @@ use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(NullOr::class)]
 final class NullOrTest extends RuleTestCase
 {

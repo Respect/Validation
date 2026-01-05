@@ -13,7 +13,7 @@ use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function array_keys;
 use function is_string;
@@ -31,7 +31,7 @@ use function preg_match;
     '{{subject}} must not be a valid {{service|raw}} video URL',
     self::TEMPLATE_SERVICE,
 )]
-final class VideoUrl implements Rule
+final class VideoUrl implements Validator
 {
     public const string TEMPLATE_SERVICE = '__service__';
 

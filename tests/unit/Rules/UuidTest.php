@@ -25,7 +25,7 @@ use function str_replace;
 use const PHP_INT_MAX;
 use const PHP_INT_MIN;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Uuid::class)]
 final class UuidTest extends RuleTestCase
 {

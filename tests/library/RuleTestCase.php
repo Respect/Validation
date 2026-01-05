@@ -11,7 +11,7 @@ namespace Respect\Validation\Test;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 abstract class RuleTestCase extends TestCase
 {
@@ -21,7 +21,7 @@ abstract class RuleTestCase extends TestCase
      * It returns an array of arrays. Each array contains an instance of Rule
      * as the first element and an input in which the validation SHOULD pass.
      *
-     * @return iterable<string|int, array{Rule, mixed}>
+     * @return iterable<string|int, array{Validator, mixed}>
      */
     abstract public static function providerForValidInput(): iterable;
 
@@ -31,20 +31,20 @@ abstract class RuleTestCase extends TestCase
      * It returns an array of arrays. Each array contains an instance of Rule
      * as the first element and an input in which the validation SHOULD NOT pass.
      *
-     * @return iterable<string|int, array{Rule, mixed}>
+     * @return iterable<string|int, array{Validator, mixed}>
      */
     abstract public static function providerForInvalidInput(): iterable;
 
     #[Test]
     #[DataProvider('providerForValidInput')]
-    public function shouldValidateValidInput(Rule $validator, mixed $input): void
+    public function shouldValidateValidInput(Validator $validator, mixed $input): void
     {
         self::assertValidInput($validator, $input);
     }
 
     #[Test]
     #[DataProvider('providerForInvalidInput')]
-    public function shouldValidateInvalidInput(Rule $validator, mixed $input): void
+    public function shouldValidateInvalidInput(Validator $validator, mixed $input): void
     {
         self::assertInvalidInput($validator, $input);
     }

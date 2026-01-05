@@ -1,7 +1,7 @@
 # When
 
-- `When(Rule $if, Rule $then)`
-- `When(Rule $if, Rule $then, Rule $else)`
+- `When(Validator $if, Validator $then)`
+- `When(Validator $if, Validator $then, Validator $else)`
 
 A ternary validator that accepts three parameters.
 
@@ -35,10 +35,10 @@ When `$else` is not defined use [AlwaysInvalid](AlwaysInvalid.md)
 
 ## Changelog
 
-| Version | Description                    |
-| ------: | ------------------------------ |
-|   0.8.0 | Allow to use rule without else |
-|   0.3.9 | Created                        |
+| Version | Description                         |
+| ------: | ----------------------------------- |
+|   0.8.0 | Allow to use validator without else |
+|   0.3.9 | Created                             |
 
 ---
 

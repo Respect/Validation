@@ -14,42 +14,42 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Lowercase::class)]
 final class LowercaseTest extends RuleTestCase
 {
     /** @return iterable<array{Lowercase, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Lowercase();
+        $validator = new Lowercase();
 
         return [
-            [$rule, ''],
-            [$rule, 'lowercase'],
-            [$rule, 'lowercase-with-dashes'],
-            [$rule, 'lowercase with spaces'],
-            [$rule, 'lowercase with numbers 123'],
-            [$rule, 'lowercase with specials characters like ã ç ê'],
-            [$rule, 'with specials characters like # $ % & * +'],
-            [$rule, 'τάχιστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός'],
-            [$rule, '42'],
-            [$rule, '!@#$%^'],
+            [$validator, ''],
+            [$validator, 'lowercase'],
+            [$validator, 'lowercase-with-dashes'],
+            [$validator, 'lowercase with spaces'],
+            [$validator, 'lowercase with numbers 123'],
+            [$validator, 'lowercase with specials characters like ã ç ê'],
+            [$validator, 'with specials characters like # $ % & * +'],
+            [$validator, 'τάχιστη αλώπηξ βαφής ψημένη γη, δρασκελίζει υπέρ νωθρού κυνός'],
+            [$validator, '42'],
+            [$validator, '!@#$%^'],
         ];
     }
 
     /** @return iterable<array{Lowercase, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Lowercase();
+        $validator = new Lowercase();
 
         return [
-            [$rule, 42],
-            [$rule, []],
-            [$rule, new stdClass()],
-            [$rule, 'UPPERCASE'],
-            [$rule, 'CamelCase'],
-            [$rule, 'First Character Uppercase'],
-            [$rule, 'With Numbers 1 2 3'],
+            [$validator, 42],
+            [$validator, []],
+            [$validator, new stdClass()],
+            [$validator, 'UPPERCASE'],
+            [$validator, 'CamelCase'],
+            [$validator, 'First Character Uppercase'],
+            [$validator, 'With Numbers 1 2 3'],
         ];
     }
 }

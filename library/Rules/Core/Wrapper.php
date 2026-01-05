@@ -10,22 +10,22 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
-abstract class Wrapper implements Rule
+abstract class Wrapper implements Validator
 {
     public function __construct(
-        protected readonly Rule $rule,
+        protected readonly Validator $validator,
     ) {
     }
 
     public function evaluate(mixed $input): Result
     {
-        return $this->rule->evaluate($input);
+        return $this->validator->evaluate($input);
     }
 
-    public function getRule(): Rule
+    public function getValidator(): Validator
     {
-        return $this->rule;
+        return $this->validator;
     }
 }

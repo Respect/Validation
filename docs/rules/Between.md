@@ -28,8 +28,8 @@ Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 
 | Placeholder | Description                                                      |
 | ----------- | ---------------------------------------------------------------- |
-| `maxValue`  | The minimum value passed to the rule.                            |
-| `minValue`  | The maximum value passed to the rule.                            |
+| `maxValue`  | The minimum value passed to the validator.                       |
+| `minValue`  | The maximum value passed to the validator.                       |
 | `subject`   | The validated input or the custom validator name (if specified). |
 
 ## Categorization

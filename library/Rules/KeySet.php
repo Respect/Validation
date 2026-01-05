@@ -13,9 +13,9 @@ use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\KeyRelated;
 use Respect\Validation\Rules\Core\Reducer;
+use Respect\Validation\Validator;
 use Respect\Validation\ValidatorBuilder;
 
 use function array_diff;
@@ -45,7 +45,7 @@ use function array_slice;
     '{{subject}} contains no missing keys',
     self::TEMPLATE_MISSING_KEYS,
 )]
-final readonly class KeySet implements Rule
+final readonly class KeySet implements Validator
 {
     public const string TEMPLATE_BOTH = '__both__';
     public const string TEMPLATE_EXTRA_KEYS = '__extra_keys__';
@@ -54,7 +54,7 @@ final readonly class KeySet implements Rule
     private const int MAX_DIFF_KEYS = 10;
 
     /** @var array<KeyRelated> */
-    private array $rules;
+    private array $validators;
 
     /** @var array<int|string> */
     private array $allKeys;
@@ -62,13 +62,13 @@ final readonly class KeySet implements Rule
     /** @var array<int|string> */
     private array $mandatoryKeys;
 
-    public function __construct(Rule $rule, Rule ...$rules)
+    public function __construct(Validator $validator, Validator ...$validators)
     {
-        $this->rules = $this->extractKeyRelatedRules(array_merge([$rule], $rules));
-        $this->allKeys = array_map(static fn(KeyRelated $rule) => $rule->getKey(), $this->rules);
+        $this->validators = $this->extractKeyRelatedRules(array_merge([$validator], $validators));
+        $this->allKeys = array_map(static fn(KeyRelated $validator) => $validator->getKey(), $this->validators);
         $this->mandatoryKeys = array_map(
-            static fn(KeyRelated $rule) => $rule->getKey(),
-            array_filter($this->rules, static fn(KeyRelated $rule) => !$rule instanceof KeyOptional),
+            static fn(KeyRelated $validator) => $validator->getKey(),
+            array_filter($this->validators, static fn(KeyRelated $validator) => !$validator instanceof KeyOptional),
         );
     }
 
@@ -79,7 +79,7 @@ final readonly class KeySet implements Rule
             return $arrayResult;
         }
 
-        $keys = new Reducer(...array_merge($this->rules, array_map(
+        $keys = new Reducer(...array_merge($this->validators, array_map(
             static fn(string|int $key) => new Not(new KeyExists($key)),
             array_slice(array_diff(array_keys($input), $this->allKeys), 0, self::MAX_DIFF_KEYS),
         )));
@@ -92,27 +92,30 @@ final readonly class KeySet implements Rule
     }
 
     /**
-     * @param array<Rule> $rules
+     * @param array<Validator> $validators
      *
      * @return array<KeyRelated>
      */
-    private function extractKeyRelatedRules(array $rules): array
+    private function extractKeyRelatedRules(array $validators): array
     {
-        $keyRelatedRules = [];
-        foreach ($rules as $rule) {
-            if ($rule instanceof KeyRelated) {
-                $keyRelatedRules[] = $rule;
+        $keyRelatedValidators = [];
+        foreach ($validators as $validator) {
+            if ($validator instanceof KeyRelated) {
+                $keyRelatedValidators[] = $validator;
                 continue;
             }
 
-            if (!$rule instanceof ValidatorBuilder) {
+            if (!$validator instanceof ValidatorBuilder) {
                 throw new InvalidRuleConstructorException('You must provide only key-related rules');
             }
 
-            $keyRelatedRules = array_merge($keyRelatedRules, $this->extractKeyRelatedRules($rule->getRules()));
+            $keyRelatedValidators = array_merge(
+                $keyRelatedValidators,
+                $this->extractKeyRelatedRules($validator->getValidators()),
+            );
         }
 
-        return $keyRelatedRules;
+        return $keyRelatedValidators;
     }
 
     /** @param array<int|string> $keys */

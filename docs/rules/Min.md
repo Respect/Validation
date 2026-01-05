@@ -1,8 +1,8 @@
 # Min
 
-- `Min(Rule $rule)`
+- `Min(Validator $validator)`
 
-Validates the minimum value of the input against a given rule.
+Validates the minimum value of the input against a given validator.
 
 ```php
 v::min(v::equals(10))->isValid([10, 20, 30]); // true
@@ -17,7 +17,7 @@ v::min(v::lessThan(3))->isValid([4, 8, 12]); // false
 
 ## Note
 
-This rule uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail.
+This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail.
 
 ## Templates
 

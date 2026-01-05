@@ -2,7 +2,7 @@
 
 - `Phone()`
 
-Validates whether the input is a valid phone number. This rule requires
+Validates whether the input is a valid phone number. This validator requires
 the `giggsey/libphonenumber-for-php-lite` package.
 
 ```php

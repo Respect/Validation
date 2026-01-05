@@ -18,7 +18,7 @@ use function random_int;
 
 use const PHP_INT_MAX;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(FalseVal::class)]
 final class FalseValTest extends RuleTestCase
 {

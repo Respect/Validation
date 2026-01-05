@@ -10,13 +10,18 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 interface KeyBuilder
 {
-    public static function keyAll(int|string $key, Rule $rule): Chain;
+    public static function keyAll(int|string $key, Validator $validator): Chain;
 
-    public static function keyAllOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function keyAllOf(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function keyAlnum(int|string $key, string ...$additionalChars): Chain;
 
@@ -26,7 +31,12 @@ interface KeyBuilder
 
     public static function keyAlwaysValid(int|string $key): Chain;
 
-    public static function keyAnyOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function keyAnyOf(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function keyArrayType(int|string $key): Chain;
 
@@ -52,7 +62,7 @@ interface KeyBuilder
 
     public static function keyBsn(int|string $key): Chain;
 
-    public static function keyCall(int|string $key, callable $callable, Rule $rule): Chain;
+    public static function keyCall(int|string $key, callable $callable, Validator $validator): Chain;
 
     public static function keyCallableType(int|string $key): Chain;
 
@@ -60,7 +70,12 @@ interface KeyBuilder
 
     public static function keyCharset(int|string $key, string $charset, string ...$charsets): Chain;
 
-    public static function keyCircuit(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function keyCircuit(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function keyCnh(int|string $key): Chain;
 
@@ -95,7 +110,7 @@ interface KeyBuilder
     public static function keyDateTimeDiff(
         int|string $key,
         string $type,
-        Rule $rule,
+        Validator $validator,
         string|null $format = null,
         DateTimeImmutable|null $now = null,
     ): Chain;
@@ -108,7 +123,7 @@ interface KeyBuilder
 
     public static function keyDomain(int|string $key, bool $tldCheck = true): Chain;
 
-    public static function keyEach(int|string $key, Rule $rule): Chain;
+    public static function keyEach(int|string $key, Validator $validator): Chain;
 
     public static function keyEmail(int|string $key): Chain;
 
@@ -186,14 +201,14 @@ interface KeyBuilder
     /** @param "alpha-2"|"alpha-3" $set */
     public static function keyLanguageCode(int|string $key, string $set = 'alpha-2'): Chain;
 
-    /** @param callable(mixed): Rule $ruleCreator */
-    public static function keyLazy(int|string $key, callable $ruleCreator): Chain;
+    /** @param callable(mixed): Validator $validatorCreator */
+    public static function keyLazy(int|string $key, callable $validatorCreator): Chain;
 
     public static function keyLeapDate(int|string $key, string $format): Chain;
 
     public static function keyLeapYear(int|string $key): Chain;
 
-    public static function keyLength(int|string $key, Rule $rule): Chain;
+    public static function keyLength(int|string $key, Validator $validator): Chain;
 
     public static function keyLessThan(int|string $key, mixed $compareTo): Chain;
 
@@ -205,11 +220,11 @@ interface KeyBuilder
 
     public static function keyMacAddress(int|string $key): Chain;
 
-    public static function keyMax(int|string $key, Rule $rule): Chain;
+    public static function keyMax(int|string $key, Validator $validator): Chain;
 
     public static function keyMimetype(int|string $key, string $mimetype): Chain;
 
-    public static function keyMin(int|string $key, Rule $rule): Chain;
+    public static function keyMin(int|string $key, Validator $validator): Chain;
 
     public static function keyMultiple(int|string $key, int $multipleOf): Chain;
 
@@ -223,9 +238,14 @@ interface KeyBuilder
 
     public static function keyNo(int|string $key, bool $useLocale = false): Chain;
 
-    public static function keyNoneOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function keyNoneOf(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
-    public static function keyNot(int|string $key, Rule $rule): Chain;
+    public static function keyNot(int|string $key, Validator $validator): Chain;
 
     public static function keyNullType(int|string $key): Chain;
 
@@ -237,7 +257,12 @@ interface KeyBuilder
 
     public static function keyOdd(int|string $key): Chain;
 
-    public static function keyOneOf(int|string $key, Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function keyOneOf(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function keyPerfectSquare(int|string $key): Chain;
 
@@ -276,7 +301,7 @@ interface KeyBuilder
     public static function keyScalarVal(int|string $key): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
-    public static function keySize(int|string $key, string $unit, Rule $rule): Chain;
+    public static function keySize(int|string $key, string $unit, Validator $validator): Chain;
 
     public static function keySlug(int|string $key): Chain;
 
@@ -323,7 +348,12 @@ interface KeyBuilder
 
     public static function keyVowel(int|string $key, string ...$additionalChars): Chain;
 
-    public static function keyWhen(int|string $key, Rule $when, Rule $then, Rule|null $else = null): Chain;
+    public static function keyWhen(
+        int|string $key,
+        Validator $when,
+        Validator $then,
+        Validator|null $else = null,
+    ): Chain;
 
     public static function keyWritable(int|string $key): Chain;
 

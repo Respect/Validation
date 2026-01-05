@@ -36,32 +36,35 @@ final readonly class NamespacedRuleFactory implements RuleFactory
     }
 
     /** @param array<int, mixed> $arguments */
-    public function create(string $ruleName, array $arguments = []): Rule
+    public function create(string $ruleName, array $arguments = []): Validator
     {
         return $this->createRuleSpec($this->transformer->transform(new RuleSpec($ruleName, $arguments)));
     }
 
-    private function createRuleSpec(RuleSpec $ruleSpec): Rule
+    private function createRuleSpec(RuleSpec $ruleSpec): Validator
     {
-        $rule = $this->createRule($ruleSpec->name, $ruleSpec->arguments);
+        $validator = $this->createRule($ruleSpec->name, $ruleSpec->arguments);
         if ($ruleSpec->wrapper !== null) {
-            return $this->createRule($ruleSpec->wrapper->name, array_merge($ruleSpec->wrapper->arguments, [$rule]));
+            return $this->createRule(
+                $ruleSpec->wrapper->name,
+                array_merge($ruleSpec->wrapper->arguments, [$validator]),
+            );
         }
 
-        return $rule;
+        return $validator;
     }
 
     /** @param array<int, mixed> $arguments */
-    private function createRule(string $ruleName, array $arguments = []): Rule
+    private function createRule(string $ruleName, array $arguments = []): Validator
     {
         foreach ($this->rulesNamespaces as $namespace) {
             try {
-                /** @var class-string<Rule> $name */
+                /** @var class-string<Validator> $name */
                 $name = $namespace . '\\' . ucfirst($ruleName);
                 $reflection = new ReflectionClass($name);
-                if (!$reflection->isSubclassOf(Rule::class)) {
+                if (!$reflection->isSubclassOf(Validator::class)) {
                     throw new InvalidClassException(
-                        sprintf('"%s" must be an instance of "%s"', $name, Rule::class),
+                        sprintf('"%s" must be an instance of "%s"', $name, Validator::class),
                     );
                 }
 

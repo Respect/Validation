@@ -16,7 +16,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 use Throwable;
 
 use function in_array;
@@ -42,7 +42,7 @@ use function in_array;
     'For comparison with {{now|raw}}, {{subject}} must not be a valid datetime in the format {{sample|raw}}',
     self::TEMPLATE_WRONG_FORMAT,
 )]
-final readonly class DateTimeDiff implements Rule
+final readonly class DateTimeDiff implements Validator
 {
     use CanValidateDateTime;
 
@@ -53,7 +53,7 @@ final readonly class DateTimeDiff implements Rule
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function __construct(
         private string $type,
-        private Rule $rule,
+        private Validator $validator,
         private string|null $format = null,
         private DateTimeImmutable|null $now = null,
     ) {
@@ -76,12 +76,12 @@ final readonly class DateTimeDiff implements Rule
             $parameters = ['sample' => $now->format($this->format ?? 'c'), 'now' => $this->nowParameter($now)];
 
             return Result::failed($input, $this, $parameters, $template)
-                ->withId($this->rule->evaluate($input)->id->withPrefix('dateTimeDiff'));
+                ->withId($this->validator->evaluate($input)->id->withPrefix('dateTimeDiff'));
         }
 
         $nowPlaceholder = $this->nowParameter($now);
 
-        $result = $this->rule->evaluate($this->comparisonValue($now, $compareTo));
+        $result = $this->validator->evaluate($this->comparisonValue($now, $compareTo));
 
         return $result->asAdjacentOf(
             Result::of(

@@ -24,7 +24,7 @@ final class All extends FilteredNonEmptyArray
         $result = null;
         $hasPassed = true;
         foreach ($input as $value) {
-            $result = $this->rule->evaluate($value);
+            $result = $this->validator->evaluate($value);
             if ($result->hasPassed === false) {
                 $hasPassed = false;
                 break;

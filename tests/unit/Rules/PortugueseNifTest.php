@@ -16,81 +16,81 @@ use stdClass;
 
 use function stream_context_create;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(PortugueseNif::class)]
 final class PortugueseNifTest extends RuleTestCase
 {
     /** @return iterable<array{PortugueseNif, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new PortugueseNif();
+        $validator = new PortugueseNif();
 
         return [
-            [$rule, '124885446'],
-            [$rule, '296981079'],
-            [$rule, '372697216'],
-            [$rule, '452536910'],
-            [$rule, '547512104'],
-            [$rule, '600481093'],
-            [$rule, '709060548'],
-            [$rule, '748501746'],
-            [$rule, '755231872'],
-            [$rule, '712993010'],
-            [$rule, '726086193'],
-            [$rule, '774001437'],
-            [$rule, '787667560'],
-            [$rule, '796553823'],
-            [$rule, '839697350'],
-            [$rule, '909339260'],
-            [$rule, '912534087'],
-            [$rule, '982150148'],
-            [$rule, '990402509'],
+            [$validator, '124885446'],
+            [$validator, '296981079'],
+            [$validator, '372697216'],
+            [$validator, '452536910'],
+            [$validator, '547512104'],
+            [$validator, '600481093'],
+            [$validator, '709060548'],
+            [$validator, '748501746'],
+            [$validator, '755231872'],
+            [$validator, '712993010'],
+            [$validator, '726086193'],
+            [$validator, '774001437'],
+            [$validator, '787667560'],
+            [$validator, '796553823'],
+            [$validator, '839697350'],
+            [$validator, '909339260'],
+            [$validator, '912534087'],
+            [$validator, '982150148'],
+            [$validator, '990402509'],
         ];
     }
 
     /** @return iterable<array{PortugueseNif, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new PortugueseNif();
+        $validator = new PortugueseNif();
 
         return [
             // Check digit is wrong
-            [$rule, '429468882'],
-            [$rule, '739468882'],
-            [$rule, '939468882'],
-            [$rule, '129468882'],
-            [$rule, '220005245'],
-            [$rule, '389684008'],
-            [$rule, '454438148'],
-            [$rule, '504116863'],
-            [$rule, '671236496'],
-            [$rule, '703830557'],
-            [$rule, '743373410'],
-            [$rule, '750701191'],
-            [$rule, '710147053'],
-            [$rule, '725277167'],
-            [$rule, '777722796'],
-            [$rule, '784431824'],
-            [$rule, '798137629'],
-            [$rule, '801391192'],
-            [$rule, '907147885'],
-            [$rule, '911864617'],
-            [$rule, '983401988'],
-            [$rule, '995934101'],
+            [$validator, '429468882'],
+            [$validator, '739468882'],
+            [$validator, '939468882'],
+            [$validator, '129468882'],
+            [$validator, '220005245'],
+            [$validator, '389684008'],
+            [$validator, '454438148'],
+            [$validator, '504116863'],
+            [$validator, '671236496'],
+            [$validator, '703830557'],
+            [$validator, '743373410'],
+            [$validator, '750701191'],
+            [$validator, '710147053'],
+            [$validator, '725277167'],
+            [$validator, '777722796'],
+            [$validator, '784431824'],
+            [$validator, '798137629'],
+            [$validator, '801391192'],
+            [$validator, '907147885'],
+            [$validator, '911864617'],
+            [$validator, '983401988'],
+            [$validator, '995934101'],
 
             // Invalid formats
-            [$rule, 'ABC885446'],
-            [$rule, '29698107'],
-            [$rule, '3726972165'],
+            [$validator, 'ABC885446'],
+            [$validator, '29698107'],
+            [$validator, '3726972165'],
 
             // Weird types
-            [$rule, []],
-            [$rule, true],
-            [$rule, 1],
-            [$rule, 0.5],
-            [$rule, null],
-            [$rule, new stdClass()],
-            [$rule, stream_context_create()],
+            [$validator, []],
+            [$validator, true],
+            [$validator, 1],
+            [$validator, 0.5],
+            [$validator, null],
+            [$validator, new stdClass()],
+            [$validator, stream_context_create()],
 
         ];
     }

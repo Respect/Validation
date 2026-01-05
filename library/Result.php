@@ -25,10 +25,10 @@ final readonly class Result
     public function __construct(
         public bool $hasPassed,
         public mixed $input,
-        public Rule $rule,
+        public Validator $validator,
         public Id $id,
         public array $parameters = [],
-        public string $template = Rule::TEMPLATE_STANDARD,
+        public string $template = Validator::TEMPLATE_STANDARD,
         public bool $hasInvertedMode = false,
         public bool $hasPrecedentName = true,
         public Name|null $name = null,
@@ -43,31 +43,31 @@ final readonly class Result
     public static function of(
         bool $hasPassed,
         mixed $input,
-        Rule $rule,
+        Validator $validator,
         array $parameters = [],
-        string $template = Rule::TEMPLATE_STANDARD,
+        string $template = Validator::TEMPLATE_STANDARD,
     ): self {
-        return new self($hasPassed, $input, $rule, Id::fromRule($rule), $parameters, $template);
+        return new self($hasPassed, $input, $validator, Id::fromValidator($validator), $parameters, $template);
     }
 
     /** @param array<string, mixed> $parameters */
     public static function failed(
         mixed $input,
-        Rule $rule,
+        Validator $validator,
         array $parameters = [],
-        string $template = Rule::TEMPLATE_STANDARD,
+        string $template = Validator::TEMPLATE_STANDARD,
     ): self {
-        return self::of(false, $input, $rule, $parameters, $template);
+        return self::of(false, $input, $validator, $parameters, $template);
     }
 
     /** @param array<string, mixed> $parameters */
     public static function passed(
         mixed $input,
-        Rule $rule,
+        Validator $validator,
         array $parameters = [],
-        string $template = Rule::TEMPLATE_STANDARD,
+        string $template = Validator::TEMPLATE_STANDARD,
     ): self {
-        return self::of(true, $input, $rule, $parameters, $template);
+        return self::of(true, $input, $validator, $parameters, $template);
     }
 
     public function asAdjacentOf(Result $result, string $prefix): Result
@@ -105,9 +105,9 @@ final readonly class Result
         return clone($this, ['id' => $id]);
     }
 
-    public function withIdFrom(Rule $rule): self
+    public function withIdFrom(Validator $validator): self
     {
-        return clone($this, ['id' => Id::fromRule($rule)]);
+        return clone($this, ['id' => Id::fromValidator($validator)]);
     }
 
     public function withPath(Path $path): self
@@ -170,18 +170,18 @@ final readonly class Result
         ]);
     }
 
-    public function withNameFrom(Rule $rule): self
+    public function withNameFrom(Validator $validator): self
     {
-        if (!$rule instanceof Nameable || $rule->getName() === null) {
+        if (!$validator instanceof Nameable || $validator->getName() === null) {
             return $this;
         }
 
         return clone($this, [
-            'name' => $this->name ?? $rule->getName(),
+            'name' => $this->name ?? $validator->getName(),
             'hasPrecedentName' => true,
-            'adjacent' => $this->adjacent?->withNameFrom($rule),
+            'adjacent' => $this->adjacent?->withNameFrom($validator),
             'children' => array_map(
-                static fn(Result $child) => $child->withNameFrom($rule),
+                static fn(Result $child) => $child->withNameFrom($validator),
                 $this->children,
             ),
         ]);

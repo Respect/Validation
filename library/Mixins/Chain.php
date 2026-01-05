@@ -11,12 +11,12 @@ namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
 use Respect\Validation\Name;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 use Respect\Validation\ValidatorBuilder;
 
 /** @mixin ValidatorBuilder */
 interface Chain extends
-    Rule,
+    Validator,
     AllChain,
     KeyChain,
     LengthChain,
@@ -27,9 +27,9 @@ interface Chain extends
     PropertyChain,
     UndefOrChain
 {
-    public function all(Rule $rule): Chain;
+    public function all(Validator $validator): Chain;
 
-    public function allOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function allOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function alnum(string ...$additionalChars): Chain;
 
@@ -39,7 +39,7 @@ interface Chain extends
 
     public function alwaysValid(): Chain;
 
-    public function anyOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function anyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function arrayType(): Chain;
 
@@ -66,7 +66,7 @@ interface Chain extends
 
     public function bsn(): Chain;
 
-    public function call(callable $callable, Rule $rule): Chain;
+    public function call(callable $callable, Validator $validator): Chain;
 
     public function callableType(): Chain;
 
@@ -74,7 +74,7 @@ interface Chain extends
 
     public function charset(string $charset, string ...$charsets): Chain;
 
-    public function circuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function circuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function cnh(): Chain;
 
@@ -108,7 +108,7 @@ interface Chain extends
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function dateTimeDiff(
         string $type,
-        Rule $rule,
+        Validator $validator,
         string|null $format = null,
         DateTimeImmutable|null $now = null,
     ): Chain;
@@ -121,7 +121,7 @@ interface Chain extends
 
     public function domain(bool $tldCheck = true): Chain;
 
-    public function each(Rule $rule): Chain;
+    public function each(Validator $validator): Chain;
 
     public function email(): Chain;
 
@@ -198,25 +198,25 @@ interface Chain extends
 
     public function json(): Chain;
 
-    public function key(string|int $key, Rule $rule): Chain;
+    public function key(string|int $key, Validator $validator): Chain;
 
     public function keyExists(string|int $key): Chain;
 
-    public function keyOptional(string|int $key, Rule $rule): Chain;
+    public function keyOptional(string|int $key, Validator $validator): Chain;
 
-    public function keySet(Rule $rule, Rule ...$rules): Chain;
+    public function keySet(Validator $validator, Validator ...$validators): Chain;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function languageCode(string $set = 'alpha-2'): Chain;
 
-    /** @param callable(mixed): Rule $ruleCreator */
-    public function lazy(callable $ruleCreator): Chain;
+    /** @param callable(mixed): Validator $validatorCreator */
+    public function lazy(callable $validatorCreator): Chain;
 
     public function leapDate(string $format): Chain;
 
     public function leapYear(): Chain;
 
-    public function length(Rule $rule): Chain;
+    public function length(Validator $validator): Chain;
 
     public function lessThan(mixed $compareTo): Chain;
 
@@ -228,15 +228,15 @@ interface Chain extends
 
     public function macAddress(): Chain;
 
-    public function max(Rule $rule): Chain;
+    public function max(Validator $validator): Chain;
 
     public function mimetype(string $mimetype): Chain;
 
-    public function min(Rule $rule): Chain;
+    public function min(Validator $validator): Chain;
 
     public function multiple(int $multipleOf): Chain;
 
-    public function named(Name|string $name, Rule $rule): Chain;
+    public function named(Name|string $name, Validator $validator): Chain;
 
     public function negative(): Chain;
 
@@ -248,11 +248,11 @@ interface Chain extends
 
     public function no(bool $useLocale = false): Chain;
 
-    public function noneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function noneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public function not(Rule $rule): Chain;
+    public function not(Validator $validator): Chain;
 
-    public function nullOr(Rule $rule): Chain;
+    public function nullOr(Validator $validator): Chain;
 
     public function nullType(): Chain;
 
@@ -264,7 +264,7 @@ interface Chain extends
 
     public function odd(): Chain;
 
-    public function oneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function oneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function perfectSquare(): Chain;
 
@@ -288,11 +288,11 @@ interface Chain extends
 
     public function printable(string ...$additionalChars): Chain;
 
-    public function property(string $propertyName, Rule $rule): Chain;
+    public function property(string $propertyName, Validator $validator): Chain;
 
     public function propertyExists(string $propertyName): Chain;
 
-    public function propertyOptional(string $propertyName, Rule $rule): Chain;
+    public function propertyOptional(string $propertyName, Validator $validator): Chain;
 
     public function publicDomainSuffix(): Chain;
 
@@ -309,7 +309,7 @@ interface Chain extends
     public function scalarVal(): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
-    public function size(string $unit, Rule $rule): Chain;
+    public function size(string $unit, Validator $validator): Chain;
 
     public function slug(): Chain;
 
@@ -333,7 +333,7 @@ interface Chain extends
     public function symbolicLink(): Chain;
 
     /** @param array<string, mixed> $parameters */
-    public function templated(string $template, Rule $rule, array $parameters = []): Chain;
+    public function templated(string $template, Validator $validator, array $parameters = []): Chain;
 
     public function time(string $format = 'H:i:s'): Chain;
 
@@ -343,7 +343,7 @@ interface Chain extends
 
     public function undef(): Chain;
 
-    public function undefOr(Rule $rule): Chain;
+    public function undefOr(Validator $validator): Chain;
 
     public function unique(): Chain;
 
@@ -361,7 +361,7 @@ interface Chain extends
 
     public function vowel(string ...$additionalChars): Chain;
 
-    public function when(Rule $when, Rule $then, Rule|null $else = null): Chain;
+    public function when(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function writable(): Chain;
 

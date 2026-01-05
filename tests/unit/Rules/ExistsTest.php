@@ -15,30 +15,30 @@ use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Exists::class)]
 final class ExistsTest extends RuleTestCase
 {
     /** @return iterable<array{Exists, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Exists();
+        $validator = new Exists();
 
         return [
-            [$rule, __FILE__],
-            [$rule, new SplFileInfo(__FILE__)],
-            [$rule, new SplFileObject(__FILE__)],
+            [$validator, __FILE__],
+            [$validator, new SplFileInfo(__FILE__)],
+            [$validator, new SplFileObject(__FILE__)],
         ];
     }
 
     /** @return iterable<array{Exists, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Exists();
+        $validator = new Exists();
 
         return [
-            [$rule, 'path/of/a/non-existent/file'],
-            [$rule, new SplFileInfo('path/of/a/non-existent/file')],
+            [$validator, 'path/of/a/non-existent/file'],
+            [$validator, new SplFileInfo('path/of/a/non-existent/file')],
         ];
     }
 }

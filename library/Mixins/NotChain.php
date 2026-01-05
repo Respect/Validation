@@ -10,13 +10,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 interface NotChain
 {
-    public function notAll(Rule $rule): Chain;
+    public function notAll(Validator $validator): Chain;
 
-    public function notAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function notAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notAlnum(string ...$additionalChars): Chain;
 
@@ -26,7 +26,7 @@ interface NotChain
 
     public function notAlwaysValid(): Chain;
 
-    public function notAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function notAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notArrayType(): Chain;
 
@@ -51,7 +51,7 @@ interface NotChain
 
     public function notBsn(): Chain;
 
-    public function notCall(callable $callable, Rule $rule): Chain;
+    public function notCall(callable $callable, Validator $validator): Chain;
 
     public function notCallableType(): Chain;
 
@@ -59,7 +59,7 @@ interface NotChain
 
     public function notCharset(string $charset, string ...$charsets): Chain;
 
-    public function notCircuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function notCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notCnh(): Chain;
 
@@ -93,7 +93,7 @@ interface NotChain
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function notDateTimeDiff(
         string $type,
-        Rule $rule,
+        Validator $validator,
         string|null $format = null,
         DateTimeImmutable|null $now = null,
     ): Chain;
@@ -106,7 +106,7 @@ interface NotChain
 
     public function notDomain(bool $tldCheck = true): Chain;
 
-    public function notEach(Rule $rule): Chain;
+    public function notEach(Validator $validator): Chain;
 
     public function notEmail(): Chain;
 
@@ -183,25 +183,25 @@ interface NotChain
 
     public function notJson(): Chain;
 
-    public function notKey(string|int $key, Rule $rule): Chain;
+    public function notKey(string|int $key, Validator $validator): Chain;
 
     public function notKeyExists(string|int $key): Chain;
 
-    public function notKeyOptional(string|int $key, Rule $rule): Chain;
+    public function notKeyOptional(string|int $key, Validator $validator): Chain;
 
-    public function notKeySet(Rule $rule, Rule ...$rules): Chain;
+    public function notKeySet(Validator $validator, Validator ...$validators): Chain;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function notLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /** @param callable(mixed): Rule $ruleCreator */
-    public function notLazy(callable $ruleCreator): Chain;
+    /** @param callable(mixed): Validator $validatorCreator */
+    public function notLazy(callable $validatorCreator): Chain;
 
     public function notLeapDate(string $format): Chain;
 
     public function notLeapYear(): Chain;
 
-    public function notLength(Rule $rule): Chain;
+    public function notLength(Validator $validator): Chain;
 
     public function notLessThan(mixed $compareTo): Chain;
 
@@ -213,11 +213,11 @@ interface NotChain
 
     public function notMacAddress(): Chain;
 
-    public function notMax(Rule $rule): Chain;
+    public function notMax(Validator $validator): Chain;
 
     public function notMimetype(string $mimetype): Chain;
 
-    public function notMin(Rule $rule): Chain;
+    public function notMin(Validator $validator): Chain;
 
     public function notMultiple(int $multipleOf): Chain;
 
@@ -231,7 +231,7 @@ interface NotChain
 
     public function notNo(bool $useLocale = false): Chain;
 
-    public function notNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function notNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notNullType(): Chain;
 
@@ -243,7 +243,7 @@ interface NotChain
 
     public function notOdd(): Chain;
 
-    public function notOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function notOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notPerfectSquare(): Chain;
 
@@ -267,11 +267,11 @@ interface NotChain
 
     public function notPrintable(string ...$additionalChars): Chain;
 
-    public function notProperty(string $propertyName, Rule $rule): Chain;
+    public function notProperty(string $propertyName, Validator $validator): Chain;
 
     public function notPropertyExists(string $propertyName): Chain;
 
-    public function notPropertyOptional(string $propertyName, Rule $rule): Chain;
+    public function notPropertyOptional(string $propertyName, Validator $validator): Chain;
 
     public function notPublicDomainSuffix(): Chain;
 
@@ -288,7 +288,7 @@ interface NotChain
     public function notScalarVal(): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
-    public function notSize(string $unit, Rule $rule): Chain;
+    public function notSize(string $unit, Validator $validator): Chain;
 
     public function notSlug(): Chain;
 
@@ -335,7 +335,7 @@ interface NotChain
 
     public function notVowel(string ...$additionalChars): Chain;
 
-    public function notWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
+    public function notWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function notWritable(): Chain;
 

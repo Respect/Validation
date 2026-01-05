@@ -14,36 +14,36 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Luhn::class)]
 final class LuhnTest extends RuleTestCase
 {
     /** @return iterable<array{Luhn, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Luhn();
+        $validator = new Luhn();
 
         return [
-            '17 digits string' => [$rule, '2222400041240011'],
-            '16 digits string' => [$rule, '340316193809364'],
-            'integer' => [$rule, 6011000990139424],
+            '17 digits string' => [$validator, '2222400041240011'],
+            '16 digits string' => [$validator, '340316193809364'],
+            'integer' => [$validator, 6011000990139424],
         ];
     }
 
     /** @return iterable<array{Luhn, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Luhn();
+        $validator = new Luhn();
 
         return [
-            'invalid string' => [$rule, '2222400041240021'],
-            'invalid integer' => [$rule, 340316193809334],
-            'float' => [$rule, 222240004124001.1],
-            'boolean true' => [$rule, true],
-            'boolean false' => [$rule, false],
-            'empty' => [$rule, ''],
-            'object' => [$rule, new stdClass()],
-            'array' => [$rule, [2222400041240011]],
+            'invalid string' => [$validator, '2222400041240021'],
+            'invalid integer' => [$validator, 340316193809334],
+            'float' => [$validator, 222240004124001.1],
+            'boolean true' => [$validator, true],
+            'boolean false' => [$validator, false],
+            'empty' => [$validator, ''],
+            'object' => [$validator, new stdClass()],
+            'array' => [$validator, [2222400041240011]],
         ];
     }
 }

@@ -17,7 +17,7 @@ use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(PropertyOptional::class)]
 final class PropertyOptionalTest extends TestCase
 {
@@ -57,8 +57,8 @@ final class PropertyOptionalTest extends TestCase
 
         $wrapped = Stub::pass(1);
 
-        $rule = new PropertyOptional('foo', $wrapped);
-        $rule->evaluate($object);
+        $validator = new PropertyOptional('foo', $wrapped);
+        $validator->evaluate($object);
 
         self::assertEquals([$object->foo], $wrapped->inputs);
     }

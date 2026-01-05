@@ -13,7 +13,7 @@ $usernameValidator->isValid('alganet'); // true
 
 If you `var_dump($usernameValidator)`, you'll see a composite of objects with
 `Respect\Validation\Rules\Alnum`, `Respect\Validation\Rules\Spaced` wrapped in `Respect\Validation\Rules\Not` and
-`Respect\Validation\Rules\Length`. There is a specific object for each rule, and
+`Respect\Validation\Rules\Length`. There is a specific object for each validator, and
 the chain only builds the structure. You can build it by yourself:
 
 ```php
@@ -56,7 +56,7 @@ $userValidator->isValid(['name' => 'alganet']); // true
 The Respect\Validation chain is an
 [internal DSL](http://martinfowler.com/bliki/InternalDslStyle.html).
 It acts in the creational realm of objects (where Abstract Factories and Builders
-live), and it's only job is to make rule construction terse and fluent.
+live), and it's only job is to make validator construction terse and fluent.
 
 ## FAQ
 
@@ -75,7 +75,7 @@ something complex and returns for you.
 Yes. Just use `$validator = ValidatorBuilder::create();` each time you want a new validator,
 and continue from there.
 
-> Do you have a static method for each rule?
+> Do you have a static method for each validator?
 
 No. We use `__callStatic()`.
 

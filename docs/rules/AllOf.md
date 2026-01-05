@@ -1,6 +1,6 @@
 # AllOf
 
-- `AllOf(Rule $rule1, Rule $rule2, Rule ...$rule)`
+- `AllOf(Validator $validator1, Validator $validator2, Validator ...$validator)`
 
 Will validate if all inner validators validates.
 
@@ -12,7 +12,7 @@ v::allOf(v::intVal(), v::positive())->isValid(15); // true
 
 ### `AllOf::TEMPLATE_SOME`
 
-Used when some rules must be failed.
+Used when some validators must be failed.
 
 | Mode       | Template                        |
 | ---------- | ------------------------------- |
@@ -21,7 +21,7 @@ Used when some rules must be failed.
 
 ### `AllOf::TEMPLATE_ALL`
 
-Used when all rules have failed.
+Used when all validators have failed.
 
 | Mode       | Template                            |
 | ---------- | ----------------------------------- |
@@ -41,10 +41,10 @@ Used when all rules have failed.
 
 ## Changelog
 
-| Version | Description                             |
-| ------: | --------------------------------------- |
-|   3.0.0 | Require at least two rules to be passed |
-|   0.3.9 | Created                                 |
+| Version | Description                                  |
+| ------: | -------------------------------------------- |
+|   3.0.0 | Require at least two validators to be passed |
+|   0.3.9 | Created                                      |
 
 ---
 

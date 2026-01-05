@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function is_numeric;
 use function is_string;
@@ -25,7 +25,7 @@ use function var_export;
     '{{subject}} must have {{decimals}} decimals',
     '{{subject}} must not have {{decimals}} decimals',
 )]
-final readonly class Decimal implements Rule
+final readonly class Decimal implements Validator
 {
     public function __construct(
         private int $decimals,

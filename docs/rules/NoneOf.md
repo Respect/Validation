@@ -1,6 +1,6 @@
 # NoneOf
 
-- `NoneOf(Rule $rule1, Rule $rule2, Rule ...$rule)`
+- `NoneOf(Validator $validator1, Validator $validator2, Validator ...$validator)`
 
 Validates if NONE of the given validators validate:
 
@@ -17,7 +17,7 @@ In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 
 ### `NoneOf::TEMPLATE_SOME`
 
-Used when some rules have passed.
+Used when some validators have passed.
 
 | Mode       | Template                        |
 | ---------- | ------------------------------- |
@@ -26,7 +26,7 @@ Used when some rules have passed.
 
 ### `NoneOf::TEMPLATE_ALL`
 
-Used when all rules have passed.
+Used when all validators have passed.
 
 | Mode       | Template                            |
 | ---------- | ----------------------------------- |
@@ -46,10 +46,10 @@ Used when all rules have passed.
 
 ## Changelog
 
-| Version | Description                             |
-| ------: | --------------------------------------- |
-|   3.0.0 | Require at least two rules to be passed |
-|   0.3.9 | Created                                 |
+| Version | Description                                   |
+| ------: | --------------------------------------------- |
+|   3.0.0 | Require at least two validators to be defined |
+|   0.3.9 | Created                                       |
 
 ---
 

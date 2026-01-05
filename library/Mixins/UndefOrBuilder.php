@@ -10,13 +10,17 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 interface UndefOrBuilder
 {
-    public static function undefOrAll(Rule $rule): Chain;
+    public static function undefOrAll(Validator $validator): Chain;
 
-    public static function undefOrAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function undefOrAllOf(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function undefOrAlnum(string ...$additionalChars): Chain;
 
@@ -26,7 +30,11 @@ interface UndefOrBuilder
 
     public static function undefOrAlwaysValid(): Chain;
 
-    public static function undefOrAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function undefOrAnyOf(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function undefOrArrayType(): Chain;
 
@@ -49,7 +57,7 @@ interface UndefOrBuilder
 
     public static function undefOrBsn(): Chain;
 
-    public static function undefOrCall(callable $callable, Rule $rule): Chain;
+    public static function undefOrCall(callable $callable, Validator $validator): Chain;
 
     public static function undefOrCallableType(): Chain;
 
@@ -57,7 +65,11 @@ interface UndefOrBuilder
 
     public static function undefOrCharset(string $charset, string ...$charsets): Chain;
 
-    public static function undefOrCircuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function undefOrCircuit(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function undefOrCnh(): Chain;
 
@@ -91,7 +103,7 @@ interface UndefOrBuilder
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public static function undefOrDateTimeDiff(
         string $type,
-        Rule $rule,
+        Validator $validator,
         string|null $format = null,
         DateTimeImmutable|null $now = null,
     ): Chain;
@@ -104,7 +116,7 @@ interface UndefOrBuilder
 
     public static function undefOrDomain(bool $tldCheck = true): Chain;
 
-    public static function undefOrEach(Rule $rule): Chain;
+    public static function undefOrEach(Validator $validator): Chain;
 
     public static function undefOrEmail(): Chain;
 
@@ -181,25 +193,25 @@ interface UndefOrBuilder
 
     public static function undefOrJson(): Chain;
 
-    public static function undefOrKey(string|int $key, Rule $rule): Chain;
+    public static function undefOrKey(string|int $key, Validator $validator): Chain;
 
     public static function undefOrKeyExists(string|int $key): Chain;
 
-    public static function undefOrKeyOptional(string|int $key, Rule $rule): Chain;
+    public static function undefOrKeyOptional(string|int $key, Validator $validator): Chain;
 
-    public static function undefOrKeySet(Rule $rule, Rule ...$rules): Chain;
+    public static function undefOrKeySet(Validator $validator, Validator ...$validators): Chain;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function undefOrLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /** @param callable(mixed): Rule $ruleCreator */
-    public static function undefOrLazy(callable $ruleCreator): Chain;
+    /** @param callable(mixed): Validator $validatorCreator */
+    public static function undefOrLazy(callable $validatorCreator): Chain;
 
     public static function undefOrLeapDate(string $format): Chain;
 
     public static function undefOrLeapYear(): Chain;
 
-    public static function undefOrLength(Rule $rule): Chain;
+    public static function undefOrLength(Validator $validator): Chain;
 
     public static function undefOrLessThan(mixed $compareTo): Chain;
 
@@ -211,11 +223,11 @@ interface UndefOrBuilder
 
     public static function undefOrMacAddress(): Chain;
 
-    public static function undefOrMax(Rule $rule): Chain;
+    public static function undefOrMax(Validator $validator): Chain;
 
     public static function undefOrMimetype(string $mimetype): Chain;
 
-    public static function undefOrMin(Rule $rule): Chain;
+    public static function undefOrMin(Validator $validator): Chain;
 
     public static function undefOrMultiple(int $multipleOf): Chain;
 
@@ -229,9 +241,13 @@ interface UndefOrBuilder
 
     public static function undefOrNo(bool $useLocale = false): Chain;
 
-    public static function undefOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function undefOrNoneOf(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
-    public static function undefOrNot(Rule $rule): Chain;
+    public static function undefOrNot(Validator $validator): Chain;
 
     public static function undefOrNullType(): Chain;
 
@@ -243,7 +259,11 @@ interface UndefOrBuilder
 
     public static function undefOrOdd(): Chain;
 
-    public static function undefOrOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function undefOrOneOf(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function undefOrPerfectSquare(): Chain;
 
@@ -267,11 +287,11 @@ interface UndefOrBuilder
 
     public static function undefOrPrintable(string ...$additionalChars): Chain;
 
-    public static function undefOrProperty(string $propertyName, Rule $rule): Chain;
+    public static function undefOrProperty(string $propertyName, Validator $validator): Chain;
 
     public static function undefOrPropertyExists(string $propertyName): Chain;
 
-    public static function undefOrPropertyOptional(string $propertyName, Rule $rule): Chain;
+    public static function undefOrPropertyOptional(string $propertyName, Validator $validator): Chain;
 
     public static function undefOrPublicDomainSuffix(): Chain;
 
@@ -288,7 +308,7 @@ interface UndefOrBuilder
     public static function undefOrScalarVal(): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
-    public static function undefOrSize(string $unit, Rule $rule): Chain;
+    public static function undefOrSize(string $unit, Validator $validator): Chain;
 
     public static function undefOrSlug(): Chain;
 
@@ -333,7 +353,7 @@ interface UndefOrBuilder
 
     public static function undefOrVowel(string ...$additionalChars): Chain;
 
-    public static function undefOrWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
+    public static function undefOrWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function undefOrWritable(): Chain;
 

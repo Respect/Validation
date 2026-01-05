@@ -14,31 +14,31 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(StringType::class)]
 final class StringTypeTest extends RuleTestCase
 {
     /** @return iterable<array{StringType, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new StringType();
+        $validator = new StringType();
 
         return [
-            [$rule, ''],
-            [$rule, '165.7'],
+            [$validator, ''],
+            [$validator, '165.7'],
         ];
     }
 
     /** @return iterable<array{StringType, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new StringType();
+        $validator = new StringType();
 
         return [
-            [$rule, null],
-            [$rule, []],
-            [$rule, new stdClass()],
-            [$rule, 150],
+            [$validator, null],
+            [$validator, []],
+            [$validator, new stdClass()],
+            [$validator, 150],
         ];
     }
 }

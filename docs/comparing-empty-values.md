@@ -1,6 +1,6 @@
 # Comparing empty values
 
-The [Undef](rules/Undef.md), [Blank](rules/Blank.md), and [Falsy](rules/Falsy.md) rules all validate "empty-like" values, but they differ in strictness and use cases. This guide helps you understand when to use each one.
+The [Undef](rules/Undef.md), [Blank](rules/Blank.md), and [Falsy](rules/Falsy.md) validators all validate "empty-like" values, but they differ in strictness and use cases. This guide helps you understand when to use each one.
 
 ## Quick Comparison
 
@@ -22,16 +22,16 @@ The [Undef](rules/Undef.md), [Blank](rules/Blank.md), and [Falsy](rules/Falsy.md
 
 Legend: ✅ = valid (passes the validation), ❌ = invalid (does not pass the validation)
 
-## Understanding Each Rule
+## Understanding Each Validator
 
 ### Undef (Most Restrictive)
 
-The `Undef` rule is the most restrictive. It only considers two values as "undefined":
+The `Undef` validator is the most restrictive. It only considers two values as "undefined":
 
 - `null`
 - `''` (empty string)
 
-This rule is ideal when you want to check if a value was explicitly not provided, such as an optional form field that was left empty or a missing API parameter.
+This validator is ideal when you want to check if a value was explicitly not provided, such as an optional form field that was left empty or a missing API parameter.
 
 ```php
 v::undef()->isValid(null); // true
@@ -44,7 +44,7 @@ v::undef()->isValid(' ');  // false - whitespace is defined
 
 ### Falsy (Moderate)
 
-The `Falsy` rule uses PHP's native `empty()` function behavior. It considers values that PHP treats as "empty" in boolean contexts:
+The `Falsy` validator uses PHP's native `empty()` function behavior. It considers values that PHP treats as "empty" in boolean contexts:
 
 - `null`
 - `''` (empty string)
@@ -67,7 +67,7 @@ v::falsy()->isValid(' ');   // false - whitespace is not empty()
 
 ### Blank (Most Permissive)
 
-The `Blank` rule is the most permissive. It considers a value blank if it contains no meaningful content:
+The `Blank` validator is the most permissive. It considers a value blank if it contains no meaningful content:
 
 - Everything that `Falsy` considers falsy
 - Whitespace-only strings (` `, `\t`, `\n`)
@@ -121,7 +121,7 @@ v::blank()->isValid($value);
 
 ## Decision Guide
 
-Choose the rule based on what you consider "empty":
+Choose the validator based on what you consider "empty":
 
 1. **Use `Undef`** when only `null` and `''` should be considered empty. Zero, false, and empty arrays are valid values.
 

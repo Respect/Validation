@@ -1,12 +1,12 @@
 # DateTimeDiff
 
-- `DateTimeDiff(string $type, Rule $rule)`
-- `DateTimeDiff(string $type, Rule $rule, string $format)`
-- `DateTimeDiff(string $type, Rule $rule, string $format, DateTimeImmutable $now)`
+- `DateTimeDiff(string $type, Validator $validator)`
+- `DateTimeDiff(string $type, Validator $validator, string $format)`
+- `DateTimeDiff(string $type, Validator $validator, string $format, DateTimeImmutable $now)`
 
-Validates the difference of date/time against a specific rule.
+Validates the difference of date/time against a specific validator.
 
-The `$format` argument should follow PHP's [date()][] function. When the `$format` is not given, this rule accepts
+The `$format` argument should follow PHP's [date()][] function. When the `$format` is not given, this validator accepts
 [Supported Date and Time Formats][] by PHP (see [strtotime()][]).
 
 ```php
@@ -79,7 +79,7 @@ Used when the input cannot be parsed with the given format.
 
 ## Caveats
 
-When using custom templates, the key must be `dateTimeDiff` + name of the rule you passed, for example:
+When using custom templates, the key must be `dateTimeDiff` + name of the validator you passed, for example:
 
 ```php
 v::dateTimeDiff('years', v::equals(2))->assert('1 year ago', [

@@ -17,7 +17,7 @@ use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Property::class)]
 final class PropertyTest extends TestCase
 {
@@ -57,8 +57,8 @@ final class PropertyTest extends TestCase
 
         $wrapped = Stub::pass(1);
 
-        $rule = new Property('foo', $wrapped);
-        $rule->evaluate($object);
+        $validator = new Property('foo', $wrapped);
+        $validator->evaluate($object);
 
         self::assertEquals([$object->foo], $wrapped->inputs);
     }

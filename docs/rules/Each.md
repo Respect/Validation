@@ -1,8 +1,8 @@
 # Each
 
-- `Each(Rule $rule)`
+- `Each(Validator $validator)`
 
-Validates whether each value in the input is valid according to another rule.
+Validates whether each value in the input is valid according to another validator.
 
 ```php
 $releaseDates = [
@@ -14,7 +14,7 @@ $releaseDates = [
 v::each(v::dateTime())->isValid($releaseDates); // true
 ```
 
-You can also validate array keys combining this rule with [Call](Call.md):
+You can also validate array keys combining this validator with [Call](Call.md):
 
 ```php
 v::call('array_keys', v::each(v::stringType()))->isValid($releaseDates); // true
@@ -22,7 +22,7 @@ v::call('array_keys', v::each(v::stringType()))->isValid($releaseDates); // true
 
 ## Note
 
-This rule uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail.
+This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail.
 
 ## Templates
 

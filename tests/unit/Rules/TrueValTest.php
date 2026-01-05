@@ -13,46 +13,46 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(TrueVal::class)]
 final class TrueValTest extends RuleTestCase
 {
     /** @return iterable<array{TrueVal, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new TrueVal();
+        $validator = new TrueVal();
 
         return [
-            [$rule, true],
-            [$rule, 1],
-            [$rule, '1'],
-            [$rule, 'true'],
-            [$rule, 'on'],
-            [$rule, 'yes'],
-            [$rule, 'TRUE'],
-            [$rule, 'ON'],
-            [$rule, 'YES'],
-            [$rule, 'True'],
-            [$rule, 'On'],
-            [$rule, 'Yes'],
+            [$validator, true],
+            [$validator, 1],
+            [$validator, '1'],
+            [$validator, 'true'],
+            [$validator, 'on'],
+            [$validator, 'yes'],
+            [$validator, 'TRUE'],
+            [$validator, 'ON'],
+            [$validator, 'YES'],
+            [$validator, 'True'],
+            [$validator, 'On'],
+            [$validator, 'Yes'],
         ];
     }
 
     /** @return iterable<array{TrueVal, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new TrueVal();
+        $validator = new TrueVal();
 
         return [
-            [$rule, false],
-            [$rule, 0],
-            [$rule, 0.5],
-            [$rule, 2],
-            [$rule, '0'],
-            [$rule, 'false'],
-            [$rule, 'off'],
-            [$rule, 'no'],
-            [$rule, 'truth'],
+            [$validator, false],
+            [$validator, 0],
+            [$validator, 0.5],
+            [$validator, 2],
+            [$validator, '0'],
+            [$validator, 'false'],
+            [$validator, 'off'],
+            [$validator, 'no'],
+            [$validator, 'truth'],
         ];
     }
 }

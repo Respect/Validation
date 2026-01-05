@@ -10,14 +10,14 @@ declare(strict_types=1);
 namespace Respect\Validation\Rules\Core;
 
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function implode;
 use function is_scalar;
 use function str_replace;
 use function str_split;
 
-abstract class FilteredString implements Rule
+abstract class FilteredString implements Validator
 {
     public const string TEMPLATE_EXTRA = '__extra__';
 

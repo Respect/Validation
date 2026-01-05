@@ -13,8 +13,8 @@ use Respect\Validation\Id;
 use Respect\Validation\Name;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Test\Rules\Stub;
+use Respect\Validation\Validator;
 
 final class ResultBuilder
 {
@@ -26,7 +26,7 @@ final class ResultBuilder
 
     private bool $hasPrecedentName = true;
 
-    private string $template = Rule::TEMPLATE_STANDARD;
+    private string $template = Validator::TEMPLATE_STANDARD;
 
     /** @var array<string, mixed> */
     private array $parameters = [];
@@ -35,7 +35,7 @@ final class ResultBuilder
 
     private Id $id;
 
-    private Rule $rule;
+    private Validator $validator;
 
     private Result|null $adjacent = null;
 
@@ -46,8 +46,8 @@ final class ResultBuilder
 
     public function __construct()
     {
-        $this->rule = Stub::daze();
-        $this->id = Id::fromRule($this->rule);
+        $this->validator = Stub::daze();
+        $this->id = Id::fromValidator($this->validator);
     }
 
     public function build(): Result
@@ -55,7 +55,7 @@ final class ResultBuilder
         return new Result(
             $this->hasPassed,
             $this->input,
-            $this->rule,
+            $this->validator,
             $this->id,
             $this->parameters,
             $this->template,

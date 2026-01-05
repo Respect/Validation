@@ -25,17 +25,17 @@ final class ComparisonTest extends TestCase
     #[DataProvider('providerForAnyValues')]
     public function itShouldCompareAnyValue(mixed $compareTo): void
     {
-        $rule = new ConcreteComparison($compareTo);
+        $validator = new ConcreteComparison($compareTo);
 
-        self::assertValidInput($rule, $compareTo);
+        self::assertValidInput($validator, $compareTo);
     }
 
     #[Test]
     #[DataProvider('providerForScalarValues')]
     public function itShouldAlwaysInvalidateScalarWithNonScalarValues(mixed $compareTo): void
     {
-        $rule = new ConcreteComparison($compareTo);
+        $validator = new ConcreteComparison($compareTo);
 
-        self::assertInvalidInput($rule, new stdClass());
+        self::assertInvalidInput($validator, new stdClass());
     }
 }

@@ -14,36 +14,36 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Falsy::class)]
 final class FalsyTest extends RuleTestCase
 {
     /** @return iterable<array{Falsy, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Falsy();
+        $validator = new Falsy();
 
         return [
-            [$rule, 1],
-            [$rule, ' oi'],
-            [$rule, [5]],
-            [$rule, [0]],
-            [$rule, new stdClass()],
-            [$rule, '    '],
-            [$rule, "\n"],
+            [$validator, 1],
+            [$validator, ' oi'],
+            [$validator, [5]],
+            [$validator, [0]],
+            [$validator, new stdClass()],
+            [$validator, '    '],
+            [$validator, "\n"],
         ];
     }
 
     /** @return iterable<array{Falsy, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Falsy();
+        $validator = new Falsy();
 
         return [
-            [$rule, ''],
-            [$rule, false],
-            [$rule, null],
-            [$rule, []],
+            [$validator, ''],
+            [$validator, false],
+            [$validator, null],
+            [$validator, []],
         ];
     }
 }

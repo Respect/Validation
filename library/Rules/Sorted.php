@@ -13,7 +13,7 @@ use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function array_values;
 use function count;
@@ -32,7 +32,7 @@ use function str_split;
     '{{subject}} must not be sorted in descending order',
     self::TEMPLATE_DESCENDING,
 )]
-final readonly class Sorted implements Rule
+final readonly class Sorted implements Validator
 {
     public const string TEMPLATE_ASCENDING = '__ascending__';
     public const string TEMPLATE_DESCENDING = '__descending__';

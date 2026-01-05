@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function array_pop;
 use function count;
@@ -24,13 +24,13 @@ use function mb_substr_count;
     '{{subject}} must be a valid domain',
     '{{subject}} must not be a valid domain',
 )]
-final class Domain implements Rule
+final class Domain implements Validator
 {
-    private readonly Rule $genericRule;
+    private readonly Validator $genericRule;
 
-    private readonly Rule $tldRule;
+    private readonly Validator $tldRule;
 
-    private readonly Rule $partsRule;
+    private readonly Validator $partsRule;
 
     public function __construct(bool $tldCheck = true)
     {
@@ -67,7 +67,7 @@ final class Domain implements Rule
         );
     }
 
-    private function createTldRule(bool $realTldCheck): Rule
+    private function createTldRule(bool $realTldCheck): Validator
     {
         if ($realTldCheck) {
             return new Tld();
@@ -76,7 +76,7 @@ final class Domain implements Rule
         return new Circuit(new Not(new StartsWith('-')), new Length(new GreaterThanOrEqual(2)));
     }
 
-    private function createPartsRule(): Rule
+    private function createPartsRule(): Validator
     {
         return new Each(
             new Circuit(

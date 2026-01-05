@@ -7,23 +7,23 @@ Validates the PHP attributes defined in the properties of the input.
 Example of object:
 
 ```php
-use Respect\Validation\Rules as Rule;
+use Respect\Validation\Rules as Validator;
 
-#[Rule\AnyOf(
-    new Rule\Property('email', new Rule\Not(new Rule\Undef())),
-    new Rule\Property('phone', new Rule\Not(new Rule\Undef())),
+#[Validator\AnyOf(
+    new Validator\Property('email', new Validator\Not(new Validator\Undef())),
+    new Validator\Property('phone', new Validator\Not(new Validator\Undef())),
 )]
 final class Person
 {
     public function __construct(
-        #[Rule\Not(new Rule\Undef())]
+        #[Validator\Not(new Validator\Undef())]
         public string $name,
-        #[Rule\Date('Y-m-d')]
-        #[Rule\DateTimeDiff('years', new Rule\LessThanOrEqual(25))]
+        #[Validator\Date('Y-m-d')]
+        #[Validator\DateTimeDiff('years', new Validator\LessThanOrEqual(25))]
         public string $birthdate,
-        #[Rule\Email]
+        #[Validator\Email]
         public ?string $email = null,
-        #[Rule\Phone]
+        #[Validator\Phone]
         public ?string $phone = null,
     ) {
     }
@@ -71,8 +71,8 @@ v::attributes()->assert(new Person('', 'not a date', 'not an email', 'not a phon
 ## Caveats
 
 - If the object has no attributes, the validation will always pass.
-- When the property is nullable, this rule will wrap the rule on the property into [NullOr](NullOr.md) rule.
-- This rule has no templates because it uses the templates of the rules that are applied to the properties.
+- When the property is nullable, this validator will wrap the validator on the property into [NullOr](NullOr.md) validator.
+- This validator has no templates because it uses the templates of the validators that are applied to the properties.
 
 ## Categorization
 

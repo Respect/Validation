@@ -12,7 +12,7 @@ namespace Respect\Validation\Rules;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 use function array_diff;
 use function is_array;
@@ -22,7 +22,7 @@ use function is_array;
     '{{subject}} must be subset of {{superset}}',
     '{{subject}} must not be subset of {{superset}}',
 )]
-final readonly class Subset implements Rule
+final readonly class Subset implements Validator
 {
     /** @param mixed[] $superset */
     public function __construct(

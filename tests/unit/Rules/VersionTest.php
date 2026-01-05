@@ -15,7 +15,7 @@ use Respect\Validation\Test\RuleTestCase;
 
 use function uniqid;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Version::class)]
 final class VersionTest extends RuleTestCase
 {

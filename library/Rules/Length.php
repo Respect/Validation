@@ -40,10 +40,10 @@ final class Length extends Wrapper
         $length = $this->extractLength($input);
         if ($length === null) {
             return Result::failed($input, $this, [], self::TEMPLATE_WRONG_TYPE)
-                ->withId($this->rule->evaluate($input)->id->withPrefix('length'));
+                ->withId($this->validator->evaluate($input)->id->withPrefix('length'));
         }
 
-        $result = $this->rule->evaluate($length);
+        $result = $this->validator->evaluate($length);
 
         return $result->asAdjacentOf(
             Result::of($result->hasPassed, $input, $this),

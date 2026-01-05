@@ -10,11 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 interface AllBuilder
 {
-    public static function allAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function allAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allAlnum(string ...$additionalChars): Chain;
 
@@ -24,7 +24,7 @@ interface AllBuilder
 
     public static function allAlwaysValid(): Chain;
 
-    public static function allAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function allAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allArrayType(): Chain;
 
@@ -49,7 +49,7 @@ interface AllBuilder
 
     public static function allBsn(): Chain;
 
-    public static function allCall(callable $callable, Rule $rule): Chain;
+    public static function allCall(callable $callable, Validator $validator): Chain;
 
     public static function allCallableType(): Chain;
 
@@ -57,7 +57,7 @@ interface AllBuilder
 
     public static function allCharset(string $charset, string ...$charsets): Chain;
 
-    public static function allCircuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function allCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allCnh(): Chain;
 
@@ -91,7 +91,7 @@ interface AllBuilder
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public static function allDateTimeDiff(
         string $type,
-        Rule $rule,
+        Validator $validator,
         string|null $format = null,
         DateTimeImmutable|null $now = null,
     ): Chain;
@@ -104,7 +104,7 @@ interface AllBuilder
 
     public static function allDomain(bool $tldCheck = true): Chain;
 
-    public static function allEach(Rule $rule): Chain;
+    public static function allEach(Validator $validator): Chain;
 
     public static function allEmail(): Chain;
 
@@ -182,14 +182,14 @@ interface AllBuilder
     /** @param "alpha-2"|"alpha-3" $set */
     public static function allLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /** @param callable(mixed): Rule $ruleCreator */
-    public static function allLazy(callable $ruleCreator): Chain;
+    /** @param callable(mixed): Validator $validatorCreator */
+    public static function allLazy(callable $validatorCreator): Chain;
 
     public static function allLeapDate(string $format): Chain;
 
     public static function allLeapYear(): Chain;
 
-    public static function allLength(Rule $rule): Chain;
+    public static function allLength(Validator $validator): Chain;
 
     public static function allLessThan(mixed $compareTo): Chain;
 
@@ -201,11 +201,11 @@ interface AllBuilder
 
     public static function allMacAddress(): Chain;
 
-    public static function allMax(Rule $rule): Chain;
+    public static function allMax(Validator $validator): Chain;
 
     public static function allMimetype(string $mimetype): Chain;
 
-    public static function allMin(Rule $rule): Chain;
+    public static function allMin(Validator $validator): Chain;
 
     public static function allMultiple(int $multipleOf): Chain;
 
@@ -219,9 +219,9 @@ interface AllBuilder
 
     public static function allNo(bool $useLocale = false): Chain;
 
-    public static function allNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function allNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public static function allNot(Rule $rule): Chain;
+    public static function allNot(Validator $validator): Chain;
 
     public static function allNullType(): Chain;
 
@@ -233,7 +233,7 @@ interface AllBuilder
 
     public static function allOdd(): Chain;
 
-    public static function allOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public static function allOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allPerfectSquare(): Chain;
 
@@ -272,7 +272,7 @@ interface AllBuilder
     public static function allScalarVal(): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
-    public static function allSize(string $unit, Rule $rule): Chain;
+    public static function allSize(string $unit, Validator $validator): Chain;
 
     public static function allSlug(): Chain;
 
@@ -319,7 +319,7 @@ interface AllBuilder
 
     public static function allVowel(string ...$additionalChars): Chain;
 
-    public static function allWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
+    public static function allWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function allWritable(): Chain;
 

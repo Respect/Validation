@@ -1,8 +1,8 @@
 # Key
 
-- `Key(int|string $key, Rule $rule)`
+- `Key(int|string $key, Validator $validator)`
 
-Validates the value of an array against a given rule.
+Validates the value of an array against a given validator.
 
 ```php
 v::key('name', v::stringType())->isValid(['name' => 'The Respect Panda']); // true
@@ -38,7 +38,7 @@ v::key('email', v::email())->assert(['email' => 'not email']);
 ## Note
 
 - To validate if a key exists, use [KeyExists](KeyExists.md) instead.
-- To validate an array against a given rule if the key exists, use [KeyOptional](KeyOptional.md) instead.
+- To validate an array against a given validator if the key exists, use [KeyOptional](KeyOptional.md) instead.
 
 ## Templates
 

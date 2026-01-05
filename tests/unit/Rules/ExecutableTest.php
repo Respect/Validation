@@ -16,34 +16,34 @@ use SplFileInfo;
 use SplFileObject;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Executable::class)]
 final class ExecutableTest extends RuleTestCase
 {
     /** @return iterable<array{Executable, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new Executable();
+        $validator = new Executable();
 
         return [
-            [$rule, 'tests/fixtures/executable'],
-            [$rule, new SplFileInfo('tests/fixtures/executable')],
-            [$rule, new SplFileObject('tests/fixtures/executable')],
+            [$validator, 'tests/fixtures/executable'],
+            [$validator, new SplFileInfo('tests/fixtures/executable')],
+            [$validator, new SplFileObject('tests/fixtures/executable')],
         ];
     }
 
     /** @return iterable<array{Executable, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new Executable();
+        $validator = new Executable();
 
         return [
-            [$rule, []],
-            [$rule, new stdClass()],
-            [$rule, null],
-            [$rule, 'tests/fixtures/valid-image.gif'],
-            [$rule, new SplFileInfo('tests/fixtures/valid-image.jpg')],
-            [$rule, new SplFileObject('tests/fixtures/valid-image.png')],
+            [$validator, []],
+            [$validator, new stdClass()],
+            [$validator, null],
+            [$validator, 'tests/fixtures/valid-image.gif'],
+            [$validator, new SplFileInfo('tests/fixtures/valid-image.jpg')],
+            [$validator, new SplFileObject('tests/fixtures/valid-image.png')],
         ];
     }
 }

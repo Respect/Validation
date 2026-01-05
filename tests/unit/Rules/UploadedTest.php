@@ -16,7 +16,7 @@ use Respect\Validation\Test\Stubs\UploadedFileStub;
 use Respect\Validation\Test\TestCase;
 use SplFileInfo;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Uploaded::class)]
 final class UploadedTest extends TestCase
 {

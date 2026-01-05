@@ -10,13 +10,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 interface UndefOrChain
 {
-    public function undefOrAll(Rule $rule): Chain;
+    public function undefOrAll(Validator $validator): Chain;
 
-    public function undefOrAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function undefOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrAlnum(string ...$additionalChars): Chain;
 
@@ -26,7 +26,7 @@ interface UndefOrChain
 
     public function undefOrAlwaysValid(): Chain;
 
-    public function undefOrAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function undefOrAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrArrayType(): Chain;
 
@@ -49,7 +49,7 @@ interface UndefOrChain
 
     public function undefOrBsn(): Chain;
 
-    public function undefOrCall(callable $callable, Rule $rule): Chain;
+    public function undefOrCall(callable $callable, Validator $validator): Chain;
 
     public function undefOrCallableType(): Chain;
 
@@ -57,7 +57,7 @@ interface UndefOrChain
 
     public function undefOrCharset(string $charset, string ...$charsets): Chain;
 
-    public function undefOrCircuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function undefOrCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrCnh(): Chain;
 
@@ -91,7 +91,7 @@ interface UndefOrChain
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function undefOrDateTimeDiff(
         string $type,
-        Rule $rule,
+        Validator $validator,
         string|null $format = null,
         DateTimeImmutable|null $now = null,
     ): Chain;
@@ -104,7 +104,7 @@ interface UndefOrChain
 
     public function undefOrDomain(bool $tldCheck = true): Chain;
 
-    public function undefOrEach(Rule $rule): Chain;
+    public function undefOrEach(Validator $validator): Chain;
 
     public function undefOrEmail(): Chain;
 
@@ -181,25 +181,25 @@ interface UndefOrChain
 
     public function undefOrJson(): Chain;
 
-    public function undefOrKey(string|int $key, Rule $rule): Chain;
+    public function undefOrKey(string|int $key, Validator $validator): Chain;
 
     public function undefOrKeyExists(string|int $key): Chain;
 
-    public function undefOrKeyOptional(string|int $key, Rule $rule): Chain;
+    public function undefOrKeyOptional(string|int $key, Validator $validator): Chain;
 
-    public function undefOrKeySet(Rule $rule, Rule ...$rules): Chain;
+    public function undefOrKeySet(Validator $validator, Validator ...$validators): Chain;
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function undefOrLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /** @param callable(mixed): Rule $ruleCreator */
-    public function undefOrLazy(callable $ruleCreator): Chain;
+    /** @param callable(mixed): Validator $validatorCreator */
+    public function undefOrLazy(callable $validatorCreator): Chain;
 
     public function undefOrLeapDate(string $format): Chain;
 
     public function undefOrLeapYear(): Chain;
 
-    public function undefOrLength(Rule $rule): Chain;
+    public function undefOrLength(Validator $validator): Chain;
 
     public function undefOrLessThan(mixed $compareTo): Chain;
 
@@ -211,11 +211,11 @@ interface UndefOrChain
 
     public function undefOrMacAddress(): Chain;
 
-    public function undefOrMax(Rule $rule): Chain;
+    public function undefOrMax(Validator $validator): Chain;
 
     public function undefOrMimetype(string $mimetype): Chain;
 
-    public function undefOrMin(Rule $rule): Chain;
+    public function undefOrMin(Validator $validator): Chain;
 
     public function undefOrMultiple(int $multipleOf): Chain;
 
@@ -229,9 +229,9 @@ interface UndefOrChain
 
     public function undefOrNo(bool $useLocale = false): Chain;
 
-    public function undefOrNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function undefOrNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public function undefOrNot(Rule $rule): Chain;
+    public function undefOrNot(Validator $validator): Chain;
 
     public function undefOrNullType(): Chain;
 
@@ -243,7 +243,7 @@ interface UndefOrChain
 
     public function undefOrOdd(): Chain;
 
-    public function undefOrOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function undefOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrPerfectSquare(): Chain;
 
@@ -267,11 +267,11 @@ interface UndefOrChain
 
     public function undefOrPrintable(string ...$additionalChars): Chain;
 
-    public function undefOrProperty(string $propertyName, Rule $rule): Chain;
+    public function undefOrProperty(string $propertyName, Validator $validator): Chain;
 
     public function undefOrPropertyExists(string $propertyName): Chain;
 
-    public function undefOrPropertyOptional(string $propertyName, Rule $rule): Chain;
+    public function undefOrPropertyOptional(string $propertyName, Validator $validator): Chain;
 
     public function undefOrPublicDomainSuffix(): Chain;
 
@@ -288,7 +288,7 @@ interface UndefOrChain
     public function undefOrScalarVal(): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
-    public function undefOrSize(string $unit, Rule $rule): Chain;
+    public function undefOrSize(string $unit, Validator $validator): Chain;
 
     public function undefOrSlug(): Chain;
 
@@ -333,7 +333,7 @@ interface UndefOrChain
 
     public function undefOrVowel(string ...$additionalChars): Chain;
 
-    public function undefOrWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
+    public function undefOrWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function undefOrWritable(): Chain;
 

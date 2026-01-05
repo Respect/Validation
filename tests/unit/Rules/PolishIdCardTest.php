@@ -14,36 +14,36 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(PolishIdCard::class)]
 final class PolishIdCardTest extends RuleTestCase
 {
     /** @return iterable<array{PolishIdCard, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new PolishIdCard();
+        $validator = new PolishIdCard();
 
         return [
-            [$rule, 'APH505567'],
-            [$rule, 'AYE205410'],
-            [$rule, 'AYW036733'],
+            [$validator, 'APH505567'],
+            [$validator, 'AYE205410'],
+            [$validator, 'AYW036733'],
         ];
     }
 
     /** @return iterable<array{PolishIdCard, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new PolishIdCard();
+        $validator = new PolishIdCard();
 
         return [
-            [$rule, null],
-            [$rule, new stdClass()],
-            [$rule, []],
-            [$rule, '999205411'],
-            [$rule, 'AAAAAAAAA'],
-            [$rule, 'APH 505567'],
-            [$rule, 'AYE205411'],
-            [$rule, 'AYW036731'],
+            [$validator, null],
+            [$validator, new stdClass()],
+            [$validator, []],
+            [$validator, '999205411'],
+            [$validator, 'AAAAAAAAA'],
+            [$validator, 'APH 505567'],
+            [$validator, 'AYE205411'],
+            [$validator, 'AYW036731'],
         ];
     }
 }

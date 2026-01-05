@@ -18,7 +18,7 @@ use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Test\Stubs\CountableStub;
 use Respect\Validation\Test\TestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(BetweenExclusive::class)]
 final class BetweenExclusiveTest extends TestCase
 {

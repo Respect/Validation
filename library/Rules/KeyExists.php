@@ -14,8 +14,8 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
-use Respect\Validation\Rule;
 use Respect\Validation\Rules\Core\KeyRelated;
+use Respect\Validation\Validator;
 
 use function array_key_exists;
 use function is_array;
@@ -25,7 +25,7 @@ use function is_array;
     '{{subject}} must be present',
     '{{subject}} must not be present',
 )]
-final class KeyExists implements Rule, KeyRelated
+final class KeyExists implements Validator, KeyRelated
 {
     public function __construct(
         private readonly int|string $key,

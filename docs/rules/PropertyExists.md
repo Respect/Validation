@@ -16,10 +16,10 @@ v::propertyExists('website')->isValid($object); // false
 
 ## Notes
 
-This rule will validate public, private, protected, uninitialised, and static properties.
+This validator will validate public, private, protected, uninitialised, and static properties.
 
-- To validate a property against a given rule requiring the property to exist, use [Property](Property.md) instead.
-- To validate a property against a given rule only if the property exists, use [PropertyOptional](PropertyOptional.md) instead.
+- To validate a property against a given validator requiring the property to exist, use [Property](Property.md) instead.
+- To validate a property against a given validator only if the property exists, use [PropertyOptional](PropertyOptional.md) instead.
 
 ## Templates
 
@@ -38,7 +38,7 @@ This rule will validate public, private, protected, uninitialised, and static pr
 
 ## Caveats
 
-`PropertyExists` defines the given `$propertyName` as the path, and because it is a standalone rule without children, it's not possible to display a fully custom name with it.
+`PropertyExists` defines the given `$propertyName` as the path, and because it is a standalone validator without children, it's not possible to display a fully custom name with it.
 
 When no custom name is set, the path is displayed as `{{name}}`. When a custom name is set, the validation engine prepends the path to the custom name:
 

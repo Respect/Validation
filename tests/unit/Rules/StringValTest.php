@@ -17,41 +17,41 @@ use stdClass;
 
 use function tmpfile;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(StringVal::class)]
 final class StringValTest extends RuleTestCase
 {
     /** @return iterable<array{StringVal, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new StringVal();
+        $validator = new StringVal();
 
         return [
-            [$rule, '6'],
-            [$rule, 'String'],
-            [$rule, 1.0],
-            [$rule, 42],
-            [$rule, false],
-            [$rule, true],
-            [$rule, new ToStringStub('something')],
+            [$validator, '6'],
+            [$validator, 'String'],
+            [$validator, 1.0],
+            [$validator, 42],
+            [$validator, false],
+            [$validator, true],
+            [$validator, new ToStringStub('something')],
         ];
     }
 
     /** @return iterable<array{StringVal, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new StringVal();
+        $validator = new StringVal();
 
         return [
-            [$rule, []],
+            [$validator, []],
             [
-                $rule,
+                $validator,
                 static function (): void {
                 },
             ],
-            [$rule, new stdClass()],
-            [$rule, null],
-            [$rule, tmpfile()],
+            [$validator, new stdClass()],
+            [$validator, null],
+            [$validator, tmpfile()],
         ];
     }
 }

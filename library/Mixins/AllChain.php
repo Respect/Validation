@@ -10,11 +10,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
-use Respect\Validation\Rule;
+use Respect\Validation\Validator;
 
 interface AllChain
 {
-    public function allAllOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function allAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allAlnum(string ...$additionalChars): Chain;
 
@@ -24,7 +24,7 @@ interface AllChain
 
     public function allAlwaysValid(): Chain;
 
-    public function allAnyOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function allAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allArrayType(): Chain;
 
@@ -49,7 +49,7 @@ interface AllChain
 
     public function allBsn(): Chain;
 
-    public function allCall(callable $callable, Rule $rule): Chain;
+    public function allCall(callable $callable, Validator $validator): Chain;
 
     public function allCallableType(): Chain;
 
@@ -57,7 +57,7 @@ interface AllChain
 
     public function allCharset(string $charset, string ...$charsets): Chain;
 
-    public function allCircuit(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function allCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allCnh(): Chain;
 
@@ -91,7 +91,7 @@ interface AllChain
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function allDateTimeDiff(
         string $type,
-        Rule $rule,
+        Validator $validator,
         string|null $format = null,
         DateTimeImmutable|null $now = null,
     ): Chain;
@@ -104,7 +104,7 @@ interface AllChain
 
     public function allDomain(bool $tldCheck = true): Chain;
 
-    public function allEach(Rule $rule): Chain;
+    public function allEach(Validator $validator): Chain;
 
     public function allEmail(): Chain;
 
@@ -182,14 +182,14 @@ interface AllChain
     /** @param "alpha-2"|"alpha-3" $set */
     public function allLanguageCode(string $set = 'alpha-2'): Chain;
 
-    /** @param callable(mixed): Rule $ruleCreator */
-    public function allLazy(callable $ruleCreator): Chain;
+    /** @param callable(mixed): Validator $validatorCreator */
+    public function allLazy(callable $validatorCreator): Chain;
 
     public function allLeapDate(string $format): Chain;
 
     public function allLeapYear(): Chain;
 
-    public function allLength(Rule $rule): Chain;
+    public function allLength(Validator $validator): Chain;
 
     public function allLessThan(mixed $compareTo): Chain;
 
@@ -201,11 +201,11 @@ interface AllChain
 
     public function allMacAddress(): Chain;
 
-    public function allMax(Rule $rule): Chain;
+    public function allMax(Validator $validator): Chain;
 
     public function allMimetype(string $mimetype): Chain;
 
-    public function allMin(Rule $rule): Chain;
+    public function allMin(Validator $validator): Chain;
 
     public function allMultiple(int $multipleOf): Chain;
 
@@ -219,9 +219,9 @@ interface AllChain
 
     public function allNo(bool $useLocale = false): Chain;
 
-    public function allNoneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function allNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public function allNot(Rule $rule): Chain;
+    public function allNot(Validator $validator): Chain;
 
     public function allNullType(): Chain;
 
@@ -233,7 +233,7 @@ interface AllChain
 
     public function allOdd(): Chain;
 
-    public function allOneOf(Rule $rule1, Rule $rule2, Rule ...$rules): Chain;
+    public function allOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allPerfectSquare(): Chain;
 
@@ -272,7 +272,7 @@ interface AllChain
     public function allScalarVal(): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
-    public function allSize(string $unit, Rule $rule): Chain;
+    public function allSize(string $unit, Validator $validator): Chain;
 
     public function allSlug(): Chain;
 
@@ -319,7 +319,7 @@ interface AllChain
 
     public function allVowel(string ...$additionalChars): Chain;
 
-    public function allWhen(Rule $when, Rule $then, Rule|null $else = null): Chain;
+    public function allWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function allWritable(): Chain;
 

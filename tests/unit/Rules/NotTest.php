@@ -16,7 +16,7 @@ use Respect\Validation\Id;
 use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\RuleTestCase;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(Not::class)]
 final class NotTest extends RuleTestCase
 {
@@ -25,10 +25,10 @@ final class NotTest extends RuleTestCase
     {
         $wrapped = Stub::fail(2);
 
-        $rule = new Not($wrapped);
+        $validator = new Not($wrapped);
 
         self::assertEquals(
-            $rule->evaluate('input'),
+            $validator->evaluate('input'),
             $wrapped->evaluate('input')->withId(new Id('notStub'))->withToggledModeAndValidation(),
         );
     }

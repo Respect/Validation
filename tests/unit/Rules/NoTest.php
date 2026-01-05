@@ -20,7 +20,7 @@ use function sprintf;
 
 use const LC_ALL;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(No::class)]
 final class NoTest extends RuleTestCase
 {

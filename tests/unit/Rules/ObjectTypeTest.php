@@ -15,33 +15,33 @@ use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
-#[Group('rule')]
+#[Group('validator')]
 #[CoversClass(ObjectType::class)]
 final class ObjectTypeTest extends RuleTestCase
 {
     /** @return iterable<array{ObjectType, mixed}> */
     public static function providerForValidInput(): iterable
     {
-        $rule = new ObjectType();
+        $validator = new ObjectType();
 
         return [
-            [$rule, new stdClass()],
-            [$rule, new ArrayObject()],
+            [$validator, new stdClass()],
+            [$validator, new ArrayObject()],
         ];
     }
 
     /** @return iterable<array{ObjectType, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
-        $rule = new ObjectType();
+        $validator = new ObjectType();
 
         return [
-            [$rule, ''],
-            [$rule, null],
-            [$rule, 121],
-            [$rule, []],
-            [$rule, 'Foo'],
-            [$rule, false],
+            [$validator, ''],
+            [$validator, null],
+            [$validator, 121],
+            [$validator, []],
+            [$validator, 'Foo'],
+            [$validator, false],
         ];
     }
 }
