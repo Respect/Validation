@@ -11,5 +11,5 @@ namespace Respect\Validation\Transformers;
 
 interface Transformer
 {
-    public function transform(RuleSpec $ruleSpec): RuleSpec;
+    public function transform(ValidatorSpec $validatorSpec): ValidatorSpec;
 }

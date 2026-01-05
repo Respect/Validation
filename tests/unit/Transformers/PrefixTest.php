@@ -20,8 +20,8 @@ use Respect\Validation\Test\TestCase;
 final class PrefixTest extends TestCase
 {
     #[Test]
-    #[DataProvider('providerForTransformedRuleSpec')]
-    public function itShouldTransformRuleSpec(RuleSpec $original, RuleSpec $expected): void
+    #[DataProvider('providerForTransformedValidatorSpec')]
+    public function itShouldTransformValidatorSpec(ValidatorSpec $original, ValidatorSpec $expected): void
     {
         $transformer = new Prefix();
         $transformed = $transformer->transform($original);
@@ -33,47 +33,47 @@ final class PrefixTest extends TestCase
     #[DataProvider('providerForUntransformedRuleNames')]
     public function itShouldPreventTransformingCanonicalRule(string $ruleName): void
     {
-        $ruleSpec = new RuleSpec($ruleName);
+        $validatorSpec = new ValidatorSpec($ruleName);
 
         $transformer = new Prefix();
-        self::assertSame($ruleSpec, $transformer->transform($ruleSpec));
+        self::assertSame($validatorSpec, $transformer->transform($validatorSpec));
     }
 
-    /** @return array<array{RuleSpec, RuleSpec}> */
-    public static function providerForTransformedRuleSpec(): array
+    /** @return array<array{ValidatorSpec, ValidatorSpec}> */
+    public static function providerForTransformedValidatorSpec(): array
     {
         return [
             'key' => [
-                new RuleSpec('keyNextRule', ['keyName', 123]),
-                new RuleSpec('NextRule', [123], new RuleSpec('key', ['keyName'])),
+                new ValidatorSpec('keyNextRule', ['keyName', 123]),
+                new ValidatorSpec('NextRule', [123], new ValidatorSpec('key', ['keyName'])),
             ],
             'length' => [
-                new RuleSpec('lengthNextRule', [5]),
-                new RuleSpec('NextRule', [5], new RuleSpec('length')),
+                new ValidatorSpec('lengthNextRule', [5]),
+                new ValidatorSpec('NextRule', [5], new ValidatorSpec('length')),
             ],
             'max' => [
-                new RuleSpec('maxNextRule', [1, 10]),
-                new RuleSpec('NextRule', [1, 10], new RuleSpec('max')),
+                new ValidatorSpec('maxNextRule', [1, 10]),
+                new ValidatorSpec('NextRule', [1, 10], new ValidatorSpec('max')),
             ],
             'min' => [
-                new RuleSpec('minNextRule', [1, 10]),
-                new RuleSpec('NextRule', [1, 10], new RuleSpec('min')),
+                new ValidatorSpec('minNextRule', [1, 10]),
+                new ValidatorSpec('NextRule', [1, 10], new ValidatorSpec('min')),
             ],
             'not' => [
-                new RuleSpec('notNextRule', [1, 10]),
-                new RuleSpec('NextRule', [1, 10], new RuleSpec('not')),
+                new ValidatorSpec('notNextRule', [1, 10]),
+                new ValidatorSpec('NextRule', [1, 10], new ValidatorSpec('not')),
             ],
             'nullOr' => [
-                new RuleSpec('nullOrNextRule', [1, 10]),
-                new RuleSpec('NextRule', [1, 10], new RuleSpec('nullOr')),
+                new ValidatorSpec('nullOrNextRule', [1, 10]),
+                new ValidatorSpec('NextRule', [1, 10], new ValidatorSpec('nullOr')),
             ],
             'property' => [
-                new RuleSpec('propertyNextRule', ['propertyName', 567]),
-                new RuleSpec('NextRule', [567], new RuleSpec('property', ['propertyName'])),
+                new ValidatorSpec('propertyNextRule', ['propertyName', 567]),
+                new ValidatorSpec('NextRule', [567], new ValidatorSpec('property', ['propertyName'])),
             ],
             'undefOr' => [
-                new RuleSpec('undefOrNextRule', [1, 10]),
-                new RuleSpec('NextRule', [1, 10], new RuleSpec('undefOr')),
+                new ValidatorSpec('undefOrNextRule', [1, 10]),
+                new ValidatorSpec('NextRule', [1, 10], new ValidatorSpec('undefOr')),
             ],
         ];
     }

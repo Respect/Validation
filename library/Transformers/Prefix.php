@@ -12,6 +12,7 @@ namespace Respect\Validation\Transformers;
 use function array_shift;
 use function in_array;
 use function str_starts_with;
+use function strlen;
 use function substr;
 
 final class Prefix implements Transformer
@@ -37,56 +38,40 @@ final class Prefix implements Transformer
         'undefOr',
     ];
 
-    public function transform(RuleSpec $ruleSpec): RuleSpec
+    public function transform(ValidatorSpec $validatorSpec): ValidatorSpec
     {
-        if ($ruleSpec->wrapper !== null || in_array($ruleSpec->name, self::RULES_TO_SKIP, true)) {
-            return $ruleSpec;
+        if ($validatorSpec->wrapper !== null || in_array($validatorSpec->name, self::RULES_TO_SKIP, true)) {
+            return $validatorSpec;
         }
 
-        if (str_starts_with($ruleSpec->name, 'key')) {
-            $arguments = $ruleSpec->arguments;
+        foreach (['all', 'length', 'max', 'min', 'not', 'nullOr', 'undefOr'] as $prefix) {
+            if (!str_starts_with($validatorSpec->name, $prefix)) {
+                continue;
+            }
+
+            return new ValidatorSpec(
+                substr($validatorSpec->name, strlen($prefix)),
+                $validatorSpec->arguments,
+                new ValidatorSpec($prefix),
+            );
+        }
+
+        foreach (['key', 'property'] as $prefix) {
+            if (!str_starts_with($validatorSpec->name, $prefix)) {
+                continue;
+            }
+
+            $arguments = $validatorSpec->arguments;
             array_shift($arguments);
-            $wrapperArguments = [$ruleSpec->arguments[0]];
+            $wrapperArguments = [$validatorSpec->arguments[0]];
 
-            return new RuleSpec(substr($ruleSpec->name, 3), $arguments, new RuleSpec('key', $wrapperArguments));
+            return new ValidatorSpec(
+                substr($validatorSpec->name, strlen($prefix)),
+                $arguments,
+                new ValidatorSpec($prefix, $wrapperArguments),
+            );
         }
 
-        if (str_starts_with($ruleSpec->name, 'all')) {
-            return new RuleSpec(substr($ruleSpec->name, 3), $ruleSpec->arguments, new RuleSpec('all'));
-        }
-
-        if (str_starts_with($ruleSpec->name, 'length')) {
-            return new RuleSpec(substr($ruleSpec->name, 6), $ruleSpec->arguments, new RuleSpec('length'));
-        }
-
-        if (str_starts_with($ruleSpec->name, 'max')) {
-            return new RuleSpec(substr($ruleSpec->name, 3), $ruleSpec->arguments, new RuleSpec('max'));
-        }
-
-        if (str_starts_with($ruleSpec->name, 'min')) {
-            return new RuleSpec(substr($ruleSpec->name, 3), $ruleSpec->arguments, new RuleSpec('min'));
-        }
-
-        if (str_starts_with($ruleSpec->name, 'not')) {
-            return new RuleSpec(substr($ruleSpec->name, 3), $ruleSpec->arguments, new RuleSpec('not'));
-        }
-
-        if (str_starts_with($ruleSpec->name, 'nullOr')) {
-            return new RuleSpec(substr($ruleSpec->name, 6), $ruleSpec->arguments, new RuleSpec('nullOr'));
-        }
-
-        if (str_starts_with($ruleSpec->name, 'property')) {
-            $arguments = $ruleSpec->arguments;
-            array_shift($arguments);
-            $wrapperArguments = [$ruleSpec->arguments[0]];
-
-            return new RuleSpec(substr($ruleSpec->name, 8), $arguments, new RuleSpec('property', $wrapperArguments));
-        }
-
-        if (str_starts_with($ruleSpec->name, 'undefOr')) {
-            return new RuleSpec(substr($ruleSpec->name, 7), $ruleSpec->arguments, new RuleSpec('undefOr'));
-        }
-
-        return $ruleSpec;
+        return $validatorSpec;
     }
 }

@@ -13,8 +13,8 @@ use ReflectionClass;
 use ReflectionException;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
-use Respect\Validation\Transformers\RuleSpec;
 use Respect\Validation\Transformers\Transformer;
+use Respect\Validation\Transformers\ValidatorSpec;
 
 use function array_merge;
 use function sprintf;
@@ -38,16 +38,16 @@ final readonly class NamespacedValidatorFactory implements ValidatorFactory
     /** @param array<int, mixed> $arguments */
     public function create(string $ruleName, array $arguments = []): Validator
     {
-        return $this->createRuleSpec($this->transformer->transform(new RuleSpec($ruleName, $arguments)));
+        return $this->createValidatorSpec($this->transformer->transform(new ValidatorSpec($ruleName, $arguments)));
     }
 
-    private function createRuleSpec(RuleSpec $ruleSpec): Validator
+    private function createValidatorSpec(ValidatorSpec $validatorSpec): Validator
     {
-        $validator = $this->createRule($ruleSpec->name, $ruleSpec->arguments);
-        if ($ruleSpec->wrapper !== null) {
+        $validator = $this->createRule($validatorSpec->name, $validatorSpec->arguments);
+        if ($validatorSpec->wrapper !== null) {
             return $this->createRule(
-                $ruleSpec->wrapper->name,
-                array_merge($ruleSpec->wrapper->arguments, [$validator]),
+                $validatorSpec->wrapper->name,
+                array_merge($validatorSpec->wrapper->arguments, [$validator]),
             );
         }
 

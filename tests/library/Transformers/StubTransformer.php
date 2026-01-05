@@ -9,13 +9,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Transformers;
 
-use Respect\Validation\Transformers\RuleSpec;
 use Respect\Validation\Transformers\Transformer;
+use Respect\Validation\Transformers\ValidatorSpec;
 
 final class StubTransformer implements Transformer
 {
-    public function transform(RuleSpec $ruleSpec): RuleSpec
+    public function transform(ValidatorSpec $validatorSpec): ValidatorSpec
     {
-        return $ruleSpec;
+        return $validatorSpec;
     }
 }
