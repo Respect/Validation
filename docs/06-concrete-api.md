@@ -12,20 +12,20 @@ $usernameValidator->isValid('alganet'); // true
 ```
 
 If you `var_dump($usernameValidator)`, you'll see a composite of objects with
-`Respect\Validation\Rules\Alnum`, `Respect\Validation\Rules\Spaced` wrapped in `Respect\Validation\Rules\Not` and
-`Respect\Validation\Rules\Length`. There is a specific object for each validator, and
+`Respect\Validation\Validators\Alnum`, `Respect\Validation\Validators\Spaced` wrapped in `Respect\Validation\Validators\Not` and
+`Respect\Validation\Validators\Length`. There is a specific object for each validator, and
 the chain only builds the structure. You can build it by yourself:
 
 ```php
-use Respect\Validation\Rules;
+use Respect\Validation\Validators;
 use Respect\Validation\ValidatorBuilder;
 
 $usernameValidator = ValidatorBuilder::init(
-    new Rules\Alnum(),
-    new Rules\Not(
-        new Rules\Spaced(),
+    new Validators\Alnum(),
+    new Validators\Not(
+        new Validators\Spaced(),
     ),
-    new Rules\Length(1, 15),
+    new Validators\Length(1, 15),
 );
 $usernameValidator->isValid('alganet'); // true
 ```
@@ -34,17 +34,17 @@ This is still a very lean API. You can use it in any dependency injection
 container or test it in the way you want. Nesting is still possible:
 
 ```php
-use Respect\Validation\Rules;
+use Respect\Validation\Validators;
 
 $usernameValidator = ValidatorBuilder::init(
-    new Rules\Key(
+    new Validators\Key(
         'name',
-        new Rules\AllOf(
-            new Rules\Alnum(),
-            new Rules\Not(
-                new Rules\Spaced(),
+        new Validators\AllOf(
+            new Validators\Alnum(),
+            new Validators\Not(
+                new Validators\Spaced(),
             ),
-            new Rules\Length(1, 15),
+            new Validators\Length(1, 15),
         )
     )
 );

@@ -51,7 +51,7 @@ Array
 )
 ```
 
-When validating with [Key](rules/Key.md) or [Property](rules/Property.md) the keys of will correspond to the name of the key or property that failed the validation.
+When validating with [Key](validators/Key.md) or [Property](validators/Property.md) the keys of will correspond to the name of the key or property that failed the validation.
 
 ## Custom templates
 

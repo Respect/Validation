@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-use Respect\Validation\Rules\Core\Simple;
+use Respect\Validation\Validators\Core\Simple;
 
 test('https://github.com/Respect/Validation/issues/1477', catchAll(
     fn() => v::key(

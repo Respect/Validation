@@ -13,7 +13,7 @@ use Respect\Validation\Id;
 use Respect\Validation\Name;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
-use Respect\Validation\Test\Rules\Stub;
+use Respect\Validation\Test\Validators\Stub;
 use Respect\Validation\Validator;
 
 final class ResultBuilder

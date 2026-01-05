@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-use Respect\Validation\Rules\Core\Nameable;
+use Respect\Validation\Validators\Core\Nameable;
 
 use function array_filter;
 use function array_map;

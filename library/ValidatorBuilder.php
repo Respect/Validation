@@ -15,8 +15,8 @@ use Respect\Validation\Message\ArrayFormatter;
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\StringFormatter;
 use Respect\Validation\Mixins\Builder;
-use Respect\Validation\Rules\AllOf;
-use Respect\Validation\Rules\Core\Nameable;
+use Respect\Validation\Validators\AllOf;
+use Respect\Validation\Validators\Core\Nameable;
 use Throwable;
 
 use function count;

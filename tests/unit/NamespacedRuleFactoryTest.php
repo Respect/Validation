@@ -14,12 +14,12 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
-use Respect\Validation\Test\Rules\Invalid;
-use Respect\Validation\Test\Rules\MyAbstractClass;
-use Respect\Validation\Test\Rules\Stub;
-use Respect\Validation\Test\Rules\Valid;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Test\Transformers\StubTransformer;
+use Respect\Validation\Test\Validators\Invalid;
+use Respect\Validation\Test\Validators\MyAbstractClass;
+use Respect\Validation\Test\Validators\Stub;
+use Respect\Validation\Test\Validators\Valid;
 
 use function assert;
 use function sprintf;
@@ -28,7 +28,7 @@ use function sprintf;
 #[CoversClass(NamespacedValidatorFactory::class)]
 final class NamespacedRuleFactoryTest extends TestCase
 {
-    private const string TEST_RULES_NAMESPACE = 'Respect\\Validation\\Test\\Rules';
+    private const string TEST_RULES_NAMESPACE = 'Respect\\Validation\\Test\\Validators';
 
     #[Test]
     public function shouldCreateRuleByNameBasedOnNamespace(): void

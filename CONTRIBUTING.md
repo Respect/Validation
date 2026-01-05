@@ -29,8 +29,8 @@ Before writing anything, feature or bug fix:
 
 A common validator on Respect\Validation is composed of three classes:
 
-- `library/Rules/YourValidatorName.php`: the validator itself
-- `tests/unit/Rules/YourValidatorNameTest.php`: tests for the validator
+- `library/Validators/YourValidatorName.php`: the validator itself
+- `tests/unit/Validators/YourValidatorNameTest.php`: tests for the validator
 
 The classes are pretty straightforward. In the sample below, we're going to
 create a validator that validates if a string is equal to "Hello World".
@@ -60,10 +60,10 @@ and will natively have support for chaining and everything else.
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Validators;
 
 use Respect\Validation\Message\Template;
-use Respect\Validation\Rules\Core\Simple;
+use Respect\Validation\Validators\Core\Simple;
 
 #[Template(
     '{{subject}} must be a Hello World',
@@ -102,7 +102,7 @@ first item of the arrays:
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Rules;
+namespace Respect\Validation\Validators;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;

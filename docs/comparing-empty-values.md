@@ -1,6 +1,6 @@
 # Comparing empty values
 
-The [Undef](rules/Undef.md), [Blank](rules/Blank.md), and [Falsy](rules/Falsy.md) validators all validate "empty-like" values, but they differ in strictness and use cases. This guide helps you understand when to use each one.
+The [Undef](validators/Undef.md), [Blank](validators/Blank.md), and [Falsy](validators/Falsy.md) validators all validate "empty-like" values, but they differ in strictness and use cases. This guide helps you understand when to use each one.
 
 ## Quick Comparison
 
@@ -133,7 +133,7 @@ Choose the validator based on what you consider "empty":
 
 See also:
 
-- [Undef](rules/Undef.md)
-- [Blank](rules/Blank.md)
-- [Falsy](rules/Falsy.md)
-- [NullType](rules/NullType.md)
+- [Undef](validators/Undef.md)
+- [Blank](validators/Blank.md)
+- [Falsy](validators/Falsy.md)
+- [NullType](validators/NullType.md)

@@ -183,12 +183,12 @@ function overwriteFile(string $content, string $basename): void
     ];
 
     $names = [];
-    foreach (new DirectoryIterator(__DIR__ . '/../library/Rules') as $file) {
+    foreach (new DirectoryIterator(__DIR__ . '/../library/Validators') as $file) {
         if (!$file->isFile()) {
             continue;
         }
 
-        $className = 'Respect\\Validation\\Rules\\' . $file->getBasename('.php');
+        $className = 'Respect\\Validation\\Validators\\' . $file->getBasename('.php');
         $reflection = new ReflectionClass($className);
         if ($reflection->isAbstract()) {
             continue;

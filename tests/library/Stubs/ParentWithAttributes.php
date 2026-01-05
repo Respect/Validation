@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Stubs;
 
-use Respect\Validation\Rules as Rule;
+use Respect\Validation\Validators as Rule;
 
 abstract class ParentWithAttributes
 {

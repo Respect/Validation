@@ -6,11 +6,11 @@ parameters:
     -
       # Why: SimpleXMLElement is weird and doesn't implement anything ArrayAccess-like
       message: '/Instanceof between mixed and SimpleXMLElement will always evaluate to false\./'
-      path: library/Rules/ArrayVal.php
+      path: library/Validators/ArrayVal.php
     - message: '/Call to an undefined method .+::expectException\(\)/'
       path: tests/Pest.php
     - message: '/Undefined variable: \$this/'
-      path: tests/feature/Rules/SizeTest.php
+      path: tests/feature/Validators/SizeTest.php
     - message: '/Undefined variable: \$this/'
       path: tests/Pest.php
     - message: '/Method .+\\TestingStringifier::stringify\(\) never returns null so it can be removed from the return type./'
@@ -18,7 +18,7 @@ parameters:
     - message: '/Parameter #1 \$messages of class .+\\ArrayTranslator constructor expects array<string, string>, array<string, int> given./'
       path: tests/unit/Message/Translator/ArrayTranslatorTest.php
     - message: '/Access to an undefined property PHPUnit\\Framework\\TestCase/'
-      path: tests/feature/Rules/SizeTest.php
+      path: tests/feature/Validators/SizeTest.php
     - message: '/Property Respect\\Validation\\Test\\Stubs\\.+::\$[a-zA-Z]+ is never read, only written./'
       path: tests/library/Stubs
   level: 8

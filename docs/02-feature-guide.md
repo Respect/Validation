@@ -32,17 +32,17 @@ v::intType()->positive()->assert($input);
 
 Respect\Validation offers over 150 validators, many of which are designed to address common scenarios. Here's a quick guide to some specific use cases and the validators that make validation straightforward.
 
-- Using validators as **PHP Attributes**: [Attributes](rules/Attributes.md).
-- Validating **Arrays**: [Key](rules/Key.md), [KeyOptional](rules/KeyOptional.md), [KeyExists](rules/KeyExists.md).
-- Validating **Array structures**: [KeySet](rules/KeySet.md).
-- Validating **Object properties**: [Property](rules/Property.md), [PropertyOptional](rules/PropertyOptional.md), [PropertyExists](rules/PropertyExists.md).
-- Using **Conditional validation**: [NullOr](rules/NullOr.md), [UndefOr](rules/UndefOr.md), [When](rules/When.md).
-- Using **Grouped validation**: [AllOf](rules/AllOf.md), [AnyOf](rules/AnyOf.md), [NoneOf](rules/NoneOf.md), [OneOf](rules/OneOf.md)
-- Validating **Each** value in the input: [Each](rules/Each.md).
-- Validating the **Length** of the input: [Length](rules/Length.md).
-- Validating the **Maximum** value in the input: [Max](rules/Max.md).
-- Validating the **Minimum** value in the input: [Min](rules/Min.md).
-- Handling **Special cases**: [Lazy](rules/Lazy.md), [Circuit](rules/Circuit.md), [Call](rules/Call.md).
+- Using validators as **PHP Attributes**: [Attributes](validators/Attributes.md).
+- Validating **Arrays**: [Key](validators/Key.md), [KeyOptional](validators/KeyOptional.md), [KeyExists](validators/KeyExists.md).
+- Validating **Array structures**: [KeySet](validators/KeySet.md).
+- Validating **Object properties**: [Property](validators/Property.md), [PropertyOptional](validators/PropertyOptional.md), [PropertyExists](validators/PropertyExists.md).
+- Using **Conditional validation**: [NullOr](validators/NullOr.md), [UndefOr](validators/UndefOr.md), [When](validators/When.md).
+- Using **Grouped validation**: [AllOf](validators/AllOf.md), [AnyOf](validators/AnyOf.md), [NoneOf](validators/NoneOf.md), [OneOf](validators/OneOf.md)
+- Validating **Each** value in the input: [Each](validators/Each.md).
+- Validating the **Length** of the input: [Length](validators/Length.md).
+- Validating the **Maximum** value in the input: [Max](validators/Max.md).
+- Validating the **Minimum** value in the input: [Min](validators/Min.md).
+- Handling **Special cases**: [Lazy](validators/Lazy.md), [Circuit](validators/Circuit.md), [Call](validators/Call.md).
 
 ### Custom templates
 
@@ -93,7 +93,7 @@ Use the `not` prefix to invert a validator.
 v::notEquals('main')->assert($input);
 ```
 
-For more details, check the [Not](rules/Not.md) validator documentation.
+For more details, check the [Not](validators/Not.md) validator documentation.
 
 ## Reusing validators
 

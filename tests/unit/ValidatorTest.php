@@ -14,8 +14,8 @@ use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
-use Respect\Validation\Test\Rules\Stub;
 use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\Validators\Stub;
 
 use function uniqid;
 
@@ -121,7 +121,7 @@ final class ValidatorTest extends TestCase
     }
 
     #[Test]
-    public function itShouldEvaluateAndThrowExceptionWhenNoRulesAreAdded(): void
+    public function itShouldEvaluateAndThrowExceptionWhenNoValidatorsAreAdded(): void
     {
         $this->expectException(ComponentException::class);
         $this->expectExceptionMessage('No validators have been added.');
@@ -141,7 +141,7 @@ final class ValidatorTest extends TestCase
     }
 
     #[Test]
-    public function itShouldEvaluateAndReturnResultWhenMultipleRulesAreAdded(): void
+    public function itShouldEvaluateAndReturnResultWhenMultipleValidatorsAreAdded(): void
     {
         $validator = ValidatorBuilder::init(Stub::pass(1), Stub::fail(2));
 

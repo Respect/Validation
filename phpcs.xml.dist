@@ -19,7 +19,7 @@
     <!-- Exclusions -->
     <exclude-pattern>tests/bootstrap.php</exclude-pattern>
     <rule ref="Squiz.Arrays.ArrayDeclaration.ValueNoNewline">
-        <exclude-pattern>library/Rules/Tld.php</exclude-pattern>
+        <exclude-pattern>library/Validators/Tld.php</exclude-pattern>
     </rule>
     <rule ref="Squiz.Functions.GlobalFunction">
         <exclude-pattern>tests/Pest.php</exclude-pattern>

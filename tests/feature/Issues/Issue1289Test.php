@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-use Respect\Validation\Rules\ArrayType;
-use Respect\Validation\Rules\BoolType;
-use Respect\Validation\Rules\Each;
-use Respect\Validation\Rules\KeyOptional;
-use Respect\Validation\Rules\OneOf;
-use Respect\Validation\Rules\StringType;
-use Respect\Validation\Rules\StringVal;
 use Respect\Validation\ValidatorBuilder;
+use Respect\Validation\Validators\ArrayType;
+use Respect\Validation\Validators\BoolType;
+use Respect\Validation\Validators\Each;
+use Respect\Validation\Validators\KeyOptional;
+use Respect\Validation\Validators\OneOf;
+use Respect\Validation\Validators\StringType;
+use Respect\Validation\Validators\StringVal;
 
 test('https://github.com/Respect/Validation/issues/1289', catchAll(
     fn() => ValidatorBuilder::init(

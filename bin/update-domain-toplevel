@@ -9,7 +9,7 @@ declare -r IFS=$'\n'
 declare -r LIST_URL="https://data.iana.org/TLD/tlds-alpha-by-domain.txt"
 declare -r LIST_FILENAME=$(mktemp)
 
-declare -r RULE_FILENAME=$(dirname "${BASH_SOURCE}")/../library/Rules/Tld.php
+declare -r RULE_FILENAME=$(dirname "${BASH_SOURCE}")/../library/Validators/Tld.php
 declare -r RULE_FILENAME_TEMPORARY=$(mktemp)
 
 echo "- Downloading list"
