@@ -1,6 +1,6 @@
-/*.dist export-ignore
-/*.yml export-ignore
-/.* export-ignore
-/bin export-ignore
-/docs export-ignore
-/tests export-ignore
+/* export-ignore
+/composer.json -export-ignore
+/data -export-ignore
+/library -export-ignore
+/LICENSE -export-ignore
+/README.md -export-ignore

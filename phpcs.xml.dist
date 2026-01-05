@@ -12,6 +12,7 @@
     <arg value="s" />
 
     <file>library/</file>
+    <file>src-dev/</file>
     <file>tests/</file>
 
     <rule ref="Respect" />

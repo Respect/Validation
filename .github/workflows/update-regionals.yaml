@@ -25,10 +25,13 @@ jobs:
           ref: ${{ secrets.LAST_MINOR_VERSION }}
 
       - name: Update top level domains
-        run: bin/update-domain-toplevel
+        run: bin/console update:domain-toplevel
 
       - name: Update public domain suffixes
-        run: bin/update-domain-suffixes
+        run: bin/console update:domain-suffixes
+
+      - name: Update postal codes
+        run: bin/console update:postal-codes
 
       - name: Create pull request
         id: cpr

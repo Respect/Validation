@@ -102,6 +102,13 @@
 - [Uploaded](validators/Uploaded.md)
 - [Writable](validators/Writable.md)
 
+## ISO codes
+
+- [CountryCode](validators/CountryCode.md)
+- [CurrencyCode](validators/CurrencyCode.md)
+- [LanguageCode](validators/LanguageCode.md)
+- [SubdivisionCode](validators/SubdivisionCode.md)
+
 ## Identifications
 
 - [Bsn](validators/Bsn.md)
@@ -130,13 +137,6 @@
 - [Tld](validators/Tld.md)
 - [Url](validators/Url.md)
 - [VideoUrl](validators/VideoUrl.md)
-
-## ISO codes
-
-- [CountryCode](validators/CountryCode.md)
-- [CurrencyCode](validators/CurrencyCode.md)
-- [LanguageCode](validators/LanguageCode.md)
-- [SubdivisionCode](validators/SubdivisionCode.md)
 
 ## Localization
 

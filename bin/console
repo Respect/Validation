@@ -1,0 +1,29 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-License-Identifier: MIT
+ */
+
+declare(strict_types=1);
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Respect\Dev\Commands\CreateMixinCommand;
+use Respect\Dev\Commands\UpdateDocLinksCommand;
+use Respect\Dev\Commands\UpdateDomainSuffixesCommand;
+use Respect\Dev\Commands\UpdateDomainToplevelCommand;
+use Respect\Dev\Commands\UpdatePostalCodesCommand;
+use Symfony\Component\Console\Application;
+
+return (static function () {
+    $application = new Application('Respect/Validation', '3.0');
+    $application->addCommand(new CreateMixinCommand());
+    $application->addCommand(new UpdateDocLinksCommand());
+    $application->addCommand(new UpdateDomainSuffixesCommand());
+    $application->addCommand(new UpdateDomainToplevelCommand());
+    $application->addCommand(new UpdatePostalCodesCommand());
+
+    return $application->run();
+})();

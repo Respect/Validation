@@ -44,6 +44,7 @@
         "sokil/php-isocodes": "^4.2.1",
         "sokil/php-isocodes-db-only": "^4.0",
         "squizlabs/php_codesniffer": "^4.0",
+        "symfony/console": "^7.4",
         "symfony/var-exporter": "^6.4 || ^7.0"
     },
     "suggest": {
@@ -64,6 +65,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Respect\\Dev\\": "src-dev/",
             "Respect\\Validation\\": "tests/unit/",
             "Respect\\Validation\\Test\\": "tests/library/"
         }
