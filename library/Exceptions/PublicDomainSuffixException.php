@@ -22,7 +22,7 @@ class PublicDomainSuffixException extends ValidationException
             self::STANDARD => '{{name}} must be a public domain suffix',
         ],
         self::MODE_NEGATIVE => [
-            self::STANDARD => '{{name}} must be a public domain suffix',
+            self::STANDARD => '{{name}} must not be a public domain suffix',
         ],
     ];
 }
