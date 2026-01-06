@@ -5,7 +5,8 @@
 Validates if the given data is a file that was uploaded via HTTP POST.
 
 ```php
-v::uploaded()->isValid('/path/of/an/uploaded/file'); // true
+v::uploaded()->assert('/path/of/an/uploaded/file');
+// → "/path/of/an/uploaded/file" must be an uploaded file
 ```
 
 ## Templates

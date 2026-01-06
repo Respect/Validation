@@ -23,15 +23,29 @@ allowed:
 When a `$format` is not given its default value is `H:i:s`.
 
 ```php
-v::time()->isValid('00:00:00'); // true
-v::time()->isValid('23:20:59'); // true
-v::time('H:i')->isValid('23:59'); // true
-v::time('g:i A')->isValid('8:13 AM'); // true
-v::time('His')->isValid(232059); // true
+v::time()->assert('00:00:00');
+// Validation passes successfully
 
-v::time()->isValid('24:00:00'); // false
-v::time()->isValid(new DateTime()); // false
-v::time()->isValid(new DateTimeImmutable()); // false
+v::time()->assert('23:20:59');
+// Validation passes successfully
+
+v::time('H:i')->assert('23:59');
+// Validation passes successfully
+
+v::time('g:i A')->assert('8:13 AM');
+// Validation passes successfully
+
+v::time('His')->assert(232059);
+// Validation passes successfully
+
+v::time()->assert('24:00:00');
+// → "24:00:00" must be a valid time in the format "23:59:59"
+
+v::time()->assert(new DateTime());
+// → `DateTime { 2024-01-01T12:00:00+00:00 }` must be a valid time in the format "23:59:59"
+
+v::time()->assert(new DateTimeImmutable());
+// → `DateTimeImmutable { 2024-01-01T12:00:00+00:00 }` must be a valid time in the format "23:59:59"
 ```
 
 ## Templates

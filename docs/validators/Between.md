@@ -5,9 +5,14 @@
 Validates whether the input is between two other values.
 
 ```php
-v::intVal()->between(10, 20)->isValid(10); // true
-v::intVal()->between(10, 20)->isValid(15); // true
-v::intVal()->between(10, 20)->isValid(20); // true
+v::intVal()->between(10, 20)->assert(10);
+// Validation passes successfully
+
+v::intVal()->between(10, 20)->assert(15);
+// Validation passes successfully
+
+v::intVal()->between(10, 20)->assert(20);
+// Validation passes successfully
 ```
 
 Validation makes comparison easier, check out our supported

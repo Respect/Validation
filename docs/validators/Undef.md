@@ -7,26 +7,54 @@ Validates if the given input is undefined. By _undefined_ we consider `null` or 
 We recommend you to check [Comparing empty values](../comparing-empty-values.md) for more details.
 
 ```php
-v::undef()->isValid(''); // true
-v::undef()->isValid(null); // true
+v::undef()->assert('');
+// Validation passes successfully
+
+v::undef()->assert(null);
+// Validation passes successfully
 ```
 
 Other values similar to _undefined_ values are considered _defined_:
 
 ```php
-v::undef()->isValid([]); // false
-v::undef()->isValid(' '); // false
-v::undef()->isValid(0); // false
-v::undef()->isValid('0'); // false
-v::undef()->isValid('0.0'); // false
-v::undef()->isValid(false); // false
-v::undef()->isValid(['']); // false
-v::undef()->isValid([' ']); // false
-v::undef()->isValid([0]); // false
-v::undef()->isValid(['0']); // false
-v::undef()->isValid([false]); // false
-v::undef()->isValid([[''], [0]]); // false
-v::undef()->isValid(new stdClass()); // false
+v::undef()->assert([]);
+// → `[]` must be undefined
+
+v::undef()->assert(' ');
+// → " " must be undefined
+
+v::undef()->assert(0);
+// → 0 must be undefined
+
+v::undef()->assert('0');
+// → "0" must be undefined
+
+v::undef()->assert('0.0');
+// → "0.0" must be undefined
+
+v::undef()->assert(false);
+// → `false` must be undefined
+
+v::undef()->assert(['']);
+// → `[""]` must be undefined
+
+v::undef()->assert([' ']);
+// → `[" "]` must be undefined
+
+v::undef()->assert([0]);
+// → `[0]` must be undefined
+
+v::undef()->assert(['0']);
+// → `["0"]` must be undefined
+
+v::undef()->assert([false]);
+// → `[false]` must be undefined
+
+v::undef()->assert([[''], [0]]);
+// → `[[""], [0]]` must be undefined
+
+v::undef()->assert(new stdClass());
+// → `stdClass {}` must be undefined
 ```
 
 ## Templates

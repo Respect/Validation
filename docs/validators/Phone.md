@@ -7,9 +7,14 @@ Validates whether the input is a valid phone number. This validator requires
 the `giggsey/libphonenumber-for-php-lite` package.
 
 ```php
-v::phone()->isValid('+1 650 253 00 00'); // true
-v::phone('BR')->isValid('+55 11 91111 1111'); // true
-v::phone('BR')->isValid('11 91111 1111'); // false
+v::phone()->assert('+1 650 253 00 00');
+// Validation passes successfully
+
+v::phone('BR')->assert('+55 11 91111 1111');
+// Validation passes successfully
+
+v::phone('BR')->assert('11 91111 1111');
+// Validation passes successfully
 ```
 
 ## Templates

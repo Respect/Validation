@@ -5,16 +5,35 @@
 Validates if the input is an emoji or a sequence of emojis.
 
 ```php
-v::emoji()->isValid('🍕'); // true
-v::emoji()->isValid('🎈'); // true
-v::emoji()->isValid('⚡'); // true
-v::emoji()->isValid('🌊🌊🌊🌊🌊🏄🌊🌊🌊🏖🌴'); // true
-v::emoji()->isValid('🇧🇷'); // true (country flag)
-v::emoji()->isValid('👨‍👩‍👧‍👦'); // true (ZWJ sequence)
-v::emoji()->isValid('👩🏽'); // true (skin tone modifier)
-v::emoji()->isValid('1️⃣'); // true (keycap sequence)
-v::emoji()->isValid('Hello World'); // false
-v::emoji()->isValid('this is a spark ⚡'); // false (mixed content)
+v::emoji()->assert('🍕');
+// Validation passes successfully
+
+v::emoji()->assert('🎈');
+// Validation passes successfully
+
+v::emoji()->assert('⚡');
+// Validation passes successfully
+
+v::emoji()->assert('🌊🌊🌊🌊🌊🏄🌊🌊🌊🏖🌴');
+// Validation passes successfully
+
+v::emoji()->assert('🇧🇷'); // (Country flags)
+// Validation passes successfully
+
+v::emoji()->assert('👨‍👩‍👧‍👦'); // (ZWJ sequence)
+// Validation passes successfully
+
+v::emoji()->assert('👩🏽'); // (Skin tone modifier)
+// Validation passes successfully
+
+v::emoji()->assert('1️⃣'); // (Keycap sequence)
+// Validation passes successfully
+
+v::emoji()->assert('Hello World');
+// → "Hello World" must be an emoji
+
+v::emoji()->assert('this is a spark ⚡'); // (Mixed content)
+// → "this is a spark ⚡" must be an emoji
 ```
 
 This validator supports:

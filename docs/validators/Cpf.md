@@ -5,20 +5,23 @@
 Validates a Brazillian CPF number.
 
 ```php
-v::cpf()->isValid('11598647644'); // true
+v::cpf()->assert('11598647644');
+// Validation passes successfully
 ```
 
 It ignores any non-digit char:
 
 ```php
-v::cpf()->isValid('693.319.118-40'); // true
+v::cpf()->assert('693.319.118-40');
+// Validation passes successfully
 ```
 
 If you need to validate digits only, add `->digit()` to
 the chain:
 
 ```php
-v::digit()->cpf()->isValid('11598647644'); // true
+v::digit()->cpf()->assert('11598647644');
+// Validation passes successfully
 ```
 
 ## Templates

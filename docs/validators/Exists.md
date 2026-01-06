@@ -5,14 +5,18 @@
 Validates files or directories.
 
 ```php
-v::exists()->isValid(__FILE__); // true
-v::exists()->isValid(__DIR__); // true
+v::exists()->assert(__FILE__);
+// Validation passes successfully
+
+v::exists()->assert(__DIR__);
+// Validation passes successfully
 ```
 
 This validator will consider SplFileInfo instances, so you can do something like:
 
 ```php
-v::exists()->isValid(new SplFileInfo('file.txt'));
+v::exists()->assert(new SplFileInfo('/path/to/file.txt'));
+// Validation passes successfully
 ```
 
 ## Templates

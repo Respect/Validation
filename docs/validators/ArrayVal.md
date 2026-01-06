@@ -6,9 +6,14 @@ Validates if the input is an array or if the input can be used as an array
 (instance of `ArrayAccess` or `SimpleXMLElement`).
 
 ```php
-v::arrayVal()->isValid([]); // true
-v::arrayVal()->isValid(new ArrayObject); // true
-v::arrayVal()->isValid(new SimpleXMLElement('<xml></xml>')); // true
+v::arrayVal()->assert([]);
+// Validation passes successfully
+
+v::arrayVal()->assert(new ArrayObject);
+// Validation passes successfully
+
+v::arrayVal()->assert(new SimpleXMLElement('<xml></xml>'));
+// Validation passes successfully
 ```
 
 ## Templates
@@ -55,5 +60,4 @@ See also:
 - [ScalarVal](ScalarVal.md)
 - [Sorted](Sorted.md)
 - [Subset](Subset.md)
-- [Type](Type.md)
 - [Unique](Unique.md)

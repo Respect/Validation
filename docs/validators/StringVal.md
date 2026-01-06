@@ -5,13 +5,26 @@
 Validates whether the input can be used as a string.
 
 ```php
-v::stringVal()->isValid('6'); // true
-v::stringVal()->isValid('String'); // true
-v::stringVal()->isValid(1.0); // true
-v::stringVal()->isValid(42); // true
-v::stringVal()->isValid(false); // true
-v::stringVal()->isValid(true); // true
-v::stringVal()->isValid(new ClassWithToString()); // true if ClassWithToString implements `__toString`
+v::stringVal()->assert('6');
+// Validation passes successfully
+
+v::stringVal()->assert('String');
+// Validation passes successfully
+
+v::stringVal()->assert(1.0);
+// Validation passes successfully
+
+v::stringVal()->assert(42);
+// Validation passes successfully
+
+v::stringVal()->assert(false);
+// Validation passes successfully
+
+v::stringVal()->assert(true);
+// Validation passes successfully
+
+v::stringVal()->assert(new ClassWithToString());
+// Validation passes successfully
 ```
 
 ## Templates
@@ -53,4 +66,3 @@ See also:
 - [ObjectType](ObjectType.md)
 - [ResourceType](ResourceType.md)
 - [StringType](StringType.md)
-- [Type](Type.md)

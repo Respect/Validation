@@ -5,8 +5,11 @@
 Validates all items of the input against a given validator.
 
 ```php
-v::all(v::intType())->isValid([1, 2, 3]); // true
-v::all(v::intType())->isValid([1, 2, '3']); // false
+v::all(v::intType())->assert([1, 2, 3]);
+// Validation passes successfully
+
+v::all(v::intType())->assert([1, 2, '3']);
+// → Every item in `[1, 2, "3"]` must be an integer
 ```
 
 This validator is similar to [Each](Each.md), but as opposed to the former, it displays a single message when asserting an input.
@@ -30,10 +33,10 @@ The template serves as a prefix to the template of the inner validator.
 
 ```php
 v::all(v::floatType())->assert([1.5, 2]);
-// Message: Every item in `[1.5, 2]` must be float
+// → Every item in `[1.5, 2]` must be float
 
 v::not(v::all(v::intType()))->assert([1, 2, -3]);
-// Message: Every item in `[1, 2, -3]` must not be an integer
+// → Every item in `[1, 2, -3]` must not be an integer
 ```
 
 ## Categorization

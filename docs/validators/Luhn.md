@@ -5,8 +5,11 @@
 Validate whether a given input is a [Luhn][] number.
 
 ```php
-v::luhn()->isValid('2222400041240011'); // true
-v::luhn()->isValid('respect!'); // false
+v::luhn()->assert('2222400041240011');
+// Validation passes successfully
+
+v::luhn()->assert('respect!');
+// → "respect!" must be a valid Luhn number
 ```
 
 ## Templates

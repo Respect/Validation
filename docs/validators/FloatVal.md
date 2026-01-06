@@ -5,8 +5,11 @@
 Validate whether the input value is float.
 
 ```php
-v::floatVal()->isValid(1.5); // true
-v::floatVal()->isValid('1e5'); // true
+v::floatVal()->assert(1.5);
+// Validation passes successfully
+
+v::floatVal()->assert('1e5');
+// Validation passes successfully
 ```
 
 ## Templates
@@ -44,4 +47,3 @@ See also:
 - [FloatType](FloatType.md)
 - [IntType](IntType.md)
 - [IntVal](IntVal.md)
-- [Type](Type.md)

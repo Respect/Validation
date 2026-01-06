@@ -5,7 +5,11 @@
 Validates if the given input is writable file.
 
 ```php
-v::writable()->isValid('file.txt'); // true
+v::writable()->assert('/path/to/file');
+// Validation passes successfully
+
+v::writable()->assert('/path/to/non-writable');
+// → "/path/to/non-writable" must be writable
 ```
 
 ## Templates

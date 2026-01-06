@@ -5,10 +5,17 @@
 Validates whether the input is a valid [ISBN][] or not.
 
 ```php
-v::isbn()->isValid('ISBN-13: 978-0-596-52068-7'); // true
-v::isbn()->isValid('978 0 596 52068 7'); // true
-v::isbn()->isValid('ISBN-12: 978-0-596-52068-7'); // false
-v::isbn()->isValid('978 10 596 52068 7'); // false
+v::isbn()->assert('ISBN-13: 978-0-596-52068-7');
+// Validation passes successfully
+
+v::isbn()->assert('978 0 596 52068 7');
+// Validation passes successfully
+
+v::isbn()->assert('ISBN-12: 978-0-596-52068-7');
+// → "ISBN-12: 978-0-596-52068-7" must be a valid ISBN
+
+v::isbn()->assert('978 10 596 52068 7');
+// → "978 10 596 52068 7" must be a valid ISBN
 ```
 
 ## Templates

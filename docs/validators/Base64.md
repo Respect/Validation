@@ -5,8 +5,11 @@
 Validate if a string is Base64-encoded.
 
 ```php
-v::base64()->isValid('cmVzcGVjdCE='); // true
-v::base64()->isValid('respect!'); // false
+v::base64()->assert('cmVzcGVjdCE=');
+// Validation passes successfully
+
+v::base64()->assert('respect!');
+// → "respect!" must be a base64 encoded string
 ```
 
 ## Templates

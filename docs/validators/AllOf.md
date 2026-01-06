@@ -6,7 +6,8 @@
 Will validate if all inner validators validates.
 
 ```php
-v::allOf(v::intVal(), v::positive())->isValid(15); // true
+v::allOf(v::intVal(), v::positive())->assert(15);
+// Validation passes successfully
 ```
 
 ## Templates

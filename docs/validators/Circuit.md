@@ -11,10 +11,22 @@ This validator can be helpful in combinations with [Lazy](Lazy.md). An excellent
 country code and a subdivision code.
 
 ```php
-v::circuit(
+$validator = v::circuit(
     v::key('countryCode', v::countryCode()),
     v::lazy(static fn($input) => v::key('subdivisionCode', v::subdivisionCode($input['countryCode']))),
-)->isValid($_POST);
+);
+
+$validator->assert([]);
+// → `.countryCode` must be present
+
+$validator->assert(['countryCode' => 'US']);
+// → `.subdivisionCode` must be present
+
+$validator->assert(['countryCode' => 'US', 'subdivisionCode' => 'ZZ']);
+// → `.subdivisionCode` must be a subdivision code of United States
+
+$validator->assert(['countryCode' => 'US', 'subdivisionCode' => 'CA']);
+// Validation passes successfully
 ```
 
 You need a valid country code to create a [SubdivisionCode](SubdivisionCode.md), so it makes sense only to validate the

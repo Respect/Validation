@@ -17,6 +17,7 @@ use Respect\Dev\Commands\UpdateDomainToplevelCommand;
 use Respect\Dev\Commands\UpdatePostalCodesCommand;
 use Respect\Dev\Markdown\CompositeLinter;
 use Respect\Dev\Markdown\Differ as MarkdownDiffer;
+use Respect\Dev\Markdown\Linters\AssertionMessageLinter;
 use Respect\Dev\Markdown\Linters\ValidatorHeaderLinter;
 use Respect\Dev\Markdown\Linters\ValidatorIndexLinter;
 use Respect\Dev\Markdown\Linters\ValidatorRelatedLinter;
@@ -31,6 +32,7 @@ return (static function () {
     $application = new Application('Respect/Validation', '3.0');
     $application->addCommand(new CreateMixinCommand());
     $application->addCommand(new DocsLintCommand($differ, new CompositeLinter(
+        new AssertionMessageLinter(),
         new ValidatorHeaderLinter(),
         new ValidatorIndexLinter(),
         new ValidatorRelatedLinter(),

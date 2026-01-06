@@ -5,8 +5,11 @@
 Validates whether the input is numeric.
 
 ```php
-v::numericVal()->isValid(-12); // true
-v::numericVal()->isValid('135.0'); // true
+v::numericVal()->assert(-12);
+// Validation passes successfully
+
+v::numericVal()->assert('135.0');
+// Validation passes successfully
 ```
 
 This validator doesn't validate if the input is a valid number, for that

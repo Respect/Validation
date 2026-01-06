@@ -5,10 +5,17 @@
 Validates whether the input is a Polish identity card (Dowód Osobisty).
 
 ```php
-v::polishIdCard()->isValid('AYW036733'); // true
-v::polishIdCard()->isValid('APH505567'); // true
-v::polishIdCard()->isValid('APH 505567'); // false
-v::polishIdCard()->isValid('AYW036731'); // false
+v::polishIdCard()->assert('AYW036733');
+// Validation passes successfully
+
+v::polishIdCard()->assert('APH505567');
+// Validation passes successfully
+
+v::polishIdCard()->assert('APH 505567');
+// → "APH 505567" must be a valid Polish Identity Card number
+
+v::polishIdCard()->assert('AYW036731');
+// → "AYW036731" must be a valid Polish Identity Card number
 ```
 
 ## Templates

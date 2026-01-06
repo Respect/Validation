@@ -5,9 +5,14 @@
 Validates whether the input is a valid slug.
 
 ```php
-v::slug()->isValid('my-wordpress-title'); // true
-v::slug()->isValid('my-wordpress--title'); // false
-v::slug()->isValid('my-wordpress-title-'); // false
+v::slug()->assert('my-wordpress-title');
+// Validation passes successfully
+
+v::slug()->assert('my-wordpress--title');
+// → "my-wordpress--title" must be a valid slug
+
+v::slug()->assert('my-wordpress-title-');
+// → "my-wordpress-title-" must be a valid slug
 ```
 
 ## Templates

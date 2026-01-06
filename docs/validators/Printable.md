@@ -6,7 +6,8 @@
 Similar to `Graph` but accepts whitespace.
 
 ```php
-v::printable()->isValid('LMKA0$% _123'); // true
+v::printable()->assert('LMKA0$% _123');
+// Validation passes successfully
 ```
 
 ## Templates
