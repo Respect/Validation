@@ -1,6 +1,12 @@
 site_name: Respect\Validation
 theme: readthedocs
 
+plugins:
+  - search
+  - mkdocs-nav-weight:
+      index_weight: -100
+      default_page_weight: -50
+
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true

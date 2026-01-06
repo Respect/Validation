@@ -1,3 +1,7 @@
+---
+weight: -95
+---
+
 # Feature Guide
 
 The `ValidatorBuilder` class is the core of Respect\Validation, offering a fluent interface for building validators.

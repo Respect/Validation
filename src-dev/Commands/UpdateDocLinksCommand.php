@@ -168,7 +168,7 @@ final class UpdateDocLinksCommand extends Command
             $lines[] = sprintf('- [%1$s](validators/%1$s.md)', $validator);
         }
 
-        $outputFile = sprintf('%s/09-list-of-validators-by-category.md', $docsDirectory);
+        $outputFile = sprintf('%s/list-of-validators-by-category.md', $docsDirectory);
         file_put_contents($outputFile, trim(implode("\n", $lines)) . PHP_EOL);
     }
 

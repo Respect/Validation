@@ -9,9 +9,9 @@
 The most awesome validation engine ever created for PHP.
 
 - Complex validation made simple: `v::numericVal()->positive()->between(1, 255)->isValid($input)`.
-- [Granularity control](docs/03-handling-exceptions.md) for advanced reporting.
-- [More than 150](docs/09-list-of-validators-by-category.md) (fully tested) validators.
-- [A concrete API](docs/06-concrete-api.md) for non fluent usage.
+- [Granularity control](docs/handling-exceptions.md) for advanced reporting.
+- [More than 150](docs/list-of-validators-by-category.md) (fully tested) validators.
+- [A concrete API](docs/concrete-api.md) for non fluent usage.
 
 Learn More:
 

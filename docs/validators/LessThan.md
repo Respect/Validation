@@ -10,7 +10,7 @@ v::lessThan(10)->isValid(10); // false
 ```
 
 Validation makes comparison easier, check out our supported
-[comparable values](../08-comparable-values.md).
+[comparable values](../comparable-values.md).
 
 Message template for this validator includes `{{compareTo}}`.
 
