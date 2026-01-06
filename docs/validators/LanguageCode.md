@@ -8,11 +8,20 @@ Validates whether the input is language code based on [ISO 639][].
 **This validator requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
 
 ```php
-v::languageCode()->isValid('pt'); // true
-v::languageCode()->isValid('en'); // true
-v::languageCode()->isValid('it'); // true
-v::languageCode('alpha-3')->isValid('ita'); // true
-v::languageCode('alpha-3')->isValid('eng'); // true
+v::languageCode()->assert('pt');
+// Validation passes successfully
+
+v::languageCode()->assert('en');
+// Validation passes successfully
+
+v::languageCode()->assert('it');
+// Validation passes successfully
+
+v::languageCode('alpha-3')->assert('ita');
+// Validation passes successfully
+
+v::languageCode('alpha-3')->assert('eng');
+// Validation passes successfully
 ```
 
 This validator supports the two[ISO 639][] sets:

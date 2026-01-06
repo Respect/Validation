@@ -10,13 +10,20 @@ The `$format` argument should follow PHP's [date()][] function. When the `$forma
 [Supported Date and Time Formats][] by PHP (see [strtotime()][]).
 
 ```php
-v::dateTimeDiff('years', v::equals(7))->isValid('7 years ago'); // true
-v::dateTimeDiff('years', v::equals(7))->isValid('7 years ago + 1 minute'); // false
+v::dateTimeDiff('years', v::equals(7))->assert('7 years ago');
+// → The number of years between now and "7 years ago" must be equal to 7
 
-v::dateTimeDiff('years', v::greaterThan(18), 'd/m/Y')->isValid('09/12/1990'); // true
-v::dateTimeDiff('years', v::greaterThan(18), 'd/m/Y')->isValid('09/12/2023'); // false
+v::dateTimeDiff('years', v::equals(7))->assert('7 years ago + 1 minute');
+// → The number of years between now and "7 years ago + 1 minute" must be equal to 7
 
-v::dateTimeDiff('months', v::between(1, 18))->isValid('5 months ago'); // true
+v::dateTimeDiff('years', v::greaterThan(18), 'd/m/Y')->assert('09/12/1990');
+// Validation passes successfully
+
+v::dateTimeDiff('years', v::greaterThan(18), 'd/m/Y')->assert('09/12/2023');
+// → The number of years between "01/01/2024" and "09/12/2023" must be greater than 18
+
+v::dateTimeDiff('months', v::between(1, 18))->assert('5 months ago');
+// Validation passes successfully
 ```
 
 The supported types are:
@@ -34,11 +41,11 @@ The supported types are:
 The first two templates serve as message suffixes:
 
 ```php
-v::dateTimeDiff('years', v::equals(2))->assert('1 year ago')
-// The number of years between now and 1 year ago must be equal to 2
+v::dateTimeDiff('years', v::equals(2))->assert('1 year ago');
+// → The number of years between now and "1 year ago" must be equal to 2
 
-v::not(v::dateTimeDiff('years', v::lessThan(8)))->assert('7 year ago')
-// The number of years between now and 7 year ago must not be less than 8
+v::not(v::dateTimeDiff('years', v::lessThan(8)))->assert('7 year ago');
+// → The number of years between now and "7 year ago" must not be less than 8
 ```
 
 ### `DateTimeDiff::TEMPLATE_STANDARD`
@@ -85,7 +92,7 @@ When using custom templates, the key must be `dateTimeDiff` + name of the valida
 v::dateTimeDiff('years', v::equals(2))->assert('1 year ago', [
     'dateTimeDiffEquals' => 'Please enter a date that is 2 years ago'
 ]);
-// Please enter a date that is 2 years ago.
+// → Please enter a date that is 2 years ago
 ```
 
 ## Categorization

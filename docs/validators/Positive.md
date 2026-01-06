@@ -5,9 +5,14 @@
 Validates whether the input is a positive number.
 
 ```php
-v::positive()->isValid(1); // true
-v::positive()->isValid(0); // false
-v::positive()->isValid(-15); // false
+v::positive()->assert(1);
+// Validation passes successfully
+
+v::positive()->assert(0);
+// → 0 must be a positive number
+
+v::positive()->assert(-15);
+// → -15 must be a positive number
 ```
 
 ## Templates

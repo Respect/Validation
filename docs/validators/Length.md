@@ -5,19 +5,24 @@
 Validates the length of the given input against a given validator.
 
 ```php
-v::length(v::between(1, 5))->isValid('abc'); // true
+v::length(v::between(1, 5))->assert('abc');
+// Validation passes successfully
 
-v::length(v::greaterThan(5))->isValid('abcdef'); // true
+v::length(v::greaterThan(5))->assert('abcdef');
+// Validation passes successfully
 
-v::length(v::lessThan(5))->isValid('abc'); // true
+v::length(v::lessThan(5))->assert('abc');
+// Validation passes successfully
 ```
 
 This validator can be used to validate the length of strings, arrays, and objects that implement the `Countable` interface.
 
 ```php
-v::length(v::greaterThanOrEqual(3))->isValid([1, 2, 3]); // true
+v::length(v::greaterThanOrEqual(3))->assert([1, 2, 3]);
+// Validation passes successfully
 
-v::length(v::equals(0))->isValid(new SplPriorityQueue()); // true
+v::length(v::equals(0))->assert(new SplPriorityQueue());
+// Validation passes successfully
 ```
 
 ## Templates
@@ -35,10 +40,10 @@ This template serve as message prefixes.:
 
 ```php
 v::length(v::equals(3))->assert('tulip');
-// Message: The length of "tulip" must be equal to 3
+// → The length of "tulip" must be equal to 3
 
 v::not(v::length(v::equals(4)))->assert('rose');
-// Message: The length of "rose" must not be equal to 4
+// → The length of "rose" must not be equal to 4
 ```
 
 ### `Length::TEMPLATE_WRONG_TYPE`

@@ -5,10 +5,17 @@
 Validates whether the input is a top-level domain.
 
 ```php
-v::tld()->isValid('com'); // true
-v::tld()->isValid('ly'); // true
-v::tld()->isValid('org'); // true
-v::tld()->isValid('COM'); // true
+v::tld()->assert('com');
+// Validation passes successfully
+
+v::tld()->assert('ly');
+// Validation passes successfully
+
+v::tld()->assert('org');
+// Validation passes successfully
+
+v::tld()->assert('COM');
+// Validation passes successfully
 ```
 
 ## Templates

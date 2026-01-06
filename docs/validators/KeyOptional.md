@@ -5,20 +5,27 @@
 Validates the value of an array against a given validator when the key exists.
 
 ```php
-v::keyOptional('name', v::stringType())->isValid([]); // true
-v::keyOptional('name', v::stringType())->isValid(['name' => 'The Respect Panda']); // true
+v::keyOptional('name', v::stringType())->assert([]);
+// Validation passes successfully
 
-v::keyOptional('email', v::email())->isValid([]); // true
-v::keyOptional('email', v::email())->isValid(['email' => 'therespectpanda@gmail.com']); // true
+v::keyOptional('name', v::stringType())->assert(['name' => 'The Respect Panda']);
+// Validation passes successfully
 
-v::keyOptional('age', v::intVal())->isValid(['age' => 'Twenty-Five']); // false
+v::keyOptional('email', v::email())->assert([]);
+// Validation passes successfully
+
+v::keyOptional('email', v::email())->assert(['email' => 'therespectpanda@gmail.com']);
+// Validation passes successfully
+
+v::keyOptional('age', v::intVal())->assert(['age' => 'Twenty-Five']);
+// → `.age` must be an integer value
 ```
 
 The name of this validator is automatically set to the key name.
 
 ```php
 v::keyOptional('age', v::intVal())->assert(['age' => 'Twenty-Five']);
-// message: age must be an integer number
+// → `.age` must be an integer value
 ```
 
 ## Note
@@ -28,7 +35,7 @@ want to ensure the input is an array, use [ArrayType](ArrayType.md) with it.
 
 ```php
 v::arrayType()->keyOptional('phone', v::phone())->assert('This is not an array');
-// message: "This is not an array" must be of type array
+// → "This is not an array" must be an array
 ```
 
 Below are some other validators that are tightly related to `KeyOptional`:

@@ -5,7 +5,8 @@
 Validates whether the input is an [object](http://php.net/types.object).
 
 ```php
-v::objectType()->isValid(new stdClass); // true
+v::objectType()->assert(new stdClass);
+// Validation passes successfully
 ```
 
 ## Templates
@@ -55,4 +56,3 @@ See also:
 - [ResourceType](ResourceType.md)
 - [StringType](StringType.md)
 - [StringVal](StringVal.md)
-- [Type](Type.md)

@@ -5,12 +5,20 @@
 Validates whether the input is between two other values, exclusively.
 
 ```php
-v::betweenExclusive(10, 20)->isValid(10); // true
-v::betweenExclusive('a', 'e')->isValid('c'); // true
-v::betweenExclusive(new DateTime('yesterday'), new DateTime('tomorrow'))->isValid(new DateTime('today')); // true
+v::betweenExclusive(10, 20)->assert(10);
+// → 10 must be greater than 10 and less than 20
 
-v::betweenExclusive(0, 100)->isValid(100); // false
-v::betweenExclusive('a', 'z')->isValid('a'); // false
+v::betweenExclusive('a', 'e')->assert('c');
+// Validation passes successfully
+
+v::betweenExclusive(new DateTime('yesterday'), new DateTime('tomorrow'))->assert(new DateTime('today'));
+// Validation passes successfully
+
+v::betweenExclusive(0, 100)->assert(100);
+// → 100 must be greater than 0 and less than 100
+
+v::betweenExclusive('a', 'z')->assert('a');
+// → "a" must be greater than "a" and less than "z"
 ```
 
 Validation makes comparison easier, check out our supported [comparable values](../comparable-values.md).

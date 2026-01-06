@@ -5,9 +5,14 @@
 Validates if the given input is a symbolic link.
 
 ```php
-v::symbolicLink()->isValid('/path/of/valid/symbolic/link'); // true
-v::symbolicLink()->isValid(new SplFileInfo('/path/of/valid/symbolic/link)); // true
-v::symbolicLink()->isValid(new SplFileObject('/path/of/valid/symbolic/link')); // true
+v::symbolicLink()->assert('/path/to/symbolic-link');
+// Validation passes successfully
+
+v::symbolicLink()->assert(new SplFileInfo('/path/to/file'));
+// → `SplFileInfo { __toString() => "/path/to/file" }` must be a symbolic link
+
+v::symbolicLink()->assert(new SplFileObject('/path/to/file'));
+// → `SplFileObject { current() => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec enim vitae ve ... }` must be a symbolic link
 ```
 
 ## Templates

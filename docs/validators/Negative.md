@@ -5,7 +5,8 @@
 Validates whether the input is a negative number.
 
 ```php
-v::numericVal()->negative()->isValid(-15); // true
+v::numericVal()->negative()->assert(-15);
+// Validation passes successfully
 ```
 
 ## Templates

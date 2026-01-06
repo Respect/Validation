@@ -5,14 +5,18 @@
 Validates the minimum value of the input against a given validator.
 
 ```php
-v::min(v::equals(10))->isValid([10, 20, 30]); // true
+v::min(v::equals(10))->assert([10, 20, 30]);
+// Validation passes successfully
 
-v::min(v::between('a', 'c'))->isValid(['b', 'd', 'f']); // true
+v::min(v::between('a', 'c'))->assert(['b', 'd', 'f']);
+// Validation passes successfully
 
 v::min(v::greaterThan(new DateTime('yesterday')))
-        ->isValid([new DateTime('today'), new DateTime('tomorrow')]); // true
+        ->assert([new DateTime('today'), new DateTime('tomorrow')]);
+// Validation passes successfully
 
-v::min(v::lessThan(3))->isValid([4, 8, 12]); // false
+v::min(v::lessThan(3))->assert([4, 8, 12]);
+// → The minimum of `[4, 8, 12]` must be less than 3
 ```
 
 ## Note

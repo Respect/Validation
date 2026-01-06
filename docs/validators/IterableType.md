@@ -5,11 +5,17 @@
 Validates whether the input is iterable, meaning that it matches the built-in compile time type alias `iterable`.
 
 ```php
-v::iterableType()->isValid([]); // true
-v::iterableType()->isValid(new ArrayObject()); // true
+v::iterableType()->assert([]);
+// Validation passes successfully
 
-v::iterableType()->isValid(new stdClass()); // false
-v::iterableType()->isValid('string'); // false
+v::iterableType()->assert(new ArrayObject());
+// Validation passes successfully
+
+v::iterableType()->assert(new stdClass());
+// → `stdClass {}` must be iterable
+
+v::iterableType()->assert('string');
+// → "string" must be iterable
 ```
 
 ## Templates

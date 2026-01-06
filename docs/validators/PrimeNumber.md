@@ -5,7 +5,8 @@
 Validates a prime number
 
 ```php
-v::primeNumber()->isValid(7); // true
+v::primeNumber()->assert(7);
+// Validation passes successfully
 ```
 
 ## Templates

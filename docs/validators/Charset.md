@@ -5,9 +5,14 @@
 Validates if a string is in a specific charset.
 
 ```php
-v::charset('ASCII')->isValid('açúcar'); // false
-v::charset('ASCII')->isValid('sugar');  //true
-v::charset('ISO-8859-1', 'EUC-JP')->isValid('日本国'); // true
+v::charset('ASCII')->assert('açúcar');
+// → "açúcar" must only contain characters from the `["ASCII"]` charset
+
+v::charset('ASCII')->assert('sugar');
+// Validation passes successfully
+
+v::charset('ISO-8859-1', 'EUC-JP')->assert('日本国');
+// Validation passes successfully
 ```
 
 The array format is a logic OR, not AND.

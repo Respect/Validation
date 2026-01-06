@@ -7,14 +7,14 @@ Defines a validator with a custom message template.
 
 ```php
 v::templated('You must provide a valid email to signup', v::email())->assert('not an email');
-// Message: You must provide a valid email to signup
+// → You must provide a valid email to signup
 
 v::templated(
     'The author of the page {{title}} is empty, please fill it up.',
     v::notBlank(),
     ['title' => 'Feature Guide']
 )->assert('');
-// Message: The author of the page "Feature Guide" is empty, please fill it up.
+// → The author of the page "Feature Guide" is empty, please fill it up.
 ```
 
 This validator can be also useful when you're using [Attributes](Attributes.md) and want a custom template for a specific property.

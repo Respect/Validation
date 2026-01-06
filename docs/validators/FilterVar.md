@@ -6,12 +6,23 @@
 Validates the input with the PHP's [filter_var()](http://php.net/filter_var) function.
 
 ```php
-v::filterVar(FILTER_VALIDATE_EMAIL)->isValid('bob@example.com'); // true
-v::filterVar(FILTER_VALIDATE_URL)->isValid('http://example.com'); // true
-v::filterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)->isValid('http://example.com'); // false
-v::filterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)->isValid('http://example.com/path'); // true
-v::filterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)->isValid('webserver.local'); // true
-v::filterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)->isValid('@local'); // false
+v::filterVar(FILTER_VALIDATE_EMAIL)->assert('bob@example.com');
+// Validation passes successfully
+
+v::filterVar(FILTER_VALIDATE_URL)->assert('http://example.com');
+// Validation passes successfully
+
+v::filterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)->assert('http://example.com');
+// → "http://example.com" must be valid
+
+v::filterVar(FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)->assert('http://example.com/path');
+// Validation passes successfully
+
+v::filterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)->assert('webserver.local');
+// Validation passes successfully
+
+v::filterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)->assert('@local');
+// → "@local" must be valid
 ```
 
 ## Templates

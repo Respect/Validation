@@ -1,7 +1,7 @@
 # Concrete API
 
 There are many micro-frameworks that rely on magic methods. We don't. In this
-document we're gonna explore the Respect\Validation API without fluent interfaces
+document we're going to explore the Respect\Validation API without fluent interfaces
 or magic methods. We'll use a traditional dependency injection approach.
 
 ```php

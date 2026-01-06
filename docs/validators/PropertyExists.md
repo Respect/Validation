@@ -9,9 +9,14 @@ $object = new stdClass;
 $object->name = 'The Respect Panda';
 $object->email = 'therespectpanda@gmail.com';
 
-v::propertyExists('name')->isValid($object); // true
-v::propertyExists('email')->isValid($object); // true
-v::propertyExists('website')->isValid($object); // false
+v::propertyExists('name')->assert($object);
+// Validation passes successfully
+
+v::propertyExists('email')->assert($object);
+// Validation passes successfully
+
+v::propertyExists('website')->assert($object);
+// → `.website` must be present
 ```
 
 ## Notes
@@ -44,17 +49,17 @@ When no custom name is set, the path is displayed as `{{name}}`. When a custom n
 
 ```php
 v::propertyExists('foo')->assert([]);
-// Message: `.foo` must be present
+// → `.foo` must be present
 
 v::named('Custom name', v::propertyExists('foo'))->assert([]);
-// Message: `.foo` (<- Custom name) must be present
+// → `.foo` (<- Custom name) must be present
 ```
 
 If you want to display only a custom name while checking if a property exists, use [Property](Property.md) with [AlwaysValid](AlwaysValid.md):
 
 ```php
 v::property('foo', v::named('Custom name', v::alwaysValid()))->assert([]);
-// Message: Custom name must be present
+// → Custom name must be present
 ```
 
 ## Categorization

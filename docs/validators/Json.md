@@ -5,7 +5,8 @@
 Validates if the given input is a valid JSON.
 
 ```php
-v::json()->isValid('{"foo":"bar"}'); // true
+v::json()->assert('{"foo":"bar"}');
+// Validation passes successfully
 ```
 
 ## Templates

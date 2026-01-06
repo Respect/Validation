@@ -5,7 +5,8 @@
 Validates whether the characters in the input are uppercase.
 
 ```php
-v::uppercase()->isValid('W3C'); // true
+v::uppercase()->assert('W3C');
+// Validation passes successfully
 ```
 
 This validator does not validate if the input a numeric value, so `123` and `%` will
@@ -13,9 +14,14 @@ be valid. Please add more validations to the chain if you want to refine your
 validation.
 
 ```php
-v::not(v::numericVal())->uppercase()->isValid('42'); // false
-v::alnum()->uppercase()->isValid('#$%!'); // false
-v::not(v::numericVal())->alnum()->uppercase()->isValid('W3C'); // true
+v::not(v::numericVal())->uppercase()->assert('42');
+// → "42" must not be a numeric value
+
+v::alnum()->uppercase()->assert('#$%!');
+// → "#$%!" must contain only letters (a-z) and digits (0-9)
+
+v::not(v::numericVal())->alnum()->uppercase()->assert('W3C');
+// Validation passes successfully
 ```
 
 ## Templates

@@ -5,8 +5,11 @@
 Validates is the input is a valid [IMEI][].
 
 ```php
-v::imei()->isValid('35-209900-176148-1'); // true
-v::imei()->isValid('490154203237518'); // true
+v::imei()->assert('35-209900-176148-1');
+// Validation passes successfully
+
+v::imei()->assert('490154203237518');
+// Validation passes successfully
 ```
 
 ## Templates

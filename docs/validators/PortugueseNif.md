@@ -5,8 +5,11 @@
 Validates Portugal's fiscal identification number ([NIF](https://pt.wikipedia.org/wiki/N%C3%BAmero_de_identifica%C3%A7%C3%A3o_fiscal)).
 
 ```php
-v::portugueseNif()->isValid('124885446'); // true
-v::portugueseNif()->isValid('220005245'); // false
+v::portugueseNif()->assert('124885446');
+// Validation passes successfully
+
+v::portugueseNif()->assert('220005245');
+// → "220005245" must be a Portuguese NIF
 ```
 
 ## Templates
