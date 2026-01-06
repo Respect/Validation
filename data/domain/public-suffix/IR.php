@@ -9,6 +9,6 @@ return [
     'NET.IR',
     'ORG.IR',
     'SCH.IR',
-    'XN--MGBA3A4F16A.IR',
-    'XN--MGBA3A4FRA.IR',
+    'ايران.IR',
+    'ایران.IR',
 ];

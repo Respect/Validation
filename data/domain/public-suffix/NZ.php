@@ -13,9 +13,9 @@ return [
     'KIWI.NZ',
     'MAORI.NZ',
     'MIL.NZ',
+    'MĀORI.NZ',
     'NET.NZ',
     'ORG.NZ',
     'PARLIAMENT.NZ',
     'SCHOOL.NZ',
-    'XN--MORI-QSA.NZ',
 ];

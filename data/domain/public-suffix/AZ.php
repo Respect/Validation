@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'BIZ.AZ',
+    'CO.AZ',
     'COM.AZ',
     'EDU.AZ',
     'GOV.AZ',

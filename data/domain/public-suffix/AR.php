@@ -14,6 +14,7 @@ return [
     'MUTUAL.AR',
     'NET.AR',
     'ORG.AR',
+    'SEG.AR',
     'SENASA.AR',
     'TUR.AR',
 ];

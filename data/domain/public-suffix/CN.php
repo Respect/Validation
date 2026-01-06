@@ -40,10 +40,10 @@ return [
     'TJ.CN',
     'TW.CN',
     'XJ.CN',
-    'XN--55QX5D.CN',
-    'XN--IO0A7I.CN',
-    'XN--OD0ALG.CN',
     'XZ.CN',
     'YN.CN',
     'ZJ.CN',
+    '公司.CN',
+    '網絡.CN',
+    '网络.CN',
 ];

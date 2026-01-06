@@ -4,6 +4,7 @@
 return [
     'AC.CI',
     'ASSO.CI',
+    'AÉROPORT.CI',
     'CO.CI',
     'COM.CI',
     'ED.CI',
@@ -11,10 +12,7 @@ return [
     'GO.CI',
     'GOUV.CI',
     'INT.CI',
-    'MD.CI',
     'NET.CI',
     'OR.CI',
     'ORG.CI',
-    'PRESSE.CI',
-    'XN--AROPORT-BYA.CI',
 ];

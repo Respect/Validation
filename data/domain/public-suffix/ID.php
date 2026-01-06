@@ -7,6 +7,7 @@ return [
     'CO.ID',
     'DESA.ID',
     'GO.ID',
+    'KOP.ID',
     'MIL.ID',
     'MY.ID',
     'NET.ID',
@@ -14,4 +15,5 @@ return [
     'PONPES.ID',
     'SCH.ID',
     'WEB.ID',
+    'ᬩᬮᬶ.ID',
 ];

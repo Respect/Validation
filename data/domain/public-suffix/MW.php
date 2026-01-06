@@ -10,7 +10,6 @@ return [
     'EDU.MW',
     'GOV.MW',
     'INT.MW',
-    'MUSEUM.MW',
     'NET.MW',
     'ORG.MW',
 ];

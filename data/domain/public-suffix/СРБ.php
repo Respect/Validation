@@ -2,11 +2,10 @@
 // Copyright (c) https://publicsuffix.org
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'COM.GE',
-    'EDU.GE',
-    'GOV.GE',
-    'NET.GE',
-    'ORG.GE',
-    'PVT.GE',
-    'SCHOOL.GE',
+    'АК.СРБ',
+    'ОБР.СРБ',
+    'ОД.СРБ',
+    'ОРГ.СРБ',
+    'ПР.СРБ',
+    'УПР.СРБ',
 ];

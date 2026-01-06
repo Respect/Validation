@@ -28,6 +28,8 @@ final class PublicDomainSuffixTest extends RuleTestCase
             [$validator, 'co.uk'],
             [$validator, 'nom.br'],
             [$validator, 'WWW.CK'],
+            [$validator, 'ทหาร.ไทย'],
+            [$validator, '個人.香港'],
         ];
     }
 
