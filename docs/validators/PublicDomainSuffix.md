@@ -5,17 +5,25 @@
 Validates whether the input is a public ICANN domain suffix.
 
 ```php
-v::publicDomainSuffix->isValid('co.uk'); // true
-v::publicDomainSuffix->isValid('CO.UK'); // true
-v::publicDomainSuffix->isValid('nom.br'); // true
-v::publicDomainSuffix->isValid('invalid.com'); // false
+v::publicDomainSuffix->assert('co.uk');
+// → Undefined constant Respect\Validation\ValidatorBuilder::publicDomainSuffix
+
+v::publicDomainSuffix->assert('CO.UK');
+// → Undefined constant Respect\Validation\ValidatorBuilder::publicDomainSuffix
+
+v::publicDomainSuffix->assert('nom.br');
+// → Undefined constant Respect\Validation\ValidatorBuilder::publicDomainSuffix
+
+v::publicDomainSuffix->assert('invalid.com');
+// → Undefined constant Respect\Validation\ValidatorBuilder::publicDomainSuffix
 ```
 
 This validator will not match top level domains such as `tk`.
 If you want to match either, use a combination with `Tld`:
 
 ```php
-v::oneOf(v::tld(), v::publicDomainSuffix())->isValid('tk'); // true
+v::oneOf(v::tld(), v::publicDomainSuffix())->assert('tk');
+// Validation passes successfully
 ```
 
 ## Templates

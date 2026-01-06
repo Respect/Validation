@@ -13,7 +13,8 @@ country code and a subdivision code.
 v::circuit(
     v::key('countryCode', v::countryCode()),
     v::lazy(static fn($input) => v::key('subdivisionCode', v::subdivisionCode($input['countryCode']))),
-)->isValid($_POST);
+)->assert($_POST);
+// Validation passes successfully
 ```
 
 You need a valid country code to create a [SubdivisionCode](SubdivisionCode.md), so it makes sense only to validate the

@@ -5,7 +5,8 @@
 Validates if the given data is a file exists and is readable.
 
 ```php
-v::readable()->isValid('file.txt'); // true
+v::readable()->assert('file.txt');
+// Validation passes successfully
 ```
 
 ## Templates

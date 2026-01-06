@@ -5,9 +5,14 @@
 Validates whether the input is a file that is of a certain size or not.
 
 ```php
-v::size('KB', v::greaterThan(1))->isValid($filename);
-v::size('MB', v::between(1, 2))->isValid($filename);
-v::size('GB', v::lessThan(1))->isValid($filename);
+v::size('KB', v::greaterThan(1))->assert($filename);
+// → The size in kilobytes of "file.txt" must be greater than 1
+
+v::size('MB', v::between(1, 2))->assert($filename);
+// → The size in megabytes of "file.txt" must be between 1 and 2
+
+v::size('GB', v::lessThan(1))->assert($filename);
+// Validation passes successfully
 ```
 
 Accepted data storage units are `B`, `KB`, `MB`, `GB`, `TB`, `PB`, `EB`, `ZB`, and `YB`.

@@ -7,13 +7,26 @@ Validates whether the input is a valid UUID. It also supports validation of
 specific versions 1 to 8.
 
 ```php
-v::uuid()->isValid('Hello World!'); // false
-v::uuid()->isValid('eb3115e5-bd16-4939-ab12-2b95745a30f3'); // true
-v::uuid()->isValid('eb3115e5bd164939ab122b95745a30f3'); // true
-v::uuid(1)->isValid('eb3115e5-bd16-4939-ab12-2b95745a30f3'); // false
-v::uuid(4)->isValid('eb3115e5-bd16-4939-ab12-2b95745a30f3'); // true
-v::uuid(8)->isValid('00112233-4455-8677-8899-aabbccddeeff'); // true
-v::uuid(4)->isValid(new \Ramsey\Uuid\Uuid::fromString('eb3115e5-bd16-4939-ab12-2b95745a30f3')); // true
+v::uuid()->assert('Hello World!');
+// → "Hello World!" must be a valid UUID
+
+v::uuid()->assert('eb3115e5-bd16-4939-ab12-2b95745a30f3');
+// Validation passes successfully
+
+v::uuid()->assert('eb3115e5bd164939ab122b95745a30f3');
+// Validation passes successfully
+
+v::uuid(1)->assert('eb3115e5-bd16-4939-ab12-2b95745a30f3');
+// → "eb3115e5-bd16-4939-ab12-2b95745a30f3" must be a valid UUID version 1
+
+v::uuid(4)->assert('eb3115e5-bd16-4939-ab12-2b95745a30f3');
+// Validation passes successfully
+
+v::uuid(8)->assert('00112233-4455-8677-8899-aabbccddeeff');
+// Validation passes successfully
+
+v::uuid(4)->assert(new \Ramsey\Uuid\Uuid::fromString('eb3115e5-bd16-4939-ab12-2b95745a30f3'));
+// → syntax error, unexpected identifier "fromString", expecting variable or "$"
 ```
 
 ## Templates

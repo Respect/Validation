@@ -5,10 +5,17 @@
 Validates PESEL (Polish human identification number).
 
 ```php
-v::pesel()->isValid('21120209256'); // true
-v::pesel()->isValid('97072704800'); // true
-v::pesel()->isValid('97072704801'); // false
-v::pesel()->isValid('PESEL123456'); // false
+v::pesel()->assert('21120209256');
+// Validation passes successfully
+
+v::pesel()->assert('97072704800');
+// Validation passes successfully
+
+v::pesel()->assert('97072704801');
+// → "97072704801" must be a valid PESEL
+
+v::pesel()->assert('PESEL123456');
+// → "PESEL123456" must be a valid PESEL
 ```
 
 ## Templates

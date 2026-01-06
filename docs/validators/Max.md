@@ -5,14 +5,19 @@
 Validates the maximum value of the input against a given validator.
 
 ```php
-v::max(v::equals(30))->isValid([10, 20, 30]); // true
+v::max(v::equals(30))->assert([10, 20, 30]);
+// Validation passes successfully
 
-v::max(v::between('e', 'g'))->isValid(['b', 'd', 'f']); // true
+v::max(v::between('e', 'g'))->assert(['b', 'd', 'f']);
+// Validation passes successfully
 
 v::max(v::greaterThan(new DateTime('today')))
-        ->isValid([new DateTime('yesterday'), new DateTime('tomorrow')]); // true
+        ->assert([new DateTime('yesterday'), new DateTime('tomorrow')]);
+// Validation passes successfully
 
-v::max(v::greaterThan(15))->isValid([4, 8, 12]); // false
+
+v::max(v::greaterThan(15))->assert([4, 8, 12]);
+// → The maximum of `[4, 8, 12]` must be greater than 15
 ```
 
 ## Note

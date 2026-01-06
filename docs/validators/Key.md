@@ -5,11 +5,14 @@
 Validates the value of an array against a given validator.
 
 ```php
-v::key('name', v::stringType())->isValid(['name' => 'The Respect Panda']); // true
+v::key('name', v::stringType())->assert(['name' => 'The Respect Panda']);
+// Validation passes successfully
 
-v::key('email', v::email())->isValid(['email' => 'therespectpanda@gmail.com']); // true
+v::key('email', v::email())->assert(['email' => 'therespectpanda@gmail.com']);
+// Validation passes successfully
 
-v::key('age', v::intVal())->isValid([]); // false
+v::key('age', v::intVal())->assert([]);
+// → `.age` must be present
 ```
 
 You can also use `Key` to validate nested arrays:
@@ -18,21 +21,22 @@ You can also use `Key` to validate nested arrays:
 v::key(
     'payment_details',
     v::key('credit_card', v::creditCard())
-)->isValid([
+)->assert([
     'payment_details' => [
         'credit_card' => '5376 7473 9720 8720',
     ],
-]); // true
+]);
+// → Unmatched ')'
 ```
 
 The name of this validator is automatically set to the key name.
 
 ```php
 v::key('email', v::email())->assert([]);
-// message: email must be present
+// → `.email` must be present
 
 v::key('email', v::email())->assert(['email' => 'not email']);
-// message: email must be valid email
+// → `.email` must be a valid email address
 ```
 
 ## Note

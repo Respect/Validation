@@ -5,8 +5,11 @@
 Validates whether the type of the input is [integer](http://php.net/types.integer).
 
 ```php
-v::intType()->isValid(42); // true
-v::intType()->isValid('10'); // false
+v::intType()->assert(42);
+// Validation passes successfully
+
+v::intType()->assert('10');
+// → "10" must be an integer
 ```
 
 ## Templates

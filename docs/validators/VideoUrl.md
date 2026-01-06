@@ -6,23 +6,50 @@
 Validates if the input is a video URL value.
 
 ```php
-v::videoUrl()->isValid('https://player.vimeo.com/video/71787467'); // true
-v::videoUrl()->isValid('https://vimeo.com/71787467'); // true
-v::videoUrl()->isValid('https://www.youtube.com/embed/netHLn9TScY'); // true
-v::videoUrl()->isValid('https://www.youtube.com/watch?v=netHLn9TScY'); // true
-v::videoUrl()->isValid('https://youtu.be/netHLn9TScY'); // true
-v::videoUrl()->isValid('https://www.twitch.tv/videos/320689092'); // true
-v::videoUrl()->isValid('https://clips.twitch.tv/BitterLazyMangetoutHumbleLife'); // true
+v::videoUrl()->assert('https://player.vimeo.com/video/71787467');
+// Validation passes successfully
 
-v::videoUrl('youtube')->isValid('https://www.youtube.com/watch?v=netHLn9TScY'); // true
-v::videoUrl('vimeo')->isValid('https://vimeo.com/71787467'); // true
-v::videoUrl('twitch')->isValid('https://www.twitch.tv/videos/320689092'); // true
-v::videoUrl('twitch')->isValid('https://clips.twitch.tv/BitterLazyMangetoutHumbleLife'); // true
+v::videoUrl()->assert('https://vimeo.com/71787467');
+// Validation passes successfully
 
-v::videoUrl()->isValid('https://youtube.com'); // false
-v::videoUrl('youtube')->isValid('https://vimeo.com/71787467'); // false
-v::videoUrl('twitch')->isValid('https://clips.twitch.tv/videos/90210'); // false
-v::videoUrl('twitch')->isValid('https://twitch.tv/TakeTeaAndNoTea'); // false
+v::videoUrl()->assert('https://www.youtube.com/embed/netHLn9TScY');
+// Validation passes successfully
+
+v::videoUrl()->assert('https://www.youtube.com/watch?v=netHLn9TScY');
+// Validation passes successfully
+
+v::videoUrl()->assert('https://youtu.be/netHLn9TScY');
+// Validation passes successfully
+
+v::videoUrl()->assert('https://www.twitch.tv/videos/320689092');
+// Validation passes successfully
+
+v::videoUrl()->assert('https://clips.twitch.tv/BitterLazyMangetoutHumbleLife');
+// Validation passes successfully
+
+v::videoUrl('youtube')->assert('https://www.youtube.com/watch?v=netHLn9TScY');
+// Validation passes successfully
+
+v::videoUrl('vimeo')->assert('https://vimeo.com/71787467');
+// Validation passes successfully
+
+v::videoUrl('twitch')->assert('https://www.twitch.tv/videos/320689092');
+// Validation passes successfully
+
+v::videoUrl('twitch')->assert('https://clips.twitch.tv/BitterLazyMangetoutHumbleLife');
+// Validation passes successfully
+
+v::videoUrl()->assert('https://youtube.com');
+// → "https://youtube.com" must be a valid video URL
+
+v::videoUrl('youtube')->assert('https://vimeo.com/71787467');
+// → "https://vimeo.com/71787467" must be a valid youtube video URL
+
+v::videoUrl('twitch')->assert('https://clips.twitch.tv/videos/90210');
+// → "https://clips.twitch.tv/videos/90210" must be a valid twitch video URL
+
+v::videoUrl('twitch')->assert('https://twitch.tv/TakeTeaAndNoTea');
+// → "https://twitch.tv/TakeTeaAndNoTea" must be a valid twitch video URL
 ```
 
 The services accepted are:

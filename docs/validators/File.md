@@ -5,14 +5,18 @@
 Validates whether file input is as a regular filename.
 
 ```php
-v::file()->isValid(__FILE__); // true
-v::file()->isValid(__DIR__); // false
+v::file()->assert(__FILE__);
+// Validation passes successfully
+
+v::file()->assert(__DIR__);
+// → "/path/to/dir" must be a valid file
 ```
 
 This validator will consider SplFileInfo instances, so you can do something like:
 
 ```php
-v::file()->isValid(new SplFileInfo('file.txt'));
+v::file()->assert(new SplFileInfo('file.txt'));
+// Validation passes successfully
 ```
 
 ## Templates

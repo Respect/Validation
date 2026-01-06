@@ -5,10 +5,21 @@
 Will validate if exactly one inner validator passes.
 
 ```php
-v::oneOf(v::digit(), v::alpha())->isValid('AB'); // true
-v::oneOf(v::digit(), v::alpha())->isValid('12'); // true
-v::oneOf(v::digit(), v::alpha())->isValid('AB12'); // false
-v::oneOf(v::digit(), v::alpha())->isValid('*'); // false
+v::oneOf(v::digit(), v::alpha())->assert('AB');
+// Validation passes successfully
+
+v::oneOf(v::digit(), v::alpha())->assert('12');
+// Validation passes successfully
+
+v::oneOf(v::digit(), v::alpha())->assert('AB12');
+// → - "AB12" must pass one of the rules
+// →   - "AB12" must contain only digits (0-9)
+// →   - "AB12" must contain only letters (a-z)
+
+v::oneOf(v::digit(), v::alpha())->assert('*');
+// → - "*" must pass one of the rules
+// →   - "*" must contain only digits (0-9)
+// →   - "*" must contain only letters (a-z)
 ```
 
 The chains above validate if the input is either a digit or an alphabetic

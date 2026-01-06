@@ -8,7 +8,8 @@ This validator is particularly useful when creating validators that rely on the 
 `confirmation` field matches the `password` field when processing data from a form.
 
 ```php
-v::key('confirmation', v::equals($_POST['password'] ?? null))->isValid($_POST);
+v::key('confirmation', v::equals($_POST['password'] ?? null))->assert($_POST);
+// → `.confirmation` must be present
 ```
 
 The issue with the code is that it’s hard to reuse because you’re relying upon the input itself (`$_POST`). That means
@@ -17,7 +18,8 @@ you can create a chain of validators and use it everywhere.
 The `lazy()` validator makes this job much simpler and more elegantly:
 
 ```php
-v::lazy(static fn($input) => v::key('confirmation', v::equals($input['password'] ?? null)))->isValid($_POST);
+v::lazy(static fn($input) => v::key('confirmation', v::equals($input['password'] ?? null)))->assert($_POST);
+// → `.confirmation` must be present
 ```
 
 The code above is similar to the first example, but the biggest difference is that the creation of the validator doesn't rely

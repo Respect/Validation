@@ -21,12 +21,23 @@ PHP's [date()](http://php.net/date) function, but only those are allowed:
 When a `$format` is not given its default value is `Y-m-d`.
 
 ```php
-v::date()->isValid('2017-12-31'); // true
-v::date()->isValid('2020-02-29'); // true
-v::date()->isValid('2019-02-29'); // false
-v::date('m/d/y')->isValid('12/31/17'); // true
-v::date('F jS, Y')->isValid('May 1st, 2017'); // true
-v::date('Ydm')->isValid(20173112); // true
+v::date()->assert('2017-12-31');
+// Validation passes successfully
+
+v::date()->assert('2020-02-29');
+// Validation passes successfully
+
+v::date()->assert('2019-02-29');
+// → "2019-02-29" must be a valid date in the format "2005-12-30"
+
+v::date('m/d/y')->assert('12/31/17');
+// Validation passes successfully
+
+v::date('F jS, Y')->assert('May 1st, 2017');
+// Validation passes successfully
+
+v::date('Ydm')->assert(20173112);
+// Validation passes successfully
 ```
 
 ## Templates

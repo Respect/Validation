@@ -5,11 +5,20 @@
 Validates whether the input is sorted in a certain order or not.
 
 ```php
-v::sorted('ASC')->isValid([1, 2, 3]); // true
-v::sorted('ASC')->isValid('ABC'); // true
-v::sorted('DESC')->isValid([3, 2, 1]); // true
-v::sorted('ASC')->isValid([]); // true
-v::sorted('ASC')->isValid([1]); // true
+v::sorted('ASC')->assert([1, 2, 3]);
+// Validation passes successfully
+
+v::sorted('ASC')->assert('ABC');
+// Validation passes successfully
+
+v::sorted('DESC')->assert([3, 2, 1]);
+// Validation passes successfully
+
+v::sorted('ASC')->assert([]);
+// Validation passes successfully
+
+v::sorted('ASC')->assert([1]);
+// Validation passes successfully
 ```
 
 You can also combine [Call](Call.md) to create custom validations:
@@ -18,17 +27,22 @@ You can also combine [Call](Call.md) to create custom validations:
 v::call(
         static function (array $input): array {
             return array_column($input, 'key');
+
         },
         v::sorted('ASC')
-    )->isValid([
+    )->assert([
         ['key' => 1],
         ['key' => 5],
         ['key' => 9],
-    ]); // true
+    ]);
+// → Unmatched ')'
 
-v::call('strval', v::sorted('DESC'))->isValid(4321); // true
 
-v::call('iterator_to_array', v::sorted())->isValid(new ArrayIterator([1, 7, 4])); // false
+v::call('strval', v::sorted('DESC'))->assert(4321);
+// Validation passes successfully
+
+v::call('iterator_to_array', v::sorted())->assert(new ArrayIterator([1, 7, 4]));
+// → Too few arguments to function Respect\Validation\Validators\Sorted::__construct(), 0 passed and exactly 1 expected
 ```
 
 ## Templates

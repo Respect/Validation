@@ -5,7 +5,8 @@
 Validates if a date is leap.
 
 ```php
-v::leapDate('Y-m-d')->isValid('1988-02-29'); // true
+v::leapDate('Y-m-d')->assert('1988-02-29');
+// Validation passes successfully
 ```
 
 This validator accepts DateTime instances as well. The $format

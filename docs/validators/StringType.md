@@ -5,7 +5,8 @@
 Validates whether the type of an input is string or not.
 
 ```php
-v::stringType()->isValid('hi'); // true
+v::stringType()->assert('hi');
+// Validation passes successfully
 ```
 
 ## Templates

@@ -5,10 +5,17 @@
 Validates weather the input is a hex RGB color or not.
 
 ```php
-v::hexRgbColor()->isValid('#FFFAAA'); // true
-v::hexRgbColor()->isValid('#ff6600'); // true
-v::hexRgbColor()->isValid('123123'); // true
-v::hexRgbColor()->isValid('FCD'); // true
+v::hexRgbColor()->assert('#FFFAAA');
+// Validation passes successfully
+
+v::hexRgbColor()->assert('#ff6600');
+// Validation passes successfully
+
+v::hexRgbColor()->assert('123123');
+// Validation passes successfully
+
+v::hexRgbColor()->assert('FCD');
+// Validation passes successfully
 ```
 
 ## Templates

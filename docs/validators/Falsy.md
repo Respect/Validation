@@ -7,25 +7,29 @@ Validates whether the given input is considered empty or falsy, similar to PHP's
 We recommend you to check [Comparing empty values](../comparing-empty-values.md) for more details.
 
 ```php
-v::falsy()->isValid(''); // true
+v::falsy()->assert('');
+// Validation passes successfully
 ```
 
 Null values are empty:
 
 ```php
-v::falsy()->isValid(null); // true
+v::falsy()->assert(null);
+// Validation passes successfully
 ```
 
 Numbers:
 
 ```php
-v::falsy()->isValid(0); // true
+v::falsy()->assert(0);
+// Validation passes successfully
 ```
 
 Empty arrays:
 
 ```php
-v::falsy()->isValid([]); // true
+v::falsy()->assert([]);
+// Validation passes successfully
 ```
 
 ## Templates

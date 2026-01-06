@@ -5,9 +5,14 @@
 Validates whether the pseudo-type of the input is [callable](http://php.net/types.callable).
 
 ```php
-v::callableType()->isValid(function () {}); // true
-v::callableType()->isValid('trim'); // true
-v::callableType()->isValid([new DateTime(), 'format']); // true
+v::callableType()->assert(function () {});
+// Validation passes successfully
+
+v::callableType()->assert('trim');
+// Validation passes successfully
+
+v::callableType()->assert([new DateTime(), 'format']);
+// Validation passes successfully
 ```
 
 ## Templates

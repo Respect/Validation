@@ -8,7 +8,8 @@ Validates a keys in a defined structure.
 v::keySet(
     v::keyExists('foo'),
     v::keyExists('bar')
-)->isValid(['foo' => 'whatever', 'bar' => 'something']); // true
+)->assert(['foo' => 'whatever', 'bar' => 'something']);
+// Validation passes successfully
 ```
 
 It will validate the keys in the array with the validators passed in the constructor.
@@ -16,11 +17,14 @@ It will validate the keys in the array with the validators passed in the constru
 ```php
 v::keySet(
     v::key('foo', v::intVal())
-)->isValid(['foo' => 42]); // true
+)->assert(['foo' => 42]);
+// → Unmatched ')'
+
 
 v::keySet(
     v::key('foo', v::intVal())
-)->isValid(['foo' => 'string']); // false
+)->assert(['foo' => 'string']);
+// → `.foo` must be an integer value
 ```
 
 Extra keys are not allowed:
@@ -28,7 +32,8 @@ Extra keys are not allowed:
 ```php
 v::keySet(
     v::key('foo', v::intVal())
-)->isValid(['foo' => 42, 'bar' => 'String']); // false
+)->assert(['foo' => 42, 'bar' => 'String']);
+// → `.bar` must not be present
 ```
 
 Missing required keys are not allowed:
@@ -38,7 +43,8 @@ v::keySet(
     v::key('foo', v::intVal()),
     v::key('bar', v::stringType()),
     v::key('baz', v::boolType())
-)->isValid(['foo' => 42, 'bar' => 'String']); // false
+)->assert(['foo' => 42, 'bar' => 'String']);
+// → `.baz` must be present
 ```
 
 Missing non-required keys are allowed:
@@ -48,7 +54,8 @@ v::keySet(
     v::key('foo', v::intVal()),
     v::key('bar', v::stringType()),
     v::keyOptional('baz', v::boolType())
-)->isValid(['foo' => 42, 'bar' => 'String']); // true
+)->assert(['foo' => 42, 'bar' => 'String']);
+// Validation passes successfully
 ```
 
 Alternatively, you can pass a chain of key-related validators to `keySet()`:
@@ -59,7 +66,8 @@ v::keySet(
         ->key('foo', v::intVal())
         ->key('bar', v::stringType())
         ->keyOptional('baz', v::boolType())
-)->isValid(['foo' => 42, 'bar' => 'String']); // true
+)->assert(['foo' => 42, 'bar' => 'String']);
+// Validation passes successfully
 ```
 
 It is not possible to negate `keySet()` validators with `not()`.

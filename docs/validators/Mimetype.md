@@ -5,8 +5,11 @@
 Validates if the input is a file and if its MIME type matches the expected one.
 
 ```php
-v::mimetype('image/png')->isValid('image.png'); // true
-v::mimetype('image/jpeg')->isValid('image.jpg'); // true
+v::mimetype('image/png')->assert('image.png');
+// Validation passes successfully
+
+v::mimetype('image/jpeg')->assert('image.jpg');
+// Validation passes successfully
 ```
 
 This validator is case-sensitive and requires [fileinfo](http://php.net/fileinfo) PHP extension.

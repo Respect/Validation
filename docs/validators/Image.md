@@ -6,9 +6,14 @@
 Validates if the file is a valid image by checking its MIME type.
 
 ```php
-v::image()->isValid('image.gif'); // true
-v::image()->isValid('image.jpg'); // true
-v::image()->isValid('image.png'); // true
+v::image()->assert('image.gif');
+// Validation passes successfully
+
+v::image()->assert('image.jpg');
+// Validation passes successfully
+
+v::image()->assert('image.png');
+// Validation passes successfully
 ```
 
 All the validations above must return `false` if the input is not a valid file

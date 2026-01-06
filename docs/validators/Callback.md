@@ -8,8 +8,10 @@ Validates the input using the return of a given callable.
 v::callback(
     function (int $input): bool {
         return $input + ($input / 2) == 15;
+
     }
-)->isValid(10); // true
+)->assert(10);
+// Validation passes successfully
 ```
 
 ## Templates

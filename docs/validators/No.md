@@ -6,12 +6,23 @@
 Validates if value is considered as "No".
 
 ```php
-v::no()->isValid('N'); // true
-v::no()->isValid('Nay'); // true
-v::no()->isValid('Nix'); // true
-v::no()->isValid('No'); // true
-v::no()->isValid('Nope'); // true
-v::no()->isValid('Not'); // true
+v::no()->assert('N');
+// Validation passes successfully
+
+v::no()->assert('Nay');
+// Validation passes successfully
+
+v::no()->assert('Nix');
+// Validation passes successfully
+
+v::no()->assert('No');
+// Validation passes successfully
+
+v::no()->assert('Nope');
+// Validation passes successfully
+
+v::no()->assert('Not');
+// Validation passes successfully
 ```
 
 This validator is case insensitive.
@@ -21,13 +32,15 @@ constant, meaning that it will validate the input using your current location:
 
 ```php
 setlocale(LC_ALL, 'ru_RU');
-v::no(true)->isValid('нет'); // true
+v::no(true)->assert('нет');
+// Validation passes successfully
 ```
 
 Be careful when using `$locale` as `TRUE` because the it's very permissive:
 
 ```php
-v::no(true)->isValid('Never gonna give you up 🎵'); // true
+v::no(true)->assert('Never gonna give you up 🎵');
+// Validation passes successfully
 ```
 
 Besides that, with `$locale` as `TRUE` it will consider any character starting
@@ -35,7 +48,8 @@ with "N" as valid:
 
 ```php
 setlocale(LC_ALL, 'es_ES');
-v::no(true)->isValid('Yes'); // true
+v::no(true)->assert('Yes');
+// → "Yes" must be similar to "No"
 ```
 
 ## Templates

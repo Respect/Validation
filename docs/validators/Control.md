@@ -7,7 +7,8 @@ Validates if all of the characters in the provided string, are control
 characters.
 
 ```php
-v::control()->isValid("\n\r\t"); // true
+v::control()->assert("\n\r\t");
+// Validation passes successfully
 ```
 
 ## Templates

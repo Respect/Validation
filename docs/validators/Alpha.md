@@ -7,18 +7,28 @@ Validates whether the input contains only alphabetic characters. This is similar
 to [Alnum](Alnum.md), but it does not allow numbers.
 
 ```php
-v::alpha()->isValid('some name'); // false
-v::alpha(' ')->isValid('some name'); // true
-v::alpha()->isValid('Cedric-Fabian'); // false
-v::alpha('-')->isValid('Cedric-Fabian'); // true
-v::alpha('-', '\'')->isValid('\'s-Gravenhage'); // true
+v::alpha()->assert('some name');
+// → "some name" must contain only letters (a-z)
+
+v::alpha(' ')->assert('some name');
+// Validation passes successfully
+
+v::alpha()->assert('Cedric-Fabian');
+// → "Cedric-Fabian" must contain only letters (a-z)
+
+v::alpha('-')->assert('Cedric-Fabian');
+// Validation passes successfully
+
+v::alpha('-', '\'')->assert('\'s-Gravenhage');
+// Validation passes successfully
 ```
 
 You can restrict case using the [Lowercase](Lowercase.md) and
 [Uppercase](Uppercase.md) validators.
 
 ```php
-v::alpha()->uppercase()->isValid('example'); // false
+v::alpha()->uppercase()->assert('example');
+// → "example" must contain only uppercase letters
 ```
 
 ## Templates

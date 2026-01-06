@@ -6,14 +6,14 @@ Validates the input with the given validator, and uses the custom name in the er
 
 ```php
 v::named('Your email', v::email())->assert('not an email');
-// Message: Your email must be a valid email address
+// → Your email must be a valid email address
 ```
 
 Here's an example of a similar code, but without using the `Named` validator:
 
 ```php
 v::email()->assert('not an email');
-// Message: "not an email" must be a valid email address
+// → "not an email" must be a valid email address
 ```
 
 The `Named` validator can be also useful when you're using [Attributes](Attributes.md) and want a custom name for a specific property.

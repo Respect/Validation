@@ -5,7 +5,8 @@
 Validates whether the input is [null](http://php.net/types.null).
 
 ```php
-v::nullType()->isValid(null); // true
+v::nullType()->assert(null);
+// Validation passes successfully
 ```
 
 ## Templates

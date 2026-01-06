@@ -14,6 +14,7 @@ v::templated(
     v::notBlank(),
     ['title' => 'Feature Guide']
 )->assert('');
+
 // Message: The author of the page "Feature Guide" is empty, please fill it up.
 ```
 

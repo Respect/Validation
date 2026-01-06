@@ -6,17 +6,35 @@
 Validates a credit card number.
 
 ```php
-v::creditCard()->isValid('5376 7473 9720 8720'); // true
-v::creditCard()->isValid('5376-7473-9720-8720'); // true
-v::creditCard()->isValid('5376.7473.9720.8720'); // true
+v::creditCard()->assert('5376 7473 9720 8720');
+// Validation passes successfully
 
-v::creditCard('American_Express')->isValid('340316193809364'); // true
-v::creditCard('Diners_Club')->isValid('30351042633884'); // true
-v::creditCard('Discover')->isValid('6011000990139424'); // true
-v::creditCard('JCB')->isValid('3566002020360505'); // true
-v::creditCard('Mastercard')->isValid('5376747397208720'); // true
-v::creditCard('Visa')->isValid('4024007153361885'); // true
-v::creaditCard('RuPay')->isValid('6062973831636410') // true
+v::creditCard()->assert('5376-7473-9720-8720');
+// Validation passes successfully
+
+v::creditCard()->assert('5376.7473.9720.8720');
+// Validation passes successfully
+
+v::creditCard('American_Express')->assert('340316193809364');
+// → "American_Express" is not a valid credit card brand (Available: "Any", "American Express", "Diners Club", "Discover", "JCB", "MasterCard", "Visa", and "RuPay")
+
+v::creditCard('Diners_Club')->assert('30351042633884');
+// → "Diners_Club" is not a valid credit card brand (Available: "Any", "American Express", "Diners Club", "Discover", "JCB", "MasterCard", "Visa", and "RuPay")
+
+v::creditCard('Discover')->assert('6011000990139424');
+// Validation passes successfully
+
+v::creditCard('JCB')->assert('3566002020360505');
+// Validation passes successfully
+
+v::creditCard('Mastercard')->assert('5376747397208720');
+// → "Mastercard" is not a valid credit card brand (Available: "Any", "American Express", "Diners Club", "Discover", "JCB", "MasterCard", "Visa", and "RuPay")
+
+v::creditCard('Visa')->assert('4024007153361885');
+// Validation passes successfully
+
+v::creditCard('RuPay')->assert('6062973831636410');
+// Validation passes successfully
 ```
 
 The current supported brands are:
@@ -33,7 +51,8 @@ It ignores any non-numeric characters, use [Digit](Digit.md),
 [Spaced](Spaced.md), or [Regex](Regex.md) when appropriate.
 
 ```php
-v::digit()->creditCard()->isValid('5376747397208720'); // true
+v::digit()->creditCard()->assert('5376747397208720');
+// Validation passes successfully
 ```
 
 ## Templates

@@ -10,26 +10,32 @@ The `$format` argument should be in accordance to [DateTime::format()][]. See mo
 When a `$format` is not given its default value is `Y-m-d H:i:s`.
 
 ```php
-v::dateTime()->isValid('2009-01-01'); // true
+v::dateTime()->assert('2009-01-01');
+// Validation passes successfully
 ```
 
 Also accepts [strtotime()](http://php.net/strtotime) values:
 
 ```php
-v::dateTime()->isValid('now'); // true
+v::dateTime()->assert('now');
+// Validation passes successfully
 ```
 
 And `DateTimeInterface` instances:
 
 ```php
-v::dateTime()->isValid(new DateTime()); // true
-v::dateTime()->isValid(new DateTimeImmutable()); // true
+v::dateTime()->assert(new DateTime());
+// Validation passes successfully
+
+v::dateTime()->assert(new DateTimeImmutable());
+// Validation passes successfully
 ```
 
 You can pass a format when validating strings:
 
 ```php
-v::dateTime('Y-m-d')->isValid('01-01-2009'); // false
+v::dateTime('Y-m-d')->assert('01-01-2009');
+// → "01-01-2009" must be a valid date/time in the format "2005-12-30"
 ```
 
 Format has no effect when validating DateTime instances.
@@ -50,9 +56,11 @@ you desire, and you may want to use [Callback](Callback.md) to create a custom v
 $input = '2014-04-12T23:20:50.052Z';
 
 v::callback(fn($input) => is_string($input) && DateTime::createFromFormat(DateTime::RFC3339_EXTENDED, $input))
-    ->isValid($input); // true
+    ->assert($input);
+// Validation passes successfully
 
-v::dateTime(DateTime::RFC3339_EXTENDED)->isValid($input); // false
+v::dateTime(DateTime::RFC3339_EXTENDED)->assert($input);
+// → "2014-04-12T23:20:50.052Z" must be a valid date/time in the format "2005-12-30T01:02:03.000+00:00"
 ```
 
 ## Templates

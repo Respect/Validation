@@ -5,9 +5,14 @@
 Validates the type of input.
 
 ```php
-v::type('bool')->isValid(true); // true
-v::type('callable')->isValid(function (){}); // true
-v::type('object')->isValid(new stdClass()); // true
+v::type('bool')->assert(true);
+// → "type" is not a valid rule name
+
+v::type('callable')->assert(function (){});
+// → "type" is not a valid rule name
+
+v::type('object')->assert(new stdClass());
+// → "type" is not a valid rule name
 ```
 
 ## Categorization

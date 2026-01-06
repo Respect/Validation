@@ -5,7 +5,8 @@
 Validates if the input is a Roman numeral.
 
 ```php
-v::roman()->isValid('IV'); // true
+v::roman()->assert('IV');
+// Validation passes successfully
 ```
 
 ## Templates

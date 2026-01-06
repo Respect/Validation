@@ -6,11 +6,20 @@
 Validates if the input considered as "Yes".
 
 ```php
-v::yes()->isValid('Y'); // true
-v::yes()->isValid('Yea'); // true
-v::yes()->isValid('Yeah'); // true
-v::yes()->isValid('Yep'); // true
-v::yes()->isValid('Yes'); // true
+v::yes()->assert('Y');
+// Validation passes successfully
+
+v::yes()->assert('Yea');
+// Validation passes successfully
+
+v::yes()->assert('Yeah');
+// Validation passes successfully
+
+v::yes()->assert('Yep');
+// Validation passes successfully
+
+v::yes()->assert('Yes');
+// Validation passes successfully
 ```
 
 This validator is case insensitive.
@@ -20,13 +29,15 @@ constant, meaning that it will validate the input using your current location:
 
 ```php
 setlocale(LC_ALL, 'pt_BR');
-v::yes(true)->isValid('Sim'); // true
+v::yes(true)->assert('Sim');
+// Validation passes successfully
 ```
 
 Be careful when using `$locale` as `TRUE` because the it's very permissive:
 
 ```php
-v::yes(true)->isValid('Yydoesnotmatter'); // true
+v::yes(true)->assert('Yydoesnotmatter');
+// Validation passes successfully
 ```
 
 Besides that, with `$locale` as `TRUE` it will consider any character starting
@@ -34,7 +45,8 @@ with "Y" as valid:
 
 ```php
 setlocale(LC_ALL, 'ru_RU');
-v::yes(true)->isValid('Yes'); // true
+v::yes(true)->assert('Yes');
+// Validation passes successfully
 ```
 
 ## Templates

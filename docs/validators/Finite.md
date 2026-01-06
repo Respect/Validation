@@ -5,8 +5,11 @@
 Validates if the input is a finite number.
 
 ```php
-v::finite()->isValid('10'); // true
-v::finite()->isValid(10); // true
+v::finite()->assert('10');
+// Validation passes successfully
+
+v::finite()->assert(10);
+// Validation passes successfully
 ```
 
 ## Templates

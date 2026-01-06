@@ -5,9 +5,14 @@
 Validates if the input is equivalent to some value.
 
 ```php
-v::equivalent(1)->isValid(true); // true
-v::equivalent('Something')->isValid('someThing'); // true
-v::equivalent(new ArrayObject([1, 2, 3, 4, 5]))->isValid(new ArrayObject([1, 2, 3, 4, 5])); // true
+v::equivalent(1)->assert(true);
+// Validation passes successfully
+
+v::equivalent('Something')->assert('someThing');
+// Validation passes successfully
+
+v::equivalent(new ArrayObject([1, 2, 3, 4, 5]))->assert(new ArrayObject([1, 2, 3, 4, 5]));
+// Validation passes successfully
 ```
 
 This validator is very similar to [Equals](Equals.md) but it does not make case-sensitive

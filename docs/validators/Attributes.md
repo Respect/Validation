@@ -34,38 +34,36 @@ Here is how you can validate the attributes of the object:
 
 ```php
 v::attributes()->assert(new Person('John Doe', '2020-06-23', 'john.doe@gmail.com'));
-// No exception
+// Validation passes successfully
 
 v::attributes()->assert(new Person('John Doe', '2020-06-23', 'john.doe@gmail.com', '+12024561111'));
-// No exception
+// Validation passes successfully
 
 v::attributes()->assert(new Person('', '2020-06-23', 'john.doe@gmail.com', '+12024561111'));
-// Message: `.name` must not be empty
+// → `.name` must be defined
 
 v::attributes()->assert(new Person('John Doe', 'not a date', 'john.doe@gmail.com', '+12024561111'));
-// Message: `.birthdate` must be a valid date in the format "2005-12-30"
+// → `.birthdate` must be a valid date in the format "2005-12-30"
 
 v::attributes()->assert(new Person('John Doe', '2020-06-23', 'not an email', '+12024561111'));
-// Message: `.email` must be a valid email address or must be null
+// → `.email` must be a valid email address or must be null
 
 v::attributes()->assert(new Person('John Doe', '2020-06-23', 'john.doe@gmail.com', 'not a phone number'));
-// Message: `.phone` must be a valid telephone number or must be null
+// → `.phone` must be a valid telephone number or must be null
 
 v::attributes()->assert(new Person('John Doe', '2020-06-23'));
-// Full message:
-// - `Person { +$name="John Doe" +$birthdate="2020-06-23" +$email=null +$phone=null +$address=null }` must pass at least one of the rules
-//  - `.email` must be defined
-//  - `.phone` must be defined
+// → - `Person { +$name="John Doe" +$birthdate="2020-06-23" +$email=null +$phone=null }` must pass at least one of the rules
+// →   - `.email` must be defined
+// →   - `.phone` must be defined
 
 v::attributes()->assert(new Person('', 'not a date', 'not an email', 'not a phone number'));
-// Full message:
-// - `Person { +$name="" +$birthdate="not a date" +$email="not an email" +$phone="not a phone number" +$address=null }` must pass the rules
-//   - `.name` must not be empty
-//   - `.birthdate` must pass all the rules
-//     - `.birthdate` must be a valid date in the format "2005-12-30"
-//     - For comparison with now, `.birthdate` must be a valid datetime
-//   - `.email` must be a valid email address or must be null
-//   - `.phone` must be a valid telephone number or must be null
+// → - `Person { +$name="" +$birthdate="not a date" +$email="not an email" +$phone="not a phone number" }` must pass the rules
+// →   - `.name` must be defined
+// →   - `.birthdate` must pass all the rules
+// →     - `.birthdate` must be a valid date in the format "2005-12-30"
+// →     - For comparison with now, `.birthdate` must be a valid datetime
+// →   - `.email` must be a valid email address or must be null
+// →   - `.phone` must be a valid telephone number or must be null
 ```
 
 ## Caveats

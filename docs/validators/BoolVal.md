@@ -5,12 +5,23 @@
 Validates if the input results in a boolean value:
 
 ```php
-v::boolVal()->isValid('on'); // true
-v::boolVal()->isValid('off'); // true
-v::boolVal()->isValid('yes'); // true
-v::boolVal()->isValid('no'); // true
-v::boolVal()->isValid(1); // true
-v::boolVal()->isValid(0); // true
+v::boolVal()->assert('on');
+// Validation passes successfully
+
+v::boolVal()->assert('off');
+// Validation passes successfully
+
+v::boolVal()->assert('yes');
+// Validation passes successfully
+
+v::boolVal()->assert('no');
+// Validation passes successfully
+
+v::boolVal()->assert(1);
+// Validation passes successfully
+
+v::boolVal()->assert(0);
+// Validation passes successfully
 ```
 
 ## Templates

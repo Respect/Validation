@@ -5,7 +5,8 @@
 Negates any validator.
 
 ```php
-v::not(v::ip())->isValid('foo'); // true
+v::not(v::ip())->assert('foo');
+// Validation passes successfully
 ```
 
 In the sample above, validator returns true because 'foo' isn't an IP Address.
@@ -13,7 +14,8 @@ In the sample above, validator returns true because 'foo' isn't an IP Address.
 You can negate complex, grouped or chained validators as well:
 
 ```php
-v::not(v::intVal()->positive())->isValid(-1.5); // true
+v::not(v::intVal()->positive())->assert(-1.5);
+// Validation passes successfully
 ```
 
 Each other validation has custom messages for negated validators.

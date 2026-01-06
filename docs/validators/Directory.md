@@ -5,15 +5,21 @@
 Validates if the given path is a directory.
 
 ```php
-v::directory()->isValid(__DIR__); // true
-v::directory()->isValid(__FILE__); // false
+v::directory()->assert(__DIR__);
+// Validation passes successfully
+
+v::directory()->assert(__FILE__);
+// → "/path/to/dir/update_validator_docs.php" must be a directory
 ```
 
 This validator will consider SplFileInfo instances, so you can do something like:
 
 ```php
-v::directory()->isValid(new SplFileInfo('library/'));
-v::directory()->isValid(dir('/'));
+v::directory()->assert(new SplFileInfo('library/'));
+// Validation passes successfully
+
+v::directory()->assert(dir('/'));
+// Validation passes successfully
 ```
 
 ## Templates
