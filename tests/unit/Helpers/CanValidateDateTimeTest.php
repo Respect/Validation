@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Helpers;
 
+use DateTime;
 use Respect\Validation\Test\TestCase;
 
 /**
@@ -57,6 +58,8 @@ final class CanValidateDateTimeTest extends TestCase
             ['Y-m-d\TH:i:sP', '2018-01-30T19:04:35+00:00'],
             ['r', 'Tue, 30 Jan 2018 19:06:01 +0000'],
             ['D, d M Y H:i:s O', 'Tue, 30 Jan 2018 19:06:01 +0000'],
+            [DateTime::RFC3339_EXTENDED, '2014-04-12T23:20:50.052Z'],
+            [DateTime::RFC3339, '2005-08-15T15:52:01Z'],
         ];
     }
 

@@ -16,6 +16,9 @@ use function checkdate;
 use function date_default_timezone_get;
 use function date_parse_from_format;
 use function preg_match;
+use function strlen;
+use function strrpos;
+use function substr;
 
 /**
  * Helper to handle date/time.
@@ -43,6 +46,10 @@ trait CanValidateDateTime
         }
 
         if ($this->isDateFormat($format)) {
+            if ($this->needsZuluTimezoneReplacement($format, $value)) {
+                $value = substr($value, 0, -1) . '+00:00';
+            }
+
             $formattedDate = DateTime::createFromFormat(
                 '!' . $format,
                 $value,
@@ -57,6 +64,12 @@ trait CanValidateDateTime
         }
 
         return true;
+    }
+
+    private function needsZuluTimezoneReplacement(string $format, string $value): bool
+    {
+        return ($format === DateTime::RFC3339_EXTENDED || $format === DateTime::RFC3339)
+            && strrpos($value, 'Z') === strlen($value) - 1;
     }
 
     /**
