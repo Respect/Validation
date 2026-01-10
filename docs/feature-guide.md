@@ -252,7 +252,7 @@ $validator->assert('validation');
 $validator->assert('alexandre gaigalas');
 ```
 
-Every time you add a new rule to the chain, a new validator is created. That means you can do things like:
+Every time you add a new node to the chain, a new immutable instance is created. That means you can do things like:
 
 ```php
 $baseValidator = v::intType()->between(1, 155);
