@@ -246,8 +246,6 @@ interface Chain extends
 
     public function nip(): Chain;
 
-    public function no(bool $useLocale = false): Chain;
-
     public function noneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function not(Validator $validator): Chain;
@@ -366,6 +364,4 @@ interface Chain extends
     public function writable(): Chain;
 
     public function xdigit(string ...$additionalChars): Chain;
-
-    public function yes(bool $useLocale = false): Chain;
 }

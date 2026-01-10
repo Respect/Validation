@@ -46,7 +46,6 @@ See also:
 - [FloatType](FloatType.md)
 - [FloatVal](FloatVal.md)
 - [IntType](IntType.md)
-- [No](No.md)
 - [NullType](NullType.md)
 - [Number](Number.md)
 - [ObjectType](ObjectType.md)
@@ -55,4 +54,3 @@ See also:
 - [StringVal](StringVal.md)
 - [TrueVal](TrueVal.md)
 - [Type](Type.md)
-- [Yes](Yes.md)

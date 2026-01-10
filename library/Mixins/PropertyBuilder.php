@@ -240,8 +240,6 @@ interface PropertyBuilder
 
     public static function propertyNip(string $propertyName): Chain;
 
-    public static function propertyNo(string $propertyName, bool $useLocale = false): Chain;
-
     public static function propertyNoneOf(
         string $propertyName,
         Validator $validator1,
@@ -370,6 +368,4 @@ interface PropertyBuilder
     public static function propertyWritable(string $propertyName): Chain;
 
     public static function propertyXdigit(string $propertyName, string ...$additionalChars): Chain;
-
-    public static function propertyYes(string $propertyName, bool $useLocale = false): Chain;
 }

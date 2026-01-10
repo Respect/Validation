@@ -243,8 +243,6 @@ interface Builder extends
 
     public static function nip(): Chain;
 
-    public static function no(bool $useLocale = false): Chain;
-
     public static function noneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function not(Validator $validator): Chain;
@@ -363,6 +361,4 @@ interface Builder extends
     public static function writable(): Chain;
 
     public static function xdigit(string ...$additionalChars): Chain;
-
-    public static function yes(bool $useLocale = false): Chain;
 }

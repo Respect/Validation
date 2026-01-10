@@ -30,9 +30,7 @@
 - [BoolType](validators/BoolType.md)
 - [BoolVal](validators/BoolVal.md)
 - [FalseVal](validators/FalseVal.md)
-- [No](validators/No.md)
 - [TrueVal](validators/TrueVal.md)
-- [Yes](validators/Yes.md)
 
 ## Callables
 
@@ -406,7 +404,6 @@
 - [NfeAccessKey](validators/NfeAccessKey.md)
 - [Nif](validators/Nif.md)
 - [Nip](validators/Nip.md)
-- [No](validators/No.md)
 - [NoneOf](validators/NoneOf.md)
 - [Not](validators/Not.md)
 - [NullOr](validators/NullOr.md)
@@ -466,4 +463,3 @@
 - [When](validators/When.md)
 - [Writable](validators/Writable.md)
 - [Xdigit](validators/Xdigit.md)
-- [Yes](validators/Yes.md)

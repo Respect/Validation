@@ -229,8 +229,6 @@ interface NotChain
 
     public function notNip(): Chain;
 
-    public function notNo(bool $useLocale = false): Chain;
-
     public function notNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notNullType(): Chain;
@@ -340,6 +338,4 @@ interface NotChain
     public function notWritable(): Chain;
 
     public function notXdigit(string ...$additionalChars): Chain;
-
-    public function notYes(bool $useLocale = false): Chain;
 }

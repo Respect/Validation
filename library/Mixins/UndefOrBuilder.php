@@ -239,8 +239,6 @@ interface UndefOrBuilder
 
     public static function undefOrNip(): Chain;
 
-    public static function undefOrNo(bool $useLocale = false): Chain;
-
     public static function undefOrNoneOf(
         Validator $validator1,
         Validator $validator2,
@@ -358,6 +356,4 @@ interface UndefOrBuilder
     public static function undefOrWritable(): Chain;
 
     public static function undefOrXdigit(string ...$additionalChars): Chain;
-
-    public static function undefOrYes(bool $useLocale = false): Chain;
 }

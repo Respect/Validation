@@ -217,8 +217,6 @@ interface AllBuilder
 
     public static function allNip(): Chain;
 
-    public static function allNo(bool $useLocale = false): Chain;
-
     public static function allNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allNot(Validator $validator): Chain;
@@ -324,6 +322,4 @@ interface AllBuilder
     public static function allWritable(): Chain;
 
     public static function allXdigit(string ...$additionalChars): Chain;
-
-    public static function allYes(bool $useLocale = false): Chain;
 }

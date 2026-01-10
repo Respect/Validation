@@ -31,12 +31,6 @@ jobs:
           php-version: ${{ matrix.php-version }}
           coverage: none
 
-      - name: Install Localisation Files
-        run: |
-          sudo locale-gen --no-purge --lang nl_NL.UTF-8
-          sudo locale-gen --no-purge --lang pt_BR.UTF-8
-          sudo locale-gen --no-purge --lang ru_RU.UTF-8
-
       - name: Install Dependencies
         run: composer install --prefer-dist ${{ matrix.composer-extra-arguments }}
 
@@ -60,12 +54,6 @@ jobs:
         with:
           php-version: 8.5
           coverage: pcov
-
-      - name: Install Localisation Files
-        run: |
-          sudo locale-gen --no-purge --lang nl_NL.UTF-8
-          sudo locale-gen --no-purge --lang pt_BR.UTF-8
-          sudo locale-gen --no-purge --lang ru_RU.UTF-8
 
       - name: Install Dependencies
         run: composer install --prefer-dist ${{ matrix.composer-extra-arguments }}

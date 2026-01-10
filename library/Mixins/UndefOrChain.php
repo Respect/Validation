@@ -227,8 +227,6 @@ interface UndefOrChain
 
     public function undefOrNip(): Chain;
 
-    public function undefOrNo(bool $useLocale = false): Chain;
-
     public function undefOrNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrNot(Validator $validator): Chain;
@@ -338,6 +336,4 @@ interface UndefOrChain
     public function undefOrWritable(): Chain;
 
     public function undefOrXdigit(string ...$additionalChars): Chain;
-
-    public function undefOrYes(bool $useLocale = false): Chain;
 }

@@ -229,8 +229,6 @@ interface NullOrChain
 
     public function nullOrNip(): Chain;
 
-    public function nullOrNo(bool $useLocale = false): Chain;
-
     public function nullOrNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function nullOrNot(Validator $validator): Chain;
@@ -340,6 +338,4 @@ interface NullOrChain
     public function nullOrWritable(): Chain;
 
     public function nullOrXdigit(string ...$additionalChars): Chain;
-
-    public function nullOrYes(bool $useLocale = false): Chain;
 }

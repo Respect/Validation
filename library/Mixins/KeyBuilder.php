@@ -236,8 +236,6 @@ interface KeyBuilder
 
     public static function keyNip(int|string $key): Chain;
 
-    public static function keyNo(int|string $key, bool $useLocale = false): Chain;
-
     public static function keyNoneOf(
         int|string $key,
         Validator $validator1,
@@ -358,6 +356,4 @@ interface KeyBuilder
     public static function keyWritable(int|string $key): Chain;
 
     public static function keyXdigit(int|string $key, string ...$additionalChars): Chain;
-
-    public static function keyYes(int|string $key, bool $useLocale = false): Chain;
 }

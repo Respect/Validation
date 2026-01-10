@@ -241,8 +241,6 @@ interface NullOrBuilder
 
     public static function nullOrNip(): Chain;
 
-    public static function nullOrNo(bool $useLocale = false): Chain;
-
     public static function nullOrNoneOf(
         Validator $validator1,
         Validator $validator2,
@@ -360,6 +358,4 @@ interface NullOrBuilder
     public static function nullOrWritable(): Chain;
 
     public static function nullOrXdigit(string ...$additionalChars): Chain;
-
-    public static function nullOrYes(bool $useLocale = false): Chain;
 }

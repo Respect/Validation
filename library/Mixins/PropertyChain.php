@@ -236,8 +236,6 @@ interface PropertyChain
 
     public function propertyNip(string $propertyName): Chain;
 
-    public function propertyNo(string $propertyName, bool $useLocale = false): Chain;
-
     public function propertyNoneOf(
         string $propertyName,
         Validator $validator1,
@@ -358,6 +356,4 @@ interface PropertyChain
     public function propertyWritable(string $propertyName): Chain;
 
     public function propertyXdigit(string $propertyName, string ...$additionalChars): Chain;
-
-    public function propertyYes(string $propertyName, bool $useLocale = false): Chain;
 }
