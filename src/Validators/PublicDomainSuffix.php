@@ -13,7 +13,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Respect\Validation\Helpers\CanValidateUndefined;
-use Respect\Validation\Helpers\DomainInfo;
+use Respect\Validation\Helpers\DataLoader;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -21,6 +21,7 @@ use function array_pop;
 use function explode;
 use function in_array;
 use function is_scalar;
+use function mb_strtoupper;
 use function strtoupper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -41,9 +42,8 @@ final class PublicDomainSuffix extends Simple
         $parts = explode('.', (string) $input);
         $tld = array_pop($parts);
 
-        $domainInfo = new DomainInfo($tld);
-        $dataSource = $domainInfo->getPublicSuffixes();
-        if ($this->isUndefined($input) && empty($dataSource)) {
+        $dataSource = DataLoader::load('domain/public-suffix/' . mb_strtoupper($tld) . '.php');
+        if ($this->isUndefined($input) && $dataSource === []) {
             return true;
         }
 

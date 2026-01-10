@@ -10,35 +10,19 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Validation\Helpers\DataLoader;
 use Respect\Validation\Message\Template;
-use Respect\Validation\Validators\Core\Simple;
-
-use function dirname;
-use function in_array;
-use function is_scalar;
-use function mb_strtoupper;
+use Respect\Validation\Validators\Core\Envelope;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be a valid top-level domain name',
     '{{subject}} must not be a valid top-level domain name',
 )]
-final class Tld extends Simple
+final class Tld extends Envelope
 {
-    public function isValid(mixed $input): bool
+    public function __construct()
     {
-        if (!is_scalar($input)) {
-            return false;
-        }
-
-        return in_array(mb_strtoupper((string) $input), $this->getTldList());
-    }
-
-    /** @return array<string> */
-    private function getTldList(): array
-    {
-        static $tldList = null;
-
-        return $tldList ??= require dirname(__DIR__, 2) . '/data/domain/tld.php';
+        parent::__construct(new Call('mb_strtoupper', new In(DataLoader::load('domain/tld.php'))));
     }
 }

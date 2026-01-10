@@ -10,12 +10,12 @@ declare(strict_types=1);
 
 namespace Respect\Dev\Commands;
 
+use Respect\Dev\Helpers\DataSaver;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\VarExporter\VarExporter;
 
 use function array_keys;
 use function array_unique;
@@ -23,9 +23,7 @@ use function count;
 use function dirname;
 use function explode;
 use function file_get_contents;
-use function file_put_contents;
 use function glob;
-use function implode;
 use function is_dir;
 use function mb_strtoupper;
 use function mkdir;
@@ -38,8 +36,6 @@ use function str_starts_with;
 use function trim;
 use function unlink;
 
-use const PHP_EOL;
-
 #[AsCommand(
     name: 'update:domain-suffixes',
     description: 'Update list of public domain suffixes',
@@ -47,6 +43,12 @@ use const PHP_EOL;
 final class UpdateDomainSuffixesCommand extends Command
 {
     private const string LIST_URL = 'https://publicsuffix.org/list/public_suffix_list.dat';
+
+    public function __construct(
+        private readonly DataSaver $dataSaver,
+    ) {
+        parent::__construct();
+    }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -100,20 +102,12 @@ final class UpdateDomainSuffixesCommand extends Command
                 continue;
             }
 
-            sort($suffixList);
-
-            $SPDX = '// SPDX';
-
-            $fileContent = implode(PHP_EOL, [
-                '<?php declare(strict_types=1);',
-                $SPDX . '-FileCopyrightText: 2007–22 Mozilla Foundation',
-                $SPDX . '-License-Identifier: MPL-2.0-no-copyleft-exception',
-                'return ' . VarExporter::export($suffixList) . ';' . PHP_EOL,
-            ]);
-
-            // Convert IDN TLD to ASCII (Punycode) for filename
-            $filename = sprintf('%s/public-suffix/%s.php', $dataDir, $tld);
-            file_put_contents($filename, $fileContent);
+            $this->dataSaver->save(
+                $suffixList,
+                '2007–22 Mozilla Foundation',
+                'MPL-2.0-no-copyleft-exception',
+                sprintf('domain/public-suffix/%s.php', $tld),
+            );
 
             $progressBar->advance();
         }

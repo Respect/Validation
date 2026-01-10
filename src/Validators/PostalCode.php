@@ -26,10 +26,9 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Respect\Validation\Exceptions\InvalidValidatorException;
+use Respect\Validation\Helpers\DataLoader;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Envelope;
-
-use function dirname;
 
 /** @see http://download.geonames.org/export/dump/countryInfo.txt */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -66,18 +65,10 @@ final class PostalCode extends Envelope
         );
     }
 
-    /** @return array<string, array{string, string}> */
-    private function getPostalCodes(): array
-    {
-        static $postalCodes = null;
-
-        return $postalCodes ??= require dirname(__DIR__, 2) . '/data/postal-code.php';
-    }
-
     private function buildRegex(string $countryCode, bool $formatted): string
     {
         $index = $formatted ? 0 : 1;
-        $postalCodes = $this->getPostalCodes();
+        $postalCodes = DataLoader::load('postal-code.php');
 
         return self::POSTAL_CODES_EXTRA[$countryCode][$index] ?? $postalCodes[$countryCode][$index] ?? '/^$/';
     }
