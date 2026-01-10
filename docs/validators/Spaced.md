@@ -5,15 +5,23 @@
 Validates if a string contains at least one whitespace (spaces, tabs, or line breaks);
 
 ```php
-v::spaced()->isValid('foo bar'); // true
-v::spaced()->isValid("foo\nbar"); // true
+v::spaced()->assert('foo bar');
+// Validation passes successfully
+
+v::spaced()->assert("foo\nbar");
+// Validation passes successfully
 ```
 
 This is most useful when inverting the validator as `notSpaced()`, and chaining with other validators such as [Alnum](Alnum.md) or [Alpha](Alpha.md) to ensure that a string contains no whitespace characters:
 
 ```php
-v::notSpaced()->alnum()->isValid('username'); // true
-v::notSpaced()->alnum()->isValid('user name'); // false
+v::notSpaced()->alnum()->assert('username');
+// Validation passes successfully
+
+v::notSpaced()->alnum()->assert('user name');
+// → - "user name" must pass all the rules
+// →   - "user name" must not contain whitespaces
+// →   - "user name" must contain only letters (a-z) and digits (0-9)
 ```
 
 ## Templates

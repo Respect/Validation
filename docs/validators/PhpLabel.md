@@ -9,9 +9,14 @@ Reference:
 http://php.net/manual/en/language.variables.basics.php
 
 ```php
-v::phpLabel()->isValid('person'); //true
-v::phpLabel()->isValid('foo'); //true
-v::phpLabel()->isValid('4ccess'); //false
+v::phpLabel()->assert('person'); //true
+// Validation passes successfully
+
+v::phpLabel()->assert('foo'); //true
+// Validation passes successfully
+
+v::phpLabel()->assert('4ccess'); //false
+// → "4ccess" must be a valid PHP label
 ```
 
 ## Templates

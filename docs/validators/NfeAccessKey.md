@@ -5,7 +5,8 @@
 Validates the access key of the Brazilian electronic invoice (NFe).
 
 ```php
-v::nfeAccessKey()->isValid('31841136830118868211870485416765268625116906'); // true
+v::nfeAccessKey()->assert('31841136830118868211870485416765268625116906');
+// → "31841136830118868211870485416765268625116906" must be a valid NFe access key
 ```
 
 ## Templates

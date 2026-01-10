@@ -6,13 +6,15 @@
 Validates whether the input is an hexadecimal number or not.
 
 ```php
-v::xdigit()->isValid('abc123'); // true
+v::xdigit()->assert('abc123');
+// Validation passes successfully
 ```
 
 Notice, however, that it doesn't accept strings starting with 0x:
 
 ```php
-v::xdigit()->isValid('0x1f'); // false
+v::xdigit()->assert('0x1f');
+// → "0x1f" must only contain hexadecimal digits
 ```
 
 ## Templates

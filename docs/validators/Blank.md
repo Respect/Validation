@@ -7,22 +7,20 @@ Validates if the given input is a blank value (`null`, zeros, empty strings or e
 We recommend you to check [Comparing empty values](../comparing-empty-values.md) for more details.
 
 ```php
-v::blank()->isValid(null); // true
-v::blank()->isValid(''); // true
-v::blank()->isValid([]); // true
-v::blank()->isValid(' '); // true
-v::blank()->isValid(0); // true
-v::blank()->isValid('0'); // true
-v::blank()->isValid(0); // true
-v::blank()->isValid('0.0'); // true
-v::blank()->isValid(false); // true
-v::blank()->isValid(['']); // true
-v::blank()->isValid([' ']); // true
-v::blank()->isValid([0]); // true
-v::blank()->isValid(['0']); // true
-v::blank()->isValid([false]); // true
-v::blank()->isValid([[''], [0]]); // true
-v::blank()->isValid(new stdClass()); // true
+v::blank()->assert(' ');
+// Validation passes successfully
+
+v::blank()->assert(0);
+// Validation passes successfully
+
+v::blank()->assert(false);
+// Validation passes successfully
+
+v::blank()->assert(['', ' ', '0.0', []]);
+// Validation passes successfully
+
+v::blank()->assert(new stdClass());
+// Validation passes successfully
 ```
 
 It's similar to [Falsy](Falsy.md), but way stricter.

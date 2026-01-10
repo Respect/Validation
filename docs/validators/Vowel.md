@@ -6,7 +6,8 @@
 Validates whether the input contains only vowels.
 
 ```php
-v::vowel()->isValid('aei'); // true
+v::vowel()->assert('aei');
+// Validation passes successfully
 ```
 
 ## Templates

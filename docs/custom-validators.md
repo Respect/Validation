@@ -27,7 +27,7 @@ final class Something extends Simple
 }
 ```
 
-The `'{{subject}} is not something` message would be used then you call the validator
+The `'{{subject}} is not something` message would be used when you call the validator
 with the `not()`.
 
 All classes in Validation are created by the `Factory` class. If you want

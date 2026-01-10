@@ -5,11 +5,20 @@
 Validate numbers in any base, even with non regular bases.
 
 ```php
-v::base(2)->isValid('011010001'); // true
-v::base(3)->isValid('0120122001'); // true
-v::base(8)->isValid('01234567520'); // true
-v::base(16)->isValid('012a34f5675c20d'); // true
-v::base(2)->isValid('0120122001'); // false
+v::base(2)->assert('011010001');
+// Validation passes successfully
+
+v::base(3)->assert('0120122001');
+// Validation passes successfully
+
+v::base(8)->assert('01234567520');
+// Validation passes successfully
+
+v::base(16)->assert('012a34f5675c20d');
+// Validation passes successfully
+
+v::base(2)->assert('0120122001');
+// → "0120122001" must be a number in base 2
 ```
 
 ## Templates

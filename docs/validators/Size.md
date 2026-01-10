@@ -5,9 +5,14 @@
 Validates whether the input is a file that is of a certain size or not.
 
 ```php
-v::size('KB', v::greaterThan(1))->isValid($filename);
-v::size('MB', v::between(1, 2))->isValid($filename);
-v::size('GB', v::lessThan(1))->isValid($filename);
+v::size('KB', v::greaterThan(1))->assert('/path/to/file');
+// Validation passes successfully
+
+v::size('MB', v::between(1, 2))->assert('/path/to/file');
+// → The size in megabytes of "/path/to/file" must be between 1 and 2
+
+v::size('GB', v::lessThan(1))->assert('/path/to/file');
+// Validation passes successfully
 ```
 
 Accepted data storage units are `B`, `KB`, `MB`, `GB`, `TB`, `PB`, `EB`, `ZB`, and `YB`.
@@ -31,11 +36,11 @@ This validator will accept:
 This template serve as message prefix:
 
 ```php
-v::size('MB', v::equals(2))->assert('filename.txt')
-// Message: The size in megabytes of "filename.txt" must be equal to 2
+v::size('MB', v::equals(2))->assert('/path/to/file');
+// → The size in megabytes of "/path/to/file" must be equal to 2
 
-v::size('KB', v::not(v::equals(56)))->assert('filename.txt')
-// Message: The size in kilobytes of "filename.txt" must not be equal to 56
+v::size('KB', v::not(v::equals(56)))->assert('/path/to/file');
+// Validation passes successfully
 ```
 
 ### `Size::TEMPLATE_WRONG_TYPE`

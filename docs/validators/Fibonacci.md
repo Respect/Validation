@@ -5,9 +5,14 @@
 Validates whether the input follows the Fibonacci integer sequence.
 
 ```php
-v::fibonacci()->isValid(1); // true
-v::fibonacci()->isValid('34'); // true
-v::fibonacci()->isValid(6); // false
+v::fibonacci()->assert(1);
+// Validation passes successfully
+
+v::fibonacci()->assert('34');
+// Validation passes successfully
+
+v::fibonacci()->assert(6);
+// → 6 must be a valid Fibonacci number
 ```
 
 ## Templates

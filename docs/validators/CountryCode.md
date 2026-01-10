@@ -8,11 +8,17 @@ Validates whether the input is a country code in [ISO 3166-1][] standard.
 **This validator requires [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] to be installed.**
 
 ```php
-v::countryCode()->isValid('BR'); // true
+v::countryCode()->assert('BR');
+// Validation passes successfully
 
-v::countryCode('alpha-2')->isValid('NL'); // true
-v::countryCode('alpha-3')->isValid('USA'); // true
-v::countryCode('numeric')->isValid('504'); // true
+v::countryCode('alpha-2')->assert('NL');
+// Validation passes successfully
+
+v::countryCode('alpha-3')->assert('USA');
+// Validation passes successfully
+
+v::countryCode('numeric')->assert('504');
+// Validation passes successfully
 ```
 
 This validator supports the three sets of country codes:

@@ -5,7 +5,8 @@
 Validates a Brazilian driver's license.
 
 ```php
-v::cnh()->isValid('02650306461'); // true
+v::cnh()->assert('02650306461');
+// Validation passes successfully
 ```
 
 ## Templates

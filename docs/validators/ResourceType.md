@@ -5,7 +5,8 @@
 Validates whether the input is a [resource](http://php.net/types.resource).
 
 ```php
-v::resourceType()->isValid(fopen('/path/to/file.txt', 'w')); // true
+v::resourceType()->assert(fopen('/path/to/file.txt', 'r'));
+// Validation passes successfully
 ```
 
 ## Templates
@@ -49,4 +50,3 @@ See also:
 - [PhpLabel](PhpLabel.md)
 - [StringType](StringType.md)
 - [StringVal](StringVal.md)
-- [Type](Type.md)

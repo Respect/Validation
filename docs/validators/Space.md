@@ -6,7 +6,8 @@
 Validates whether the input contains only whitespaces characters.
 
 ```php
-v::space()->isValid('    '); // true
+v::space()->assert('    ');
+// Validation passes successfully
 ```
 
 ## Templates

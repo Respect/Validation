@@ -9,33 +9,28 @@ $object = new stdClass;
 $object->name = 'The Respect Panda';
 $object->email = 'therespectpanda@gmail.com';
 
-v::property('name', v::equals('The Respect Panda'))->isValid($object); // true
+v::property('name', v::equals('The Respect Panda'))->assert($object);
+// Validation passes successfully
 
-v::property('email', v::email())->isValid($object); // true
+v::property('email', v::email())->assert($object);
+// Validation passes successfully
 
-v::property('email', v::email()->endsWith('@example.com'))->assert($object); // false
+v::property('email', v::email()->endsWith('@example.com'))->assert($object);
+// → `.email` must end with "@example.com"
 ```
 
 You can also use `Property` to validate nested objects:
 
 ```php
+$object = new stdClass();
 $object->address = new stdClass();
 $object->address->postalCode = '1017 BS';
 
 v::property(
     'address',
-    v::property('postalCode', v::postalCode('NL'))
-)->isValid($object); // true
-```
-
-The name of this validator is automatically set to the property name.
-
-```php
-v::property('website', v::url())->assert($object);
-// message: website must be present
-
-v::property('name', v::uppercase())->assert($object);
-// message: name must be uppercase
+    v::property('postalCode', v::postalCode('BR'))
+)->assert($object);
+// → `.address.postalCode` must be a valid postal code on "BR"
 ```
 
 ## Note

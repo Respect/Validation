@@ -5,10 +5,14 @@
 Validates whether the input matches the expected number of decimals.
 
 ```php
-v::decimals(2)->isValid('27990.50'); // true
-v::decimals(1)->isValid('27990.50'); // false
-v::decimal(1)->isValid(1.5); // true
+v::decimal(2)->assert('27990.50');
+// Validation passes successfully
 
+v::decimal(1)->assert('27990.50');
+// → "27990.50" must have 1 decimals
+
+v::decimal(1)->assert(1.5);
+// Validation passes successfully
 ```
 
 ## Known limitations
@@ -17,7 +21,8 @@ When validating float types, it is not possible to determine the amount of
 ending zeros and because of that, validations like the ones below will pass.
 
 ```php
-v::decimal(1)->isValid(1.50); // true
+v::decimal(1)->assert(1.50);
+// Validation passes successfully
 ```
 
 ## Templates

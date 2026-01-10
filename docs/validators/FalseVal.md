@@ -5,14 +5,29 @@
 Validates if a value is considered as `false`.
 
 ```php
-v::falseVal()->isValid(false); // true
-v::falseVal()->isValid(0); // true
-v::falseVal()->isValid('0'); // true
-v::falseVal()->isValid('false'); // true
-v::falseVal()->isValid('off'); // true
-v::falseVal()->isValid('no'); // true
-v::falseVal()->isValid('0.5'); // false
-v::falseVal()->isValid('2'); // false
+v::falseVal()->assert(false);
+// Validation passes successfully
+
+v::falseVal()->assert(0);
+// Validation passes successfully
+
+v::falseVal()->assert('0');
+// Validation passes successfully
+
+v::falseVal()->assert('false');
+// Validation passes successfully
+
+v::falseVal()->assert('off');
+// Validation passes successfully
+
+v::falseVal()->assert('no');
+// Validation passes successfully
+
+v::falseVal()->assert('0.5');
+// → "0.5" must evaluate to `false`
+
+v::falseVal()->assert('2');
+// → "2" must evaluate to `false`
 ```
 
 ## Templates

@@ -5,8 +5,11 @@
 Validates whether the input is a scalar value or not.
 
 ```php
-v::scalarVal()->isValid([]); // false
-v::scalarVal()->isValid(135.0); // true
+v::scalarVal()->assert([]);
+// → `[]` must be a scalar value
+
+v::scalarVal()->assert(135.0);
+// Validation passes successfully
 ```
 
 ## Templates
@@ -41,4 +44,3 @@ See also:
 - [ArrayVal](ArrayVal.md)
 - [NumericVal](NumericVal.md)
 - [StringType](StringType.md)
-- [Type](Type.md)

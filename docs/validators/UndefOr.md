@@ -9,11 +9,17 @@ This validator can be particularly useful when validating form fields.
 ## Usage
 
 ```php
-v::undefOr(v::alpha())->isValid(''); // true
-v::undefOr(v::digit())->isValid(null); // true
+v::undefOr(v::alpha())->assert('');
+// Validation passes successfully
 
-v::undefOr(v::alpha())->isValid('username'); // true
-v::undefOr(v::alpha())->isValid('has1number'); // false
+v::undefOr(v::digit())->assert(null);
+// Validation passes successfully
+
+v::undefOr(v::alpha())->assert('username');
+// Validation passes successfully
+
+v::undefOr(v::alpha())->assert('has1number');
+// → "has1number" must contain only letters (a-z) or must be undefined
 ```
 
 ## Prefix
@@ -21,8 +27,11 @@ v::undefOr(v::alpha())->isValid('has1number'); // false
 For convenience, you can use the `undefOr` as a prefix to any validator:
 
 ```php
-v::undefOrEmail()->isValid('not an email'); // false
-v::undefOrBetween(1, 3)->isValid(2); // true
+v::undefOrEmail()->assert('not an email');
+// → "not an email" must be a valid email address or must be undefined
+
+v::undefOrBetween(1, 3)->assert(2);
+// Validation passes successfully
 ```
 
 ## Templates
@@ -38,10 +47,10 @@ The templates from this validator serve as message suffixes:
 
 ```php
 v::undefOr(v::alpha())->assert('has1number');
-// "has1number" must contain only letters (a-z) or must be undefined
+// → "has1number" must contain only letters (a-z) or must be undefined
 
 v::not(v::undefOr(v::alpha()))->assert("alpha");
-// "alpha" must not contain letters (a-z) and must not be undefined
+// → "alpha" must not contain letters (a-z) and must not be undefined
 ```
 
 ## Template placeholders

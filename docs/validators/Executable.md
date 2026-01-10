@@ -5,7 +5,11 @@
 Validates if a file is an executable.
 
 ```php
-v::executable()->isValid('script.sh'); // true
+v::executable()->assert('/path/to/file');
+// → "/path/to/file" must be an executable file
+
+v::executable()->assert('/path/to/executable');
+// Validation passes successfully
 ```
 
 ## Templates

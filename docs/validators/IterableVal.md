@@ -5,10 +5,17 @@
 Validates whether the input is an iterable value, in other words, if you can iterate over it with the [foreach][] language construct.
 
 ```php
-v::iterableVal()->isValid([]); // true
-v::iterableVal()->isValid(new ArrayObject()); // true
-v::iterableVal()->isValid(new stdClass()); // true
-v::iterableVal()->isValid('string'); // false
+v::iterableVal()->assert([]);
+// Validation passes successfully
+
+v::iterableVal()->assert(new ArrayObject());
+// Validation passes successfully
+
+v::iterableVal()->assert(new stdClass());
+// Validation passes successfully
+
+v::iterableVal()->assert('string');
+// → "string" must be an iterable value
 ```
 
 ## Note

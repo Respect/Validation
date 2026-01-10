@@ -6,14 +6,16 @@
 Validates whether the input is a valid domain name or not.
 
 ```php
-v::domain()->isValid('google.com');
+v::domain()->assert('google.com');
+// Validation passes successfully
 ```
 
 You can skip _top level domain_ (TLD) checks to validate internal
 domain names:
 
 ```php
-v::domain(false)->isValid('dev.machine.local');
+v::domain(false)->assert('dev.machine.local');
+// Validation passes successfully
 ```
 
 This is a composite validator, it validates several validators

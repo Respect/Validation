@@ -5,9 +5,14 @@
 Validates whether the input is greater than or equal to a value.
 
 ```php
-v::intVal()->greaterThanOrEqual(10)->isValid(9); // false
-v::intVal()->greaterThanOrEqual(10)->isValid(10); // true
-v::intVal()->greaterThanOrEqual(10)->isValid(11); // true
+v::intVal()->greaterThanOrEqual(10)->assert(9);
+// → 9 must be greater than or equal to 10
+
+v::intVal()->greaterThanOrEqual(10)->assert(10);
+// Validation passes successfully
+
+v::intVal()->greaterThanOrEqual(10)->assert(11);
+// Validation passes successfully
 ```
 
 Validation makes comparison easier, check out our supported

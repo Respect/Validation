@@ -41,6 +41,7 @@
         "psr/http-message": "^1.0 || ^2.0",
         "ramsey/uuid": "^4",
         "respect/coding-standard": "^5.0",
+        "sebastian/diff": "^7.0",
         "sokil/php-isocodes": "^4.2.1",
         "sokil/php-isocodes-db-only": "^4.0",
         "squizlabs/php_codesniffer": "^4.0",

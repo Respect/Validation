@@ -5,8 +5,11 @@
 Validates if the input is an instance of the given class or interface.
 
 ```php
-v::instance('DateTime')->isValid(new DateTime); // true
-v::instance('Traversable')->isValid(new ArrayObject); // true
+v::instance('DateTime')->assert(new DateTime);
+// Validation passes successfully
+
+v::instance('Traversable')->assert(new ArrayObject);
+// Validation passes successfully
 ```
 
 Message template for this validator includes `{{instanceName}}`.
@@ -45,4 +48,3 @@ See also:
 - [IterableType](IterableType.md)
 - [IterableVal](IterableVal.md)
 - [ObjectType](ObjectType.md)
-- [Type](Type.md)

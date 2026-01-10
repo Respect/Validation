@@ -8,13 +8,15 @@ Validates if the input contains at least one of defined values
 For strings (comparing is case insensitive):
 
 ```php
-v::containsAny(['lorem', 'dolor'])->isValid('lorem ipsum'); // true
+v::containsAny(['lorem', 'dolor'])->assert('lorem ipsum');
+// Validation passes successfully
 ```
 
 For arrays (comparing is case sensitive to respect "contains" behavior):
 
 ```php
-v::containsAny(['lorem', 'dolor'])->isValid(['ipsum', 'lorem']); // true
+v::containsAny(['lorem', 'dolor'])->assert(['ipsum', 'lorem']);
+// Validation passes successfully
 ```
 
 A second parameter may be passed for identical comparison instead

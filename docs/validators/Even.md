@@ -5,7 +5,8 @@
 Validates whether the input is an even number or not.
 
 ```php
-v::intVal()->even()->isValid(2); // true
+v::intVal()->even()->assert(2);
+// Validation passes successfully
 ```
 
 Using `int()` before `even()` is a best practice.

@@ -5,7 +5,8 @@
 Validates if the input is equal to some value.
 
 ```php
-v::equals('alganet')->isValid('alganet'); // true
+v::equals('alganet')->assert('alganet');
+// Validation passes successfully
 ```
 
 Message template for this validator includes `{{compareTo}}`.

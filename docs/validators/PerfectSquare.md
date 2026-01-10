@@ -5,8 +5,11 @@
 Validates whether the input is a perfect square.
 
 ```php
-v::perfectSquare()->isValid(25); // true (5*5)
-v::perfectSquare()->isValid(9); // true (3*3)
+v::perfectSquare()->assert(25); // (5*5)
+// Validation passes successfully
+
+v::perfectSquare()->assert(9); // (3*3)
+// Validation passes successfully
 ```
 
 ## Templates

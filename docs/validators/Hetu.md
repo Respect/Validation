@@ -5,11 +5,17 @@
 Validates a Finnish personal identity code ([HETU][]).
 
 ```php
-v::hetu()->isValid('010106A9012'); // true
-v::hetu()->isValid('290199-907A'); // true
-v::hetu()->isValid('280291+923X'); // true
+v::hetu()->assert('010106A9012');
+// Validation passes successfully
 
-v::hetu()->isValid('010106_9012'); // false
+v::hetu()->assert('290199-907A');
+// Validation passes successfully
+
+v::hetu()->assert('280291+923X');
+// Validation passes successfully
+
+v::hetu()->assert('010106_9012');
+// → "010106_9012" must be a valid Finnish personal identity code
 ```
 
 The validation is case-sensitive.

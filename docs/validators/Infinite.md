@@ -5,7 +5,8 @@
 Validates if the input is an infinite number.
 
 ```php
-v::infinite()->isValid(INF); // true
+v::infinite()->assert(INF);
+// Validation passes successfully
 ```
 
 ## Templates
@@ -45,4 +46,3 @@ See also:
 - [IntType](IntType.md)
 - [IntVal](IntVal.md)
 - [NumericVal](NumericVal.md)
-- [Type](Type.md)

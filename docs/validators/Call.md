@@ -38,7 +38,8 @@ v::call(
         ->key('host',   v::domain())
         ->key('path',   v::stringType())
         ->key('query',  v::notBlank())
-)->isValid($url);
+)->assert($url);
+// Validation passes successfully
 ```
 
 ## Templates

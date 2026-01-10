@@ -11,6 +11,7 @@ declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
 use Respect\Dev\Commands\CreateMixinCommand;
+use Respect\Dev\Commands\UpdateDocAssertionCommand;
 use Respect\Dev\Commands\UpdateDocLinksCommand;
 use Respect\Dev\Commands\UpdateDomainSuffixesCommand;
 use Respect\Dev\Commands\UpdateDomainToplevelCommand;
@@ -20,6 +21,7 @@ use Symfony\Component\Console\Application;
 return (static function () {
     $application = new Application('Respect/Validation', '3.0');
     $application->addCommand(new CreateMixinCommand());
+    $application->addCommand(new UpdateDocAssertionCommand());
     $application->addCommand(new UpdateDocLinksCommand());
     $application->addCommand(new UpdateDomainSuffixesCommand());
     $application->addCommand(new UpdateDomainToplevelCommand());

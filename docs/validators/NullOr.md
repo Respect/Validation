@@ -7,9 +7,14 @@ Validates the input using a defined validator when the input is not `null`.
 ## Usage
 
 ```php
-v::nullable(v::email())->isValid(null); // true
-v::nullable(v::email())->isValid('example@example.com'); // true
-v::nullable(v::email())->isValid('not an email'); // false
+v::nullOr(v::email())->assert(null);
+// Validation passes successfully
+
+v::nullOr(v::email())->assert('example@example.com');
+// Validation passes successfully
+
+v::nullOr(v::email())->assert('not an email');
+// → "not an email" must be a valid email address or must be null
 ```
 
 ## Prefix
@@ -17,9 +22,14 @@ v::nullable(v::email())->isValid('not an email'); // false
 For convenience, you can use `nullOr` as a prefix to any validator:
 
 ```php
-v::nullOrEmail()->isValid('not an email'); // false
-v::nullOrBetween(1, 3)->isValid(2); // true
-v::nullOrBetween(1, 3)->isValid(null); // true
+v::nullOrEmail()->assert('not an email');
+// → "not an email" must be a valid email address or must be null
+
+v::nullOrBetween(1, 3)->assert(2);
+// Validation passes successfully
+
+v::nullOrBetween(1, 3)->assert(null);
+// Validation passes successfully
 ```
 
 ## Templates
@@ -35,10 +45,10 @@ The templates from this validator serve as message suffixes:
 
 ```php
 v::nullOr(v::alpha())->assert('has1number');
-// "has1number" must contain only letters (a-z) or must be null
+// → "has1number" must contain only letters (a-z) or must be null
 
 v::not(v::nullOr(v::alpha()))->assert("alpha");
-// "alpha" must not contain letters (a-z) and must not be null
+// → "alpha" must not contain letters (a-z) and must not be null
 ```
 
 ## Template placeholders

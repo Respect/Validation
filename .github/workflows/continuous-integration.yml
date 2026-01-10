@@ -92,3 +92,24 @@ jobs:
 
       - name: Run PHPStan
         run: vendor/bin/phpstan analyze
+
+  doc-check:
+    name: Documentation Check
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.5
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --prefer-dist
+
+      - name: Run doc:assertions
+        run: bin/console update:doc:assertions

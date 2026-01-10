@@ -6,7 +6,8 @@
 Validates whether the input composed by only punctuation characters.
 
 ```php
-v::punct()->isValid('&,.;[]'); // true
+v::punct()->assert('&,.;[]');
+// Validation passes successfully
 ```
 
 ## Templates

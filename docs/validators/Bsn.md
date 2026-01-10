@@ -5,7 +5,8 @@
 Validates a Dutch citizen service number ([BSN](https://nl.wikipedia.org/wiki/Burgerservicenummer)).
 
 ```php
-v::bsn()->isValid('612890053'); // true
+v::bsn()->assert('612890053');
+// Validation passes successfully
 ```
 
 ## Templates

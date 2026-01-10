@@ -9,20 +9,27 @@ $object = new stdClass;
 $object->name = 'The Respect Panda';
 $object->email = 'therespectpanda@gmail.com';
 
-v::propertyOptional('name', v::notBlank())->isValid($object); // true
-v::propertyOptional('email', v::email())->isValid($object); // true
+v::propertyOptional('name', v::notBlank())->assert($object);
+// Validation passes successfully
 
-v::propertyOptional('age', v::intVal())->isValid($object); // true
-v::propertyOptional('website', v::url())->isValid($object); // true
+v::propertyOptional('email', v::email())->assert($object);
+// Validation passes successfully
 
-v::propertyOptional('name', v::lowercase())->isValid($object); // false
+v::propertyOptional('age', v::intVal())->assert($object);
+// Validation passes successfully
+
+v::propertyOptional('website', v::url())->assert($object);
+// Validation passes successfully
+
+v::propertyOptional('name', v::lowercase())->assert($object);
+// → `.name` must contain only lowercase letters
 ```
 
 The name of this validator is automatically set to the property name.
 
 ```php
 v::propertyOptional('email', v::endsWith('@example.com'))->assert($object);
-// message: email must end with "@example.com"
+// → `.email` must end with "@example.com"
 ```
 
 ## Note
@@ -32,8 +39,11 @@ anything that is not an object because it will always pass when it doesn't find 
 ensure the input is an object, use [ObjectType](ObjectType.md) with it.
 
 ```php
-v::propertyOptional('name', v::notBlank())->isValid('Not an object'); // true
-v::objectType()->propertyOptional('name', v::notBlank())->isValid('Not an object'); // false
+v::propertyOptional('name', v::notBlank())->assert('Not an object');
+// Validation passes successfully
+
+v::objectType()->propertyOptional('name', v::notBlank())->assert('Not an object');
+// → "Not an object" must be an object
 ```
 
 - To only validate if a property exists, use [PropertyExists](PropertyExists.md) instead.

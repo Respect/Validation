@@ -5,9 +5,14 @@
 Validates whether the type of an input is array.
 
 ```php
-v::arrayType()->isValid([]); // true
-v::arrayType()->isValid([1, 2, 3]); // true
-v::arrayType()->isValid(new ArrayObject()); // false
+v::arrayType()->assert([]);
+// Validation passes successfully
+
+v::arrayType()->assert([1, 2, 3]);
+// Validation passes successfully
+
+v::arrayType()->assert(new ArrayObject());
+// → `ArrayObject { getArrayCopy() => [] }` must be an array
 ```
 
 ## Templates
@@ -55,5 +60,4 @@ See also:
 - [ResourceType](ResourceType.md)
 - [StringType](StringType.md)
 - [Subset](Subset.md)
-- [Type](Type.md)
 - [Unique](Unique.md)

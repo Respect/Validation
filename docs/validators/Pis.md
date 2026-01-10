@@ -5,11 +5,20 @@
 Validates a Brazilian PIS/NIS number ignoring any non-digit char.
 
 ```php
-v::pis()->isValid('120.0340.678-8'); // true
-v::pis()->isValid('120.03406788'); // true
-v::pis()->isValid('120.0340.6788'); // true
-v::pis()->isValid('1.2.0.0.3.4.0.6.7.8.8'); // true
-v::pis()->isValid('12003406788'); // true
+v::pis()->assert('120.0340.678-8');
+// Validation passes successfully
+
+v::pis()->assert('120.03406788');
+// Validation passes successfully
+
+v::pis()->assert('120.0340.6788');
+// Validation passes successfully
+
+v::pis()->assert('1.2.0.0.3.4.0.6.7.8.8');
+// Validation passes successfully
+
+v::pis()->assert('12003406788');
+// Validation passes successfully
 ```
 
 ## Templates

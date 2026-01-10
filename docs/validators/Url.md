@@ -5,11 +5,20 @@
 Validates whether the input is a URL.
 
 ```php
-v::url()->isValid('http://example.com'); // true
-v::url()->isValid('https://www.youtube.com/watch?v=6FOUqQt3Kg0'); // true
-v::url()->isValid('ldap://[::1]'); // true
-v::url()->isValid('mailto:john.doe@example.com'); // true
-v::url()->isValid('news:new.example.com'); // true
+v::url()->assert('http://example.com');
+// Validation passes successfully
+
+v::url()->assert('https://www.youtube.com/watch?v=6FOUqQt3Kg0');
+// Validation passes successfully
+
+v::url()->assert('ldap://[::1]');
+// Validation passes successfully
+
+v::url()->assert('mailto:john.doe@example.com');
+// Validation passes successfully
+
+v::url()->assert('news:new.example.com');
+// Validation passes successfully
 ```
 
 ## Templates

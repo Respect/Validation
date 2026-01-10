@@ -5,9 +5,14 @@
 Validates if the input is a factor of the defined dividend.
 
 ```php
-v::factor(0)->isValid(5); // true
-v::factor(4)->isValid(2); // true
-v::factor(4)->isValid(3); // false
+v::factor(0)->assert(5);
+// Validation passes successfully
+
+v::factor(4)->assert(2);
+// Validation passes successfully
+
+v::factor(4)->assert(3);
+// → 3 must be a factor of 4
 ```
 
 ## Templates

@@ -5,11 +5,20 @@
 Validates whether the input is a Polish VAT identification number (NIP).
 
 ```php
-v::nip()->isValid('1645865777'); // true
-v::nip()->isValid('1645865778'); // false
-v::nip()->isValid('1234567890'); // false
-v::nip()->isValid('164-586-57-77'); // false
-v::nip()->isValid('164-58-65-777'); // false
+v::nip()->assert('1645865777');
+// Validation passes successfully
+
+v::nip()->assert('1645865778');
+// → "1645865778" must be a valid Polish VAT identification number
+
+v::nip()->assert('1234567890');
+// → "1234567890" must be a valid Polish VAT identification number
+
+v::nip()->assert('164-586-57-77');
+// → "164-586-57-77" must be a valid Polish VAT identification number
+
+v::nip()->assert('164-58-65-777');
+// → "164-58-65-777" must be a valid Polish VAT identification number
 ```
 
 ## Templates

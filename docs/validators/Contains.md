@@ -8,13 +8,15 @@ Validates if the input contains some value.
 For strings:
 
 ```php
-v::contains('ipsum')->isValid('lorem ipsum'); // true
+v::contains('ipsum')->assert('lorem ipsum');
+// Validation passes successfully
 ```
 
 For arrays:
 
 ```php
-v::contains('ipsum')->isValid(['ipsum', 'lorem']); // true
+v::contains('ipsum')->assert(['ipsum', 'lorem']);
+// Validation passes successfully
 ```
 
 A second parameter may be passed for identical comparison instead

@@ -5,8 +5,11 @@
 Validates whether the type of the input is [boolean](http://php.net/types.boolean).
 
 ```php
-v::boolType()->isValid(true); // true
-v::boolType()->isValid(false); // true
+v::boolType()->assert(true);
+// Validation passes successfully
+
+v::boolType()->assert(false);
+// Validation passes successfully
 ```
 
 ## Templates
@@ -53,4 +56,3 @@ See also:
 - [StringType](StringType.md)
 - [StringVal](StringVal.md)
 - [TrueVal](TrueVal.md)
-- [Type](Type.md)

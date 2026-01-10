@@ -5,7 +5,8 @@
 Validates any input as valid.
 
 ```php
-v::alwaysValid()->isValid('whatever'); // true
+v::alwaysValid()->assert('whatever');
+// Validation passes successfully
 ```
 
 ## Templates

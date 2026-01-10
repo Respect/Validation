@@ -5,14 +5,23 @@
 Validates if the given key exists in an array.
 
 ```php
-v::keyExists('name')->isValid(['name' => 'The Respect Panda']); // true
-v::keyExists('name')->isValid(['email' => 'therespectpanda@gmail.com']); // false
+v::keyExists('name')->assert(['name' => 'The Respect Panda']);
+// Validation passes successfully
 
-v::keyExists(0)->isValid(['a', 'b', 'c']); // true
-v::keyExists(4)->isValid(['a', 'b', 'c']); // false
+v::keyExists('name')->assert(['email' => 'therespectpanda@gmail.com']);
+// → `.name` must be present
 
-v::keyExists('username')->isValid(new ArrayObject(['username' => 'therespectpanda'])); // true
-v::keyExists(5)->isValid(new ArrayObject(['a', 'b', 'c'])); // false
+v::keyExists(0)->assert(['a', 'b', 'c']);
+// Validation passes successfully
+
+v::keyExists(4)->assert(['a', 'b', 'c']);
+// → `.4` must be present
+
+v::keyExists('username')->assert(new ArrayObject(['username' => 'therespectpanda']));
+// Validation passes successfully
+
+v::keyExists(5)->assert(new ArrayObject(['a', 'b', 'c']));
+// → `.5` must be present
 ```
 
 ## Notes
@@ -43,17 +52,17 @@ When no custom name is set, the path is displayed as `{{name}}`. When a custom n
 
 ```php
 v::keyExists('foo')->assert([]);
-// Message: `.foo` must be present
+// → `.foo` must be present
 
 v::named('Custom name', v::keyExists('foo'))->assert([]);
-// Message: `.foo` (<- Custom name) must be present
+// → `.foo` (<- Custom name) must be present
 ```
 
 If you want to display only a custom name while checking if a key exists, use [Key](Key.md) with [AlwaysValid](AlwaysValid.md):
 
 ```php
-v::key('foo', v::named('Custom name', v::alwaysValid())->assert([]);
-// Message: Custom name must be present
+v::key('foo', v::named('Custom name', v::alwaysValid()))->assert([]);
+// → Custom name must be present
 ```
 
 ## Categorization

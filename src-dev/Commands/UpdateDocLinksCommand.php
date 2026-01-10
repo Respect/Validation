@@ -35,7 +35,7 @@ use function trim;
 use const PHP_EOL;
 
 #[AsCommand(
-    name: 'update:doc-links',
+    name: 'update:doc:links',
     description: 'Update list of validators and link related validators in documentation',
 )]
 final class UpdateDocLinksCommand extends Command

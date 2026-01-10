@@ -5,10 +5,17 @@
 Validates whether the input array contains only unique values.
 
 ```php
-v::unique()->isValid([]); // true
-v::unique()->isValid([1, 2, 3]); // true
-v::unique()->isValid([1, 2, 2, 3]); // false
-v::unique()->isValid([1, 2, 3, 1]); // false
+v::unique()->assert([]);
+// Validation passes successfully
+
+v::unique()->assert([1, 2, 3]);
+// Validation passes successfully
+
+v::unique()->assert([1, 2, 2, 3]);
+// → `[1, 2, 2, 3]` must not contain duplicates
+
+v::unique()->assert([1, 2, 3, 1]);
+// → `[1, 2, 3, 1]` must not contain duplicates
 ```
 
 ## Templates

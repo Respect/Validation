@@ -5,8 +5,11 @@
 Validates whether the input is a subset of a given value.
 
 ```php
-v::subset([1, 2, 3])->isValid([1, 2]); // true
-v::subset([1, 2])->isValid([1, 2, 3]); // false
+v::subset([1, 2, 3])->assert([1, 2]);
+// Validation passes successfully
+
+v::subset([1, 2])->assert([1, 2, 3]);
+// → `[1, 2, 3]` must be subset of `[1, 2]`
 ```
 
 ## Templates
