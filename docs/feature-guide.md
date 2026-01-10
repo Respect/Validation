@@ -262,7 +262,7 @@ $baseValidator->even()->assert($input1);
 $baseValidator->odd()->assert($input2);
 ```
 
-Both the `even()` and `odd()` calls created a new validator, which means that the `$baseValidator` remained unchanged.
+Both the `even()` and `odd()` calls created a new instance, which means that the `$baseValidator` remained unchanged.
 
 ## Advanced features
 
