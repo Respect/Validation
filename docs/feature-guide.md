@@ -45,11 +45,9 @@ if (!$result->isValid()) {
 
 The `validate()` method returns a `ResultQuery` object that has the following methods to output messages:
 
-| Method             | Description                                                        |
-| ------------------ | ------------------------------------------------------------------ |
-| `getMessage()`     | Returns the first message from the deepest failed result in chain. |
-| `getFullMessage()` | Returns the full message including all failed results.             |
-| `getMessages()`    | Returns an array of all messages from failed results.              |
+ - `getMessage()`: Returns the first message from the deepest failed result in chain.
+ - `getFullMessage()`: Returns the full message including all failed results.
+ - `getMessages()` : Returns an array of all messages from failed results.
 
 The `ResultQuery` also has methods to query nested results:
 
