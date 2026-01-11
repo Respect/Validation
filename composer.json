@@ -33,6 +33,7 @@
         "mikey179/vfsstream": "^1.6",
         "nette/php-generator": "^4.1",
         "pestphp/pest": "^4.2",
+        "phpbench/phpbench": "^1.4",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.0",
         "phpstan/phpstan-deprecation-rules": "^2.0",
@@ -76,6 +77,8 @@
         "phpstan": "vendor/bin/phpstan analyze",
         "phpunit": "vendor/bin/phpunit --testsuite=unit",
         "pest": "vendor/bin/pest --testsuite=feature --compact",
+        "bench": "vendor/bin/phpbench run",
+        "bench:profile": "vendor/bin/phpbench xdebug:profile",
         "qa": [
             "@docheader",
             "@phpcs",
