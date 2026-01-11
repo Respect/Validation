@@ -99,4 +99,4 @@ $validator->assert('validation');
 ## Next steps
 
 - Explore the [Feature Guide](feature-guide.md) for more advanced usage.
-- Check out the [List of Validators by Category](list-of-validators-by-category.md) for a comprehensive list of available validators.
+- Check out the [List of Validators by Category](validators/index.md) for a comprehensive list of available validators.

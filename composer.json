@@ -42,6 +42,7 @@
         "psr/http-message": "^1.0 || ^2.0",
         "ramsey/uuid": "^4",
         "respect/coding-standard": "^5.0",
+        "sebastian/diff": "^7.0",
         "sokil/php-isocodes": "^4.2.1",
         "sokil/php-isocodes-db-only": "^4.0",
         "squizlabs/php_codesniffer": "^4.0",
@@ -72,7 +73,9 @@
         }
     },
     "scripts": {
-        "docheader": "vendor/bin/docheader check library/ tests/",
+        "docheader": "vendor/bin/docheader check src-dev/ library/ tests/",
+        "docs": "bin/console docs:lint",
+        "docs-fix": "bin/console docs:lint --fix",
         "phpcs": "vendor/bin/phpcs",
         "phpstan": "vendor/bin/phpstan analyze",
         "phpunit": "vendor/bin/phpunit --testsuite=unit",
@@ -84,7 +87,8 @@
             "@phpcs",
             "@phpstan",
             "@phpunit",
-            "@pest"
+            "@pest",
+            "@docs"
         ]
     }
 }

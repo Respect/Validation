@@ -11,16 +11,25 @@ declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
 use Respect\Dev\Commands\CreateMixinCommand;
-use Respect\Dev\Commands\UpdateDocLinksCommand;
+use Respect\Dev\Commands\DocsLintCommand;
 use Respect\Dev\Commands\UpdateDomainSuffixesCommand;
 use Respect\Dev\Commands\UpdateDomainToplevelCommand;
 use Respect\Dev\Commands\UpdatePostalCodesCommand;
+use Respect\Dev\Markdown\CompositeLinter;
+use Respect\Dev\Markdown\Differ as MarkdownDiffer;
+use Respect\Dev\Markdown\Linters\ValidatorIndexLinter;
+use SebastianBergmann\Diff\Differ;
+use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
 use Symfony\Component\Console\Application;
 
 return (static function () {
+    $differ = new MarkdownDiffer(new Differ(new UnifiedDiffOutputBuilder('', addLineNumbers: true)));
+
     $application = new Application('Respect/Validation', '3.0');
     $application->addCommand(new CreateMixinCommand());
-    $application->addCommand(new UpdateDocLinksCommand());
+    $application->addCommand(new DocsLintCommand($differ, new CompositeLinter(
+        new ValidatorIndexLinter(),
+    )));
     $application->addCommand(new UpdateDomainSuffixesCommand());
     $application->addCommand(new UpdateDomainToplevelCommand());
     $application->addCommand(new UpdatePostalCodesCommand());

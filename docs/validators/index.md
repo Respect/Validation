@@ -1,4 +1,6 @@
-# List of validators by category
+# Overviews
+
+In this page you will find a list of validators by their category.
 
 ## Arrays
 
