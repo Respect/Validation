@@ -1,19 +1,18 @@
-# When
+# LogicCond
 
-- `When(Validator $if, Validator $then)`
-- `When(Validator $if, Validator $then, Validator $else)`
+- `LogicCond(Validator $if, Validator $then)`
+- `LogicCond(Validator $if, Validator $then, Validator $else)`
 
-A ternary validator that accepts three parameters.
+A conditional validator that applies logic based on the validation results.
 
-When the `$if` validates, returns validation for `$then`.
-When the `$if` doesn't validate, returns validation for `$else`, if defined.
+If the `$if` validator passes, it applies the `$then` validator. If the `$if` validator fails, it applies the `$else` validator (if provided); otherwise, validation fails.
 
 ```php
-v::when(v::intVal(), v::positive(), v::notBlank())->isValid(1); // true
-v::when(v::intVal(), v::positive(), v::notBlank())->isValid('non-blank string'); // true
+v::logicCond(v::intVal(), v::positive(), v::notBlank())->isValid(1); // true
+v::logicCond(v::intVal(), v::positive(), v::notBlank())->isValid('non-blank string'); // true
 
-v::when(v::intVal(), v::positive(), v::notBlank())->isValid(-1); // false
-v::when(v::intVal(), v::positive(), v::notBlank())->isValid(''); // false
+v::logicCond(v::intVal(), v::positive(), v::notBlank())->isValid(-1); // false
+v::logicCond(v::intVal(), v::positive(), v::notBlank())->isValid(''); // false
 ```
 
 In the sample above, if `$input` is an integer, then it must be positive.
@@ -31,14 +30,16 @@ When `$else` is not defined use [AlwaysInvalid](AlwaysInvalid.md)
 ## Categorization
 
 - Conditions
+- Logical
 - Nesting
 
 ## Changelog
 
 | Version | Description                         |
 | ------: | ----------------------------------- |
+|   3.0.0 | Renamed to `LogicCond`              |
 |   0.8.0 | Allow to use validator without else |
-|   0.3.9 | Created                             |
+|   0.3.9 | Created as `When`                   |
 
 ---
 

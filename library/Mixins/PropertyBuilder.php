@@ -211,6 +211,13 @@ interface PropertyBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function propertyLogicCond(
+        string $propertyName,
+        Validator $logicCond,
+        Validator $then,
+        Validator|null $else = null,
+    ): Chain;
+
     public static function propertyLogicNor(
         string $propertyName,
         Validator $validator1,
@@ -357,13 +364,6 @@ interface PropertyBuilder
     public static function propertyVideoUrl(string $propertyName, string|null $service = null): Chain;
 
     public static function propertyVowel(string $propertyName, string ...$additionalChars): Chain;
-
-    public static function propertyWhen(
-        string $propertyName,
-        Validator $when,
-        Validator $then,
-        Validator|null $else = null,
-    ): Chain;
 
     public static function propertyWritable(string $propertyName): Chain;
 

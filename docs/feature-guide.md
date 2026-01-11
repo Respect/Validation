@@ -40,8 +40,8 @@ Respect\Validation offers over 150 validators, many of which are designed to add
 - Validating **Arrays**: [Key](validators/Key.md), [KeyOptional](validators/KeyOptional.md), [KeyExists](validators/KeyExists.md).
 - Validating **Array structures**: [KeySet](validators/KeySet.md).
 - Validating **Object properties**: [Property](validators/Property.md), [PropertyOptional](validators/PropertyOptional.md), [PropertyExists](validators/PropertyExists.md).
-- Using **Conditional validation**: [NullOr](validators/NullOr.md), [UndefOr](validators/UndefOr.md), [When](validators/When.md).
-- Using **Logical validation**: [LogicAnd](validators/LogicAnd.md), [LogicOr](validators/LogicOr.md), [LogicNor](validators/LogicNor.md), [LogicXor](validators/LogicXor.md)
+- Using **Conditional validation**: [NullOr](validators/NullOr.md), [UndefOr](validators/UndefOr.md), [LogicCond](validators/LogicCond.md).
+- Using **Logical validation**: [LogicAnd](validators/LogicAnd.md), [LogicOr](validators/LogicOr.md), [LogicNor](validators/LogicNor.md), [LogicXor](validators/LogicXor.md), [LogicCond](validators/LogicCond.md)
 - Validating **Each** value in the input: [Each](validators/Each.md).
 - Validating the **Length** of the input: [Length](validators/Length.md).
 - Validating the **Maximum** value in the input: [Max](validators/Max.md).

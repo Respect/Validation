@@ -213,6 +213,8 @@ interface NullOrBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function nullOrLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
     public static function nullOrLogicNor(
         Validator $validator1,
         Validator $validator2,
@@ -352,8 +354,6 @@ interface NullOrBuilder
     public static function nullOrVideoUrl(string|null $service = null): Chain;
 
     public static function nullOrVowel(string ...$additionalChars): Chain;
-
-    public static function nullOrWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function nullOrWritable(): Chain;
 

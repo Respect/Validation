@@ -203,6 +203,8 @@ interface UndefOrChain
 
     public function undefOrLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function undefOrLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
     public function undefOrLogicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -330,8 +332,6 @@ interface UndefOrChain
     public function undefOrVideoUrl(string|null $service = null): Chain;
 
     public function undefOrVowel(string ...$additionalChars): Chain;
-
-    public function undefOrWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function undefOrWritable(): Chain;
 

@@ -207,6 +207,13 @@ interface KeyBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function keyLogicCond(
+        int|string $key,
+        Validator $logicCond,
+        Validator $then,
+        Validator|null $else = null,
+    ): Chain;
+
     public static function keyLogicNor(
         int|string $key,
         Validator $validator1,
@@ -345,13 +352,6 @@ interface KeyBuilder
     public static function keyVideoUrl(int|string $key, string|null $service = null): Chain;
 
     public static function keyVowel(int|string $key, string ...$additionalChars): Chain;
-
-    public static function keyWhen(
-        int|string $key,
-        Validator $when,
-        Validator $then,
-        Validator|null $else = null,
-    ): Chain;
 
     public static function keyWritable(int|string $key): Chain;
 

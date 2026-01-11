@@ -207,6 +207,13 @@ interface KeyChain
         Validator ...$validators,
     ): Chain;
 
+    public function keyLogicCond(
+        int|string $key,
+        Validator $logicCond,
+        Validator $then,
+        Validator|null $else = null,
+    ): Chain;
+
     public function keyLogicNor(
         int|string $key,
         Validator $validator1,
@@ -345,8 +352,6 @@ interface KeyChain
     public function keyVideoUrl(int|string $key, string|null $service = null): Chain;
 
     public function keyVowel(int|string $key, string ...$additionalChars): Chain;
-
-    public function keyWhen(int|string $key, Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function keyWritable(int|string $key): Chain;
 

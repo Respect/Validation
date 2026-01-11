@@ -205,6 +205,8 @@ interface NotChain
 
     public function notLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function notLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
     public function notLogicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -332,8 +334,6 @@ interface NotChain
     public function notVideoUrl(string|null $service = null): Chain;
 
     public function notVowel(string ...$additionalChars): Chain;
-
-    public function notWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function notWritable(): Chain;
 

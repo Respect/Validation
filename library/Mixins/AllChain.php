@@ -193,6 +193,8 @@ interface AllChain
 
     public function allLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function allLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
     public function allLogicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -316,8 +318,6 @@ interface AllChain
     public function allVideoUrl(string|null $service = null): Chain;
 
     public function allVowel(string ...$additionalChars): Chain;
-
-    public function allWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function allWritable(): Chain;
 

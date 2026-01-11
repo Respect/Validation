@@ -211,6 +211,8 @@ interface UndefOrBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function undefOrLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
     public static function undefOrLogicNor(
         Validator $validator1,
         Validator $validator2,
@@ -350,8 +352,6 @@ interface UndefOrBuilder
     public static function undefOrVideoUrl(string|null $service = null): Chain;
 
     public static function undefOrVowel(string ...$additionalChars): Chain;
-
-    public static function undefOrWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function undefOrWritable(): Chain;
 

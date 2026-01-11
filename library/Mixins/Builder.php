@@ -217,6 +217,8 @@ interface Builder extends
 
     public static function logicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public static function logicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
     public static function logicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function logicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -355,8 +357,6 @@ interface Builder extends
     public static function videoUrl(string|null $service = null): Chain;
 
     public static function vowel(string ...$additionalChars): Chain;
-
-    public static function when(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function writable(): Chain;
 

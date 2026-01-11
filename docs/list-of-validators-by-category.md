@@ -67,8 +67,8 @@
 ## Conditions
 
 - [Circuit](validators/Circuit.md)
+- [LogicCond](validators/LogicCond.md)
 - [Not](validators/Not.md)
-- [When](validators/When.md)
 
 ## Core
 
@@ -147,6 +147,7 @@
 ## Logical
 
 - [LogicAnd](validators/LogicAnd.md)
+- [LogicCond](validators/LogicCond.md)
 - [LogicNor](validators/LogicNor.md)
 - [LogicOr](validators/LogicOr.md)
 - [LogicXor](validators/LogicXor.md)
@@ -181,6 +182,7 @@
 - [KeySet](validators/KeySet.md)
 - [Lazy](validators/Lazy.md)
 - [LogicAnd](validators/LogicAnd.md)
+- [LogicCond](validators/LogicCond.md)
 - [LogicNor](validators/LogicNor.md)
 - [LogicOr](validators/LogicOr.md)
 - [LogicXor](validators/LogicXor.md)
@@ -189,7 +191,6 @@
 - [Property](validators/Property.md)
 - [PropertyOptional](validators/PropertyOptional.md)
 - [UndefOr](validators/UndefOr.md)
-- [When](validators/When.md)
 
 ## Numbers
 
@@ -398,6 +399,7 @@
 - [LessThan](validators/LessThan.md)
 - [LessThanOrEqual](validators/LessThanOrEqual.md)
 - [LogicAnd](validators/LogicAnd.md)
+- [LogicCond](validators/LogicCond.md)
 - [LogicNor](validators/LogicNor.md)
 - [LogicOr](validators/LogicOr.md)
 - [LogicXor](validators/LogicXor.md)
@@ -467,6 +469,5 @@
 - [Version](validators/Version.md)
 - [VideoUrl](validators/VideoUrl.md)
 - [Vowel](validators/Vowel.md)
-- [When](validators/When.md)
 - [Writable](validators/Writable.md)
 - [Xdigit](validators/Xdigit.md)

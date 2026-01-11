@@ -220,6 +220,8 @@ interface Chain extends
 
     public function logicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function logicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
     public function logicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function logicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -358,8 +360,6 @@ interface Chain extends
     public function videoUrl(string|null $service = null): Chain;
 
     public function vowel(string ...$additionalChars): Chain;
-
-    public function when(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function writable(): Chain;
 

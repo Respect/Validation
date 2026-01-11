@@ -209,6 +209,8 @@ interface NotBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function notLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
     public static function notLogicNor(
         Validator $validator1,
         Validator $validator2,
@@ -344,8 +346,6 @@ interface NotBuilder
     public static function notVideoUrl(string|null $service = null): Chain;
 
     public static function notVowel(string ...$additionalChars): Chain;
-
-    public static function notWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function notWritable(): Chain;
 

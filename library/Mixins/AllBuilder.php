@@ -197,6 +197,8 @@ interface AllBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function allLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
     public static function allLogicNor(
         Validator $validator1,
         Validator $validator2,
@@ -328,8 +330,6 @@ interface AllBuilder
     public static function allVideoUrl(string|null $service = null): Chain;
 
     public static function allVowel(string ...$additionalChars): Chain;
-
-    public static function allWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function allWritable(): Chain;
 
