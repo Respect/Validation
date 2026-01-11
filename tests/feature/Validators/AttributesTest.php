@@ -73,7 +73,7 @@ test('Failed attributes on the class', catchAll(
           - `.phone` must be defined
         FULL_MESSAGE)
         ->and($messages)->toBe([
-            'anyOf' => [
+            'logicOr' => [
                 '__root__' => '`Respect\Validation\Test\Stubs\WithAttributes { +$name="John Doe" +$birthdate="2024-06-23" #$phone=null +$address ... }` must pass at least one of the rules',
                 'email' => '`.email` must be defined',
                 'phone' => '`.phone` must be defined',

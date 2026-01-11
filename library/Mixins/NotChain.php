@@ -24,8 +24,6 @@ interface NotChain
 
     public function notAlwaysValid(): Chain;
 
-    public function notAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function notArrayType(): Chain;
 
     public function notArrayVal(): Chain;
@@ -206,6 +204,8 @@ interface NotChain
     public function notLessThanOrEqual(mixed $compareTo): Chain;
 
     public function notLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function notLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notLowercase(): Chain;
 

@@ -23,7 +23,7 @@ use function array_reduce;
     '{{subject}} must pass at least one of the rules',
     '{{subject}} must pass at least one of the rules',
 )]
-final class AnyOf extends Composite
+final class LogicOr extends Composite
 {
     public function evaluate(mixed $input): Result
     {

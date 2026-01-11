@@ -22,8 +22,6 @@ interface AllChain
 
     public function allAlwaysValid(): Chain;
 
-    public function allAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function allArrayType(): Chain;
 
     public function allArrayVal(): Chain;
@@ -194,6 +192,8 @@ interface AllChain
     public function allLessThanOrEqual(mixed $compareTo): Chain;
 
     public function allLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function allLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allLowercase(): Chain;
 

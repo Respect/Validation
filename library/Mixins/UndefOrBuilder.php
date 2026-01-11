@@ -24,12 +24,6 @@ interface UndefOrBuilder
 
     public static function undefOrAlwaysValid(): Chain;
 
-    public static function undefOrAnyOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function undefOrArrayType(): Chain;
 
     public static function undefOrArrayVal(): Chain;
@@ -212,6 +206,12 @@ interface UndefOrBuilder
     public static function undefOrLessThanOrEqual(mixed $compareTo): Chain;
 
     public static function undefOrLogicAnd(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function undefOrLogicOr(
         Validator $validator1,
         Validator $validator2,
         Validator ...$validators,

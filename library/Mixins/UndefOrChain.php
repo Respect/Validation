@@ -24,8 +24,6 @@ interface UndefOrChain
 
     public function undefOrAlwaysValid(): Chain;
 
-    public function undefOrAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function undefOrArrayType(): Chain;
 
     public function undefOrArrayVal(): Chain;
@@ -204,6 +202,8 @@ interface UndefOrChain
     public function undefOrLessThanOrEqual(mixed $compareTo): Chain;
 
     public function undefOrLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function undefOrLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrLowercase(): Chain;
 

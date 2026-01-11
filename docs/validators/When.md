@@ -45,8 +45,8 @@ When `$else` is not defined use [AlwaysInvalid](AlwaysInvalid.md)
 See also:
 
 - [AlwaysInvalid](AlwaysInvalid.md)
-- [AnyOf](AnyOf.md)
 - [Circuit](Circuit.md)
 - [LogicAnd](LogicAnd.md)
+- [LogicOr](LogicOr.md)
 - [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)

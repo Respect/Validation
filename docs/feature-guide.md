@@ -41,7 +41,7 @@ Respect\Validation offers over 150 validators, many of which are designed to add
 - Validating **Array structures**: [KeySet](validators/KeySet.md).
 - Validating **Object properties**: [Property](validators/Property.md), [PropertyOptional](validators/PropertyOptional.md), [PropertyExists](validators/PropertyExists.md).
 - Using **Conditional validation**: [NullOr](validators/NullOr.md), [UndefOr](validators/UndefOr.md), [When](validators/When.md).
-- Using **Logical validation**: [LogicAnd](validators/LogicAnd.md), [AnyOf](validators/AnyOf.md), [NoneOf](validators/NoneOf.md), [OneOf](validators/OneOf.md)
+- Using **Logical validation**: [LogicAnd](validators/LogicAnd.md), [LogicOr](validators/LogicOr.md), [NoneOf](validators/NoneOf.md), [OneOf](validators/OneOf.md)
 - Validating **Each** value in the input: [Each](validators/Each.md).
 - Validating the **Length** of the input: [Length](validators/Length.md).
 - Validating the **Maximum** value in the input: [Max](validators/Max.md).

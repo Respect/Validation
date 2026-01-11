@@ -37,8 +37,6 @@ interface Chain extends
 
     public function alwaysValid(): Chain;
 
-    public function anyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function arrayType(): Chain;
 
     public function arrayVal(): Chain;
@@ -221,6 +219,8 @@ interface Chain extends
     public function lessThanOrEqual(mixed $compareTo): Chain;
 
     public function logicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function logicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function lowercase(): Chain;
 

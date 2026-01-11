@@ -56,8 +56,8 @@ Used when more than one validator has passed.
 
 See also:
 
-- [AnyOf](AnyOf.md)
 - [Circuit](Circuit.md)
 - [LogicAnd](LogicAnd.md)
+- [LogicOr](LogicOr.md)
 - [NoneOf](NoneOf.md)
 - [When](When.md)

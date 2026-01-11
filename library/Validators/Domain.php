@@ -82,7 +82,7 @@ final class Domain implements Validator
             new Circuit(
                 new Alnum('-'),
                 new Not(new StartsWith('-')),
-                new AnyOf(
+                new LogicOr(
                     new Not(new Contains('--')),
                     new Callback(static function ($str) {
                         return mb_substr_count($str, '--') == 1;

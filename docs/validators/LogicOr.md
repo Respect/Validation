@@ -1,21 +1,21 @@
-# AnyOf
+# LogicOr
 
-- `AnyOf(Validator $validator1, Validator $validator2, Validator ...$validator)`
+- `LogicOr(Validator $validator1, Validator $validator2, Validator ...$validator)`
 
-This is a group validator that acts as an OR operator.
+Validates that at least one inner validator passes, applying OR logic.
 
 ```php
-v::anyOf(v::intVal(), v::floatVal())->isValid(15.5); // true
+v::logicOr(v::intVal(), v::floatVal())->isValid(15.5); // true
 ```
 
 In the sample above, `IntVal()` doesn't validates, but `FloatVal()` validates,
-so `AnyOf()` returns true.
+so `LogicOr()` returns true.
 
-`AnyOf()` returns true if at least one inner validator passes.
+`LogicOr()` returns true if at least one inner validator passes.
 
 ## Templates
 
-### `AnyOf::TEMPLATE_STANDARD`
+### `LogicOr::TEMPLATE_STANDARD`
 
 | Mode       | Template                                        |
 | ---------- | ----------------------------------------------- |
@@ -31,14 +31,15 @@ so `AnyOf()` returns true.
 ## Categorization
 
 - Composite
+- Logical
 - Nesting
 
 ## Changelog
 
-| Version | Description                                   |
-| ------: | --------------------------------------------- |
-|   3.0.0 | Require at least two validators to be defined |
-|   2.0.0 | Created                                       |
+| Version | Description                                              |
+| ------: | -------------------------------------------------------- |
+|   3.0.0 | Require at least two validators and renamed to `LogicOr` |
+|   2.0.0 | Created as `AnyOf`                                       |
 
 ---
 

@@ -24,13 +24,6 @@ interface PropertyBuilder
 
     public static function propertyAlwaysValid(string $propertyName): Chain;
 
-    public static function propertyAnyOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function propertyArrayType(string $propertyName): Chain;
 
     public static function propertyArrayVal(string $propertyName): Chain;
@@ -212,6 +205,13 @@ interface PropertyBuilder
     public static function propertyLessThanOrEqual(string $propertyName, mixed $compareTo): Chain;
 
     public static function propertyLogicAnd(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function propertyLogicOr(
         string $propertyName,
         Validator $validator1,
         Validator $validator2,

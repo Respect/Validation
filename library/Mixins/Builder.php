@@ -34,8 +34,6 @@ interface Builder extends
 
     public static function alwaysValid(): Chain;
 
-    public static function anyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function arrayType(): Chain;
 
     public static function arrayVal(): Chain;
@@ -218,6 +216,8 @@ interface Builder extends
     public static function lessThanOrEqual(mixed $compareTo): Chain;
 
     public static function logicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public static function logicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function lowercase(): Chain;
 

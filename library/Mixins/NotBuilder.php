@@ -24,8 +24,6 @@ interface NotBuilder
 
     public static function notAlwaysValid(): Chain;
 
-    public static function notAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function notArrayType(): Chain;
 
     public static function notArrayVal(): Chain;
@@ -210,6 +208,8 @@ interface NotBuilder
         Validator $validator2,
         Validator ...$validators,
     ): Chain;
+
+    public static function notLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function notLowercase(): Chain;
 

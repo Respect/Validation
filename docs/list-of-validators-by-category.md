@@ -58,9 +58,9 @@
 
 ## Composite
 
-- [AnyOf](validators/AnyOf.md)
 - [Circuit](validators/Circuit.md)
 - [LogicAnd](validators/LogicAnd.md)
+- [LogicOr](validators/LogicOr.md)
 - [NoneOf](validators/NoneOf.md)
 - [OneOf](validators/OneOf.md)
 
@@ -147,6 +147,7 @@
 ## Logical
 
 - [LogicAnd](validators/LogicAnd.md)
+- [LogicOr](validators/LogicOr.md)
 
 ## Math
 
@@ -171,7 +172,6 @@
 
 ## Nesting
 
-- [AnyOf](validators/AnyOf.md)
 - [Call](validators/Call.md)
 - [Circuit](validators/Circuit.md)
 - [Each](validators/Each.md)
@@ -179,6 +179,7 @@
 - [KeySet](validators/KeySet.md)
 - [Lazy](validators/Lazy.md)
 - [LogicAnd](validators/LogicAnd.md)
+- [LogicOr](validators/LogicOr.md)
 - [NoneOf](validators/NoneOf.md)
 - [Not](validators/Not.md)
 - [NullOr](validators/NullOr.md)
@@ -311,7 +312,6 @@
 - [Alpha](validators/Alpha.md)
 - [AlwaysInvalid](validators/AlwaysInvalid.md)
 - [AlwaysValid](validators/AlwaysValid.md)
-- [AnyOf](validators/AnyOf.md)
 - [ArrayType](validators/ArrayType.md)
 - [ArrayVal](validators/ArrayVal.md)
 - [Attributes](validators/Attributes.md)
@@ -396,6 +396,7 @@
 - [LessThan](validators/LessThan.md)
 - [LessThanOrEqual](validators/LessThanOrEqual.md)
 - [LogicAnd](validators/LogicAnd.md)
+- [LogicOr](validators/LogicOr.md)
 - [Lowercase](validators/Lowercase.md)
 - [Luhn](validators/Luhn.md)
 - [MacAddress](validators/MacAddress.md)

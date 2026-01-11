@@ -53,7 +53,7 @@ Message template for this validator includes `{{needles}}`.
 
 See also:
 
-- [AnyOf](AnyOf.md)
 - [Contains](Contains.md)
 - [Equivalent](Equivalent.md)
 - [In](In.md)
+- [LogicOr](LogicOr.md)

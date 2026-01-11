@@ -24,13 +24,6 @@ interface KeyBuilder
 
     public static function keyAlwaysValid(int|string $key): Chain;
 
-    public static function keyAnyOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function keyArrayType(int|string $key): Chain;
 
     public static function keyArrayVal(int|string $key): Chain;
@@ -208,6 +201,13 @@ interface KeyBuilder
     public static function keyLessThanOrEqual(int|string $key, mixed $compareTo): Chain;
 
     public static function keyLogicAnd(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function keyLogicOr(
         int|string $key,
         Validator $validator1,
         Validator $validator2,

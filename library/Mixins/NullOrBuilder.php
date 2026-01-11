@@ -24,12 +24,6 @@ interface NullOrBuilder
 
     public static function nullOrAlwaysValid(): Chain;
 
-    public static function nullOrAnyOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function nullOrArrayType(): Chain;
 
     public static function nullOrArrayVal(): Chain;
@@ -214,6 +208,12 @@ interface NullOrBuilder
     public static function nullOrLessThanOrEqual(mixed $compareTo): Chain;
 
     public static function nullOrLogicAnd(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function nullOrLogicOr(
         Validator $validator1,
         Validator $validator2,
         Validator ...$validators,

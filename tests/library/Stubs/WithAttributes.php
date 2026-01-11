@@ -11,7 +11,7 @@ namespace Respect\Validation\Test\Stubs;
 
 use Respect\Validation\Validators as Rule;
 
-#[Rule\AnyOf(
+#[Rule\LogicOr(
     new Rule\Property('email', new Rule\Not(new Rule\Undef())),
     new Rule\Property('phone', new Rule\Not(new Rule\Undef())),
 )]

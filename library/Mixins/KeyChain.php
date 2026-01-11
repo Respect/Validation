@@ -24,13 +24,6 @@ interface KeyChain
 
     public function keyAlwaysValid(int|string $key): Chain;
 
-    public function keyAnyOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public function keyArrayType(int|string $key): Chain;
 
     public function keyArrayVal(int|string $key): Chain;
@@ -208,6 +201,13 @@ interface KeyChain
     public function keyLessThanOrEqual(int|string $key, mixed $compareTo): Chain;
 
     public function keyLogicAnd(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public function keyLogicOr(
         int|string $key,
         Validator $validator1,
         Validator $validator2,

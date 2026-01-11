@@ -40,9 +40,9 @@ This validator does not have any templates, because it will always return the re
 
 See also:
 
-- [AnyOf](AnyOf.md)
 - [Lazy](Lazy.md)
 - [LogicAnd](LogicAnd.md)
+- [LogicOr](LogicOr.md)
 - [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)
 - [SubdivisionCode](SubdivisionCode.md)

@@ -22,8 +22,6 @@ interface AllBuilder
 
     public static function allAlwaysValid(): Chain;
 
-    public static function allAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function allArrayType(): Chain;
 
     public static function allArrayVal(): Chain;
@@ -198,6 +196,8 @@ interface AllBuilder
         Validator $validator2,
         Validator ...$validators,
     ): Chain;
+
+    public static function allLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allLowercase(): Chain;
 
