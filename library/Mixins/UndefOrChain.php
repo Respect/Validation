@@ -207,6 +207,8 @@ interface UndefOrChain
 
     public function undefOrLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function undefOrLogicXor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function undefOrLowercase(): Chain;
 
     public function undefOrLuhn(): Chain;
@@ -240,8 +242,6 @@ interface UndefOrChain
     public function undefOrObjectType(): Chain;
 
     public function undefOrOdd(): Chain;
-
-    public function undefOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrPerfectSquare(): Chain;
 

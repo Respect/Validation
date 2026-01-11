@@ -32,7 +32,7 @@ use function usort;
     '{{subject}} must pass only one of the rules',
     self::TEMPLATE_MORE_THAN_ONE,
 )]
-final class OneOf extends Composite
+final class LogicXor extends Composite
 {
     public const string TEMPLATE_NONE = '__none__';
     public const string TEMPLATE_MORE_THAN_ONE = '__more_than_one__';

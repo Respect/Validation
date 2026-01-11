@@ -59,6 +59,6 @@ See also:
 - [Circuit](Circuit.md)
 - [LogicAnd](LogicAnd.md)
 - [LogicOr](LogicOr.md)
+- [LogicXor](LogicXor.md)
 - [Not](Not.md)
-- [OneOf](OneOf.md)
 - [When](When.md)

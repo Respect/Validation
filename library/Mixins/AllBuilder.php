@@ -205,6 +205,12 @@ interface AllBuilder
 
     public static function allLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public static function allLogicXor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function allLowercase(): Chain;
 
     public static function allLuhn(): Chain;
@@ -238,8 +244,6 @@ interface AllBuilder
     public static function allObjectType(): Chain;
 
     public static function allOdd(): Chain;
-
-    public static function allOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allPerfectSquare(): Chain;
 

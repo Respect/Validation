@@ -221,6 +221,8 @@ interface Builder extends
 
     public static function logicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public static function logicXor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public static function lowercase(): Chain;
 
     public static function luhn(): Chain;
@@ -258,8 +260,6 @@ interface Builder extends
     public static function objectType(): Chain;
 
     public static function odd(): Chain;
-
-    public static function oneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function perfectSquare(): Chain;
 

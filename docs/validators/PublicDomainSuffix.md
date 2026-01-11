@@ -15,7 +15,7 @@ This validator will not match top level domains such as `tk`.
 If you want to match either, use a combination with `Tld`:
 
 ```php
-v::oneOf(v::tld(), v::publicDomainSuffix())->isValid('tk'); // true
+v::logicXor(v::tld(), v::publicDomainSuffix())->isValid('tk'); // true
 ```
 
 ## Templates

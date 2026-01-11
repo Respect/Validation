@@ -54,5 +54,5 @@ See also:
 - [Circuit](Circuit.md)
 - [LogicNor](LogicNor.md)
 - [LogicOr](LogicOr.md)
-- [OneOf](OneOf.md)
+- [LogicXor](LogicXor.md)
 - [When](When.md)

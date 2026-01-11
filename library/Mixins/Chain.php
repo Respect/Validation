@@ -224,6 +224,8 @@ interface Chain extends
 
     public function logicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function logicXor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function lowercase(): Chain;
 
     public function luhn(): Chain;
@@ -261,8 +263,6 @@ interface Chain extends
     public function objectType(): Chain;
 
     public function odd(): Chain;
-
-    public function oneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function perfectSquare(): Chain;
 

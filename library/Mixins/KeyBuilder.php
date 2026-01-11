@@ -221,6 +221,13 @@ interface KeyBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function keyLogicXor(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function keyLowercase(int|string $key): Chain;
 
     public static function keyLuhn(int|string $key): Chain;
@@ -254,13 +261,6 @@ interface KeyBuilder
     public static function keyObjectType(int|string $key): Chain;
 
     public static function keyOdd(int|string $key): Chain;
-
-    public static function keyOneOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function keyPerfectSquare(int|string $key): Chain;
 

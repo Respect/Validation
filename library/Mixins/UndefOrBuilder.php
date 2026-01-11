@@ -223,6 +223,12 @@ interface UndefOrBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function undefOrLogicXor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function undefOrLowercase(): Chain;
 
     public static function undefOrLuhn(): Chain;
@@ -256,12 +262,6 @@ interface UndefOrBuilder
     public static function undefOrObjectType(): Chain;
 
     public static function undefOrOdd(): Chain;
-
-    public static function undefOrOneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function undefOrPerfectSquare(): Chain;
 

@@ -225,6 +225,13 @@ interface PropertyBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function propertyLogicXor(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function propertyLowercase(string $propertyName): Chain;
 
     public static function propertyLuhn(string $propertyName): Chain;
@@ -258,13 +265,6 @@ interface PropertyBuilder
     public static function propertyObjectType(string $propertyName): Chain;
 
     public static function propertyOdd(string $propertyName): Chain;
-
-    public static function propertyOneOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function propertyPerfectSquare(string $propertyName): Chain;
 

@@ -221,6 +221,13 @@ interface PropertyChain
         Validator ...$validators,
     ): Chain;
 
+    public function propertyLogicXor(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public function propertyLowercase(string $propertyName): Chain;
 
     public function propertyLuhn(string $propertyName): Chain;
@@ -254,13 +261,6 @@ interface PropertyChain
     public function propertyObjectType(string $propertyName): Chain;
 
     public function propertyOdd(string $propertyName): Chain;
-
-    public function propertyOneOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public function propertyPerfectSquare(string $propertyName): Chain;
 

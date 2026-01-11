@@ -49,4 +49,4 @@ See also:
 - [LogicAnd](LogicAnd.md)
 - [LogicNor](LogicNor.md)
 - [LogicOr](LogicOr.md)
-- [OneOf](OneOf.md)
+- [LogicXor](LogicXor.md)

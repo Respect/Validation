@@ -49,5 +49,5 @@ See also:
 - [ContainsAny](ContainsAny.md)
 - [LogicAnd](LogicAnd.md)
 - [LogicNor](LogicNor.md)
-- [OneOf](OneOf.md)
+- [LogicXor](LogicXor.md)
 - [When](When.md)

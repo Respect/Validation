@@ -225,6 +225,12 @@ interface NullOrBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function nullOrLogicXor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function nullOrLowercase(): Chain;
 
     public static function nullOrLuhn(): Chain;
@@ -258,12 +264,6 @@ interface NullOrBuilder
     public static function nullOrObjectType(): Chain;
 
     public static function nullOrOdd(): Chain;
-
-    public static function nullOrOneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function nullOrPerfectSquare(): Chain;
 

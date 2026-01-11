@@ -217,6 +217,12 @@ interface NotBuilder
 
     public static function notLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public static function notLogicXor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function notLowercase(): Chain;
 
     public static function notLuhn(): Chain;
@@ -248,8 +254,6 @@ interface NotBuilder
     public static function notObjectType(): Chain;
 
     public static function notOdd(): Chain;
-
-    public static function notOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function notPerfectSquare(): Chain;
 

@@ -197,6 +197,8 @@ interface AllChain
 
     public function allLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function allLogicXor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function allLowercase(): Chain;
 
     public function allLuhn(): Chain;
@@ -230,8 +232,6 @@ interface AllChain
     public function allObjectType(): Chain;
 
     public function allOdd(): Chain;
-
-    public function allOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allPerfectSquare(): Chain;
 

@@ -221,6 +221,13 @@ interface KeyChain
         Validator ...$validators,
     ): Chain;
 
+    public function keyLogicXor(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public function keyLowercase(int|string $key): Chain;
 
     public function keyLuhn(int|string $key): Chain;
@@ -254,13 +261,6 @@ interface KeyChain
     public function keyObjectType(int|string $key): Chain;
 
     public function keyOdd(int|string $key): Chain;
-
-    public function keyOneOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public function keyPerfectSquare(int|string $key): Chain;
 

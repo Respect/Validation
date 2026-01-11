@@ -62,7 +62,7 @@
 - [LogicAnd](validators/LogicAnd.md)
 - [LogicNor](validators/LogicNor.md)
 - [LogicOr](validators/LogicOr.md)
-- [OneOf](validators/OneOf.md)
+- [LogicXor](validators/LogicXor.md)
 
 ## Conditions
 
@@ -149,6 +149,7 @@
 - [LogicAnd](validators/LogicAnd.md)
 - [LogicNor](validators/LogicNor.md)
 - [LogicOr](validators/LogicOr.md)
+- [LogicXor](validators/LogicXor.md)
 
 ## Math
 
@@ -182,9 +183,9 @@
 - [LogicAnd](validators/LogicAnd.md)
 - [LogicNor](validators/LogicNor.md)
 - [LogicOr](validators/LogicOr.md)
+- [LogicXor](validators/LogicXor.md)
 - [Not](validators/Not.md)
 - [NullOr](validators/NullOr.md)
-- [OneOf](validators/OneOf.md)
 - [Property](validators/Property.md)
 - [PropertyOptional](validators/PropertyOptional.md)
 - [UndefOr](validators/UndefOr.md)
@@ -399,6 +400,7 @@
 - [LogicAnd](validators/LogicAnd.md)
 - [LogicNor](validators/LogicNor.md)
 - [LogicOr](validators/LogicOr.md)
+- [LogicXor](validators/LogicXor.md)
 - [Lowercase](validators/Lowercase.md)
 - [Luhn](validators/Luhn.md)
 - [MacAddress](validators/MacAddress.md)
@@ -418,7 +420,6 @@
 - [NumericVal](validators/NumericVal.md)
 - [ObjectType](validators/ObjectType.md)
 - [Odd](validators/Odd.md)
-- [OneOf](validators/OneOf.md)
 - [PerfectSquare](validators/PerfectSquare.md)
 - [Pesel](validators/Pesel.md)
 - [Phone](validators/Phone.md)
