@@ -55,9 +55,9 @@ Used when all validators have passed.
 
 See also:
 
-- [AllOf](AllOf.md)
 - [AnyOf](AnyOf.md)
 - [Circuit](Circuit.md)
+- [LogicAnd](LogicAnd.md)
 - [Not](Not.md)
 - [OneOf](OneOf.md)
 - [When](When.md)

@@ -16,13 +16,6 @@ interface KeyChain
 {
     public function keyAll(int|string $key, Validator $validator): Chain;
 
-    public function keyAllOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public function keyAlnum(int|string $key, string ...$additionalChars): Chain;
 
     public function keyAlpha(int|string $key, string ...$additionalChars): Chain;
@@ -213,6 +206,13 @@ interface KeyChain
     public function keyLessThan(int|string $key, mixed $compareTo): Chain;
 
     public function keyLessThanOrEqual(int|string $key, mixed $compareTo): Chain;
+
+    public function keyLogicAnd(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public function keyLowercase(int|string $key): Chain;
 

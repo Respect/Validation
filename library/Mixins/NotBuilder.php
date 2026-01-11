@@ -16,8 +16,6 @@ interface NotBuilder
 {
     public static function notAll(Validator $validator): Chain;
 
-    public static function notAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function notAlnum(string ...$additionalChars): Chain;
 
     public static function notAlpha(string ...$additionalChars): Chain;
@@ -206,6 +204,12 @@ interface NotBuilder
     public static function notLessThan(mixed $compareTo): Chain;
 
     public static function notLessThanOrEqual(mixed $compareTo): Chain;
+
+    public static function notLogicAnd(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function notLowercase(): Chain;
 

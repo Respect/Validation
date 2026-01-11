@@ -16,13 +16,6 @@ interface KeyBuilder
 {
     public static function keyAll(int|string $key, Validator $validator): Chain;
 
-    public static function keyAllOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function keyAlnum(int|string $key, string ...$additionalChars): Chain;
 
     public static function keyAlpha(int|string $key, string ...$additionalChars): Chain;
@@ -213,6 +206,13 @@ interface KeyBuilder
     public static function keyLessThan(int|string $key, mixed $compareTo): Chain;
 
     public static function keyLessThanOrEqual(int|string $key, mixed $compareTo): Chain;
+
+    public static function keyLogicAnd(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function keyLowercase(int|string $key): Chain;
 

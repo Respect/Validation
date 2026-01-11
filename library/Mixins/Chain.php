@@ -29,8 +29,6 @@ interface Chain extends
 {
     public function all(Validator $validator): Chain;
 
-    public function allOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function alnum(string ...$additionalChars): Chain;
 
     public function alpha(string ...$additionalChars): Chain;
@@ -221,6 +219,8 @@ interface Chain extends
     public function lessThan(mixed $compareTo): Chain;
 
     public function lessThanOrEqual(mixed $compareTo): Chain;
+
+    public function logicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function lowercase(): Chain;
 

@@ -16,8 +16,6 @@ interface NullOrChain
 {
     public function nullOrAll(Validator $validator): Chain;
 
-    public function nullOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function nullOrAlnum(string ...$additionalChars): Chain;
 
     public function nullOrAlpha(string ...$additionalChars): Chain;
@@ -206,6 +204,8 @@ interface NullOrChain
     public function nullOrLessThan(mixed $compareTo): Chain;
 
     public function nullOrLessThanOrEqual(mixed $compareTo): Chain;
+
+    public function nullOrLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function nullOrLowercase(): Chain;
 

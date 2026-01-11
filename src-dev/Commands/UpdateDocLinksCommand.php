@@ -187,7 +187,7 @@ final class UpdateDocLinksCommand extends Command
             preg_match_all('/\[([^\]]+)\]\(([^\)]+)\.md\)/', $content, $matches);
             foreach ($matches[2] as $relatedRule) {
                 $relatedRule = basename($relatedRule);
-                if ($relatedRule === '08-comparable-values' || $relatedRule === 'comparing-empty-values') {
+                if ($relatedRule === 'comparable-values' || $relatedRule === 'comparing-empty-values') {
                     continue;
                 }
 

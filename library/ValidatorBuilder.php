@@ -15,8 +15,8 @@ use Respect\Validation\Message\ArrayFormatter;
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\StringFormatter;
 use Respect\Validation\Mixins\Builder;
-use Respect\Validation\Validators\AllOf;
 use Respect\Validation\Validators\Core\Nameable;
+use Respect\Validation\Validators\LogicAnd;
 use Throwable;
 
 use function count;
@@ -59,7 +59,7 @@ final readonly class ValidatorBuilder implements Validator, Nameable
         $validator = match (count($this->validators)) {
             0 => throw new ComponentException('No validators have been added.'),
             1 => current($this->validators),
-            default => new AllOf(...$this->validators),
+            default => new LogicAnd(...$this->validators),
         };
 
         return $validator->evaluate($input);

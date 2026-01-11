@@ -1,16 +1,16 @@
-# AllOf
+# LogicAnd
 
-- `AllOf(Validator $validator1, Validator $validator2, Validator ...$validator)`
+- `LogicAnd(Validator $validator1, Validator $validator2, Validator ...$validator)`
 
-Will validate if all inner validators validates.
+Validates that all inner validators pass, acting as a logical `and` operator.
 
 ```php
-v::allOf(v::intVal(), v::positive())->isValid(15); // true
+v::logicAnd(v::intVal(), v::positive())->isValid(15); // true
 ```
 
 ## Templates
 
-### `AllOf::TEMPLATE_SOME`
+### `LogicAnd::TEMPLATE_SOME`
 
 Used when some validators must be failed.
 
@@ -19,7 +19,7 @@ Used when some validators must be failed.
 | `default`  | {{subject}} must pass the rules |
 | `inverted` | {{subject}} must pass the rules |
 
-### `AllOf::TEMPLATE_ALL`
+### `LogicAnd::TEMPLATE_ALL`
 
 Used when all validators have failed.
 
@@ -37,14 +37,15 @@ Used when all validators have failed.
 ## Categorization
 
 - Composite
+- Logical
 - Nesting
 
 ## Changelog
 
-| Version | Description                                  |
-| ------: | -------------------------------------------- |
-|   3.0.0 | Require at least two validators to be passed |
-|   0.3.9 | Created                                      |
+| Version | Description                                               |
+| ------: | --------------------------------------------------------- |
+|   3.0.0 | Require at least two validators and renamed to `LogicAnd` |
+|   0.3.9 | Created as `AllOf`                                        |
 
 ---
 
