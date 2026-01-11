@@ -17,8 +17,8 @@ Message template for this validator includes `{{instanceName}}`.
 
 | Mode       | Template                                                    |
 | ---------- | ----------------------------------------------------------- |
-| `default`  | {{subject}} must be an instance of `{{class&#124;raw}}`     |
-| `inverted` | {{subject}} must not be an instance of `{{class&#124;raw}}` |
+| `default`  | {{subject}} must be an instance of {{class&#124;quote}}     |
+| `inverted` | {{subject}} must not be an instance of {{class&#124;quote}} |
 
 ## Template placeholders
 

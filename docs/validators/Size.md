@@ -28,16 +28,6 @@ This validator will accept:
 | `default`  | The size in {{unit&#124;trans}} of |
 | `inverted` | The size in {{unit&#124;trans}} of |
 
-This template serve as message prefix:
-
-```php
-v::size('MB', v::equals(2))->assert('filename.txt')
-// Message: The size in megabytes of "filename.txt" must be equal to 2
-
-v::size('KB', v::not(v::equals(56)))->assert('filename.txt')
-// Message: The size in kilobytes of "filename.txt" must not be equal to 56
-```
-
 ### `Size::TEMPLATE_WRONG_TYPE`
 
 Used when the input is not a valid file path, a `SplFileInfo` object, or a PSR-7 interface.
@@ -46,6 +36,18 @@ Used when the input is not a valid file path, a `SplFileInfo` object, or a PSR-7
 | ---------- | ------------------------------------------------------------------------------------- |
 | `default`  | {{subject}} must be a filename or an instance of SplFileInfo or a PSR-7 interface     |
 | `inverted` | {{subject}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface |
+
+## Template as prefix
+
+The template serves as a prefix to the template of the inner validator.
+
+```php
+v::size('MB', v::equals(2))->assert('filename.txt')
+// Message: The size in megabytes of "filename.txt" must be equal to 2
+
+v::size('KB', v::not(v::equals(56)))->assert('filename.txt')
+// Message: The size in kilobytes of "filename.txt" must not be equal to 56
+```
 
 ## Template placeholders
 

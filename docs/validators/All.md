@@ -24,7 +24,9 @@ This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] inter
 | `default`  | Every item in |
 | `inverted` | Every item in |
 
-This template serve as message prefixes.:
+## Template as prefix
+
+The template serves as a prefix to the template of the inner validator.
 
 ```php
 v::all(v::floatType())->assert([1.5, 2]);

@@ -28,6 +28,10 @@ This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] inter
 | `default`  | The minimum of |
 | `inverted` | The minimum of |
 
+## Template as prefix
+
+The template serves as a prefix to the template of the inner validator.
+
 ## Template placeholders
 
 | Placeholder | Description                                                      |

@@ -31,16 +31,6 @@ The supported types are:
 
 ## Templates
 
-The first two templates serve as message suffixes:
-
-```php
-v::dateTimeDiff('years', v::equals(2))->assert('1 year ago')
-// The number of years between now and 1 year ago must be equal to 2
-
-v::not(v::dateTimeDiff('years', v::lessThan(8)))->assert('7 year ago')
-// The number of years between now and 7 year ago must not be less than 8
-```
-
 ### `DateTimeDiff::TEMPLATE_STANDARD`
 
 Used when `$format` and `$now` are not defined.
@@ -54,10 +44,17 @@ Used when `$format` and `$now` are not defined.
 
 Used when `$format` or `$now` are defined.
 
-| Mode       | Template                                                       |
-| ---------- | -------------------------------------------------------------- |
-| `default`  | The number of {{type&#124;trans}} between {{now&#124;raw}} and |
-| `inverted` | The number of {{type&#124;trans}} between {{now&#124;raw}} and |
+| Mode       | Template                                              |
+| ---------- | ----------------------------------------------------- |
+| `default`  | The number of {{type&#124;trans}} between {{now}} and |
+| `inverted` | The number of {{type&#124;trans}} between {{now}} and |
+
+### `DateTimeDiff::TEMPLATE_NOT_A_DATE`
+
+| Mode       | Template                                                                       |
+| ---------- | ------------------------------------------------------------------------------ |
+| `default`  | For comparison with {{now&#124;raw}}, {{subject}} must be a valid datetime     |
+| `inverted` | For comparison with {{now&#124;raw}}, {{subject}} must not be a valid datetime |
 
 ### `DateTimeDiff::TEMPLATE_WRONG_FORMAT`
 
@@ -67,6 +64,18 @@ Used when the input cannot be parsed with the given format.
 | ---------- | ---------------------------------------------------------------------------------------------------------------- |
 | `default`  | For comparison with {{now&#124;raw}}, {{subject}} must be a valid datetime in the format {{sample&#124;raw}}     |
 | `inverted` | For comparison with {{now&#124;raw}}, {{subject}} must not be a valid datetime in the format {{sample&#124;raw}} |
+
+## Template as prefix
+
+The template serves as a prefix to the template of the inner validator.
+
+```php
+v::dateTimeDiff('years', v::equals(2))->assert('1 year ago')
+// The number of years between now and 1 year ago must be equal to 2
+
+v::not(v::dateTimeDiff('years', v::lessThan(8)))->assert('7 year ago')
+// The number of years between now and 7 year ago must not be less than 8
+```
 
 ## Template placeholders
 

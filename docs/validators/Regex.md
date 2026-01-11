@@ -16,8 +16,8 @@ Message template for this validator includes `{{regex}}`.
 
 | Mode       | Template                                                    |
 | ---------- | ----------------------------------------------------------- |
-| `default`  | {{subject}} must match the pattern `{{regex&#124;raw}}`     |
-| `inverted` | {{subject}} must not match the pattern `{{regex&#124;raw}}` |
+| `default`  | {{subject}} must match the pattern {{regex&#124;quote}}     |
+| `inverted` | {{subject}} must not match the pattern {{regex&#124;quote}} |
 
 ## Template placeholders
 

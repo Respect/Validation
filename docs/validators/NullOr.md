@@ -31,7 +31,9 @@ v::nullOrBetween(1, 3)->isValid(null); // true
 | `default`  | or must be null      |
 | `inverted` | and must not be null |
 
-The templates from this validator serve as message suffixes:
+## Template as suffix
+
+The template serves as a suffix to the template of the inner validator.
 
 ```php
 v::nullOr(v::alpha())->assert('has1number');

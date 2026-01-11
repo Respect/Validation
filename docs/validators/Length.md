@@ -31,7 +31,16 @@ Used when it's possible to get the length of the input.
 | `default`  | The length of |
 | `inverted` | The length of |
 
-This template serve as message prefixes.:
+### `Length::TEMPLATE_WRONG_TYPE`
+
+| Mode       | Template                                              |
+| ---------- | ----------------------------------------------------- |
+| `default`  | {{subject}} must be a countable value or a string     |
+| `inverted` | {{subject}} must not be a countable value or a string |
+
+## Template as prefix
+
+The template serves as a prefix to the template of the inner validator.
 
 ```php
 v::length(v::equals(3))->assert('tulip');

@@ -34,7 +34,9 @@ v::undefOrBetween(1, 3)->isValid(2); // true
 | `default`  | or must be undefined      |
 | `inverted` | and must not be undefined |
 
-The templates from this validator serve as message suffixes:
+## Template as suffix
+
+The template serves as a suffix to the template of the inner validator.
 
 ```php
 v::undefOr(v::alpha())->assert('has1number');
