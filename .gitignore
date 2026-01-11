@@ -1,9 +1,11 @@
 .couscous/
 .iso-codes-cache/
+.phpbench/
 .phpcs.cache
 .phpunit.cache/
 composer.lock
 Makefile
+phpbench.json
 phpcs.xml
 phpstan.neon
 phpunit.xml
