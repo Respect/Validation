@@ -1,6 +1,6 @@
 # Nip
 
-- `Nip(string $countryCode)`
+- `Nip()`
 
 Validates whether the input is a Polish VAT identification number (NIP).
 

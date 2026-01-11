@@ -1,6 +1,6 @@
 # Between
 
-- `Between(mixed $minimum, mixed $maximum)`
+- `Between(mixed $minValue, mixed $maxValue)`
 
 Validates whether the input is between two other values.
 

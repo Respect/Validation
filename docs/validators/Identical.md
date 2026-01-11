@@ -1,6 +1,6 @@
 # Identical
 
-- `Identical(mixed $value)`
+- `Identical(mixed $compareTo)`
 
 Validates if the input is identical to some value.
 

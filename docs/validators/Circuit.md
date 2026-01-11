@@ -1,6 +1,7 @@
 # Circuit
 
-- `Circuit(Validator $validator1, Validator $validator2, Validator ...$validator)`
+- `Circuit(Validator $validator1, Validator $validator2)`
+- `Circuit(Validator $validator1, Validator $validator2, Validator ...$validators)`
 
 Validates the input against a series of validators until the first fails.
 

@@ -1,6 +1,7 @@
 # OneOf
 
-- `OneOf(Validator $validator1, Validator $validator2, Validator ...$validator)`
+- `OneOf(Validator $validator1, Validator $validator2)`
+- `OneOf(Validator $validator1, Validator $validator2, Validator ...$validators)`
 
 Will validate if exactly one inner validator passes.
 

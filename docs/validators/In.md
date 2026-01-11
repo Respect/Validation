@@ -1,7 +1,7 @@
 # In
 
 - `In(mixed $haystack)`
-- `In(mixed $haystack, bool $identical)`
+- `In(mixed $haystack, bool $compareIdentical)`
 
 Validates if the input is contained in a specific haystack.
 

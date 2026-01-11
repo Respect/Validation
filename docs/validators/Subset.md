@@ -1,6 +1,6 @@
 # Subset
 
-- `Subset(array $superset)`
+- `Subset(mixed[] $superset)`
 
 Validates whether the input is a subset of a given value.
 

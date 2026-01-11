@@ -1,6 +1,6 @@
 # KeyExists
 
-- `KeyExists(int|string $key)`
+- `KeyExists(string|int $key)`
 
 Validates if the given key exists in an array.
 

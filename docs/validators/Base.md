@@ -1,6 +1,7 @@
 # Base
 
-- `Base(string $base)`
+- `Base(int $base)`
+- `Base(int $base, string $chars)`
 
 Validate numbers in any base, even with non regular bases.
 

@@ -1,6 +1,7 @@
 # Phone
 
 - `Phone()`
+- `Phone(string $countryCode)`
 
 Validates whether the input is a valid phone number. This validator requires
 the `giggsey/libphonenumber-for-php-lite` package.

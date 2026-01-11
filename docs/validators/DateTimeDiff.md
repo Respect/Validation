@@ -1,8 +1,8 @@
 # DateTimeDiff
 
-- `DateTimeDiff(string $type, Validator $validator)`
-- `DateTimeDiff(string $type, Validator $validator, string $format)`
-- `DateTimeDiff(string $type, Validator $validator, string $format, DateTimeImmutable $now)`
+- `DateTimeDiff("years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type, Validator $validator)`
+- `DateTimeDiff("years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type, Validator $validator, string $format)`
+- `DateTimeDiff("years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type, Validator $validator, string $format, DateTimeImmutable $now)`
 
 Validates the difference of date/time against a specific validator.
 

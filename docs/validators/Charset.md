@@ -1,6 +1,7 @@
 # Charset
 
-- `Charset(string ...$charset)`
+- `Charset(string $charset)`
+- `Charset(string $charset, string ...$charsets)`
 
 Validates if a string is in a specific charset.
 

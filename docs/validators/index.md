@@ -300,7 +300,6 @@ In this page you will find a list of validators by their category.
 - [ScalarVal](validators/ScalarVal.md)
 - [StringType](validators/StringType.md)
 - [StringVal](validators/StringVal.md)
-- [Type](validators/Type.md)
 
 ## Alphabetically
 
@@ -451,7 +450,6 @@ In this page you will find a list of validators by their category.
 - [Time](validators/Time.md)
 - [Tld](validators/Tld.md)
 - [TrueVal](validators/TrueVal.md)
-- [Type](validators/Type.md)
 - [Undef](validators/Undef.md)
 - [UndefOr](validators/UndefOr.md)
 - [Unique](validators/Unique.md)

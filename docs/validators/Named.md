@@ -1,6 +1,6 @@
 # Named
 
-- `Named(string $name, Validator $validator)`
+- `Named(Name|string $name, Validator $validator)`
 
 Validates the input with the given validator, and uses the custom name in the error message.
 

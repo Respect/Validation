@@ -1,6 +1,6 @@
 # Key
 
-- `Key(int|string $key, Validator $validator)`
+- `Key(string|int $key, Validator $validator)`
 
 Validates the value of an array against a given validator.
 

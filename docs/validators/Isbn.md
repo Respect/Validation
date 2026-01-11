@@ -1,6 +1,6 @@
 # Isbn
 
-- `v::isbn()`
+- `Isbn()`
 
 Validates whether the input is a valid [ISBN][] or not.
 

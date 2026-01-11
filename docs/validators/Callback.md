@@ -1,6 +1,7 @@
 # Callback
 
 - `Callback(callable $callback)`
+- `Callback(callable $callback, mixed ...$arguments)`
 
 Validates the input using the return of a given callable.
 

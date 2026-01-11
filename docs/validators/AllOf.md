@@ -1,6 +1,7 @@
 # AllOf
 
-- `AllOf(Validator $validator1, Validator $validator2, Validator ...$validator)`
+- `AllOf(Validator $validator1, Validator $validator2)`
+- `AllOf(Validator $validator1, Validator $validator2, Validator ...$validators)`
 
 Will validate if all inner validators validates.
 

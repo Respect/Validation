@@ -1,6 +1,6 @@
 # KeyOptional
 
-- `KeyOptional(int|string $key, Validator $validator)`
+- `KeyOptional(string|int $key, Validator $validator)`
 
 Validates the value of an array against a given validator when the key exists.
 

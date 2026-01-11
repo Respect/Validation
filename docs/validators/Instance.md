@@ -1,6 +1,6 @@
 # Instance
 
-- `Instance(string $instanceName)`
+- `Instance(class-string $class)`
 
 Validates if the input is an instance of the given class or interface.
 

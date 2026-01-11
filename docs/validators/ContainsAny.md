@@ -1,7 +1,7 @@
 # ContainsAny
 
-- `ContainsAny(array $needles)`
-- `ContainsAny(array $needles, bool $identical)`
+- `ContainsAny(non-empty-array<mixed> $needles)`
+- `ContainsAny(non-empty-array<mixed> $needles, bool $identical)`
 
 Validates if the input contains at least one of defined values
 

@@ -1,6 +1,7 @@
 # PostalCode
 
-- `PostalCode(string $countryCode, bool $formatted = false)`
+- `PostalCode(string $countryCode)`
+- `PostalCode(string $countryCode, bool $formatted)`
 
 Validates whether the input is a valid postal code or not.
 

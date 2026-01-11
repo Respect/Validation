@@ -1,7 +1,7 @@
 # EndsWith
 
-- `EndsWith(mixed $value)`
-- `EndsWith(mixed $value, bool $identical)`
+- `EndsWith(mixed $endValue)`
+- `EndsWith(mixed $endValue, bool $identical)`
 
 This validator is similar to `Contains()`, but validates
 only if the value is at the end of the input.

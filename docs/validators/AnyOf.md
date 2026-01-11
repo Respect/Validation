@@ -1,6 +1,7 @@
 # AnyOf
 
-- `AnyOf(Validator $validator1, Validator $validator2, Validator ...$validator)`
+- `AnyOf(Validator $validator1, Validator $validator2)`
+- `AnyOf(Validator $validator1, Validator $validator2, Validator ...$validators)`
 
 This is a group validator that acts as an OR operator.
 

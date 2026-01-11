@@ -1,7 +1,7 @@
 # Contains
 
-- `Contains(mixed $expectedValue)`
-- `Contains(mixed $expectedValue, bool $identical)`
+- `Contains(mixed $containsValue)`
+- `Contains(mixed $containsValue, bool $identical)`
 
 Validates if the input contains some value.
 

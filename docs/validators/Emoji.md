@@ -1,6 +1,6 @@
 # Emoji
 
-- `v::emoji()`
+- `Emoji()`
 
 Validates if the input is an emoji or a sequence of emojis.
 

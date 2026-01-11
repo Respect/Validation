@@ -17,6 +17,7 @@ use Respect\Dev\Commands\UpdateDomainToplevelCommand;
 use Respect\Dev\Commands\UpdatePostalCodesCommand;
 use Respect\Dev\Markdown\CompositeLinter;
 use Respect\Dev\Markdown\Differ as MarkdownDiffer;
+use Respect\Dev\Markdown\Linters\ValidatorHeaderLinter;
 use Respect\Dev\Markdown\Linters\ValidatorIndexLinter;
 use SebastianBergmann\Diff\Differ;
 use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
@@ -29,6 +30,7 @@ return (static function () {
     $application->addCommand(new CreateMixinCommand());
     $application->addCommand(new DocsLintCommand($differ, new CompositeLinter(
         new ValidatorIndexLinter(),
+        new ValidatorHeaderLinter(),
     )));
     $application->addCommand(new UpdateDomainSuffixesCommand());
     $application->addCommand(new UpdateDomainToplevelCommand());

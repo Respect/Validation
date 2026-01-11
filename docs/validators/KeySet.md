@@ -1,6 +1,7 @@
 # KeySet
 
-- `KeySet(KeyRelated $validator, KeyRelated ...$validators)`
+- `KeySet(Validator $validator)`
+- `KeySet(Validator $validator, Validator ...$validators)`
 
 Validates a keys in a defined structure.
 

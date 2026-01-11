@@ -1,6 +1,7 @@
 # NoneOf
 
-- `NoneOf(Validator $validator1, Validator $validator2, Validator ...$validator)`
+- `NoneOf(Validator $validator1, Validator $validator2)`
+- `NoneOf(Validator $validator1, Validator $validator2, Validator ...$validators)`
 
 Validates if NONE of the given validators validate:
 

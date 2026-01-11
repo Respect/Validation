@@ -1,6 +1,6 @@
 # Iban
 
-- `v::iban()`
+- `Iban()`
 
 Validates whether the input is a valid [IBAN][] (International Bank Account
 Number) or not.

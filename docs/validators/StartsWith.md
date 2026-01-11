@@ -1,7 +1,7 @@
 # StartsWith
 
-- `StartsWith(mixed $value)`
-- `StartsWith(mixed $value, bool $identical)`
+- `StartsWith(mixed $startValue)`
+- `StartsWith(mixed $startValue, bool $identical)`
 
 Validates whether the input starts with a given value.
 
