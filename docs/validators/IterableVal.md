@@ -13,7 +13,7 @@ v::iterableVal()->isValid('string'); // false
 
 ## Note
 
-This validator doesn't behave as PHP's [is_iterable() function because it considers that you can iterate over any object.
+This validator doesn't behave as PHP's [is_iterable()][] function because it considers that you can iterate over any object.
 
 ## Templates
 
