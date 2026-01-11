@@ -42,8 +42,8 @@ See also:
 
 - [Lazy](Lazy.md)
 - [LogicAnd](LogicAnd.md)
+- [LogicNor](LogicNor.md)
 - [LogicOr](LogicOr.md)
-- [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)
 - [SubdivisionCode](SubdivisionCode.md)
 - [When](When.md)

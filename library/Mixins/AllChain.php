@@ -193,6 +193,8 @@ interface AllChain
 
     public function allLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function allLogicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function allLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allLowercase(): Chain;
@@ -216,8 +218,6 @@ interface AllChain
     public function allNif(): Chain;
 
     public function allNip(): Chain;
-
-    public function allNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allNot(Validator $validator): Chain;
 

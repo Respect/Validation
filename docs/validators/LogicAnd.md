@@ -52,7 +52,7 @@ Used when all validators have failed.
 See also:
 
 - [Circuit](Circuit.md)
+- [LogicNor](LogicNor.md)
 - [LogicOr](LogicOr.md)
-- [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)
 - [When](When.md)

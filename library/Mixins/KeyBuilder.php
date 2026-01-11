@@ -207,6 +207,13 @@ interface KeyBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function keyLogicNor(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function keyLogicOr(
         int|string $key,
         Validator $validator1,
@@ -235,13 +242,6 @@ interface KeyBuilder
     public static function keyNif(int|string $key): Chain;
 
     public static function keyNip(int|string $key): Chain;
-
-    public static function keyNoneOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function keyNot(int|string $key, Validator $validator): Chain;
 

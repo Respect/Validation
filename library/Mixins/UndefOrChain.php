@@ -203,6 +203,8 @@ interface UndefOrChain
 
     public function undefOrLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function undefOrLogicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function undefOrLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrLowercase(): Chain;
@@ -226,8 +228,6 @@ interface UndefOrChain
     public function undefOrNif(): Chain;
 
     public function undefOrNip(): Chain;
-
-    public function undefOrNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrNot(Validator $validator): Chain;
 

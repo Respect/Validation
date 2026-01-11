@@ -10,7 +10,7 @@ declare(strict_types=1);
 test('https://github.com/Respect/Validation/issues/425', catchAll(
     function (): void {
         $validator = v::init()
-            ->key('age', v::intType()->notBlank()->noneOf(v::stringType(), v::arrayType()))
+            ->key('age', v::intType()->notBlank()->logicNor(v::stringType(), v::arrayType()))
             ->key('reference', v::stringType()->notBlank()->lengthBetween(1, 50));
         $validator->assert(['age' => 1]);
     },

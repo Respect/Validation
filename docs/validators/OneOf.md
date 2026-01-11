@@ -58,6 +58,6 @@ See also:
 
 - [Circuit](Circuit.md)
 - [LogicAnd](LogicAnd.md)
+- [LogicNor](LogicNor.md)
 - [LogicOr](LogicOr.md)
-- [NoneOf](NoneOf.md)
 - [When](When.md)

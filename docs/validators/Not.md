@@ -42,6 +42,6 @@ Each other validation has custom messages for negated validators.
 
 See also:
 
+- [LogicNor](LogicNor.md)
 - [Named](Named.md)
-- [NoneOf](NoneOf.md)
 - [Templated](Templated.md)

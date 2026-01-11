@@ -48,6 +48,6 @@ See also:
 - [Circuit](Circuit.md)
 - [ContainsAny](ContainsAny.md)
 - [LogicAnd](LogicAnd.md)
-- [NoneOf](NoneOf.md)
+- [LogicNor](LogicNor.md)
 - [OneOf](OneOf.md)
 - [When](When.md)

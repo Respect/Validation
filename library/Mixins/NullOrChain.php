@@ -205,6 +205,8 @@ interface NullOrChain
 
     public function nullOrLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function nullOrLogicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function nullOrLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function nullOrLowercase(): Chain;
@@ -228,8 +230,6 @@ interface NullOrChain
     public function nullOrNif(): Chain;
 
     public function nullOrNip(): Chain;
-
-    public function nullOrNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function nullOrNot(Validator $validator): Chain;
 

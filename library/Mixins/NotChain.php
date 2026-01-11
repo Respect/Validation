@@ -205,6 +205,8 @@ interface NotChain
 
     public function notLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function notLogicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function notLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notLowercase(): Chain;
@@ -228,8 +230,6 @@ interface NotChain
     public function notNif(): Chain;
 
     public function notNip(): Chain;
-
-    public function notNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notNullType(): Chain;
 

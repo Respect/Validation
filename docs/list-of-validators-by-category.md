@@ -60,8 +60,8 @@
 
 - [Circuit](validators/Circuit.md)
 - [LogicAnd](validators/LogicAnd.md)
+- [LogicNor](validators/LogicNor.md)
 - [LogicOr](validators/LogicOr.md)
-- [NoneOf](validators/NoneOf.md)
 - [OneOf](validators/OneOf.md)
 
 ## Conditions
@@ -147,6 +147,7 @@
 ## Logical
 
 - [LogicAnd](validators/LogicAnd.md)
+- [LogicNor](validators/LogicNor.md)
 - [LogicOr](validators/LogicOr.md)
 
 ## Math
@@ -179,8 +180,8 @@
 - [KeySet](validators/KeySet.md)
 - [Lazy](validators/Lazy.md)
 - [LogicAnd](validators/LogicAnd.md)
+- [LogicNor](validators/LogicNor.md)
 - [LogicOr](validators/LogicOr.md)
-- [NoneOf](validators/NoneOf.md)
 - [Not](validators/Not.md)
 - [NullOr](validators/NullOr.md)
 - [OneOf](validators/OneOf.md)
@@ -396,6 +397,7 @@
 - [LessThan](validators/LessThan.md)
 - [LessThanOrEqual](validators/LessThanOrEqual.md)
 - [LogicAnd](validators/LogicAnd.md)
+- [LogicNor](validators/LogicNor.md)
 - [LogicOr](validators/LogicOr.md)
 - [Lowercase](validators/Lowercase.md)
 - [Luhn](validators/Luhn.md)
@@ -409,7 +411,6 @@
 - [NfeAccessKey](validators/NfeAccessKey.md)
 - [Nif](validators/Nif.md)
 - [Nip](validators/Nip.md)
-- [NoneOf](validators/NoneOf.md)
 - [Not](validators/Not.md)
 - [NullOr](validators/NullOr.md)
 - [NullType](validators/NullType.md)

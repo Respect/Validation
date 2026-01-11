@@ -217,6 +217,8 @@ interface Builder extends
 
     public static function logicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public static function logicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public static function logicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function lowercase(): Chain;
@@ -242,8 +244,6 @@ interface Builder extends
     public static function nif(): Chain;
 
     public static function nip(): Chain;
-
-    public static function noneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function not(Validator $validator): Chain;
 

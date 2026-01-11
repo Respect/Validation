@@ -211,6 +211,12 @@ interface UndefOrBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function undefOrLogicNor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function undefOrLogicOr(
         Validator $validator1,
         Validator $validator2,
@@ -238,12 +244,6 @@ interface UndefOrBuilder
     public static function undefOrNif(): Chain;
 
     public static function undefOrNip(): Chain;
-
-    public static function undefOrNoneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function undefOrNot(Validator $validator): Chain;
 

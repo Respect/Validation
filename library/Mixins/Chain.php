@@ -220,6 +220,8 @@ interface Chain extends
 
     public function logicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function logicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function logicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function lowercase(): Chain;
@@ -245,8 +247,6 @@ interface Chain extends
     public function nif(): Chain;
 
     public function nip(): Chain;
-
-    public function noneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function not(Validator $validator): Chain;
 

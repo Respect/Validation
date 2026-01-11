@@ -213,6 +213,12 @@ interface NullOrBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function nullOrLogicNor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function nullOrLogicOr(
         Validator $validator1,
         Validator $validator2,
@@ -240,12 +246,6 @@ interface NullOrBuilder
     public static function nullOrNif(): Chain;
 
     public static function nullOrNip(): Chain;
-
-    public static function nullOrNoneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function nullOrNot(Validator $validator): Chain;
 

@@ -197,6 +197,12 @@ interface AllBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function allLogicNor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function allLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allLowercase(): Chain;
@@ -220,8 +226,6 @@ interface AllBuilder
     public static function allNif(): Chain;
 
     public static function allNip(): Chain;
-
-    public static function allNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allNot(Validator $validator): Chain;
 

@@ -211,6 +211,13 @@ interface PropertyBuilder
         Validator ...$validators,
     ): Chain;
 
+    public static function propertyLogicNor(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function propertyLogicOr(
         string $propertyName,
         Validator $validator1,
@@ -239,13 +246,6 @@ interface PropertyBuilder
     public static function propertyNif(string $propertyName): Chain;
 
     public static function propertyNip(string $propertyName): Chain;
-
-    public static function propertyNoneOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function propertyNot(string $propertyName, Validator $validator): Chain;
 
