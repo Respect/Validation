@@ -283,13 +283,21 @@ test('Chained wrapped rule', catchAll(
         FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => 'Each item in `[2, 4]` must be valid',
-            0 => '`.0` must be an odd number',
-            1 => '`.1` must be an odd number',
+            0 => [
+                '__root__' => '`.0` must pass all the rules',
+                0 => '`.0` must be between 5 and 7',
+                1 => '`.0` must be an odd number',
+            ],
+            1 => [
+                '__root__' => '`.1` must pass all the rules',
+                0 => '`.1` must be between 5 and 7',
+                1 => '`.1` must be an odd number',
+            ],
         ]),
 ));
 
 test('Multiple nested rules', catchAll(
-    fn() => v::each(v::arrayType()->key('my_int', v::intType()->odd()))->assert([['not_int' => 'wrong'], ['my_int' => 2], 'not an array']),
+    fn() => v::each(v::arrayType()->key('my_int', v::intType()->odd())->length(v::equals(1)))->assert([['not_int' => 'wrong'], ['my_int' => 2], 'not an array']),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('`.0.my_int` must be present')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -301,6 +309,7 @@ test('Multiple nested rules', catchAll(
           - `.2` must pass all the rules
             - `.2` must be an array
             - `.2.my_int` must be present
+            - The length of `.2` must be equal to 1
         FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => 'Each item in `[["not_int": "wrong"], ["my_int": 2], "not an array"]` must be valid',
@@ -308,8 +317,9 @@ test('Multiple nested rules', catchAll(
             1 => '`.1.my_int` must be an odd number',
             2 => [
                 '__root__' => '`.2` must pass all the rules',
-                2 => '`.2` must be an array',
+                'arrayType' => '`.2` must be an array',
                 'my_int' => '`.2.my_int` must be present',
+                'lengthEquals' => 'The length of `.2` must be equal to 1',
             ],
         ]),
 ));

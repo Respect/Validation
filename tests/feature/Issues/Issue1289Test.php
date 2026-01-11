@@ -60,7 +60,10 @@ test('https://github.com/Respect/Validation/issues/1289', catchAll(
         ->and($messages)->toBe([
             0 => [
                 '__root__' => '`.0` must pass the rules',
-                'default' => '`.0.default` must be a boolean',
+                'default' => [
+                    '`.0.default` must be a string',
+                    '`.0.default` must be a boolean',
+                ],
                 'description' => '`.0.description` must be a string value',
             ],
         ]),

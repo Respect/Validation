@@ -29,7 +29,10 @@ test('https://github.com/Respect/Validation/issues/1376', catchAll(
             '__root__' => '`stdClass { +$author="foo" }` must pass all the rules',
             'title' => '`.title` must be present',
             'description' => '`.description` must be present',
-            'author' => 'The length of `.author` must be between 1 and 2',
+            'author' => [
+                '`.author` must be an integer',
+                'The length of `.author` must be between 1 and 2',
+            ],
             'user' => '`.user` must be present',
         ]),
 ));
