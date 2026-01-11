@@ -26,8 +26,6 @@ interface Builder extends
 {
     public static function all(Validator $validator): Chain;
 
-    public static function allOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function alnum(string ...$additionalChars): Chain;
 
     public static function alpha(string ...$additionalChars): Chain;
@@ -218,6 +216,8 @@ interface Builder extends
     public static function lessThan(mixed $compareTo): Chain;
 
     public static function lessThanOrEqual(mixed $compareTo): Chain;
+
+    public static function logicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function lowercase(): Chain;
 

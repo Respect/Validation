@@ -16,8 +16,6 @@ interface UndefOrChain
 {
     public function undefOrAll(Validator $validator): Chain;
 
-    public function undefOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function undefOrAlnum(string ...$additionalChars): Chain;
 
     public function undefOrAlpha(string ...$additionalChars): Chain;
@@ -204,6 +202,8 @@ interface UndefOrChain
     public function undefOrLessThan(mixed $compareTo): Chain;
 
     public function undefOrLessThanOrEqual(mixed $compareTo): Chain;
+
+    public function undefOrLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrLowercase(): Chain;
 

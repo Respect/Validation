@@ -16,13 +16,6 @@ interface PropertyChain
 {
     public function propertyAll(string $propertyName, Validator $validator): Chain;
 
-    public function propertyAllOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public function propertyAlnum(string $propertyName, string ...$additionalChars): Chain;
 
     public function propertyAlpha(string $propertyName, string ...$additionalChars): Chain;
@@ -213,6 +206,13 @@ interface PropertyChain
     public function propertyLessThan(string $propertyName, mixed $compareTo): Chain;
 
     public function propertyLessThanOrEqual(string $propertyName, mixed $compareTo): Chain;
+
+    public function propertyLogicAnd(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public function propertyLowercase(string $propertyName): Chain;
 

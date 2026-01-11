@@ -14,8 +14,6 @@ use Respect\Validation\Validator;
 
 interface AllChain
 {
-    public function allAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function allAlnum(string ...$additionalChars): Chain;
 
     public function allAlpha(string ...$additionalChars): Chain;
@@ -194,6 +192,8 @@ interface AllChain
     public function allLessThan(mixed $compareTo): Chain;
 
     public function allLessThanOrEqual(mixed $compareTo): Chain;
+
+    public function allLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allLowercase(): Chain;
 

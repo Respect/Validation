@@ -31,7 +31,7 @@ final class Between extends Envelope
         }
 
         parent::__construct(
-            new AllOf(
+            new LogicAnd(
                 new GreaterThanOrEqual($minValue),
                 new LessThanOrEqual($maxValue),
             ),

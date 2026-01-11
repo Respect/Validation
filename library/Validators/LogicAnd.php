@@ -31,7 +31,7 @@ use function count;
     '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
-final class AllOf extends Composite
+final class LogicAnd extends Composite
 {
     public const string TEMPLATE_ALL = '__all__';
     public const string TEMPLATE_SOME = '__some__';

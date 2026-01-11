@@ -16,12 +16,6 @@ interface UndefOrBuilder
 {
     public static function undefOrAll(Validator $validator): Chain;
 
-    public static function undefOrAllOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function undefOrAlnum(string ...$additionalChars): Chain;
 
     public static function undefOrAlpha(string ...$additionalChars): Chain;
@@ -216,6 +210,12 @@ interface UndefOrBuilder
     public static function undefOrLessThan(mixed $compareTo): Chain;
 
     public static function undefOrLessThanOrEqual(mixed $compareTo): Chain;
+
+    public static function undefOrLogicAnd(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
 
     public static function undefOrLowercase(): Chain;
 

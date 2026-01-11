@@ -16,8 +16,6 @@ interface NotChain
 {
     public function notAll(Validator $validator): Chain;
 
-    public function notAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function notAlnum(string ...$additionalChars): Chain;
 
     public function notAlpha(string ...$additionalChars): Chain;
@@ -206,6 +204,8 @@ interface NotChain
     public function notLessThan(mixed $compareTo): Chain;
 
     public function notLessThanOrEqual(mixed $compareTo): Chain;
+
+    public function notLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notLowercase(): Chain;
 
