@@ -19,7 +19,7 @@
     },
     "require": {
         "php": ">=8.1",
-        "respect/stringifier": "^0.2.0",
+        "respect/stringifier": "^0.2.0 || ^1.0",
         "symfony/polyfill-mbstring": "^1.2"
     },
     "require-dev": {
