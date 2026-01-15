@@ -60,6 +60,19 @@ final class NamespacedRuleFactoryTest extends TestCase
     }
 
     #[Test]
+    public function shouldThrowsAnExceptionOnConstructorReflectionFailure(): void
+    {
+        $constructorArguments = ['a', 'b'];
+
+        $factory = new NamespacedValidatorFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
+
+        $this->expectException(InvalidClassException::class);
+        $this->expectExceptionMessage('"noConstructor" could not be instantiated with arguments `["a", "b"]`');
+
+        $factory->create('noConstructor', $constructorArguments);
+    }
+
+    #[Test]
     public function shouldThrowsAnExceptionWhenRuleIsInvalid(): void
     {
         $factory = new NamespacedValidatorFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
