@@ -88,6 +88,13 @@ interface PropertyChain
     /** @param non-empty-array<mixed> $needles */
     public function propertyContainsAny(string $propertyName, array $needles, bool $identical = false): Chain;
 
+    public function propertyContainsCount(
+        string $propertyName,
+        mixed $containsValue,
+        int $count,
+        bool $identical = false,
+    ): Chain;
+
     public function propertyControl(string $propertyName, string ...$additionalChars): Chain;
 
     public function propertyCountable(string $propertyName): Chain;

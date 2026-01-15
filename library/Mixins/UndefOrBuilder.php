@@ -82,6 +82,8 @@ interface UndefOrBuilder
     /** @param non-empty-array<mixed> $needles */
     public static function undefOrContainsAny(array $needles, bool $identical = false): Chain;
 
+    public static function undefOrContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+
     public static function undefOrControl(string ...$additionalChars): Chain;
 
     public static function undefOrCountable(): Chain;

@@ -72,6 +72,8 @@ interface NotBuilder
     /** @param non-empty-array<mixed> $needles */
     public static function notContainsAny(array $needles, bool $identical = false): Chain;
 
+    public static function notContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+
     public static function notControl(string ...$additionalChars): Chain;
 
     public static function notCountable(): Chain;

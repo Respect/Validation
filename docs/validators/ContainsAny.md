@@ -57,5 +57,6 @@ See also:
 
 - [AnyOf](AnyOf.md)
 - [Contains](Contains.md)
+- [ContainsCount](ContainsCount.md)
 - [Equivalent](Equivalent.md)
 - [In](In.md)

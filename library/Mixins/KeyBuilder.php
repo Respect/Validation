@@ -88,6 +88,13 @@ interface KeyBuilder
     /** @param non-empty-array<mixed> $needles */
     public static function keyContainsAny(int|string $key, array $needles, bool $identical = false): Chain;
 
+    public static function keyContainsCount(
+        int|string $key,
+        mixed $containsValue,
+        int $count,
+        bool $identical = false,
+    ): Chain;
+
     public static function keyControl(int|string $key, string ...$additionalChars): Chain;
 
     public static function keyCountable(int|string $key): Chain;

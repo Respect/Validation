@@ -17,7 +17,6 @@ use Respect\Validation\Validator;
 use function array_pop;
 use function count;
 use function explode;
-use function mb_substr_count;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
@@ -84,9 +83,7 @@ final class Domain implements Validator
                 new Not(new StartsWith('-')),
                 new AnyOf(
                     new Not(new Contains('--')),
-                    new Callback(static function ($str) {
-                        return mb_substr_count($str, '--') == 1;
-                    }),
+                    new ContainsCount('--', 1),
                 ),
                 new Not(new EndsWith('-')),
             ),

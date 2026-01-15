@@ -72,6 +72,8 @@ interface NotChain
     /** @param non-empty-array<mixed> $needles */
     public function notContainsAny(array $needles, bool $identical = false): Chain;
 
+    public function notContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+
     public function notControl(string ...$additionalChars): Chain;
 
     public function notCountable(): Chain;
