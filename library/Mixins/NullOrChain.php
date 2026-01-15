@@ -16,8 +16,6 @@ interface NullOrChain
 {
     public function nullOrAll(Validator $validator): Chain;
 
-    public function nullOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function nullOrAlnum(string ...$additionalChars): Chain;
 
     public function nullOrAlpha(string ...$additionalChars): Chain;
@@ -25,8 +23,6 @@ interface NullOrChain
     public function nullOrAlwaysInvalid(): Chain;
 
     public function nullOrAlwaysValid(): Chain;
-
-    public function nullOrAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function nullOrArrayType(): Chain;
 
@@ -207,6 +203,16 @@ interface NullOrChain
 
     public function nullOrLessThanOrEqual(mixed $compareTo): Chain;
 
+    public function nullOrLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function nullOrLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
+    public function nullOrLogicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function nullOrLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function nullOrLogicXor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function nullOrLowercase(): Chain;
 
     public function nullOrLuhn(): Chain;
@@ -229,8 +235,6 @@ interface NullOrChain
 
     public function nullOrNip(): Chain;
 
-    public function nullOrNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function nullOrNot(Validator $validator): Chain;
 
     public function nullOrNullType(): Chain;
@@ -242,8 +246,6 @@ interface NullOrChain
     public function nullOrObjectType(): Chain;
 
     public function nullOrOdd(): Chain;
-
-    public function nullOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function nullOrPerfectSquare(): Chain;
 
@@ -332,8 +334,6 @@ interface NullOrChain
     public function nullOrVideoUrl(string|null $service = null): Chain;
 
     public function nullOrVowel(string ...$additionalChars): Chain;
-
-    public function nullOrWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function nullOrWritable(): Chain;
 

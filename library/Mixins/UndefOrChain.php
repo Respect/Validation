@@ -16,8 +16,6 @@ interface UndefOrChain
 {
     public function undefOrAll(Validator $validator): Chain;
 
-    public function undefOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function undefOrAlnum(string ...$additionalChars): Chain;
 
     public function undefOrAlpha(string ...$additionalChars): Chain;
@@ -25,8 +23,6 @@ interface UndefOrChain
     public function undefOrAlwaysInvalid(): Chain;
 
     public function undefOrAlwaysValid(): Chain;
-
-    public function undefOrAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrArrayType(): Chain;
 
@@ -205,6 +201,16 @@ interface UndefOrChain
 
     public function undefOrLessThanOrEqual(mixed $compareTo): Chain;
 
+    public function undefOrLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function undefOrLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
+    public function undefOrLogicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function undefOrLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function undefOrLogicXor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function undefOrLowercase(): Chain;
 
     public function undefOrLuhn(): Chain;
@@ -227,8 +233,6 @@ interface UndefOrChain
 
     public function undefOrNip(): Chain;
 
-    public function undefOrNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function undefOrNot(Validator $validator): Chain;
 
     public function undefOrNullType(): Chain;
@@ -240,8 +244,6 @@ interface UndefOrChain
     public function undefOrObjectType(): Chain;
 
     public function undefOrOdd(): Chain;
-
-    public function undefOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function undefOrPerfectSquare(): Chain;
 
@@ -330,8 +332,6 @@ interface UndefOrChain
     public function undefOrVideoUrl(string|null $service = null): Chain;
 
     public function undefOrVowel(string ...$additionalChars): Chain;
-
-    public function undefOrWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function undefOrWritable(): Chain;
 

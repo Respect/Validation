@@ -39,7 +39,7 @@ use Respect\Validation\Validators;
 $usernameValidator = ValidatorBuilder::init(
     new Validators\Key(
         'name',
-        new Validators\AllOf(
+        new Validators\LogicAnd(
             new Validators\Alnum(),
             new Validators\Not(
                 new Validators\Spaced(),

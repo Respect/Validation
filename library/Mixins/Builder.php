@@ -26,8 +26,6 @@ interface Builder extends
 {
     public static function all(Validator $validator): Chain;
 
-    public static function allOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function alnum(string ...$additionalChars): Chain;
 
     public static function alpha(string ...$additionalChars): Chain;
@@ -35,8 +33,6 @@ interface Builder extends
     public static function alwaysInvalid(): Chain;
 
     public static function alwaysValid(): Chain;
-
-    public static function anyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function arrayType(): Chain;
 
@@ -219,6 +215,16 @@ interface Builder extends
 
     public static function lessThanOrEqual(mixed $compareTo): Chain;
 
+    public static function logicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public static function logicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
+    public static function logicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public static function logicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public static function logicXor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public static function lowercase(): Chain;
 
     public static function luhn(): Chain;
@@ -243,8 +249,6 @@ interface Builder extends
 
     public static function nip(): Chain;
 
-    public static function noneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function not(Validator $validator): Chain;
 
     public static function nullOr(Validator $validator): Chain;
@@ -258,8 +262,6 @@ interface Builder extends
     public static function objectType(): Chain;
 
     public static function odd(): Chain;
-
-    public static function oneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function perfectSquare(): Chain;
 
@@ -355,8 +357,6 @@ interface Builder extends
     public static function videoUrl(string|null $service = null): Chain;
 
     public static function vowel(string ...$additionalChars): Chain;
-
-    public static function when(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function writable(): Chain;
 

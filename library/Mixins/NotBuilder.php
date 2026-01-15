@@ -16,8 +16,6 @@ interface NotBuilder
 {
     public static function notAll(Validator $validator): Chain;
 
-    public static function notAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function notAlnum(string ...$additionalChars): Chain;
 
     public static function notAlpha(string ...$additionalChars): Chain;
@@ -25,8 +23,6 @@ interface NotBuilder
     public static function notAlwaysInvalid(): Chain;
 
     public static function notAlwaysValid(): Chain;
-
-    public static function notAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function notArrayType(): Chain;
 
@@ -207,6 +203,28 @@ interface NotBuilder
 
     public static function notLessThanOrEqual(mixed $compareTo): Chain;
 
+    public static function notLogicAnd(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function notLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
+    public static function notLogicNor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function notLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public static function notLogicXor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function notLowercase(): Chain;
 
     public static function notLuhn(): Chain;
@@ -229,8 +247,6 @@ interface NotBuilder
 
     public static function notNip(): Chain;
 
-    public static function notNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function notNullType(): Chain;
 
     public static function notNumber(): Chain;
@@ -240,8 +256,6 @@ interface NotBuilder
     public static function notObjectType(): Chain;
 
     public static function notOdd(): Chain;
-
-    public static function notOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function notPerfectSquare(): Chain;
 
@@ -332,8 +346,6 @@ interface NotBuilder
     public static function notVideoUrl(string|null $service = null): Chain;
 
     public static function notVowel(string ...$additionalChars): Chain;
-
-    public static function notWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function notWritable(): Chain;
 

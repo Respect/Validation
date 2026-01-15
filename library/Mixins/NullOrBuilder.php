@@ -16,12 +16,6 @@ interface NullOrBuilder
 {
     public static function nullOrAll(Validator $validator): Chain;
 
-    public static function nullOrAllOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function nullOrAlnum(string ...$additionalChars): Chain;
 
     public static function nullOrAlpha(string ...$additionalChars): Chain;
@@ -29,12 +23,6 @@ interface NullOrBuilder
     public static function nullOrAlwaysInvalid(): Chain;
 
     public static function nullOrAlwaysValid(): Chain;
-
-    public static function nullOrAnyOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function nullOrArrayType(): Chain;
 
@@ -219,6 +207,32 @@ interface NullOrBuilder
 
     public static function nullOrLessThanOrEqual(mixed $compareTo): Chain;
 
+    public static function nullOrLogicAnd(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function nullOrLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
+    public static function nullOrLogicNor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function nullOrLogicOr(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function nullOrLogicXor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function nullOrLowercase(): Chain;
 
     public static function nullOrLuhn(): Chain;
@@ -241,12 +255,6 @@ interface NullOrBuilder
 
     public static function nullOrNip(): Chain;
 
-    public static function nullOrNoneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function nullOrNot(Validator $validator): Chain;
 
     public static function nullOrNullType(): Chain;
@@ -258,12 +266,6 @@ interface NullOrBuilder
     public static function nullOrObjectType(): Chain;
 
     public static function nullOrOdd(): Chain;
-
-    public static function nullOrOneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function nullOrPerfectSquare(): Chain;
 
@@ -352,8 +354,6 @@ interface NullOrBuilder
     public static function nullOrVideoUrl(string|null $service = null): Chain;
 
     public static function nullOrVowel(string ...$additionalChars): Chain;
-
-    public static function nullOrWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function nullOrWritable(): Chain;
 

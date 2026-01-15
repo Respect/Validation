@@ -16,13 +16,6 @@ interface PropertyBuilder
 {
     public static function propertyAll(string $propertyName, Validator $validator): Chain;
 
-    public static function propertyAllOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function propertyAlnum(string $propertyName, string ...$additionalChars): Chain;
 
     public static function propertyAlpha(string $propertyName, string ...$additionalChars): Chain;
@@ -30,13 +23,6 @@ interface PropertyBuilder
     public static function propertyAlwaysInvalid(string $propertyName): Chain;
 
     public static function propertyAlwaysValid(string $propertyName): Chain;
-
-    public static function propertyAnyOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function propertyArrayType(string $propertyName): Chain;
 
@@ -218,6 +204,41 @@ interface PropertyBuilder
 
     public static function propertyLessThanOrEqual(string $propertyName, mixed $compareTo): Chain;
 
+    public static function propertyLogicAnd(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function propertyLogicCond(
+        string $propertyName,
+        Validator $logicCond,
+        Validator $then,
+        Validator|null $else = null,
+    ): Chain;
+
+    public static function propertyLogicNor(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function propertyLogicOr(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function propertyLogicXor(
+        string $propertyName,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function propertyLowercase(string $propertyName): Chain;
 
     public static function propertyLuhn(string $propertyName): Chain;
@@ -240,13 +261,6 @@ interface PropertyBuilder
 
     public static function propertyNip(string $propertyName): Chain;
 
-    public static function propertyNoneOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function propertyNot(string $propertyName, Validator $validator): Chain;
 
     public static function propertyNullType(string $propertyName): Chain;
@@ -258,13 +272,6 @@ interface PropertyBuilder
     public static function propertyObjectType(string $propertyName): Chain;
 
     public static function propertyOdd(string $propertyName): Chain;
-
-    public static function propertyOneOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function propertyPerfectSquare(string $propertyName): Chain;
 
@@ -357,13 +364,6 @@ interface PropertyBuilder
     public static function propertyVideoUrl(string $propertyName, string|null $service = null): Chain;
 
     public static function propertyVowel(string $propertyName, string ...$additionalChars): Chain;
-
-    public static function propertyWhen(
-        string $propertyName,
-        Validator $when,
-        Validator $then,
-        Validator|null $else = null,
-    ): Chain;
 
     public static function propertyWritable(string $propertyName): Chain;
 

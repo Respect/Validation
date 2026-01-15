@@ -16,13 +16,6 @@ interface KeyChain
 {
     public function keyAll(int|string $key, Validator $validator): Chain;
 
-    public function keyAllOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public function keyAlnum(int|string $key, string ...$additionalChars): Chain;
 
     public function keyAlpha(int|string $key, string ...$additionalChars): Chain;
@@ -30,13 +23,6 @@ interface KeyChain
     public function keyAlwaysInvalid(int|string $key): Chain;
 
     public function keyAlwaysValid(int|string $key): Chain;
-
-    public function keyAnyOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public function keyArrayType(int|string $key): Chain;
 
@@ -214,6 +200,41 @@ interface KeyChain
 
     public function keyLessThanOrEqual(int|string $key, mixed $compareTo): Chain;
 
+    public function keyLogicAnd(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public function keyLogicCond(
+        int|string $key,
+        Validator $logicCond,
+        Validator $then,
+        Validator|null $else = null,
+    ): Chain;
+
+    public function keyLogicNor(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public function keyLogicOr(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public function keyLogicXor(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public function keyLowercase(int|string $key): Chain;
 
     public function keyLuhn(int|string $key): Chain;
@@ -236,13 +257,6 @@ interface KeyChain
 
     public function keyNip(int|string $key): Chain;
 
-    public function keyNoneOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public function keyNot(int|string $key, Validator $validator): Chain;
 
     public function keyNullType(int|string $key): Chain;
@@ -254,13 +268,6 @@ interface KeyChain
     public function keyObjectType(int|string $key): Chain;
 
     public function keyOdd(int|string $key): Chain;
-
-    public function keyOneOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public function keyPerfectSquare(int|string $key): Chain;
 
@@ -345,8 +352,6 @@ interface KeyChain
     public function keyVideoUrl(int|string $key, string|null $service = null): Chain;
 
     public function keyVowel(int|string $key, string ...$additionalChars): Chain;
-
-    public function keyWhen(int|string $key, Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function keyWritable(int|string $key): Chain;
 

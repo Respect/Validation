@@ -16,12 +16,6 @@ interface UndefOrBuilder
 {
     public static function undefOrAll(Validator $validator): Chain;
 
-    public static function undefOrAllOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function undefOrAlnum(string ...$additionalChars): Chain;
 
     public static function undefOrAlpha(string ...$additionalChars): Chain;
@@ -29,12 +23,6 @@ interface UndefOrBuilder
     public static function undefOrAlwaysInvalid(): Chain;
 
     public static function undefOrAlwaysValid(): Chain;
-
-    public static function undefOrAnyOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function undefOrArrayType(): Chain;
 
@@ -217,6 +205,32 @@ interface UndefOrBuilder
 
     public static function undefOrLessThanOrEqual(mixed $compareTo): Chain;
 
+    public static function undefOrLogicAnd(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function undefOrLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
+    public static function undefOrLogicNor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function undefOrLogicOr(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function undefOrLogicXor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function undefOrLowercase(): Chain;
 
     public static function undefOrLuhn(): Chain;
@@ -239,12 +253,6 @@ interface UndefOrBuilder
 
     public static function undefOrNip(): Chain;
 
-    public static function undefOrNoneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function undefOrNot(Validator $validator): Chain;
 
     public static function undefOrNullType(): Chain;
@@ -256,12 +264,6 @@ interface UndefOrBuilder
     public static function undefOrObjectType(): Chain;
 
     public static function undefOrOdd(): Chain;
-
-    public static function undefOrOneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function undefOrPerfectSquare(): Chain;
 
@@ -350,8 +352,6 @@ interface UndefOrBuilder
     public static function undefOrVideoUrl(string|null $service = null): Chain;
 
     public static function undefOrVowel(string ...$additionalChars): Chain;
-
-    public static function undefOrWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function undefOrWritable(): Chain;
 

@@ -19,7 +19,7 @@ final class Prefix implements Transformer
 {
     private const array RULES_TO_SKIP = [
         'all',
-        'allOf',
+        'logicAnd',
         'key',
         'keyExists',
         'keyOptional',

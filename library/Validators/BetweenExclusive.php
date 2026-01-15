@@ -31,7 +31,7 @@ final class BetweenExclusive extends Envelope
         }
 
         parent::__construct(
-            new AllOf(new GreaterThan($minimum), new LessThan($maximum)),
+            new LogicAnd(new GreaterThan($minimum), new LessThan($maximum)),
             ['minValue' => $minimum, 'maxValue' => $maximum],
         );
     }

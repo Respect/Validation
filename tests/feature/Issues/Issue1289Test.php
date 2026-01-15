@@ -12,7 +12,7 @@ use Respect\Validation\Validators\ArrayType;
 use Respect\Validation\Validators\BoolType;
 use Respect\Validation\Validators\Each;
 use Respect\Validation\Validators\KeyOptional;
-use Respect\Validation\Validators\OneOf;
+use Respect\Validation\Validators\LogicXor;
 use Respect\Validation\Validators\StringType;
 use Respect\Validation\Validators\StringVal;
 
@@ -22,7 +22,7 @@ test('https://github.com/Respect/Validation/issues/1289', catchAll(
             ValidatorBuilder::init(
                 new KeyOptional(
                     'default',
-                    new OneOf(
+                    new LogicXor(
                         new StringType(),
                         new BoolType(),
                     ),

@@ -14,8 +14,6 @@ use Respect\Validation\Validator;
 
 interface AllBuilder
 {
-    public static function allAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function allAlnum(string ...$additionalChars): Chain;
 
     public static function allAlpha(string ...$additionalChars): Chain;
@@ -23,8 +21,6 @@ interface AllBuilder
     public static function allAlwaysInvalid(): Chain;
 
     public static function allAlwaysValid(): Chain;
-
-    public static function allAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allArrayType(): Chain;
 
@@ -195,6 +191,28 @@ interface AllBuilder
 
     public static function allLessThanOrEqual(mixed $compareTo): Chain;
 
+    public static function allLogicAnd(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function allLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
+    public static function allLogicNor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function allLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public static function allLogicXor(
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function allLowercase(): Chain;
 
     public static function allLuhn(): Chain;
@@ -217,8 +235,6 @@ interface AllBuilder
 
     public static function allNip(): Chain;
 
-    public static function allNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function allNot(Validator $validator): Chain;
 
     public static function allNullType(): Chain;
@@ -230,8 +246,6 @@ interface AllBuilder
     public static function allObjectType(): Chain;
 
     public static function allOdd(): Chain;
-
-    public static function allOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allPerfectSquare(): Chain;
 
@@ -316,8 +330,6 @@ interface AllBuilder
     public static function allVideoUrl(string|null $service = null): Chain;
 
     public static function allVowel(string ...$additionalChars): Chain;
-
-    public static function allWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function allWritable(): Chain;
 

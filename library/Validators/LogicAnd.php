@@ -31,17 +31,14 @@ use function count;
     '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
-final class NoneOf extends Composite
+final class LogicAnd extends Composite
 {
     public const string TEMPLATE_ALL = '__all__';
     public const string TEMPLATE_SOME = '__some__';
 
     public function evaluate(mixed $input): Result
     {
-        $children = array_map(
-            static fn(Validator $validator) => $validator->evaluate($input)->withToggledModeAndValidation(),
-            $this->validators,
-        );
+        $children = array_map(static fn(Validator $validator) => $validator->evaluate($input), $this->validators);
         $valid = array_reduce($children, static fn(bool $carry, Result $result) => $carry && $result->hasPassed, true);
         $failed = array_filter($children, static fn(Result $result): bool => !$result->hasPassed);
         $template = self::TEMPLATE_SOME;

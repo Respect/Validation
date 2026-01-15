@@ -45,4 +45,4 @@ v::alwaysInvalid()->isValid('whatever'); // false
 See also:
 
 - [AlwaysValid](AlwaysValid.md)
-- [When](When.md)
+- [LogicCond](LogicCond.md)

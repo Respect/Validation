@@ -34,7 +34,7 @@ final class ContainsAny extends Envelope
         $validators = $this->getValidators($needles, $identical);
 
         parent::__construct(
-            count($validators) === 1 ? $validators[0] : new AnyOf(...$validators),
+            count($validators) === 1 ? $validators[0] : new LogicOr(...$validators),
             ['needles' => $needles],
         );
     }

@@ -16,8 +16,6 @@ interface NotChain
 {
     public function notAll(Validator $validator): Chain;
 
-    public function notAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function notAlnum(string ...$additionalChars): Chain;
 
     public function notAlpha(string ...$additionalChars): Chain;
@@ -25,8 +23,6 @@ interface NotChain
     public function notAlwaysInvalid(): Chain;
 
     public function notAlwaysValid(): Chain;
-
-    public function notAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notArrayType(): Chain;
 
@@ -207,6 +203,16 @@ interface NotChain
 
     public function notLessThanOrEqual(mixed $compareTo): Chain;
 
+    public function notLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function notLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
+    public function notLogicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function notLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function notLogicXor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function notLowercase(): Chain;
 
     public function notLuhn(): Chain;
@@ -229,8 +235,6 @@ interface NotChain
 
     public function notNip(): Chain;
 
-    public function notNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function notNullType(): Chain;
 
     public function notNumber(): Chain;
@@ -240,8 +244,6 @@ interface NotChain
     public function notObjectType(): Chain;
 
     public function notOdd(): Chain;
-
-    public function notOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function notPerfectSquare(): Chain;
 
@@ -332,8 +334,6 @@ interface NotChain
     public function notVideoUrl(string|null $service = null): Chain;
 
     public function notVowel(string ...$additionalChars): Chain;
-
-    public function notWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function notWritable(): Chain;
 

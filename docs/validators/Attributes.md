@@ -9,7 +9,7 @@ Example of object:
 ```php
 use Respect\Validation\Validators as Validator;
 
-#[Validator\AnyOf(
+#[Validator\LogicOr(
     new Validator\Property('email', new Validator\Not(new Validator\Undef())),
     new Validator\Property('phone', new Validator\Not(new Validator\Undef())),
 )]

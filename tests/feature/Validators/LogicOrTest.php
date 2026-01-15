@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('Default: fail, fail', catchAll(
-    fn() => v::anyOf(v::intType(), v::negative())->assert('string'),
+    fn() => v::logicOr(v::intType(), v::negative())->assert('string'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"string" must be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -24,7 +24,7 @@ test('Default: fail, fail', catchAll(
 ));
 
 test('Inverted: pass, pass', catchAll(
-    fn() => v::not(v::anyOf(v::intType(), v::negative()))->assert(-1),
+    fn() => v::not(v::logicOr(v::intType(), v::negative()))->assert(-1),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('-1 must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -40,7 +40,7 @@ test('Inverted: pass, pass', catchAll(
 ));
 
 test('Inverted: pass, pass, fail', catchAll(
-    fn() => v::not(v::anyOf(v::intType(), v::negative(), v::stringType()))->assert(-1),
+    fn() => v::not(v::logicOr(v::intType(), v::negative(), v::stringType()))->assert(-1),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('-1 must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'

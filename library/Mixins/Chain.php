@@ -29,8 +29,6 @@ interface Chain extends
 {
     public function all(Validator $validator): Chain;
 
-    public function allOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function alnum(string ...$additionalChars): Chain;
 
     public function alpha(string ...$additionalChars): Chain;
@@ -38,8 +36,6 @@ interface Chain extends
     public function alwaysInvalid(): Chain;
 
     public function alwaysValid(): Chain;
-
-    public function anyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function arrayType(): Chain;
 
@@ -222,6 +218,16 @@ interface Chain extends
 
     public function lessThanOrEqual(mixed $compareTo): Chain;
 
+    public function logicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function logicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
+    public function logicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function logicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function logicXor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function lowercase(): Chain;
 
     public function luhn(): Chain;
@@ -246,8 +252,6 @@ interface Chain extends
 
     public function nip(): Chain;
 
-    public function noneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function not(Validator $validator): Chain;
 
     public function nullOr(Validator $validator): Chain;
@@ -261,8 +265,6 @@ interface Chain extends
     public function objectType(): Chain;
 
     public function odd(): Chain;
-
-    public function oneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function perfectSquare(): Chain;
 
@@ -358,8 +360,6 @@ interface Chain extends
     public function videoUrl(string|null $service = null): Chain;
 
     public function vowel(string ...$additionalChars): Chain;
-
-    public function when(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function writable(): Chain;
 

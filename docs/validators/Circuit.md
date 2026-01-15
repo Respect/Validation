@@ -17,7 +17,7 @@ v::circuit(
 ```
 
 You need a valid country code to create a [SubdivisionCode](SubdivisionCode.md), so it makes sense only to validate the
-subdivision code only if the country code is valid. In this case, you could also have used [When](When.md), but you
+subdivision code only if the country code is valid. In this case, you could also have used [LogicCond](LogicCond.md), but you
 would then have to write `v::key('countryCode', v::countryCode())` twice in your chain.
 
 ## Templates
@@ -40,10 +40,10 @@ This validator does not have any templates, because it will always return the re
 
 See also:
 
-- [AllOf](AllOf.md)
-- [AnyOf](AnyOf.md)
 - [Lazy](Lazy.md)
-- [NoneOf](NoneOf.md)
-- [OneOf](OneOf.md)
+- [LogicAnd](LogicAnd.md)
+- [LogicCond](LogicCond.md)
+- [LogicNor](LogicNor.md)
+- [LogicOr](LogicOr.md)
+- [LogicXor](LogicXor.md)
 - [SubdivisionCode](SubdivisionCode.md)
-- [When](When.md)

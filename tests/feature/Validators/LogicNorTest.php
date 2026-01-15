@@ -8,7 +8,7 @@
 declare(strict_types=1);
 
 test('Default: fail, fail', catchAll(
-    fn() => v::noneOf(v::intType(), v::negative())->assert(-1),
+    fn() => v::logicNor(v::intType(), v::negative())->assert(-1),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('-1 must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -24,7 +24,7 @@ test('Default: fail, fail', catchAll(
 ));
 
 test('Default: pass, fail', catchAll(
-    fn() => v::noneOf(v::intType(), v::stringType())->assert('string'),
+    fn() => v::logicNor(v::intType(), v::stringType())->assert('string'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"string" must not be a string')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -34,7 +34,7 @@ test('Default: pass, fail', catchAll(
 ));
 
 test('Default: pass, fail, fail', catchAll(
-    fn() => v::noneOf(v::intType(), v::alpha(), v::stringType())->assert('string'),
+    fn() => v::logicNor(v::intType(), v::alpha(), v::stringType())->assert('string'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"string" must not contain letters (a-z)')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
@@ -50,7 +50,7 @@ test('Default: pass, fail, fail', catchAll(
 ));
 
 test('Inverted: fail, fail', catchAll(
-    fn() => v::not(v::noneOf(v::intType(), v::negative()))->assert('string'),
+    fn() => v::not(v::logicNor(v::intType(), v::negative()))->assert('string'),
     fn(string $message, string $fullMessage, array $messages) => expect()
         ->and($message)->toBe('"string" must be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'

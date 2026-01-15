@@ -58,17 +58,17 @@
 
 ## Composite
 
-- [AllOf](validators/AllOf.md)
-- [AnyOf](validators/AnyOf.md)
 - [Circuit](validators/Circuit.md)
-- [NoneOf](validators/NoneOf.md)
-- [OneOf](validators/OneOf.md)
+- [LogicAnd](validators/LogicAnd.md)
+- [LogicNor](validators/LogicNor.md)
+- [LogicOr](validators/LogicOr.md)
+- [LogicXor](validators/LogicXor.md)
 
 ## Conditions
 
 - [Circuit](validators/Circuit.md)
+- [LogicCond](validators/LogicCond.md)
 - [Not](validators/Not.md)
-- [When](validators/When.md)
 
 ## Core
 
@@ -144,6 +144,14 @@
 - [PostalCode](validators/PostalCode.md)
 - [SubdivisionCode](validators/SubdivisionCode.md)
 
+## Logical
+
+- [LogicAnd](validators/LogicAnd.md)
+- [LogicCond](validators/LogicCond.md)
+- [LogicNor](validators/LogicNor.md)
+- [LogicOr](validators/LogicOr.md)
+- [LogicXor](validators/LogicXor.md)
+
 ## Math
 
 - [Factor](validators/Factor.md)
@@ -167,22 +175,22 @@
 
 ## Nesting
 
-- [AllOf](validators/AllOf.md)
-- [AnyOf](validators/AnyOf.md)
 - [Call](validators/Call.md)
 - [Circuit](validators/Circuit.md)
 - [Each](validators/Each.md)
 - [Key](validators/Key.md)
 - [KeySet](validators/KeySet.md)
 - [Lazy](validators/Lazy.md)
-- [NoneOf](validators/NoneOf.md)
+- [LogicAnd](validators/LogicAnd.md)
+- [LogicCond](validators/LogicCond.md)
+- [LogicNor](validators/LogicNor.md)
+- [LogicOr](validators/LogicOr.md)
+- [LogicXor](validators/LogicXor.md)
 - [Not](validators/Not.md)
 - [NullOr](validators/NullOr.md)
-- [OneOf](validators/OneOf.md)
 - [Property](validators/Property.md)
 - [PropertyOptional](validators/PropertyOptional.md)
 - [UndefOr](validators/UndefOr.md)
-- [When](validators/When.md)
 
 ## Numbers
 
@@ -303,12 +311,10 @@
 ## Alphabetically
 
 - [All](validators/All.md)
-- [AllOf](validators/AllOf.md)
 - [Alnum](validators/Alnum.md)
 - [Alpha](validators/Alpha.md)
 - [AlwaysInvalid](validators/AlwaysInvalid.md)
 - [AlwaysValid](validators/AlwaysValid.md)
-- [AnyOf](validators/AnyOf.md)
 - [ArrayType](validators/ArrayType.md)
 - [ArrayVal](validators/ArrayVal.md)
 - [Attributes](validators/Attributes.md)
@@ -392,6 +398,11 @@
 - [Length](validators/Length.md)
 - [LessThan](validators/LessThan.md)
 - [LessThanOrEqual](validators/LessThanOrEqual.md)
+- [LogicAnd](validators/LogicAnd.md)
+- [LogicCond](validators/LogicCond.md)
+- [LogicNor](validators/LogicNor.md)
+- [LogicOr](validators/LogicOr.md)
+- [LogicXor](validators/LogicXor.md)
 - [Lowercase](validators/Lowercase.md)
 - [Luhn](validators/Luhn.md)
 - [MacAddress](validators/MacAddress.md)
@@ -404,7 +415,6 @@
 - [NfeAccessKey](validators/NfeAccessKey.md)
 - [Nif](validators/Nif.md)
 - [Nip](validators/Nip.md)
-- [NoneOf](validators/NoneOf.md)
 - [Not](validators/Not.md)
 - [NullOr](validators/NullOr.md)
 - [NullType](validators/NullType.md)
@@ -412,7 +422,6 @@
 - [NumericVal](validators/NumericVal.md)
 - [ObjectType](validators/ObjectType.md)
 - [Odd](validators/Odd.md)
-- [OneOf](validators/OneOf.md)
 - [PerfectSquare](validators/PerfectSquare.md)
 - [Pesel](validators/Pesel.md)
 - [Phone](validators/Phone.md)
@@ -460,6 +469,5 @@
 - [Version](validators/Version.md)
 - [VideoUrl](validators/VideoUrl.md)
 - [Vowel](validators/Vowel.md)
-- [When](validators/When.md)
 - [Writable](validators/Writable.md)
 - [Xdigit](validators/Xdigit.md)

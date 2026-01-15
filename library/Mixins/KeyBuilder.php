@@ -16,13 +16,6 @@ interface KeyBuilder
 {
     public static function keyAll(int|string $key, Validator $validator): Chain;
 
-    public static function keyAllOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function keyAlnum(int|string $key, string ...$additionalChars): Chain;
 
     public static function keyAlpha(int|string $key, string ...$additionalChars): Chain;
@@ -30,13 +23,6 @@ interface KeyBuilder
     public static function keyAlwaysInvalid(int|string $key): Chain;
 
     public static function keyAlwaysValid(int|string $key): Chain;
-
-    public static function keyAnyOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function keyArrayType(int|string $key): Chain;
 
@@ -214,6 +200,41 @@ interface KeyBuilder
 
     public static function keyLessThanOrEqual(int|string $key, mixed $compareTo): Chain;
 
+    public static function keyLogicAnd(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function keyLogicCond(
+        int|string $key,
+        Validator $logicCond,
+        Validator $then,
+        Validator|null $else = null,
+    ): Chain;
+
+    public static function keyLogicNor(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function keyLogicOr(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
+    public static function keyLogicXor(
+        int|string $key,
+        Validator $validator1,
+        Validator $validator2,
+        Validator ...$validators,
+    ): Chain;
+
     public static function keyLowercase(int|string $key): Chain;
 
     public static function keyLuhn(int|string $key): Chain;
@@ -236,13 +257,6 @@ interface KeyBuilder
 
     public static function keyNip(int|string $key): Chain;
 
-    public static function keyNoneOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
-
     public static function keyNot(int|string $key, Validator $validator): Chain;
 
     public static function keyNullType(int|string $key): Chain;
@@ -254,13 +268,6 @@ interface KeyBuilder
     public static function keyObjectType(int|string $key): Chain;
 
     public static function keyOdd(int|string $key): Chain;
-
-    public static function keyOneOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
 
     public static function keyPerfectSquare(int|string $key): Chain;
 
@@ -345,13 +352,6 @@ interface KeyBuilder
     public static function keyVideoUrl(int|string $key, string|null $service = null): Chain;
 
     public static function keyVowel(int|string $key, string ...$additionalChars): Chain;
-
-    public static function keyWhen(
-        int|string $key,
-        Validator $when,
-        Validator $then,
-        Validator|null $else = null,
-    ): Chain;
 
     public static function keyWritable(int|string $key): Chain;
 

@@ -1,21 +1,21 @@
-# NoneOf
+# LogicNor
 
-- `NoneOf(Validator $validator1, Validator $validator2, Validator ...$validator)`
+- `LogicNor(Validator $validator1, Validator $validator2, Validator ...$validator)`
 
-Validates if NONE of the given validators validate:
+Validates that none of the inner validators pass, applying NOR logic.
 
 ```php
-v::noneOf(
+v::logicNor(
     v::intVal(),
     v::floatVal()
 )->isValid('foo'); // true
 ```
 
-In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
+In the sample above, 'foo' isn't a integer nor a float, so logicNor returns true.
 
 ## Templates
 
-### `NoneOf::TEMPLATE_SOME`
+### `LogicNor::TEMPLATE_SOME`
 
 Used when some validators have passed.
 
@@ -24,7 +24,7 @@ Used when some validators have passed.
 | `default`  | {{subject}} must pass the rules |
 | `inverted` | {{subject}} must pass the rules |
 
-### `NoneOf::TEMPLATE_ALL`
+### `LogicNor::TEMPLATE_ALL`
 
 Used when all validators have passed.
 
@@ -42,22 +42,23 @@ Used when all validators have passed.
 ## Categorization
 
 - Composite
+- Logical
 - Nesting
 
 ## Changelog
 
-| Version | Description                                   |
-| ------: | --------------------------------------------- |
-|   3.0.0 | Require at least two validators to be defined |
-|   0.3.9 | Created                                       |
+| Version | Description                                               |
+| ------: | --------------------------------------------------------- |
+|   3.0.0 | Require at least two validators and renamed to `LogicNor` |
+|   0.3.9 | Created as `NoneOf`                                       |
 
 ---
 
 See also:
 
-- [AllOf](AllOf.md)
-- [AnyOf](AnyOf.md)
 - [Circuit](Circuit.md)
+- [LogicAnd](LogicAnd.md)
+- [LogicCond](LogicCond.md)
+- [LogicOr](LogicOr.md)
+- [LogicXor](LogicXor.md)
 - [Not](Not.md)
-- [OneOf](OneOf.md)
-- [When](When.md)

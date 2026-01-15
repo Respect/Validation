@@ -14,8 +14,6 @@ use Respect\Validation\Validator;
 
 interface AllChain
 {
-    public function allAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function allAlnum(string ...$additionalChars): Chain;
 
     public function allAlpha(string ...$additionalChars): Chain;
@@ -23,8 +21,6 @@ interface AllChain
     public function allAlwaysInvalid(): Chain;
 
     public function allAlwaysValid(): Chain;
-
-    public function allAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allArrayType(): Chain;
 
@@ -195,6 +191,16 @@ interface AllChain
 
     public function allLessThanOrEqual(mixed $compareTo): Chain;
 
+    public function allLogicAnd(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function allLogicCond(Validator $logicCond, Validator $then, Validator|null $else = null): Chain;
+
+    public function allLogicNor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function allLogicOr(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
+    public function allLogicXor(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
+
     public function allLowercase(): Chain;
 
     public function allLuhn(): Chain;
@@ -217,8 +223,6 @@ interface AllChain
 
     public function allNip(): Chain;
 
-    public function allNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function allNot(Validator $validator): Chain;
 
     public function allNullType(): Chain;
@@ -230,8 +234,6 @@ interface AllChain
     public function allObjectType(): Chain;
 
     public function allOdd(): Chain;
-
-    public function allOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allPerfectSquare(): Chain;
 
@@ -316,8 +318,6 @@ interface AllChain
     public function allVideoUrl(string|null $service = null): Chain;
 
     public function allVowel(string ...$additionalChars): Chain;
-
-    public function allWhen(Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function allWritable(): Chain;
 
