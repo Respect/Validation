@@ -208,6 +208,8 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function macAddress(): Chain;
 
+    public static function masked(string $range, Validator $validator, string $replacement = '*'): Chain;
+
     public static function max(Validator $validator): Chain;
 
     public static function mimetype(string $mimetype): Chain;

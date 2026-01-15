@@ -195,6 +195,8 @@ interface KeyChain
 
     public function keyMacAddress(int|string $key): Chain;
 
+    public function keyMasked(int|string $key, string $range, Validator $validator, string $replacement = '*'): Chain;
+
     public function keyMax(int|string $key, Validator $validator): Chain;
 
     public function keyMimetype(int|string $key, string $mimetype): Chain;

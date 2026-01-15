@@ -195,6 +195,8 @@ interface PropertyBuilder
 
     public static function propertyMacAddress(string $propertyName): Chain;
 
+    public static function propertyMasked(string $propertyName, string $range, Validator $validator, string $replacement = '*'): Chain;
+
     public static function propertyMax(string $propertyName, Validator $validator): Chain;
 
     public static function propertyMimetype(string $propertyName, string $mimetype): Chain;

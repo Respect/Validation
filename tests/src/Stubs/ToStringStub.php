@@ -12,7 +12,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Stubs;
 
-final class ToStringStub
+use Stringable;
+
+final class ToStringStub implements Stringable
 {
     public function __construct(
         private readonly string $value,

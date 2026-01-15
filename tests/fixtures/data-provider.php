@@ -8,6 +8,7 @@
 
 declare(strict_types=1);
 
+use Respect\Validation\Test\Stubs\ToStringStub;
 use Respect\Validation\Test\Stubs\WithAttributes;
 use Respect\Validation\Test\Stubs\WithProperties;
 use Respect\Validation\Test\Stubs\WithStaticProperties;
@@ -22,61 +23,61 @@ return [
     // BooleanTypes
     'false' => [
         'value' => [false],
-        'tags' => ['boolType', 'false', 'empty'],
+        'tags' => ['boolType', 'false', 'empty', 'stringVal'],
     ],
     'true' => [
         'value' => [true],
-        'tags' => ['boolType', 'true'],
+        'tags' => ['boolType', 'true', 'stringVal'],
     ],
 
     // IntegerTypes
     'zero integer' => [
         'value' => [0],
-        'tags' => ['intType', 'zero'],
+        'tags' => ['intType', 'zero', 'stringVal'],
     ],
     'positive integer' => [
         'value' => [PHP_INT_MAX],
-        'tags' => ['intType', 'positive'],
+        'tags' => ['intType', 'positive', 'stringVal'],
     ],
     'negative integer' => [
         'value' => [PHP_INT_MIN],
-        'tags' => ['intType', 'negative'],
+        'tags' => ['intType', 'negative', 'stringVal'],
     ],
 
     // StringTypes
     'string' => [
         'value' => ['string'],
-        'tags' => ['stringType'],
+        'tags' => ['stringType', 'stringVal'],
     ],
     'empty string' => [
         'value' => [''],
-        'tags' => ['stringType', 'empty', 'undefined'],
+        'tags' => ['stringType', 'empty', 'undefined', 'stringVal'],
     ],
     'integer string' => [
         'value' => ['500'],
-        'tags' => ['stringType', 'intVal', 'positive'],
+        'tags' => ['stringType', 'intVal', 'positive', 'stringVal'],
     ],
     'float string' => [
         'value' => ['56.8'],
-        'tags' => ['stringType', 'floatVal', 'positive'],
+        'tags' => ['stringType', 'floatVal', 'positive', 'stringVal'],
     ],
     'zero string' => [
         'value' => ['0'],
-        'tags' => ['stringType', 'intVal', 'zero'],
+        'tags' => ['stringType', 'intVal', 'zero', 'stringVal'],
     ],
 
     // Float types
     'zero float' => [
         'value' => [0.0],
-        'tags' => ['floatType', 'zero'],
+        'tags' => ['floatType', 'zero', 'stringVal'],
     ],
     'positive float' => [
         'value' => [32.890],
-        'tags' => ['floatType', 'positive'],
+        'tags' => ['floatType', 'positive', 'stringVal'],
     ],
     'negative float' => [
         'value' => [-893.1],
-        'tags' => ['floatType', 'negative'],
+        'tags' => ['floatType', 'negative', 'stringVal'],
     ],
 
     // Array types
@@ -143,6 +144,10 @@ return [
     'object with Rule attributes' => [
         'value' => [new WithAttributes('John Doe', '1912-06-23', 'john.doe@gmail.com')],
         'tags' => ['objectType', 'withAttributes'],
+    ],
+    'object implementing Stringable' => [
+        'value' => [new ToStringStub('dataProvider')],
+        'tags' => ['objectType', 'withoutAttributes', 'stringVal'],
     ],
     'anonymous class' => [
         'value' => [

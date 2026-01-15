@@ -575,6 +575,7 @@ Version 3.0 introduces several new validators:
 | `KeyExists`        | Checks if an array key exists                              |
 | `KeyOptional`      | Validates an array key only if it exists                   |
 | `Lazy`             | Creates validators dynamically based on input              |
+| `Masked`           | Masks sensitive input values in error messages             |
 | `Named`            | Customizes the subject name in error messages              |
 | `PropertyExists`   | Checks if an object property exists                        |
 | `PropertyOptional` | Validates an object property only if it exists             |
@@ -699,6 +700,18 @@ Creates validators dynamically based on the input, useful for cross-field valida
 v::lazy(
     fn($input) => v::key('confirmation', v::equals($input['password'] ?? null))
 )->assert(['password' => 'secret', 'confirmation' => 'secret']); // passes
+```
+
+#### Masked
+
+Decorates a validator to mask sensitive input values in error messages while still validating the original unmasked data. This allows applications to protect sensitive information like passwords, credit cards, or emails without implementing a custom layer between Validation and end users:
+
+```php
+v::masked('1-@', v::email(),v::email())->assert('invalid@example.com');
+// → "*******@example.com" must be a valid email address
+
+v::masked('6-12', v::creditCard(), 'X')->assert('4111111111111211');
+// → "41111XXXXXXX1211" must be a valid credit card number
 ```
 
 #### Named

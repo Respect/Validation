@@ -193,6 +193,8 @@ interface AllBuilder
 
     public static function allMacAddress(): Chain;
 
+    public static function allMasked(string $range, Validator $validator, string $replacement = '*'): Chain;
+
     public static function allMax(Validator $validator): Chain;
 
     public static function allMimetype(string $mimetype): Chain;

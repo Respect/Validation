@@ -193,6 +193,8 @@ interface AllChain
 
     public function allMacAddress(): Chain;
 
+    public function allMasked(string $range, Validator $validator, string $replacement = '*'): Chain;
+
     public function allMax(Validator $validator): Chain;
 
     public function allMimetype(string $mimetype): Chain;

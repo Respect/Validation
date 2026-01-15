@@ -129,6 +129,16 @@ abstract class TestCase extends PHPUnitTestCase
         return self::providerForAnyValues()->without('stringType');
     }
 
+    public static function providerForNonStringValues(): DataProvider
+    {
+        return self::providerForAnyValues()->without('stringType', 'stringVal');
+    }
+
+    public static function providerForStringValues(): DataProvider
+    {
+        return self::providerForAnyValues()->withAny('stringType', 'stringVal');
+    }
+
     public static function providerForIntegerTypes(): DataProvider
     {
         return self::providerForAnyValues()->with('intType');

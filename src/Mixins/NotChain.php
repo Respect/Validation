@@ -205,6 +205,8 @@ interface NotChain
 
     public function notMacAddress(): Chain;
 
+    public function notMasked(string $range, Validator $validator, string $replacement = '*'): Chain;
+
     public function notMax(Validator $validator): Chain;
 
     public function notMimetype(string $mimetype): Chain;

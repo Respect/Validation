@@ -203,6 +203,8 @@ interface UndefOrChain
 
     public function undefOrMacAddress(): Chain;
 
+    public function undefOrMasked(string $range, Validator $validator, string $replacement = '*'): Chain;
+
     public function undefOrMax(Validator $validator): Chain;
 
     public function undefOrMimetype(string $mimetype): Chain;

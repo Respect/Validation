@@ -39,7 +39,7 @@ This validator does not have any templates, as it will use the template of the g
 ## Categorization
 
 - Core
-- Structures
+- Display
 - Miscellaneous
 
 ## Changelog
@@ -51,5 +51,6 @@ This validator does not have any templates, as it will use the template of the g
 ## See Also
 
 - [Attributes](Attributes.md)
+- [Masked](Masked.md)
 - [Not](Not.md)
 - [Templated](Templated.md)

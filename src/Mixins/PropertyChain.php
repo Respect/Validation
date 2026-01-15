@@ -195,6 +195,8 @@ interface PropertyChain
 
     public function propertyMacAddress(string $propertyName): Chain;
 
+    public function propertyMasked(string $propertyName, string $range, Validator $validator, string $replacement = '*'): Chain;
+
     public function propertyMax(string $propertyName, Validator $validator): Chain;
 
     public function propertyMimetype(string $propertyName, string $mimetype): Chain;

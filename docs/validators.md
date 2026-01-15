@@ -25,6 +25,8 @@ In this page you will find a list of validators by their category.
 
 **Date and Time**: [Date][] - [DateTime][] - [DateTimeDiff][] - [LeapDate][] - [LeapYear][] - [Time][]
 
+**Display**: [Masked][] - [Named][] - [Templated][]
+
 **File system**: [Directory][] - [Executable][] - [Exists][] - [Extension][] - [File][] - [Image][] - [Mimetype][] - [Readable][] - [Size][] - [SymbolicLink][] - [Writable][]
 
 **ISO codes**: [CountryCode][] - [CurrencyCode][] - [LanguageCode][] - [SubdivisionCode][]
@@ -37,7 +39,7 @@ In this page you will find a list of validators by their category.
 
 **Math**: [Factor][] - [Finite][] - [Infinite][] - [Multiple][] - [Negative][] - [Positive][]
 
-**Miscellaneous**: [Blank][] - [Falsy][] - [Named][] - [Templated][] - [Undef][]
+**Miscellaneous**: [Blank][] - [Falsy][] - [Masked][] - [Named][] - [Templated][] - [Undef][]
 
 **Nesting**: [AllOf][] - [AnyOf][] - [Call][] - [Circuit][] - [Each][] - [Key][] - [KeySet][] - [Lazy][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
 
@@ -47,7 +49,7 @@ In this page you will find a list of validators by their category.
 
 **Strings**: [Alnum][] - [Alpha][] - [Base64][] - [Charset][] - [Consonant][] - [Contains][] - [ContainsAny][] - [ContainsCount][] - [Control][] - [Digit][] - [Emoji][] - [EndsWith][] - [Graph][] - [HexRgbColor][] - [In][] - [Json][] - [Lowercase][] - [Phone][] - [PostalCode][] - [Printable][] - [Punct][] - [Regex][] - [Slug][] - [Sorted][] - [Space][] - [Spaced][] - [StartsWith][] - [StringType][] - [StringVal][] - [Uppercase][] - [Uuid][] - [Version][] - [Vowel][] - [Xdigit][]
 
-**Structures**: [Attributes][] - [Key][] - [KeyExists][] - [KeyOptional][] - [KeySet][] - [Named][] - [Property][] - [PropertyExists][] - [PropertyOptional][] - [Templated][]
+**Structures**: [Attributes][] - [Key][] - [KeyExists][] - [KeyOptional][] - [KeySet][] - [Property][] - [PropertyExists][] - [PropertyOptional][]
 
 **Transformations**: [All][] - [Call][] - [Each][] - [Length][] - [Max][] - [Min][] - [Size][]
 
@@ -147,6 +149,7 @@ In this page you will find a list of validators by their category.
 - [Lowercase][] - `v::stringType()->lowercase()->assert('xkcd');`
 - [Luhn][] - `v::luhn()->assert('2222400041240011');`
 - [MacAddress][] - `v::macAddress()->assert('00:11:22:33:44:55');`
+- [Masked][] - `v::masked('1-@', v::email())->assert('foo@example.com');`
 - [Max][] - `v::max(v::equals(30))->assert([10, 20, 30]);`
 - [Mimetype][] - `v::mimetype('image/png')->assert('/path/to/image.png');`
 - [Min][] - `v::min(v::equals(10))->assert([10, 20, 30]);`
@@ -302,6 +305,7 @@ In this page you will find a list of validators by their category.
 [Lowercase]: validators/Lowercase.md "Validates whether the characters in the input are lowercase."
 [Luhn]: validators/Luhn.md "Validate whether a given input is a Luhn number."
 [MacAddress]: validators/MacAddress.md "Validates whether the input is a valid MAC address."
+[Masked]: validators/Masked.md "Decorates a validator to mask input values in error messages while still validating the original unmasked input."
 [Max]: validators/Max.md "Validates the maximum value of the input against a given validator."
 [Mimetype]: validators/Mimetype.md "Validates if the input is a file and if its MIME type matches the expected one."
 [Min]: validators/Min.md "Validates the minimum value of the input against a given validator."
