@@ -17,6 +17,7 @@ use Respect\Validation\Transformers\Transformer;
 use Respect\Validation\Transformers\ValidatorSpec;
 
 use function array_merge;
+use function Respect\Stringifier\stringify;
 use function sprintf;
 use function trim;
 use function ucfirst;
@@ -57,6 +58,8 @@ final readonly class NamespacedValidatorFactory implements ValidatorFactory
     /** @param array<int, mixed> $arguments */
     private function createRule(string $ruleName, array $arguments = []): Validator
     {
+        $reflection = null;
+
         foreach ($this->rulesNamespaces as $namespace) {
             try {
                 /** @var class-string<Validator> $name */
@@ -72,12 +75,22 @@ final readonly class NamespacedValidatorFactory implements ValidatorFactory
                     throw new InvalidClassException(sprintf('"%s" must be instantiable', $name));
                 }
 
-                return $reflection->newInstanceArgs($arguments);
+                break;
             } catch (ReflectionException) {
                 continue;
             }
         }
 
-        throw new ComponentException(sprintf('"%s" is not a valid rule name', $ruleName));
+        if (!$reflection) {
+            throw new ComponentException(sprintf('"%s" is not a valid rule name', $ruleName));
+        }
+
+        try {
+            return $reflection->newInstanceArgs($arguments);
+        } catch (ReflectionException) {
+            throw new InvalidClassException(
+                sprintf('"%s" could not be instantiated with arguments %s', $ruleName, stringify($arguments)),
+            );
+        }
     }
 }
