@@ -92,6 +92,13 @@ interface PropertyBuilder
     /** @param non-empty-array<mixed> $needles */
     public static function propertyContainsAny(string $propertyName, array $needles, bool $identical = false): Chain;
 
+    public static function propertyContainsCount(
+        string $propertyName,
+        mixed $containsValue,
+        int $count,
+        bool $identical = false,
+    ): Chain;
+
     public static function propertyControl(string $propertyName, string ...$additionalChars): Chain;
 
     public static function propertyCountable(string $propertyName): Chain;

@@ -56,6 +56,7 @@ Message template for this validator includes `{{containsValue}}`.
 See also:
 
 - [ContainsAny](ContainsAny.md)
+- [ContainsCount](ContainsCount.md)
 - [EndsWith](EndsWith.md)
 - [Equals](Equals.md)
 - [Equivalent](Equivalent.md)

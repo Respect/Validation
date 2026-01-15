@@ -84,6 +84,8 @@ interface Builder extends
     /** @param non-empty-array<mixed> $needles */
     public static function containsAny(array $needles, bool $identical = false): Chain;
 
+    public static function containsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+
     public static function control(string ...$additionalChars): Chain;
 
     public static function countable(): Chain;

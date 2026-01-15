@@ -70,6 +70,8 @@ interface UndefOrChain
     /** @param non-empty-array<mixed> $needles */
     public function undefOrContainsAny(array $needles, bool $identical = false): Chain;
 
+    public function undefOrContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+
     public function undefOrControl(string ...$additionalChars): Chain;
 
     public function undefOrCountable(): Chain;

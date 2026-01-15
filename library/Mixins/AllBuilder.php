@@ -70,6 +70,8 @@ interface AllBuilder
     /** @param non-empty-array<mixed> $needles */
     public static function allContainsAny(array $needles, bool $identical = false): Chain;
 
+    public static function allContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+
     public static function allControl(string ...$additionalChars): Chain;
 
     public static function allCountable(): Chain;

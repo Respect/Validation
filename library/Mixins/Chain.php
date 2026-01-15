@@ -87,6 +87,8 @@ interface Chain extends
     /** @param non-empty-array<mixed> $needles */
     public function containsAny(array $needles, bool $identical = false): Chain;
 
+    public function containsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+
     public function control(string ...$additionalChars): Chain;
 
     public function countable(): Chain;

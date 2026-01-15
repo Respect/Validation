@@ -84,6 +84,8 @@ interface NullOrBuilder
     /** @param non-empty-array<mixed> $needles */
     public static function nullOrContainsAny(array $needles, bool $identical = false): Chain;
 
+    public static function nullOrContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+
     public static function nullOrControl(string ...$additionalChars): Chain;
 
     public static function nullOrCountable(): Chain;

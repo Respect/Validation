@@ -46,6 +46,7 @@ class ValidatorBench
         yield 'Consonant' => [v::consonant(), 'bcdf'];
         yield 'Contains' => [v::contains('needle'), 'haystack needle'];
         yield 'ContainsAny' => [v::containsAny(['a', 'b']), 'abc'];
+        yield 'ContainsCount' => [v::containsCount('a', 3), 'banana'];
         yield 'Control' => [v::control(), "\n\r"];
         yield 'Countable' => [v::countable(), []];
         yield 'CountryCode' => [v::countryCode(), 'US'];
@@ -55,6 +56,7 @@ class ValidatorBench
         yield 'DateTime' => [v::dateTime(), '2020-01-01 12:00:00'];
         yield 'Decimal' => [v::decimal(2), '1.23'];
         yield 'Digit' => [v::digit(), '7'];
+        yield 'Domain' => [v::domain(), 'example.com'];
         yield 'Each' => [v::each(v::stringType()), ['a', 'b']];
         yield 'Email' => [v::email(), 'bob@example.com'];
         yield 'EndsWith' => [v::endsWith('.com'), 'example.com'];

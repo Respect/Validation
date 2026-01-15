@@ -88,6 +88,13 @@ interface KeyChain
     /** @param non-empty-array<mixed> $needles */
     public function keyContainsAny(int|string $key, array $needles, bool $identical = false): Chain;
 
+    public function keyContainsCount(
+        int|string $key,
+        mixed $containsValue,
+        int $count,
+        bool $identical = false,
+    ): Chain;
+
     public function keyControl(int|string $key, string ...$additionalChars): Chain;
 
     public function keyCountable(int|string $key): Chain;
