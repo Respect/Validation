@@ -12,12 +12,11 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use Respect\Validation\Exceptions\InvalidRuleConstructorException;
 use Respect\Validation\Message\Template;
-use Respect\Validation\Validators\Core\Envelope;
+use Respect\Validation\Result;
+use Respect\Validation\Validator;
 
 use function array_key_exists;
 use function filter_var;
-use function is_array;
-use function is_int;
 
 use const FILTER_VALIDATE_BOOLEAN;
 use const FILTER_VALIDATE_DOMAIN;
@@ -33,7 +32,7 @@ use const FILTER_VALIDATE_URL;
     '{{subject}} must be valid',
     '{{subject}} must not be valid',
 )]
-final class FilterVar extends Envelope
+final readonly class FilterVar implements Validator
 {
     private const array ALLOWED_FILTERS = [
         FILTER_VALIDATE_BOOLEAN => 'is_bool',
@@ -46,21 +45,22 @@ final class FilterVar extends Envelope
         FILTER_VALIDATE_URL => 'is_string',
     ];
 
-    public function __construct(int $filter, mixed $options = null)
+    public function __construct(private int $filter, private mixed $options = null)
     {
         if (!array_key_exists($filter, self::ALLOWED_FILTERS)) {
             throw new InvalidRuleConstructorException('Cannot accept the given filter');
         }
+    }
 
-        $arguments = [$filter];
-        if (is_array($options) || is_int($options)) {
-            $arguments[] = $options;
-        }
-
-        parent::__construct(new Callback(static function ($input) use ($filter, $arguments) {
-            return (self::ALLOWED_FILTERS[$filter])(
-                filter_var($input, ...$arguments),
-            );
-        }));
+    public function evaluate(mixed $input): Result
+    {
+        return Result::of(
+            (self::ALLOWED_FILTERS[$this->filter])(match ($this->options) {
+                null => filter_var($input, $this->filter),
+                default => filter_var($input, $this->filter, $this->options),
+            }),
+            $input,
+            $this,
+        );
     }
 }

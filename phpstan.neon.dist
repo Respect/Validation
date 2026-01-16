@@ -21,6 +21,8 @@ parameters:
       path: tests/feature/Validators/SizeTest.php
     - message: '/Property Respect\\Validation\\Test\\Stubs\\.+::\$[a-zA-Z]+ is never read, only written./'
       path: tests/library/Stubs
+    - message: '/Call to an undefined method Pest\\PendingCalls\\TestCall|Pest\\Support\\HigherOrderTapProxy::with\(\)./'
+      path: tests/feature/SerializableTest.php
   level: 8
   treatPhpDocTypesAsCertain: false
   paths:
