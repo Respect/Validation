@@ -49,7 +49,7 @@ $userValidator->isValid($user); // true
 
 Validating array keys is also possible using `v::key()`
 
-Note that we used `v::stringType()` and `v::dateTime()` in the beginning of the validator.
+Note that we used `v::stringType()` and `v::date()` in the beginning of the validator.
 Although is not mandatory, it is a good practice to use the type of the
 validated object as the first node in the chain.
 
