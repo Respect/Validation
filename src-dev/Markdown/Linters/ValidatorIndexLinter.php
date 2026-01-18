@@ -57,7 +57,7 @@ final readonly class ValidatorIndexLinter implements Linter
             $categoryValidators = $validatorsByCategory[$category];
             sort($categoryValidators);
             foreach ($categoryValidators as $categoryValidator) {
-                $content->anchorListItem($categoryValidator, sprintf('validators/%1$s.md', $categoryValidator));
+                $content->anchorListItem($categoryValidator, sprintf('%s.md', $categoryValidator));
             }
 
             $content->emptyLine();
