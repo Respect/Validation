@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Envelope;
 
@@ -28,7 +28,7 @@ final class ContainsAny extends Envelope
     public function __construct(array $needles, bool $identical = false)
     {
         if (empty($needles)) {
-            throw new InvalidRuleConstructorException('At least one value must be provided');
+            throw new InvalidValidatorException('At least one value must be provided');
         }
 
         $validators = $this->getValidators($needles, $identical);

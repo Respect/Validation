@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -107,11 +107,11 @@ final class Ip implements Validator
             [$this->startAddress, $this->endAddress] = explode('-', $input);
 
             if (is_string($this->startAddress) && !$this->verifyAddress($this->startAddress)) {
-                throw new InvalidRuleConstructorException('Invalid network range');
+                throw new InvalidValidatorException('Invalid network range');
             }
 
             if (is_string($this->endAddress) && !$this->verifyAddress($this->endAddress)) {
-                throw new InvalidRuleConstructorException('Invalid network range');
+                throw new InvalidValidatorException('Invalid network range');
             }
 
             return;
@@ -129,7 +129,7 @@ final class Ip implements Validator
             return;
         }
 
-        throw new InvalidRuleConstructorException('Invalid network range');
+        throw new InvalidValidatorException('Invalid network range');
     }
 
     private function fillAddress(string $address, string $fill = '*'): string
@@ -159,7 +159,7 @@ final class Ip implements Validator
         }
 
         if ($isAddressMask || $parts[1] < 8 || $parts[1] > 30) {
-            throw new InvalidRuleConstructorException('Invalid network mask');
+            throw new InvalidValidatorException('Invalid network mask');
         }
 
         $this->mask = sprintf('%032b', ip2long(long2ip(~(2 ** (32 - (int) $parts[1]) - 1))));

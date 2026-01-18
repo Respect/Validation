@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\CanCompareValues;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Envelope;
@@ -27,7 +27,7 @@ final class BetweenExclusive extends Envelope
     public function __construct(mixed $minimum, mixed $maximum)
     {
         if ($this->toComparable($minimum) >= $this->toComparable($maximum)) {
-            throw new InvalidRuleConstructorException('Minimum cannot be less than or equals to maximum');
+            throw new InvalidValidatorException('Minimum cannot be less than or equals to maximum');
         }
 
         parent::__construct(

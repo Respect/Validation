@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -34,7 +34,7 @@ final readonly class Time implements Validator
         private string $format = 'H:i:s',
     ) {
         if (!preg_match('/^[gGhHisuvaA\W]+$/', $format)) {
-            throw new InvalidRuleConstructorException('"%s" is not a valid date format', $format);
+            throw new InvalidValidatorException('"%s" is not a valid date format', $format);
         }
     }
 

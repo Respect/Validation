@@ -16,7 +16,7 @@ use PHPUnit\Framework\Attributes\Before;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Test\Stubs\StreamStub;
 use Respect\Validation\Test\Stubs\UploadedFileStub;
 use Respect\Validation\Test\TestCase;
@@ -40,7 +40,7 @@ final class SizeTest extends TestCase
     #[Test]
     public function shouldThrowsAnExceptionWhenSizeIsNotValid(): void
     {
-        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectException(InvalidValidatorException::class);
         $this->expectExceptionMessage('"whatever" is not a recognized data storage unit');
 
         // @phpstan-ignore-next-line

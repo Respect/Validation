@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -106,7 +106,7 @@ final readonly class KeySet implements Validator
             }
 
             if (!$validator instanceof ValidatorBuilder) {
-                throw new InvalidRuleConstructorException('You must provide only key-related rules');
+                throw new InvalidValidatorException('You must provide only key-related rules');
             }
 
             $keyRelatedValidators = array_merge(

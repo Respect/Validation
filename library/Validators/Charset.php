@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -39,7 +39,7 @@ final readonly class Charset implements Validator
         $charsets = array_merge([$charset], $charsets);
         $diff = array_diff($charsets, $available);
         if (count($diff) > 0) {
-            throw new InvalidRuleConstructorException('Invalid charset provided: %s', array_values($diff));
+            throw new InvalidValidatorException('Invalid charset provided: %s', array_values($diff));
         }
 
         $this->charset = $charsets;

@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Test\TestCase;
 use stdClass;
 
@@ -52,7 +52,7 @@ final class PhoneTest extends TestCase
     #[Test]
     public function itShouldThrowsExceptionWhenCountryCodeIsNotValid(): void
     {
-        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectException(InvalidValidatorException::class);
         $this->expectExceptionMessage('Invalid country code BRR');
 
         new Phone('BRR');

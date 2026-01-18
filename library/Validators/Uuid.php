@@ -13,7 +13,7 @@ use Attribute;
 use Ramsey\Uuid\Rfc4122\FieldsInterface;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 use Ramsey\Uuid\UuidInterface;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -46,7 +46,7 @@ final class Uuid implements Validator
         }
 
         if ($version !== null && !$this->isSupportedVersion($version)) {
-            throw new InvalidRuleConstructorException(
+            throw new InvalidValidatorException(
                 'Only versions 1 to 8 are supported: %d given',
                 (string) $version,
             );

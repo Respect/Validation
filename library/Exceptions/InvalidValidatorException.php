@@ -17,7 +17,7 @@ use function implode;
 use function is_scalar;
 use function sprintf;
 
-final class InvalidRuleConstructorException extends ComponentException implements Exception
+final class InvalidValidatorException extends ComponentException implements Exception
 {
     /** @param string|array<string> ...$arguments */
     public function __construct(string $message, string|array ...$arguments)

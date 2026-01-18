@@ -14,15 +14,15 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\TestCase;
 
-#[CoversClass(InvalidRuleConstructorException::class)]
-final class InvalidRuleConstructorExceptionTest extends TestCase
+#[CoversClass(InvalidValidatorException::class)]
+final class InvalidValidatorExceptionTest extends TestCase
 {
     /** @param array<string|array<string>> $arguments */
     #[Test]
     #[DataProvider('providerForMessages')]
     public function itShouldCreateMessageForWithString(string $expect, string $format, array $arguments): void
     {
-        $exception = new InvalidRuleConstructorException($format, ...$arguments);
+        $exception = new InvalidValidatorException($format, ...$arguments);
 
         self::assertEquals($expect, $exception->getMessage());
     }

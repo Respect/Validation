@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Message\Template;
@@ -50,7 +50,7 @@ final readonly class SubdivisionCode implements Validator
         $countries ??= new Countries();
         $country = $countries->getByAlpha2($countryCode);
         if ($country === null) {
-            throw new InvalidRuleConstructorException('"%s" is not a supported country code', $countryCode);
+            throw new InvalidValidatorException('"%s" is not a supported country code', $countryCode);
         }
 
         $this->country = $country;

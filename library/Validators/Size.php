@@ -12,7 +12,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -55,7 +55,7 @@ final class Size extends Wrapper
         Validator $validator,
     ) {
         if (!isset(self::DATA_STORAGE_UNITS[$unit])) {
-            throw new InvalidRuleConstructorException('"%s" is not a recognized data storage unit.', $unit);
+            throw new InvalidValidatorException('"%s" is not a recognized data storage unit.', $unit);
         }
 
         parent::__construct($validator);

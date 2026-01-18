@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -58,7 +58,7 @@ final readonly class CreditCard implements Validator
         private string $brand = self::ANY,
     ) {
         if (!isset(self::BRAND_REGEX_LIST[$brand])) {
-            throw new InvalidRuleConstructorException(
+            throw new InvalidValidatorException(
                 '"%s" is not a valid credit card brand (Available: %s)',
                 $brand,
                 array_keys(self::BRAND_REGEX_LIST),

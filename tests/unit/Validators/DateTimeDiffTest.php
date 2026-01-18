@@ -13,7 +13,7 @@ use DateTimeImmutable;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Validators\Stub;
 
@@ -27,7 +27,7 @@ final class DateTimeDiffTest extends RuleTestCase
     #[Test]
     public function isShouldThrowAnExceptionWhenTypeIsNotValid(): void
     {
-        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectException(InvalidValidatorException::class);
         $this->expectExceptionMessageMatches('/"invalid" is not a valid type of age \(Available: .+\)/');
 
         // @phpstan-ignore-next-line

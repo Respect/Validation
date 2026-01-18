@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -45,7 +45,7 @@ final readonly class CountryCode implements Validator
 
         $availableOptions = ['alpha-2', 'alpha-3', 'numeric'];
         if (!in_array($set, $availableOptions, true)) {
-            throw new InvalidRuleConstructorException(
+            throw new InvalidValidatorException(
                 '"%s" is not a valid set for ISO 3166-1 (Available: %s)',
                 $set,
                 $availableOptions,

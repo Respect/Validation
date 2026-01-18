@@ -12,7 +12,7 @@ namespace Respect\Validation\Validators;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Validators\Stub;
 
@@ -23,7 +23,7 @@ final class KeySetTest extends RuleTestCase
     #[Test]
     public function nonKeyRelatedRuleShouldNotBeAllowed(): void
     {
-        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectException(InvalidValidatorException::class);
         $this->expectExceptionMessage('You must provide only key-related rules');
 
         new KeySet(new Equals('foo'));

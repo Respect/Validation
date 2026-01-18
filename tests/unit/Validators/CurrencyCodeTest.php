@@ -12,7 +12,7 @@ namespace Respect\Validation\Validators;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('validator')]
@@ -22,7 +22,7 @@ final class CurrencyCodeTest extends RuleTestCase
     #[Test]
     public function itShouldThrowsExceptionWhenInvalidFormat(): void
     {
-        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectException(InvalidValidatorException::class);
         $this->expectExceptionMessage(
             '"whatever" is not a valid set for ISO 4217 (Available: "alpha-3" and "numeric")',
         );

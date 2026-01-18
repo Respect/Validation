@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -32,7 +32,7 @@ final readonly class Base implements Validator
     ) {
         $max = mb_strlen($this->chars);
         if ($base > $max) {
-            throw new InvalidRuleConstructorException('a base between 1 and %s is required', (string) $max);
+            throw new InvalidValidatorException('a base between 1 and %s is required', (string) $max);
         }
     }
 

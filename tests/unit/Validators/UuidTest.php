@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Ramsey\Uuid\Uuid as RamseyUuid;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -45,7 +45,7 @@ final class UuidTest extends RuleTestCase
     {
         $version = random_int(8, PHP_INT_MAX);
 
-        self::expectException(InvalidRuleConstructorException::class);
+        self::expectException(InvalidValidatorException::class);
         self::expectExceptionMessage('Only versions 1 to 8 are supported: ' . $version . ' given');
 
         new Uuid($version);
@@ -56,7 +56,7 @@ final class UuidTest extends RuleTestCase
     {
         $version = random_int(PHP_INT_MIN, 0);
 
-        self::expectException(InvalidRuleConstructorException::class);
+        self::expectException(InvalidValidatorException::class);
         self::expectExceptionMessage('Only versions 1 to 8 are supported: ' . $version . ' given');
 
         new Uuid($version);

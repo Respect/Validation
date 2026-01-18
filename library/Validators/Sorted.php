@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -44,7 +44,7 @@ final readonly class Sorted implements Validator
         private string $direction,
     ) {
         if ($direction !== self::ASCENDING && $direction !== self::DESCENDING) {
-            throw new InvalidRuleConstructorException(
+            throw new InvalidValidatorException(
                 'Direction should be either "%s" or "%s"',
                 self::ASCENDING,
                 self::DESCENDING,

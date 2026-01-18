@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -44,7 +44,7 @@ final readonly class CurrencyCode implements Validator
 
         $availableSets = ['alpha-3', 'numeric'];
         if (!in_array($set, $availableSets, true)) {
-            throw new InvalidRuleConstructorException(
+            throw new InvalidValidatorException(
                 '"%s" is not a valid set for ISO 4217 (Available: %s)',
                 $set,
                 $availableSets,

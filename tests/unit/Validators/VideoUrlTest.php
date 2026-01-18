@@ -12,7 +12,7 @@ namespace Respect\Validation\Validators;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('validator')]
@@ -22,7 +22,7 @@ final class VideoUrlTest extends RuleTestCase
     #[Test]
     public function itShouldThrowsExceptionWhenVideoUrlIsNotValid(): void
     {
-        $this->expectException(InvalidRuleConstructorException::class);
+        $this->expectException(InvalidValidatorException::class);
         $this->expectExceptionMessage('"tiktok" is not a recognized video service.');
 
         new VideoUrl('tiktok');

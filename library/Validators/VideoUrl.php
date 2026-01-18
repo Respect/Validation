@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -47,7 +47,7 @@ final class VideoUrl implements Validator
         private readonly string|null $service = null,
     ) {
         if ($service !== null && !$this->isSupportedService($service)) {
-            throw new InvalidRuleConstructorException('"%s" is not a recognized video service.', $service);
+            throw new InvalidValidatorException('"%s" is not a recognized video service.', $service);
         }
     }
 

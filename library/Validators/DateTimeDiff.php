@@ -12,7 +12,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use DateTimeImmutable;
 use DateTimeInterface;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -59,7 +59,7 @@ final readonly class DateTimeDiff implements Validator
     ) {
         $availableTypes = ['years', 'months', 'days', 'hours', 'minutes', 'seconds', 'microseconds'];
         if (!in_array($this->type, $availableTypes, true)) {
-            throw new InvalidRuleConstructorException(
+            throw new InvalidValidatorException(
                 '"%s" is not a valid type of age (Available: %s)',
                 $this->type,
                 $availableTypes,

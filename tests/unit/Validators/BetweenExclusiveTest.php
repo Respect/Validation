@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Test\Stubs\CountableStub;
 use Respect\Validation\Test\TestCase;
 
@@ -26,7 +26,7 @@ final class BetweenExclusiveTest extends TestCase
     public function minimumValueShouldNotBeGreaterThanMaximumValue(): void
     {
         $this->expectExceptionObject(
-            new InvalidRuleConstructorException('Minimum cannot be less than or equals to maximum'),
+            new InvalidValidatorException('Minimum cannot be less than or equals to maximum'),
         );
 
         new BetweenExclusive(10, 5);
@@ -36,7 +36,7 @@ final class BetweenExclusiveTest extends TestCase
     public function minimumValueShouldNotBeEqualsToMaximumValue(): void
     {
         $this->expectExceptionObject(
-            new InvalidRuleConstructorException('Minimum cannot be less than or equals to maximum'),
+            new InvalidValidatorException('Minimum cannot be less than or equals to maximum'),
         );
 
         new BetweenExclusive(5, 5);

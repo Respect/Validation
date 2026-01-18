@@ -12,7 +12,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
-use Respect\Validation\Exceptions\InvalidRuleConstructorException;
+use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -66,7 +66,7 @@ final class Phone implements Validator
         $countries ??= new Countries();
         $this->country = $countries->getByAlpha2($countryCode);
         if ($this->country === null) {
-            throw new InvalidRuleConstructorException('Invalid country code %s', $countryCode);
+            throw new InvalidValidatorException('Invalid country code %s', $countryCode);
         }
     }
 
