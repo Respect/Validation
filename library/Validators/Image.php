@@ -12,7 +12,8 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use finfo;
 use Respect\Validation\Message\Template;
-use Respect\Validation\Validators\Core\Simple;
+use Respect\Validation\Result;
+use Respect\Validation\Validator;
 use SplFileInfo;
 
 use function is_file;
@@ -26,27 +27,22 @@ use const FILEINFO_MIME_TYPE;
     '{{subject}} must be a valid image file',
     '{{subject}} must not be a valid image file',
 )]
-final class Image extends Simple
+final readonly class Image implements Validator
 {
-    public function __construct(
-        private finfo $fileInfo = new finfo(FILEINFO_MIME_TYPE),
-    ) {
-    }
-
-    public function isValid(mixed $input): bool
+    public function evaluate(mixed $input): Result
     {
         if ($input instanceof SplFileInfo) {
-            return $this->isValid($input->getPathname());
+            return $this->evaluate($input->getPathname());
         }
 
-        if (!is_string($input)) {
-            return false;
+        if (!is_string($input) || !is_file($input)) {
+            return Result::failed($input, $this);
         }
 
-        if (!is_file($input)) {
-            return false;
-        }
-
-        return mb_strpos((string) $this->fileInfo->file($input), 'image/') === 0;
+        return Result::of(
+            mb_strpos((string) (new finfo(FILEINFO_MIME_TYPE))->file($input), 'image/') === 0,
+            $input,
+            $this,
+        );
     }
 }

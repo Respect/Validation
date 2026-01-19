@@ -9,10 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
-use finfo;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
-use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
@@ -21,23 +19,6 @@ use SplFileObject;
 #[CoversClass(Image::class)]
 final class ImageTest extends RuleTestCase
 {
-    #[Test]
-    public function shouldValidateWithDefinedInstanceOfFileInfo(): void
-    {
-        $input = self::fixture('valid-image.gif');
-
-        $finfo = $this->createMock(finfo::class);
-        $finfo
-            ->expects(self::once())
-            ->method('file')
-            ->with($input)
-            ->willReturn('image/gif');
-
-        $validator = new Image($finfo);
-
-        self::assertValidInput($validator, $input);
-    }
-
     /** @return iterable<array{Image, mixed}> */
     public static function providerForValidInput(): iterable
     {

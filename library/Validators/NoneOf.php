@@ -12,12 +12,8 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Validator;
 use Respect\Validation\Validators\Core\Composite;
 
-use function array_filter;
-use function array_map;
-use function array_reduce;
 use function count;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
@@ -38,17 +34,24 @@ final class NoneOf extends Composite
 
     public function evaluate(mixed $input): Result
     {
-        $children = array_map(
-            static fn(Validator $validator) => $validator->evaluate($input)->withToggledModeAndValidation(),
-            $this->validators,
-        );
-        $valid = array_reduce($children, static fn(bool $carry, Result $result) => $carry && $result->hasPassed, true);
-        $failed = array_filter($children, static fn(Result $result): bool => !$result->hasPassed);
-        $template = self::TEMPLATE_SOME;
-        if (count($children) === count($failed)) {
-            $template = self::TEMPLATE_ALL;
+        $failedCount = 0;
+        $children = [];
+        foreach ($this->validators as $validator) {
+            $child = $validator->evaluate($input)->withToggledModeAndValidation();
+            $children[] = $child;
+            if ($child->hasPassed) {
+                continue;
+            }
+
+            $failedCount++;
         }
 
-        return Result::of($valid, $input, $this, [], $template)->withChildren(...$children);
+        return Result::of(
+            $failedCount === 0,
+            $input,
+            $this,
+            [],
+            count($children) === $failedCount ? self::TEMPLATE_ALL : self::TEMPLATE_SOME,
+        )->withChildren(...$children);
     }
 }
