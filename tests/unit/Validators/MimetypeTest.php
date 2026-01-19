@@ -9,10 +9,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
-use finfo;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
-use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\RuleTestCase;
 use SplFileInfo;
 use SplFileObject;
@@ -20,35 +18,12 @@ use SplFileObject;
 use function random_int;
 use function tmpfile;
 
-use const FILEINFO_MIME_TYPE;
 use const PHP_INT_MAX;
 
 #[Group('validator')]
 #[CoversClass(Mimetype::class)]
 final class MimetypeTest extends RuleTestCase
 {
-    #[Test]
-    public function itShouldValidateWithDefinedFinfoInstance(): void
-    {
-        $mimetype = 'application/octet-stream';
-        $filename = 'tests/fixtures/valid-image.png';
-
-        $fileInfoMock = $this
-            ->getMockBuilder(finfo::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $fileInfoMock
-            ->expects(self::once())
-            ->method('file')
-            ->with($filename, FILEINFO_MIME_TYPE)
-            ->willReturn($mimetype);
-
-        $validator = new Mimetype($mimetype, $fileInfoMock);
-
-        self::assertValidInput($validator, $filename);
-    }
-
     /** @return iterable<array{Mimetype, mixed}> */
     public static function providerForValidInput(): iterable
     {

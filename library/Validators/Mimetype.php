@@ -30,7 +30,6 @@ final readonly class Mimetype implements Validator
 {
     public function __construct(
         private string $mimetype,
-        private finfo $fileInfo = new finfo(),
     ) {
     }
 
@@ -41,16 +40,13 @@ final readonly class Mimetype implements Validator
         }
 
         $parameters = ['mimetype' => $this->mimetype];
-        if (!is_string($input)) {
-            return Result::failed($input, $this, $parameters);
-        }
 
-        if (!is_file($input)) {
+        if (!is_string($input) || !is_file($input)) {
             return Result::failed($input, $this, $parameters);
         }
 
         return Result::of(
-            $this->mimetype === $this->fileInfo->file($input, FILEINFO_MIME_TYPE),
+            $this->mimetype === (new finfo(FILEINFO_MIME_TYPE))->file($input),
             $input,
             $this,
             $parameters,
