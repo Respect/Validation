@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # Handling exceptions
 
 The `ValidatorBuilder::assert()` method simplifies exception handling by throwing `ValidationException` exceptions when validation fails. These exceptions provide detailed feedback on what went wrong.

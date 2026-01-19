@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # Contributing
 
 Contributions to Respect\Validation are always welcome. You make our lives
@@ -54,8 +59,9 @@ and will natively have support for chaining and everything else.
 <?php
 
 /*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor Your Name <your_email@example.com>
  */
 
 declare(strict_types=1);
@@ -96,8 +102,9 @@ first item of the arrays:
 <?php
 
 /*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor Your Name <your_email@example.com>
  */
 
 declare(strict_types=1);

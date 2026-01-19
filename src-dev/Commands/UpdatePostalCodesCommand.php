@@ -1,8 +1,9 @@
 <?php
 
 /*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  */
 
 declare(strict_types=1);
@@ -106,12 +107,14 @@ final class UpdatePostalCodesCommand extends Command
         ksort($postalCodes);
 
         // Create the data file
-        $dataFilename = dirname(__DIR__, 2) . '/data/domain/postal-code.php';
+        $dataFilename = dirname(__DIR__, 2) . '/data/postal-code.php';
+
+        $SPDX = '// SPDX';
 
         $fileContent = implode(PHP_EOL, [
             '<?php declare(strict_types=1);',
-            '// Copyright (c) https://download.geonames.org/export/dump/countryInfo.txt',
-            '// SPDX-License-Identifier: CC-BY-4.0',
+            $SPDX . '-FileCopyrightText: (c) https://download.geonames.org/export/dump/countryInfo.txt',
+            $SPDX . '-License-Identifier: CC-BY-4.0',
             'return ' . preg_replace('/\\\([dws])/', '\\1', VarExporter::export($postalCodes)) . ';' . PHP_EOL,
         ]);
 

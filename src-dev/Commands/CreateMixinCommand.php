@@ -1,8 +1,9 @@
 <?php
 
 /*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  */
 
 declare(strict_types=1);
@@ -50,7 +51,6 @@ use function array_merge;
 use function count;
 use function dirname;
 use function file_exists;
-use function file_get_contents;
 use function file_put_contents;
 use function implode;
 use function in_array;
@@ -345,12 +345,15 @@ final class CreateMixinCommand extends Command
     private function overwriteFile(string $content, string $basename): void
     {
         $libraryDir = dirname(__DIR__, 2) . '/library';
-        $docheaderPath = dirname(__DIR__, 2) . '/.docheader';
-        $docheader = file_exists($docheaderPath) ? file_get_contents($docheaderPath) : '';
+
+        $SPDX = ' * SPDX';
 
         $finalContent = implode("\n\n", array_filter([
             '<?php',
-            $docheader,
+            '/*',
+            $SPDX . '-License-Identifier: MIT',
+            $SPDX . '-FileCopyrightText: (c) Respect Project Contributors',
+            '/*',
             'declare(strict_types=1);',
             preg_replace('/extends (.+, )+/', 'extends' . "\n" . '\1', $content),
         ]));

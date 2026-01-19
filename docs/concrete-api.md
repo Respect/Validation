@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # Concrete API
 
 There are many micro-frameworks that rely on magic methods. We don't. In this

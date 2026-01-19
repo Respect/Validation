@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # ContainsAny
 
 - `ContainsAny(non-empty-array<mixed> $needles)`

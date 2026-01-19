@@ -1,8 +1,9 @@
 <?php
 
 /*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  */
 
 declare(strict_types=1);
@@ -32,6 +33,8 @@ final readonly class ValidatorIndexLinter implements Linter
             return $file;
         }
 
+        $content = $file->content->extractSpdx();
+
         $validators = $this->getSortedListOfValidators();
 
         $validatorsByCategory = [];
@@ -47,7 +50,6 @@ final readonly class ValidatorIndexLinter implements Linter
 
         $categories = array_keys($validatorsByCategory);
 
-        $content = new Content();
         $content->h1('Overviews');
         $content->paragraph('In this page you will find a list of validators by their category.');
         $content->emptyLine();

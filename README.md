@@ -1,3 +1,7 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
 # Respect\Validation
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/Respect/Validation/continuous-integration.yml?branch=main&style=flat-square)](https://github.com/Respect/Validation/actions/workflows/continuous-integration.yml)

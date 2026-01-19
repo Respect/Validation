@@ -29,7 +29,6 @@
     "require-dev": {
         "egulias/email-validator": "^4.0",
         "giggsey/libphonenumber-for-php-lite": "^8.13",
-        "malukenho/docheader": "^1.0",
         "mikey179/vfsstream": "^1.6",
         "nette/php-generator": "^4.1",
         "pestphp/pest": "^4.2",
@@ -75,7 +74,6 @@
     "scripts": {
         "bench-profile": "vendor/bin/phpbench xdebug:profile",
         "bench": "vendor/bin/phpbench run",
-        "docheader": "vendor/bin/docheader check src-dev/ library/ tests/",
         "docs-fix": "bin/console docs:lint --fix",
         "docs": "bin/console docs:lint",
         "pest": "vendor/bin/pest --testsuite=feature --compact",
@@ -84,7 +82,6 @@
         "phpunit": "vendor/bin/phpunit --testsuite=unit",
         "smoke-complete": "bin/console smoke-tests:check-complete",
         "qa": [
-            "@docheader",
             "@phpcs",
             "@phpstan",
             "@phpunit",

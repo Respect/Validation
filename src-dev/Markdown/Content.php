@@ -1,8 +1,9 @@
 <?php
 
 /*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  */
 
 declare(strict_types=1);
@@ -103,6 +104,25 @@ final class Content implements IteratorAggregate
     public function anchorListItem(string $title, string $href): void
     {
         $this->listItem(sprintf('[%s](%s)', $title, $href));
+    }
+
+    public function extractSpdx(): self
+    {
+        $start = 0;
+        $end = 0;
+        foreach ($this->lines as $position => $line) {
+            if (preg_match('/^<!--/', $line) === 1) {
+                $start = $position;
+                continue;
+            }
+
+            if (preg_match('/-->/', $line) === 1) {
+                $end = $position;
+                break;
+            }
+        }
+
+        return new self(array_slice($this->lines, $start, $end + 2));
     }
 
     public function withSection(Content $content): self

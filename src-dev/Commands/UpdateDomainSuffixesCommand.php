@@ -1,8 +1,9 @@
 <?php
 
 /*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  */
 
 declare(strict_types=1);
@@ -101,10 +102,12 @@ final class UpdateDomainSuffixesCommand extends Command
 
             sort($suffixList);
 
+            $SPDX = '// SPDX';
+
             $fileContent = implode(PHP_EOL, [
                 '<?php declare(strict_types=1);',
-                '// Copyright (c) https://publicsuffix.org',
-                '// SPDX-License-Identifier: MPL-2.0-no-copyleft-exception',
+                $SPDX . '-FileCopyrightText: 2007–22 Mozilla Foundation',
+                $SPDX . '-License-Identifier: MPL-2.0-no-copyleft-exception',
                 'return ' . VarExporter::export($suffixList) . ';' . PHP_EOL,
             ]);
 

@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # Message translation
 
 We use dependency injection container to create Validators with all their dependencies. One of these dependencies is the `Translator`, which is responsible for translating validation messages.

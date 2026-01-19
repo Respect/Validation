@@ -84,9 +84,6 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist
 
-      - name: Run DocHeader
-        run: vendor/bin/docheader check library/ tests/
-
       - name: Run PHP_CodeSniffer
         run: vendor/bin/phpcs
 

@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # NoneOf
 
 - `NoneOf(Validator $validator1, Validator $validator2)`

@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # DateTimeDiff
 
 - `DateTimeDiff("years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type, Validator $validator)`

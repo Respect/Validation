@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # Prefixes
 
 Prefixes are convenience methods that make complex validators easier to use. They are dynamically generated to simplify the creation of common validation patterns.

@@ -1,8 +1,9 @@
 <?php
 
 /*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  */
 
 declare(strict_types=1);
@@ -14,7 +15,6 @@ use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
 use ReflectionUnionType;
-use Respect\Dev\Markdown\Content;
 use Respect\Dev\Markdown\File;
 use Respect\Dev\Markdown\Linter;
 
@@ -56,8 +56,9 @@ final readonly class ValidatorHeaderLinter implements Linter
         }
 
         $lines = $file->content->toArray();
+
         while (($line = array_shift($lines)) !== false) {
-            if (preg_match('/^(# .+|- .+|)$/', $line) === 0) {
+            if (preg_match('/^(# .+|- .+|<!--+|-->|SPDX-.+|)$/', $line) === 0) {
                 array_unshift($lines, $line);
                 break;
             }
@@ -65,7 +66,8 @@ final readonly class ValidatorHeaderLinter implements Linter
 
         $validator = basename($file->filename, '.md');
 
-        $content = new Content();
+        $content = $file->content->extractSpdx();
+
         $content->h1($validator);
 
         $reflectionClass = new ReflectionClass('Respect\\Validation\\Validators\\' . $validator);

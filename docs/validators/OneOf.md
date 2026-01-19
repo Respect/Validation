@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # OneOf
 
 - `OneOf(Validator $validator1, Validator $validator2)`
