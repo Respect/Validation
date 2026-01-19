@@ -1,8 +1,9 @@
 <?php
 
 /*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  */
 
 declare(strict_types=1);
@@ -73,10 +74,12 @@ final class UpdateDomainToplevelCommand extends Command
         // Create the data file
         $dataFilename = dirname(__DIR__, 2) . '/data/domain/tld.php';
 
+        $SPDX = '// SPDX';
+
         $fileContent = implode(PHP_EOL, [
             '<?php declare(strict_types=1);',
-            '// Copyright (c) https://data.iana.org/TLD/',
-            '// SPDX-License-Identifier: MPL-2.0',
+            $SPDX . '-FileCopyrightText: (c) https://data.iana.org/TLD/',
+            $SPDX . '-License-Identifier: MPL-2.0',
             'return ' . VarExporter::export($tlds) . ';' . PHP_EOL,
         ]);
 

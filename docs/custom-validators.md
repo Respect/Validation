@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # Custom validators
 
 You can also create and use your own validators. To do this, you will need to create

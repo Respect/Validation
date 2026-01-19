@@ -1,8 +1,14 @@
 <?php
 
 /*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-FileContributor: Fabio Ribeiro <faabiosr@gmail.com>
+ * SPDX-FileContributor: Gabriel Caruso <carusogabriel34@gmail.com>
+ * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
+ * SPDX-FileContributor: Paulo Eduardo <pauloelr@gmail.com>
+ * SPDX-FileContributor: William Espindola <oi@williamespindola.com.br>
  */
 
 declare(strict_types=1);

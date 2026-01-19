@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # Message placeholder conversion
 
 Messages in Validation usually have placeholders that are in between "{{" and

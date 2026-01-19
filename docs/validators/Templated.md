@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # Templated
 
 - `Templated(string $template, Validator $validator)`

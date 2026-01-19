@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # Lazy
 
 - `Lazy(callable(mixed): Validator $validatorCreator)`

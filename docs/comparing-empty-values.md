@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # Comparing empty values
 
 The [Undef](validators/Undef.md), [Blank](validators/Blank.md), and [Falsy](validators/Falsy.md) validators all validate "empty-like" values, but they differ in strictness and use cases. This guide helps you understand when to use each one.

@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-// Copyright (c) https://data.iana.org/TLD/
+// SPDX-FileCopyrightText: (c) https://data.iana.org/TLD/
 // SPDX-License-Identifier: MPL-2.0
 return [
     'AAA',

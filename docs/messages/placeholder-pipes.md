@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
+
 # Placeholder Pipes
 
 Validation uses [Stringifier](https://github.com/Respect/Stringifier) to convert values into strings for templates. By default, strings get double quotes around them. With placeholder pipes, you can customize how values are rendered by adding a pipe (`|`) followed by the modifier name to your placeholder.

@@ -1,0 +1,28 @@
+name: REUSE
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  reuse-check:
+    name: Compliance Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Install REUSE tool
+        run: pip install reuse
+
+      - name: Run REUSE check
+        run: reuse lint

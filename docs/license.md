@@ -1,4 +1,7 @@
 ---
+# SPDX-FileCopyrightText: (c) Respect Project Contributors
+# SPDX-License-Identifier: MIT
+
 weight: -1
 ---
 

@@ -1,0 +1,6 @@
+version = 1
+
+[[annotations]]
+path = [ "*.yml", "*.yaml", ".git*", "*.dist", "composer.json", "tests/fixtures/*", ".github/*.yml", ".github/workflows/**.yml" ]
+SPDX-FileCopyrightText = "Respect Project Contributors"
+SPDX-License-Identifier = "MIT"

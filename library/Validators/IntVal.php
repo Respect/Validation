@@ -1,8 +1,18 @@
 <?php
 
 /*
- * Copyright (c) Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Adam Benson <adam.benson@bigcommerce.com>
+ * SPDX-FileContributor: Alexander Wühr <l-x@mailbox.org>
+ * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
+ * SPDX-FileContributor: Andrei Drulchenko <andrdru@gmail.com>
+ * SPDX-FileContributor: bmorg <contact@bmorg.io>
+ * SPDX-FileContributor: Danilo Benevides <danilobenevides01@gmail.com>
+ * SPDX-FileContributor: Fabian Wiget <fabacino@gmail.com>
+ * SPDX-FileContributor: Graham Campbell <graham@mineuk.com>
+ * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
+ * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
  */
 
 declare(strict_types=1);
