@@ -1,0 +1,88 @@
+name: Continuous Integration (perf)
+
+on:
+  push:
+    paths-ignore:
+      - 'bin/**'
+      - 'docs/**'
+  pull_request:
+    paths-ignore:
+      - 'bin/**'
+      - 'docs/**'
+  workflow_dispatch:
+    inputs:
+      baseline:
+        description: 'Baseline mode. latest: compare against latest benchmarks; rebaseline: store new baseline.'
+        type: choice
+        default: 'latest'
+        options:
+          - 'latest'
+          - 'rebaseline'
+
+jobs:
+  tests:
+    name: Benchmarks
+    runs-on: ubuntu-latest
+    continue-on-error: true # This job is experimental
+    permissions:
+      contents: write
+      pull-requests: write
+
+    strategy:
+      matrix:
+        php-version:
+          - "8.5"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: true
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: xdebug
+
+      - name: Install Dependencies
+        run: composer install --prefer-dist ${{ matrix.composer-extra-arguments }}
+
+      - name: Fetch Benchmarks
+        run: |
+          git fetch origin benchmarks
+          mkdir -p .phpbench
+          git checkout origin/benchmarks -- .phpbench || echo "No previous benchmarks found"
+      
+      - name: Run Benchmarks
+        run: |
+          # Baseline does not exist or rebaseline requested. Generate it.
+          if [ -z "$(ls -A .phpbench)" ] || [ "${{ github.event.inputs.baseline || 'latest' }}" = "rebaseline" ]; then
+            vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${GITHUB_SHA}
+
+          # On main branch push, update baseline with tolerance for failures.
+          elif [ "${GITHUB_REF}" = "refs/heads/main" ] && [ "${GITHUB_EVENT_NAME}" = "push" ]; then
+            vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${GITHUB_SHA} --ref=latest --tolerate-failure
+
+          # On other branches, compare against latest baseline, fails if worse.
+          else 
+            vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${GITHUB_SHA} --ref=latest
+          fi
+          
+          # Generate report for human consumption
+          vendor/bin/phpbench report --report=aggregate --ref=latest |
+            tail -n+2 | head -n-2 | tr '+' '|' > report.md
+
+          cat report.md
+
+      - name: Commit Benchmark Results
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout benchmarks
+          mv -f report.md latest.md
+          git add .phpbench latest.md
+          git commit -m "Store benchmark results [skip ci]" || echo "No changes to commit"
+          git push origin benchmarks
