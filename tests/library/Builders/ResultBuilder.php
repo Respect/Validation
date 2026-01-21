@@ -70,7 +70,7 @@ final class ResultBuilder
         );
     }
 
-    public function withPath(Path $path): self
+    public function path(Path $path): self
     {
         $this->path = $path;
 
@@ -80,6 +80,13 @@ final class ResultBuilder
     public function hasPassed(bool $hasPassed): self
     {
         $this->hasPassed = $hasPassed;
+
+        return $this;
+    }
+
+    public function hasPrecedentName(bool $hasPrecedentName): self
+    {
+        $this->hasPrecedentName = $hasPrecedentName;
 
         return $this;
     }
@@ -106,9 +113,9 @@ final class ResultBuilder
         return $this;
     }
 
-    public function name(string $name): self
+    public function name(string|Name $name): self
     {
-        $this->name = new Name($name);
+        $this->name = $name instanceof Name ? $name : new Name($name);
 
         return $this;
     }

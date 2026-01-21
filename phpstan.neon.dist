@@ -13,10 +13,8 @@ parameters:
       path: tests/feature/Validators/SizeTest.php
     - message: '/Undefined variable: \$this/'
       path: tests/Pest.php
-    - message: '/Method .+\\TestingStringifier::stringify\(\) never returns null so it can be removed from the return type./'
-      path: tests/library/Message/TestingStringifier.php
-    - message: '/Parameter #1 \$messages of class .+\\ArrayTranslator constructor expects array<string, string>, array<string, int> given./'
-      path: tests/unit/Message/Translator/ArrayTranslatorTest.php
+    - message: '/Method .+\\TestingHandler::handle\(\) never returns null so it can be removed from the return type./'
+      path: tests/library/Message/TestingHandler.php
     - message: '/Access to an undefined property PHPUnit\\Framework\\TestCase/'
       path: tests/feature/Validators/SizeTest.php
     - message: '/Property Respect\\Validation\\Test\\Stubs\\.+::\$[a-zA-Z]+ is never read, only written./'

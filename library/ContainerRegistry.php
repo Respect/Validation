@@ -12,27 +12,33 @@ namespace Respect\Validation;
 
 use DI\Container;
 use Psr\Container\ContainerInterface;
+use Respect\StringFormatter\BypassTranslator;
+use Respect\StringFormatter\Modifier;
+use Respect\StringFormatter\Modifiers\ListModifier;
+use Respect\StringFormatter\Modifiers\QuoteModifier;
+use Respect\StringFormatter\Modifiers\RawModifier;
+use Respect\StringFormatter\Modifiers\StringifyModifier;
+use Respect\StringFormatter\Modifiers\TransModifier;
+use Respect\StringFormatter\PlaceholderFormatter;
+use Respect\Stringifier\DumpStringifier;
+use Respect\Stringifier\Handler;
+use Respect\Stringifier\Handlers\CompositeHandler;
+use Respect\Stringifier\HandlerStringifier;
 use Respect\Stringifier\Quoter;
-use Respect\Stringifier\Quoters\StandardQuoter;
+use Respect\Stringifier\Quoters\CodeQuoter;
 use Respect\Stringifier\Stringifier;
 use Respect\Validation\Message\Formatter\FirstResultStringFormatter;
 use Respect\Validation\Message\Formatter\NestedArrayFormatter;
 use Respect\Validation\Message\Formatter\NestedListStringFormatter;
 use Respect\Validation\Message\Formatter\TemplateResolver;
 use Respect\Validation\Message\InterpolationRenderer;
-use Respect\Validation\Message\Modifier;
-use Respect\Validation\Message\Modifier\ListAndModifier;
-use Respect\Validation\Message\Modifier\ListOrModifier;
-use Respect\Validation\Message\Modifier\QuoteModifier;
-use Respect\Validation\Message\Modifier\RawModifier;
-use Respect\Validation\Message\Modifier\StringifyModifier;
-use Respect\Validation\Message\Modifier\TransModifier;
+use Respect\Validation\Message\Parameters\NameHandler;
+use Respect\Validation\Message\Parameters\PathHandler;
+use Respect\Validation\Message\Parameters\ResultHandler;
 use Respect\Validation\Message\Renderer;
-use Respect\Validation\Message\Translator;
-use Respect\Validation\Message\Translator\DummyTranslator;
-use Respect\Validation\Message\ValidationStringifier;
 use Respect\Validation\Transformers\Prefix;
 use Respect\Validation\Transformers\Transformer;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 use function DI\autowire;
 use function DI\create;
@@ -47,9 +53,7 @@ final class ContainerRegistry
         return new Container([
             Transformer::class => create(Prefix::class),
             TemplateResolver::class => create(TemplateResolver::class),
-            Quoter::class => create(StandardQuoter::class)->constructor(ValidationStringifier::MAXIMUM_LENGTH),
-            Stringifier::class => autowire(ValidationStringifier::class),
-            Translator::class => autowire(DummyTranslator::class),
+            TranslatorInterface::class => autowire(BypassTranslator::class),
             Renderer::class => autowire(InterpolationRenderer::class),
             ResultFilter::class => create(OnlyFailedChildrenResultFilter::class),
             'respect.validation.formatter.message' => autowire(FirstResultStringFormatter::class),
@@ -61,19 +65,33 @@ final class ContainerRegistry
                 $container->get(Transformer::class),
                 $container->get('respect.validation.rule_factory.namespaces'),
             )),
+            Quoter::class => create(CodeQuoter::class)->constructor(120),
+            Handler::class => factory(static function (Container $container) {
+                $handler = CompositeHandler::create();
+                $handler->prependHandler(new PathHandler($container->get(Quoter::class)));
+                $handler->prependHandler(new NameHandler());
+                $handler->prependHandler(new ResultHandler($handler));
+
+                return $handler;
+            }),
+            PlaceholderFormatter::class => factory(static fn(Container $container) => new PlaceholderFormatter(
+                [],
+                $container->get(Modifier::class),
+            )),
+            Stringifier::class => factory(static fn(Container $container) => new HandlerStringifier(
+                $container->get(Handler::class),
+                new DumpStringifier(),
+            )),
             Modifier::class => factory(static fn(Container $container) => new TransModifier(
-                $container->get(Translator::class),
-                new ListOrModifier(
-                    $container->get(Translator::class),
-                    new ListAndModifier(
-                        $container->get(Translator::class),
-                        new QuoteModifier(
-                            new RawModifier(
-                                new StringifyModifier($container->get(Stringifier::class)),
-                            ),
+                new ListModifier(
+                    new QuoteModifier(
+                        new RawModifier(
+                            new StringifyModifier($container->get(Stringifier::class)),
                         ),
                     ),
+                    $container->get(TranslatorInterface::class),
                 ),
+                $container->get(TranslatorInterface::class),
             )),
             ValidatorBuilder::class => factory(static fn(Container $container) => new ValidatorBuilder(
                 $container->get(ValidatorFactory::class),

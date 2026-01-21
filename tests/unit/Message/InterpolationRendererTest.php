@@ -12,15 +12,11 @@ namespace Respect\Validation\Message;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\StringFormatter\PlaceholderFormatter;
 use Respect\Validation\Message\Formatter\TemplateResolver;
-use Respect\Validation\Message\Placeholder\Subject;
-use Respect\Validation\Message\Translator\ArrayTranslator;
-use Respect\Validation\Message\Translator\DummyTranslator;
 use Respect\Validation\Test\Builders\ResultBuilder;
-use Respect\Validation\Test\Message\TestingModifier;
+use Respect\Validation\Test\Message\TestingTranslator;
 use Respect\Validation\Test\TestCase;
-
-use function sprintf;
 
 #[CoversClass(InterpolationRenderer::class)]
 final class InterpolationRendererTest extends TestCase
@@ -28,7 +24,11 @@ final class InterpolationRendererTest extends TestCase
     #[Test]
     public function itShouldRenderResultWithCustomTemplate(): void
     {
-        $renderer = new InterpolationRenderer(new DummyTranslator(), new TestingModifier(), new TemplateResolver());
+        $renderer = new InterpolationRenderer(
+            new TestingTranslator(),
+            new PlaceholderFormatter([]),
+            new TemplateResolver(),
+        );
 
         $result = (new ResultBuilder())->template('This is my template')->build();
 
@@ -36,242 +36,153 @@ final class InterpolationRendererTest extends TestCase
     }
 
     #[Test]
-    public function itShouldRenderResultProcessingParametersInTheTemplate(): void
+    public function itShouldRenderResultProcessingParametersFromTheResult(): void
     {
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
-
-        $key = 'foo';
-        $value = true;
-
+        $parameters = ['foo' => 42];
+        $template = 'Value: {{foo}}';
+        $formatter = new PlaceholderFormatter([]);
+        $expected = $formatter->formatUsing($template, $parameters);
         $result = (new ResultBuilder())
-            ->template(sprintf('Will replace {{%s}}', $key))
-            ->parameters([$key => $value])
+            ->template($template)
+            ->parameters($parameters)
             ->build();
+        $renderer = new InterpolationRenderer(new TestingTranslator(), $formatter, new TemplateResolver());
 
-        self::assertSame(
-            'Will replace ' . $modifier->modify($value, null),
-            $renderer->render($result, []),
-        );
+        $actual = $renderer->render($result, []);
+
+        self::assertSame($expected, $actual);
     }
 
     #[Test]
-    public function itShouldRenderResultProcessingModifierParametersInTheTemplate(): void
+    public function itShouldRenderResultWithInputParameter(): void
     {
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
-
-        $key = 'foo';
-        $value = 0.1;
-
+        $template = 'Input: {{input}}';
+        $input = 'test input';
+        $formatter = new PlaceholderFormatter([]);
+        $expected = $formatter->formatUsing($template, ['input' => $input]);
         $result = (new ResultBuilder())
-            ->template(sprintf('Will replace {{%1$s}} and {{%1$s|modifier}}', $key))
-            ->parameters([$key => $value])
-            ->build();
-
-        self::assertSame(
-            sprintf('Will replace %s and %s', $modifier->modify($value, null), $modifier->modify($value, 'modifier')),
-            $renderer->render($result, []),
-        );
-    }
-
-    #[Test]
-    public function itShouldRenderResultProcessingNameAsSomeParameterInTheTemplate(): void
-    {
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
-
-        $name = 'my name';
-
-        $result = (new ResultBuilder())
-            ->template('Will replace {{subject}}')
-            ->name($name)
-            ->build();
-
-        $subject = Subject::fromResult($result);
-
-        self::assertSame(
-            'Will replace ' . $modifier->modify($subject, null),
-            $renderer->render($result, []),
-        );
-    }
-
-    #[Test]
-    public function itShouldRenderResultProcessingInputAsNameWhenResultHasNoName(): void
-    {
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
-
-        $input = 42;
-
-        $result = (new ResultBuilder())
-            ->template('Will replace {{subject}}')
+            ->template($template)
             ->input($input)
             ->build();
+        $renderer = new InterpolationRenderer(new TestingTranslator(), $formatter, new TemplateResolver());
 
-        $subject = Subject::fromResult($result);
+        $actual = $renderer->render($result, []);
 
-        self::assertSame(
-            sprintf(
-                'Will replace %s',
-                $modifier->modify($subject, null),
-            ),
-            $renderer->render($result, []),
-        );
+        self::assertSame($expected, $actual);
     }
 
     #[Test]
-    public function itShouldRenderResultProcessingInputAsSomeParameterInTheTemplate(): void
+    public function itShouldRenderResultWithSubjectParameter(): void
     {
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
-
-        $input = 42;
-
+        $template = 'Subject: {{subject}}';
+        $subject = 'test';
+        $formatter = new PlaceholderFormatter([]);
         $result = (new ResultBuilder())
-            ->template('Will replace {{input}}')
-            ->input($input)
+            ->template($template)
+            ->input($subject)
             ->build();
+        $expected = $formatter->formatUsing($template, ['subject' => $result]);
+        $renderer = new InterpolationRenderer(new TestingTranslator(), $formatter, new TemplateResolver());
 
-        self::assertSame(
-            sprintf('Will replace %s', $modifier->modify($input, null)),
-            $renderer->render($result, []),
-        );
+        $actual = $renderer->render($result, []);
+
+        self::assertSame($expected, $actual);
     }
 
     #[Test]
-    public function itShouldRenderResultNotOverwritingNameParameterWithRealName(): void
+    public function itShouldRenderResultWithPathParameter(): void
     {
-        $parameterNameValue = 'fake name';
-
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
-
+        $template = 'Path: {{path}}';
+        $formatter = new PlaceholderFormatter([]);
         $result = (new ResultBuilder())
-            ->template('Will replace {{subject}}')
-            ->name('real name')
-            ->parameters(['name' => $parameterNameValue])
+            ->template($template)
             ->build();
+        $expected = $formatter->formatUsing($template, ['path' => $result->path]);
+        $renderer = new InterpolationRenderer(new TestingTranslator(), $formatter, new TemplateResolver());
 
-        $subject = Subject::fromResult($result);
+        $actual = $renderer->render($result, []);
 
-        self::assertSame(
-            sprintf('Will replace %s', $modifier->modify($subject, null)),
-            $renderer->render($result, []),
-        );
+        self::assertSame($expected, $actual);
     }
 
     #[Test]
-    public function itShouldRenderResultNotOverwritingInputParameterWithRealInput(): void
+    public function itShouldNotAllowParametersToOverrideDefaultOnes(): void
     {
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
-
+        $template = 'Input: {{input}}';
         $input = 'real input';
-
+        $parameters = ['input' => 'custom input'];
+        $formatter = new PlaceholderFormatter([]);
+        $expected = $formatter->formatUsing($template, ['input' => $input]);
         $result = (new ResultBuilder())
-            ->template('Will replace {{input}}')
+            ->template($template)
             ->input($input)
-            ->parameters(['input' => 'fake input'])
+            ->parameters($parameters)
             ->build();
+        $renderer = new InterpolationRenderer(new TestingTranslator(), $formatter, new TemplateResolver());
 
-        self::assertSame(
-            sprintf('Will replace %s', $modifier->modify($input, null)),
-            $renderer->render($result, []),
-        );
-    }
+        $actual = $renderer->render($result, []);
 
-    #[Test]
-    public function itShouldRenderResultProcessingNonExistingParameters(): void
-    {
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer(new DummyTranslator(), $modifier, new TemplateResolver());
-
-        $result = (new ResultBuilder())
-            ->template('Will not replace {{unknown}}')
-            ->build();
-
-        self::assertSame('Will not replace {{unknown}}', $renderer->render($result, []));
+        self::assertSame($expected, $actual);
     }
 
     #[Test]
     public function itShouldRenderResultTranslatingTemplate(): void
     {
-        $template = 'This is my template with {{foo}}';
-        $translations = [$template => 'This is my translated template with {{foo}}'];
-
-        $translator = new ArrayTranslator($translations);
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
-
+        $template = 'Original message {{name}}';
+        $translations = [$template => 'Translated message {{name}}'];
+        $translator = new TestingTranslator($translations);
+        $formatter = new PlaceholderFormatter([]);
+        $expected = $formatter->formatUsing($translations[$template], []);
         $result = (new ResultBuilder())
             ->template($template)
             ->build();
+        $renderer = new InterpolationRenderer($translator, $formatter, new TemplateResolver());
 
-        self::assertSame($translations[$template], $renderer->render($result, []));
+        $actual = $renderer->render($result, []);
+
+        self::assertSame($expected, $actual);
     }
 
     #[Test]
     public function itShouldRenderResultWithNonCustomTemplate(): void
     {
-        $translator = new DummyTranslator();
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
+        $renderer = new InterpolationRenderer(
+            new TestingTranslator(),
+            new PlaceholderFormatter([]),
+            new TemplateResolver(),
+        );
 
         $result = (new ResultBuilder())->build();
 
-        $subject = Subject::fromResult($result);
+        $output = $renderer->render($result, []);
 
-        self::assertSame(
-            sprintf(
-                '%s must be a valid stub',
-                $modifier->modify($subject, null),
-            ),
-            $renderer->render($result, []),
-        );
+        self::assertStringContainsString('must be a valid stub', $output);
     }
 
     #[Test]
-    public function itShouldRenderResultWithNonCustomTemplateAndInvertedMode(): void
+    public function itShouldRenderResultWithInvertedMode(): void
     {
-        $translator = new DummyTranslator();
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
+        $renderer = new InterpolationRenderer(
+            new TestingTranslator(),
+            new PlaceholderFormatter([]),
+            new TemplateResolver(),
+        );
 
         $result = (new ResultBuilder())->hasInvertedMode()->build();
 
-        $subject = Subject::fromResult($result);
+        $output = $renderer->render($result, []);
 
-        self::assertSame(
-            sprintf(
-                '%s must not be a valid stub',
-                $modifier->modify($subject, null),
-            ),
-            $renderer->render($result, []),
-        );
+        self::assertStringContainsString('must not be a valid stub', $output);
     }
 
     #[Test]
-    public function itShouldRenderResultWithNonCustomTemplateWhenCannotFindAttachedTemplate(): void
+    public function itShouldRenderResultWithItsAdjacentWhenItHasNoCustomTemplate(): void
     {
-        $translator = new DummyTranslator();
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
-
-        $result = (new ResultBuilder())->template('__not_standard__')->hasInvertedMode()->build();
-
-        self::assertSame(
-            $result->template,
-            $renderer->render($result, []),
+        $renderer = new InterpolationRenderer(
+            new TestingTranslator(),
+            new PlaceholderFormatter([]),
+            new TemplateResolver(),
         );
-    }
-
-    #[Test]
-    public function itShouldRenderResultWithItsAdjacentsWhenItHasNoCustomTemplate(): void
-    {
-        $translator = new DummyTranslator();
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
 
         $result = (new ResultBuilder())->template('__1st__')
             ->adjacent(
@@ -289,17 +200,19 @@ final class InterpolationRendererTest extends TestCase
     }
 
     #[Test]
-    public function itShouldRenderResultWithoutItsAdjacentsWhenItHasCustomTemplate(): void
+    public function itShouldNotRenderAdjacentsWhenItHasCustomTemplate(): void
     {
         $template = 'Custom template';
+
+        $renderer = new InterpolationRenderer(
+            new TestingTranslator(),
+            new PlaceholderFormatter([]),
+            new TemplateResolver(),
+        );
 
         $result = (new ResultBuilder())->template($template)
             ->adjacent((new ResultBuilder())->template('and this is a adjacent')->build())
             ->build();
-
-        $translator = new DummyTranslator();
-        $modifier = new TestingModifier();
-        $renderer = new InterpolationRenderer($translator, $modifier, new TemplateResolver());
 
         self::assertSame($template, $renderer->render($result, []));
     }

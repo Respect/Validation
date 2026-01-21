@@ -62,25 +62,25 @@ v::templated(
 // → Le champ "adresse e-mail" est invalide
 ```
 
-### listOr
+### list:or
 
-The `listOr` modifier formats arrays as readable lists using "or":
+The `list:or` modifier formats arrays as readable lists using "or":
 
 ```php
 v::templated(
-    'Status must be {{haystack|listOr}}',
+    'Status must be {{haystack|list:or}}',
     v::in(['active', 'pending', 'archived']),
 )->assert('deleted');
 // → Status must be "active", "pending", or "archived"
 ```
 
-### listAnd
+### list:and
 
-The `listAnd` modifier formats arrays as readable lists using "and":
+The `list:and` modifier formats arrays as readable lists using "and":
 
 ```php
 v::templated(
-    'User must have {{roles|listAnd}} roles to perform this action',
+    'User must have {{roles|list:and}} roles to perform this action',
     v::callback(fn(User $user) => $user->hasRoles(['admin', 'editor'])),
     ['roles' => ['admin', 'editor']],
 )->assert($user);

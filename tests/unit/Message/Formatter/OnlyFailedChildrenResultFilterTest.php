@@ -55,7 +55,7 @@ final class OnlyFailedChildrenResultFilterTest extends TestCase
     public function itKeepsChildrenWithNonNullPathUnchanged(): void
     {
         $child1 = (new ResultBuilder())->id('a')->hasPassed(false)->build(); // path null
-        $child2 = (new ResultBuilder())->id('b')->hasPassed(false)->withPath(new Path(0))->build(); // non‑null path
+        $child2 = (new ResultBuilder())->id('b')->hasPassed(false)->path(new Path(0))->build(); // non‑null path
 
         $parent = (new ResultBuilder())
             ->hasPassed(false)

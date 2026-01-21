@@ -1,30 +1,30 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * SPDX-License-Identifier: MIT
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  */
 
-namespace Respect\Validation\Message\Stringifier;
+declare(strict_types=1);
 
+namespace Respect\Validation\Message\Parameters;
+
+use Respect\Stringifier\Handler;
 use Respect\Stringifier\Quoter;
-use Respect\Stringifier\Stringifier;
 use Respect\Validation\Path;
 
 use function array_reverse;
 use function implode;
 
-final readonly class PathStringifier implements Stringifier
+final readonly class PathHandler implements Handler
 {
     public function __construct(
         private Quoter $quoter,
     ) {
     }
 
-    public function stringify(mixed $raw, int $depth): string|null
+    public function handle(mixed $raw, int $depth): string|null
     {
         if (!$raw instanceof Path) {
             return null;

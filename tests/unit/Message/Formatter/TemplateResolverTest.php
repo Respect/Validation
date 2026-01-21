@@ -22,7 +22,7 @@ final class TemplateResolverTest extends TestCase
     #[Test]
     public function itShouldReturnResultWithTemplateWhenKeyExists(): void
     {
-        $result = (new ResultBuilder())->withPath(new Path('foo-path'))->build();
+        $result = (new ResultBuilder())->path(new Path('foo-path'))->build();
         $templates = ['foo-path' => 'My custom template'];
         $sut = new TemplateResolver();
         $template = $sut->getGivenTemplate($result, $templates);

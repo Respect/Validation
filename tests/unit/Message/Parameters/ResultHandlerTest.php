@@ -8,43 +8,43 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Message\Stringifier;
+namespace Respect\Validation\Message\Parameters;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use Respect\Validation\Message\Placeholder\Subject;
 use Respect\Validation\Name;
 use Respect\Validation\Path;
-use Respect\Validation\Test\Message\TestingStringifier;
+use Respect\Validation\Test\Builders\ResultBuilder;
+use Respect\Validation\Test\Message\TestingHandler;
 use Respect\Validation\Test\TestCase;
 use stdClass;
 
 use function sprintf;
 
-#[CoversClass(SubjectStringifier::class)]
-final class SubjectStringifierTest extends TestCase
+#[CoversClass(ResultHandler::class)]
+final class ResultHandlerTest extends TestCase
 {
     #[Test]
     #[DataProvider('providerForNonSubjectValues')]
     public function itShouldNotStringifyWhenValueIsNotAnInstanceOfSubject(mixed $value): void
     {
-        $stringifier = new SubjectStringifier(new TestingStringifier());
+        $handler = new ResultHandler(new TestingHandler());
 
-        self::assertNull($stringifier->stringify($value, 0));
+        self::assertNull($handler->handle($value, 0));
     }
 
     #[Test]
     public function itShouldStringifyInputWhenPathAndNameAreNull(): void
     {
         $input = ['test' => 'value'];
-        $subject = new Subject($input);
+        $result = (new ResultBuilder())->input($input)->build();
 
-        $testingStringifier = new TestingStringifier();
-        $stringifier = new SubjectStringifier($testingStringifier);
+        $testingHandler = new TestingHandler();
+        $handler = new ResultHandler($testingHandler);
 
-        $expected = $testingStringifier->stringify($input, 0);
-        $actual = $stringifier->stringify($subject, 0);
+        $expected = $testingHandler->handle($input, 0);
+        $actual = $handler->handle($result, 0);
 
         self::assertSame($expected, $actual);
     }
@@ -53,13 +53,13 @@ final class SubjectStringifierTest extends TestCase
     public function itShouldStringifyPathWhenNameIsNull(): void
     {
         $path = new Path('field1');
-        $subject = new Subject('input', $path);
+        $result = (new ResultBuilder())->path($path)->build();
 
-        $testingStringifier = new TestingStringifier();
-        $stringifier = new SubjectStringifier($testingStringifier);
+        $testingHandler = new TestingHandler();
+        $handler = new ResultHandler($testingHandler);
 
-        $expected = $testingStringifier->stringify($path, 0);
-        $actual = $stringifier->stringify($subject, 0);
+        $expected = $testingHandler->handle($path, 0);
+        $actual = $handler->handle($result, 0);
 
         self::assertSame($expected, $actual);
     }
@@ -68,13 +68,13 @@ final class SubjectStringifierTest extends TestCase
     public function itShouldStringifyNameWhenPathIsNull(): void
     {
         $name = new Name('field_name');
-        $subject = new Subject('input', null, $name);
+        $result = (new ResultBuilder())->name($name)->build();
 
-        $testingStringifier = new TestingStringifier();
-        $stringifier = new SubjectStringifier($testingStringifier);
+        $testingHandler = new TestingHandler();
+        $handler = new ResultHandler($testingHandler);
 
-        $expected = $testingStringifier->stringify($name, 0);
-        $actual = $stringifier->stringify($subject, 0);
+        $expected = $testingHandler->handle($name, 0);
+        $actual = $handler->handle($result, 0);
 
         self::assertSame($expected, $actual);
     }
@@ -84,13 +84,13 @@ final class SubjectStringifierTest extends TestCase
     {
         $path = new Path('field1');
         $name = new Name('field_name');
-        $subject = new Subject('input', $path, $name, true);
+        $result = (new ResultBuilder())->name($name)->path($path)->hasPrecedentName(true)->build();
 
-        $testingStringifier = new TestingStringifier();
-        $stringifier = new SubjectStringifier($testingStringifier);
+        $testingHandler = new TestingHandler();
+        $handler = new ResultHandler($testingHandler);
 
-        $expected = $testingStringifier->stringify($name, 0);
-        $actual = $stringifier->stringify($subject, 0);
+        $expected = $testingHandler->handle($name, 0);
+        $actual = $handler->handle($result, 0);
 
         self::assertSame($expected, $actual);
     }
@@ -100,15 +100,15 @@ final class SubjectStringifierTest extends TestCase
     {
         $path = new Path('field1');
         $name = new Name('field_name');
-        $subject = new Subject('input', $path, $name, false);
+        $result = (new ResultBuilder())->name($name)->path($path)->hasPrecedentName(false)->build();
 
-        $testingStringifier = new TestingStringifier();
-        $stringifier = new SubjectStringifier($testingStringifier);
+        $testingHandler = new TestingHandler();
+        $handler = new ResultHandler($testingHandler);
 
-        $pathString = $testingStringifier->stringify($path, 0);
-        $nameString = $testingStringifier->stringify($name, 0);
+        $pathString = $testingHandler->handle($path, 0);
+        $nameString = $testingHandler->handle($name, 0);
         $expected = sprintf('%s (<- %s)', $pathString, $nameString);
-        $actual = $stringifier->stringify($subject, 0);
+        $actual = $handler->handle($result, 0);
 
         self::assertSame($expected, $actual);
     }
@@ -119,15 +119,15 @@ final class SubjectStringifierTest extends TestCase
         $path1 = new Path('field1');
         $path2 = new Path('field2', $path1);
         $name = new Name('field_name');
-        $subject = new Subject('input', $path2, $name, false);
+        $result = (new ResultBuilder())->name($name)->path($path2)->hasPrecedentName(false)->build();
 
-        $testingStringifier = new TestingStringifier();
-        $stringifier = new SubjectStringifier($testingStringifier);
+        $testingHandler = new TestingHandler();
+        $handler = new ResultHandler($testingHandler);
 
-        $pathString = $testingStringifier->stringify($path2, 0);
-        $nameString = $testingStringifier->stringify($name, 0);
+        $pathString = $testingHandler->handle($path2, 0);
+        $nameString = $testingHandler->handle($name, 0);
         $expected = sprintf('%s (<- %s)', $pathString, $nameString);
-        $actual = $stringifier->stringify($subject, 0);
+        $actual = $handler->handle($result, 0);
 
         self::assertSame($expected, $actual);
     }

@@ -1,21 +1,21 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * SPDX-License-Identifier: MIT
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  */
 
-namespace Respect\Validation\Message\Stringifier;
+declare(strict_types=1);
 
-use Respect\Stringifier\Stringifier;
+namespace Respect\Validation\Message\Parameters;
+
+use Respect\Stringifier\Handler;
 use Respect\Validation\Name;
 
-final readonly class NameStringifier implements Stringifier
+final readonly class NameHandler implements Handler
 {
-    public function stringify(mixed $raw, int $depth): string|null
+    public function handle(mixed $raw, int $depth): string|null
     {
         if (!$raw instanceof Name) {
             return null;

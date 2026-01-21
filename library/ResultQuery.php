@@ -99,7 +99,7 @@ final readonly class ResultQuery implements Stringable
         return $this->result->hasPassed;
     }
 
-    public function toMessage(): string
+    public function getMessage(): string
     {
         if ($this->result->hasPassed) {
             return '';
@@ -108,7 +108,7 @@ final readonly class ResultQuery implements Stringable
         return $this->messageFormatter->format($this->result, $this->renderer, $this->templates);
     }
 
-    public function toFullMessage(): string
+    public function getFullMessage(): string
     {
         if ($this->result->hasPassed) {
             return '';
@@ -118,7 +118,7 @@ final readonly class ResultQuery implements Stringable
     }
 
     /** @return array<string|int, mixed> */
-    public function toArrayMessages(): array
+    public function getMessages(): array
     {
         if ($this->result->hasPassed) {
             return [];
@@ -129,6 +129,6 @@ final readonly class ResultQuery implements Stringable
 
     public function __toString(): string
     {
-        return $this->toMessage();
+        return $this->getMessage();
     }
 }

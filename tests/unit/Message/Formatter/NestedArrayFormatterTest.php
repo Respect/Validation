@@ -82,8 +82,8 @@ final class NestedArrayFormatterTest extends TestCase
             'with string key collision' => [
                 (new ResultBuilder())->id('root')->template('root_msg')
                     ->children(
-                        (new ResultBuilder())->id('c1')->template('msg1')->withPath(new Path('foo'))->build(),
-                        (new ResultBuilder())->id('c2')->template('msg2')->withPath(new Path('foo'))->build(),
+                        (new ResultBuilder())->id('c1')->template('msg1')->path(new Path('foo'))->build(),
+                        (new ResultBuilder())->id('c2')->template('msg2')->path(new Path('foo'))->build(),
                     )->build(),
                 [
                     'foo' => ['msg1', 'msg2'],
@@ -92,8 +92,8 @@ final class NestedArrayFormatterTest extends TestCase
             'with numeric key collision (list)' => [
                 (new ResultBuilder())->id('root')->template('root_msg')
                     ->children(
-                        (new ResultBuilder())->id('c1')->template('msg1')->withPath(new Path(0))->build(),
-                        (new ResultBuilder())->id('c2')->template('msg2')->withPath(new Path(0))->build(),
+                        (new ResultBuilder())->id('c1')->template('msg1')->path(new Path(0))->build(),
+                        (new ResultBuilder())->id('c2')->template('msg2')->path(new Path(0))->build(),
                     )->build(),
                 [
                     '__root__' => 'root_msg',
@@ -104,8 +104,8 @@ final class NestedArrayFormatterTest extends TestCase
             'with mixed keys replacement' => [
                 (new ResultBuilder())->id('root')->template('root_msg')
                     ->children(
-                        (new ResultBuilder())->id('c1')->template('msg1')->withPath(new Path('foo'))->build(),
-                        (new ResultBuilder())->id('c2')->template('msg2')->withPath(new Path(0))->build(),
+                        (new ResultBuilder())->id('c1')->template('msg1')->path(new Path('foo'))->build(),
+                        (new ResultBuilder())->id('c2')->template('msg2')->path(new Path(0))->build(),
                     )->build(),
                 [
                     '__root__' => 'root_msg',
@@ -116,9 +116,9 @@ final class NestedArrayFormatterTest extends TestCase
             'with mixed keys and ID collision' => [
                 (new ResultBuilder())->id('root')->template('root_msg')
                     ->children(
-                        (new ResultBuilder())->id('c1')->template('msg1')->withPath(new Path('foo'))->build(),
-                        (new ResultBuilder())->id('sameId')->template('msg2')->withPath(new Path(0))->build(),
-                        (new ResultBuilder())->id('sameId')->template('msg3')->withPath(new Path(1))->build(),
+                        (new ResultBuilder())->id('c1')->template('msg1')->path(new Path('foo'))->build(),
+                        (new ResultBuilder())->id('sameId')->template('msg2')->path(new Path(0))->build(),
+                        (new ResultBuilder())->id('sameId')->template('msg3')->path(new Path(1))->build(),
                     )->build(),
                 [
                     '__root__' => 'root_msg',
@@ -129,8 +129,8 @@ final class NestedArrayFormatterTest extends TestCase
             'with pure numeric keys' => [
                 (new ResultBuilder())->id('root')->template('root_msg')
                     ->children(
-                        (new ResultBuilder())->id('c1')->template('msg1')->withPath(new Path(10))->build(),
-                        (new ResultBuilder())->id('c2')->template('msg2')->withPath(new Path(20))->build(),
+                        (new ResultBuilder())->id('c1')->template('msg1')->path(new Path(10))->build(),
+                        (new ResultBuilder())->id('c2')->template('msg2')->path(new Path(20))->build(),
                     )->build(),
                 [
                     '__root__' => 'root_msg',

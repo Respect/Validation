@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Exceptions;
 
 use InvalidArgumentException;
+use Respect\Validation\ResultQuery;
 
 use function array_shift;
 use function in_array;
@@ -25,15 +26,10 @@ use function realpath;
 
 final class ValidationException extends InvalidArgumentException implements Exception
 {
-    /**
-     * @param array<string|int, mixed> $messages
-     * @param array<string>            $ignoredBacktracePaths
-     */
     public function __construct(
         string $message,
-        private readonly string $fullMessage,
-        private readonly array $messages,
-        array $ignoredBacktracePaths = [],
+        private readonly ResultQuery $resultQuery,
+        string ...$ignoredBacktracePaths,
     ) {
         $this->overwriteFileAndLine($ignoredBacktracePaths);
 
@@ -42,13 +38,13 @@ final class ValidationException extends InvalidArgumentException implements Exce
 
     public function getFullMessage(): string
     {
-        return $this->fullMessage;
+        return $this->resultQuery->getFullMessage();
     }
 
     /** @return array<string|int, mixed> */
     public function getMessages(): array
     {
-        return $this->messages;
+        return $this->resultQuery->getMessages();
     }
 
     /** @param array<string> $ignoredBacktracePaths */

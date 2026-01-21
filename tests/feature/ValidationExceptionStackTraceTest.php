@@ -9,7 +9,21 @@
 declare(strict_types=1);
 
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\ResultQuery;
+use Respect\Validation\Test\Builders\ResultBuilder;
+use Respect\Validation\Test\Message\TestingArrayFormatter;
+use Respect\Validation\Test\Message\TestingMessageRenderer;
+use Respect\Validation\Test\Message\TestingStringFormatter;
 use Respect\Validation\Test\Stubs\MyValidator;
+
+$resultQuery = new ResultQuery(
+    (new ResultBuilder())->build(),
+    new TestingMessageRenderer(),
+    new TestingStringFormatter(),
+    new TestingStringFormatter(),
+    new TestingArrayFormatter(),
+    [],
+);
 
 test('Should overwrite file and line in the Validator class', function (): void {
     try {
@@ -29,9 +43,9 @@ test('Should overwrite file and line in ValidationException', function (): void 
     }
 });
 
-test('Should not overwrite file and line when created manually', function (): void {
+test('Should not overwrite file and line when created manually', function () use ($resultQuery): void {
     try {
-        throw new ValidationException('message', 'fullMessage', ['id' => 'message']);
+        throw new ValidationException('message', $resultQuery);
     } catch (ValidationException $e) {
         expect($e->getFile())->toBe(__FILE__);
         expect($e->getLine())->toBe(__LINE__ - 3);
@@ -39,9 +53,9 @@ test('Should not overwrite file and line when created manually', function (): vo
 });
 
 
-test('Should not overwrite file and line when file cannot be ever traced', function (): void {
+test('Should not overwrite file and line when file cannot be ever traced', function () use ($resultQuery): void {
     try {
-        throw new ValidationException('message', 'fullMessage', ['id' => 'message'], ['/tmp/unknown']);
+        throw new ValidationException('message', $resultQuery, '/tmp/unknown');
     } catch (ValidationException $e) {
         expect($e->getFile())->toBe(__FILE__);
         expect($e->getLine())->toBe(__LINE__ - 3);
@@ -49,7 +63,7 @@ test('Should not overwrite file and line when file cannot be ever traced', funct
 });
 
 
-test('Should go not overwrite file and line when it runs out of choices', function (): void {
+test('Should go not overwrite file and line when it runs out of choices', function () use ($resultQuery): void {
     try {
         $trace = array_unique(
             array_filter(
@@ -61,7 +75,7 @@ test('Should go not overwrite file and line when it runs out of choices', functi
         );
         $trace[] = __FILE__;
 
-        throw new ValidationException('message', 'fullMessage', ['id' => 'message'], $trace);
+        throw new ValidationException('message', $resultQuery, ...$trace);
     } catch (ValidationException $e) {
         expect($e->getFile())->toBe(__FILE__);
         expect($e->getLine())->toBe(__LINE__ - 3);

@@ -90,13 +90,7 @@ final readonly class ValidatorBuilder implements Validator, Nameable
 
         $resultQuery = $this->toResultQuery($result, is_callable($template) ? null : $template);
 
-        $exception = new ValidationException(
-            $resultQuery->toMessage(),
-            $resultQuery->toFullMessage(),
-            $resultQuery->toArrayMessages(),
-            $this->ignoredBacktracePaths,
-        );
-
+        $exception = new ValidationException($resultQuery->getMessage(), $resultQuery, ...$this->ignoredBacktracePaths);
         if (is_callable($template)) {
             throw $template($exception);
         }

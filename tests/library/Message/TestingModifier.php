@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test\Message;
 
-use Respect\Validation\Message\Modifier;
+use Respect\StringFormatter\Modifier;
 
 use function print_r;
 use function sprintf;

@@ -111,7 +111,7 @@ final class ValidatorTest extends TestCase
 
         $resultQuery = $validator->validate('whatever', $template);
 
-        self::assertSame($template, $resultQuery->toMessage());
+        self::assertSame($template, $resultQuery->getMessage());
     }
 
     #[Test]
@@ -123,7 +123,7 @@ final class ValidatorTest extends TestCase
 
         $resultQuery = $validator->validate('whatever', ['stub' => $template]);
 
-        self::assertSame($template, $resultQuery->toMessage());
+        self::assertSame($template, $resultQuery->getMessage());
     }
 
     #[Test]

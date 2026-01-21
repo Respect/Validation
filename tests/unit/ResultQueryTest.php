@@ -52,7 +52,7 @@ final class ResultQueryTest extends TestCase
 
         $resultQuery = $this->createResultQuery($result);
 
-        self::assertSame('', $resultQuery->toMessage());
+        self::assertSame('', $resultQuery->getMessage());
     }
 
     #[Test]
@@ -65,7 +65,7 @@ final class ResultQueryTest extends TestCase
 
         $resultQuery = $this->createResultQuery($result, renderer: $renderer, messageFormatter: $formatter);
 
-        self::assertSame($formatter->format($result, $renderer, []), $resultQuery->toMessage());
+        self::assertSame($formatter->format($result, $renderer, []), $resultQuery->getMessage());
     }
 
     #[Test]
@@ -75,7 +75,7 @@ final class ResultQueryTest extends TestCase
 
         $resultQuery = $this->createResultQuery($result);
 
-        self::assertSame('', $resultQuery->toFullMessage());
+        self::assertSame('', $resultQuery->getFullMessage());
     }
 
     #[Test]
@@ -88,7 +88,7 @@ final class ResultQueryTest extends TestCase
 
         $resultQuery = $this->createResultQuery($result, renderer: $renderer, fullMessageFormatter: $formatter);
 
-        self::assertSame($formatter->format($result, $renderer, []), $resultQuery->toFullMessage());
+        self::assertSame($formatter->format($result, $renderer, []), $resultQuery->getFullMessage());
     }
 
     #[Test]
@@ -98,7 +98,7 @@ final class ResultQueryTest extends TestCase
 
         $resultQuery = $this->createResultQuery($result);
 
-        self::assertSame([], $resultQuery->toArrayMessages());
+        self::assertSame([], $resultQuery->getMessages());
     }
 
     #[Test]
@@ -111,7 +111,7 @@ final class ResultQueryTest extends TestCase
 
         $resultQuery = $this->createResultQuery($result, renderer: $renderer, messagesFormatter: $formatter);
 
-        self::assertSame($formatter->format($result, $renderer, []), $resultQuery->toArrayMessages());
+        self::assertSame($formatter->format($result, $renderer, []), $resultQuery->getMessages());
     }
 
     #[Test]
@@ -154,7 +154,7 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findById($id);
 
         self::assertNotNull($found);
-        self::assertSame($formatter->format($result, $renderer, []), $found->toMessage());
+        self::assertSame($formatter->format($result, $renderer, []), $found->getMessage());
     }
 
     #[Test]
@@ -180,7 +180,7 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findById($childId);
 
         self::assertNotNull($found);
-        self::assertSame($formatter->format($child, $renderer, []), $found->toMessage());
+        self::assertSame($formatter->format($child, $renderer, []), $found->getMessage());
     }
 
     #[Test]
@@ -212,7 +212,7 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findById($grandchildId);
 
         self::assertNotNull($found);
-        self::assertSame($formatter->format($grandchild, $renderer, []), $found->toMessage());
+        self::assertSame($formatter->format($grandchild, $renderer, []), $found->getMessage());
     }
 
     #[Test]
@@ -256,7 +256,7 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findByName($name);
 
         self::assertNotNull($found);
-        self::assertSame($formatter->format($result, $renderer, []), $found->toMessage());
+        self::assertSame($formatter->format($result, $renderer, []), $found->getMessage());
     }
 
     #[Test]
@@ -282,7 +282,7 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findByName($childName);
 
         self::assertNotNull($found);
-        self::assertSame($formatter->format($child, $renderer, []), $found->toMessage());
+        self::assertSame($formatter->format($child, $renderer, []), $found->getMessage());
     }
 
     #[Test]
@@ -314,7 +314,7 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findByName($grandchildName);
 
         self::assertNotNull($found);
-        self::assertSame($formatter->format($grandchild, $renderer, []), $found->toMessage());
+        self::assertSame($formatter->format($grandchild, $renderer, []), $found->getMessage());
     }
 
     #[Test]
@@ -347,7 +347,7 @@ final class ResultQueryTest extends TestCase
 
         $path = uniqid();
         $result = (new ResultBuilder())
-            ->withPath(new Path($path))
+            ->path(new Path($path))
             ->hasPassed(false)
             ->build();
 
@@ -356,7 +356,7 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findByPath($path);
 
         self::assertNotNull($found);
-        self::assertSame($formatter->format($result, $renderer, []), $found->toMessage());
+        self::assertSame($formatter->format($result, $renderer, []), $found->getMessage());
     }
 
     #[Test]
@@ -367,12 +367,12 @@ final class ResultQueryTest extends TestCase
 
         $childPath = uniqid();
         $child = (new ResultBuilder())
-            ->withPath(new Path($childPath))
+            ->path(new Path($childPath))
             ->hasPassed(false)
             ->build();
 
         $parent = (new ResultBuilder())
-            ->withPath(new Path(uniqid()))
+            ->path(new Path(uniqid()))
             ->hasPassed(false)
             ->children($child)
             ->build();
@@ -382,7 +382,7 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findByPath($childPath);
 
         self::assertNotNull($found);
-        self::assertSame($formatter->format($child, $renderer, []), $found->toMessage());
+        self::assertSame($formatter->format($child, $renderer, []), $found->getMessage());
     }
 
     #[Test]
@@ -395,18 +395,18 @@ final class ResultQueryTest extends TestCase
         $grandchildPath = uniqid();
 
         $grandchild = (new ResultBuilder())
-            ->withPath(new Path($grandchildPath))
+            ->path(new Path($grandchildPath))
             ->hasPassed(false)
             ->build();
 
         $child = (new ResultBuilder())
-            ->withPath(new Path($childPath))
+            ->path(new Path($childPath))
             ->hasPassed(false)
             ->children($grandchild)
             ->build();
 
         $parent = (new ResultBuilder())
-            ->withPath(new Path(uniqid()))
+            ->path(new Path(uniqid()))
             ->hasPassed(false)
             ->children($child)
             ->build();
@@ -416,7 +416,7 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findByPath($childPath . '.' . $grandchildPath);
 
         self::assertNotNull($found);
-        self::assertSame($formatter->format($grandchild, $renderer, []), $found->toMessage());
+        self::assertSame($formatter->format($grandchild, $renderer, []), $found->getMessage());
     }
 
     #[Test]
@@ -427,7 +427,7 @@ final class ResultQueryTest extends TestCase
 
         $integerPath = 0;
         $child = (new ResultBuilder())
-            ->withPath(new Path($integerPath))
+            ->path(new Path($integerPath))
             ->hasPassed(false)
             ->build();
 
@@ -441,14 +441,14 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findByPath($integerPath);
 
         self::assertNotNull($found);
-        self::assertSame($formatter->format($child, $renderer, []), $found->toMessage());
+        self::assertSame($formatter->format($child, $renderer, []), $found->getMessage());
     }
 
     #[Test]
     public function itShouldReturnNullWhenPathNotFound(): void
     {
         $result = (new ResultBuilder())
-            ->withPath(new Path(uniqid()))
+            ->path(new Path(uniqid()))
             ->build();
 
         $resultQuery = $this->createResultQuery($result);
@@ -471,7 +471,7 @@ final class ResultQueryTest extends TestCase
     {
         $childPath = uniqid();
         $child = (new ResultBuilder())
-            ->withPath(new Path($childPath))
+            ->path(new Path($childPath))
             ->hasPassed(false)
             ->build();
 
@@ -489,7 +489,7 @@ final class ResultQueryTest extends TestCase
     public function itShouldReturnNullWhenChildPathDoesNotMatch(): void
     {
         $child = (new ResultBuilder())
-            ->withPath(new Path(uniqid()))
+            ->path(new Path(uniqid()))
             ->hasPassed(false)
             ->build();
 
@@ -532,8 +532,8 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findById($childId);
 
         self::assertNotNull($found);
-        self::assertSame($messageFormatter->format($child, $renderer, []), $found->toMessage());
-        self::assertSame($fullMessageFormatter->format($child, $renderer, []), $found->toFullMessage());
+        self::assertSame($messageFormatter->format($child, $renderer, []), $found->getMessage());
+        self::assertSame($fullMessageFormatter->format($child, $renderer, []), $found->getFullMessage());
     }
 
     #[Test]
@@ -563,7 +563,7 @@ final class ResultQueryTest extends TestCase
         $found = $resultQuery->findByName($childName);
 
         self::assertNotNull($found);
-        self::assertSame($messagesFormatter->format($child, $renderer, []), $found->toArrayMessages());
+        self::assertSame($messagesFormatter->format($child, $renderer, []), $found->getMessages());
     }
 
     #[Test]
@@ -574,7 +574,7 @@ final class ResultQueryTest extends TestCase
 
         $childPath = uniqid();
         $child = (new ResultBuilder())
-            ->withPath(new Path($childPath))
+            ->path(new Path($childPath))
             ->hasPassed(false)
             ->build();
 

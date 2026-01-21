@@ -27,5 +27,5 @@ test('Scenario #4', catchFullMessage(
     fn() => v::not(v::callableType())->assert(function (): void {
         // Do nothing
     }),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- `Closure {}` must not be a callable'),
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `Closure { fn(): void }` must not be a callable'),
 ));

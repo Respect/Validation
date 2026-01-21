@@ -23,7 +23,8 @@
         "php": ">=8.5",
         "php-di/php-di": "^7.1",
         "psr/container": "^2.0",
-        "respect/stringifier": "^2.0.0",
+        "respect/string-formatter": "^1.0",
+        "respect/stringifier": "^3.0",
         "symfony/polyfill-mbstring": "^1.33"
     },
     "require-dev": {
@@ -46,6 +47,7 @@
         "sokil/php-isocodes-db-only": "^4.0",
         "squizlabs/php_codesniffer": "^4.0",
         "symfony/console": "^7.4",
+        "symfony/translation": "^8.0",
         "symfony/var-exporter": "^6.4 || ^7.0"
     },
     "suggest": {
