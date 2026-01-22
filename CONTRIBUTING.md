@@ -34,7 +34,7 @@ Before writing anything, feature or bug fix:
 
 A common validator on Respect\Validation is composed of three classes:
 
-- `library/Validators/YourValidatorName.php`: the validator itself
+- `src/Validators/YourValidatorName.php`: the validator itself
 - `tests/unit/Validators/YourValidatorNameTest.php`: tests for the validator
 
 The classes are pretty straightforward. In the sample below, we're going to

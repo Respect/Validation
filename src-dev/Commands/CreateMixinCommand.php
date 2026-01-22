@@ -116,8 +116,8 @@ final class CreateMixinCommand extends Command
         $io->title('Generating mixin interfaces');
 
         // Scan validators directory
-        $libraryDir = dirname(__DIR__, 2) . '/library';
-        $validatorsDir = $libraryDir . '/Validators';
+        $srcDir = dirname(__DIR__, 2) . '/src';
+        $validatorsDir = $srcDir . '/Validators';
         $validators = $this->scanValidators($validatorsDir);
 
         $io->text(sprintf('Found %d validators', count($validators)));
@@ -201,7 +201,7 @@ final class CreateMixinCommand extends Command
 
         // Run code beautifier
         $io->section('Running code beautifier');
-        $mixinsDir = $libraryDir . '/Mixins';
+        $mixinsDir = $srcDir . '/Mixins';
         $phpcbfPath = dirname(__DIR__, 2) . '/vendor/bin/phpcbf';
 
         if (file_exists($phpcbfPath)) {
@@ -344,7 +344,7 @@ final class CreateMixinCommand extends Command
 
     private function overwriteFile(string $content, string $basename): void
     {
-        $libraryDir = dirname(__DIR__, 2) . '/library';
+        $srcDir = dirname(__DIR__, 2) . '/src';
 
         $SPDX = ' * SPDX';
 
@@ -359,7 +359,7 @@ final class CreateMixinCommand extends Command
         ]));
 
         file_put_contents(
-            sprintf('%s/Mixins/%s.php', $libraryDir, $basename),
+            sprintf('%s/Mixins/%s.php', $srcDir, $basename),
             $finalContent,
         );
     }

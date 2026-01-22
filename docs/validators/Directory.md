@@ -20,7 +20,7 @@ v::directory()->assert(__FILE__);
 This validator will consider SplFileInfo instances, so you can do something like:
 
 ```php
-v::directory()->assert(new SplFileInfo('library/'));
+v::directory()->assert(new SplFileInfo('src/'));
 // Validation passes successfully
 
 v::directory()->assert(dir('/'));

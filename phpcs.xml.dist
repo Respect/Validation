@@ -11,7 +11,7 @@
     <arg value="p" />
     <arg value="s" />
 
-    <file>library/</file>
+    <file>src/</file>
     <file>src-dev/</file>
     <file>tests/</file>
 
@@ -20,7 +20,7 @@
     <!-- Exclusions -->
     <exclude-pattern>tests/bootstrap.php</exclude-pattern>
     <rule ref="Squiz.Arrays.ArrayDeclaration.ValueNoNewline">
-        <exclude-pattern>library/Validators/Tld.php</exclude-pattern>
+        <exclude-pattern>src/Validators/Tld.php</exclude-pattern>
     </rule>
     <rule ref="Squiz.Functions.GlobalFunction">
         <exclude-pattern>tests/Pest.php</exclude-pattern>

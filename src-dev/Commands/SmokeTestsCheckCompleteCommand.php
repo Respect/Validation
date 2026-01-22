@@ -36,7 +36,7 @@ final class SmokeTestsCheckCompleteCommand extends Command
 {
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $validatorDir = dirname(__DIR__, 2) . '/library/Validators';
+        $validatorDir = dirname(__DIR__, 2) . '/src/Validators';
 
         $missingSmokeTests = array_diff(
             array_map(

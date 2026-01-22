@@ -62,7 +62,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Respect\\Validation\\": "library/"
+            "Respect\\Validation\\": "src/"
         },
         "files": ["aliases.php"]
     },
@@ -70,7 +70,7 @@
         "psr-4": {
             "Respect\\Dev\\": "src-dev/",
             "Respect\\Validation\\": "tests/unit/",
-            "Respect\\Validation\\Test\\": "tests/library/"
+            "Respect\\Validation\\Test\\": "tests/src/"
         }
     },
     "scripts": {

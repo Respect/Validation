@@ -6,7 +6,7 @@ parameters:
     -
       # Why: SimpleXMLElement is weird and doesn't implement anything ArrayAccess-like
       message: '/Instanceof between mixed and SimpleXMLElement will always evaluate to false\./'
-      path: library/Validators/ArrayVal.php
+      path: src/Validators/ArrayVal.php
     - message: '/Call to an undefined method .+::expectException\(\)/'
       path: tests/Pest.php
     - message: '/Undefined variable: \$this/'
@@ -14,15 +14,15 @@ parameters:
     - message: '/Undefined variable: \$this/'
       path: tests/Pest.php
     - message: '/Method .+\\TestingHandler::handle\(\) never returns null so it can be removed from the return type./'
-      path: tests/library/Message/TestingHandler.php
+      path: tests/src/Message/TestingHandler.php
     - message: '/Access to an undefined property PHPUnit\\Framework\\TestCase/'
       path: tests/feature/Validators/SizeTest.php
     - message: '/Property Respect\\Validation\\Test\\Stubs\\.+::\$[a-zA-Z]+ is never read, only written./'
-      path: tests/library/Stubs
+      path: tests/src/Stubs
     - message: '/Call to an undefined method Pest\\PendingCalls\\TestCall|Pest\\Support\\HigherOrderTapProxy::with\(\)./'
       path: tests/feature/SerializableTest.php
   level: 8
   treatPhpDocTypesAsCertain: false
   paths:
-    - library/
+    - src/
     - tests/
