@@ -34,10 +34,7 @@ interface NotBuilder
 
     public static function notArrayVal(): Chain;
 
-    public static function notBase(
-        int $base,
-        string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    ): Chain;
+    public static function notBase(int $base, string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'): Chain;
 
     public static function notBase64(): Chain;
 
@@ -95,12 +92,7 @@ interface NotBuilder
     public static function notDateTime(string|null $format = null): Chain;
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
-    public static function notDateTimeDiff(
-        string $type,
-        Validator $validator,
-        string|null $format = null,
-        DateTimeImmutable|null $now = null,
-    ): Chain;
+    public static function notDateTimeDiff(string $type, Validator $validator, string|null $format = null, DateTimeImmutable|null $now = null): Chain;
 
     public static function notDecimal(int $decimals): Chain;
 

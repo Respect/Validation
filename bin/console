@@ -10,15 +10,15 @@ declare(strict_types=1);
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Respect\Dev\Commands\CreateMixinCommand;
 use Respect\Dev\Commands\LintDocsCommand;
+use Respect\Dev\Commands\LintMixinCommand;
 use Respect\Dev\Commands\SmokeTestsCheckCompleteCommand;
 use Respect\Dev\Commands\LintSpdxCommand;
 use Respect\Dev\Commands\UpdateDomainSuffixesCommand;
 use Respect\Dev\Commands\UpdateDomainToplevelCommand;
 use Respect\Dev\Commands\UpdatePostalCodesCommand;
+use Respect\Dev\Differ\ConsoleDiffer;
 use Respect\Dev\Markdown\CompositeLinter;
-use Respect\Dev\Markdown\Differ as MarkdownDiffer;
 use Respect\Dev\Markdown\Linters\AssertionMessageLinter;
 use Respect\Dev\Markdown\Linters\ValidatorHeaderLinter;
 use Respect\Dev\Markdown\Linters\ValidatorIndexLinter;
@@ -30,10 +30,9 @@ use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
 use Symfony\Component\Console\Application;
 
 return (static function () {
-    $differ = new MarkdownDiffer(new Differ(new UnifiedDiffOutputBuilder('', addLineNumbers: true)));
+    $differ = new ConsoleDiffer(new Differ(new UnifiedDiffOutputBuilder('', addLineNumbers: true)));
 
     $application = new Application('Respect/Validation', '3.0');
-    $application->addCommand(new CreateMixinCommand());
     $application->addCommand(new LintDocsCommand($differ, new CompositeLinter(
         new AssertionMessageLinter(),
         new ValidatorHeaderLinter(),
@@ -42,6 +41,7 @@ return (static function () {
         new ValidatorTemplatesLinter(),
         new ValidatorChangelogLinter(),
     )));
+    $application->addCommand(new LintMixinCommand($differ));
     $application->addCommand(new LintSpdxCommand());
     $application->addCommand(new UpdateDomainSuffixesCommand());
     $application->addCommand(new UpdateDomainToplevelCommand());

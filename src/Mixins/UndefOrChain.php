@@ -34,10 +34,7 @@ interface UndefOrChain
 
     public function undefOrArrayVal(): Chain;
 
-    public function undefOrBase(
-        int $base,
-        string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    ): Chain;
+    public function undefOrBase(int $base, string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'): Chain;
 
     public function undefOrBase64(): Chain;
 
@@ -93,12 +90,7 @@ interface UndefOrChain
     public function undefOrDateTime(string|null $format = null): Chain;
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
-    public function undefOrDateTimeDiff(
-        string $type,
-        Validator $validator,
-        string|null $format = null,
-        DateTimeImmutable|null $now = null,
-    ): Chain;
+    public function undefOrDateTimeDiff(string $type, Validator $validator, string|null $format = null, DateTimeImmutable|null $now = null): Chain;
 
     public function undefOrDecimal(int $decimals): Chain;
 

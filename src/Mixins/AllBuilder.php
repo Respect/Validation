@@ -32,10 +32,7 @@ interface AllBuilder
 
     public static function allArrayVal(): Chain;
 
-    public static function allBase(
-        int $base,
-        string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    ): Chain;
+    public static function allBase(int $base, string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'): Chain;
 
     public static function allBase64(): Chain;
 
@@ -93,12 +90,7 @@ interface AllBuilder
     public static function allDateTime(string|null $format = null): Chain;
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
-    public static function allDateTimeDiff(
-        string $type,
-        Validator $validator,
-        string|null $format = null,
-        DateTimeImmutable|null $now = null,
-    ): Chain;
+    public static function allDateTimeDiff(string $type, Validator $validator, string|null $format = null, DateTimeImmutable|null $now = null): Chain;
 
     public static function allDecimal(int $decimals): Chain;
 

@@ -26,6 +26,7 @@
         <exclude-pattern>tests/Pest.php</exclude-pattern>
     </rule>
     <rule ref="Generic.Files.LineLength.TooLong">
+        <exclude-pattern>src/Mixins/</exclude-pattern>
         <exclude-pattern>tests/feature/</exclude-pattern>
     </rule>
     <rule ref="SlevomatCodingStandard.Functions.StaticClosure.ClosureNotStatic">

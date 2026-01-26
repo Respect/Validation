@@ -18,12 +18,7 @@ interface KeyChain
 {
     public function keyAll(int|string $key, Validator $validator): Chain;
 
-    public function keyAllOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public function keyAllOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function keyAlnum(int|string $key, string ...$additionalChars): Chain;
 
@@ -33,22 +28,13 @@ interface KeyChain
 
     public function keyAlwaysValid(int|string $key): Chain;
 
-    public function keyAnyOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public function keyAnyOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function keyArrayType(int|string $key): Chain;
 
     public function keyArrayVal(int|string $key): Chain;
 
-    public function keyBase(
-        int|string $key,
-        int $base,
-        string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    ): Chain;
+    public function keyBase(int|string $key, int $base, string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'): Chain;
 
     public function keyBase64(int|string $key): Chain;
 
@@ -72,12 +58,7 @@ interface KeyChain
 
     public function keyCharset(int|string $key, string $charset, string ...$charsets): Chain;
 
-    public function keyCircuit(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public function keyCircuit(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function keyCnh(int|string $key): Chain;
 
@@ -90,12 +71,7 @@ interface KeyChain
     /** @param non-empty-array<mixed> $needles */
     public function keyContainsAny(int|string $key, array $needles, bool $identical = false): Chain;
 
-    public function keyContainsCount(
-        int|string $key,
-        mixed $containsValue,
-        int $count,
-        bool $identical = false,
-    ): Chain;
+    public function keyContainsCount(int|string $key, mixed $containsValue, int $count, bool $identical = false): Chain;
 
     public function keyControl(int|string $key, string ...$additionalChars): Chain;
 
@@ -116,13 +92,7 @@ interface KeyChain
     public function keyDateTime(int|string $key, string|null $format = null): Chain;
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
-    public function keyDateTimeDiff(
-        int|string $key,
-        string $type,
-        Validator $validator,
-        string|null $format = null,
-        DateTimeImmutable|null $now = null,
-    ): Chain;
+    public function keyDateTimeDiff(int|string $key, string $type, Validator $validator, string|null $format = null, DateTimeImmutable|null $now = null): Chain;
 
     public function keyDecimal(int|string $key, int $decimals): Chain;
 
@@ -245,12 +215,7 @@ interface KeyChain
 
     public function keyNip(int|string $key): Chain;
 
-    public function keyNoneOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public function keyNoneOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function keyNot(int|string $key, Validator $validator): Chain;
 
@@ -264,12 +229,7 @@ interface KeyChain
 
     public function keyOdd(int|string $key): Chain;
 
-    public function keyOneOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public function keyOneOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function keyPerfectSquare(int|string $key): Chain;
 

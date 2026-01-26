@@ -18,12 +18,7 @@ interface KeyBuilder
 {
     public static function keyAll(int|string $key, Validator $validator): Chain;
 
-    public static function keyAllOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function keyAllOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function keyAlnum(int|string $key, string ...$additionalChars): Chain;
 
@@ -33,22 +28,13 @@ interface KeyBuilder
 
     public static function keyAlwaysValid(int|string $key): Chain;
 
-    public static function keyAnyOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function keyAnyOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function keyArrayType(int|string $key): Chain;
 
     public static function keyArrayVal(int|string $key): Chain;
 
-    public static function keyBase(
-        int|string $key,
-        int $base,
-        string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    ): Chain;
+    public static function keyBase(int|string $key, int $base, string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'): Chain;
 
     public static function keyBase64(int|string $key): Chain;
 
@@ -72,12 +58,7 @@ interface KeyBuilder
 
     public static function keyCharset(int|string $key, string $charset, string ...$charsets): Chain;
 
-    public static function keyCircuit(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function keyCircuit(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function keyCnh(int|string $key): Chain;
 
@@ -90,12 +71,7 @@ interface KeyBuilder
     /** @param non-empty-array<mixed> $needles */
     public static function keyContainsAny(int|string $key, array $needles, bool $identical = false): Chain;
 
-    public static function keyContainsCount(
-        int|string $key,
-        mixed $containsValue,
-        int $count,
-        bool $identical = false,
-    ): Chain;
+    public static function keyContainsCount(int|string $key, mixed $containsValue, int $count, bool $identical = false): Chain;
 
     public static function keyControl(int|string $key, string ...$additionalChars): Chain;
 
@@ -116,13 +92,7 @@ interface KeyBuilder
     public static function keyDateTime(int|string $key, string|null $format = null): Chain;
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
-    public static function keyDateTimeDiff(
-        int|string $key,
-        string $type,
-        Validator $validator,
-        string|null $format = null,
-        DateTimeImmutable|null $now = null,
-    ): Chain;
+    public static function keyDateTimeDiff(int|string $key, string $type, Validator $validator, string|null $format = null, DateTimeImmutable|null $now = null): Chain;
 
     public static function keyDecimal(int|string $key, int $decimals): Chain;
 
@@ -245,12 +215,7 @@ interface KeyBuilder
 
     public static function keyNip(int|string $key): Chain;
 
-    public static function keyNoneOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function keyNoneOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function keyNot(int|string $key, Validator $validator): Chain;
 
@@ -264,12 +229,7 @@ interface KeyBuilder
 
     public static function keyOdd(int|string $key): Chain;
 
-    public static function keyOneOf(
-        int|string $key,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function keyOneOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function keyPerfectSquare(int|string $key): Chain;
 
@@ -355,12 +315,7 @@ interface KeyBuilder
 
     public static function keyVowel(int|string $key, string ...$additionalChars): Chain;
 
-    public static function keyWhen(
-        int|string $key,
-        Validator $when,
-        Validator $then,
-        Validator|null $else = null,
-    ): Chain;
+    public static function keyWhen(int|string $key, Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public static function keyWritable(int|string $key): Chain;
 

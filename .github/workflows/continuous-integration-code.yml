@@ -89,3 +89,6 @@ jobs:
 
       - name: Run PHPStan
         run: vendor/bin/phpstan analyze
+
+      - name: Run Validator's mixin linter
+        run: bin/console lint:mixin

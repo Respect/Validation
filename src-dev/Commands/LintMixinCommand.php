@@ -19,6 +19,8 @@ use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionParameter;
 use ReflectionUnionType;
+use Respect\Dev\Differ\ConsoleDiffer;
+use Respect\Dev\Differ\Item;
 use Respect\Validation\Mixins\AllBuilder;
 use Respect\Validation\Mixins\AllChain;
 use Respect\Validation\Mixins\Chain;
@@ -44,31 +46,34 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
-use function array_filter;
+use function array_keys;
 use function array_merge;
+use function array_values;
 use function count;
 use function dirname;
-use function file_exists;
+use function file_get_contents;
 use function file_put_contents;
 use function implode;
 use function in_array;
 use function is_object;
 use function ksort;
 use function lcfirst;
+use function preg_match;
 use function preg_replace;
-use function shell_exec;
 use function sprintf;
 use function str_contains;
 use function str_starts_with;
+use function trim;
 use function ucfirst;
 
+use const PHP_EOL;
+
 #[AsCommand(
-    name: 'create:mixin',
-    description: 'Generate mixin interfaces from validators',
+    name: 'lint:mixin',
+    description: 'Apply linters to the generated mixin interfaces',
 )]
-final class CreateMixinCommand extends Command
+final class LintMixinCommand extends Command
 {
     private const array NUMBER_RELATED_VALIDATORS = [
         'Between',
@@ -109,18 +114,28 @@ final class CreateMixinCommand extends Command
         'Named',
     ];
 
+    public function __construct(
+        private readonly ConsoleDiffer $differ,
+    ) {
+        parent::__construct();
+    }
+
+    protected function configure(): void
+    {
+        $this->addOption(
+            'fix',
+            null,
+            null,
+            'Automatically fix files with issues.',
+        );
+    }
+
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $io = new SymfonyStyle($input, $output);
-
-        $io->title('Generating mixin interfaces');
-
         // Scan validators directory
         $srcDir = dirname(__DIR__, 2) . '/src';
         $validatorsDir = $srcDir . '/Validators';
         $validators = $this->scanValidators($validatorsDir);
-
-        $io->text(sprintf('Found %d validators', count($validators)));
 
         // Define mixins
         $mixins = [
@@ -133,23 +148,19 @@ final class CreateMixinCommand extends Command
             ['NullOr', 'nullOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Templated', 'Named']],
             ['Property', 'property', [], self::STRUCTURE_RELATED_VALIDATORS],
             ['UndefOr', 'undefOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Attributes', 'Templated', 'Named']],
-            ['', null, [], []],
+            [null, null, [], []],
         ];
 
-        $io->section('Generating mixin interfaces');
+        $updatableFiles = [];
 
         foreach ($mixins as [$name, $prefix, $allowList, $denyList]) {
-            $io->text(sprintf('Generating %sBuilder and %sChain', $name ?: 'Base', $name ?: 'Base'));
-
             $chainedNamespace = new PhpNamespace('Respect\\Validation\\Mixins');
-            $chainedNamespace->addUse(Validator::class);
             $chainedInterface = $chainedNamespace->addInterface($name . 'Chain');
 
             $staticNamespace = new PhpNamespace('Respect\\Validation\\Mixins');
-            $staticNamespace->addUse(Validator::class);
             $staticInterface = $staticNamespace->addInterface($name . 'Builder');
 
-            if ($name === '') {
+            if ($name === null) {
                 $chainedInterface->addExtend(Validator::class);
                 $chainedInterface->addExtend(AllChain::class);
                 $chainedInterface->addExtend(KeyChain::class);
@@ -160,7 +171,8 @@ final class CreateMixinCommand extends Command
                 $chainedInterface->addExtend(NullOrChain::class);
                 $chainedInterface->addExtend(PropertyChain::class);
                 $chainedInterface->addExtend(UndefOrChain::class);
-                $chainedInterface->addComment('@mixin \\' . ValidatorBuilder::class);
+                $chainedInterface->addComment('@mixin ValidatorBuilder');
+                $chainedNamespace->addUse(ValidatorBuilder::class);
 
                 $staticInterface->addExtend(AllBuilder::class);
                 $staticInterface->addExtend(KeyBuilder::class);
@@ -175,6 +187,7 @@ final class CreateMixinCommand extends Command
 
             foreach ($validators as $originalName => $reflection) {
                 $this->addMethodToInterface(
+                    $staticNamespace,
                     $originalName,
                     $staticInterface,
                     $reflection,
@@ -183,6 +196,7 @@ final class CreateMixinCommand extends Command
                     $denyList,
                 );
                 $this->addMethodToInterface(
+                    $chainedNamespace,
                     $originalName,
                     $chainedInterface,
                     $reflection,
@@ -193,25 +207,42 @@ final class CreateMixinCommand extends Command
             }
 
             $printer = new Printer();
-            $printer->wrapLength = 115;
+            $printer->wrapLength = 300;
 
-            $this->overwriteFile($printer->printNamespace($staticNamespace), $staticInterface->getName());
-            $this->overwriteFile($printer->printNamespace($chainedNamespace), $chainedInterface->getName());
+            foreach (
+                [
+                    [$staticNamespace, $staticInterface],
+                    [$chainedNamespace, $chainedInterface],
+                ] as [$namespace, $interface]
+            ) {
+                $filename = sprintf('%s/Mixins/%s.php', $srcDir, $interface->getName());
+                $existingContent = file_get_contents($filename);
+                $formattedContent = $this->getFormattedContent($printer->printNamespace($namespace), $existingContent);
+                if ($formattedContent === $existingContent) {
+                    continue;
+                }
+
+                $updatableFiles[$filename] = $formattedContent;
+                $output->writeln($this->differ->diff(
+                    new Item($filename, $existingContent),
+                    new Item($filename, $formattedContent),
+                ));
+            }
         }
 
-        // Run code beautifier
-        $io->section('Running code beautifier');
-        $mixinsDir = $srcDir . '/Mixins';
-        $phpcbfPath = dirname(__DIR__, 2) . '/vendor/bin/phpcbf';
-
-        if (file_exists($phpcbfPath)) {
-            shell_exec($phpcbfPath . ' ' . $mixinsDir);
-            $io->success('Code beautified');
+        if ($updatableFiles === []) {
+            $output->writeln('<info>No changes needed.</info>');
         } else {
-            $io->warning('phpcbf not found, skipping code beautification');
+            $output->writeln(sprintf('<comment>Changes needed in %d files.</comment>', count($updatableFiles)));
         }
 
-        $io->success('Mixin interfaces generated successfully');
+        if ($updatableFiles !== [] && !$input->getOption('fix')) {
+            return Command::FAILURE;
+        }
+
+        foreach ($updatableFiles as $filename => $content) {
+            file_put_contents($filename, $content);
+        }
 
         return Command::SUCCESS;
     }
@@ -246,6 +277,7 @@ final class CreateMixinCommand extends Command
      * @param array<string> $denyList
      */
     private function addMethodToInterface(
+        PhpNamespace $namespace,
         string $originalName,
         InterfaceType $interfaceType,
         ReflectionClass $reflection,
@@ -287,12 +319,15 @@ final class CreateMixinCommand extends Command
         }
 
         foreach ($reflectionConstructor->getParameters() as $reflectionParameter) {
-            $this->addParameterToMethod($method, $reflectionParameter);
+            $this->addParameterToMethod($method, $reflectionParameter, $namespace);
         }
     }
 
-    private function addParameterToMethod(Method $method, ReflectionParameter $reflectionParameter): void
-    {
+    private function addParameterToMethod(
+        Method $method,
+        ReflectionParameter $reflectionParameter,
+        PhpNamespace $namespace,
+    ): void {
         if ($reflectionParameter->isVariadic()) {
             $method->setVariadic();
         }
@@ -303,6 +338,11 @@ final class CreateMixinCommand extends Command
         if ($type instanceof ReflectionUnionType) {
             foreach ($type->getTypes() as $subType) {
                 $types[] = $subType->getName();
+                if ($subType->isBuiltin()) {
+                    continue;
+                }
+
+                $namespace->addUse($subType->getName());
             }
         } elseif ($type instanceof ReflectionNamedType) {
             $types[] = $type->getName();
@@ -312,6 +352,10 @@ final class CreateMixinCommand extends Command
                 || $type->getName() === 'finfo'
             ) {
                 return;
+            }
+
+            if (!$type->isBuiltin()) {
+                $namespace->addUse($type->getName());
             }
         }
 
@@ -342,25 +386,27 @@ final class CreateMixinCommand extends Command
         $parameter->setNullable(false);
     }
 
-    private function overwriteFile(string $content, string $basename): void
+    private function getFormattedContent(string $content, string $existingContent): string
     {
-        $srcDir = dirname(__DIR__, 2) . '/src';
+        preg_match('/^<\?php\s*\/\*[\s\S]*?\*\//', $existingContent, $matches);
+        $existingHeader = $matches[0] ?? '';
 
-        $SPDX = ' * SPDX';
+        $replacements = [
+            '/\n\n\t(public|\/\*\*)/m' => PHP_EOL . '    $1',
+            '/\t/m' => '    ',
+            '/\?([a-zA-Z]+) \$/' => '$1|null $',
+            '/\/\*\*\n +\* (.+)\n +\*\//m' => '/** $1 */',
+        ];
 
-        $finalContent = implode("\n\n", array_filter([
-            '<?php',
-            '/*',
-            $SPDX . '-License-Identifier: MIT',
-            $SPDX . '-FileCopyrightText: (c) Respect Project Contributors',
-            '/*',
+        return implode(PHP_EOL, [
+            trim($existingHeader) . PHP_EOL,
             'declare(strict_types=1);',
-            preg_replace('/extends (.+, )+/', 'extends' . "\n" . '\1', $content),
-        ]));
-
-        file_put_contents(
-            sprintf('%s/Mixins/%s.php', $srcDir, $basename),
-            $finalContent,
-        );
+            '',
+            preg_replace(
+                array_keys($replacements),
+                array_values($replacements),
+                $content,
+            ),
+        ]);
     }
 }

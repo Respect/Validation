@@ -10,7 +10,8 @@ declare(strict_types=1);
 
 namespace Respect\Dev\Commands;
 
-use Respect\Dev\Markdown\Differ;
+use Respect\Dev\Differ\ConsoleDiffer;
+use Respect\Dev\Differ\Item;
 use Respect\Dev\Markdown\File;
 use Respect\Dev\Markdown\Linter;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -30,7 +31,7 @@ use function sprintf;
 final class LintDocsCommand extends Command
 {
     public function __construct(
-        private readonly Differ $differ,
+        private readonly ConsoleDiffer $differ,
         private readonly Linter $linter,
     ) {
         parent::__construct();
@@ -61,7 +62,10 @@ final class LintDocsCommand extends Command
 
             $lintedFiles[] = $linted;
 
-            $output->writeln($this->differ->diff($original, $linted));
+            $output->writeln($this->differ->diff(
+                new Item($original->filename, $original->content->build()),
+                new Item($linted->filename, $linted->content->build()),
+            ));
         }
 
         if ($lintedFiles === []) {

@@ -18,11 +18,7 @@ interface NullOrBuilder
 {
     public static function nullOrAll(Validator $validator): Chain;
 
-    public static function nullOrAllOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function nullOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function nullOrAlnum(string ...$additionalChars): Chain;
 
@@ -32,11 +28,7 @@ interface NullOrBuilder
 
     public static function nullOrAlwaysValid(): Chain;
 
-    public static function nullOrAnyOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function nullOrAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function nullOrArrayType(): Chain;
 
@@ -44,10 +36,7 @@ interface NullOrBuilder
 
     public static function nullOrAttributes(): Chain;
 
-    public static function nullOrBase(
-        int $base,
-        string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    ): Chain;
+    public static function nullOrBase(int $base, string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'): Chain;
 
     public static function nullOrBase64(): Chain;
 
@@ -69,11 +58,7 @@ interface NullOrBuilder
 
     public static function nullOrCharset(string $charset, string ...$charsets): Chain;
 
-    public static function nullOrCircuit(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function nullOrCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function nullOrCnh(): Chain;
 
@@ -107,12 +92,7 @@ interface NullOrBuilder
     public static function nullOrDateTime(string|null $format = null): Chain;
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
-    public static function nullOrDateTimeDiff(
-        string $type,
-        Validator $validator,
-        string|null $format = null,
-        DateTimeImmutable|null $now = null,
-    ): Chain;
+    public static function nullOrDateTimeDiff(string $type, Validator $validator, string|null $format = null, DateTimeImmutable|null $now = null): Chain;
 
     public static function nullOrDecimal(int $decimals): Chain;
 
@@ -245,11 +225,7 @@ interface NullOrBuilder
 
     public static function nullOrNip(): Chain;
 
-    public static function nullOrNoneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function nullOrNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function nullOrNot(Validator $validator): Chain;
 
@@ -263,11 +239,7 @@ interface NullOrBuilder
 
     public static function nullOrOdd(): Chain;
 
-    public static function nullOrOneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function nullOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function nullOrPerfectSquare(): Chain;
 

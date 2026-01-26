@@ -17,17 +17,7 @@ use Respect\Validation\Validator;
 use Respect\Validation\ValidatorBuilder;
 
 /** @mixin ValidatorBuilder */
-interface Chain extends
-    Validator,
-    AllChain,
-    KeyChain,
-    LengthChain,
-    MaxChain,
-    MinChain,
-    NotChain,
-    NullOrChain,
-    PropertyChain,
-    UndefOrChain
+interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, MinChain, NotChain, NullOrChain, PropertyChain, UndefOrChain
 {
     public function all(Validator $validator): Chain;
 
@@ -49,10 +39,7 @@ interface Chain extends
 
     public function attributes(): Chain;
 
-    public function base(
-        int $base,
-        string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    ): Chain;
+    public function base(int $base, string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'): Chain;
 
     public function base64(): Chain;
 
@@ -110,12 +97,7 @@ interface Chain extends
     public function dateTime(string|null $format = null): Chain;
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
-    public function dateTimeDiff(
-        string $type,
-        Validator $validator,
-        string|null $format = null,
-        DateTimeImmutable|null $now = null,
-    ): Chain;
+    public function dateTimeDiff(string $type, Validator $validator, string|null $format = null, DateTimeImmutable|null $now = null): Chain;
 
     public function decimal(int $decimals): Chain;
 

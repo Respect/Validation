@@ -18,12 +18,7 @@ interface PropertyChain
 {
     public function propertyAll(string $propertyName, Validator $validator): Chain;
 
-    public function propertyAllOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public function propertyAllOf(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function propertyAlnum(string $propertyName, string ...$additionalChars): Chain;
 
@@ -33,22 +28,13 @@ interface PropertyChain
 
     public function propertyAlwaysValid(string $propertyName): Chain;
 
-    public function propertyAnyOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public function propertyAnyOf(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function propertyArrayType(string $propertyName): Chain;
 
     public function propertyArrayVal(string $propertyName): Chain;
 
-    public function propertyBase(
-        string $propertyName,
-        int $base,
-        string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    ): Chain;
+    public function propertyBase(string $propertyName, int $base, string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'): Chain;
 
     public function propertyBase64(string $propertyName): Chain;
 
@@ -72,12 +58,7 @@ interface PropertyChain
 
     public function propertyCharset(string $propertyName, string $charset, string ...$charsets): Chain;
 
-    public function propertyCircuit(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public function propertyCircuit(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function propertyCnh(string $propertyName): Chain;
 
@@ -90,12 +71,7 @@ interface PropertyChain
     /** @param non-empty-array<mixed> $needles */
     public function propertyContainsAny(string $propertyName, array $needles, bool $identical = false): Chain;
 
-    public function propertyContainsCount(
-        string $propertyName,
-        mixed $containsValue,
-        int $count,
-        bool $identical = false,
-    ): Chain;
+    public function propertyContainsCount(string $propertyName, mixed $containsValue, int $count, bool $identical = false): Chain;
 
     public function propertyControl(string $propertyName, string ...$additionalChars): Chain;
 
@@ -116,13 +92,7 @@ interface PropertyChain
     public function propertyDateTime(string $propertyName, string|null $format = null): Chain;
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
-    public function propertyDateTimeDiff(
-        string $propertyName,
-        string $type,
-        Validator $validator,
-        string|null $format = null,
-        DateTimeImmutable|null $now = null,
-    ): Chain;
+    public function propertyDateTimeDiff(string $propertyName, string $type, Validator $validator, string|null $format = null, DateTimeImmutable|null $now = null): Chain;
 
     public function propertyDecimal(string $propertyName, int $decimals): Chain;
 
@@ -245,12 +215,7 @@ interface PropertyChain
 
     public function propertyNip(string $propertyName): Chain;
 
-    public function propertyNoneOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public function propertyNoneOf(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function propertyNot(string $propertyName, Validator $validator): Chain;
 
@@ -264,12 +229,7 @@ interface PropertyChain
 
     public function propertyOdd(string $propertyName): Chain;
 
-    public function propertyOneOf(
-        string $propertyName,
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public function propertyOneOf(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function propertyPerfectSquare(string $propertyName): Chain;
 
@@ -355,12 +315,7 @@ interface PropertyChain
 
     public function propertyVowel(string $propertyName, string ...$additionalChars): Chain;
 
-    public function propertyWhen(
-        string $propertyName,
-        Validator $when,
-        Validator $then,
-        Validator|null $else = null,
-    ): Chain;
+    public function propertyWhen(string $propertyName, Validator $when, Validator $then, Validator|null $else = null): Chain;
 
     public function propertyWritable(string $propertyName): Chain;
 

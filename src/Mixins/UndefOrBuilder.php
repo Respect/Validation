@@ -18,11 +18,7 @@ interface UndefOrBuilder
 {
     public static function undefOrAll(Validator $validator): Chain;
 
-    public static function undefOrAllOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function undefOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function undefOrAlnum(string ...$additionalChars): Chain;
 
@@ -32,20 +28,13 @@ interface UndefOrBuilder
 
     public static function undefOrAlwaysValid(): Chain;
 
-    public static function undefOrAnyOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function undefOrAnyOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function undefOrArrayType(): Chain;
 
     public static function undefOrArrayVal(): Chain;
 
-    public static function undefOrBase(
-        int $base,
-        string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    ): Chain;
+    public static function undefOrBase(int $base, string $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'): Chain;
 
     public static function undefOrBase64(): Chain;
 
@@ -67,11 +56,7 @@ interface UndefOrBuilder
 
     public static function undefOrCharset(string $charset, string ...$charsets): Chain;
 
-    public static function undefOrCircuit(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function undefOrCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function undefOrCnh(): Chain;
 
@@ -105,12 +90,7 @@ interface UndefOrBuilder
     public static function undefOrDateTime(string|null $format = null): Chain;
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
-    public static function undefOrDateTimeDiff(
-        string $type,
-        Validator $validator,
-        string|null $format = null,
-        DateTimeImmutable|null $now = null,
-    ): Chain;
+    public static function undefOrDateTimeDiff(string $type, Validator $validator, string|null $format = null, DateTimeImmutable|null $now = null): Chain;
 
     public static function undefOrDecimal(int $decimals): Chain;
 
@@ -243,11 +223,7 @@ interface UndefOrBuilder
 
     public static function undefOrNip(): Chain;
 
-    public static function undefOrNoneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function undefOrNoneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function undefOrNot(Validator $validator): Chain;
 
@@ -261,11 +237,7 @@ interface UndefOrBuilder
 
     public static function undefOrOdd(): Chain;
 
-    public static function undefOrOneOf(
-        Validator $validator1,
-        Validator $validator2,
-        Validator ...$validators,
-    ): Chain;
+    public static function undefOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function undefOrPerfectSquare(): Chain;
 
