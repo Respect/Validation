@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\TestCase;
@@ -21,11 +20,19 @@ use Respect\Validation\Test\TestCase;
 final class ContainerRegistryTest extends TestCase
 {
     #[Test]
-    #[DoesNotPerformAssertions]
-    public function itTheCreatedContainerShouldBeAbleToProvideAnInstanceOfValidator(): void
+    public function itShouldBeAbleToProvideAnInstanceOfValidator(): void
     {
         $container = ContainerRegistry::createContainer();
-        $container->get(ValidatorBuilder::class);
+
+        self::assertNotNull($container->get(ValidatorBuilder::class));
+    }
+
+    #[Test]
+    public function itShouldBeAbleToGiveDefinitionsToTheContainer(): void
+    {
+        $container = ContainerRegistry::createContainer(['foo' => 'bar']);
+
+        self::assertSame('bar', $container->get('foo'));
     }
 
     #[Test]

@@ -48,9 +48,10 @@ final class ContainerRegistry
 {
     private static ContainerInterface|null $container = null;
 
-    public static function createContainer(): Container
+    /** @param array<string, mixed> $definitions */
+    public static function createContainer(array $definitions = []): Container
     {
-        return new Container([
+        return new Container($definitions + [
             Transformer::class => create(Prefix::class),
             TemplateResolver::class => create(TemplateResolver::class),
             TranslatorInterface::class => autowire(BypassTranslator::class),
