@@ -77,7 +77,7 @@ final readonly class Result
         if ($this->allowsAdjacent()) {
             return clone ($result, [
                 'id' => $this->id->withPrefix($prefix),
-                'adjacent' => clone($this, ['input' => $result->input]),
+                'adjacent' => $this->withInput($result->input),
             ]);
         }
 
@@ -145,7 +145,10 @@ final readonly class Result
         return clone ($this, [
             'name' => null,
             'adjacent' => $this->adjacent?->withoutName(),
-            'children' => $this->mapChildren(fn(Result $r) => $r->name === $this->name ? $r->withoutName() : $r),
+            'children' => $this->mapChildrenIf(
+                fn(Result $child) => $child->name === $this->name,
+                static fn(Result $child) => $child->withoutName(),
+            ),
         ]);
     }
 
@@ -164,7 +167,10 @@ final readonly class Result
             'name' => $name,
             'hasPrecedentName' => $this->path === null,
             'adjacent' => $this->adjacent?->withName($name),
-            'children' => $this->mapChildren(static fn(Result $r) => $r->name === null ? $r->withName($name) : $r),
+            'children' => $this->mapChildrenIf(
+                static fn(Result $child) => $child->name === null,
+                static fn(Result $child) => $child->withName($name),
+            ),
         ]);
     }
 
@@ -183,6 +189,18 @@ final readonly class Result
     public function withAdjacent(Result $adjacent): self
     {
         return clone($this, ['adjacent' => $adjacent]);
+    }
+
+    public function withInput(mixed $input): self
+    {
+        return clone($this, [
+            'input' => $input,
+            'adjacent' => $this->adjacent?->withInput($input),
+            'children' => $this->mapChildrenIf(
+                fn(Result $child) => $child->input === $this->input && $child->path === $this->path,
+                static fn(Result $child) => $child->withInput($input),
+            ),
+        ]);
     }
 
     public function withToggledValidation(): self
@@ -226,5 +244,15 @@ final readonly class Result
     private function mapChildren(callable $callback): array
     {
         return $this->children === [] ? [] : array_map($callback, $this->children);
+    }
+
+    /** @return array<Result> */
+    private function mapChildrenIf(callable $condition, callable $callback): array
+    {
+        if ($this->children === []) {
+            return [];
+        }
+
+        return array_map(static fn(self $child) => $condition($child) ? $callback($child) : $child, $this->children);
     }
 }
