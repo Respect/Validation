@@ -18,9 +18,9 @@ v::readable()->assert('/path/to/file.txt');
 
 ### `Readable::TEMPLATE_STANDARD`
 
-| Mode       | Template                         |
-| ---------- | -------------------------------- |
-| `default`  | {{subject}} must be readable     |
+|       Mode | Template                         |
+| ---------: | :------------------------------- |
+|  `default` | {{subject}} must be readable     |
 | `inverted` | {{subject}} must not be readable |
 
 ## Template placeholders
@@ -36,13 +36,11 @@ v::readable()->assert('/path/to/file.txt');
 ## Changelog
 
 | Version | Description       |
-| ------: | ----------------- |
+| ------: | :---------------- |
 |   2.1.0 | Add PSR-7 support |
 |   0.5.0 | Created           |
 
----
-
-See also:
+## See Also
 
 - [Directory](Directory.md)
 - [Executable](Executable.md)

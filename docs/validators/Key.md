@@ -66,13 +66,11 @@ v::key('email', v::email())->assert(['email' => 'not email']);
 ## Changelog
 
 | Version | Description                                                          |
-| ------: | -------------------------------------------------------------------- |
+| ------: | :------------------------------------------------------------------- |
 |   3.0.0 | Split by [KeyExists](KeyExists.md) and [KeyOptional](KeyOptional.md) |
 |   0.3.9 | Created                                                              |
 
----
-
-See also:
+## See Also
 
 - [ArrayVal](ArrayVal.md)
 - [Each](Each.md)

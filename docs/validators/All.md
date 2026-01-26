@@ -27,9 +27,9 @@ This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] inter
 
 ### `All::TEMPLATE_STANDARD`
 
-| Mode       | Template      |
-| ---------- | ------------- |
-| `default`  | Every item in |
+|       Mode | Template      |
+| ---------: | :------------ |
+|  `default` | Every item in |
 | `inverted` | Every item in |
 
 ## Template as prefix
@@ -52,12 +52,10 @@ v::not(v::all(v::intType()))->assert([1, 2, -3]);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   3.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Each](Each.md)
 - [Length](Length.md)

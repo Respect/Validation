@@ -42,12 +42,10 @@ This validator does not have any templates, as it will use the template of the g
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   3.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Attributes](Attributes.md)
 - [Not](Not.md)

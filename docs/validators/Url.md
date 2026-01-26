@@ -30,9 +30,9 @@ v::url()->assert('news:new.example.com');
 
 ### `Url::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-| ---------- | ----------------------------- |
-| `default`  | {{subject}} must be a URL     |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be a URL     |
 | `inverted` | {{subject}} must not be a URL |
 
 ## Template placeholders
@@ -48,12 +48,10 @@ v::url()->assert('news:new.example.com');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.8.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Domain](Domain.md)
 - [Email](Email.md)

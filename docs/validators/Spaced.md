@@ -33,9 +33,9 @@ v::notSpaced()->alnum()->assert('user name');
 
 ### `Spaced::TEMPLATE_STANDARD`
 
-| Mode       | Template                                         |
-| ---------- | ------------------------------------------------ |
-| `default`  | {{subject}} must contain at least one whitespace |
+|       Mode | Template                                         |
+| ---------: | :----------------------------------------------- |
+|  `default` | {{subject}} must contain at least one whitespace |
 | `inverted` | {{subject}} must not contain whitespaces         |
 
 ## Template placeholders
@@ -51,13 +51,11 @@ v::notSpaced()->alnum()->assert('user name');
 ## Changelog
 
 | Version | Description                                  |
-| ------: | -------------------------------------------- |
+| ------: | :------------------------------------------- |
 |   3.0.0 | Renamed to `Spaced` and changed the behavior |
 |   0.3.9 | Created as `NoWhitespace`                    |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)

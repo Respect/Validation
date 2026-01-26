@@ -18,9 +18,9 @@ v::resourceType()->assert(fopen('/path/to/file.txt', 'r'));
 
 ### `ResourceType::TEMPLATE_STANDARD`
 
-| Mode       | Template                           |
-| ---------- | ---------------------------------- |
-| `default`  | {{subject}} must be a resource     |
+|       Mode | Template                           |
+| ---------: | :--------------------------------- |
+|  `default` | {{subject}} must be a resource     |
 | `inverted` | {{subject}} must not be a resource |
 
 ## Template placeholders
@@ -36,12 +36,10 @@ v::resourceType()->assert(fopen('/path/to/file.txt', 'r'));
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [ArrayType](ArrayType.md)
 - [BoolType](BoolType.md)

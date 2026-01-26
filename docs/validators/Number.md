@@ -25,9 +25,9 @@ v::number()->assert(acos(8));
 
 ### `Number::TEMPLATE_STANDARD`
 
-| Mode       | Template                           |
-| ---------- | ---------------------------------- |
-| `default`  | {{subject}} must be a valid number |
+|       Mode | Template                           |
+| ---------: | :--------------------------------- |
+|  `default` | {{subject}} must be a valid number |
 | `inverted` | {{subject}} must not be a number   |
 
 ## Template placeholders
@@ -43,12 +43,10 @@ v::number()->assert(acos(8));
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Blank](Blank.md)
 - [BoolType](BoolType.md)

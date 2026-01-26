@@ -33,9 +33,9 @@ v::not(v::numericVal())->alnum()->uppercase()->assert('W3C');
 
 ### `Uppercase::TEMPLATE_STANDARD`
 
-| Mode       | Template                                            |
-| ---------- | --------------------------------------------------- |
-| `default`  | {{subject}} must contain only uppercase letters     |
+|       Mode | Template                                            |
+| ---------: | :-------------------------------------------------- |
+|  `default` | {{subject}} must contain only uppercase letters     |
 | `inverted` | {{subject}} must not contain only uppercase letters |
 
 ## Template placeholders
@@ -51,12 +51,10 @@ v::not(v::numericVal())->alnum()->uppercase()->assert('W3C');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)

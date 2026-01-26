@@ -38,9 +38,9 @@ v::keyExists(5)->assert(new ArrayObject(['a', 'b', 'c']));
 
 ### `KeyExists::TEMPLATE_STANDARD`
 
-| Mode       | Template                        |
-| ---------- | ------------------------------- |
-| `default`  | {{subject}} must be present     |
+|       Mode | Template                        |
+| ---------: | :------------------------------ |
+|  `default` | {{subject}} must be present     |
 | `inverted` | {{subject}} must not be present |
 
 ## Template placeholders
@@ -78,12 +78,10 @@ v::key('foo', v::named('Custom name', v::alwaysValid()))->assert([]);
 ## Changelog
 
 | Version | Description                |
-| ------: | -------------------------- |
+| ------: | :------------------------- |
 |   3.0.0 | Created from [Key](Key.md) |
 
----
-
-See also:
+## See Also
 
 - [AlwaysValid](AlwaysValid.md)
 - [ArrayType](ArrayType.md)

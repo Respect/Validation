@@ -21,9 +21,9 @@ v::callback(
 
 ### `Callback::TEMPLATE_STANDARD`
 
-| Mode       | Template                    |
-| ---------- | --------------------------- |
-| `default`  | {{subject}} must be valid   |
+|       Mode | Template                    |
+| ---------: | :-------------------------- |
+|  `default` | {{subject}} must be valid   |
 | `inverted` | {{subject}} must be invalid |
 
 ## Template placeholders
@@ -39,12 +39,10 @@ v::callback(
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Call](Call.md)
 - [CallableType](CallableType.md)

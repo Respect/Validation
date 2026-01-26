@@ -25,9 +25,9 @@ v::subdivisionCode('US')->assert('CA');
 
 ### `SubdivisionCode::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                                 |
-| ---------- | ------------------------------------------------------------------------ |
-| `default`  | {{subject}} must be a subdivision code of {{countryName&#124;trans}}     |
+|       Mode | Template                                                                 |
+| ---------: | :----------------------------------------------------------------------- |
+|  `default` | {{subject}} must be a subdivision code of {{countryName&#124;trans}}     |
 | `inverted` | {{subject}} must not be a subdivision code of {{countryName&#124;trans}} |
 
 ## Template placeholders
@@ -45,13 +45,11 @@ v::subdivisionCode('US')->assert('CA');
 ## Changelog
 
 | Version | Description                                                       |
-| ------: | ----------------------------------------------------------------- |
+| ------: | :---------------------------------------------------------------- |
 |   3.0.0 | Require [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] |
 |   1.0.0 | Created                                                           |
 
----
-
-See also:
+## See Also
 
 - [Circuit](Circuit.md)
 - [CountryCode](CountryCode.md)

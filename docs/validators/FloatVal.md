@@ -21,9 +21,9 @@ v::floatVal()->assert('1e5');
 
 ### `FloatVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                              |
-| ---------- | ------------------------------------- |
-| `default`  | {{subject}} must be a float value     |
+|       Mode | Template                              |
+| ---------: | :------------------------------------ |
+|  `default` | {{subject}} must be a float value     |
 | `inverted` | {{subject}} must not be a float value |
 
 ## Template placeholders
@@ -40,12 +40,10 @@ v::floatVal()->assert('1e5');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [BoolType](BoolType.md)
 - [BoolVal](BoolVal.md)

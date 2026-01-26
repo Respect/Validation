@@ -24,9 +24,9 @@ v::callableType()->assert([new DateTime(), 'format']);
 
 ### `CallableType::TEMPLATE_STANDARD`
 
-| Mode       | Template                           |
-| ---------- | ---------------------------------- |
-| `default`  | {{subject}} must be a callable     |
+|       Mode | Template                           |
+| ---------: | :--------------------------------- |
+|  `default` | {{subject}} must be a callable     |
 | `inverted` | {{subject}} must not be a callable |
 
 ## Template placeholders
@@ -43,12 +43,10 @@ v::callableType()->assert([new DateTime(), 'format']);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [ArrayType](ArrayType.md)
 - [BoolType](BoolType.md)

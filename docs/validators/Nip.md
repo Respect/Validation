@@ -30,9 +30,9 @@ v::nip()->assert('164-58-65-777');
 
 ### `Nip::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                         |
-| ---------- | ---------------------------------------------------------------- |
-| `default`  | {{subject}} must be a valid Polish VAT identification number     |
+|       Mode | Template                                                         |
+| ---------: | :--------------------------------------------------------------- |
+|  `default` | {{subject}} must be a valid Polish VAT identification number     |
 | `inverted` | {{subject}} must not be a valid Polish VAT identification number |
 
 ## Template placeholders
@@ -48,12 +48,10 @@ v::nip()->assert('164-58-65-777');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Pesel](Pesel.md)
 - [PolishIdCard](PolishIdCard.md)

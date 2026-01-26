@@ -27,9 +27,9 @@ v::polishIdCard()->assert('AYW036731');
 
 ### `PolishIdCard::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                    |
-| ---------- | ----------------------------------------------------------- |
-| `default`  | {{subject}} must be a valid Polish Identity Card number     |
+|       Mode | Template                                                    |
+| ---------: | :---------------------------------------------------------- |
+|  `default` | {{subject}} must be a valid Polish Identity Card number     |
 | `inverted` | {{subject}} must not be a valid Polish Identity Card number |
 
 ## Template placeholders
@@ -45,12 +45,10 @@ v::polishIdCard()->assert('AYW036731');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Nip](Nip.md)
 - [Pesel](Pesel.md)

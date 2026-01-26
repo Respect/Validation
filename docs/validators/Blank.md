@@ -34,9 +34,9 @@ It's similar to [Falsy](Falsy.md), but way stricter.
 
 ### `Blank::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-| ---------- | ----------------------------- |
-| `default`  | {{subject}} must be blank     |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be blank     |
 | `inverted` | {{subject}} must not be blank |
 
 ## Template placeholders
@@ -52,13 +52,11 @@ It's similar to [Falsy](Falsy.md), but way stricter.
 ## Changelog
 
 | Version | Description                                 |
-| ------: | ------------------------------------------- |
+| ------: | :------------------------------------------ |
 |   3.0.0 | Renamed to `Blank` and changed the behavior |
 |   1.0.0 | Created as `NotBlank`                       |
 
----
-
-See also:
+## See Also
 
 - [Falsy](Falsy.md)
 - [NullType](NullType.md)

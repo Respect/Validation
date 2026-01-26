@@ -57,9 +57,9 @@ v::time()->assert(new DateTimeImmutable());
 
 ### `Time::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                      |
-| ---------- | ------------------------------------------------------------- |
-| `default`  | {{subject}} must be a valid time in the format {{sample}}     |
+|       Mode | Template                                                      |
+| ---------: | :------------------------------------------------------------ |
+|  `default` | {{subject}} must be a valid time in the format {{sample}}     |
 | `inverted` | {{subject}} must not be a valid time in the format {{sample}} |
 
 ## Template placeholders
@@ -76,12 +76,10 @@ v::time()->assert(new DateTimeImmutable());
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Date](Date.md)
 - [DateTime](DateTime.md)

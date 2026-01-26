@@ -14,9 +14,9 @@ Ignores non-digit chars, so use `->digit()` if needed.
 
 ### `Cnpj::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-| ---------- | ------------------------------------------- |
-| `default`  | {{subject}} must be a valid CNPJ number     |
+|       Mode | Template                                    |
+| ---------: | :------------------------------------------ |
+|  `default` | {{subject}} must be a valid CNPJ number     |
 | `inverted` | {{subject}} must not be a valid CNPJ number |
 
 ## Template placeholders
@@ -32,12 +32,10 @@ Ignores non-digit chars, so use `->digit()` if needed.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Bsn](Bsn.md)
 - [Cnh](Cnh.md)

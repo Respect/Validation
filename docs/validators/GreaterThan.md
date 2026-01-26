@@ -26,9 +26,9 @@ Message template for this validator includes `{{compareTo}}`.
 
 ### `GreaterThan::TEMPLATE_STANDARD`
 
-| Mode       | Template                                           |
-| ---------- | -------------------------------------------------- |
-| `default`  | {{subject}} must be greater than {{compareTo}}     |
+|       Mode | Template                                           |
+| ---------: | :------------------------------------------------- |
+|  `default` | {{subject}} must be greater than {{compareTo}}     |
 | `inverted` | {{subject}} must not be greater than {{compareTo}} |
 
 ## Template placeholders
@@ -45,12 +45,10 @@ Message template for this validator includes `{{compareTo}}`.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Between](Between.md)
 - [BetweenExclusive](BetweenExclusive.md)

@@ -24,9 +24,9 @@ v::arrayType()->assert(new ArrayObject());
 
 ### `ArrayType::TEMPLATE_STANDARD`
 
-| Mode       | Template                         |
-| ---------- | -------------------------------- |
-| `default`  | {{subject}} must be an array     |
+|       Mode | Template                         |
+| ---------: | :------------------------------- |
+|  `default` | {{subject}} must be an array     |
 | `inverted` | {{subject}} must not be an array |
 
 ## Template placeholders
@@ -43,12 +43,10 @@ v::arrayType()->assert(new ArrayObject());
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [ArrayVal](ArrayVal.md)
 - [BoolType](BoolType.md)

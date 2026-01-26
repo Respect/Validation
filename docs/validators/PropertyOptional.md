@@ -71,12 +71,10 @@ v::objectType()->propertyOptional('name', v::notBlank())->assert('Not an object'
 ## Changelog
 
 | Version | Description                          |
-| ------: | ------------------------------------ |
+| ------: | :----------------------------------- |
 |   3.0.0 | Created from [Property](Property.md) |
 
----
-
-See also:
+## See Also
 
 - [Attributes](Attributes.md)
 - [Key](Key.md)

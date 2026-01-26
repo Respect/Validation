@@ -32,9 +32,9 @@ Validation makes comparison easier, check out our supported [comparable values](
 
 ### `BetweenExclusive::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                                    |
-| ---------- | --------------------------------------------------------------------------- |
-| `default`  | {{subject}} must be greater than {{minValue}} and less than {{maxValue}}    |
+|       Mode | Template                                                                    |
+| ---------: | :-------------------------------------------------------------------------- |
+|  `default` | {{subject}} must be greater than {{minValue}} and less than {{maxValue}}    |
 | `inverted` | {{subject}} must not be greater than {{minValue}} or less than {{maxValue}} |
 
 ## Template placeholders
@@ -52,12 +52,10 @@ Validation makes comparison easier, check out our supported [comparable values](
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   3.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Between](Between.md)
 - [DateTime](DateTime.md)

@@ -36,16 +36,16 @@ v::length(v::equals(0))->assert(new SplPriorityQueue());
 
 Used when it's possible to get the length of the input.
 
-| Mode       | Template      |
-| ---------- | ------------- |
-| `default`  | The length of |
+|       Mode | Template      |
+| ---------: | :------------ |
+|  `default` | The length of |
 | `inverted` | The length of |
 
 ### `Length::TEMPLATE_WRONG_TYPE`
 
-| Mode       | Template                                              |
-| ---------- | ----------------------------------------------------- |
-| `default`  | {{subject}} must be a countable value or a string     |
+|       Mode | Template                                              |
+| ---------: | :---------------------------------------------------- |
+|  `default` | {{subject}} must be a countable value or a string     |
 | `inverted` | {{subject}} must not be a countable value or a string |
 
 ## Template as prefix
@@ -83,13 +83,11 @@ Used when it's impossible to get the length of the input.
 ## Changelog
 
 | Version | Description             |
-| ------: | ----------------------- |
+| ------: | :---------------------- |
 |   3.0.0 | Became a transformation |
 |   0.3.9 | Created                 |
 
----
-
-See also:
+## See Also
 
 - [All](All.md)
 - [Between](Between.md)

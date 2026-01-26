@@ -28,16 +28,16 @@ v::digit('.', '-')->assert('172.655.537-21');
 
 ### `Digit::TEMPLATE_STANDARD`
 
-| Mode       | Template                                   |
-| ---------- | ------------------------------------------ |
-| `default`  | {{subject}} must contain only digits (0-9) |
+|       Mode | Template                                   |
+| ---------: | :----------------------------------------- |
+|  `default` | {{subject}} must contain only digits (0-9) |
 | `inverted` | {{subject}} must not contain digits (0-9)  |
 
 ### `Digit::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                           |
-| ---------- | ------------------------------------------------------------------ |
-| `default`  | {{subject}} must contain only digits (0-9) and {{additionalChars}} |
+|       Mode | Template                                                           |
+| ---------: | :----------------------------------------------------------------- |
+|  `default` | {{subject}} must contain only digits (0-9) and {{additionalChars}} |
 | `inverted` | {{subject}} must not contain digits (0-9) and {{additionalChars}}  |
 
 ## Template placeholders
@@ -55,14 +55,12 @@ v::digit('.', '-')->assert('172.655.537-21');
 ## Changelog
 
 | Version | Description                               |
-| ------: | ----------------------------------------- |
+| ------: | :---------------------------------------- |
 |   2.0.0 | Removed support to whitespaces by default |
 |   0.5.0 | Renamed from `Digits` to `Digit`          |
 |   0.3.9 | Created as `Digits`                       |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)

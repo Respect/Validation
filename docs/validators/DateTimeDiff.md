@@ -47,34 +47,34 @@ The supported types are:
 
 Used when `$format` and `$now` are not defined.
 
-| Mode       | Template                                          |
-| ---------- | ------------------------------------------------- |
-| `default`  | The number of {{type&#124;trans}} between now and |
+|       Mode | Template                                          |
+| ---------: | :------------------------------------------------ |
+|  `default` | The number of {{type&#124;trans}} between now and |
 | `inverted` | The number of {{type&#124;trans}} between now and |
 
 ### `DateTimeDiff::TEMPLATE_CUSTOMIZED`
 
 Used when `$format` or `$now` are defined.
 
-| Mode       | Template                                              |
-| ---------- | ----------------------------------------------------- |
-| `default`  | The number of {{type&#124;trans}} between {{now}} and |
+|       Mode | Template                                              |
+| ---------: | :---------------------------------------------------- |
+|  `default` | The number of {{type&#124;trans}} between {{now}} and |
 | `inverted` | The number of {{type&#124;trans}} between {{now}} and |
 
 ### `DateTimeDiff::TEMPLATE_NOT_A_DATE`
 
-| Mode       | Template                                                                       |
-| ---------- | ------------------------------------------------------------------------------ |
-| `default`  | For comparison with {{now&#124;raw}}, {{subject}} must be a valid datetime     |
+|       Mode | Template                                                                       |
+| ---------: | :----------------------------------------------------------------------------- |
+|  `default` | For comparison with {{now&#124;raw}}, {{subject}} must be a valid datetime     |
 | `inverted` | For comparison with {{now&#124;raw}}, {{subject}} must not be a valid datetime |
 
 ### `DateTimeDiff::TEMPLATE_WRONG_FORMAT`
 
 Used when the input cannot be parsed with the given format.
 
-| Mode       | Template                                                                                                         |
-| ---------- | ---------------------------------------------------------------------------------------------------------------- |
-| `default`  | For comparison with {{now&#124;raw}}, {{subject}} must be a valid datetime in the format {{sample&#124;raw}}     |
+|       Mode | Template                                                                                                         |
+| ---------: | :--------------------------------------------------------------------------------------------------------------- |
+|  `default` | For comparison with {{now&#124;raw}}, {{subject}} must be a valid datetime in the format {{sample&#124;raw}}     |
 | `inverted` | For comparison with {{now&#124;raw}}, {{subject}} must not be a valid datetime in the format {{sample&#124;raw}} |
 
 ## Template as prefix
@@ -116,12 +116,10 @@ v::dateTimeDiff('years', v::equals(2))->assert('1 year ago', [
 ## Changelog
 
 | Version | Description                                |
-| ------: | ------------------------------------------ |
+| ------: | :----------------------------------------- |
 |   3.0.0 | Created from `Age`, `MinAge`, and `MaxAge` |
 
----
-
-See also:
+## See Also
 
 - [Date](Date.md)
 - [DateTime](DateTime.md)

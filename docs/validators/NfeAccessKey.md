@@ -18,9 +18,9 @@ v::nfeAccessKey()->assert('31841136830118868211870485416765268625116906');
 
 ### `NfeAccessKey::TEMPLATE_STANDARD`
 
-| Mode       | Template                                       |
-| ---------- | ---------------------------------------------- |
-| `default`  | {{subject}} must be a valid NFe access key     |
+|       Mode | Template                                       |
+| ---------: | :--------------------------------------------- |
+|  `default` | {{subject}} must be a valid NFe access key     |
 | `inverted` | {{subject}} must not be a valid NFe access key |
 
 ## Template placeholders
@@ -36,12 +36,10 @@ v::nfeAccessKey()->assert('31841136830118868211870485416765268625116906');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.6.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Cnh](Cnh.md)
 - [Cnpj](Cnpj.md)

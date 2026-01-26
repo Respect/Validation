@@ -24,6 +24,7 @@ use Respect\Dev\Markdown\Linters\ValidatorHeaderLinter;
 use Respect\Dev\Markdown\Linters\ValidatorIndexLinter;
 use Respect\Dev\Markdown\Linters\ValidatorRelatedLinter;
 use Respect\Dev\Markdown\Linters\ValidatorTemplatesLinter;
+use Respect\Dev\Markdown\Linters\ValidatorChangelogLinter;
 use SebastianBergmann\Diff\Differ;
 use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
 use Symfony\Component\Console\Application;
@@ -39,6 +40,7 @@ return (static function () {
         new ValidatorIndexLinter(),
         new ValidatorRelatedLinter(),
         new ValidatorTemplatesLinter(),
+        new ValidatorChangelogLinter(),
     )));
     $application->addCommand(new UpdateDomainSuffixesCommand());
     $application->addCommand(new UpdateDomainToplevelCommand());

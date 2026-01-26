@@ -29,9 +29,9 @@ Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 
 ### `Between::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                      |
-| ---------- | ------------------------------------------------------------- |
-| `default`  | {{subject}} must be between {{minValue}} and {{maxValue}}     |
+|       Mode | Template                                                      |
+| ---------: | :------------------------------------------------------------ |
+|  `default` | {{subject}} must be between {{minValue}} and {{maxValue}}     |
 | `inverted` | {{subject}} must not be between {{minValue}} and {{maxValue}} |
 
 ## Template placeholders
@@ -49,14 +49,12 @@ Message template for this validator includes `{{minValue}}` and `{{maxValue}}`.
 ## Changelog
 
 | Version | Description                 |
-| ------: | --------------------------- |
+| ------: | :-------------------------- |
 |   2.0.0 | Became always inclusive     |
 |   1.0.0 | Became inclusive by default |
 |   0.3.9 | Created                     |
 
----
-
-See also:
+## See Also
 
 - [BetweenExclusive](BetweenExclusive.md)
 - [DateTime](DateTime.md)

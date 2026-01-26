@@ -27,9 +27,9 @@ v::hexRgbColor()->assert('FCD');
 
 ### `HexRgbColor::TEMPLATE_STANDARD`
 
-| Mode       | Template                                |
-| ---------- | --------------------------------------- |
-| `default`  | {{subject}} must be a hex RGB color     |
+|       Mode | Template                                |
+| ---------: | :-------------------------------------- |
+|  `default` | {{subject}} must be a hex RGB color     |
 | `inverted` | {{subject}} must not be a hex RGB color |
 
 ## Template placeholders
@@ -45,13 +45,11 @@ v::hexRgbColor()->assert('FCD');
 ## Changelog
 
 | Version | Description                                 |
-| ------: | ------------------------------------------- |
+| ------: | :------------------------------------------ |
 |   2.1.0 | Allow hex RGB colors to be case-insensitive |
 |   2.0.0 | Allow hex RGB colors with 3 integers        |
 |   0.7.0 | Created                                     |
 
----
-
-See also:
+## See Also
 
 - [Xdigit](Xdigit.md)

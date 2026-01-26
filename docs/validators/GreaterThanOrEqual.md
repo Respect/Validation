@@ -29,9 +29,9 @@ Message template for this validator includes `{{compareTo}}`.
 
 ### `GreaterThanOrEqual::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                   |
-| ---------- | ---------------------------------------------------------- |
-| `default`  | {{subject}} must be greater than or equal to {{compareTo}} |
+|       Mode | Template                                                   |
+| ---------: | :--------------------------------------------------------- |
+|  `default` | {{subject}} must be greater than or equal to {{compareTo}} |
 | `inverted` | {{subject}} must be less than {{compareTo}}                |
 
 ## Template placeholders
@@ -48,15 +48,13 @@ Message template for this validator includes `{{compareTo}}`.
 ## Changelog
 
 | Version | Description                                |
-| ------: | ------------------------------------------ |
+| ------: | :----------------------------------------- |
 |   3.0.0 | Renamed from "Min" to "GreaterThanOrEqual" |
 |   2.0.0 | Became always inclusive                    |
 |   1.0.0 | Became inclusive by default                |
 |   0.3.9 | Created                                    |
 
----
-
-See also:
+## See Also
 
 - [Between](Between.md)
 - [BetweenExclusive](BetweenExclusive.md)

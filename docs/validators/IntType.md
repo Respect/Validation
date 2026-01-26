@@ -21,9 +21,9 @@ v::intType()->assert('10');
 
 ### `IntType::TEMPLATE_STANDARD`
 
-| Mode       | Template                           |
-| ---------- | ---------------------------------- |
-| `default`  | {{subject}} must be an integer     |
+|       Mode | Template                           |
+| ---------: | :--------------------------------- |
+|  `default` | {{subject}} must be an integer     |
 | `inverted` | {{subject}} must not be an integer |
 
 ## Template placeholders
@@ -40,12 +40,10 @@ v::intType()->assert('10');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [ArrayType](ArrayType.md)
 - [BoolType](BoolType.md)

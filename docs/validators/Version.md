@@ -18,9 +18,9 @@ v::version()->assert('1.0.0');
 
 ### `Version::TEMPLATE_STANDARD`
 
-| Mode       | Template                          |
-| ---------- | --------------------------------- |
-| `default`  | {{subject}} must be a version     |
+|       Mode | Template                          |
+| ---------: | :-------------------------------- |
+|  `default` | {{subject}} must be a version     |
 | `inverted` | {{subject}} must not be a version |
 
 ## Template placeholders
@@ -36,12 +36,10 @@ v::version()->assert('1.0.0');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Equals](Equals.md)
 - [Regex](Regex.md)

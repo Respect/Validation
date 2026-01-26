@@ -42,12 +42,10 @@ Each other validation has custom messages for negated validators.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Named](Named.md)
 - [NoneOf](NoneOf.md)

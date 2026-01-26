@@ -20,9 +20,9 @@ This validator is case-sensitive.
 
 ### `Extension::TEMPLATE_STANDARD`
 
-| Mode       | Template                                          |
-| ---------- | ------------------------------------------------- |
-| `default`  | {{subject}} must have {{extension}} extension     |
+|       Mode | Template                                          |
+| ---------: | :------------------------------------------------ |
+|  `default` | {{subject}} must have {{extension}} extension     |
 | `inverted` | {{subject}} must not have {{extension}} extension |
 
 ## Template placeholders
@@ -39,12 +39,10 @@ This validator is case-sensitive.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Directory](Directory.md)
 - [Executable](Executable.md)

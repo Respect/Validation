@@ -21,9 +21,9 @@ v::boolType()->assert(false);
 
 ### `BoolType::TEMPLATE_STANDARD`
 
-| Mode       | Template                          |
-| ---------- | --------------------------------- |
-| `default`  | {{subject}} must be a boolean     |
+|       Mode | Template                          |
+| ---------: | :-------------------------------- |
+|  `default` | {{subject}} must be a boolean     |
 | `inverted` | {{subject}} must not be a boolean |
 
 ## Template placeholders
@@ -40,13 +40,11 @@ v::boolType()->assert(false);
 ## Changelog
 
 | Version | Description                       |
-| ------: | --------------------------------- |
+| ------: | :-------------------------------- |
 |   1.0.0 | Renamed from `Bool` to `BoolType` |
 |   0.3.9 | Created as `Bool`                 |
 
----
-
-See also:
+## See Also
 
 - [ArrayType](ArrayType.md)
 - [BoolVal](BoolVal.md)

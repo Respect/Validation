@@ -14,7 +14,9 @@ use ArrayIterator;
 use IteratorAggregate;
 use UnexpectedValueException;
 
+use function array_fill;
 use function array_find_key;
+use function array_keys;
 use function array_map;
 use function array_slice;
 use function count;
@@ -35,6 +37,9 @@ use function strrpos;
 use function trim;
 
 use const PHP_EOL;
+use const STR_PAD_BOTH;
+use const STR_PAD_LEFT;
+use const STR_PAD_RIGHT;
 
 final class Content implements IteratorAggregate
 {
@@ -204,10 +209,12 @@ final class Content implements IteratorAggregate
     /**
      * @param array<int, string>             $headers
      * @param array<int, array<int, string>> $rows
+     * @param array<int, int>                $alignment
      */
-    public function table(array $headers, array $rows): void
+    public function table(array $headers, array $rows, array $alignment = []): void
     {
         $lengths = [];
+        $alignment = $alignment ?: array_fill(0, count($headers), 0);
 
         $filteredHeaders = [];
         foreach ($headers as $key => $header) {
@@ -229,14 +236,26 @@ final class Content implements IteratorAggregate
             }
         }
 
-        $this->lines[] = $this->formatTableRow($filteredHeaders, $lengths);
+        $this->lines[] = $this->formatTableRow($filteredHeaders, $lengths, $alignment);
         $this->lines[] = $this->formatTableRow(
-            array_map(static fn(int $length) => str_repeat('-', $length), $lengths),
+            array_map(
+                static function (int $key) use ($lengths, $alignment): string {
+                    $length = $lengths[$key];
+
+                    return match ($alignment[$key] ?? 0) {
+                        -1 => ':' . str_repeat('-', $length - 1),
+                        1 => str_repeat('-', $length - 1) . ':',
+                        default => str_repeat('-', $length),
+                    };
+                },
+                array_keys($headers),
+            ),
             $lengths,
+            $alignment,
         );
         $this->lines = [
             ...$this->lines,
-            ...array_map(fn(array $row) => $this->formatTableRow($row, $lengths), $filteredRows),
+            ...array_map(fn(array $row) => $this->formatTableRow($row, $lengths, $alignment), $filteredRows),
             '',
         ];
     }
@@ -260,12 +279,17 @@ final class Content implements IteratorAggregate
     /**
      * @param array<int, string> $row
      * @param array<int, int>    $lengths
+     * @param array<int, int>    $alignment
      */
-    private function formatTableRow(array $row, array $lengths): string
+    private function formatTableRow(array $row, array $lengths, array $alignment): string
     {
         $cells = [];
         foreach ($row as $key => $cell) {
-            $cells[] = str_pad($cell, $lengths[$key] ?? strlen($cell));
+            $cells[] = match ($alignment[$key] ?? 0) {
+                -1 => str_pad($cell, $lengths[$key], ' ', STR_PAD_RIGHT),
+                1 => str_pad($cell, $lengths[$key], ' ', STR_PAD_LEFT),
+                default => str_pad($cell, $lengths[$key], ' ', STR_PAD_BOTH),
+            };
         }
 
         return '| ' . implode(' | ', $cells) . ' |';

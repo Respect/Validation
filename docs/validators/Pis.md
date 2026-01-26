@@ -30,9 +30,9 @@ v::pis()->assert('12003406788');
 
 ### `Pis::TEMPLATE_STANDARD`
 
-| Mode       | Template                                   |
-| ---------- | ------------------------------------------ |
-| `default`  | {{subject}} must be a valid PIS number     |
+|       Mode | Template                                   |
+| ---------: | :----------------------------------------- |
+|  `default` | {{subject}} must be a valid PIS number     |
 | `inverted` | {{subject}} must not be a valid PIS number |
 
 ## Template placeholders
@@ -48,12 +48,10 @@ v::pis()->assert('12003406788');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Cnh](Cnh.md)
 - [Cnpj](Cnpj.md)

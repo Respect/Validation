@@ -51,12 +51,10 @@ This validator does not have any templates, because it will always return the re
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   3.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [AllOf](AllOf.md)
 - [AnyOf](AnyOf.md)

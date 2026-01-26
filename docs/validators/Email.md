@@ -18,9 +18,9 @@ v::email()->assert('alganet@gmail.com');
 
 ### `Email::TEMPLATE_STANDARD`
 
-| Mode       | Template                                  |
-| ---------- | ----------------------------------------- |
-| `default`  | {{subject}} must be a valid email address |
+|       Mode | Template                                  |
+| ---------: | :---------------------------------------- |
+|  `default` | {{subject}} must be a valid email address |
 | `inverted` | {{subject}} must not be an email address  |
 
 ## Template placeholders
@@ -36,14 +36,12 @@ v::email()->assert('alganet@gmail.com');
 ## Changelog
 
 | Version | Description                                       |
-| ------: | ------------------------------------------------- |
+| ------: | :------------------------------------------------ |
 |   2.3.0 | Use "egulias/emailvalidator" version 4.0          |
 |   0.9.0 | Use "egulias/emailvalidator" for email validation |
 |   0.3.9 | Created                                           |
 
----
-
-See also:
+## See Also
 
 - [Json](Json.md)
 - [Phone](Phone.md)

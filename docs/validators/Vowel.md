@@ -19,16 +19,16 @@ v::vowel()->assert('aei');
 
 ### `Vowel::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-| ---------- | ------------------------------------------- |
-| `default`  | {{subject}} must consist of vowels only     |
+|       Mode | Template                                    |
+| ---------: | :------------------------------------------ |
+|  `default` | {{subject}} must consist of vowels only     |
 | `inverted` | {{subject}} must not consist of vowels only |
 
 ### `Vowel::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                      |
-| ---------- | ------------------------------------------------------------- |
-| `default`  | {{subject}} must consist of vowels and {{additionalChars}}    |
+|       Mode | Template                                                      |
+| ---------: | :------------------------------------------------------------ |
+|  `default` | {{subject}} must consist of vowels and {{additionalChars}}    |
 | `inverted` | {{subject}} must not consist of vowels or {{additionalChars}} |
 
 ## Template placeholders
@@ -45,14 +45,12 @@ v::vowel()->assert('aei');
 ## Changelog
 
 | Version | Description                          |
-| ------: | ------------------------------------ |
+| ------: | :----------------------------------- |
 |   2.0.0 | Do not consider whitespaces as valid |
 |   0.5.0 | Renamed from `Vowels` to `Vowel`     |
 |   0.3.9 | Created as `Vowels`                  |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)

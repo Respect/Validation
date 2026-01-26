@@ -21,9 +21,9 @@ v::base64()->assert('respect!');
 
 ### `Base64::TEMPLATE_STANDARD`
 
-| Mode       | Template                                        |
-| ---------- | ----------------------------------------------- |
-| `default`  | {{subject}} must be a base64 encoded string     |
+|       Mode | Template                                        |
+| ---------: | :---------------------------------------------- |
+|  `default` | {{subject}} must be a base64 encoded string     |
 | `inverted` | {{subject}} must not be a base64 encoded string |
 
 ## Template placeholders
@@ -39,11 +39,9 @@ v::base64()->assert('respect!');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Base](Base.md)

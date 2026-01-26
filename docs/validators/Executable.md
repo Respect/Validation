@@ -21,9 +21,9 @@ v::executable()->assert('/path/to/executable');
 
 ### `Executable::TEMPLATE_STANDARD`
 
-| Mode       | Template                                   |
-| ---------- | ------------------------------------------ |
-| `default`  | {{subject}} must be an executable file     |
+|       Mode | Template                                   |
+| ---------: | :----------------------------------------- |
+|  `default` | {{subject}} must be an executable file     |
 | `inverted` | {{subject}} must not be an executable file |
 
 ## Template placeholders
@@ -39,12 +39,10 @@ v::executable()->assert('/path/to/executable');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.7.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Directory](Directory.md)
 - [Exists](Exists.md)

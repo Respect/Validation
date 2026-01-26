@@ -43,9 +43,9 @@ v::undefOrBetween(1, 3)->assert(2);
 
 ### `UndefOr::TEMPLATE_STANDARD`
 
-| Mode       | Template                  |
-| ---------- | ------------------------- |
-| `default`  | or must be undefined      |
+|       Mode | Template                  |
+| ---------: | :------------------------ |
+|  `default` | or must be undefined      |
 | `inverted` | and must not be undefined |
 
 ## Template as suffix
@@ -73,13 +73,11 @@ v::not(v::undefOr(v::alpha()))->assert("alpha");
 ## Changelog
 
 | Version | Description           |
-| ------: | --------------------- |
+| ------: | :-------------------- |
 |   3.0.0 | Renamed to `UndefOr`  |
 |   1.0.0 | Created as `Optional` |
 
----
-
-See also:
+## See Also
 
 - [Blank](Blank.md)
 - [Falsy](Falsy.md)

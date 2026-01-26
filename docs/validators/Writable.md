@@ -21,9 +21,9 @@ v::writable()->assert('/path/to/non-writable');
 
 ### `Writable::TEMPLATE_STANDARD`
 
-| Mode       | Template                         |
-| ---------- | -------------------------------- |
-| `default`  | {{subject}} must be writable     |
+|       Mode | Template                         |
+| ---------: | :------------------------------- |
+|  `default` | {{subject}} must be writable     |
 | `inverted` | {{subject}} must not be writable |
 
 ## Template placeholders
@@ -39,13 +39,11 @@ v::writable()->assert('/path/to/non-writable');
 ## Changelog
 
 | Version | Description       |
-| ------: | ----------------- |
+| ------: | :---------------- |
 |   2.1.0 | Add PSR-7 support |
 |   0.5.0 | Created           |
 
----
-
-See also:
+## See Also
 
 - [Directory](Directory.md)
 - [Executable](Executable.md)

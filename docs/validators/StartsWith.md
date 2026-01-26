@@ -36,9 +36,9 @@ Message template for this validator includes `{{startValue}}`.
 
 ### `StartsWith::TEMPLATE_STANDARD`
 
-| Mode       | Template                                       |
-| ---------- | ---------------------------------------------- |
-| `default`  | {{subject}} must start with {{startValue}}     |
+|       Mode | Template                                       |
+| ---------: | :--------------------------------------------- |
+|  `default` | {{subject}} must start with {{startValue}}     |
 | `inverted` | {{subject}} must not start with {{startValue}} |
 
 ## Template placeholders
@@ -56,12 +56,10 @@ Message template for this validator includes `{{startValue}}`.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Contains](Contains.md)
 - [EndsWith](EndsWith.md)

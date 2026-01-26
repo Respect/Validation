@@ -39,9 +39,9 @@ v::falseVal()->assert('2');
 
 ### `FalseVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                                 |
-| ---------- | ---------------------------------------- |
-| `default`  | {{subject}} must evaluate to `false`     |
+|       Mode | Template                                 |
+| ---------: | :--------------------------------------- |
+|  `default` | {{subject}} must evaluate to `false`     |
 | `inverted` | {{subject}} must not evaluate to `false` |
 
 ## Template placeholders
@@ -57,12 +57,10 @@ v::falseVal()->assert('2');
 ## Changelog
 
 | Version | Description                        |
-| ------: | ---------------------------------- |
+| ------: | :--------------------------------- |
 |   1.0.0 | Renamed from `False` to `FalseVal` |
 |   0.8.0 | Created as `False`                 |
 
----
-
-See also:
+## See Also
 
 - [TrueVal](TrueVal.md)

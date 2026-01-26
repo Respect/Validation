@@ -24,9 +24,9 @@ v::slug()->assert('my-wordpress-title-');
 
 ### `Slug::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-| ---------- | ------------------------------------ |
-| `default`  | {{subject}} must be a valid slug     |
+|       Mode | Template                             |
+| ---------: | :----------------------------------- |
+|  `default` | {{subject}} must be a valid slug     |
 | `inverted` | {{subject}} must not be a valid slug |
 
 ## Template placeholders
@@ -42,12 +42,10 @@ v::slug()->assert('my-wordpress-title-');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [PhpLabel](PhpLabel.md)
 - [Url](Url.md)

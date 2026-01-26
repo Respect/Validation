@@ -29,9 +29,9 @@ The validation is case-sensitive.
 
 ### `Hetu::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                       |
-| ---------- | -------------------------------------------------------------- |
-| `default`  | {{subject}} must be a valid Finnish personal identity code     |
+|       Mode | Template                                                       |
+| ---------: | :------------------------------------------------------------- |
+|  `default` | {{subject}} must be a valid Finnish personal identity code     |
 | `inverted` | {{subject}} must not be a valid Finnish personal identity code |
 
 ## Template placeholders
@@ -47,12 +47,10 @@ The validation is case-sensitive.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   3.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Cnh](Cnh.md)
 - [Cnpj](Cnpj.md)

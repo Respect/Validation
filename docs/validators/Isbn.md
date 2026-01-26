@@ -27,9 +27,9 @@ v::isbn()->assert('978 10 596 52068 7');
 
 ### `Isbn::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-| ---------- | ------------------------------------ |
-| `default`  | {{subject}} must be a valid ISBN     |
+|       Mode | Template                             |
+| ---------: | :----------------------------------- |
+|  `default` | {{subject}} must be a valid ISBN     |
 | `inverted` | {{subject}} must not be a valid ISBN |
 
 ## Template placeholders
@@ -45,12 +45,10 @@ v::isbn()->assert('978 10 596 52068 7');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Imei](Imei.md)
 - [Luhn](Luhn.md)

@@ -21,9 +21,9 @@ v::subset([1, 2])->assert([1, 2, 3]);
 
 ### `Subset::TEMPLATE_STANDARD`
 
-| Mode       | Template                                       |
-| ---------- | ---------------------------------------------- |
-| `default`  | {{subject}} must be subset of {{superset}}     |
+|       Mode | Template                                       |
+| ---------: | :--------------------------------------------- |
+|  `default` | {{subject}} must be subset of {{superset}}     |
 | `inverted` | {{subject}} must not be subset of {{superset}} |
 
 ## Template placeholders
@@ -40,12 +40,10 @@ v::subset([1, 2])->assert([1, 2, 3]);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [ArrayType](ArrayType.md)
 - [ArrayVal](ArrayVal.md)

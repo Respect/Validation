@@ -134,9 +134,7 @@ Choose the validator based on what you consider "empty":
 
 3. **Use `Blank`** when whitespace-only strings, nested empty arrays, and empty objects should also be considered empty.
 
----
-
-See also:
+## See Also
 
 - [Undef](validators/Undef.md)
 - [Blank](validators/Blank.md)

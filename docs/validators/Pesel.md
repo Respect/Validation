@@ -27,9 +27,9 @@ v::pesel()->assert('PESEL123456');
 
 ### `Pesel::TEMPLATE_STANDARD`
 
-| Mode       | Template                              |
-| ---------- | ------------------------------------- |
-| `default`  | {{subject}} must be a valid PESEL     |
+|       Mode | Template                              |
+| ---------: | :------------------------------------ |
+|  `default` | {{subject}} must be a valid PESEL     |
 | `inverted` | {{subject}} must not be a valid PESEL |
 
 ## Template placeholders
@@ -45,12 +45,10 @@ v::pesel()->assert('PESEL123456');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.1.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Nip](Nip.md)
 - [PolishIdCard](PolishIdCard.md)

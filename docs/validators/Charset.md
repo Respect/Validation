@@ -27,9 +27,9 @@ The array format is a logic OR, not AND.
 
 ### `Charset::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                                          |
-| ---------- | --------------------------------------------------------------------------------- |
-| `default`  | {{subject}} must only contain characters from the {{charset&#124;raw}} charset    |
+|       Mode | Template                                                                          |
+| ---------: | :-------------------------------------------------------------------------------- |
+|  `default` | {{subject}} must only contain characters from the {{charset&#124;raw}} charset    |
 | `inverted` | {{subject}} must not contain any characters from the {{charset&#124;raw}} charset |
 
 ## Template placeholders
@@ -46,13 +46,11 @@ The array format is a logic OR, not AND.
 ## Changelog
 
 | Version | Description                                           |
-| ------: | ----------------------------------------------------- |
+| ------: | :---------------------------------------------------- |
 |   2.0.0 | Charset supports multiple charsets on its constructor |
 |   0.5.0 | Created                                               |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)

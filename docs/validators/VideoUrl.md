@@ -71,16 +71,16 @@ Message template for this validator includes `{{service}}`.
 
 ### `VideoUrl::TEMPLATE_STANDARD`
 
-| Mode       | Template                                  |
-| ---------- | ----------------------------------------- |
-| `default`  | {{subject}} must be a valid video URL     |
+|       Mode | Template                                  |
+| ---------: | :---------------------------------------- |
+|  `default` | {{subject}} must be a valid video URL     |
 | `inverted` | {{subject}} must not be a valid video URL |
 
 ### `VideoUrl::TEMPLATE_SERVICE`
 
-| Mode       | Template                                                       |
-| ---------- | -------------------------------------------------------------- |
-| `default`  | {{subject}} must be a valid {{service&#124;raw}} video URL     |
+|       Mode | Template                                                       |
+| ---------: | :------------------------------------------------------------- |
+|  `default` | {{subject}} must be a valid {{service&#124;raw}} video URL     |
 | `inverted` | {{subject}} must not be a valid {{service&#124;raw}} video URL |
 
 ## Template placeholders
@@ -97,12 +97,10 @@ Message template for this validator includes `{{service}}`.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Email](Email.md)
 - [Json](Json.md)

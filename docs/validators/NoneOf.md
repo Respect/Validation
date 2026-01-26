@@ -23,18 +23,18 @@ In the sample above, 'foo' isn't a integer nor a float, so noneOf returns true.
 
 Used when some validators have passed.
 
-| Mode       | Template                        |
-| ---------- | ------------------------------- |
-| `default`  | {{subject}} must pass the rules |
+|       Mode | Template                        |
+| ---------: | :------------------------------ |
+|  `default` | {{subject}} must pass the rules |
 | `inverted` | {{subject}} must pass the rules |
 
 ### `NoneOf::TEMPLATE_ALL`
 
 Used when all validators have passed.
 
-| Mode       | Template                            |
-| ---------- | ----------------------------------- |
-| `default`  | {{subject}} must pass all the rules |
+|       Mode | Template                            |
+| ---------: | :---------------------------------- |
+|  `default` | {{subject}} must pass all the rules |
 | `inverted` | {{subject}} must pass all the rules |
 
 ## Template placeholders
@@ -51,13 +51,11 @@ Used when all validators have passed.
 ## Changelog
 
 | Version | Description                                   |
-| ------: | --------------------------------------------- |
+| ------: | :-------------------------------------------- |
 |   3.0.0 | Require at least two validators to be defined |
 |   0.3.9 | Created                                       |
 
----
-
-See also:
+## See Also
 
 - [AllOf](AllOf.md)
 - [AnyOf](AnyOf.md)

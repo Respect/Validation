@@ -18,9 +18,9 @@ v::roman()->assert('IV');
 
 ### `Roman::TEMPLATE_STANDARD`
 
-| Mode       | Template                                      |
-| ---------- | --------------------------------------------- |
-| `default`  | {{subject}} must be a valid Roman numeral     |
+|       Mode | Template                                      |
+| ---------: | :-------------------------------------------- |
+|  `default` | {{subject}} must be a valid Roman numeral     |
 | `inverted` | {{subject}} must not be a valid Roman numeral |
 
 ## Template placeholders
@@ -36,14 +36,12 @@ v::roman()->assert('IV');
 ## Changelog
 
 | Version | Description                                                       |
-| ------: | ----------------------------------------------------------------- |
+| ------: | :---------------------------------------------------------------- |
 |   2.0.0 | Exception message refers to Roman "numerals" instead of "numbers" |
 |   2.0.0 | Do not consider empty strings as valid                            |
 |   0.3.9 | Created                                                           |
 
----
-
-See also:
+## See Also
 
 - [In](In.md)
 - [Regex](Regex.md)

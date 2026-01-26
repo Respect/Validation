@@ -24,9 +24,9 @@ v::fibonacci()->assert(6);
 
 ### `Fibonacci::TEMPLATE_STANDARD`
 
-| Mode       | Template                                         |
-| ---------- | ------------------------------------------------ |
-| `default`  | {{subject}} must be a valid Fibonacci number     |
+|       Mode | Template                                         |
+| ---------: | :----------------------------------------------- |
+|  `default` | {{subject}} must be a valid Fibonacci number     |
 | `inverted` | {{subject}} must not be a valid Fibonacci number |
 
 ## Template placeholders
@@ -43,12 +43,10 @@ v::fibonacci()->assert(6);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.1.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [PerfectSquare](PerfectSquare.md)
 - [PrimeNumber](PrimeNumber.md)

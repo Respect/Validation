@@ -20,9 +20,9 @@ Using `int()` before `even()` is a best practice.
 
 ### `Even::TEMPLATE_STANDARD`
 
-| Mode       | Template                           |
-| ---------- | ---------------------------------- |
-| `default`  | {{subject}} must be an even number |
+|       Mode | Template                           |
+| ---------: | :--------------------------------- |
+|  `default` | {{subject}} must be an even number |
 | `inverted` | {{subject}} must be an odd number  |
 
 ## Template placeholders
@@ -38,12 +38,10 @@ Using `int()` before `even()` is a best practice.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Multiple](Multiple.md)
 - [Odd](Odd.md)

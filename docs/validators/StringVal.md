@@ -36,9 +36,9 @@ v::stringVal()->assert(new ClassWithToString());
 
 ### `StringVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                               |
-| ---------- | -------------------------------------- |
-| `default`  | {{subject}} must be a string value     |
+|       Mode | Template                               |
+| ---------: | :------------------------------------- |
+|  `default` | {{subject}} must be a string value     |
 | `inverted` | {{subject}} must not be a string value |
 
 ## Template placeholders
@@ -55,12 +55,10 @@ v::stringVal()->assert(new ClassWithToString());
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [BoolType](BoolType.md)

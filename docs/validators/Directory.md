@@ -31,9 +31,9 @@ v::directory()->assert(dir('/'));
 
 ### `Directory::TEMPLATE_STANDARD`
 
-| Mode       | Template                            |
-| ---------- | ----------------------------------- |
-| `default`  | {{subject}} must be a directory     |
+|       Mode | Template                            |
+| ---------: | :---------------------------------- |
+|  `default` | {{subject}} must be a directory     |
 | `inverted` | {{subject}} must not be a directory |
 
 ## Template placeholders
@@ -49,13 +49,11 @@ v::directory()->assert(dir('/'));
 ## Changelog
 
 | Version | Description                       |
-| ------: | --------------------------------- |
+| ------: | :-------------------------------- |
 |   2.0.0 | Validates PHP's `Directory` class |
 |   0.4.4 | Created                           |
 
----
-
-See also:
+## See Also
 
 - [Executable](Executable.md)
 - [Exists](Exists.md)

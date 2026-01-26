@@ -49,9 +49,9 @@ v::date('Ydm')->assert(20173112);
 
 ### `Date::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                      |
-| ---------- | ------------------------------------------------------------- |
-| `default`  | {{subject}} must be a valid date in the format {{sample}}     |
+|       Mode | Template                                                      |
+| ---------: | :------------------------------------------------------------ |
+|  `default` | {{subject}} must be a valid date in the format {{sample}}     |
 | `inverted` | {{subject}} must not be a valid date in the format {{sample}} |
 
 ## Template placeholders
@@ -68,13 +68,11 @@ v::date('Ydm')->assert(20173112);
 ## Changelog
 
 | Version | Description                    |
-| ------: | ------------------------------ |
+| ------: | :----------------------------- |
 |   2.0.0 | Changed to only validate dates |
 |   0.3.9 | Created as `Date`              |
 
----
-
-See also:
+## See Also
 
 - [DateTime](DateTime.md)
 - [DateTimeDiff](DateTimeDiff.md)

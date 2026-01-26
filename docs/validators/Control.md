@@ -20,16 +20,16 @@ v::control()->assert("\n\r\t");
 
 ### `Control::TEMPLATE_STANDARD`
 
-| Mode       | Template                                         |
-| ---------- | ------------------------------------------------ |
-| `default`  | {{subject}} must only contain control characters |
+|       Mode | Template                                         |
+| ---------: | :----------------------------------------------- |
+|  `default` | {{subject}} must only contain control characters |
 | `inverted` | {{subject}} must not contain control characters  |
 
 ### `Control::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                                 |
-| ---------- | ------------------------------------------------------------------------ |
-| `default`  | {{subject}} must only contain control characters and {{additionalChars}} |
+|       Mode | Template                                                                 |
+| ---------: | :----------------------------------------------------------------------- |
+|  `default` | {{subject}} must only contain control characters and {{additionalChars}} |
 | `inverted` | {{subject}} must not contain control characters or {{additionalChars}}   |
 
 ## Template placeholders
@@ -46,13 +46,11 @@ v::control()->assert("\n\r\t");
 ## Changelog
 
 | Version | Description                       |
-| ------: | --------------------------------- |
+| ------: | :-------------------------------- |
 |   2.0.0 | Renamed from `Cntrl` to `Control` |
 |   0.5.0 | Created                           |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Printable](Printable.md)

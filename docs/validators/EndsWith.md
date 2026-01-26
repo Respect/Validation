@@ -34,9 +34,9 @@ Message template for this validator includes `{{endValue}}`.
 
 ### `EndsWith::TEMPLATE_STANDARD`
 
-| Mode       | Template                                   |
-| ---------- | ------------------------------------------ |
-| `default`  | {{subject}} must end with {{endValue}}     |
+|       Mode | Template                                   |
+| ---------: | :----------------------------------------- |
+|  `default` | {{subject}} must end with {{endValue}}     |
 | `inverted` | {{subject}} must not end with {{endValue}} |
 
 ## Template placeholders
@@ -54,12 +54,10 @@ Message template for this validator includes `{{endValue}}`.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Contains](Contains.md)
 - [In](In.md)

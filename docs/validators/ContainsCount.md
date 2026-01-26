@@ -38,16 +38,16 @@ v::containsCount('1', 1, true)->assert([1, 2, 3]);
 
 ### `ContainsCount::TEMPLATE_TIMES`
 
-| Mode       | Template                                                         |
-| ---------- | ---------------------------------------------------------------- |
-| `default`  | {{subject}} must contain {{containsValue}} {{count}} time(s)     |
+|       Mode | Template                                                         |
+| ---------: | :--------------------------------------------------------------- |
+|  `default` | {{subject}} must contain {{containsValue}} {{count}} time(s)     |
 | `inverted` | {{subject}} must not contain {{containsValue}} {{count}} time(s) |
 
 ### `ContainsCount::TEMPLATE_ONCE`
 
-| Mode       | Template                                                 |
-| ---------- | -------------------------------------------------------- |
-| `default`  | {{subject}} must contain {{containsValue}} only once     |
+|       Mode | Template                                                 |
+| ---------: | :------------------------------------------------------- |
+|  `default` | {{subject}} must contain {{containsValue}} only once     |
 | `inverted` | {{subject}} must not contain {{containsValue}} only once |
 
 ## Template placeholders
@@ -66,12 +66,10 @@ v::containsCount('1', 1, true)->assert([1, 2, 3]);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   3.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Contains](Contains.md)
 - [ContainsAny](ContainsAny.md)

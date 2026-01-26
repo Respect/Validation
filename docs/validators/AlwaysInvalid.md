@@ -18,16 +18,16 @@ v::alwaysInvalid()->assert('whatever');
 
 ### `AlwaysInvalid::TEMPLATE_STANDARD`
 
-| Mode       | Template                    |
-| ---------- | --------------------------- |
-| `default`  | {{subject}} must be valid   |
+|       Mode | Template                    |
+| ---------: | :-------------------------- |
+|  `default` | {{subject}} must be valid   |
 | `inverted` | {{subject}} must be invalid |
 
 ### `AlwaysInvalid::TEMPLATE_SIMPLE`
 
-| Mode       | Template               |
-| ---------- | ---------------------- |
-| `default`  | {{subject}} is invalid |
+|       Mode | Template               |
+| ---------: | :--------------------- |
+|  `default` | {{subject}} is invalid |
 | `inverted` | {{subject}} is valid   |
 
 ## Template placeholders
@@ -43,12 +43,10 @@ v::alwaysInvalid()->assert('whatever');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.5.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [AlwaysValid](AlwaysValid.md)
 - [When](When.md)

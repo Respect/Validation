@@ -41,9 +41,9 @@ v::nullOrBetween(1, 3)->assert(null);
 
 ### `NullOr::TEMPLATE_STANDARD`
 
-| Mode       | Template             |
-| ---------- | -------------------- |
-| `default`  | or must be null      |
+|       Mode | Template             |
+| ---------: | :------------------- |
+|  `default` | or must be null      |
 | `inverted` | and must not be null |
 
 ## Template as suffix
@@ -71,13 +71,11 @@ v::not(v::nullOr(v::alpha()))->assert("alpha");
 ## Changelog
 
 | Version | Description           |
-| ------: | --------------------- |
+| ------: | :-------------------- |
 |   3.0.0 | Renamed to `NullOr`   |
 |   2.0.0 | Created as `Nullable` |
 
----
-
-See also:
+## See Also
 
 - [Attributes](Attributes.md)
 - [NullType](NullType.md)

@@ -66,9 +66,9 @@ v::undef()->assert(new stdClass());
 
 ### `Undef::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-| ---------- | ----------------------------- |
-| `default`  | {{subject}} must be undefined |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be undefined |
 | `inverted` | {{subject}} must be defined   |
 
 ## Template placeholders
@@ -84,13 +84,11 @@ v::undef()->assert(new stdClass());
 ## Changelog
 
 | Version | Description                                 |
-| ------: | ------------------------------------------- |
+| ------: | :------------------------------------------ |
 |   3.0.0 | Renamed to `Undef` and changed the behavior |
 |   1.0.0 | Created as `NotOptional`                    |
 
----
-
-See also:
+## See Also
 
 - [Blank](Blank.md)
 - [Falsy](Falsy.md)

@@ -31,9 +31,9 @@ v::base(2)->assert('0120122001');
 
 ### `Base::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                   |
-| ---------- | ---------------------------------------------------------- |
-| `default`  | {{subject}} must be a number in base {{base&#124;raw}}     |
+|       Mode | Template                                                   |
+| ---------: | :--------------------------------------------------------- |
+|  `default` | {{subject}} must be a number in base {{base&#124;raw}}     |
 | `inverted` | {{subject}} must not be a number in base {{base&#124;raw}} |
 
 ## Template placeholders
@@ -50,12 +50,10 @@ v::base(2)->assert('0120122001');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.5.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Base64](Base64.md)
 - [Uuid](Uuid.md)

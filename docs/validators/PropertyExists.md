@@ -35,9 +35,9 @@ This validator will validate public, private, protected, uninitialised, and stat
 
 ### `PropertyExists::TEMPLATE_STANDARD`
 
-| Mode       | Template                        |
-| ---------- | ------------------------------- |
-| `default`  | {{subject}} must be present     |
+|       Mode | Template                        |
+| ---------: | :------------------------------ |
+|  `default` | {{subject}} must be present     |
 | `inverted` | {{subject}} must not be present |
 
 ## Template placeholders
@@ -75,12 +75,10 @@ v::property('foo', v::named('Custom name', v::alwaysValid()))->assert([]);
 ## Changelog
 
 | Version | Description                          |
-| ------: | ------------------------------------ |
+| ------: | :----------------------------------- |
 |   3.0.0 | Created from [Property](Property.md) |
 
----
-
-See also:
+## See Also
 
 - [AlwaysValid](AlwaysValid.md)
 - [Attributes](Attributes.md)

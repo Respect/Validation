@@ -24,9 +24,9 @@ v::positive()->assert(-15);
 
 ### `Positive::TEMPLATE_STANDARD`
 
-| Mode       | Template                                  |
-| ---------- | ----------------------------------------- |
-| `default`  | {{subject}} must be a positive number     |
+|       Mode | Template                                  |
+| ---------: | :---------------------------------------- |
+|  `default` | {{subject}} must be a positive number     |
 | `inverted` | {{subject}} must not be a positive number |
 
 ## Template placeholders
@@ -43,12 +43,10 @@ v::positive()->assert(-15);
 ## Changelog
 
 | Version | Description                          |
-| ------: | ------------------------------------ |
+| ------: | :----------------------------------- |
 |   2.0.0 | Does not validate non-numeric values |
 |   0.3.9 | Created                              |
 
----
-
-See also:
+## See Also
 
 - [Negative](Negative.md)

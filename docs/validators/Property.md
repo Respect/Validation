@@ -62,13 +62,11 @@ This validator will validate public, private, protected, uninitialised, and stat
 ## Changelog
 
 | Version | Description                                                                                                                          |
-| ------: | ------------------------------------------------------------------------------------------------------------------------------------ |
+| ------: | :----------------------------------------------------------------------------------------------------------------------------------- |
 |   3.0.0 | Renamed from `Attribute` to `Property`, and split by [PropertyExists](PropertyExists.md) and [PropertyOptional](PropertyOptional.md) |
 |   0.3.9 | Created                                                                                                                              |
 
----
-
-See also:
+## See Also
 
 - [Attributes](Attributes.md)
 - [Key](Key.md)

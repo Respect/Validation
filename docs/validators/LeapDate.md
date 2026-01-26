@@ -21,9 +21,9 @@ parameter is mandatory.
 
 ### `LeapDate::TEMPLATE_STANDARD`
 
-| Mode       | Template                              |
-| ---------- | ------------------------------------- |
-| `default`  | {{subject}} must be a valid leap date |
+|       Mode | Template                              |
+| ---------: | :------------------------------------ |
+|  `default` | {{subject}} must be a valid leap date |
 | `inverted` | {{subject}} must not be a leap date   |
 
 ## Template placeholders
@@ -39,12 +39,10 @@ parameter is mandatory.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Date](Date.md)
 - [DateTime](DateTime.md)

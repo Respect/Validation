@@ -40,16 +40,16 @@ v::alpha()->uppercase()->assert('example');
 
 ### `Alpha::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-| ---------- | ------------------------------------------- |
-| `default`  | {{subject}} must contain only letters (a-z) |
+|       Mode | Template                                    |
+| ---------: | :------------------------------------------ |
+|  `default` | {{subject}} must contain only letters (a-z) |
 | `inverted` | {{subject}} must not contain letters (a-z)  |
 
 ### `Alpha::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                            |
-| ---------- | ------------------------------------------------------------------- |
-| `default`  | {{subject}} must contain only letters (a-z) and {{additionalChars}} |
+|       Mode | Template                                                            |
+| ---------: | :------------------------------------------------------------------ |
+|  `default` | {{subject}} must contain only letters (a-z) and {{additionalChars}} |
 | `inverted` | {{subject}} must not contain letters (a-z) or {{additionalChars}}   |
 
 ## Template placeholders
@@ -66,13 +66,11 @@ v::alpha()->uppercase()->assert('example');
 ## Changelog
 
 | Version | Description                               |
-| ------: | ----------------------------------------- |
+| ------: | :---------------------------------------- |
 |   2.0.0 | Removed support to whitespaces by default |
 |   0.3.9 | Created                                   |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Charset](Charset.md)

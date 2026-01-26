@@ -28,9 +28,9 @@ v::exists()->assert(new SplFileInfo('/path/to/file.txt'));
 
 ### `Exists::TEMPLATE_STANDARD`
 
-| Mode       | Template                                 |
-| ---------- | ---------------------------------------- |
-| `default`  | {{subject}} must be an existing file     |
+|       Mode | Template                                 |
+| ---------: | :--------------------------------------- |
+|  `default` | {{subject}} must be an existing file     |
 | `inverted` | {{subject}} must not be an existing file |
 
 ## Template placeholders
@@ -46,12 +46,10 @@ v::exists()->assert(new SplFileInfo('/path/to/file.txt'));
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.5.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Directory](Directory.md)
 - [Executable](Executable.md)

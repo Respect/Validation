@@ -82,12 +82,10 @@ v::attributes()->assert(new Person('', 'not a date', 'not an email', 'not a phon
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   3.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Named](Named.md)
 - [NullOr](NullOr.md)
