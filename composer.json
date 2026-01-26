@@ -83,7 +83,9 @@
         "phpstan": "vendor/bin/phpstan analyze",
         "phpunit": "vendor/bin/phpunit --testsuite=unit",
         "smoke-complete": "bin/console smoke-tests:check-complete",
+        "spdx-lint": "bin/console spdx:lint",
         "qa": [
+            "@spdx-lint",
             "@phpcs",
             "@phpstan",
             "@phpunit",
