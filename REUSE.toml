@@ -1,6 +1,6 @@
 version = 1
 
 [[annotations]]
-path = [ "*.yml", "*.yaml", ".git*", "*.dist", "docs/.pages", "docs/validators/.pages", "composer.json", "tests/fixtures/*", ".github/*.yml", ".github/workflows/**.yml" ]
+path = [ "*.yml", "*.yaml", ".git*", "*.dist", "docs/.pages", "docs/validators/.pages", "composer.json", "tests/fixtures/*", ".github/*.yml", ".github/workflows/**.yml", ".github/PULL_REQUEST_TEMPLATE.md", ".github/ISSUE_TEMPLATE/**" ]
 SPDX-FileCopyrightText = "Respect Project Contributors"
 SPDX-License-Identifier = "MIT"
