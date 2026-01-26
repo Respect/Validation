@@ -29,10 +29,10 @@ use function sprintf;
 use function trim;
 
 #[AsCommand(
-    name: 'spdx:lint',
+    name: 'lint:spdx',
     description: 'Apply SPDX linters to source and documentation files',
 )]
-final class SpdxLintCommand extends Command
+final class LintSpdxCommand extends Command
 {
     public const array HEADERS = [
         'License-Identifier: MIT',

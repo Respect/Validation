@@ -30,4 +30,4 @@ jobs:
         run: composer install --prefer-dist
 
       - name: Lint documentation files
-        run: bin/console docs:lint
+        run: bin/console lint:docs

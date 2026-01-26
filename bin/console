@@ -11,9 +11,9 @@ declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
 use Respect\Dev\Commands\CreateMixinCommand;
-use Respect\Dev\Commands\DocsLintCommand;
+use Respect\Dev\Commands\LintDocsCommand;
 use Respect\Dev\Commands\SmokeTestsCheckCompleteCommand;
-use Respect\Dev\Commands\SpdxLintCommand;
+use Respect\Dev\Commands\LintSpdxCommand;
 use Respect\Dev\Commands\UpdateDomainSuffixesCommand;
 use Respect\Dev\Commands\UpdateDomainToplevelCommand;
 use Respect\Dev\Commands\UpdatePostalCodesCommand;
@@ -34,7 +34,7 @@ return (static function () {
 
     $application = new Application('Respect/Validation', '3.0');
     $application->addCommand(new CreateMixinCommand());
-    $application->addCommand(new DocsLintCommand($differ, new CompositeLinter(
+    $application->addCommand(new LintDocsCommand($differ, new CompositeLinter(
         new AssertionMessageLinter(),
         new ValidatorHeaderLinter(),
         new ValidatorIndexLinter(),
@@ -42,11 +42,11 @@ return (static function () {
         new ValidatorTemplatesLinter(),
         new ValidatorChangelogLinter(),
     )));
+    $application->addCommand(new LintSpdxCommand());
     $application->addCommand(new UpdateDomainSuffixesCommand());
     $application->addCommand(new UpdateDomainToplevelCommand());
     $application->addCommand(new UpdatePostalCodesCommand());
     $application->addCommand(new SmokeTestsCheckCompleteCommand());
-    $application->addCommand(new SpdxLintCommand());
 
     return $application->run();
 })();

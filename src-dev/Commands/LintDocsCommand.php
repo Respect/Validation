@@ -24,10 +24,10 @@ use function dirname;
 use function sprintf;
 
 #[AsCommand(
-    name: 'docs:lint',
+    name: 'lint:docs',
     description: 'Apply documentation linters and optionally auto-fix issues',
 )]
-final class DocsLintCommand extends Command
+final class LintDocsCommand extends Command
 {
     public function __construct(
         private readonly Differ $differ,

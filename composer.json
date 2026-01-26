@@ -76,14 +76,14 @@
     "scripts": {
         "bench-profile": "vendor/bin/phpbench xdebug:profile",
         "bench": "vendor/bin/phpbench run",
-        "docs-fix": "bin/console docs:lint --fix",
-        "docs": "bin/console docs:lint",
+        "docs-fix": "bin/console lint:docs --fix",
+        "docs": "bin/console lint:docs",
         "pest": "vendor/bin/pest --testsuite=feature --compact",
         "phpcs": "vendor/bin/phpcs",
         "phpstan": "vendor/bin/phpstan analyze",
         "phpunit": "vendor/bin/phpunit --testsuite=unit",
         "smoke-complete": "bin/console smoke-tests:check-complete",
-        "spdx-lint": "bin/console spdx:lint",
+        "spdx-lint": "bin/console lint:spdx",
         "qa": [
             "@spdx-lint",
             "@phpcs",
