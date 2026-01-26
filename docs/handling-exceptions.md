@@ -5,9 +5,54 @@ SPDX-License-Identifier: MIT
 
 # Handling exceptions
 
-The `ValidatorBuilder::assert()` method simplifies exception handling by throwing `ValidationException` exceptions when validation fails. These exceptions provide detailed feedback on what went wrong.
+The `ValidatorBuilder::assert()` method throws a `ValidationException` when validation fails. This exception provides detailed feedback on what went wrong.
 
-## Full exception message
+## The `ValidationException`
+
+The `ValidationException` extends PHP's default `InvalidArgumentException`. That means you can simply catch `InvalidArgumentException`.
+
+```php
+try {
+    v::alnum()->assert($input);
+} catch (InvalidArgumentException $exception) {
+    echo $exception->getMessage();
+}
+```
+
+### Helpful stack traces
+
+When an exception is thrown, PHP reports where it was *created*, not where it was *caused*. In most validation libraries that means stack traces point deep inside library internals. You end up hunting through the trace to find your actual code.
+
+Although the `ValidationException` is thrown deep inside Validation's internals, we overwrite the stack trace to provide a helpful message. If `v::intType()->assert($input)` fails in `/opt/example.php` line `78`, your stack trace looks like this:
+
+```no-highlight
+Stack trace:
+#0 /opt/example.php(78): Respect\Validation\Validator->assert(1.0)
+#1 {main}
+```
+
+### Exception message
+
+The `getMessage()` method returns the message from the first failed validator.
+
+```php
+use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\ValidatorBuilder as v;
+
+try {
+    v::alnum()->lowercase()->assert('The Panda');
+} catch (ValidationException $exception) {
+    echo $exception->getMessage();
+}
+```
+
+The code above generates the following output:
+
+```no-highlight
+"The Panda" must contain only letters (a-z) and digits (0-9)
+```
+
+### Full exception message
 
 The `getFullMessage()` method will return a full comprehensive explanation of validators that didn't pass in a nested Markdown list format.
 
@@ -16,21 +61,21 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\ValidatorBuilder as v;
 
 try {
-    v::alnum()->lowercase()->assert('The Respect Panda');
-} catch(ValidationException $exception) {
-   echo $exception->getFullMessage();
+    v::alnum()->lowercase()->assert('The Panda');
+} catch (ValidationException $exception) {
+    echo $exception->getFullMessage();
 }
 ```
 
 The code above generates the following output:
 
 ```no-highlight
-- "The Respect Panda" must pass all the rules
-  - "The Respect Panda" must contain only letters (a-z) and digits (0-9)
-  - "The Respect Panda" must contain only lowercase letters
+- "The Panda" must pass all the rules
+  - "The Panda" must contain only letters (a-z) and digits (0-9)
+  - "The Panda" must contain only lowercase letters
 ```
 
-## Getting all messages as an array
+### Full exception messages as an array
 
 Retrieve validation messages in array format using `getMessages()`.
 
@@ -39,8 +84,8 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\ValidatorBuilder as v;
 
 try {
-    v::alnum()->lowercase()->assert('The Respect Panda');
-} catch(ValidationException $exception) {
+    v::alnum()->lowercase()->assert('The Panda');
+} catch (ValidationException $exception) {
     print_r($exception->getMessages());
 }
 ```
@@ -50,21 +95,82 @@ The code above generates the following output:
 ```no-highlight
 Array
 (
-    [__root__] => "The Respect Panda" must pass all the rules
-    [alnum] => "The Respect Panda" must contain only letters (a-z) and digits (0-9)
-    [lowercase] => "The Respect Panda" must contain only lowercase letters
+    [__root__] => "The Panda" must pass all the rules
+    [alnum] => "The Panda" must contain only letters (a-z) and digits (0-9)
+    [lowercase] => "The Panda" must contain only lowercase letters
 )
 ```
 
-When validating with [Key](validators/Key.md) or [Property](validators/Property.md) the keys of will correspond to the name of the key or property that failed the validation.
+When validating with [Key](validators/Key.md) or [Property](validators/Property.md), the keys will correspond to the name of the key or property that failed the validation.
+
+## Custom exception
+
+You can pass a custom exception as the second argument of `ValidatorBuilder::assert()` in two ways.
+
+### Custom exception as object
+
+Pass a `Throwable` to throw a custom exception instead of `ValidationException`.
+
+```php
+use Respect\Validation\ValidatorBuilder as v;
+
+try {
+    v::alnum()->assert($input, new DomainValidationException('Validation failed!'));
+} catch (DomainValidationException $exception) {
+     echo $exception->getMessage();
+}
+```
+
+### Custom exception as callable
+
+Pass a callable to intercept the `ValidationException` before throwing your own exception.
+
+```php
+use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\ValidatorBuilder as v;
+
+try {
+    v::alnum()->assert(
+        $input,
+        fn (ValidationException $exception) => new DomainException(
+            'Validation error: ' . $exception->getMessage(),
+            $exception->getCode(),
+            $exception
+        )
+    );
+} catch (DomainException $exception) {
+     echo $exception->getMessage();
+}
+```
 
 ## Custom templates
 
-You can tailor the messages to better suit your needs.
+The `assert()` method accepts different types of templates as the second argument to customize exception messages.
 
-### Custom templates when asserting
+### Custom templates as string
 
-Pass custom templates directly to the `assert()` method for one-off use cases.
+Pass a single string template to replace the root message of the exception.
+
+```php
+use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\ValidatorBuilder as v;
+
+try {
+    v::alnum()->assert('The Panda', 'Invalid username provided');
+} catch (ValidationException $exception) {
+     echo $exception->getFullMessage();
+}
+```
+
+The code above generates the following output.
+
+```no-highlight
+- Invalid username provided
+```
+
+### Custom templates as array
+
+Pass custom templates as an array to the `assert()` method for one-off use cases.
 
 ```php
 use Respect\Validation\Exceptions\ValidationException;
@@ -72,21 +178,21 @@ use Respect\Validation\ValidatorBuilder as v;
 
 try {
     v::alnum()
-	    ->lowercase()
-	    ->assert(
-		    'The Respect Panda',
-			[
-			    '__root__' => 'The given input is not valid',
-			    'alnum' => 'Your username must contain only letters and digits',
-			    'lowercase' => 'Your username must be lowercase',
-			]
-		);
-} catch(ValidationException $exception) {
+        ->lowercase()
+        ->assert(
+            'The Panda',
+            [
+                '__root__' => 'The given input is not valid',
+                'alnum' => 'Your username must contain only letters and digits',
+                'lowercase' => 'Your username must be lowercase',
+            ]
+        );
+} catch (ValidationException $exception) {
     print_r($exception->getMessages());
 }
 ```
 
-The code above will generate the following output.
+The code above generates the following output.
 
 ```no-highlight
 Array
@@ -97,44 +203,47 @@ Array
 )
 ```
 
-### Custom templates in the validator
+### Custom templates with Templated validator
 
-Define templates within a validator so you can reuse the same templates easily.
+Use the [Templated](validators/Templated.md) validator to attach templates directly to the chain. That way your chain of validators will always have the same template.
 
 ```php
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\ValidatorBuilder as v;
 
-$validator = v::alnum()->lowercase();
-$validator->setTemplates([
-    '__root__' => '{{subject}} is not valid',
-    'alnum' => 'Usernames must contain only letters and digits',
-    'lowercase' => 'Usernames must be lowercase',
-]);
-
 try {
-    $validator->assert('The Respect Panda');
-} catch(ValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
-}
-
-echo PHP_EOL;
-
-try {
-    $validator->assert('Something else');
-} catch(ValidationException $exception) {
-    echo $exception->getFullMessage() . PHP_EOL;
+    v::templated('Invalid email address', v::email())
+        ->assert('not an email');
+} catch (ValidationException $exception) {
+     echo $exception->getMessage();
 }
 ```
 
-The code above will generate the following output.
+The code above generates the following output.
 
 ```no-highlight
-- "The Respect Panda" is not valid
-  - Usernames must contain only letters and digits
-  - Usernames must be lowercase
+Invalid email address
+```
 
-- "Something else" is not valid
-  - Usernames must contain only letters and digits
-  - Usernames must be lowercase
+You can also use `Templated` with template parameters to create dynamic messages.
+
+```php
+use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\ValidatorBuilder as v;
+
+try {
+    v::templated(
+        'The author of the page {{title}} is empty',
+        v::notBlank(),
+        ['title' => 'Feature Guide']
+    )->assert('');
+} catch (ValidationException $exception) {
+     echo $exception->getMessage();
+}
+```
+
+The code above generates the following output.
+
+```no-highlight
+The author of the page "Feature Guide" is empty
 ```
