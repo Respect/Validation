@@ -29,7 +29,7 @@ final readonly class ValidatorIndexLinter implements Linter
 {
     public function lint(File $file): File
     {
-        if (!str_ends_with($file->filename, '/validators/index.md')) {
+        if (!str_ends_with($file->filename, '/validators.md')) {
             return $file;
         }
 
@@ -50,7 +50,7 @@ final readonly class ValidatorIndexLinter implements Linter
 
         $categories = array_keys($validatorsByCategory);
 
-        $content->h1('Overviews');
+        $content->h1('Validators');
         $content->paragraph('In this page you will find a list of validators by their category.');
         $content->emptyLine();
 
@@ -59,7 +59,7 @@ final readonly class ValidatorIndexLinter implements Linter
             $categoryValidators = $validatorsByCategory[$category];
             sort($categoryValidators);
             foreach ($categoryValidators as $categoryValidator) {
-                $content->anchorListItem($categoryValidator, sprintf('%s.md', $categoryValidator));
+                $content->anchorListItem($categoryValidator, sprintf('validators/%s.md', $categoryValidator));
             }
 
             $content->emptyLine();

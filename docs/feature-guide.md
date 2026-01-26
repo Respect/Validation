@@ -1,9 +1,7 @@
----
-# SPDX-FileCopyrightText: (c) Respect Project Contributors
-# SPDX-License-Identifier: MIT
-
-weight: -95
----
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
 
 # Feature Guide
 

@@ -3,5 +3,5 @@
 
 mkdocs>=1.5.0
 pymdown-extensions>=10.0
-mkdocs-nav-weight==0.3.0
+mkdocs-awesome-pages-plugin>=2.9.0
 

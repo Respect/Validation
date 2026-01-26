@@ -3,9 +3,7 @@ theme: readthedocs
 
 plugins:
   - search
-  - mkdocs-nav-weight:
-      index_weight: -100
-      default_page_weight: -50
+  - awesome-pages
 
 markdown_extensions:
   - pymdownx.highlight:

@@ -1,9 +1,7 @@
----
-# SPDX-FileCopyrightText: (c) Respect Project Contributors
-# SPDX-License-Identifier: MIT
-
-weight: -100
----
+<!--
+SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-License-Identifier: MIT
+-->
 
 # Getting Started
 
@@ -102,4 +100,4 @@ $validator->assert('validation');
 ## Next steps
 
 - Explore the [Feature Guide](feature-guide.md) for more advanced usage.
-- Check out the [List of Validators by Category](validators/index.md) for a comprehensive list of available validators.
+- Check out the [List of Validators by Category](validators.md) for a comprehensive list of available validators.

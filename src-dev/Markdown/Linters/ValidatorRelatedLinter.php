@@ -24,13 +24,12 @@ use function preg_match_all;
 use function sort;
 use function sprintf;
 use function str_contains;
-use function str_ends_with;
 
 final readonly class ValidatorRelatedLinter implements Linter
 {
     public function lint(File $file): File
     {
-        if (!str_contains($file->filename, '/validators/') || str_ends_with($file->filename, '/validators/index.md')) {
+        if (!str_contains($file->filename, '/validators/')) {
             return $file;
         }
 

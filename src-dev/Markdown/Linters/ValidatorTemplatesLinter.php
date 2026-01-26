@@ -29,7 +29,7 @@ final readonly class ValidatorTemplatesLinter implements Linter
 {
     public function lint(File $file): File
     {
-        if (!str_contains($file->filename, '/validators/') || str_contains($file->filename, '/validators/index.md')) {
+        if (!str_contains($file->filename, '/validators/')) {
             return $file;
         }
 

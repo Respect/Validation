@@ -31,7 +31,6 @@ use function preg_match_all;
 use function preg_replace;
 use function sprintf;
 use function str_contains;
-use function str_ends_with;
 use function str_starts_with;
 use function strrpos;
 use function substr;
@@ -51,7 +50,7 @@ final readonly class ValidatorHeaderLinter implements Linter
 {
     public function lint(File $file): File
     {
-        if (str_ends_with($file->filename, '/validators/index.md') || !str_contains($file->filename, '/validators/')) {
+        if (!str_contains($file->filename, '/validators/')) {
             return $file;
         }
 
