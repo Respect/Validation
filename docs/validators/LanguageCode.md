@@ -38,9 +38,9 @@ This validator supports the two[ISO 639][] sets:
 
 ### `LanguageCode::TEMPLATE_STANDARD`
 
-| Mode       | Template                                      |
-| ---------- | --------------------------------------------- |
-| `default`  | {{subject}} must be a valid language code     |
+|       Mode | Template                                      |
+| ---------: | :-------------------------------------------- |
+|  `default` | {{subject}} must be a valid language code     |
 | `inverted` | {{subject}} must not be a valid language code |
 
 ## Template placeholders
@@ -57,13 +57,11 @@ This validator supports the two[ISO 639][] sets:
 ## Changelog
 
 | Version | Description                                                       |
-| ------: | ----------------------------------------------------------------- |
+| ------: | :---------------------------------------------------------------- |
 |   3.0.0 | Require [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] |
 |   1.1.0 | Created                                                           |
 
----
-
-See also:
+## See Also
 
 - [CountryCode](CountryCode.md)
 

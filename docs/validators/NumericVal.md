@@ -24,9 +24,9 @@ purpose use the [Number](Number.md) validator.
 
 ### `NumericVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                                |
-| ---------- | --------------------------------------- |
-| `default`  | {{subject}} must be a numeric value     |
+|       Mode | Template                                |
+| ---------: | :-------------------------------------- |
+|  `default` | {{subject}} must be a numeric value     |
 | `inverted` | {{subject}} must not be a numeric value |
 
 ## Template placeholders
@@ -43,13 +43,11 @@ purpose use the [Number](Number.md) validator.
 ## Changelog
 
 | Version | Description                            |
-| ------: | -------------------------------------- |
+| ------: | :------------------------------------- |
 |   2.0.0 | Renamed from `Numeric` to `NumericVal` |
 |   0.3.9 | Created as `Numeric`                   |
 
----
-
-See also:
+## See Also
 
 - [Decimal](Decimal.md)
 - [Digit](Digit.md)

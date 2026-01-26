@@ -27,9 +27,9 @@ v::iterableType()->assert('string');
 
 ### `IterableType::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-| ---------- | ----------------------------- |
-| `default`  | {{subject}} must be iterable  |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be iterable  |
 | `inverted` | {{subject}} must not iterable |
 
 ## Template placeholders
@@ -45,14 +45,12 @@ v::iterableType()->assert('string');
 ## Changelog
 
 | Version | Description                               |
-| ------: | ----------------------------------------- |
+| ------: | :---------------------------------------- |
 |   3.0.0 | Rejected `stdClass` as iterable           |
 |   1.0.8 | Renamed from `Iterable` to `IterableType` |
 |   1.0.0 | Created as `Iterable`                     |
 
----
-
-See also:
+## See Also
 
 - [ArrayType](ArrayType.md)
 - [ArrayVal](ArrayVal.md)

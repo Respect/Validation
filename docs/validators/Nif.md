@@ -21,9 +21,9 @@ v::nif()->assert('P6437358A');
 
 ### `Nif::TEMPLATE_STANDARD`
 
-| Mode       | Template                            |
-| ---------- | ----------------------------------- |
-| `default`  | {{subject}} must be a valid NIF     |
+|       Mode | Template                            |
+| ---------: | :---------------------------------- |
+|  `default` | {{subject}} must be a valid NIF     |
 | `inverted` | {{subject}} must not be a valid NIF |
 
 ## Template placeholders
@@ -39,12 +39,10 @@ v::nif()->assert('P6437358A');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.2.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Bsn](Bsn.md)
 - [Cnh](Cnh.md)

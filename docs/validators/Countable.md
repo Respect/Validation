@@ -25,9 +25,9 @@ v::countable()->assert('string');
 
 ### `Countable::TEMPLATE_STANDARD`
 
-| Mode       | Template                                  |
-| ---------- | ----------------------------------------- |
-| `default`  | {{subject}} must be a countable value     |
+|       Mode | Template                                  |
+| ---------: | :---------------------------------------- |
+|  `default` | {{subject}} must be a countable value     |
 | `inverted` | {{subject}} must not be a countable value |
 
 ## Template placeholders
@@ -43,12 +43,10 @@ v::countable()->assert('string');
 ## Changelog
 
 | Version | Description             |
-| ------: | ----------------------- |
+| ------: | :---------------------- |
 |   1.0.0 | Created from `ArrayVal` |
 
----
-
-See also:
+## See Also
 
 - [ArrayType](ArrayType.md)
 - [ArrayVal](ArrayVal.md)

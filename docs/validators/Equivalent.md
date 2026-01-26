@@ -29,9 +29,9 @@ Message template for this validator includes `{{compareTo}}`.
 
 ### `Equivalent::TEMPLATE_STANDARD`
 
-| Mode       | Template                                            |
-| ---------- | --------------------------------------------------- |
-| `default`  | {{subject}} must be equivalent to {{compareTo}}     |
+|       Mode | Template                                            |
+| ---------: | :-------------------------------------------------- |
+|  `default` | {{subject}} must be equivalent to {{compareTo}}     |
 | `inverted` | {{subject}} must not be equivalent to {{compareTo}} |
 
 ## Template placeholders
@@ -48,12 +48,10 @@ Message template for this validator includes `{{compareTo}}`.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Contains](Contains.md)
 - [ContainsAny](ContainsAny.md)

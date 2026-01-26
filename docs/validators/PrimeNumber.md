@@ -18,9 +18,9 @@ v::primeNumber()->assert(7);
 
 ### `PrimeNumber::TEMPLATE_STANDARD`
 
-| Mode       | Template                               |
-| ---------- | -------------------------------------- |
-| `default`  | {{subject}} must be a prime number     |
+|       Mode | Template                               |
+| ---------: | :------------------------------------- |
+|  `default` | {{subject}} must be a prime number     |
 | `inverted` | {{subject}} must not be a prime number |
 
 ## Template placeholders
@@ -37,12 +37,10 @@ v::primeNumber()->assert(7);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Factor](Factor.md)
 - [Fibonacci](Fibonacci.md)

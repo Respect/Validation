@@ -18,9 +18,9 @@ v::alwaysValid()->assert('whatever');
 
 ### `AlwaysValid::TEMPLATE_STANDARD`
 
-| Mode       | Template                    |
-| ---------- | --------------------------- |
-| `default`  | {{subject}} must be valid   |
+|       Mode | Template                    |
+| ---------: | :-------------------------- |
+|  `default` | {{subject}} must be valid   |
 | `inverted` | {{subject}} must be invalid |
 
 ## Template placeholders
@@ -36,12 +36,10 @@ v::alwaysValid()->assert('whatever');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.5.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [AlwaysInvalid](AlwaysInvalid.md)
 - [KeyExists](KeyExists.md)

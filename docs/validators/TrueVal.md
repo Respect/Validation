@@ -39,9 +39,9 @@ v::trueVal()->assert('2');
 
 ### `TrueVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                                |
-| ---------- | --------------------------------------- |
-| `default`  | {{subject}} must evaluate to `true`     |
+|       Mode | Template                                |
+| ---------: | :-------------------------------------- |
+|  `default` | {{subject}} must evaluate to `true`     |
 | `inverted` | {{subject}} must not evaluate to `true` |
 
 ## Template placeholders
@@ -57,13 +57,11 @@ v::trueVal()->assert('2');
 ## Changelog
 
 | Version | Description                      |
-| ------: | -------------------------------- |
+| ------: | :------------------------------- |
 |   1.0.0 | Renamed from `True` to `TrueVal` |
 |   0.8.0 | Created as `True`                |
 
----
-
-See also:
+## See Also
 
 - [BoolType](BoolType.md)
 - [BoolVal](BoolVal.md)

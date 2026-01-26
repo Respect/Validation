@@ -33,18 +33,18 @@ This validator will accept:
 
 ### `Size::TEMPLATE_STANDARD`
 
-| Mode       | Template                           |
-| ---------- | ---------------------------------- |
-| `default`  | The size in {{unit&#124;trans}} of |
+|       Mode | Template                           |
+| ---------: | :--------------------------------- |
+|  `default` | The size in {{unit&#124;trans}} of |
 | `inverted` | The size in {{unit&#124;trans}} of |
 
 ### `Size::TEMPLATE_WRONG_TYPE`
 
 Used when the input is not a valid file path, a `SplFileInfo` object, or a PSR-7 interface.
 
-| Mode       | Template                                                                              |
-| ---------- | ------------------------------------------------------------------------------------- |
-| `default`  | {{subject}} must be a filename or an instance of SplFileInfo or a PSR-7 interface     |
+|       Mode | Template                                                                              |
+| ---------: | :------------------------------------------------------------------------------------ |
+|  `default` | {{subject}} must be a filename or an instance of SplFileInfo or a PSR-7 interface     |
 | `inverted` | {{subject}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface |
 
 ## Template as prefix
@@ -74,14 +74,12 @@ v::size('KB', v::not(v::equals(56)))->assert('/path/to/file');
 ## Changelog
 
 | Version | Description             |
-| ------: | ----------------------- |
+| ------: | :---------------------- |
 |   3.0.0 | Became a transformation |
 |   2.1.0 | Add [PSR-7][] support   |
 |   1.0.0 | Created                 |
 
----
-
-See also:
+## See Also
 
 - [Directory](Directory.md)
 - [Executable](Executable.md)

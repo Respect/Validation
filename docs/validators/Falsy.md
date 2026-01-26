@@ -41,9 +41,9 @@ v::falsy()->assert([]);
 
 ### `Falsy::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-| ---------- | ----------------------------- |
-| `default`  | {{subject}} must be falsy     |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be falsy     |
 | `inverted` | {{subject}} must not be falsy |
 
 ## Template placeholders
@@ -59,13 +59,11 @@ v::falsy()->assert([]);
 ## Changelog
 
 | Version | Description                                 |
-| ------: | ------------------------------------------- |
+| ------: | :------------------------------------------ |
 |   3.0.0 | Renamed to `Falsy` and changed the behavior |
 |   0.3.9 | Created as `NotEmpty`                       |
 
----
-
-See also:
+## See Also
 
 - [Blank](Blank.md)
 - [Each](Each.md)

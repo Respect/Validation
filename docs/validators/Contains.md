@@ -33,9 +33,9 @@ Message template for this validator includes `{{containsValue}}`.
 
 ### `Contains::TEMPLATE_STANDARD`
 
-| Mode       | Template                                       |
-| ---------- | ---------------------------------------------- |
-| `default`  | {{subject}} must contain {{containsValue}}     |
+|       Mode | Template                                       |
+| ---------: | :--------------------------------------------- |
+|  `default` | {{subject}} must contain {{containsValue}}     |
 | `inverted` | {{subject}} must not contain {{containsValue}} |
 
 ## Template placeholders
@@ -53,12 +53,10 @@ Message template for this validator includes `{{containsValue}}`.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [ContainsAny](ContainsAny.md)
 - [ContainsCount](ContainsCount.md)

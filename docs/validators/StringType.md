@@ -18,9 +18,9 @@ v::stringType()->assert('hi');
 
 ### `StringType::TEMPLATE_STANDARD`
 
-| Mode       | Template                         |
-| ---------- | -------------------------------- |
-| `default`  | {{subject}} must be a string     |
+|       Mode | Template                         |
+| ---------: | :------------------------------- |
+|  `default` | {{subject}} must be a string     |
 | `inverted` | {{subject}} must not be a string |
 
 ## Template placeholders
@@ -37,13 +37,11 @@ v::stringType()->assert('hi');
 ## Changelog
 
 | Version | Description                           |
-| ------: | ------------------------------------- |
+| ------: | :------------------------------------ |
 |   1.0.0 | Renamed from `String` to `StringType` |
 |   0.3.9 | Created as `String`                   |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [ArrayType](ArrayType.md)

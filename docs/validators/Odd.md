@@ -23,9 +23,9 @@ Using `intVal()` before `odd()` is a best practice.
 
 ### `Odd::TEMPLATE_STANDARD`
 
-| Mode       | Template                           |
-| ---------- | ---------------------------------- |
-| `default`  | {{subject}} must be an odd number  |
+|       Mode | Template                           |
+| ---------: | :--------------------------------- |
+|  `default` | {{subject}} must be an odd number  |
 | `inverted` | {{subject}} must be an even number |
 
 ## Template placeholders
@@ -41,13 +41,11 @@ Using `intVal()` before `odd()` is a best practice.
 ## Changelog
 
 | Version | Description             |
-| ------: | ----------------------- |
+| ------: | :---------------------- |
 |   2.0.0 | Only validates integers |
 |   0.3.9 | Created                 |
 
----
-
-See also:
+## See Also
 
 - [Even](Even.md)
 - [Multiple](Multiple.md)

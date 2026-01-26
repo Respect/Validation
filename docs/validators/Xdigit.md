@@ -26,16 +26,16 @@ v::xdigit()->assert('0x1f');
 
 ### `Xdigit::TEMPLATE_STANDARD`
 
-| Mode       | Template                                             |
-| ---------- | ---------------------------------------------------- |
-| `default`  | {{subject}} must only contain hexadecimal digits     |
+|       Mode | Template                                             |
+| ---------: | :--------------------------------------------------- |
+|  `default` | {{subject}} must only contain hexadecimal digits     |
 | `inverted` | {{subject}} must not only contain hexadecimal digits |
 
 ### `Xdigit::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                               |
-| ---------- | ---------------------------------------------------------------------- |
-| `default`  | {{subject}} must contain hexadecimal digits and {{additionalChars}}    |
+|       Mode | Template                                                               |
+| ---------: | :--------------------------------------------------------------------- |
+|  `default` | {{subject}} must contain hexadecimal digits and {{additionalChars}}    |
 | `inverted` | {{subject}} must not contain hexadecimal digits or {{additionalChars}} |
 
 ## Template placeholders
@@ -52,12 +52,10 @@ v::xdigit()->assert('0x1f');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.5.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Decimal](Decimal.md)

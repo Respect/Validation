@@ -20,16 +20,16 @@ v::graph()->assert('LKM@#$%4;');
 
 ### `Graph::TEMPLATE_STANDARD`
 
-| Mode       | Template                                           |
-| ---------- | -------------------------------------------------- |
-| `default`  | {{subject}} must contain only graphical characters |
+|       Mode | Template                                           |
+| ---------: | :------------------------------------------------- |
+|  `default` | {{subject}} must contain only graphical characters |
 | `inverted` | {{subject}} must not contain graphical characters  |
 
 ### `Graph::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                                   |
-| ---------- | -------------------------------------------------------------------------- |
-| `default`  | {{subject}} must contain only graphical characters and {{additionalChars}} |
+|       Mode | Template                                                                   |
+| ---------: | :------------------------------------------------------------------------- |
+|  `default` | {{subject}} must contain only graphical characters and {{additionalChars}} |
 | `inverted` | {{subject}} must not contain graphical characters or {{additionalChars}}   |
 
 ## Template placeholders
@@ -46,12 +46,10 @@ v::graph()->assert('LKM@#$%4;');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.5.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Printable](Printable.md)
 - [Punct](Punct.md)

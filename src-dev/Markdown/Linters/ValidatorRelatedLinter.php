@@ -13,16 +13,11 @@ namespace Respect\Dev\Markdown\Linters;
 use Respect\Dev\Markdown\Content;
 use Respect\Dev\Markdown\File;
 use Respect\Dev\Markdown\Linter;
+use UnexpectedValueException;
 
-use function array_keys;
 use function array_unique;
-use function basename;
-use function dirname;
-use function file_get_contents;
-use function in_array;
 use function preg_match_all;
 use function sort;
-use function sprintf;
 use function str_contains;
 
 final readonly class ValidatorRelatedLinter implements Linter
@@ -33,16 +28,14 @@ final readonly class ValidatorRelatedLinter implements Linter
             return $file;
         }
 
-        $validator = basename($file->filename, '.md');
-        $relatedValidators = $this->getRelatedValidators($validator);
+        $relatedValidators = $this->getRelatedValidators($file);
 
         if ($relatedValidators === []) {
             return $file;
         }
 
         $content = new Content();
-        $content->paragraph('See also:');
-        $content->emptyLine();
+        $content->h2('See Also');
         foreach ($relatedValidators as $relatedValidator) {
             $content->anchorListItem($relatedValidator, $relatedValidator . '.md');
         }
@@ -53,26 +46,21 @@ final readonly class ValidatorRelatedLinter implements Linter
     }
 
     /** @return array<string> */
-    private function getRelatedValidators(string $validator): array
+    private function getRelatedValidators(File $validator): array
     {
-        $docsDirectory = dirname(__DIR__, 3) . '/docs';
-        $filename = sprintf('%s/validators/%s.md', $docsDirectory, $validator);
-        $content = file_get_contents($filename);
-        if ($content === false) {
+        try {
+            $seeAlso = $validator->content->getSection('## See Also');
+        } catch (UnexpectedValueException) {
             return [];
         }
 
         $relatedValidators = [];
-
-        preg_match_all('/\[([^\]]+)\]\(([^\)]+\.md)\)/', $content, $matches);
-        foreach (array_keys($matches[0]) as $key) {
-            $related = $matches[1][$key];
-            $document = $matches[2][$key];
-            if (str_contains($document, '/') || in_array($related, $relatedValidators)) {
-                continue;
+        $lines = $seeAlso->toArray();
+        foreach ($lines as $line) {
+            preg_match_all('/\[(.+?)\]\((.+?)\.md\)/', $line, $matches);
+            foreach ($matches[1] as $match) {
+                $relatedValidators[] = $match;
             }
-
-            $relatedValidators[] = $related;
         }
 
         $relatedValidators = array_unique($relatedValidators);

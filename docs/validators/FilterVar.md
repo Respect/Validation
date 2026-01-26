@@ -34,9 +34,9 @@ v::filterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)->assert('@local');
 
 ### `FilterVar::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-| ---------- | ----------------------------- |
-| `default`  | {{subject}} must be valid     |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be valid     |
 | `inverted` | {{subject}} must not be valid |
 
 ## Template placeholders
@@ -52,14 +52,12 @@ v::filterVar(FILTER_VALIDATE_DOMAIN, FILTER_FLAG_HOSTNAME)->assert('@local');
 ## Changelog
 
 | Version | Description                                                        |
-| ------: | ------------------------------------------------------------------ |
+| ------: | :----------------------------------------------------------------- |
 |   2.3.0 | `v::filterVar(FILTER_VALIDATE_INT)->isValid(0)` is no longer false |
 |  2.0.15 | Allow validating domains                                           |
 |   0.8.0 | Created                                                            |
 
----
-
-See also:
+## See Also
 
 - [Callback](Callback.md)
 - [Json](Json.md)

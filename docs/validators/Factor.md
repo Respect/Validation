@@ -24,9 +24,9 @@ v::factor(4)->assert(3);
 
 ### `Factor::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                  |
-| ---------- | --------------------------------------------------------- |
-| `default`  | {{subject}} must be a factor of {{dividend&#124;raw}}     |
+|       Mode | Template                                                  |
+| ---------: | :-------------------------------------------------------- |
+|  `default` | {{subject}} must be a factor of {{dividend&#124;raw}}     |
 | `inverted` | {{subject}} must not be a factor of {{dividend&#124;raw}} |
 
 ## Template placeholders
@@ -44,12 +44,10 @@ v::factor(4)->assert(3);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Decimal](Decimal.md)
 - [Digit](Digit.md)

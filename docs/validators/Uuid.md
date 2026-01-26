@@ -38,16 +38,16 @@ v::uuid(4)->assert(\Ramsey\Uuid\Uuid::fromString('eb3115e5-bd16-4939-ab12-2b9574
 
 ### `Uuid::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-| ---------- | ------------------------------------ |
-| `default`  | {{subject}} must be a valid UUID     |
+|       Mode | Template                             |
+| ---------: | :----------------------------------- |
+|  `default` | {{subject}} must be a valid UUID     |
 | `inverted` | {{subject}} must not be a valid UUID |
 
 ### `Uuid::TEMPLATE_VERSION`
 
-| Mode       | Template                                                          |
-| ---------- | ----------------------------------------------------------------- |
-| `default`  | {{subject}} must be a valid UUID version {{version&#124;raw}}     |
+|       Mode | Template                                                          |
+| ---------: | :---------------------------------------------------------------- |
+|  `default` | {{subject}} must be a valid UUID version {{version&#124;raw}}     |
 | `inverted` | {{subject}} must not be a valid UUID version {{version&#124;raw}} |
 
 ## Template placeholders
@@ -64,13 +64,11 @@ v::uuid(4)->assert(\Ramsey\Uuid\Uuid::fromString('eb3115e5-bd16-4939-ab12-2b9574
 ## Changelog
 
 | Version | Description            |
-| ------: | ---------------------- |
+| ------: | :--------------------- |
 |   3.0.0 | Requires `ramsey/uuid` |
 |   2.0.0 | Created                |
 
----
-
-See also:
+## See Also
 
 - [Base](Base.md)
 - [Decimal](Decimal.md)

@@ -18,9 +18,9 @@ v::intVal()->multiple(3)->assert(9);
 
 ### `Multiple::TEMPLATE_STANDARD`
 
-| Mode       | Template                                             |
-| ---------- | ---------------------------------------------------- |
-| `default`  | {{subject}} must be a multiple of {{multipleOf}}     |
+|       Mode | Template                                             |
+| ---------: | :--------------------------------------------------- |
+|  `default` | {{subject}} must be a multiple of {{multipleOf}}     |
 | `inverted` | {{subject}} must not be a multiple of {{multipleOf}} |
 
 ## Template placeholders
@@ -38,12 +38,10 @@ v::intVal()->multiple(3)->assert(9);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Even](Even.md)
 - [Odd](Odd.md)

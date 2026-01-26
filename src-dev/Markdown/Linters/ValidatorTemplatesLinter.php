@@ -69,10 +69,14 @@ final readonly class ValidatorTemplatesLinter implements Linter
                 $content->emptyLine();
             }
 
-            $content->table(['Mode', 'Template'], [
-                ['`default`', $template->default],
-                ['`inverted`', $template->inverted],
-            ]);
+            $content->table(
+                ['Mode', 'Template'],
+                [
+                    ['`default`', $template->default],
+                    ['`inverted`', $template->inverted],
+                ],
+                alignment: [1, -1],
+            );
         }
 
         return $file->withContent($file->content->withSection($content));

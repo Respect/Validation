@@ -35,9 +35,9 @@ This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] inter
 
 ### `Each::TEMPLATE_STANDARD`
 
-| Mode       | Template                                 |
-| ---------- | ---------------------------------------- |
-| `default`  | Each item in {{subject}} must be valid   |
+|       Mode | Template                                 |
+| ---------: | :--------------------------------------- |
+|  `default` | Each item in {{subject}} must be valid   |
 | `inverted` | Each item in {{subject}} must be invalid |
 
 ## Template placeholders
@@ -55,14 +55,12 @@ This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] inter
 ## Changelog
 
 | Version | Description                                                 |
-| ------: | ----------------------------------------------------------- |
+| ------: | :---------------------------------------------------------- |
 |   3.0.0 | Rejected `stdClass`, non-iterable. or empty iterable values |
 |   2.0.0 | Remove support for key validation                           |
 |   0.3.9 | Created                                                     |
 
----
-
-See also:
+## See Also
 
 - [All](All.md)
 - [ArrayVal](ArrayVal.md)

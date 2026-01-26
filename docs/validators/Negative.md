@@ -18,9 +18,9 @@ v::numericVal()->negative()->assert(-15);
 
 ### `Negative::TEMPLATE_STANDARD`
 
-| Mode       | Template                                  |
-| ---------- | ----------------------------------------- |
-| `default`  | {{subject}} must be a negative number     |
+|       Mode | Template                                  |
+| ---------: | :---------------------------------------- |
+|  `default` | {{subject}} must be a negative number     |
 | `inverted` | {{subject}} must not be a negative number |
 
 ## Template placeholders
@@ -37,12 +37,10 @@ v::numericVal()->negative()->assert(-15);
 ## Changelog
 
 | Version | Description                          |
-| ------: | ------------------------------------ |
+| ------: | :----------------------------------- |
 |   2.0.0 | Does not validate non-numeric values |
 |   0.3.9 | Created                              |
 
----
-
-See also:
+## See Also
 
 - [Positive](Positive.md)

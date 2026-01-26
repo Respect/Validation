@@ -18,9 +18,9 @@ v::infinite()->assert(INF);
 
 ### `Infinite::TEMPLATE_STANDARD`
 
-| Mode       | Template                                   |
-| ---------- | ------------------------------------------ |
-| `default`  | {{subject}} must be an infinite number     |
+|       Mode | Template                                   |
+| ---------: | :----------------------------------------- |
+|  `default` | {{subject}} must be an infinite number     |
 | `inverted` | {{subject}} must not be an infinite number |
 
 ## Template placeholders
@@ -37,12 +37,10 @@ v::infinite()->assert(INF);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Decimal](Decimal.md)
 - [Digit](Digit.md)

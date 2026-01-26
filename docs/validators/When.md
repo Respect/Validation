@@ -47,13 +47,11 @@ When `$else` is not defined use [AlwaysInvalid](AlwaysInvalid.md)
 ## Changelog
 
 | Version | Description                         |
-| ------: | ----------------------------------- |
+| ------: | :---------------------------------- |
 |   0.8.0 | Allow to use validator without else |
 |   0.3.9 | Created                             |
 
----
-
-See also:
+## See Also
 
 - [AllOf](AllOf.md)
 - [AlwaysInvalid](AlwaysInvalid.md)

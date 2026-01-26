@@ -21,9 +21,9 @@ v::perfectSquare()->assert(9); // (3*3)
 
 ### `PerfectSquare::TEMPLATE_STANDARD`
 
-| Mode       | Template                                        |
-| ---------- | ----------------------------------------------- |
-| `default`  | {{subject}} must be a perfect square number     |
+|       Mode | Template                                        |
+| ---------: | :---------------------------------------------- |
+|  `default` | {{subject}} must be a perfect square number     |
 | `inverted` | {{subject}} must not be a perfect square number |
 
 ## Template placeholders
@@ -40,12 +40,10 @@ v::perfectSquare()->assert(9); // (3*3)
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Factor](Factor.md)
 - [Fibonacci](Fibonacci.md)

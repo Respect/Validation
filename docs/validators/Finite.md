@@ -21,9 +21,9 @@ v::finite()->assert(10);
 
 ### `Finite::TEMPLATE_STANDARD`
 
-| Mode       | Template                                |
-| ---------- | --------------------------------------- |
-| `default`  | {{subject}} must be a finite number     |
+|       Mode | Template                                |
+| ---------: | :-------------------------------------- |
+|  `default` | {{subject}} must be a finite number     |
 | `inverted` | {{subject}} must not be a finite number |
 
 ## Template placeholders
@@ -40,12 +40,10 @@ v::finite()->assert(10);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Decimal](Decimal.md)
 - [Digit](Digit.md)

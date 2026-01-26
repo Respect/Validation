@@ -72,16 +72,16 @@ v::dateTime(DateTime::RFC3339_EXTENDED)->assert($input);
 
 ### `DateTime::TEMPLATE_STANDARD`
 
-| Mode       | Template                                  |
-| ---------- | ----------------------------------------- |
-| `default`  | {{subject}} must be a valid date/time     |
+|       Mode | Template                                  |
+| ---------: | :---------------------------------------- |
+|  `default` | {{subject}} must be a valid date/time     |
 | `inverted` | {{subject}} must not be a valid date/time |
 
 ### `DateTime::TEMPLATE_FORMAT`
 
-| Mode       | Template                                                           |
-| ---------- | ------------------------------------------------------------------ |
-| `default`  | {{subject}} must be a valid date/time in the format {{sample}}     |
+|       Mode | Template                                                           |
+| ---------: | :----------------------------------------------------------------- |
+|  `default` | {{subject}} must be a valid date/time in the format {{sample}}     |
 | `inverted` | {{subject}} must not be a valid date/time in the format {{sample}} |
 
 ## Template placeholders
@@ -98,14 +98,12 @@ v::dateTime(DateTime::RFC3339_EXTENDED)->assert($input);
 ## Changelog
 
 | Version | Description                                |
-| ------: | ------------------------------------------ |
+| ------: | :----------------------------------------- |
 |   2.3.0 | Validation became a lot stricter           |
 |   2.2.4 | `v::dateTime('z')` is no longer supported. |
 |   2.0.0 | Created                                    |
 
----
-
-See also:
+## See Also
 
 - [Between](Between.md)
 - [BetweenExclusive](BetweenExclusive.md)

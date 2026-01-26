@@ -19,16 +19,16 @@ v::printable()->assert('LMKA0$% _123');
 
 ### `Printable::TEMPLATE_STANDARD`
 
-| Mode       | Template                                           |
-| ---------- | -------------------------------------------------- |
-| `default`  | {{subject}} must contain only printable characters |
+|       Mode | Template                                           |
+| ---------: | :------------------------------------------------- |
+|  `default` | {{subject}} must contain only printable characters |
 | `inverted` | {{subject}} must not contain printable characters  |
 
 ### `Printable::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                                   |
-| ---------- | -------------------------------------------------------------------------- |
-| `default`  | {{subject}} must contain only printable characters and {{additionalChars}} |
+|       Mode | Template                                                                   |
+| ---------: | :------------------------------------------------------------------------- |
+|  `default` | {{subject}} must contain only printable characters and {{additionalChars}} |
 | `inverted` | {{subject}} must not contain printable characters or {{additionalChars}}   |
 
 ## Template placeholders
@@ -45,12 +45,10 @@ v::printable()->assert('LMKA0$% _123');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.5.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Control](Control.md)
 - [Graph](Graph.md)

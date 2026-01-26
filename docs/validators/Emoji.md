@@ -55,9 +55,9 @@ This validator supports:
 
 ### `Emoji::TEMPLATE_STANDARD`
 
-| Mode       | Template                         |
-| ---------- | -------------------------------- |
-| `default`  | {{subject}} must be an emoji     |
+|       Mode | Template                         |
+| ---------: | :------------------------------- |
+|  `default` | {{subject}} must be an emoji     |
 | `inverted` | {{subject}} must not be an emoji |
 
 ## Template placeholders
@@ -73,13 +73,11 @@ This validator supports:
 ## Changelog
 
 | Version | Description                                                                 |
-| ------: | --------------------------------------------------------------------------- |
+| ------: | :-------------------------------------------------------------------------- |
 |   3.0.0 | Renamed to `Emoji`, changed the behavior, and added support for more emojis |
 |   2.0.0 | Created as `NotEmoji`                                                       |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)

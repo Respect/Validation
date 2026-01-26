@@ -43,12 +43,10 @@ This validator does not have any templates, as you must define the templates you
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   3.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Attributes](Attributes.md)
 - [Named](Named.md)

@@ -23,9 +23,9 @@ This validator is case-sensitive and requires [fileinfo](http://php.net/fileinfo
 
 ### `Mimetype::TEMPLATE_STANDARD`
 
-| Mode       | Template                                             |
-| ---------- | ---------------------------------------------------- |
-| `default`  | {{subject}} must have the {{mimetype}} MIME type     |
+|       Mode | Template                                             |
+| ---------: | :--------------------------------------------------- |
+|  `default` | {{subject}} must have the {{mimetype}} MIME type     |
 | `inverted` | {{subject}} must not have the {{mimetype}} MIME type |
 
 ## Template placeholders
@@ -42,12 +42,10 @@ This validator is case-sensitive and requires [fileinfo](http://php.net/fileinfo
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Directory](Directory.md)
 - [Executable](Executable.md)

@@ -23,9 +23,9 @@ Message template for this validator includes `{{instanceName}}`.
 
 ### `Instance::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                    |
-| ---------- | ----------------------------------------------------------- |
-| `default`  | {{subject}} must be an instance of {{class&#124;quote}}     |
+|       Mode | Template                                                    |
+| ---------: | :---------------------------------------------------------- |
+|  `default` | {{subject}} must be an instance of {{class&#124;quote}}     |
 | `inverted` | {{subject}} must not be an instance of {{class&#124;quote}} |
 
 ## Template placeholders
@@ -42,12 +42,10 @@ Message template for this validator includes `{{instanceName}}`.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Countable](Countable.md)
 - [IterableType](IterableType.md)

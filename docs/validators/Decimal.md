@@ -34,9 +34,9 @@ v::decimal(1)->assert(1.50);
 
 ### `Decimal::TEMPLATE_STANDARD`
 
-| Mode       | Template                                        |
-| ---------- | ----------------------------------------------- |
-| `default`  | {{subject}} must have {{decimals}} decimals     |
+|       Mode | Template                                        |
+| ---------: | :---------------------------------------------- |
+|  `default` | {{subject}} must have {{decimals}} decimals     |
 | `inverted` | {{subject}} must not have {{decimals}} decimals |
 
 ## Template placeholders
@@ -53,13 +53,11 @@ v::decimal(1)->assert(1.50);
 ## Changelog
 
 | Version | Description                                     |
-| ------: | ----------------------------------------------- |
+| ------: | :---------------------------------------------- |
 |   2.2.4 | Float values with trailing zeroes are now valid |
 |   2.0.0 | Created                                         |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)

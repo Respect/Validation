@@ -21,9 +21,9 @@ v::imei()->assert('490154203237518');
 
 ### `Imei::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-| ---------- | ------------------------------------------- |
-| `default`  | {{subject}} must be a valid IMEI number     |
+|       Mode | Template                                    |
+| ---------: | :------------------------------------------ |
+|  `default` | {{subject}} must be a valid IMEI number     |
 | `inverted` | {{subject}} must not be a valid IMEI number |
 
 ## Template placeholders
@@ -39,12 +39,10 @@ v::imei()->assert('490154203237518');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Bsn](Bsn.md)
 - [Cnh](Cnh.md)

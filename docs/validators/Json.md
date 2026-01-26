@@ -18,9 +18,9 @@ v::json()->assert('{"foo":"bar"}');
 
 ### `Json::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-| ---------- | ------------------------------------------- |
-| `default`  | {{subject}} must be a valid JSON string     |
+|       Mode | Template                                    |
+| ---------: | :------------------------------------------ |
+|  `default` | {{subject}} must be a valid JSON string     |
 | `inverted` | {{subject}} must not be a valid JSON string |
 
 ## Template placeholders
@@ -36,12 +36,10 @@ v::json()->assert('{"foo":"bar"}');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Domain](Domain.md)
 - [Email](Email.md)

@@ -45,9 +45,9 @@ Extracted from [GeoNames](http://www.geonames.org/).
 
 ### `PostalCode::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                       |
-| ---------- | -------------------------------------------------------------- |
-| `default`  | {{subject}} must be a valid postal code on {{countryCode}}     |
+|       Mode | Template                                                       |
+| ---------: | :------------------------------------------------------------- |
+|  `default` | {{subject}} must be a valid postal code on {{countryCode}}     |
 | `inverted` | {{subject}} must not be a valid postal code on {{countryCode}} |
 
 ## Template placeholders
@@ -65,14 +65,12 @@ Extracted from [GeoNames](http://www.geonames.org/).
 ## Changelog
 
 | Version | Description                                       |
-| ------: | ------------------------------------------------- |
+| ------: | :------------------------------------------------ |
 |   2.3.0 | Add option to validate formatting                 |
 |   2.2.4 | Cambodian postal codes now support 5 and 6 digits |
 |   0.7.0 | Created                                           |
 
----
-
-See also:
+## See Also
 
 - [CountryCode](CountryCode.md)
 - [Iban](Iban.md)

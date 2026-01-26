@@ -31,9 +31,9 @@ v::iban()->assert('');
 
 ### `Iban::TEMPLATE_STANDARD`
 
-| Mode       | Template                             |
-| ---------- | ------------------------------------ |
-| `default`  | {{subject}} must be a valid IBAN     |
+|       Mode | Template                             |
+| ---------: | :----------------------------------- |
+|  `default` | {{subject}} must be a valid IBAN     |
 | `inverted` | {{subject}} must not be a valid IBAN |
 
 ## Template placeholders
@@ -49,12 +49,10 @@ v::iban()->assert('');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [CreditCard](CreditCard.md)
 - [MacAddress](MacAddress.md)

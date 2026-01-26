@@ -33,9 +33,9 @@ v::digit()->cpf()->assert('11598647644');
 
 ### `Cpf::TEMPLATE_STANDARD`
 
-| Mode       | Template                                   |
-| ---------- | ------------------------------------------ |
-| `default`  | {{subject}} must be a valid CPF number     |
+|       Mode | Template                                   |
+| ---------: | :----------------------------------------- |
+|  `default` | {{subject}} must be a valid CPF number     |
 | `inverted` | {{subject}} must not be a valid CPF number |
 
 ## Template placeholders
@@ -51,12 +51,10 @@ v::digit()->cpf()->assert('11598647644');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Bsn](Bsn.md)
 - [Cnh](Cnh.md)

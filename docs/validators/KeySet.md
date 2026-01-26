@@ -83,30 +83,30 @@ The keys' order is not considered in the validation.
 
 ### `KeySet::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-| ---------- | ----------------------------- |
-| `default`  | {{subject}} validation failed |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} validation failed |
 | `inverted` | {{subject}} validation passed |
 
 ### `KeySet::TEMPLATE_BOTH`
 
-| Mode       | Template                                         |
-| ---------- | ------------------------------------------------ |
-| `default`  | {{subject}} contains both missing and extra keys |
+|       Mode | Template                                         |
+| ---------: | :----------------------------------------------- |
+|  `default` | {{subject}} contains both missing and extra keys |
 | `inverted` | {{subject}} contains no missing or extra keys.   |
 
 ### `KeySet::TEMPLATE_EXTRA_KEYS`
 
-| Mode       | Template                           |
-| ---------- | ---------------------------------- |
-| `default`  | {{subject}} contains extra keys    |
+|       Mode | Template                           |
+| ---------: | :--------------------------------- |
+|  `default` | {{subject}} contains extra keys    |
 | `inverted` | {{subject}} contains no extra keys |
 
 ### `KeySet::TEMPLATE_MISSING_KEYS`
 
-| Mode       | Template                             |
-| ---------- | ------------------------------------ |
-| `default`  | {{subject}} contains missing keys    |
+|       Mode | Template                             |
+| ---------: | :----------------------------------- |
+|  `default` | {{subject}} contains missing keys    |
 | `inverted` | {{subject}} contains no missing keys |
 
 ## Template placeholders
@@ -124,14 +124,12 @@ The keys' order is not considered in the validation.
 ## Changelog
 
 | Version | Description                                           |
-| ------: | ----------------------------------------------------- |
+| ------: | :---------------------------------------------------- |
 |   3.0.0 | Requires at least one key-related validator           |
 |   2.3.0 | KeySet is NonNegatable, fixed message with extra keys |
 |   1.0.0 | Created                                               |
 
----
-
-See also:
+## See Also
 
 - [ArrayVal](ArrayVal.md)
 - [Key](Key.md)

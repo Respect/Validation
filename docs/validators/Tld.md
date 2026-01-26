@@ -27,9 +27,9 @@ v::tld()->assert('COM');
 
 ### `Tld::TEMPLATE_STANDARD`
 
-| Mode       | Template                                              |
-| ---------- | ----------------------------------------------------- |
-| `default`  | {{subject}} must be a valid top-level domain name     |
+|       Mode | Template                                              |
+| ---------: | :---------------------------------------------------- |
+|  `default` | {{subject}} must be a valid top-level domain name     |
 | `inverted` | {{subject}} must not be a valid top-level domain name |
 
 ## Template placeholders
@@ -45,12 +45,10 @@ v::tld()->assert('COM');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [CountryCode](CountryCode.md)
 - [Domain](Domain.md)

@@ -18,9 +18,9 @@ v::stringType()->lowercase()->assert('xkcd');
 
 ### `Lowercase::TEMPLATE_STANDARD`
 
-| Mode       | Template                                            |
-| ---------- | --------------------------------------------------- |
-| `default`  | {{subject}} must contain only lowercase letters     |
+|       Mode | Template                                            |
+| ---------: | :-------------------------------------------------- |
+|  `default` | {{subject}} must contain only lowercase letters     |
 | `inverted` | {{subject}} must not contain only lowercase letters |
 
 ## Template placeholders
@@ -36,12 +36,10 @@ v::stringType()->lowercase()->assert('xkcd');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)

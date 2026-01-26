@@ -32,9 +32,9 @@ This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] inter
 
 ### `Min::TEMPLATE_STANDARD`
 
-| Mode       | Template       |
-| ---------- | -------------- |
-| `default`  | The minimum of |
+|       Mode | Template       |
+| ---------: | :------------- |
+|  `default` | The minimum of |
 | `inverted` | The minimum of |
 
 ## Template as prefix
@@ -55,15 +55,13 @@ The template serves as a prefix to the template of the inner validator.
 ## Changelog
 
 | Version | Description                 |
-| ------: | --------------------------- |
+| ------: | :-------------------------- |
 |   3.0.0 | Became a transformation     |
 |   2.0.0 | Became always inclusive     |
 |   1.0.0 | Became inclusive by default |
 |   0.3.9 | Created                     |
 
----
-
-See also:
+## See Also
 
 - [All](All.md)
 - [Between](Between.md)

@@ -33,9 +33,9 @@ Message template for this validator includes `{{haystack}}`.
 
 ### `In::TEMPLATE_STANDARD`
 
-| Mode       | Template                                |
-| ---------- | --------------------------------------- |
-| `default`  | {{subject}} must be in {{haystack}}     |
+|       Mode | Template                                |
+| ---------: | :-------------------------------------- |
+|  `default` | {{subject}} must be in {{haystack}}     |
 | `inverted` | {{subject}} must not be in {{haystack}} |
 
 ## Template placeholders
@@ -54,12 +54,10 @@ Message template for this validator includes `{{haystack}}`.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Contains](Contains.md)
 - [ContainsAny](ContainsAny.md)

@@ -50,16 +50,16 @@ v::call('iterator_to_array', v::sorted('ASC'))->assert(new ArrayIterator([1, 7, 
 
 ### `Sorted::TEMPLATE_ASCENDING`
 
-| Mode       | Template                                          |
-| ---------- | ------------------------------------------------- |
-| `default`  | {{subject}} must be sorted in ascending order     |
+|       Mode | Template                                          |
+| ---------: | :------------------------------------------------ |
+|  `default` | {{subject}} must be sorted in ascending order     |
 | `inverted` | {{subject}} must not be sorted in ascending order |
 
 ### `Sorted::TEMPLATE_DESCENDING`
 
-| Mode       | Template                                           |
-| ---------- | -------------------------------------------------- |
-| `default`  | {{subject}} must be sorted in descending order     |
+|       Mode | Template                                           |
+| ---------: | :------------------------------------------------- |
+|  `default` | {{subject}} must be sorted in descending order     |
 | `inverted` | {{subject}} must not be sorted in descending order |
 
 ## Template placeholders
@@ -76,16 +76,14 @@ v::call('iterator_to_array', v::sorted('ASC'))->assert(new ArrayIterator([1, 7, 
 ## Changelog
 
 | Version | Description                                    |
-| ------: | ---------------------------------------------- |
+| ------: | :--------------------------------------------- |
 |   2.0.0 | Add support for strings                        |
 |   2.0.0 | Do not use array keys to sort                  |
 |   2.0.0 | Use sorting direction instead of boolean value |
 |   2.0.0 | Do not accept callback in the constructor      |
 |   1.1.1 | Created                                        |
 
----
-
-See also:
+## See Also
 
 - [ArrayVal](ArrayVal.md)
 - [Call](Call.md)

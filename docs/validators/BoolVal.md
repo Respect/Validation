@@ -33,9 +33,9 @@ v::boolVal()->assert(0);
 
 ### `BoolVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                                |
-| ---------- | --------------------------------------- |
-| `default`  | {{subject}} must be a boolean value     |
+|       Mode | Template                                |
+| ---------: | :-------------------------------------- |
+|  `default` | {{subject}} must be a boolean value     |
 | `inverted` | {{subject}} must not be a boolean value |
 
 ## Template placeholders
@@ -52,12 +52,10 @@ v::boolVal()->assert(0);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [BoolType](BoolType.md)
 - [CallableType](CallableType.md)

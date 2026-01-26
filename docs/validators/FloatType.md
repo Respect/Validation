@@ -24,9 +24,9 @@ v::floatType()->assert(0e5);
 
 ### `FloatType::TEMPLATE_STANDARD`
 
-| Mode       | Template                      |
-| ---------- | ----------------------------- |
-| `default`  | {{subject}} must be float     |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be float     |
 | `inverted` | {{subject}} must not be float |
 
 ## Template placeholders
@@ -43,12 +43,10 @@ v::floatType()->assert(0e5);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [ArrayType](ArrayType.md)
 - [BoolType](BoolType.md)

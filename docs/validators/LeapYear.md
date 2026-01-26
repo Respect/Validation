@@ -20,9 +20,9 @@ This validator accepts DateTime instances as well.
 
 ### `LeapYear::TEMPLATE_STANDARD`
 
-| Mode       | Template                              |
-| ---------- | ------------------------------------- |
-| `default`  | {{subject}} must be a valid leap year |
+|       Mode | Template                              |
+| ---------: | :------------------------------------ |
+|  `default` | {{subject}} must be a valid leap year |
 | `inverted` | {{subject}} must not be a leap year   |
 
 ## Template placeholders
@@ -38,12 +38,10 @@ This validator accepts DateTime instances as well.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Date](Date.md)
 - [DateTime](DateTime.md)

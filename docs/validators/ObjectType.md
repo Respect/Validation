@@ -18,9 +18,9 @@ v::objectType()->assert(new stdClass);
 
 ### `ObjectType::TEMPLATE_STANDARD`
 
-| Mode       | Template                          |
-| ---------- | --------------------------------- |
-| `default`  | {{subject}} must be an object     |
+|       Mode | Template                          |
+| ---------: | :-------------------------------- |
+|  `default` | {{subject}} must be an object     |
 | `inverted` | {{subject}} must not be an object |
 
 ## Template placeholders
@@ -37,13 +37,11 @@ v::objectType()->assert(new stdClass);
 ## Changelog
 
 | Version | Description                           |
-| ------: | ------------------------------------- |
+| ------: | :------------------------------------ |
 |   1.0.0 | Renamed from `Object` to `ObjectType` |
 |   0.3.9 | Created as `Object`                   |
 
----
-
-See also:
+## See Also
 
 - [ArrayType](ArrayType.md)
 - [Attributes](Attributes.md)

@@ -28,9 +28,9 @@ v::phpLabel()->assert('4ccess'); //false
 
 ### `PhpLabel::TEMPLATE_STANDARD`
 
-| Mode       | Template                                  |
-| ---------- | ----------------------------------------- |
-| `default`  | {{subject}} must be a valid PHP label     |
+|       Mode | Template                                  |
+| ---------: | :---------------------------------------- |
+|  `default` | {{subject}} must be a valid PHP label     |
 | `inverted` | {{subject}} must not be a valid PHP label |
 
 ## Template placeholders
@@ -46,12 +46,10 @@ v::phpLabel()->assert('4ccess'); //false
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.1.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Charset](Charset.md)
 - [Regex](Regex.md)

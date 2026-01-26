@@ -19,16 +19,16 @@ v::punct()->assert('&,.;[]');
 
 ### `Punct::TEMPLATE_STANDARD`
 
-| Mode       | Template                                             |
-| ---------- | ---------------------------------------------------- |
-| `default`  | {{subject}} must contain only punctuation characters |
+|       Mode | Template                                             |
+| ---------: | :--------------------------------------------------- |
+|  `default` | {{subject}} must contain only punctuation characters |
 | `inverted` | {{subject}} must not contain punctuation characters  |
 
 ### `Punct::TEMPLATE_EXTRA`
 
-| Mode       | Template                                                                     |
-| ---------- | ---------------------------------------------------------------------------- |
-| `default`  | {{subject}} must contain only punctuation characters and {{additionalChars}} |
+|       Mode | Template                                                                     |
+| ---------: | :--------------------------------------------------------------------------- |
+|  `default` | {{subject}} must contain only punctuation characters and {{additionalChars}} |
 | `inverted` | {{subject}} must not contain punctuation characters or {{additionalChars}}   |
 
 ## Template placeholders
@@ -45,12 +45,10 @@ v::punct()->assert('&,.;[]');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.5.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Control](Control.md)
 - [Graph](Graph.md)

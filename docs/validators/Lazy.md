@@ -46,12 +46,10 @@ on the input itself (`$_POST`), but it will use any input that’s given to the 
 ## Changelog
 
 | Version | Description             |
-| ------: | ----------------------- |
+| ------: | :---------------------- |
 |   3.0.0 | Created from `KeyValue` |
 
----
-
-See also:
+## See Also
 
 - [Call](Call.md)
 - [CallableType](CallableType.md)

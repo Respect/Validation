@@ -35,9 +35,9 @@ v::oneOf(v::tld(), v::publicDomainSuffix())->assert('tk');
 
 ### `PublicDomainSuffix::TEMPLATE_STANDARD`
 
-| Mode       | Template                                       |
-| ---------- | ---------------------------------------------- |
-| `default`  | {{subject}} must be a public domain suffix     |
+|       Mode | Template                                       |
+| ---------: | :--------------------------------------------- |
+|  `default` | {{subject}} must be a public domain suffix     |
 | `inverted` | {{subject}} must not be a public domain suffix |
 
 ## Template placeholders
@@ -53,12 +53,10 @@ v::oneOf(v::tld(), v::publicDomainSuffix())->assert('tk');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.3.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [CountryCode](CountryCode.md)
 - [Domain](Domain.md)

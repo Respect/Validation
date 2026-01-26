@@ -28,9 +28,9 @@ v::file()->assert(new SplFileInfo('/path/to/file.txt'));
 
 ### `File::TEMPLATE_STANDARD`
 
-| Mode       | Template                            |
-| ---------- | ----------------------------------- |
-| `default`  | {{subject}} must be a valid file    |
+|       Mode | Template                            |
+| ---------: | :---------------------------------- |
+|  `default` | {{subject}} must be a valid file    |
 | `inverted` | {{subject}} must be an invalid file |
 
 ## Template placeholders
@@ -46,12 +46,10 @@ v::file()->assert(new SplFileInfo('/path/to/file.txt'));
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.5.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Directory](Directory.md)
 - [Executable](Executable.md)

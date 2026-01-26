@@ -64,16 +64,16 @@ v::digit()->creditCard()->assert('5376747397208720');
 
 ### `CreditCard::TEMPLATE_STANDARD`
 
-| Mode       | Template                                           |
-| ---------- | -------------------------------------------------- |
-| `default`  | {{subject}} must be a valid credit card number     |
+|       Mode | Template                                           |
+| ---------: | :------------------------------------------------- |
+|  `default` | {{subject}} must be a valid credit card number     |
 | `inverted` | {{subject}} must not be a valid credit card number |
 
 ### `CreditCard::TEMPLATE_BRANDED`
 
-| Mode       | Template                                                              |
-| ---------- | --------------------------------------------------------------------- |
-| `default`  | {{subject}} must be a valid {{brand&#124;raw}} credit card number     |
+|       Mode | Template                                                              |
+| ---------: | :-------------------------------------------------------------------- |
+|  `default` | {{subject}} must be a valid {{brand&#124;raw}} credit card number     |
 | `inverted` | {{subject}} must not be a valid {{brand&#124;raw}} credit card number |
 
 ## Template placeholders
@@ -90,14 +90,12 @@ v::digit()->creditCard()->assert('5376747397208720');
 ## Changelog
 
 | Version | Description                        |
-| ------: | ---------------------------------- |
+| ------: | :--------------------------------- |
 |   2.2.4 | RuPay is now supported as a brand  |
 |   1.1.0 | Allow the define credit card brand |
 |   0.3.9 | Created                            |
 
----
-
-See also:
+## See Also
 
 - [Decimal](Decimal.md)
 - [Digit](Digit.md)

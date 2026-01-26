@@ -40,9 +40,9 @@ Messages for this validator will reflect validators above.
 
 ### `Domain::TEMPLATE_STANDARD`
 
-| Mode       | Template                               |
-| ---------- | -------------------------------------- |
-| `default`  | {{subject}} must be a valid domain     |
+|       Mode | Template                               |
+| ---------: | :------------------------------------- |
+|  `default` | {{subject}} must be a valid domain     |
 | `inverted` | {{subject}} must not be a valid domain |
 
 ## Template placeholders
@@ -58,13 +58,11 @@ Messages for this validator will reflect validators above.
 ## Changelog
 
 | Version | Description             |
-| ------: | ----------------------- |
+| ------: | :---------------------- |
 |   0.6.0 | Allow to skip TLD check |
 |   0.3.9 | Created                 |
 
----
-
-See also:
+## See Also
 
 - [Ip](Ip.md)
 - [Json](Json.md)

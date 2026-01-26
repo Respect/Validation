@@ -21,9 +21,9 @@ v::scalarVal()->assert(135.0);
 
 ### `ScalarVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                               |
-| ---------- | -------------------------------------- |
-| `default`  | {{subject}} must be a scalar value     |
+|       Mode | Template                               |
+| ---------: | :------------------------------------- |
+|  `default` | {{subject}} must be a scalar value     |
 | `inverted` | {{subject}} must not be a scalar value |
 
 ## Template placeholders
@@ -39,12 +39,10 @@ v::scalarVal()->assert(135.0);
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   1.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [ArrayVal](ArrayVal.md)
 - [NumericVal](NumericVal.md)

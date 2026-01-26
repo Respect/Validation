@@ -18,9 +18,9 @@ v::nullType()->assert(null);
 
 ### `NullType::TEMPLATE_STANDARD`
 
-| Mode       | Template                     |
-| ---------- | ---------------------------- |
-| `default`  | {{subject}} must be null     |
+|       Mode | Template                     |
+| ---------: | :--------------------------- |
+|  `default` | {{subject}} must be null     |
 | `inverted` | {{subject}} must not be null |
 
 ## Template placeholders
@@ -36,13 +36,11 @@ v::nullType()->assert(null);
 ## Changelog
 
 | Version | Description                            |
-| ------: | -------------------------------------- |
+| ------: | :------------------------------------- |
 |   1.0.0 | Renamed from `NullValue` to `NullType` |
 |   0.3.9 | Created as `NullValue`                 |
 
----
-
-See also:
+## See Also
 
 - [ArrayType](ArrayType.md)
 - [Blank](Blank.md)

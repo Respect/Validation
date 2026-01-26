@@ -21,9 +21,9 @@ v::portugueseNif()->assert('220005245');
 
 ### `PortugueseNif::TEMPLATE_STANDARD`
 
-| Mode       | Template                                 |
-| ---------- | ---------------------------------------- |
-| `default`  | {{subject}} must be a Portuguese NIF     |
+|       Mode | Template                                 |
+| ---------: | :--------------------------------------- |
+|  `default` | {{subject}} must be a Portuguese NIF     |
 | `inverted` | {{subject}} must not be a Portuguese NIF |
 
 ## Template placeholders
@@ -39,12 +39,10 @@ v::portugueseNif()->assert('220005245');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.2.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Bsn](Bsn.md)
 - [Cnh](Cnh.md)

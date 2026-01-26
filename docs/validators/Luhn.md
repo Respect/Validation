@@ -21,9 +21,9 @@ v::luhn()->assert('respect!');
 
 ### `Luhn::TEMPLATE_STANDARD`
 
-| Mode       | Template                                    |
-| ---------- | ------------------------------------------- |
-| `default`  | {{subject}} must be a valid Luhn number     |
+|       Mode | Template                                    |
+| ---------: | :------------------------------------------ |
+|  `default` | {{subject}} must be a valid Luhn number     |
 | `inverted` | {{subject}} must not be a valid Luhn number |
 
 ## Template placeholders
@@ -39,12 +39,10 @@ v::luhn()->assert('respect!');
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   2.0.0 | Created     |
 
----
-
-See also:
+## See Also
 
 - [CreditCard](CreditCard.md)
 - [Imei](Imei.md)

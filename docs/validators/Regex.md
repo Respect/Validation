@@ -20,9 +20,9 @@ Message template for this validator includes `{{regex}}`.
 
 ### `Regex::TEMPLATE_STANDARD`
 
-| Mode       | Template                                                    |
-| ---------- | ----------------------------------------------------------- |
-| `default`  | {{subject}} must match the pattern {{regex&#124;quote}}     |
+|       Mode | Template                                                    |
+| ---------: | :---------------------------------------------------------- |
+|  `default` | {{subject}} must match the pattern {{regex&#124;quote}}     |
 | `inverted` | {{subject}} must not match the pattern {{regex&#124;quote}} |
 
 ## Template placeholders
@@ -39,12 +39,10 @@ Message template for this validator includes `{{regex}}`.
 ## Changelog
 
 | Version | Description |
-| ------: | ----------- |
+| ------: | :---------- |
 |   0.3.9 | Created     |
 
----
-
-See also:
+## See Also
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)

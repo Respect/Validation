@@ -26,16 +26,16 @@ v::phone('BR')->assert('11 91111 1111');
 
 ### `Phone::TEMPLATE_INTERNATIONAL`
 
-| Mode       | Template                                         |
-| ---------- | ------------------------------------------------ |
-| `default`  | {{subject}} must be a valid telephone number     |
+|       Mode | Template                                         |
+| ---------: | :----------------------------------------------- |
+|  `default` | {{subject}} must be a valid telephone number     |
 | `inverted` | {{subject}} must not be a valid telephone number |
 
 ### `Phone::TEMPLATE_FOR_COUNTRY`
 
-| Mode       | Template                                                                                |
-| ---------- | --------------------------------------------------------------------------------------- |
-| `default`  | {{subject}} must be a valid telephone number for country {{countryName&#124;trans}}     |
+|       Mode | Template                                                                                |
+| ---------: | :-------------------------------------------------------------------------------------- |
+|  `default` | {{subject}} must be a valid telephone number for country {{countryName&#124;trans}}     |
 | `inverted` | {{subject}} must not be a valid telephone number for country {{countryName&#124;trans}} |
 
 ## Template placeholders
@@ -52,13 +52,11 @@ v::phone('BR')->assert('11 91111 1111');
 ## Changelog
 
 | Version | Description                       |
-| ------: | --------------------------------- |
+| ------: | :-------------------------------- |
 |   2.3.0 | Updated to use external validator |
 |   0.5.0 | Created                           |
 
----
-
-See also:
+## See Also
 
 - [Email](Email.md)
 - [Json](Json.md)

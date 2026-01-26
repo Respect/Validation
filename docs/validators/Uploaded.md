@@ -18,9 +18,9 @@ v::uploaded()->assert('/path/of/an/uploaded/file');
 
 ### `Uploaded::TEMPLATE_STANDARD`
 
-| Mode       | Template                                 |
-| ---------- | ---------------------------------------- |
-| `default`  | {{subject}} must be an uploaded file     |
+|       Mode | Template                                 |
+| ---------: | :--------------------------------------- |
+|  `default` | {{subject}} must be an uploaded file     |
 | `inverted` | {{subject}} must not be an uploaded file |
 
 ## Template placeholders
@@ -36,13 +36,11 @@ v::uploaded()->assert('/path/of/an/uploaded/file');
 ## Changelog
 
 | Version | Description       |
-| ------: | ----------------- |
+| ------: | :---------------- |
 |   2.1.0 | Add PSR-7 support |
 |   0.5.0 | Created           |
 
----
-
-See also:
+## See Also
 
 - [Directory](Directory.md)
 - [Executable](Executable.md)

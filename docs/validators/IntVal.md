@@ -45,9 +45,9 @@ consider them as valid.
 
 ### `IntVal::TEMPLATE_STANDARD`
 
-| Mode       | Template                                 |
-| ---------- | ---------------------------------------- |
-| `default`  | {{subject}} must be an integer value     |
+|       Mode | Template                                 |
+| ---------: | :--------------------------------------- |
+|  `default` | {{subject}} must be an integer value     |
 | `inverted` | {{subject}} must not be an integer value |
 
 ## Template placeholders
@@ -64,15 +64,13 @@ consider them as valid.
 ## Changelog
 
 | Version | Description                                               |
-| ------: | --------------------------------------------------------- |
+| ------: | :-------------------------------------------------------- |
 |   2.2.4 | Improved support for negative values with trailing zeroes |
 |  2.0.14 | Allow leading zeros                                       |
 |   1.0.0 | Renamed from `Int` to `IntVal`                            |
 |   0.3.9 | Created as `Int`                                          |
 
----
-
-See also:
+## See Also
 
 - [Decimal](Decimal.md)
 - [Digit](Digit.md)

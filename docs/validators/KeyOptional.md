@@ -64,12 +64,10 @@ Below are some other validators that are tightly related to `KeyOptional`:
 ## Changelog
 
 | Version | Description                |
-| ------: | -------------------------- |
+| ------: | :------------------------- |
 |   3.0.0 | Created from [Key](Key.md) |
 
----
-
-See also:
+## See Also
 
 - [ArrayType](ArrayType.md)
 - [ArrayVal](ArrayVal.md)

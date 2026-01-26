@@ -37,18 +37,18 @@ character, one or the other, but not neither nor both.
 
 Used when none of the validators have passed.
 
-| Mode       | Template                               |
-| ---------- | -------------------------------------- |
-| `default`  | {{subject}} must pass one of the rules |
+|       Mode | Template                               |
+| ---------: | :------------------------------------- |
+|  `default` | {{subject}} must pass one of the rules |
 | `inverted` | {{subject}} must pass one of the rules |
 
 ### `OneOf::TEMPLATE_MORE_THAN_ONE`
 
 Used when more than one validator has passed.
 
-| Mode       | Template                                    |
-| ---------- | ------------------------------------------- |
-| `default`  | {{subject}} must pass only one of the rules |
+|       Mode | Template                                    |
+| ---------: | :------------------------------------------ |
+|  `default` | {{subject}} must pass only one of the rules |
 | `inverted` | {{subject}} must pass only one of the rules |
 
 ## Template placeholders
@@ -65,13 +65,11 @@ Used when more than one validator has passed.
 ## Changelog
 
 | Version | Description                                  |
-| ------: | -------------------------------------------- |
+| ------: | :------------------------------------------- |
 |   3.0.0 | Require at least two validators to be passed |
 |   0.3.9 | Created                                      |
 
----
-
-See also:
+## See Also
 
 - [AllOf](AllOf.md)
 - [AnyOf](AnyOf.md)
