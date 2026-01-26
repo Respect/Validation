@@ -191,12 +191,17 @@ final readonly class Result
 
     public function withInput(mixed $input): self
     {
-        $currentInput = $this->input;
-
         return clone($this, [
             'input' => $input,
+            'adjacent' => $this->adjacent?->withInput($input),
             'children' => array_map(
-                static fn(Result $child) => $child->input === $currentInput ? $child->withInput($input) : $child,
+                function (Result $child) use ($input): Result {
+                    if ($child->input === $this->input && $child->path === $this->path) {
+                        return $child->withInput($input);
+                    }
+
+                    return $child;
+                },
                 $this->children,
             ),
         ]);
