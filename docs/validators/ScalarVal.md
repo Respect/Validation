@@ -10,11 +10,11 @@ SPDX-License-Identifier: MIT
 Validates whether the input is a scalar value or not.
 
 ```php
-v::scalarVal()->assert([]);
-// → `[]` must be a scalar value
-
 v::scalarVal()->assert(135.0);
 // Validation passes successfully
+
+v::scalarVal()->assert([]);
+// → `[]` must be a scalar value
 ```
 
 ## Templates

@@ -11,8 +11,11 @@ SPDX-License-Identifier: MIT
 Defines a validator with a custom message template.
 
 ```php
-v::templated('You must provide a valid email to signup', v::email())->assert('not an email');
-// → You must provide a valid email to signup
+v::templated('You must provide a valid email', v::email())->assert('foo@bar.com');
+// Validation passes successfully
+
+v::templated('You must provide a valid email', v::email())->assert('not an email');
+// → You must provide a valid email
 
 v::templated(
     'The author of the page {{title}} is empty, please fill it up.',

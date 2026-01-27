@@ -11,11 +11,11 @@ SPDX-License-Identifier: MIT
 Validates if a string is in a specific charset.
 
 ```php
-v::charset('ASCII')->assert('açúcar');
-// → "açúcar" must only contain characters from the `["ASCII"]` charset
-
 v::charset('ASCII')->assert('sugar');
 // Validation passes successfully
+
+v::charset('ASCII')->assert('açúcar');
+// → "açúcar" must only contain characters from the `["ASCII"]` charset
 
 v::charset('ISO-8859-1', 'EUC-JP')->assert('日本国');
 // Validation passes successfully

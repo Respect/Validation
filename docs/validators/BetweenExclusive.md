@@ -10,11 +10,11 @@ SPDX-License-Identifier: MIT
 Validates whether the input is between two other values, exclusively.
 
 ```php
-v::betweenExclusive(10, 20)->assert(10);
-// → 10 must be greater than 10 and less than 20
-
 v::betweenExclusive('a', 'e')->assert('c');
 // Validation passes successfully
+
+v::betweenExclusive(10, 20)->assert(10);
+// → 10 must be greater than 10 and less than 20
 
 v::betweenExclusive(new DateTime('yesterday'), new DateTime('tomorrow'))->assert(new DateTime('today'));
 // Validation passes successfully

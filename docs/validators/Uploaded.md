@@ -9,11 +9,6 @@ SPDX-License-Identifier: MIT
 
 Validates if the given data is a file that was uploaded via HTTP POST.
 
-```php
-v::uploaded()->assert('/path/of/an/uploaded/file');
-// → "/path/of/an/uploaded/file" must be an uploaded file
-```
-
 ## Templates
 
 ### `Uploaded::TEMPLATE_STANDARD`

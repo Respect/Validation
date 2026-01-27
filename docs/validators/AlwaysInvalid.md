@@ -10,6 +10,9 @@ SPDX-License-Identifier: MIT
 Validates any input as invalid.
 
 ```php
+v::not(v::alwaysInvalid())->assert('whatever');
+// Validation passes successfully
+
 v::alwaysInvalid()->assert('whatever');
 // → "whatever" must be valid
 ```

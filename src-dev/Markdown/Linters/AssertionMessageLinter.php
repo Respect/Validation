@@ -42,6 +42,7 @@ use function str_contains;
 use function str_ends_with;
 use function str_replace;
 use function str_starts_with;
+use function strpos;
 use function substr;
 use function substr_count;
 use function trim;
@@ -73,6 +74,7 @@ final readonly class AssertionMessageLinter implements Linter
         $newContent = new Content();
         $inCodeBlock = false;
         $currentCodeBlock = [];
+        $isFirstCodeBlock = true;
 
         foreach ($content as $line) {
             if (str_starts_with($line, '```php')) {
@@ -83,7 +85,7 @@ final readonly class AssertionMessageLinter implements Linter
 
             if ($inCodeBlock && str_starts_with($line, '```')) {
                 $currentCodeBlock[] = $line;
-                $processedLines = $this->processCodeBlock($currentCodeBlock, $context);
+                $processedLines = $this->processCodeBlock($currentCodeBlock, $context, $isFirstCodeBlock);
 
                 foreach ($processedLines as $processedLine) {
                     $newContent->raw($processedLine);
@@ -91,6 +93,7 @@ final readonly class AssertionMessageLinter implements Linter
 
                 $inCodeBlock = false;
                 $currentCodeBlock = [];
+                $isFirstCodeBlock = false;
                 continue;
             }
 
@@ -110,14 +113,14 @@ final readonly class AssertionMessageLinter implements Linter
      *
      * @return string[]
      */
-    private function processCodeBlock(array $lines, ArrayObject $context): array
+    private function processCodeBlock(array $lines, ArrayObject $context, bool $isFirstCodeBlock): array
     {
         $openingLine = $lines[0];
         $closingLine = $lines[count($lines) - 1];
         $codeLines = array_slice($lines, 1, -1);
         $code = implode("\n", $codeLines);
 
-        $processedCodeLines = $this->processCode($code, $context);
+        $processedCodeLines = $this->processCode($code, $context, $isFirstCodeBlock);
 
         return [
             $openingLine,
@@ -127,7 +130,7 @@ final readonly class AssertionMessageLinter implements Linter
     }
 
     /** @return string[] */
-    private function processCode(string $code, ArrayObject $context): array
+    private function processCode(string $code, ArrayObject $context, bool $isFirstCodeBlock): array
     {
         $cleanedCode = $this->stripOutputComments($code);
 
@@ -146,6 +149,7 @@ final readonly class AssertionMessageLinter implements Linter
         $processedLines = [];
         $lastEndPos = $phpTagLength;
         $lastWasAssertion = false;
+        $firstAssertionEncountered = false;
 
         foreach ($statements as $statement) {
             $startPos = $statement->getStartFilePos();
@@ -174,6 +178,34 @@ final readonly class AssertionMessageLinter implements Linter
                 $processedLines[] = $statementCode;
                 $contextHasClass = $this->contextContainsClass($context);
                 $result = $this->executeStatement($statementCode, $context, $printer);
+
+                if ($isFirstCodeBlock && !$firstAssertionEncountered) {
+                    // Enforce one-liner for the first assertion in the first code block
+                    if (strpos($statementCode, "\n") !== false) {
+                        throw new UnexpectedValueException(sprintf(
+                            'The first assertion must be a single-line assertion. Statement: %s',
+                            trim($statementCode),
+                        ));
+                    }
+
+                    $validated = false;
+                    foreach ($result as $line) {
+                        if (trim($line) === '// Validation passes successfully') {
+                            $validated = true;
+                            break;
+                        }
+                    }
+
+                    if (!$validated) {
+                        throw new UnexpectedValueException(sprintf(
+                            'The first assertion in the first code block must validate successfully. Statement: %s',
+                            trim($statementCode),
+                        ));
+                    }
+
+                    $firstAssertionEncountered = true;
+                }
+
                 $processedLines = array_merge($processedLines, $result);
 
                 if ($contextHasClass) {

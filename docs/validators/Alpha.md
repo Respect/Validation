@@ -12,11 +12,11 @@ Validates whether the input contains only alphabetic characters. This is similar
 to [Alnum](Alnum.md), but it does not allow numbers.
 
 ```php
-v::alpha()->assert('some name');
-// → "some name" must contain only letters (a-z)
-
 v::alpha(' ')->assert('some name');
 // Validation passes successfully
+
+v::alpha()->assert('some name');
+// → "some name" must contain only letters (a-z)
 
 v::alpha()->assert('Cedric-Fabian');
 // → "Cedric-Fabian" must contain only letters (a-z)

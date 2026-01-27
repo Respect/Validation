@@ -15,14 +15,14 @@ The `$format` argument should follow PHP's [date()][] function. When the `$forma
 [Supported Date and Time Formats][] by PHP (see [strtotime()][]).
 
 ```php
+v::dateTimeDiff('years', v::greaterThan(18), 'd/m/Y')->assert('09/12/1990');
+// Validation passes successfully
+
 v::dateTimeDiff('years', v::equals(7))->assert('7 years ago');
 // → The number of years between now and "7 years ago" must be equal to 7
 
 v::dateTimeDiff('years', v::equals(7))->assert('7 years ago + 1 minute');
 // → The number of years between now and "7 years ago + 1 minute" must be equal to 7
-
-v::dateTimeDiff('years', v::greaterThan(18), 'd/m/Y')->assert('09/12/1990');
-// Validation passes successfully
 
 v::dateTimeDiff('years', v::greaterThan(18), 'd/m/Y')->assert('09/12/2023');
 // → The number of years between "01/01/2024" and "09/12/2023" must be greater than 18

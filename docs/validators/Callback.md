@@ -11,9 +11,7 @@ SPDX-License-Identifier: MIT
 Validates the input using the return of a given callable.
 
 ```php
-v::callback(
-    fn (int $input): bool => $input + ($input / 2) == 15,
-)->assert(10);
+v::callback(fn (int $input): bool => $input % 5 === 0,)->assert(10);
 // Validation passes successfully
 ```
 

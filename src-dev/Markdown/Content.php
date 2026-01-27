@@ -25,6 +25,7 @@ use function file_get_contents;
 use function implode;
 use function max;
 use function preg_match;
+use function preg_replace;
 use function reset;
 use function rtrim;
 use function sprintf;
@@ -111,6 +112,14 @@ final class Content implements IteratorAggregate
         $this->listItem(sprintf('[%s](%s)', $title, $href));
     }
 
+    public function reference(string $title, string $href, string|null $description = null): void
+    {
+        $this->lines[] = match ($description) {
+            null => sprintf('[%s]: %s', $title, $href),
+            default => sprintf('[%s]: %s "%s"', $title, $href, $description),
+        };
+    }
+
     public function extractSpdx(): self
     {
         $start = 0;
@@ -128,6 +137,11 @@ final class Content implements IteratorAggregate
         }
 
         return new self(array_slice($this->lines, $start, $end + 2));
+    }
+
+    public static function stripRefs(string $text): string
+    {
+        return preg_replace('/\[(.+?)\](?:\[\]|\(.+?\))/', '$1', $text) ?? $text;
     }
 
     public function withSection(Content $content): self

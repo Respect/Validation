@@ -10,11 +10,11 @@ SPDX-License-Identifier: MIT
 Validates whether the input is an odd number or not.
 
 ```php
-v::odd()->assert(0);
-// → 0 must be an odd number
-
 v::odd()->assert(3);
 // Validation passes successfully
+
+v::odd()->assert(0);
+// → 0 must be an odd number
 ```
 
 Using `intVal()` before `odd()` is a best practice.

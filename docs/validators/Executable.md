@@ -10,11 +10,11 @@ SPDX-License-Identifier: MIT
 Validates if a file is an executable.
 
 ```php
-v::executable()->assert('/path/to/file');
-// → "/path/to/file" must be an executable file
-
 v::executable()->assert('/path/to/executable');
 // Validation passes successfully
+
+v::executable()->assert('/path/to/file');
+// → "/path/to/file" must be an executable file
 ```
 
 ## Templates

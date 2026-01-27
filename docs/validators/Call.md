@@ -9,6 +9,11 @@ SPDX-License-Identifier: MIT
 
 Validates the return of a [callable][] for a given input.
 
+```php
+v::call(str_split(...), v::arrayType()->lengthEquals(5))->assert('world');
+// Validation passes successfully
+```
+
 Consider the following variable:
 
 ```php

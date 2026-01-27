@@ -11,11 +11,11 @@ SPDX-License-Identifier: MIT
 Validates whether the input contains only digits.
 
 ```php
-v::digit()->assert('020 612 1851');
-// → "020 612 1851" must contain only digits (0-9)
-
 v::digit(' ')->assert('020 612 1851');
 // Validation passes successfully
+
+v::digit()->assert('020 612 1851');
+// → "020 612 1851" must contain only digits (0-9)
 
 v::digit()->assert('172.655.537-21');
 // → "172.655.537-21" must contain only digits (0-9)
