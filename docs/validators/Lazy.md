@@ -9,6 +9,11 @@ SPDX-License-Identifier: MIT
 
 Validates the input using a validator that is created from a callback.
 
+```php
+v::lazy(static fn($input) => v::boolVal())->assert(true);
+// Validation passes successfully
+```
+
 This validator is particularly useful when creating validators that rely on the input. A good example is validating whether a
 `confirmation` field matches the `password` field when processing data from a form.
 

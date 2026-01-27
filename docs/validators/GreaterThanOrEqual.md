@@ -10,11 +10,11 @@ SPDX-License-Identifier: MIT
 Validates whether the input is greater than or equal to a value.
 
 ```php
-v::intVal()->greaterThanOrEqual(10)->assert(9);
-// → 9 must be greater than or equal to 10
-
 v::intVal()->greaterThanOrEqual(10)->assert(10);
 // Validation passes successfully
+
+v::intVal()->greaterThanOrEqual(10)->assert(9);
+// → 9 must be greater than or equal to 10
 
 v::intVal()->greaterThanOrEqual(10)->assert(11);
 // Validation passes successfully

@@ -17,7 +17,9 @@ use Symfony\Component\Finder\Finder;
 
 use function array_keys;
 use function dirname;
+use function implode;
 use function ksort;
+use function preg_match;
 use function sort;
 use function sprintf;
 use function str_ends_with;
@@ -38,15 +40,19 @@ final readonly class ValidatorIndexLinter implements Linter
         $validators = $this->getSortedListOfValidators();
 
         $validatorsByCategory = [];
+        $validatorsDescriptions = [];
+        $validatorsExamples = [];
         foreach ($validators as $validator) {
-            foreach ($this->getCategoriesByValidator($validator) as $category) {
+            $validatorInfo = $this->getValidatorInfo($validator);
+            foreach ($validatorInfo['categories'] as $category) {
                 $validatorsByCategory[$category] ??= [];
                 $validatorsByCategory[$category][] = $validator;
+                $validatorsDescriptions[$validator] = $validatorInfo['description'];
+                $validatorsExamples[$validator] = $validatorInfo['example'];
             }
         }
 
         ksort($validatorsByCategory);
-        $validatorsByCategory['Alphabetically'] = $validators;
 
         $categories = array_keys($validatorsByCategory);
 
@@ -55,14 +61,31 @@ final readonly class ValidatorIndexLinter implements Linter
         $content->emptyLine();
 
         foreach ($categories as $category) {
-            $content->h2($category);
             $categoryValidators = $validatorsByCategory[$category];
             sort($categoryValidators);
+            $refs = [];
             foreach ($categoryValidators as $categoryValidator) {
-                $content->anchorListItem($categoryValidator, sprintf('validators/%s.md', $categoryValidator));
+                $refs[] = sprintf('[%s][]', $categoryValidator);
             }
 
+            $content->paragraph(sprintf('**%s**: %s', $category, implode(' - ', $refs)));
+
             $content->emptyLine();
+        }
+
+        $content->h2('Alphabetically');
+        foreach ($validators as $validator) {
+            $content->listItem(sprintf('[%s][] - `%s`', $validator, $validatorsExamples[$validator]));
+        }
+
+        $content->emptyLine();
+
+        foreach (array_keys($validatorsDescriptions) as $validator) {
+            $content->reference(
+                $validator,
+                sprintf('validators/%s.md', $validator),
+                $validatorsDescriptions[$validator],
+            );
         }
 
         return $file->withContent($content);
@@ -88,10 +111,22 @@ final readonly class ValidatorIndexLinter implements Linter
     }
 
     /** @return array<string> */
-    private function getCategoriesByValidator(string $validator): array
+    private function getValidatorInfo(string $validator): array
     {
         $content = Content::from(sprintf('%s/validators/%s.md', dirname(__DIR__, 2) . '/../docs', $validator));
         $section = $content->getSection('## Categorization');
+        $description = '';
+        $example = '';
+        foreach ($content->getSection(sprintf('# %s', $validator)) as $line) {
+            if ($description === '' && preg_match('/^[A-Z]/', $line) === 1) {
+                $description = $line;
+            }
+
+            if (preg_match('/^v::/', $line) === 1) {
+                $example = $line;
+                break;
+            }
+        }
 
         $categories = [];
         foreach ($section as $line) {
@@ -102,6 +137,10 @@ final readonly class ValidatorIndexLinter implements Linter
             $categories[] = trim(substr($line, 1));
         }
 
-        return $categories;
+        return [
+            'categories' => $categories,
+            'description' => Content::stripRefs($description),
+            'example' => $example,
+        ];
     }
 }

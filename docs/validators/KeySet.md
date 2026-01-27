@@ -11,6 +11,9 @@ SPDX-License-Identifier: MIT
 Validates a keys in a defined structure.
 
 ```php
+v::keySet(v::key('foo', v::intVal()))->assert(['foo' => 42]);
+// Validation passes successfully
+
 v::keySet(
     v::keyExists('foo'),
     v::keyExists('bar')
@@ -21,11 +24,6 @@ v::keySet(
 It will validate the keys in the array with the validators passed in the constructor.
 
 ```php
-v::keySet(
-    v::key('foo', v::intVal())
-)->assert(['foo' => 42]);
-// Validation passes successfully
-
 v::keySet(
     v::key('foo', v::intVal())
 )->assert(['foo' => 'string']);

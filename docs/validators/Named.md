@@ -10,6 +10,9 @@ SPDX-License-Identifier: MIT
 Validates the input with the given validator, and uses the custom name in the error message.
 
 ```php
+v::named('Your email', v::email())->assert('foo@example.com');
+// Validation passes successfully
+
 v::named('Your email', v::email())->assert('not an email');
 // → Your email must be a valid email address
 ```

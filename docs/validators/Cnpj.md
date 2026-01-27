@@ -10,6 +10,11 @@ SPDX-License-Identifier: MIT
 Validates if the input is a Brazilian National Registry of Legal Entities (CNPJ) number.
 Ignores non-digit chars, so use `->digit()` if needed.
 
+```php
+v::cnpj()->assert('00394460005887');
+// Validation passes successfully
+```
+
 ## Templates
 
 ### `Cnpj::TEMPLATE_STANDARD`

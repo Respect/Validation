@@ -10,6 +10,9 @@ SPDX-License-Identifier: MIT
 Validates the access key of the Brazilian electronic invoice (NFe).
 
 ```php
+v::nfeAccessKey()->assert('52060433009911002506550120000007800267301615');
+// Validation passes successfully
+
 v::nfeAccessKey()->assert('31841136830118868211870485416765268625116906');
 // → "31841136830118868211870485416765268625116906" must be a valid NFe access key
 ```

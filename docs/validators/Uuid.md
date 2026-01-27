@@ -12,11 +12,11 @@ Validates whether the input is a valid UUID. It also supports validation of
 specific versions 1 to 8.
 
 ```php
-v::uuid()->assert('Hello World!');
-// → "Hello World!" must be a valid UUID
-
 v::uuid()->assert('eb3115e5-bd16-4939-ab12-2b95745a30f3');
 // Validation passes successfully
+
+v::uuid()->assert('Hello World!');
+// → "Hello World!" must be a valid UUID
 
 v::uuid()->assert('eb3115e5bd164939ab122b95745a30f3');
 // Validation passes successfully

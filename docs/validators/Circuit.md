@@ -10,6 +10,11 @@ SPDX-License-Identifier: MIT
 
 Validates the input against a series of validators until the first fails.
 
+```php
+v::circuit(v::intVal(), v::floatVal())->assert(15);
+// Validation passes successfully
+```
+
 This validator can be handy for getting the least error messages possible from a chain.
 
 This validator can be helpful in combinations with [Lazy](Lazy.md). An excellent example is when you want to validate a

@@ -14,11 +14,11 @@ Alphanumeric is a combination of alphabetic (a-z and A-Z) and numeric (0-9)
 characters.
 
 ```php
-v::alnum()->assert('foo 123');
-// → "foo 123" must contain only letters (a-z) and digits (0-9)
-
 v::alnum(' ')->assert('foo 123');
 // Validation passes successfully
+
+v::alnum()->assert('foo 123');
+// → "foo 123" must contain only letters (a-z) and digits (0-9)
 
 v::alnum()->assert('100%');
 // → "100%" must contain only letters (a-z) and digits (0-9)

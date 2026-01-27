@@ -10,7 +10,7 @@ SPDX-License-Identifier: MIT
 Validates a Brazillian CPF number.
 
 ```php
-v::cpf()->assert('11598647644');
+v::cpf()->assert('95574461102');
 // Validation passes successfully
 ```
 
