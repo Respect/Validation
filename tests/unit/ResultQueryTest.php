@@ -32,7 +32,7 @@ final class ResultQueryTest extends TestCase
 
         $resultQuery = $this->createResultQuery($result);
 
-        self::assertTrue($resultQuery->isValid());
+        self::assertFalse($resultQuery->hasFailed());
     }
 
     #[Test]
@@ -42,7 +42,7 @@ final class ResultQueryTest extends TestCase
 
         $resultQuery = $this->createResultQuery($result);
 
-        self::assertFalse($resultQuery->isValid());
+        self::assertTrue($resultQuery->hasFailed());
     }
 
     #[Test]
@@ -394,21 +394,18 @@ final class ResultQueryTest extends TestCase
         $childPath = uniqid();
         $grandchildPath = uniqid();
 
-        $grandchild = (new ResultBuilder())
-            ->path(new Path($grandchildPath))
-            ->hasPassed(false)
-            ->build();
+        // Create path chain: grandchild path has parent pointing to child path
+        $childPathObj = new Path($childPath);
+        $grandchildPathObj = new Path($grandchildPath, $childPathObj);
 
-        $child = (new ResultBuilder())
-            ->path(new Path($childPath))
+        $grandchild = (new ResultBuilder())
+            ->path($grandchildPathObj)
             ->hasPassed(false)
-            ->children($grandchild)
             ->build();
 
         $parent = (new ResultBuilder())
-            ->path(new Path(uniqid()))
             ->hasPassed(false)
-            ->children($child)
+            ->children($grandchild)
             ->build();
 
         $resultQuery = $this->createResultQuery($parent, renderer: $renderer, messageFormatter: $formatter);

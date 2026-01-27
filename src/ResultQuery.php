@@ -15,9 +15,11 @@ use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\StringFormatter;
 use Stringable;
 
-use function array_shift;
+use function array_find;
+use function array_map;
+use function array_reverse;
+use function ctype_digit;
 use function explode;
-use function implode;
 use function is_string;
 
 final readonly class ResultQuery implements Stringable
@@ -71,32 +73,18 @@ final readonly class ResultQuery implements Stringable
 
     public function findByPath(string|int $path): self|null
     {
-        if ($this->result->path?->value === $path) {
-            return $this;
-        }
+        $result = $this->findBySearchPaths($this->result, $this->getSearchPathsFromScalar($path));
 
-        $paths = is_string($path) ? explode('.', $path) : [$path];
-        $currentPath = array_shift($paths);
-
-        foreach ($this->result->children as $child) {
-            if ($child->path?->value !== $currentPath) {
-                continue;
-            }
-
-            $resultQuery = clone ($this, ['result' => $child]);
-            if ($paths === []) {
-                return $resultQuery;
-            }
-
-            return $resultQuery->findByPath(is_string($path) ? implode('.', $paths) : $path);
-        }
-
-        return null;
+        return match ($result) {
+            null => null,
+            $this->result => $this,
+            default => clone ($this, ['result' => $result]),
+        };
     }
 
-    public function isValid(): bool
+    public function hasFailed(): bool
     {
-        return $this->result->hasPassed;
+        return $this->result->hasPassed == false;
     }
 
     public function getMessage(): string
@@ -125,6 +113,49 @@ final readonly class ResultQuery implements Stringable
         }
 
         return $this->messagesFormatter->format($this->result, $this->renderer, $this->templates);
+    }
+
+    /** @param array<string|int> $searchPaths */
+    private function findBySearchPaths(Result $result, array $searchPaths): Result|null
+    {
+        if ($this->getSearchPathsFromPath($result->path) === $searchPaths) {
+            return $result;
+        }
+
+        return array_find(
+            $result->children,
+            fn($child) => $this->getSearchPathsFromPath($child->path) === $searchPaths,
+        );
+    }
+
+    /** @return array<string|int> */
+    private function getSearchPathsFromScalar(string|int $path): array
+    {
+        if (!is_string($path)) {
+            return [$path];
+        }
+
+        return array_map(
+            static fn(string $part): string|int => ctype_digit($part) ? (int) $part : $part,
+            explode('.', $path),
+        );
+    }
+
+    /** @return array<string|int> */
+    private function getSearchPathsFromPath(Path|null $path): array
+    {
+        if ($path === null) {
+            return [];
+        }
+
+        $parts = [];
+        $current = $path;
+        while ($current !== null) {
+            $parts[] = $current->value;
+            $current = $current->parent;
+        }
+
+        return array_reverse($parts);
     }
 
     public function __toString(): string

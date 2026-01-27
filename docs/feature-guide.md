@@ -37,7 +37,7 @@ You can validate data and handle the result manually without using exceptions:
 
 ```php
 $result = v::numericVal()->positive()->between(1, 255)->validate($input);
-if (!$result->isValid()) {
+if ($result->hasFailed()) {
     echo $result;
 }
 ```

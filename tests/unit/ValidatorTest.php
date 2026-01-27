@@ -89,7 +89,7 @@ final class ValidatorTest extends TestCase
 
         $resultQuery = $validator->validate('whatever');
 
-        self::assertTrue($resultQuery->isValid());
+        self::assertFalse($resultQuery->hasFailed());
     }
 
     #[Test]
@@ -99,7 +99,7 @@ final class ValidatorTest extends TestCase
 
         $resultQuery = $validator->validate('whatever');
 
-        self::assertFalse($resultQuery->isValid());
+        self::assertTrue($resultQuery->hasFailed());
     }
 
     #[Test]

@@ -41,7 +41,7 @@ The `validate()` method returns a `ResultQuery` object that allows you to inspec
 
 ```php
 $result = v::intType()->validate($input);
-if (!$result->isValid()) {
+if ($result->hasFailed()) {
     echo 'Validation failed: ' . $result->getMessage();
 }
 ```
