@@ -17,11 +17,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
+use DI;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
+use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Test\TestCase;
 use stdClass;
 
@@ -64,6 +67,24 @@ final class PhoneTest extends TestCase
         $this->expectExceptionMessage('Invalid country code BRR');
 
         new Phone('BRR');
+    }
+
+    #[Test]
+    public function shouldThrowWhenMissingComponent(): void
+    {
+        $mainContainer = ContainerRegistry::getContainer();
+        ContainerRegistry::setContainer((new DI\ContainerBuilder())->useAutowiring(false)->build());
+        try {
+            new Phone('US');
+            $this->fail('Expected MissingComposerDependencyException was not thrown.');
+        } catch (MissingComposerDependencyException $e) {
+            $this->assertStringContainsString(
+                'Phone rule with country code requires PHP ISO Codes',
+                $e->getMessage(),
+            );
+        } finally {
+            ContainerRegistry::setContainer($mainContainer);
+        }
     }
 
     /** @return array<array{mixed}> */
