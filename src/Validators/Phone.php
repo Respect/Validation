@@ -21,6 +21,8 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
+use Psr\Container\NotFoundExceptionInterface;
+use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
@@ -64,7 +66,9 @@ final class Phone implements Validator
             return;
         }
 
-        if (!class_exists(Countries::class)) {
+        try {
+            $countries ??= ContainerRegistry::getContainer()->get(Countries::class);
+        } catch (NotFoundExceptionInterface) {
             throw new MissingComposerDependencyException(
                 'Phone rule with country code requires PHP ISO Codes',
                 'sokil/php-isocodes',
@@ -72,7 +76,6 @@ final class Phone implements Validator
             );
         }
 
-        $countries ??= new Countries();
         $this->country = $countries->getByAlpha2($countryCode);
         if ($this->country === null) {
             throw new InvalidValidatorException('Invalid country code %s', $countryCode);

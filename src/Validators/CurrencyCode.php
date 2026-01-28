@@ -15,6 +15,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Psr\Container\NotFoundExceptionInterface;
+use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
@@ -22,7 +24,6 @@ use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Sokil\IsoCodes\Database\Currencies;
 
-use function class_exists;
 use function in_array;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -39,14 +40,6 @@ final readonly class CurrencyCode implements Validator
         private string $set = 'alpha-3',
         Currencies|null $currencies = null,
     ) {
-        if (!class_exists(Currencies::class)) {
-            throw new MissingComposerDependencyException(
-                'CurrencyCode rule requires PHP ISO Codes',
-                'sokil/php-isocodes',
-                'sokil/php-isocodes-db-only',
-            );
-        }
-
         $availableSets = ['alpha-3', 'numeric'];
         if (!in_array($set, $availableSets, true)) {
             throw new InvalidValidatorException(
@@ -56,7 +49,15 @@ final readonly class CurrencyCode implements Validator
             );
         }
 
-        $this->currencies = $currencies ?? new Currencies();
+        try {
+            $this->currencies = $currencies ?? ContainerRegistry::getContainer()->get(Currencies::class);
+        } catch (NotFoundExceptionInterface) {
+            throw new MissingComposerDependencyException(
+                'CurrencyCode rule requires PHP ISO Codes',
+                'sokil/php-isocodes',
+                'sokil/php-isocodes-db-only',
+            );
+        }
     }
 
     public function evaluate(mixed $input): Result

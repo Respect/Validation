@@ -14,10 +14,13 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
+use DI;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
+use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Test\RuleTestCase;
 
 #[Group('validator')]
@@ -34,6 +37,24 @@ final class CurrencyCodeTest extends RuleTestCase
 
         // @phpstan-ignore-next-line
         new CurrencyCode('whatever');
+    }
+
+    #[Test]
+    public function shouldThrowWhenMissingComponent(): void
+    {
+        $mainContainer = ContainerRegistry::getContainer();
+        ContainerRegistry::setContainer((new DI\ContainerBuilder())->useAutowiring(false)->build());
+        try {
+            new CurrencyCode('alpha-3');
+            $this->fail('Expected MissingComposerDependencyException was not thrown.');
+        } catch (MissingComposerDependencyException $e) {
+            $this->assertStringContainsString(
+                'CurrencyCode rule requires PHP ISO Codes',
+                $e->getMessage(),
+            );
+        } finally {
+            ContainerRegistry::setContainer($mainContainer);
+        }
     }
 
     /** @return iterable<array{CurrencyCode, mixed}> */
