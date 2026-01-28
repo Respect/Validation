@@ -1,14 +1,16 @@
-name: Continuous Integration (perf)
+name: CI - Perf
 
 on:
   push:
-    paths-ignore:
-      - 'bin/**'
-      - 'docs/**'
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - '.github/**'
   pull_request:
-    paths-ignore:
-      - 'bin/**'
-      - 'docs/**'
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - '.github/**'
   workflow_dispatch:
     inputs:
       baseline:
@@ -23,30 +25,19 @@ jobs:
   tests:
     name: Benchmarks
     runs-on: ubuntu-latest
+
     continue-on-error: true # This job is experimental
     permissions:
       contents: write
       pull-requests: write
 
-    strategy:
-      matrix:
-        php-version:
-          - "8.5"
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           persist-credentials: true
-
-      - name: Install PHP
-        uses: shivammathur/setup-php@v2
+      - uses: ./.github/actions/setup-action
         with:
-          php-version: ${{ matrix.php-version }}
           extensions: xdebug
-
-      - name: Install Dependencies
-        run: composer install --prefer-dist ${{ matrix.composer-extra-arguments }}
 
       - name: Fetch Benchmarks
         run: |
@@ -75,7 +66,7 @@ jobs:
 
           cat report.md
 
-      - name: Commit Benchmark Results
+      - name: Commit Results
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
           set -euo pipefail

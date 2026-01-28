@@ -1,0 +1,22 @@
+name: CI - Docs
+
+on:
+  push:
+    paths-ignore:
+      - 'data/**'
+      - 'tests/**'
+  pull_request:
+    paths-ignore:
+      - 'data/**'
+      - 'tests/**'
+
+jobs:
+  docs:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-action
+
+      - run: bin/console lint:docs

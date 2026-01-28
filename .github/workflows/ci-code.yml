@@ -1,0 +1,59 @@
+name: CI - Code
+
+on:
+  push:
+    paths-ignore:
+      - 'bin/**'
+      - 'docs/**'
+  pull_request:
+    paths-ignore:
+      - 'bin/**'
+      - 'docs/**'
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: ["8.5"]
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-action
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      - run: composer phpunit
+      - run: composer pest
+
+  code-coverage:
+    name: Code Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-action
+        with:
+          coverage: pcov
+
+      - name: Generating Code Coverage Report
+        run: ./vendor/bin/pest --compact --coverage-clover=coverage.xml
+
+      - name: Send Code Coverage Report to Codecov.io
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  static-analysis:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-action
+
+      - run: composer phpcs
+      - run: composer phpstan
+      - run: bin/console lint:mixin

@@ -13,28 +13,11 @@ jobs:
     name: Compliance Check
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-action
         with:
           python-version: '3.x'
+          python-deps: reuse
 
-      - name: Install PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.5
-          coverage: none
-
-      - name: Install dependencies
-        run: composer install --prefer-dist
-
-      - name: Install REUSE tool
-        run: pip install reuse
-
-      - name: Run REUSE check
-        run: reuse lint
-
-      - name: Run SPDX conventions check
-        run: bin/console lint:spdx
+      - run: reuse lint
+      - run: bin/console lint:spdx
