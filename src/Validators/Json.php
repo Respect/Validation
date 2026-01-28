@@ -23,13 +23,8 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
-use function function_exists;
 use function is_string;
-use function json_decode;
-use function json_last_error;
 use function json_validate;
-
-use const JSON_ERROR_NONE;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
@@ -44,12 +39,6 @@ final class Json extends Simple
             return false;
         }
 
-        if (function_exists('json_validate')) {
-            return json_validate($input);
-        }
-
-        json_decode($input);
-
-        return json_last_error() === JSON_ERROR_NONE;
+        return json_validate($input);
     }
 }
