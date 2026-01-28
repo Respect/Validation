@@ -15,15 +15,15 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Psr\Container\NotFoundExceptionInterface;
+use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Sokil\IsoCodes\Database\Countries;
 use Sokil\IsoCodes\Database\Languages;
 
-use function class_exists;
 use function in_array;
 use function is_string;
 
@@ -41,14 +41,6 @@ final readonly class LanguageCode implements Validator
         private readonly string $set = 'alpha-2',
         Languages|null $languages = null,
     ) {
-        if (!class_exists(Countries::class)) {
-            throw new MissingComposerDependencyException(
-                'LanguageCode rule requires PHP ISO Codes',
-                'sokil/php-isocodes',
-                'sokil/php-isocodes-db-only',
-            );
-        }
-
         $availableSets = ['alpha-2', 'alpha-3'];
         if (!in_array($set, $availableSets, true)) {
             throw new InvalidValidatorException(
@@ -58,7 +50,15 @@ final readonly class LanguageCode implements Validator
             );
         }
 
-        $this->languages = $languages ?? new Languages();
+        try {
+            $this->languages = $languages ?? ContainerRegistry::getContainer()->get(Languages::class);
+        } catch (NotFoundExceptionInterface) {
+            throw new MissingComposerDependencyException(
+                'LanguageCode rule requires PHP ISO Codes',
+                'sokil/php-isocodes',
+                'sokil/php-isocodes-db-only',
+            );
+        }
     }
 
     public function evaluate(mixed $input): Result

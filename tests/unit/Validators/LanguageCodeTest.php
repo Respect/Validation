@@ -16,8 +16,14 @@ namespace Respect\Validation\Validators;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
+use Respect\Validation\Exceptions\MissingClassException;
+use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Test\RuleTestCase;
+use Sokil\IsoCodes\Database\Languages;
+
+use function DI\factory;
 
 #[Group('validator')]
 #[CoversClass(LanguageCode::class)]
@@ -33,6 +39,31 @@ final class LanguageCodeTest extends RuleTestCase
 
         // @phpstan-ignore-next-line
         new LanguageCode('whatever');
+    }
+
+    #[Test]
+    public function shouldThrowWhenMissingComponent(): void
+    {
+        $mainContainer = ContainerRegistry::getContainer();
+        $container = ContainerRegistry::createContainer();
+        $container->set(Languages::class, factory(
+            static function (): void {
+                throw new MissingClassException();
+            },
+        ));
+        // @phpstan-ignore-next-line
+        ContainerRegistry::setContainer($container);
+        try {
+            new LanguageCode('alpha-3');
+            $this->fail('Expected MissingComposerDependencyException was not thrown.');
+        } catch (MissingComposerDependencyException $e) {
+            $this->assertStringContainsString(
+                'LanguageCode rule requires PHP ISO Codes',
+                $e->getMessage(),
+            );
+        } finally {
+            ContainerRegistry::setContainer($mainContainer);
+        }
     }
 
     /** @return iterable<array{LanguageCode, mixed}> */

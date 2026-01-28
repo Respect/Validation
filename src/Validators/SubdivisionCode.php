@@ -12,6 +12,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Psr\Container\NotFoundExceptionInterface;
+use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Helpers\CanValidateUndefined;
@@ -20,8 +22,6 @@ use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Sokil\IsoCodes\Database\Countries;
 use Sokil\IsoCodes\Database\Subdivisions;
-
-use function class_exists;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
@@ -41,7 +41,11 @@ final readonly class SubdivisionCode implements Validator
         Countries|null $countries = null,
         Subdivisions|null $subdivisions = null,
     ) {
-        if (!class_exists(Countries::class) || !class_exists(Subdivisions::class)) {
+        try {
+            $container = ContainerRegistry::getContainer();
+            $countries ??= $container->get(Countries::class);
+            $this->subdivisions = $subdivisions ?? $container->get(Subdivisions::class);
+        } catch (NotFoundExceptionInterface) {
             throw new MissingComposerDependencyException(
                 'SubdivisionCode rule requires PHP ISO Codes',
                 'sokil/php-isocodes',
@@ -49,14 +53,12 @@ final readonly class SubdivisionCode implements Validator
             );
         }
 
-        $countries ??= new Countries();
         $country = $countries->getByAlpha2($countryCode);
         if ($country === null) {
             throw new InvalidValidatorException('"%s" is not a supported country code', $countryCode);
         }
 
         $this->country = $country;
-        $this->subdivisions = $subdivisions ?? new Subdivisions();
     }
 
     public function evaluate(mixed $input): Result

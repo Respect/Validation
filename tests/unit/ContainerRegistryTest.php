@@ -13,6 +13,7 @@ namespace Respect\Validation;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\Exceptions\MissingClassException;
 use Respect\Validation\Test\TestCase;
 
 #[Group('core')]
@@ -48,5 +49,15 @@ final class ContainerRegistryTest extends TestCase
         ContainerRegistry::setContainer($newContainer);
 
         self::assertSame($newContainer, ContainerRegistry::getContainer());
+    }
+
+    #[Test]
+    public function itThrowsOnMissingOptionals(): void
+    {
+        $this->expectException(MissingClassException::class);
+        $container = ContainerRegistry::createContainer([
+            'foo' => ContainerRegistry::optional('NonExistentClass'),
+        ]);
+        $container->get('foo');
     }
 }

@@ -38,11 +38,17 @@ use Respect\Validation\Message\Parameters\ResultHandler;
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Transformers\Prefix;
 use Respect\Validation\Transformers\Transformer;
+use Sokil\IsoCodes\Database\Countries;
+use Sokil\IsoCodes\Database\Currencies;
+use Sokil\IsoCodes\Database\Languages;
+use Sokil\IsoCodes\Database\Subdivisions;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+use function class_exists;
 use function DI\autowire;
 use function DI\create;
 use function DI\factory;
+use function sprintf;
 
 final class ContainerRegistry
 {
@@ -94,6 +100,10 @@ final class ContainerRegistry
                 ),
                 $container->get(TranslatorInterface::class),
             )),
+            Subdivisions::class => factory(static::optional(Subdivisions::class)),
+            Countries::class => factory(static::optional(Countries::class)),
+            Languages::class => factory(static::optional(Languages::class)),
+            Currencies::class => factory(static::optional(Currencies::class)),
             ValidatorBuilder::class => factory(static fn(Container $container) => new ValidatorBuilder(
                 $container->get(ValidatorFactory::class),
                 $container->get(Renderer::class),
@@ -118,5 +128,18 @@ final class ContainerRegistry
     public static function setContainer(ContainerInterface $instance): void
     {
         self::$container = $instance;
+    }
+
+    public static function optional(string $className): callable
+    {
+        return static function () use ($className) {
+            if (!class_exists($className)) {
+                throw new Exceptions\MissingClassException(
+                    sprintf('Class "%s" is required but not found.', $className),
+                );
+            }
+
+            return new $className();
+        };
     }
 }
