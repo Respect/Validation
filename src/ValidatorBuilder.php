@@ -56,13 +56,7 @@ final readonly class ValidatorBuilder implements Validator, Nameable
 
     public function evaluate(mixed $input): Result
     {
-        $validator = match (count($this->validators)) {
-            0 => throw new ComponentException('No validators have been added.'),
-            1 => current($this->validators),
-            default => new AllOf(...$this->validators),
-        };
-
-        return $validator->evaluate($input);
+        return $this->getEvaluationTarget()->evaluate($input);
     }
 
     /** @param array<string|int, mixed>|string|null $template */
@@ -73,7 +67,13 @@ final readonly class ValidatorBuilder implements Validator, Nameable
 
     public function isValid(mixed $input): bool
     {
-        return $this->evaluate($input)->hasPassed;
+        $validator = $this->getEvaluationTarget();
+
+        if ($validator instanceof IsValid) {
+            return $validator->isValid($input);
+        }
+
+        return $validator->evaluate($input)->hasPassed;
     }
 
     /** @param array<string|int, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
@@ -116,6 +116,15 @@ final readonly class ValidatorBuilder implements Validator, Nameable
         }
 
         return null;
+    }
+
+    private function getEvaluationTarget(): Validator
+    {
+        return match (count($this->validators)) {
+            0 => throw new ComponentException('No validators have been added.'),
+            1 => current($this->validators),
+            default => new AllOf(...$this->validators),
+        };
     }
 
     /** @param array<string|int, mixed>|string|null $template */

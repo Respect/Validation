@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Validation\IsValid;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validators\Core\Composite;
@@ -32,7 +33,7 @@ use function count;
     '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
-final class NoneOf extends Composite
+final class NoneOf extends Composite implements IsValid
 {
     public const string TEMPLATE_ALL = '__all__';
     public const string TEMPLATE_SOME = '__some__';
@@ -41,8 +42,8 @@ final class NoneOf extends Composite
     {
         $failedCount = 0;
         $children = [];
-        foreach ($this->validators as $validator) {
-            $child = $validator->evaluate($input)->withToggledModeAndValidation();
+        foreach ($this->validators as $child) {
+            $child = $child->evaluate($input)->withToggledModeAndValidation();
             $children[] = $child;
             if ($child->hasPassed) {
                 continue;
@@ -58,5 +59,20 @@ final class NoneOf extends Composite
             [],
             count($children) === $failedCount ? self::TEMPLATE_ALL : self::TEMPLATE_SOME,
         )->withChildren(...$children);
+    }
+
+    public function isValid(mixed $input): bool
+    {
+        foreach ($this->validators as $validator) {
+            if ($validator instanceof IsValid) {
+                return !$validator->isValid($input);
+            }
+
+            if ($validator->evaluate($input)->hasPassed) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
