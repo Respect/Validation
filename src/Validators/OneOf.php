@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Validation\IsValid;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -38,7 +39,7 @@ use function usort;
     '{{subject}} must pass only one of the rules',
     self::TEMPLATE_MORE_THAN_ONE,
 )]
-final class OneOf extends Composite
+final class OneOf extends Composite implements IsValid
 {
     public const string TEMPLATE_NONE = '__none__';
     public const string TEMPLATE_MORE_THAN_ONE = '__more_than_one__';
@@ -65,5 +66,31 @@ final class OneOf extends Composite
         }
 
         return Result::of($valid, $input, $this, [], $template)->withChildren(...$children);
+    }
+
+    public function isValid(mixed $input): bool
+    {
+        $passed = 0;
+        foreach ($this->validators as $validator) {
+            if ($passed > 1) {
+                return false;
+            }
+
+            if ($validator instanceof IsValid) {
+                if ($validator->isValid($input)) {
+                    $passed++;
+                }
+
+                continue;
+            }
+
+            if (!$validator->evaluate($input)->hasPassed) {
+                continue;
+            }
+
+            $passed++;
+        }
+
+        return $passed === 1;
     }
 }

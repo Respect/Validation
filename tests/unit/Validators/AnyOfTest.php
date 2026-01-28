@@ -18,7 +18,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\RuleTestCase;
 use Respect\Validation\Test\Validators\Stub;
 
@@ -41,5 +43,37 @@ final class AnyOfTest extends RuleTestCase
     {
         yield 'fail, fail' => [new AnyOf(Stub::fail(1), Stub::fail(1)), []];
         yield 'fail, fail, fail' => [new AnyOf(Stub::fail(1), Stub::fail(1), Stub::fail(1)), []];
+    }
+
+    #[Test]
+    #[DataProvider('providerForValidInput')]
+    public function isValid(AnyOf $anyOf, mixed $input): void
+    {
+        self::assertTrue($anyOf->isValid($input));
+    }
+
+    #[Test]
+    #[DataProvider('providerForInvalidInput')]
+    public function notIsValid(AnyOf $anyOf, mixed $input): void
+    {
+        self::assertFalse($anyOf->isValid($input));
+    }
+
+    #[Test]
+    public function shouldRecursivelyCheckIsValid(): void
+    {
+        $validator = new AnyOf(
+            new AllOf(
+                Stub::pass(2),
+                Stub::fail(2),
+            ),
+            new AnyOf(
+                Stub::fail(2),
+                Stub::pass(2),
+            ),
+            Stub::fail(1),
+        );
+
+        self::assertTrue($validator->isValid('any value'));
     }
 }

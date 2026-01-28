@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Validation\IsValid;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -36,7 +37,7 @@ use function count;
     '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
-final class AllOf extends Composite
+final class AllOf extends Composite implements IsValid
 {
     public const string TEMPLATE_ALL = '__all__';
     public const string TEMPLATE_SOME = '__some__';
@@ -52,5 +53,20 @@ final class AllOf extends Composite
         }
 
         return Result::of($valid, $input, $this, [], $template)->withChildren(...$children);
+    }
+
+    public function isValid(mixed $input): bool
+    {
+        foreach ($this->validators as $validator) {
+            if ($validator instanceof IsValid) {
+                return $validator->isValid($input);
+            }
+
+            if (!$validator->evaluate($input)->hasPassed) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
