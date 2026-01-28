@@ -77,3 +77,12 @@ jobs:
           git add .phpbench latest.md
           git commit -m "Store benchmark results [skip ci]" || echo "No changes to commit"
           git push origin benchmarks
+
+      - name: Restore workspace
+        if: always()
+        run: |
+          set -euo pipefail
+          echo "Restoring workspace to original commit: ${GITHUB_SHA}"
+          git fetch origin || true
+          git checkout --detach "${GITHUB_SHA}"
+          git reset --hard "${GITHUB_SHA}"
