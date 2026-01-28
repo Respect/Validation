@@ -1,0 +1,45 @@
+name: 'Setup'
+description: 'Sets up the environment for Respect\Validation workflows.'
+
+inputs:
+  php-version:
+    description: 'The PHP version to install.'
+    required: false
+    default: '8.5'
+  coverage:
+    description: 'PHP Coverage mode.'
+    required: false
+    default: 'none'
+  extensions:
+    description: 'Comma-separated list of PHP extensions to install.'
+    required: false
+    default: ''
+  python-version:
+    description: 'The Python version to install.'
+    required: false
+  python-deps:
+    description: 'Space-separated list of Python packages to install.'
+    required: false
+    default: ''
+
+runs:
+  using: 'composite'
+  steps:
+
+    - uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ inputs.php-version }}
+        coverage: ${{ inputs.coverage }}
+        extensions: ${{ inputs.extensions }}
+
+    - if: ${{ inputs.python-version != '' }}
+      uses: actions/setup-python@v6
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - if: ${{ inputs.python-deps != '' }}
+      run: pip install ${{ inputs.python-deps }}
+      shell: bash
+
+    - run: composer install --prefer-dist
+      shell: bash
