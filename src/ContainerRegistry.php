@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use DI\Container;
+use libphonenumber\PhoneNumberUtil;
 use Psr\Container\ContainerInterface;
 use Respect\StringFormatter\BypassTranslator;
 use Respect\StringFormatter\Modifier;
@@ -52,6 +53,7 @@ final class ContainerRegistry
     public static function createContainer(array $definitions = []): Container
     {
         return new Container($definitions + [
+            PhoneNumberUtil::class => factory(static fn() => PhoneNumberUtil::getInstance()),
             Transformer::class => create(Prefix::class),
             TemplateResolver::class => create(TemplateResolver::class),
             TranslatorInterface::class => autowire(BypassTranslator::class),

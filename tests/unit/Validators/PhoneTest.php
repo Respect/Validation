@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use DI;
+use libphonenumber\PhoneNumberUtil;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
@@ -26,6 +27,7 @@ use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Test\TestCase;
+use Sokil\IsoCodes\Database\Countries;
 use stdClass;
 
 #[Group('validator')]
@@ -70,16 +72,48 @@ final class PhoneTest extends TestCase
     }
 
     #[Test]
-    public function shouldThrowWhenMissingComponent(): void
+    public function shouldThrowWhenMissingIsocodesComponent(): void
     {
         $mainContainer = ContainerRegistry::getContainer();
-        ContainerRegistry::setContainer((new DI\ContainerBuilder())->useAutowiring(false)->build());
+        ContainerRegistry::setContainer(
+            (new DI\ContainerBuilder())
+                ->addDefinitions([
+                    PhoneNumberUtil::class => DI\factory(static fn() => PhoneNumberUtil::getInstance()),
+                ])
+                ->useAutowiring(false)
+                ->build(),
+        );
         try {
             new Phone('US');
             $this->fail('Expected MissingComposerDependencyException was not thrown.');
         } catch (MissingComposerDependencyException $e) {
             $this->assertStringContainsString(
                 'Phone rule with country code requires PHP ISO Codes',
+                $e->getMessage(),
+            );
+        } finally {
+            ContainerRegistry::setContainer($mainContainer);
+        }
+    }
+
+    #[Test]
+    public function shouldThrowWhenMissingPhonesComponent(): void
+    {
+        $mainContainer = ContainerRegistry::getContainer();
+        ContainerRegistry::setContainer(
+            (new DI\ContainerBuilder())
+                ->addDefinitions([
+                    Countries::class => DI\create(Countries::class),
+                ])
+                ->useAutowiring(false)
+                ->build(),
+        );
+        try {
+            new Phone('US');
+            $this->fail('Expected MissingComposerDependencyException was not thrown.');
+        } catch (MissingComposerDependencyException $e) {
+            $this->assertStringContainsString(
+                'Phone rule requires libphonenumber for PHP.',
                 $e->getMessage(),
             );
         } finally {
