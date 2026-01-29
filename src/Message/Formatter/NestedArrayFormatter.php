@@ -45,6 +45,8 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
                 $renderer,
                 $templates,
                 $hasString,
+                $result,
+                isParentVisible: count($children) > 1,
             ),
             [],
         );
@@ -91,12 +93,14 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
         Renderer $renderer,
         array $templates,
         bool $hasString,
+        Result $parent,
+        bool $isParentVisible,
     ): array {
         if ($hasString && is_numeric($key)) {
             $key = $child->id->value;
         }
 
-        $message = $this->renderChild($child, $renderer, $templates);
+        $message = $this->renderChild($child, $renderer, $templates, $parent, $isParentVisible);
 
         if (!$hasString) {
             $messages[] = $message;
@@ -124,10 +128,15 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
      *
      * @return array<string>|string
      */
-    private function renderChild(Result $child, Renderer $renderer, array $templates): array|string
-    {
+    private function renderChild(
+        Result $child,
+        Renderer $renderer,
+        array $templates,
+        Result $parent,
+        bool $isParentVisible,
+    ): array|string {
         $formatted = $this->format(
-            $child->withoutName(),
+            $isParentVisible && $child->name === $parent->name ? $child->withoutName() : $child,
             $renderer,
             $templates,
         );

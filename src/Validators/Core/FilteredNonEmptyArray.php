@@ -28,7 +28,7 @@ abstract class FilteredNonEmptyArray extends Wrapper
     {
         $iterableResult = (new IterableType())->evaluate($input);
         if (!$iterableResult->hasPassed) {
-            return $iterableResult->withIdFrom($this)->withNameFrom($this->validator);
+            return $iterableResult->withIdFrom($this);
         }
 
         $array = $this->toArray($input);
@@ -38,7 +38,7 @@ abstract class FilteredNonEmptyArray extends Wrapper
         );
         $result = $validator->evaluate($array);
         if (!$result->hasPassed) {
-            return $result->withIdFrom($this)->withNameFrom($this->validator);
+            return $result->withIdFrom($this);
         }
 
         // @phpstan-ignore-next-line

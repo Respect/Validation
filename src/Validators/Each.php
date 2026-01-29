@@ -37,7 +37,7 @@ final class Each extends FilteredNonEmptyArray
     {
         $children = [];
         foreach ($input as $key => $value) {
-            $children[] = $this->validator->evaluate($value)->withPath(new Path($key));
+            $children[] = $this->validator->evaluate($value)->withPath(new Path($key))->withPrecedentName(false);
         }
 
         $hasPassed = array_reduce(
@@ -46,6 +46,6 @@ final class Each extends FilteredNonEmptyArray
             true,
         );
 
-        return Result::of($hasPassed, $input, $this)->withChildren(...$children)->withNameFrom($this->validator);
+        return Result::of($hasPassed, $input, $this)->withChildren(...$children);
     }
 }

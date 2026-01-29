@@ -44,6 +44,7 @@ final class Key extends Wrapper implements KeyRelated
             return $keyExistsResult->withNameFrom($this->validator);
         }
 
-        return $this->validator->evaluate($input[$this->key])->withPath($keyExistsResult->path ?? new Path($this->key));
+        return $this->validator->evaluate($input[$this->key])
+            ->withPath($keyExistsResult->path ?? new Path($this->key));
     }
 }

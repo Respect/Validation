@@ -65,52 +65,52 @@ test('Inverted', catchAll(
 test('With name, non-iterable', catchAll(
     fn() => v::each(v::named('Wrapped', v::intType()))->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('Wrapped must be iterable')
-        ->and($fullMessage)->toBe('- Wrapped must be iterable')
-        ->and($messages)->toBe(['each' => 'Wrapped must be iterable']),
+        ->and($message)->toBe('`null` must be iterable')
+        ->and($fullMessage)->toBe('- `null` must be iterable')
+        ->and($messages)->toBe(['each' => '`null` must be iterable']),
 ));
 
 test('With name, empty', catchAll(
     fn() => v::each(v::named('Wrapped', v::intType()))->assert([]),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('The length of Wrapped must be greater than 0')
-        ->and($fullMessage)->toBe('- The length of Wrapped must be greater than 0')
-        ->and($messages)->toBe(['each' => 'The length of Wrapped must be greater than 0']),
+        ->and($message)->toBe('The length of `[]` must be greater than 0')
+        ->and($fullMessage)->toBe('- The length of `[]` must be greater than 0')
+        ->and($messages)->toBe(['each' => 'The length of `[]` must be greater than 0']),
 ));
 
 test('With name, default', catchAll(
-    fn() => v::named('Wrapper', v::each(v::named('Wrapped', v::intType())))->assert(['a', 'b', 'c']),
+    fn() => v::named('Outer', v::each(v::named('Inner', v::intType())))->assert(['a', 'b', 'c']),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('Wrapped must be an integer')
+        ->and($message)->toBe('`.0` (<- Inner) must be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
-        - Each item in Wrapped must be valid
-          - `.0` must be an integer
-          - `.1` must be an integer
-          - `.2` must be an integer
+        - Each item in Outer must be valid
+          - `.0` (<- Inner) must be an integer
+          - `.1` (<- Inner) must be an integer
+          - `.2` (<- Inner) must be an integer
         FULL_MESSAGE)
         ->and($messages)->toBe([
-            '__root__' => 'Each item in Wrapped must be valid',
-            0 => '`.0` must be an integer',
-            1 => '`.1` must be an integer',
-            2 => '`.2` must be an integer',
+            '__root__' => 'Each item in Outer must be valid',
+            0 => '`.0` (<- Inner) must be an integer',
+            1 => '`.1` (<- Inner) must be an integer',
+            2 => '`.2` (<- Inner) must be an integer',
         ]),
 ));
 
 test('With name, inverted', catchAll(
-    fn() => v::named('Not', v::not(v::named('Wrapper', v::each(v::named('Wrapped', v::intType())))))->assert([1, 2, 3]),
+    fn() => v::named('Not', v::not(v::named('Outer', v::each(v::named('Inner', v::intType())))))->assert([1, 2, 3]),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('Wrapped must not be an integer')
+        ->and($message)->toBe('`.0` (<- Inner) must not be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
-        - Each item in Wrapped must be invalid
-          - `.0` must not be an integer
-          - `.1` must not be an integer
-          - `.2` must not be an integer
+        - Each item in Outer must be invalid
+          - `.0` (<- Inner) must not be an integer
+          - `.1` (<- Inner) must not be an integer
+          - `.2` (<- Inner) must not be an integer
         FULL_MESSAGE)
         ->and($messages)->toBe([
-            '__root__' => 'Each item in Wrapped must be invalid',
-            0 => '`.0` must not be an integer',
-            1 => '`.1` must not be an integer',
-            2 => '`.2` must not be an integer',
+            '__root__' => 'Each item in Outer must be invalid',
+            0 => '`.0` (<- Inner) must not be an integer',
+            1 => '`.1` (<- Inner) must not be an integer',
+            2 => '`.2` (<- Inner) must not be an integer',
         ]),
 ));
 
