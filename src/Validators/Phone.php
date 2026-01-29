@@ -30,7 +30,6 @@ use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Sokil\IsoCodes\Database\Countries;
 
-use function class_exists;
 use function is_scalar;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -53,9 +52,9 @@ final class Phone implements Validator
 
     public function __construct(string|null $countryCode = null, Countries|null $countries = null)
     {
-        if (!class_exists(PhoneNumberUtil::class)) {
+        if (!ContainerRegistry::getContainer()->has(PhoneNumberUtil::class)) {
             throw new MissingComposerDependencyException(
-                'Phone rule libphonenumber for PHP',
+                'Phone rule requires libphonenumber for PHP',
                 'giggsey/libphonenumber-for-php',
             );
         }
@@ -96,7 +95,7 @@ final class Phone implements Validator
     private function isValidPhone(string $input): bool
     {
         try {
-            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $phoneNumberUtil = ContainerRegistry::getContainer()->get(PhoneNumberUtil::class);
             $phoneNumberObject = $phoneNumberUtil->parse($input, $this->country?->getAlpha2());
             if ($this->country === null) {
                 return $phoneNumberUtil->isValidNumber($phoneNumberObject);
