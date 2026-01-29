@@ -11,11 +11,14 @@ SPDX-FileContributor: William Espindola <oi@williamespindola.com.br>
 
 - `Cnpj()`
 
-Validates if the input is a Brazilian National Registry of Legal Entities (CNPJ) number.
+Validates the structure and mathematical integrity of Brazilian [CNPJ](https://pt.wikipedia.org/wiki/Cadastro_Nacional_da_Pessoa_Jur%C3%ADdica) identifiers.
 Ignores non-digit chars, so use `->digit()` if needed.
 
 ```php
 v::cnpj()->assert('00394460005887');
+// Validation passes successfully
+
+v::cnpj()->assert('12ABC34501DE35');
 // Validation passes successfully
 ```
 

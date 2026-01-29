@@ -238,7 +238,7 @@ In this page you will find a list of validators by their category.
 [Charset]: validators/Charset.md "Validates if a string is in a specific charset."
 [Circuit]: validators/Circuit.md "Validates the input against a series of validators until the first fails."
 [Cnh]: validators/Cnh.md "Validates a Brazilian driver's license."
-[Cnpj]: validators/Cnpj.md "Validates if the input is a Brazilian National Registry of Legal Entities (CNPJ) number."
+[Cnpj]: validators/Cnpj.md "Validates the structure and mathematical integrity of Brazilian CNPJ identifiers."
 [Consonant]: validators/Consonant.md "Validates if the input contains only consonants."
 [Contains]: validators/Contains.md "Validates if the input contains some value."
 [ContainsAny]: validators/ContainsAny.md "Validates if the input contains at least one of defined values"
