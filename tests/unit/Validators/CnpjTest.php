@@ -39,11 +39,14 @@ final class CnpjTest extends RuleTestCase
             [$validator, '24.760.428/0001-09'],
             [$validator, '27.355.204/0001-00'],
             [$validator, '36.310.327/0001-07'],
+            [$validator, '12.ABC.345/01DE-35'],
+            [$validator, '12.ABC.345/01DE_35'],
             [$validator, '38175021000110'],
             [$validator, '37550610000179'],
             [$validator, '12774546000189'],
             [$validator, '77456211000168'],
             [$validator, '02023077000102'],
+            [$validator, '12ABC34501DE35'],
         ];
     }
 
@@ -75,6 +78,8 @@ final class CnpjTest extends RuleTestCase
             [$validator, '992999999999929384'],
             [$validator, '99-010-0.'],
             [$validator, null],
+            [$validator, '12ABC34501DE00'],
+            [$validator, '12ABC34501DEFG'],
         ];
     }
 }
