@@ -66,12 +66,12 @@ interface PropertyChain
 
     public function propertyConsonant(string $propertyName, string ...$additionalChars): Chain;
 
-    public function propertyContains(string $propertyName, mixed $containsValue, bool $identical = false): Chain;
+    public function propertyContains(string $propertyName, mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public function propertyContainsAny(string $propertyName, array $needles, bool $identical = false): Chain;
+    public function propertyContainsAny(string $propertyName, array $needles): Chain;
 
-    public function propertyContainsCount(string $propertyName, mixed $containsValue, int $count, bool $identical = false): Chain;
+    public function propertyContainsCount(string $propertyName, mixed $containsValue, int $count): Chain;
 
     public function propertyControl(string $propertyName, string ...$additionalChars): Chain;
 
@@ -108,7 +108,7 @@ interface PropertyChain
 
     public function propertyEmoji(string $propertyName): Chain;
 
-    public function propertyEndsWith(string $propertyName, mixed $endValue, bool $identical = false): Chain;
+    public function propertyEndsWith(string $propertyName, mixed $endValue): Chain;
 
     public function propertyEquals(string $propertyName, mixed $compareTo): Chain;
 
@@ -152,7 +152,7 @@ interface PropertyChain
 
     public function propertyImei(string $propertyName): Chain;
 
-    public function propertyIn(string $propertyName, mixed $haystack, bool $compareIdentical = false): Chain;
+    public function propertyIn(string $propertyName, mixed $haystack): Chain;
 
     public function propertyInfinite(string $propertyName): Chain;
 
@@ -268,7 +268,7 @@ interface PropertyChain
 
     public function propertySpaced(string $propertyName): Chain;
 
-    public function propertyStartsWith(string $propertyName, mixed $startValue, bool $identical = false): Chain;
+    public function propertyStartsWith(string $propertyName, mixed $startValue): Chain;
 
     public function propertyStringType(string $propertyName): Chain;
 

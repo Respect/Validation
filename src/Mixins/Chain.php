@@ -71,12 +71,12 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function consonant(string ...$additionalChars): Chain;
 
-    public function contains(mixed $containsValue, bool $identical = false): Chain;
+    public function contains(mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public function containsAny(array $needles, bool $identical = false): Chain;
+    public function containsAny(array $needles): Chain;
 
-    public function containsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+    public function containsCount(mixed $containsValue, int $count): Chain;
 
     public function control(string ...$additionalChars): Chain;
 
@@ -113,7 +113,7 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function emoji(): Chain;
 
-    public function endsWith(mixed $endValue, bool $identical = false): Chain;
+    public function endsWith(mixed $endValue): Chain;
 
     public function equals(mixed $compareTo): Chain;
 
@@ -159,7 +159,7 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function imei(): Chain;
 
-    public function in(mixed $haystack, bool $compareIdentical = false): Chain;
+    public function in(mixed $haystack): Chain;
 
     public function infinite(): Chain;
 
@@ -293,7 +293,7 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function spaced(): Chain;
 
-    public function startsWith(mixed $startValue, bool $identical = false): Chain;
+    public function startsWith(mixed $startValue): Chain;
 
     public function stringType(): Chain;
 

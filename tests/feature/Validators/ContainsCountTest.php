@@ -24,11 +24,11 @@ test('Scenario #3', catchFullMessage(
 ));
 
 test('Scenario #4', catchFullMessage(
-    fn() => v::not(v::containsCount('foo', 1, true))->assert(['foo', 'bar']),
+    fn() => v::not(v::containsCount('foo', 1))->assert(['foo', 'bar']),
     fn(string $fullMessage) => expect($fullMessage)->toBe('- `["foo", "bar"]` must not contain "foo" only once'),
 ));
 
 test('Scenario #5', catchFullMessage(
-    fn() => v::containsCount('foo', 1, true)->assert(['foo', 'foo']),
+    fn() => v::containsCount('foo', 1)->assert(['foo', 'foo']),
     fn(string $fullMessage) => expect($fullMessage)->toBe('- `["foo", "foo"]` must contain "foo" only once'),
 ));

@@ -32,7 +32,7 @@ interface MinBuilder
 
     public static function minIdentical(mixed $compareTo): Chain;
 
-    public static function minIn(mixed $haystack, bool $compareIdentical = false): Chain;
+    public static function minIn(mixed $haystack): Chain;
 
     public static function minInfinite(): Chain;
 

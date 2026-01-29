@@ -6,7 +6,6 @@ SPDX-License-Identifier: MIT
 # ContainsCount
 
 - `ContainsCount(mixed $containsValue, int $count)`
-- `ContainsCount(mixed $containsValue, int $count, bool $identical)`
 
 Validates if the input contains a value a specific number of times.
 
@@ -22,16 +21,6 @@ For arrays:
 ```php
 v::containsCount('ipsum', 2)->assert(['ipsum', 'lorem', 'ipsum']);
 // Validation passes successfully
-```
-
-A third parameter may be passed for identical comparison instead of equal comparison.
-
-```php
-v::containsCount(1, 1, true)->assert([1, 2, 3]);
-// Validation passes successfully
-
-v::containsCount('1', 1, true)->assert([1, 2, 3]);
-// → `[1, 2, 3]` must contain "1" only once
 ```
 
 ## Templates

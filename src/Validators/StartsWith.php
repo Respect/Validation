@@ -22,7 +22,6 @@ use Respect\Validation\Validator;
 
 use function is_array;
 use function is_string;
-use function mb_stripos;
 use function mb_strpos;
 use function reset;
 
@@ -35,31 +34,14 @@ final readonly class StartsWith implements Validator
 {
     public function __construct(
         private mixed $startValue,
-        private bool $identical = false,
     ) {
     }
 
     public function evaluate(mixed $input): Result
     {
         $parameters = ['startValue' => $this->startValue];
-        if ($this->identical) {
-            return Result::of($this->validateIdentical($input), $input, $this, $parameters);
-        }
 
-        return Result::of($this->validateEquals($input), $input, $this, $parameters);
-    }
-
-    protected function validateEquals(mixed $input): bool
-    {
-        if (is_array($input)) {
-            return reset($input) == $this->startValue;
-        }
-
-        if (is_string($input) && is_string($this->startValue)) {
-            return mb_stripos($input, $this->startValue) === 0;
-        }
-
-        return false;
+        return Result::of($this->validateIdentical($input), $input, $this, $parameters);
     }
 
     protected function validateIdentical(mixed $input): bool

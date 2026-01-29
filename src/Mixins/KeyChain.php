@@ -66,12 +66,12 @@ interface KeyChain
 
     public function keyConsonant(int|string $key, string ...$additionalChars): Chain;
 
-    public function keyContains(int|string $key, mixed $containsValue, bool $identical = false): Chain;
+    public function keyContains(int|string $key, mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public function keyContainsAny(int|string $key, array $needles, bool $identical = false): Chain;
+    public function keyContainsAny(int|string $key, array $needles): Chain;
 
-    public function keyContainsCount(int|string $key, mixed $containsValue, int $count, bool $identical = false): Chain;
+    public function keyContainsCount(int|string $key, mixed $containsValue, int $count): Chain;
 
     public function keyControl(int|string $key, string ...$additionalChars): Chain;
 
@@ -108,7 +108,7 @@ interface KeyChain
 
     public function keyEmoji(int|string $key): Chain;
 
-    public function keyEndsWith(int|string $key, mixed $endValue, bool $identical = false): Chain;
+    public function keyEndsWith(int|string $key, mixed $endValue): Chain;
 
     public function keyEquals(int|string $key, mixed $compareTo): Chain;
 
@@ -152,7 +152,7 @@ interface KeyChain
 
     public function keyImei(int|string $key): Chain;
 
-    public function keyIn(int|string $key, mixed $haystack, bool $compareIdentical = false): Chain;
+    public function keyIn(int|string $key, mixed $haystack): Chain;
 
     public function keyInfinite(int|string $key): Chain;
 
@@ -268,7 +268,7 @@ interface KeyChain
 
     public function keySpaced(int|string $key): Chain;
 
-    public function keyStartsWith(int|string $key, mixed $startValue, bool $identical = false): Chain;
+    public function keyStartsWith(int|string $key, mixed $startValue): Chain;
 
     public function keyStringType(int|string $key): Chain;
 

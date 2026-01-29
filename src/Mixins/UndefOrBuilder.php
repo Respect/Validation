@@ -64,12 +64,12 @@ interface UndefOrBuilder
 
     public static function undefOrConsonant(string ...$additionalChars): Chain;
 
-    public static function undefOrContains(mixed $containsValue, bool $identical = false): Chain;
+    public static function undefOrContains(mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public static function undefOrContainsAny(array $needles, bool $identical = false): Chain;
+    public static function undefOrContainsAny(array $needles): Chain;
 
-    public static function undefOrContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+    public static function undefOrContainsCount(mixed $containsValue, int $count): Chain;
 
     public static function undefOrControl(string ...$additionalChars): Chain;
 
@@ -106,7 +106,7 @@ interface UndefOrBuilder
 
     public static function undefOrEmoji(): Chain;
 
-    public static function undefOrEndsWith(mixed $endValue, bool $identical = false): Chain;
+    public static function undefOrEndsWith(mixed $endValue): Chain;
 
     public static function undefOrEquals(mixed $compareTo): Chain;
 
@@ -152,7 +152,7 @@ interface UndefOrBuilder
 
     public static function undefOrImei(): Chain;
 
-    public static function undefOrIn(mixed $haystack, bool $compareIdentical = false): Chain;
+    public static function undefOrIn(mixed $haystack): Chain;
 
     public static function undefOrInfinite(): Chain;
 
@@ -282,7 +282,7 @@ interface UndefOrBuilder
 
     public static function undefOrSpaced(): Chain;
 
-    public static function undefOrStartsWith(mixed $startValue, bool $identical = false): Chain;
+    public static function undefOrStartsWith(mixed $startValue): Chain;
 
     public static function undefOrStringType(): Chain;
 

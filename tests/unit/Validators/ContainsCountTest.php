@@ -27,16 +27,10 @@ final class ContainsCountTest extends RuleTestCase
             [new ContainsCount('foo', 1), 'foo bar'],
             [new ContainsCount('foo', 2), 'foo bar foo'],
             [new ContainsCount('a', 3), 'banana'],
-
-            [new ContainsCount('1', 1, true), ['1', 2, 3]],
-            [new ContainsCount(1, 1, true), [1, 2, 3]],
-
-            [new ContainsCount('A', 3), 'banana'],
-            [new ContainsCount('foo', 2), 'FOO bar foo'],
-
-            [new ContainsCount('A', 0, true), 'banana'],
-            [new ContainsCount('a', 3, true), 'banana'],
-
+            [new ContainsCount('1', 1), ['1', 2, 3]],
+            [new ContainsCount(1, 1), [1, 2, 3]],
+            [new ContainsCount('A', 0), 'banana'],
+            [new ContainsCount('a', 3), 'banana'],
             [new ContainsCount('foo', 0), 'bar'],
         ];
     }
@@ -48,16 +42,12 @@ final class ContainsCountTest extends RuleTestCase
             [new ContainsCount('foo', 2), ['foo', 'bar']],
             [new ContainsCount('foo', 2), 'foo bar'],
             [new ContainsCount('a', 2), 'banana'],
-
-            [new ContainsCount('1', 1, true), [1, 2, 3]],
-
+            [new ContainsCount('1', 1), [1, 2, 3]],
             [new ContainsCount('A', 2), 'banana'],
-
-            [new ContainsCount('A', 3, true), 'banana'],
-
+            [new ContainsCount('A', 3), 'banana'],
+            [new ContainsCount('foo', 2), 'FOO bar foo'],
             [new ContainsCount('foo', 1), null],
             [new ContainsCount('foo', 1), new stdClass()],
-
             [new ContainsCount('', 1), ''],
         ];
     }

@@ -36,8 +36,7 @@ final class InTest extends RuleTestCase
             [new In('barfoobaz'), 'foo'],
             [new In('foobarbaz'), 'foo'],
             [new In('barbazfoo'), 'foo'],
-            [new In([1, 2, 3]), '1'],
-            [new In(['1', 2, 3], true), '1'],
+            [new In(['1', 2, 3]), '1'],
         ];
     }
 
@@ -45,11 +44,11 @@ final class InTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         return [
-            [new In('0', true), 'abc'],
+            [new In('0'), 'abc'],
             [new In('0'), null],
-            [new In(0, true), null],
-            [new In('', true), null],
-            [new In([], true), null],
+            [new In(0), null],
+            [new In(''), null],
+            [new In([]), null],
             [new In('barfoobaz'), ''],
             [new In('barfoobaz'), null],
             [new In('barfoobaz'), 0],
@@ -58,7 +57,7 @@ final class InTest extends RuleTestCase
             [new In('barfaabaz'), 'foo'],
             [new In('faabarbaz'), 'foo'],
             [new In('baabazfaa'), 'foo'],
-            [new In([1, 2, 3], true), '1'],
+            [new In([1, 2, 3]), '1'],
         ];
     }
 }

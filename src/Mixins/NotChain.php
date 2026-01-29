@@ -66,12 +66,12 @@ interface NotChain
 
     public function notConsonant(string ...$additionalChars): Chain;
 
-    public function notContains(mixed $containsValue, bool $identical = false): Chain;
+    public function notContains(mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public function notContainsAny(array $needles, bool $identical = false): Chain;
+    public function notContainsAny(array $needles): Chain;
 
-    public function notContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+    public function notContainsCount(mixed $containsValue, int $count): Chain;
 
     public function notControl(string ...$additionalChars): Chain;
 
@@ -108,7 +108,7 @@ interface NotChain
 
     public function notEmoji(): Chain;
 
-    public function notEndsWith(mixed $endValue, bool $identical = false): Chain;
+    public function notEndsWith(mixed $endValue): Chain;
 
     public function notEquals(mixed $compareTo): Chain;
 
@@ -154,7 +154,7 @@ interface NotChain
 
     public function notImei(): Chain;
 
-    public function notIn(mixed $haystack, bool $compareIdentical = false): Chain;
+    public function notIn(mixed $haystack): Chain;
 
     public function notInfinite(): Chain;
 
@@ -282,7 +282,7 @@ interface NotChain
 
     public function notSpaced(): Chain;
 
-    public function notStartsWith(mixed $startValue, bool $identical = false): Chain;
+    public function notStartsWith(mixed $startValue): Chain;
 
     public function notStringType(): Chain;
 

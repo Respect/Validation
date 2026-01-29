@@ -14,11 +14,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
-use Exception;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\RuleTestCase;
-use Respect\Validation\Test\Validators\Stub;
+use TypeError;
 
 #[Group('validator')]
 #[CoversClass(Call::class)]
@@ -28,7 +28,7 @@ final class CallTest extends RuleTestCase
     public static function providerForValidInput(): iterable
     {
         return [
-            'valid rule and valid callable' => [new Call('trim', Stub::pass(1)), ' input '],
+            'callback true' => [new Call('strtolower', new Equals('abc')), 'ABC'],
         ];
     }
 
@@ -36,8 +36,16 @@ final class CallTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         return [
-            'PHP error' => [new Call('trim', Stub::pass(1)), []],
-            'exception' => [new Call(static fn() => throw new Exception(), Stub::pass(1)), []],
+            'callback false' => [new Call('strtolower', new Equals('abc')), 'DEF'],
         ];
+    }
+
+    #[Test]
+    public function shouldLetErrorsEmittedByTheChosenProvidedCallbackToBubbleUp(): void
+    {
+        $this->expectException(TypeError::class);
+        $this->expectExceptionMessage('strtolower(): Argument #1 ($string) must be of type string, int given');
+        $validator = new Call('strtolower', new Equals('abc'));
+        $validator->evaluate(123);
     }
 }

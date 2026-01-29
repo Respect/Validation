@@ -32,7 +32,7 @@ interface LengthChain
 
     public function lengthIdentical(mixed $compareTo): Chain;
 
-    public function lengthIn(mixed $haystack, bool $compareIdentical = false): Chain;
+    public function lengthIn(mixed $haystack): Chain;
 
     public function lengthInfinite(): Chain;
 

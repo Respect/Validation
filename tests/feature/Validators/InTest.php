@@ -19,11 +19,11 @@ test('Scenario #2', catchMessage(
 ));
 
 test('Scenario #3', catchFullMessage(
-    fn() => v::in([2, '1', 3], true)->assert('2'),
+    fn() => v::in([2, '1', 3])->assert('2'),
     fn(string $fullMessage) => expect($fullMessage)->toBe('- "2" must be in `[2, "1", 3]`'),
 ));
 
 test('Scenario #4', catchFullMessage(
-    fn() => v::not(v::in([2, '1', 3], true))->assert('1'),
+    fn() => v::not(v::in([2, '1', 3]))->assert('1'),
     fn(string $fullMessage) => expect($fullMessage)->toBe('- "1" must not be in `[2, "1", 3]`'),
 ));

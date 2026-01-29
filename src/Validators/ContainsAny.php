@@ -28,13 +28,13 @@ use function count;
 final class ContainsAny extends Envelope
 {
     /** @param non-empty-array<mixed> $needles */
-    public function __construct(array $needles, bool $identical = false)
+    public function __construct(array $needles)
     {
         if (empty($needles)) {
             throw new InvalidValidatorException('At least one value must be provided');
         }
 
-        $validators = $this->getValidators($needles, $identical);
+        $validators = $this->getValidators($needles);
 
         parent::__construct(
             count($validators) === 1 ? $validators[0] : new AnyOf(...$validators),
@@ -47,12 +47,10 @@ final class ContainsAny extends Envelope
      *
      * @return Contains[]
      */
-    private function getValidators(array $needles, bool $identical): array
+    private function getValidators(array $needles): array
     {
         return array_map(
-            static function ($needle) use ($identical): Contains {
-                return new Contains($needle, $identical);
-            },
+            static fn($needle): Contains => new Contains($needle),
             $needles,
         );
     }

@@ -18,7 +18,6 @@ use Respect\Validation\Validator;
 use function array_reduce;
 use function is_array;
 use function is_scalar;
-use function mb_strtolower;
 use function mb_substr_count;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -40,7 +39,6 @@ final readonly class ContainsCount implements Validator
     public function __construct(
         private mixed $containsValue,
         private int $count,
-        private bool $identical = false,
     ) {
     }
 
@@ -74,7 +72,7 @@ final readonly class ContainsCount implements Validator
         }
 
         return Result::of(
-            $this->countStringOccurrences((string) $input, $needle) === $this->count,
+            mb_substr_count((string) $input, $needle) === $this->count,
             $input,
             $this,
             $parameters,
@@ -87,21 +85,10 @@ final readonly class ContainsCount implements Validator
     {
         return array_reduce(
             $input,
-            $this->identical ? function (int $carry, mixed $item): int {
+            function (int $carry, mixed $item): int {
                 return $carry + ($item === $this->containsValue ? 1 : 0);
-            } : function (int $carry, mixed $item): int {
-                return $carry + ($item == $this->containsValue ? 1 : 0);
             },
             0,
         );
-    }
-
-    private function countStringOccurrences(string $haystack, string $needle): int
-    {
-        if ($this->identical) {
-            return mb_substr_count($haystack, $needle);
-        }
-
-        return mb_substr_count(mb_strtolower($haystack), mb_strtolower($needle));
     }
 }

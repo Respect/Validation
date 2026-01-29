@@ -64,12 +64,12 @@ interface AllChain
 
     public function allConsonant(string ...$additionalChars): Chain;
 
-    public function allContains(mixed $containsValue, bool $identical = false): Chain;
+    public function allContains(mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public function allContainsAny(array $needles, bool $identical = false): Chain;
+    public function allContainsAny(array $needles): Chain;
 
-    public function allContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+    public function allContainsCount(mixed $containsValue, int $count): Chain;
 
     public function allControl(string ...$additionalChars): Chain;
 
@@ -106,7 +106,7 @@ interface AllChain
 
     public function allEmoji(): Chain;
 
-    public function allEndsWith(mixed $endValue, bool $identical = false): Chain;
+    public function allEndsWith(mixed $endValue): Chain;
 
     public function allEquals(mixed $compareTo): Chain;
 
@@ -150,7 +150,7 @@ interface AllChain
 
     public function allImei(): Chain;
 
-    public function allIn(mixed $haystack, bool $compareIdentical = false): Chain;
+    public function allIn(mixed $haystack): Chain;
 
     public function allInfinite(): Chain;
 
@@ -266,7 +266,7 @@ interface AllChain
 
     public function allSpaced(): Chain;
 
-    public function allStartsWith(mixed $startValue, bool $identical = false): Chain;
+    public function allStartsWith(mixed $startValue): Chain;
 
     public function allStringType(): Chain;
 

@@ -6,26 +6,22 @@ SPDX-License-Identifier: MIT
 # ContainsAny
 
 - `ContainsAny(non-empty-array<mixed> $needles)`
-- `ContainsAny(non-empty-array<mixed> $needles, bool $identical)`
 
 Validates if the input contains at least one of defined values
 
-For strings (comparing is case insensitive):
+For strings:
 
 ```php
 v::containsAny(['lorem', 'dolor'])->assert('lorem ipsum');
 // Validation passes successfully
 ```
 
-For arrays (comparing is case sensitive to respect "contains" behavior):
+For arrays:
 
 ```php
 v::containsAny(['lorem', 'dolor'])->assert(['ipsum', 'lorem']);
 // Validation passes successfully
 ```
-
-A second parameter may be passed for identical comparison instead
-of equal comparison for arrays.
 
 Message template for this validator includes `{{needles}}`.
 
@@ -52,9 +48,10 @@ Message template for this validator includes `{{needles}}`.
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   2.0.0 | Created     |
+| Version | Description                         |
+| ------: | :---------------------------------- |
+|   3.0.0 | Case-insensitive comparison removed |
+|   2.0.0 | Created                             |
 
 ## See Also
 

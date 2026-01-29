@@ -296,6 +296,42 @@ v::each(v::alwaysValid())->isValid([]);             // false (empty)
 + v::intType()->assert($input);
 ```
 
+##### Call does not handle errors anymore
+
+`Call` now does not handle PHP errors inside the callback you provided.
+
+```php
+v::call('strtolower', v::equals('foo'))->assert(123); // Error bubbles out
+```
+
+You can use anonymous functions to handle errors or perform type conversions
+instead:
+
+```php
+v::call(static fn ($i) => strtolower((string) $i), v::equals('123'));
+```
+
+##### `Contains`, `ContainsAny`, `In`, `EndsWith` and `StartsWith` strict by default.
+
+The parameter `$identical`, which controlled case-insensitivy and strict typing was
+removed. Now these validators will always compare _case-sensitive_ and use
+_strict typing_.
+
+```diff
+- v::contains('needle', identical: true);
+- v::containsAny(['needle1', 'needle2'], identical: true);
+- v::in(['hay', 'stack'], compareIdentical: true);
+- v::startsWith('needle', identical: true);
+- v::endsWith('needle', identical: true);
++ v::contains('needle');                     // always strict case and type
++ v::containsAny(['needle1', 'needle2']);    // always strict case and type
++ v::in(['hay', 'stack']);                   // always strict case and type
++ v::startsWith('needle');                   // always strict case and type
++ v::endsWith('needle');                     // always strict case and type
+```
+
+For more information, refer to [case-sensitiveness.md](case-sensitiveness.md)
+
 ##### New package dependencies
 
 Some validators now require additional packages:

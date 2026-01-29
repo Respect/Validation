@@ -32,7 +32,7 @@ interface MaxChain
 
     public function maxIdentical(mixed $compareTo): Chain;
 
-    public function maxIn(mixed $haystack, bool $compareIdentical = false): Chain;
+    public function maxIn(mixed $haystack): Chain;
 
     public function maxInfinite(): Chain;
 
