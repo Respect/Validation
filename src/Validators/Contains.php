@@ -23,7 +23,6 @@ use Respect\Validation\Validator;
 use function in_array;
 use function is_array;
 use function is_scalar;
-use function mb_stripos;
 use function mb_strpos;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -33,17 +32,15 @@ use function mb_strpos;
 )]
 final readonly class Contains implements Validator
 {
-    public function __construct(
-        private mixed $containsValue,
-        private bool $identical = false,
-    ) {
+    public function __construct(private mixed $containsValue)
+    {
     }
 
     public function evaluate(mixed $input): Result
     {
         $parameters = ['containsValue' => $this->containsValue];
         if (is_array($input)) {
-            return Result::of(in_array($this->containsValue, $input, $this->identical), $input, $this, $parameters);
+            return Result::of(in_array($this->containsValue, $input, strict: true), $input, $this, $parameters);
         }
 
         if (!is_scalar($input) || !is_scalar($this->containsValue)) {
@@ -64,10 +61,6 @@ final readonly class Contains implements Validator
             return false;
         }
 
-        if ($this->identical) {
-            return mb_strpos($haystack, $needle) !== false;
-        }
-
-        return mb_stripos($haystack, $needle) !== false;
+        return mb_strpos($haystack, $needle) !== false;
     }
 }

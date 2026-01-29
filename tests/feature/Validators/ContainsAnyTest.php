@@ -24,6 +24,6 @@ test('Scenario #3', catchFullMessage(
 ));
 
 test('Scenario #4', catchFullMessage(
-    fn() => v::not(v::containsAny(['foo', 'bar'], true))->assert(['bar', 'foo']),
+    fn() => v::not(v::containsAny(['foo', 'bar']))->assert(['bar', 'foo']),
     fn(string $fullMessage) => expect($fullMessage)->toBe('- `["bar", "foo"]` must not contain any value from `["foo", "bar"]`'),
 ));

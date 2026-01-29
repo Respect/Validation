@@ -66,12 +66,12 @@ interface NullOrChain
 
     public function nullOrConsonant(string ...$additionalChars): Chain;
 
-    public function nullOrContains(mixed $containsValue, bool $identical = false): Chain;
+    public function nullOrContains(mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public function nullOrContainsAny(array $needles, bool $identical = false): Chain;
+    public function nullOrContainsAny(array $needles): Chain;
 
-    public function nullOrContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+    public function nullOrContainsCount(mixed $containsValue, int $count): Chain;
 
     public function nullOrControl(string ...$additionalChars): Chain;
 
@@ -108,7 +108,7 @@ interface NullOrChain
 
     public function nullOrEmoji(): Chain;
 
-    public function nullOrEndsWith(mixed $endValue, bool $identical = false): Chain;
+    public function nullOrEndsWith(mixed $endValue): Chain;
 
     public function nullOrEquals(mixed $compareTo): Chain;
 
@@ -158,7 +158,7 @@ interface NullOrChain
 
     public function nullOrImei(): Chain;
 
-    public function nullOrIn(mixed $haystack, bool $compareIdentical = false): Chain;
+    public function nullOrIn(mixed $haystack): Chain;
 
     public function nullOrInfinite(): Chain;
 
@@ -294,7 +294,7 @@ interface NullOrChain
 
     public function nullOrSpaced(): Chain;
 
-    public function nullOrStartsWith(mixed $startValue, bool $identical = false): Chain;
+    public function nullOrStartsWith(mixed $startValue): Chain;
 
     public function nullOrStringType(): Chain;
 

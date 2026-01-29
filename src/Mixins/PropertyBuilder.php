@@ -66,12 +66,12 @@ interface PropertyBuilder
 
     public static function propertyConsonant(string $propertyName, string ...$additionalChars): Chain;
 
-    public static function propertyContains(string $propertyName, mixed $containsValue, bool $identical = false): Chain;
+    public static function propertyContains(string $propertyName, mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public static function propertyContainsAny(string $propertyName, array $needles, bool $identical = false): Chain;
+    public static function propertyContainsAny(string $propertyName, array $needles): Chain;
 
-    public static function propertyContainsCount(string $propertyName, mixed $containsValue, int $count, bool $identical = false): Chain;
+    public static function propertyContainsCount(string $propertyName, mixed $containsValue, int $count): Chain;
 
     public static function propertyControl(string $propertyName, string ...$additionalChars): Chain;
 
@@ -108,7 +108,7 @@ interface PropertyBuilder
 
     public static function propertyEmoji(string $propertyName): Chain;
 
-    public static function propertyEndsWith(string $propertyName, mixed $endValue, bool $identical = false): Chain;
+    public static function propertyEndsWith(string $propertyName, mixed $endValue): Chain;
 
     public static function propertyEquals(string $propertyName, mixed $compareTo): Chain;
 
@@ -156,7 +156,7 @@ interface PropertyBuilder
 
     public static function propertyImei(string $propertyName): Chain;
 
-    public static function propertyIn(string $propertyName, mixed $haystack, bool $compareIdentical = false): Chain;
+    public static function propertyIn(string $propertyName, mixed $haystack): Chain;
 
     public static function propertyInfinite(string $propertyName): Chain;
 
@@ -278,7 +278,7 @@ interface PropertyBuilder
 
     public static function propertySpaced(string $propertyName): Chain;
 
-    public static function propertyStartsWith(string $propertyName, mixed $startValue, bool $identical = false): Chain;
+    public static function propertyStartsWith(string $propertyName, mixed $startValue): Chain;
 
     public static function propertyStringType(string $propertyName): Chain;
 

@@ -66,12 +66,12 @@ interface KeyBuilder
 
     public static function keyConsonant(int|string $key, string ...$additionalChars): Chain;
 
-    public static function keyContains(int|string $key, mixed $containsValue, bool $identical = false): Chain;
+    public static function keyContains(int|string $key, mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public static function keyContainsAny(int|string $key, array $needles, bool $identical = false): Chain;
+    public static function keyContainsAny(int|string $key, array $needles): Chain;
 
-    public static function keyContainsCount(int|string $key, mixed $containsValue, int $count, bool $identical = false): Chain;
+    public static function keyContainsCount(int|string $key, mixed $containsValue, int $count): Chain;
 
     public static function keyControl(int|string $key, string ...$additionalChars): Chain;
 
@@ -108,7 +108,7 @@ interface KeyBuilder
 
     public static function keyEmoji(int|string $key): Chain;
 
-    public static function keyEndsWith(int|string $key, mixed $endValue, bool $identical = false): Chain;
+    public static function keyEndsWith(int|string $key, mixed $endValue): Chain;
 
     public static function keyEquals(int|string $key, mixed $compareTo): Chain;
 
@@ -156,7 +156,7 @@ interface KeyBuilder
 
     public static function keyImei(int|string $key): Chain;
 
-    public static function keyIn(int|string $key, mixed $haystack, bool $compareIdentical = false): Chain;
+    public static function keyIn(int|string $key, mixed $haystack): Chain;
 
     public static function keyInfinite(int|string $key): Chain;
 
@@ -278,7 +278,7 @@ interface KeyBuilder
 
     public static function keySpaced(int|string $key): Chain;
 
-    public static function keyStartsWith(int|string $key, mixed $startValue, bool $identical = false): Chain;
+    public static function keyStartsWith(int|string $key, mixed $startValue): Chain;
 
     public static function keyStringType(int|string $key): Chain;
 

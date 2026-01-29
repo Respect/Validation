@@ -28,12 +28,10 @@ final class EndsWithTest extends RuleTestCase
     {
         return [
             [new EndsWith('foo'), ['bar', 'foo']],
-            [new EndsWith('foo'), 'barbazFOO'],
             [new EndsWith('foo'), 'barbazfoo'],
             [new EndsWith('foo'), 'foobazfoo'],
-            [new EndsWith('1'), [2, 3, 1]],
             [new EndsWith(1), [2, 3, 1]],
-            [new EndsWith('1', true), [2, 3, '1']],
+            [new EndsWith('1'), [2, 3, '1']],
         ];
     }
 
@@ -44,11 +42,12 @@ final class EndsWithTest extends RuleTestCase
             [new EndsWith('foo'), ''],
             [new EndsWith('bat'), ['bar', 'foo']],
             [new EndsWith('foo'), 'barfaabaz'],
-            [new EndsWith('foo', true), 'barbazFOO'],
+            [new EndsWith('foo'), 'barbazFOO'],
             [new EndsWith('foo'), 'faabarbaz'],
             [new EndsWith('foo'), 'baabazfaa'],
             [new EndsWith('foo'), 'baafoofaa'],
-            [new EndsWith('1', true), [1, '1', 3]],
+            [new EndsWith('1'), [1, '1', 3]],
+            [new EndsWith('1'), [2, 3, 1]],
         ];
     }
 }

@@ -27,11 +27,9 @@ final class StartsWithTest extends RuleTestCase
     {
         return [
             [new StartsWith('foo'), ['foo', 'bar']],
-            [new StartsWith('foo') ,'FOObarbaz'],
-            [new StartsWith('foo') , 'foobarbaz'],
-            [new StartsWith('foo') ,'foobazfoo'],
-            [new StartsWith('1'), [1, 2, 3]],
-            [new StartsWith('1', true), ['1', 2, 3]],
+            [new StartsWith('foo'), 'foobarbaz'],
+            [new StartsWith('foo'), 'foobazfoo'],
+            [new StartsWith('1'), ['1', 2, 3]],
         ];
     }
 
@@ -40,15 +38,15 @@ final class StartsWithTest extends RuleTestCase
     {
         return [
             [new StartsWith(123), 123],
-            [new StartsWith(123, true), 123],
             [new StartsWith('foo'), ''],
             [new StartsWith('bat'), ['foo', 'bar']],
             [new StartsWith('foo'), 'barfaabaz'],
-            [new StartsWith('foo', true), 'FOObarbaz'],
+            [new StartsWith('foo'), 'FOObarbaz'],
             [new StartsWith('foo'), 'faabarbaz'],
             [new StartsWith('foo'), 'baabazfaa'],
             [new StartsWith('foo'), 'baafoofaa'],
-            [new StartsWith('1', true), [1, '1', 3]],
+            [new StartsWith('1'), [1, '1', 3]],
+            [new StartsWith('1'), [1, 2, 3]],
         ];
     }
 }

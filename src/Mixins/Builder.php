@@ -69,12 +69,12 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function consonant(string ...$additionalChars): Chain;
 
-    public static function contains(mixed $containsValue, bool $identical = false): Chain;
+    public static function contains(mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public static function containsAny(array $needles, bool $identical = false): Chain;
+    public static function containsAny(array $needles): Chain;
 
-    public static function containsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+    public static function containsCount(mixed $containsValue, int $count): Chain;
 
     public static function control(string ...$additionalChars): Chain;
 
@@ -111,7 +111,7 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function emoji(): Chain;
 
-    public static function endsWith(mixed $endValue, bool $identical = false): Chain;
+    public static function endsWith(mixed $endValue): Chain;
 
     public static function equals(mixed $compareTo): Chain;
 
@@ -161,7 +161,7 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function imei(): Chain;
 
-    public static function in(mixed $haystack, bool $compareIdentical = false): Chain;
+    public static function in(mixed $haystack): Chain;
 
     public static function infinite(): Chain;
 
@@ -301,7 +301,7 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function spaced(): Chain;
 
-    public static function startsWith(mixed $startValue, bool $identical = false): Chain;
+    public static function startsWith(mixed $startValue): Chain;
 
     public static function stringType(): Chain;
 

@@ -30,15 +30,12 @@ final class ContainsTest extends RuleTestCase
     public static function providerForValidInput(): iterable
     {
         return [
-            [new Contains('foo', false), ['bar', 'foo']],
-            [new Contains('foo', false), 'barbazFOO'],
-            [new Contains('foo', false), 'barbazfoo'],
-            [new Contains('foo', false), 'foobazfoO'],
-            [new Contains('1', false), [2, 3, 1]],
-            [new Contains('1', false), [2, 3, '1']],
+            [new Contains('foo'), ['bar', 'foo']],
             [new Contains('foo'), ['fool', 'foo']],
+            [new Contains('foo'), 'foobazfoO'],
             [new Contains('foo'), 'barbazfoo'],
             [new Contains('foo'), 'foobazfoo'],
+            [new Contains('1'), [2, 3, '1']],
             [new Contains('1'), [2, 3, (string) 1]],
             [new Contains('1'), [2, 3, '1']],
             [new Contains(1), [2, 3, 1]],
@@ -49,24 +46,19 @@ final class ContainsTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         return [
-            [new Contains('', false), 'abc'],
-            [new Contains(null, false), null],
-            [new Contains(null, false), []],
-            [new Contains(new stdClass(), false), new stdClass()],
-            [new Contains('foo', false), ''],
-            [new Contains('bat', false), ['bar', 'foo']],
-            [new Contains('foo', false), 'barfaabaz'],
-            [new Contains('foo', false), 'faabarbaz'],
-            [new Contains(null, true), null],
-            [new Contains(null, true), []],
-            [new Contains(new stdClass(), true), new stdClass()],
-            [new Contains('foo', true), ''],
-            [new Contains('bat', true), ['BAT', 'foo']],
-            [new Contains('bat', true), ['BaT', 'Batata']],
-            [new Contains('foo', true), 'barfaabaz'],
-            [new Contains('foo', true), 'barbazFOO'],
-            [new Contains('foo', true), 'faabarbaz'],
-            [new Contains(1, true), ['1', 2, 3]],
+            [new Contains('foo'), 'barbazFOO'],
+            [new Contains('1'), [2, 3, 1]],
+            [new Contains(''), 'abc'],
+            [new Contains(null), null],
+            [new Contains(null), []],
+            [new Contains(new stdClass()), new stdClass()],
+            [new Contains('foo'), ''],
+            [new Contains('bat'), ['bar', 'foo']],
+            [new Contains('foo'), 'barfaabaz'],
+            [new Contains('foo'), 'faabarbaz'],
+            [new Contains('bat'), ['BAT', 'foo']],
+            [new Contains('bat'), ['BaT', 'Batata']],
+            [new Contains(1), ['1', 2, 3]],
         ];
     }
 }

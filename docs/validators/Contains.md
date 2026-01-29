@@ -6,7 +6,6 @@ SPDX-License-Identifier: MIT
 # Contains
 
 - `Contains(mixed $containsValue)`
-- `Contains(mixed $containsValue, bool $identical)`
 
 Validates if the input contains some value.
 
@@ -23,9 +22,6 @@ For arrays:
 v::contains('ipsum')->assert(['ipsum', 'lorem']);
 // Validation passes successfully
 ```
-
-A second parameter may be passed for identical comparison instead
-of equal comparison.
 
 Message template for this validator includes `{{containsValue}}`.
 
@@ -52,9 +48,10 @@ Message template for this validator includes `{{containsValue}}`.
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description                         |
+| ------: | :---------------------------------- |
+|   3.0.0 | Case-insensitive comparison removed |
+|   0.3.9 | Created                             |
 
 ## See Also
 

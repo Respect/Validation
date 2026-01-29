@@ -64,12 +64,12 @@ interface AllBuilder
 
     public static function allConsonant(string ...$additionalChars): Chain;
 
-    public static function allContains(mixed $containsValue, bool $identical = false): Chain;
+    public static function allContains(mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public static function allContainsAny(array $needles, bool $identical = false): Chain;
+    public static function allContainsAny(array $needles): Chain;
 
-    public static function allContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+    public static function allContainsCount(mixed $containsValue, int $count): Chain;
 
     public static function allControl(string ...$additionalChars): Chain;
 
@@ -106,7 +106,7 @@ interface AllBuilder
 
     public static function allEmoji(): Chain;
 
-    public static function allEndsWith(mixed $endValue, bool $identical = false): Chain;
+    public static function allEndsWith(mixed $endValue): Chain;
 
     public static function allEquals(mixed $compareTo): Chain;
 
@@ -154,7 +154,7 @@ interface AllBuilder
 
     public static function allImei(): Chain;
 
-    public static function allIn(mixed $haystack, bool $compareIdentical = false): Chain;
+    public static function allIn(mixed $haystack): Chain;
 
     public static function allInfinite(): Chain;
 
@@ -276,7 +276,7 @@ interface AllBuilder
 
     public static function allSpaced(): Chain;
 
-    public static function allStartsWith(mixed $startValue, bool $identical = false): Chain;
+    public static function allStartsWith(mixed $startValue): Chain;
 
     public static function allStringType(): Chain;
 

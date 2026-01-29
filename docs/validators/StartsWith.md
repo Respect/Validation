@@ -6,7 +6,6 @@ SPDX-License-Identifier: MIT
 # StartsWith
 
 - `StartsWith(mixed $startValue)`
-- `StartsWith(mixed $startValue, bool $identical)`
 
 Validates whether the input starts with a given value.
 
@@ -26,9 +25,6 @@ For arrays:
 v::startsWith('lorem')->assert(['lorem', 'ipsum']);
 // Validation passes successfully
 ```
-
-`true` may be passed as a parameter to indicate identical comparison
-instead of equal.
 
 Message template for this validator includes `{{startValue}}`.
 
@@ -55,9 +51,10 @@ Message template for this validator includes `{{startValue}}`.
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description                         |
+| ------: | :---------------------------------- |
+|   3.0.0 | Case-insensitive comparison removed |
+|   0.3.9 | Created                             |
 
 ## See Also
 

@@ -66,12 +66,12 @@ interface NotBuilder
 
     public static function notConsonant(string ...$additionalChars): Chain;
 
-    public static function notContains(mixed $containsValue, bool $identical = false): Chain;
+    public static function notContains(mixed $containsValue): Chain;
 
     /** @param non-empty-array<mixed> $needles */
-    public static function notContainsAny(array $needles, bool $identical = false): Chain;
+    public static function notContainsAny(array $needles): Chain;
 
-    public static function notContainsCount(mixed $containsValue, int $count, bool $identical = false): Chain;
+    public static function notContainsCount(mixed $containsValue, int $count): Chain;
 
     public static function notControl(string ...$additionalChars): Chain;
 
@@ -108,7 +108,7 @@ interface NotBuilder
 
     public static function notEmoji(): Chain;
 
-    public static function notEndsWith(mixed $endValue, bool $identical = false): Chain;
+    public static function notEndsWith(mixed $endValue): Chain;
 
     public static function notEquals(mixed $compareTo): Chain;
 
@@ -158,7 +158,7 @@ interface NotBuilder
 
     public static function notImei(): Chain;
 
-    public static function notIn(mixed $haystack, bool $compareIdentical = false): Chain;
+    public static function notIn(mixed $haystack): Chain;
 
     public static function notInfinite(): Chain;
 
@@ -292,7 +292,7 @@ interface NotBuilder
 
     public static function notSpaced(): Chain;
 
-    public static function notStartsWith(mixed $startValue, bool $identical = false): Chain;
+    public static function notStartsWith(mixed $startValue): Chain;
 
     public static function notStringType(): Chain;
 

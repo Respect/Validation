@@ -23,7 +23,6 @@ use Respect\Validation\Validator;
 use function end;
 use function is_array;
 use function mb_strlen;
-use function mb_strripos;
 use function mb_strrpos;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -35,27 +34,14 @@ final readonly class EndsWith implements Validator
 {
     public function __construct(
         private mixed $endValue,
-        private bool $identical = false,
     ) {
     }
 
     public function evaluate(mixed $input): Result
     {
         $parameters = ['endValue' => $this->endValue];
-        if ($this->identical) {
-            return Result::of($this->validateIdentical($input), $input, $this, $parameters);
-        }
 
-        return Result::of($this->validateEquals($input), $input, $this, $parameters);
-    }
-
-    private function validateEquals(mixed $input): bool
-    {
-        if (is_array($input)) {
-            return end($input) == $this->endValue;
-        }
-
-        return mb_strripos($input, $this->endValue) === mb_strlen($input) - mb_strlen($this->endValue);
+        return Result::of($this->validateIdentical($input), $input, $this, $parameters);
     }
 
     private function validateIdentical(mixed $input): bool

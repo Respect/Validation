@@ -52,22 +52,20 @@ v::call(
 // Validation passes successfully
 ```
 
-## Templates
+Call does not handle possible errors (type mismatches). If you need to
+ensure that your callback is of a certain type, use [Circuit](Circuit.md) or 
+handle it using a closure:
 
-### `Call::TEMPLATE_STANDARD`
+```php
+v::call('strtolower', v::equals('ABC'))->assert(123);
+// 𝙭 strtolower(): Argument #1 ($string) must be of type string, int given
 
-|       Mode | Template                                                   |
-| ---------: | :--------------------------------------------------------- |
-|  `default` | {{input}} must be a suitable argument for {{callable}}     |
-| `inverted` | {{input}} must not be a suitable argument for {{callable}} |
+v::circuit(v::stringType(), v::call('strtolower', v::equals('abc')))->assert(123);
+// → 123 must be a string
 
-## Template placeholders
-
-| Placeholder | Description                                                      |
-| ----------- | ---------------------------------------------------------------- |
-| `callable`  |                                                                  |
-| `input`     |                                                                  |
-| `subject`   | The validated input or the custom validator name (if specified). |
+v::circuit(v::stringType(), v::call('strtolower', v::equals('abc')))->assert('ABC');
+// Validation passes successfully
+```
 
 ## Categorization
 
@@ -77,9 +75,10 @@ v::call(
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description                   |
+| ------: | :---------------------------- |
+|   3.0.0 | No longer sets error handlers |
+|   0.3.9 | Created                       |
 
 ## See Also
 

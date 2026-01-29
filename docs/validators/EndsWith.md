@@ -6,7 +6,6 @@ SPDX-License-Identifier: MIT
 # EndsWith
 
 - `EndsWith(mixed $endValue)`
-- `EndsWith(mixed $endValue, bool $identical)`
 
 This validator is similar to `Contains()`, but validates
 only if the value is at the end of the input.
@@ -24,9 +23,6 @@ For arrays:
 v::endsWith('ipsum')->assert(['lorem', 'ipsum']);
 // Validation passes successfully
 ```
-
-A second parameter may be passed for identical comparison instead
-of equal comparison.
 
 Message template for this validator includes `{{endValue}}`.
 
@@ -53,9 +49,10 @@ Message template for this validator includes `{{endValue}}`.
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description                         |
+| ------: | :---------------------------------- |
+|   3.0.0 | Case-insensitive comparison removed |
+|   0.3.9 | Created                             |
 
 ## See Also
 

@@ -19,7 +19,7 @@ test('Scenario #2', catchMessage(
 ));
 
 test('Scenario #3', catchFullMessage(
-    fn() => v::startsWith('3.3', true)->assert([3.3, 4.4]),
+    fn() => v::startsWith('3.3')->assert([3.3, 4.4]),
     fn(string $fullMessage) => expect($fullMessage)->toBe('- `[3.3, 4.4]` must start with "3.3"'),
 ));
 

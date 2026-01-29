@@ -6,7 +6,6 @@ SPDX-License-Identifier: MIT
 # In
 
 - `In(mixed $haystack)`
-- `In(mixed $haystack, bool $compareIdentical)`
 
 Validates if the input is contained in a specific haystack.
 
@@ -23,9 +22,6 @@ For arrays:
 v::in(['lorem', 'ipsum'])->assert('lorem');
 // Validation passes successfully
 ```
-
-A second parameter may be passed for identical comparison instead
-of equal comparison.
 
 Message template for this validator includes `{{haystack}}`.
 
@@ -53,9 +49,10 @@ Message template for this validator includes `{{haystack}}`.
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description                         |
+| ------: | :---------------------------------- |
+|   3.0.0 | Case-insensitive comparison removed |
+|   0.3.9 | Created                             |
 
 ## See Also
 
