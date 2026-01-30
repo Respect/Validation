@@ -237,6 +237,8 @@ interface NotBuilder
 
     public static function notOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public static function notPatterned(string $pattern, Validator $validator): Chain;
+
     public static function notPesel(): Chain;
 
     public static function notPhone(string|null $countryCode = null): Chain;

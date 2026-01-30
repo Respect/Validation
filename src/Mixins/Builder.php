@@ -246,6 +246,8 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function oneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public static function patterned(string $pattern, Validator $validator): Chain;
+
     public static function pesel(): Chain;
 
     public static function phone(string|null $countryCode = null): Chain;

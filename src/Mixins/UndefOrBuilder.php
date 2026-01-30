@@ -237,6 +237,8 @@ interface UndefOrBuilder
 
     public static function undefOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public static function undefOrPatterned(string $pattern, Validator $validator): Chain;
+
     public static function undefOrPesel(): Chain;
 
     public static function undefOrPhone(string|null $countryCode = null): Chain;

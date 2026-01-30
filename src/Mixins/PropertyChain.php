@@ -229,6 +229,8 @@ interface PropertyChain
 
     public function propertyOneOf(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function propertyPatterned(string $propertyName, string $pattern, Validator $validator): Chain;
+
     public function propertyPesel(string $propertyName): Chain;
 
     public function propertyPhone(string $propertyName, string|null $countryCode = null): Chain;

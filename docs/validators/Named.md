@@ -53,4 +53,5 @@ This validator does not have any templates, as it will use the template of the g
 - [Attributes](Attributes.md)
 - [Masked](Masked.md)
 - [Not](Not.md)
+- [Patterned](Patterned.md)
 - [Templated](Templated.md)
