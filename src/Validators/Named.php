@@ -15,19 +15,18 @@ use Respect\Validation\Name;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators\Core\Nameable;
-use Respect\Validation\Validators\Core\Wrapper;
 
 use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final class Named extends Wrapper implements Nameable
+final readonly class Named implements Nameable
 {
-    private readonly Name $name;
+    private Name $name;
 
-    public function __construct(string|Name $name, Validator $validator)
-    {
-        parent::__construct($validator);
-
+    public function __construct(
+        string|Name $name,
+        private Validator $validator,
+    ) {
         $this->name = is_string($name) ? new Name($name) : $name;
     }
 

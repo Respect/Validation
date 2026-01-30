@@ -10,13 +10,21 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators\Core;
 
+use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators\AllOf;
 
-final class Reducer extends Wrapper
+final readonly class Reducer implements Validator
 {
+    private Validator $validator;
+
     public function __construct(Validator $validator1, Validator ...$validators)
     {
-        parent::__construct($validators === [] ? $validator1 : new AllOf($validator1, ...$validators));
+        $this->validator = $validators === [] ? $validator1 : new AllOf($validator1, ...$validators);
+    }
+
+    public function evaluate(mixed $input): Result
+    {
+        return $this->validator->evaluate($input);
     }
 }

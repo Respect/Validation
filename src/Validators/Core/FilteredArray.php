@@ -12,13 +12,19 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators\Core;
 
 use Respect\Validation\Result;
+use Respect\Validation\Validator;
 use Respect\Validation\Validators\IterableType;
 
 use function is_array;
 use function iterator_to_array;
 
-abstract class FilteredArray extends Wrapper
+abstract class FilteredArray implements Validator
 {
+    public function __construct(
+        protected Validator $validator,
+    ) {
+    }
+
     public function evaluate(mixed $input): Result
     {
         $iterableResult = (new IterableType())->evaluate($input);

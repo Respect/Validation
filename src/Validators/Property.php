@@ -22,16 +22,14 @@ use ReflectionObject;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Respect\Validation\Validators\Core\Wrapper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
-final class Property extends Wrapper
+final readonly class Property implements Validator
 {
     public function __construct(
-        private readonly string $propertyName,
-        Validator $validator,
+        private string $propertyName,
+        private Validator $validator,
     ) {
-        parent::__construct($validator);
     }
 
     public function evaluate(mixed $input): Result

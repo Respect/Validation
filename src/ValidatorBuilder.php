@@ -26,7 +26,7 @@ use function is_callable;
 use function is_string;
 
 /** @mixin Builder */
-final readonly class ValidatorBuilder implements Validator, Nameable
+final readonly class ValidatorBuilder implements Nameable
 {
     /** @var array<Validator> */
     private array $validators;

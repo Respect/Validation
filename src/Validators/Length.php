@@ -22,7 +22,7 @@ use Attribute;
 use Countable as PhpCountable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\Wrapper;
+use Respect\Validation\Validator;
 
 use function count;
 use function is_array;
@@ -40,9 +40,14 @@ use function mb_strlen;
     '{{subject}} must not be a countable value or a string',
     self::TEMPLATE_WRONG_TYPE,
 )]
-final class Length extends Wrapper
+final readonly class Length implements Validator
 {
     public const string TEMPLATE_WRONG_TYPE = '__wrong_type__';
+
+    public function __construct(
+        private Validator $validator,
+    ) {
+    }
 
     public function evaluate(mixed $input): Result
     {

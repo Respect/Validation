@@ -19,11 +19,16 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\Wrapper;
+use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final class Not extends Wrapper
+final readonly class Not implements Validator
 {
+    public function __construct(
+        private Validator $validator,
+    ) {
+    }
+
     public function evaluate(mixed $input): Result
     {
         $result = $this->validator->evaluate($input);

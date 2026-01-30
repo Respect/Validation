@@ -20,7 +20,6 @@ use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Respect\Validation\Validators\Core\Wrapper;
 use SplFileInfo;
 
 use function filesize;
@@ -37,7 +36,7 @@ use function is_string;
     '{{subject}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface',
     self::TEMPLATE_WRONG_TYPE,
 )]
-final class Size extends Wrapper
+final readonly class Size implements Validator
 {
     public const string TEMPLATE_WRONG_TYPE = '__wrong_type__';
 
@@ -55,14 +54,12 @@ final class Size extends Wrapper
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function __construct(
-        private readonly string $unit,
-        Validator $validator,
+        private string $unit,
+        private Validator $validator,
     ) {
         if (!isset(self::DATA_STORAGE_UNITS[$unit])) {
             throw new InvalidValidatorException('"%s" is not a recognized data storage unit.', $unit);
         }
-
-        parent::__construct($validator);
     }
 
     public function evaluate(mixed $input): Result

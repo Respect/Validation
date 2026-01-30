@@ -16,7 +16,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\Wrapper;
+use Respect\Validation\Validator;
 
 use function array_map;
 
@@ -25,8 +25,13 @@ use function array_map;
     'or must be null',
     'and must not be null',
 )]
-final class NullOr extends Wrapper
+final readonly class NullOr implements Validator
 {
+    public function __construct(
+        private Validator $validator,
+    ) {
+    }
+
     public function evaluate(mixed $input): Result
     {
         $result = $this->validator->evaluate($input);

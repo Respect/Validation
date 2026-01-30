@@ -13,18 +13,16 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Respect\Validation\Validators\Core\Wrapper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final class Templated extends Wrapper
+final readonly class Templated implements Validator
 {
     /** @param array<string, mixed> $parameters */
     public function __construct(
-        private readonly string $template,
-        Validator $validator,
-        private readonly array $parameters = [],
+        private string $template,
+        private Validator $validator,
+        private array $parameters = [],
     ) {
-        parent::__construct($validator);
     }
 
     public function evaluate(mixed $input): Result

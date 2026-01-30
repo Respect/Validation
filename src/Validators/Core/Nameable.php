@@ -15,8 +15,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators\Core;
 
 use Respect\Validation\Name;
+use Respect\Validation\Validator;
 
-interface Nameable
+interface Nameable extends Validator
 {
     public function getName(): Name|null;
 }

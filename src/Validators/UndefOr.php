@@ -16,7 +16,7 @@ use Attribute;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\Wrapper;
+use Respect\Validation\Validator;
 
 use function array_map;
 
@@ -25,9 +25,14 @@ use function array_map;
     'or must be undefined',
     'and must not be undefined',
 )]
-final class UndefOr extends Wrapper
+final readonly class UndefOr implements Validator
 {
     use CanValidateUndefined;
+
+    public function __construct(
+        private Validator $validator,
+    ) {
+    }
 
     public function evaluate(mixed $input): Result
     {

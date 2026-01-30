@@ -15,16 +15,14 @@ use Attribute;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators\Core\KeyRelated;
-use Respect\Validation\Validators\Core\Wrapper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
-final class KeyOptional extends Wrapper implements KeyRelated
+final readonly class KeyOptional implements KeyRelated
 {
     public function __construct(
-        private readonly int|string $key,
-        Validator $validator,
+        private int|string $key,
+        private Validator $validator,
     ) {
-        parent::__construct($validator);
     }
 
     public function getKey(): int|string
