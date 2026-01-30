@@ -13,11 +13,19 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final class Circuit extends Composite
+final readonly class Circuit implements Validator
 {
+    /** @var non-empty-array<Validator> */
+    private readonly array $validators;
+
+    public function __construct(Validator $validator1, Validator $validator2, Validator ...$validators)
+    {
+        $this->validators = [$validator1, $validator2, ...$validators];
+    }
+
     public function evaluate(mixed $input): Result
     {
         foreach ($this->validators as $validator) {

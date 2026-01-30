@@ -17,7 +17,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validator;
 
 use function count;
 
@@ -32,10 +32,18 @@ use function count;
     '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
-final class NoneOf extends Composite
+final readonly class NoneOf implements Validator
 {
     public const string TEMPLATE_ALL = '__all__';
     public const string TEMPLATE_SOME = '__some__';
+
+    /** @var non-empty-array<Validator> */
+    private readonly array $validators;
+
+    public function __construct(Validator $validator1, Validator $validator2, Validator ...$validators)
+    {
+        $this->validators = [$validator1, $validator2, ...$validators];
+    }
 
     public function evaluate(mixed $input): Result
     {

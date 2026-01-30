@@ -19,7 +19,6 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Respect\Validation\Validators\Core\Composite;
 
 use function array_filter;
 use function array_map;
@@ -38,10 +37,18 @@ use function usort;
     '{{subject}} must pass only one of the rules',
     self::TEMPLATE_MORE_THAN_ONE,
 )]
-final class OneOf extends Composite
+final readonly class OneOf implements Validator
 {
     public const string TEMPLATE_NONE = '__none__';
     public const string TEMPLATE_MORE_THAN_ONE = '__more_than_one__';
+
+    /** @var non-empty-array<Validator> */
+    private readonly array $validators;
+
+    public function __construct(Validator $validator1, Validator $validator2, Validator ...$validators)
+    {
+        $this->validators = [$validator1, $validator2, ...$validators];
+    }
 
     public function evaluate(mixed $input): Result
     {

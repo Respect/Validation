@@ -18,7 +18,6 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Respect\Validation\Validators\Core\Composite;
 
 use function array_map;
 use function array_reduce;
@@ -28,8 +27,16 @@ use function array_reduce;
     '{{subject}} must pass at least one of the rules',
     '{{subject}} must pass at least one of the rules',
 )]
-final class AnyOf extends Composite
+final readonly class AnyOf implements Validator
 {
+    /** @var non-empty-array<Validator> */
+    private readonly array $validators;
+
+    public function __construct(Validator $validator1, Validator $validator2, Validator ...$validators)
+    {
+        $this->validators = [$validator1, $validator2, ...$validators];
+    }
+
     public function evaluate(mixed $input): Result
     {
         $children = array_map(static fn(Validator $validator) => $validator->evaluate($input), $this->validators);

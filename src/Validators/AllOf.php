@@ -18,7 +18,6 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Respect\Validation\Validators\Core\Composite;
 
 use function array_filter;
 use function array_map;
@@ -36,10 +35,18 @@ use function count;
     '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
-final class AllOf extends Composite
+final readonly class AllOf implements Validator
 {
     public const string TEMPLATE_ALL = '__all__';
     public const string TEMPLATE_SOME = '__some__';
+
+    /** @var non-empty-array<Validator> */
+    private readonly array $validators;
+
+    public function __construct(Validator $validator1, Validator $validator2, Validator ...$validators)
+    {
+        $this->validators = [$validator1, $validator2, ...$validators];
+    }
 
     public function evaluate(mixed $input): Result
     {
