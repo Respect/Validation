@@ -17,7 +17,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validators\Core\LogicalComposite;
 
 use function count;
 
@@ -32,7 +32,7 @@ use function count;
     '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
-final class NoneOf extends Composite
+final readonly class NoneOf extends LogicalComposite
 {
     public const string TEMPLATE_ALL = '__all__';
     public const string TEMPLATE_SOME = '__some__';

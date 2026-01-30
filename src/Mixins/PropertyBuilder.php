@@ -64,6 +64,8 @@ interface PropertyBuilder
 
     public static function propertyCnpj(string $propertyName): Chain;
 
+    public static function propertyComposite(string $propertyName, Validator ...$validators): Chain;
+
     public static function propertyConsonant(string $propertyName, string ...$additionalChars): Chain;
 
     public static function propertyContains(string $propertyName, mixed $containsValue): Chain;

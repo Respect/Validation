@@ -62,6 +62,8 @@ interface UndefOrBuilder
 
     public static function undefOrCnpj(): Chain;
 
+    public static function undefOrComposite(Validator ...$validators): Chain;
+
     public static function undefOrConsonant(string ...$additionalChars): Chain;
 
     public static function undefOrContains(mixed $containsValue): Chain;

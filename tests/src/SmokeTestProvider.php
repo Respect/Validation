@@ -48,6 +48,7 @@ trait SmokeTestProvider
         yield 'Circuit' => [new vs\Circuit(new vs\IntVal(), new vs\GreaterThan(0)), 5];
         yield 'Cnh' => [new vs\Cnh(), '02650306461'];
         yield 'Cnpj' => [new vs\Cnpj(), '11444777000161'];
+        yield 'Composite' => [new vs\Composite(), 'anything'];
         yield 'Consonant' => [new vs\Consonant(), 'bcdf'];
         yield 'Contains' => [new vs\Contains('needle'), 'haystack needle'];
         yield 'ContainsAny' => [new vs\ContainsAny(['a', 'b']), 'abc'];

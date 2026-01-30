@@ -556,7 +556,7 @@ final class Custom implements Validator
 Base classes available in `Respect\Validation\Validators\Core`:
 
 - `Simple` - For validators with simple boolean logic
-- `Composite` - For validators that combine multiple validators
+- `LogicComposite` - For validators that combine two or more validators
 - `Envelope` - For validators that modify how another validator works
 
 ---

@@ -17,7 +17,7 @@ In this page you will find a list of validators by their category.
 
 **Comparisons**: [All][] - [Between][] - [BetweenExclusive][] - [Equals][] - [Equivalent][] - [GreaterThan][] - [GreaterThanOrEqual][] - [Identical][] - [In][] - [Length][] - [LessThan][] - [LessThanOrEqual][] - [Max][] - [Min][]
 
-**Composite**: [AllOf][] - [AnyOf][] - [Circuit][] - [NoneOf][] - [OneOf][]
+**Composite**: [AllOf][] - [AnyOf][] - [Circuit][] - [Composite][] - [NoneOf][] - [OneOf][]
 
 **Conditions**: [Circuit][] - [Not][] - [When][]
 
@@ -41,7 +41,7 @@ In this page you will find a list of validators by their category.
 
 **Miscellaneous**: [Blank][] - [Falsy][] - [Masked][] - [Named][] - [Templated][] - [Undef][]
 
-**Nesting**: [AllOf][] - [AnyOf][] - [Call][] - [Circuit][] - [Each][] - [Key][] - [KeySet][] - [Lazy][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
+**Nesting**: [AllOf][] - [AnyOf][] - [Call][] - [Circuit][] - [Composite][] - [Each][] - [Key][] - [KeySet][] - [Lazy][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
 
 **Numbers**: [Base][] - [Decimal][] - [Digit][] - [Even][] - [Factor][] - [Finite][] - [FloatType][] - [FloatVal][] - [Infinite][] - [IntType][] - [IntVal][] - [Multiple][] - [Negative][] - [Number][] - [NumericVal][] - [Odd][] - [Positive][] - [Roman][]
 
@@ -82,6 +82,7 @@ In this page you will find a list of validators by their category.
 - [Circuit][] - `v::circuit(v::intVal(), v::floatVal())->assert(15);`
 - [Cnh][] - `v::cnh()->assert('02650306461');`
 - [Cnpj][] - `v::cnpj()->assert('00394460005887');`
+- [Composite][] - `v::composite()->assert('anything');`
 - [Consonant][] - `v::consonant()->assert('xkcd');`
 - [Contains][] - `v::contains('ipsum')->assert('lorem ipsum');`
 - [ContainsAny][] - `v::containsAny(['lorem', 'dolor'])->assert('lorem ipsum');`
@@ -238,6 +239,7 @@ In this page you will find a list of validators by their category.
 [Circuit]: validators/Circuit.md "Validates the input against a series of validators until the first fails."
 [Cnh]: validators/Cnh.md "Validates a Brazilian driver's license."
 [Cnpj]: validators/Cnpj.md "Validates if the input is a Brazilian National Registry of Legal Entities (CNPJ) number."
+[Composite]: validators/Composite.md "Consolidates zero or more validators into a single validator."
 [Consonant]: validators/Consonant.md "Validates if the input contains only consonants."
 [Contains]: validators/Contains.md "Validates if the input contains some value."
 [ContainsAny]: validators/ContainsAny.md "Validates if the input contains at least one of defined values"
