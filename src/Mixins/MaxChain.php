@@ -24,8 +24,6 @@ interface MaxChain
 
     public function maxFactor(int $dividend): Chain;
 
-    public function maxFibonacci(): Chain;
-
     public function maxFinite(): Chain;
 
     public function maxGreaterThan(mixed $compareTo): Chain;
@@ -46,9 +44,5 @@ interface MaxChain
 
     public function maxOdd(): Chain;
 
-    public function maxPerfectSquare(): Chain;
-
     public function maxPositive(): Chain;
-
-    public function maxPrimeNumber(): Chain;
 }

@@ -133,11 +133,7 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function falsy(): Chain;
 
-    public function fibonacci(): Chain;
-
     public function file(): Chain;
-
-    public function filterVar(int $filter, mixed $options = null): Chain;
 
     public function finite(): Chain;
 
@@ -250,13 +246,9 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function oneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public function perfectSquare(): Chain;
-
     public function pesel(): Chain;
 
     public function phone(string|null $countryCode = null): Chain;
-
-    public function phpLabel(): Chain;
 
     public function pis(): Chain;
 
@@ -267,8 +259,6 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
     public function positive(): Chain;
 
     public function postalCode(string $countryCode, bool $formatted = false): Chain;
-
-    public function primeNumber(): Chain;
 
     public function printable(string ...$additionalChars): Chain;
 
@@ -331,8 +321,6 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function unique(): Chain;
 
-    public function uploaded(): Chain;
-
     public function uppercase(): Chain;
 
     public function url(): Chain;
@@ -340,8 +328,6 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
     public function uuid(int|null $version = null): Chain;
 
     public function version(): Chain;
-
-    public function videoUrl(string|null $service = null): Chain;
 
     public function vowel(string ...$additionalChars): Chain;
 

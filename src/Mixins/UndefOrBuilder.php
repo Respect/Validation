@@ -126,11 +126,7 @@ interface UndefOrBuilder
 
     public static function undefOrFalsy(): Chain;
 
-    public static function undefOrFibonacci(): Chain;
-
     public static function undefOrFile(): Chain;
-
-    public static function undefOrFilterVar(int $filter, mixed $options = null): Chain;
 
     public static function undefOrFinite(): Chain;
 
@@ -239,13 +235,9 @@ interface UndefOrBuilder
 
     public static function undefOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public static function undefOrPerfectSquare(): Chain;
-
     public static function undefOrPesel(): Chain;
 
     public static function undefOrPhone(string|null $countryCode = null): Chain;
-
-    public static function undefOrPhpLabel(): Chain;
 
     public static function undefOrPis(): Chain;
 
@@ -256,8 +248,6 @@ interface UndefOrBuilder
     public static function undefOrPositive(): Chain;
 
     public static function undefOrPostalCode(string $countryCode, bool $formatted = false): Chain;
-
-    public static function undefOrPrimeNumber(): Chain;
 
     public static function undefOrPrintable(string ...$additionalChars): Chain;
 
@@ -313,8 +303,6 @@ interface UndefOrBuilder
 
     public static function undefOrUnique(): Chain;
 
-    public static function undefOrUploaded(): Chain;
-
     public static function undefOrUppercase(): Chain;
 
     public static function undefOrUrl(): Chain;
@@ -322,8 +310,6 @@ interface UndefOrBuilder
     public static function undefOrUuid(int|null $version = null): Chain;
 
     public static function undefOrVersion(): Chain;
-
-    public static function undefOrVideoUrl(string|null $service = null): Chain;
 
     public static function undefOrVowel(string ...$additionalChars): Chain;
 

@@ -128,11 +128,7 @@ interface NullOrChain
 
     public function nullOrFalsy(): Chain;
 
-    public function nullOrFibonacci(): Chain;
-
     public function nullOrFile(): Chain;
-
-    public function nullOrFilterVar(int $filter, mixed $options = null): Chain;
 
     public function nullOrFinite(): Chain;
 
@@ -241,13 +237,9 @@ interface NullOrChain
 
     public function nullOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public function nullOrPerfectSquare(): Chain;
-
     public function nullOrPesel(): Chain;
 
     public function nullOrPhone(string|null $countryCode = null): Chain;
-
-    public function nullOrPhpLabel(): Chain;
 
     public function nullOrPis(): Chain;
 
@@ -258,8 +250,6 @@ interface NullOrChain
     public function nullOrPositive(): Chain;
 
     public function nullOrPostalCode(string $countryCode, bool $formatted = false): Chain;
-
-    public function nullOrPrimeNumber(): Chain;
 
     public function nullOrPrintable(string ...$additionalChars): Chain;
 
@@ -315,8 +305,6 @@ interface NullOrChain
 
     public function nullOrUnique(): Chain;
 
-    public function nullOrUploaded(): Chain;
-
     public function nullOrUppercase(): Chain;
 
     public function nullOrUrl(): Chain;
@@ -324,8 +312,6 @@ interface NullOrChain
     public function nullOrUuid(int|null $version = null): Chain;
 
     public function nullOrVersion(): Chain;
-
-    public function nullOrVideoUrl(string|null $service = null): Chain;
 
     public function nullOrVowel(string ...$additionalChars): Chain;
 

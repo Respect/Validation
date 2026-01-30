@@ -24,8 +24,6 @@ interface LengthChain
 
     public function lengthFactor(int $dividend): Chain;
 
-    public function lengthFibonacci(): Chain;
-
     public function lengthFinite(): Chain;
 
     public function lengthGreaterThan(mixed $compareTo): Chain;
@@ -46,9 +44,5 @@ interface LengthChain
 
     public function lengthOdd(): Chain;
 
-    public function lengthPerfectSquare(): Chain;
-
     public function lengthPositive(): Chain;
-
-    public function lengthPrimeNumber(): Chain;
 }

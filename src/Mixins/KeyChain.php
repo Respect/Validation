@@ -126,11 +126,7 @@ interface KeyChain
 
     public function keyFalsy(int|string $key): Chain;
 
-    public function keyFibonacci(int|string $key): Chain;
-
     public function keyFile(int|string $key): Chain;
-
-    public function keyFilterVar(int|string $key, int $filter, mixed $options = null): Chain;
 
     public function keyFinite(int|string $key): Chain;
 
@@ -231,13 +227,9 @@ interface KeyChain
 
     public function keyOneOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public function keyPerfectSquare(int|string $key): Chain;
-
     public function keyPesel(int|string $key): Chain;
 
     public function keyPhone(int|string $key, string|null $countryCode = null): Chain;
-
-    public function keyPhpLabel(int|string $key): Chain;
 
     public function keyPis(int|string $key): Chain;
 
@@ -248,8 +240,6 @@ interface KeyChain
     public function keyPositive(int|string $key): Chain;
 
     public function keyPostalCode(int|string $key, string $countryCode, bool $formatted = false): Chain;
-
-    public function keyPrimeNumber(int|string $key): Chain;
 
     public function keyPrintable(int|string $key, string ...$additionalChars): Chain;
 
@@ -301,8 +291,6 @@ interface KeyChain
 
     public function keyUnique(int|string $key): Chain;
 
-    public function keyUploaded(int|string $key): Chain;
-
     public function keyUppercase(int|string $key): Chain;
 
     public function keyUrl(int|string $key): Chain;
@@ -310,8 +298,6 @@ interface KeyChain
     public function keyUuid(int|string $key, int|null $version = null): Chain;
 
     public function keyVersion(int|string $key): Chain;
-
-    public function keyVideoUrl(int|string $key, string|null $service = null): Chain;
 
     public function keyVowel(int|string $key, string ...$additionalChars): Chain;
 

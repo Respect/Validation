@@ -131,11 +131,7 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function falsy(): Chain;
 
-    public static function fibonacci(): Chain;
-
     public static function file(): Chain;
-
-    public static function filterVar(int $filter, mixed $options = null): Chain;
 
     public static function finite(): Chain;
 
@@ -248,13 +244,9 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function oneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public static function perfectSquare(): Chain;
-
     public static function pesel(): Chain;
 
     public static function phone(string|null $countryCode = null): Chain;
-
-    public static function phpLabel(): Chain;
 
     public static function pis(): Chain;
 
@@ -265,8 +257,6 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
     public static function positive(): Chain;
 
     public static function postalCode(string $countryCode, bool $formatted = false): Chain;
-
-    public static function primeNumber(): Chain;
 
     public static function printable(string ...$additionalChars): Chain;
 
@@ -329,8 +319,6 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function unique(): Chain;
 
-    public static function uploaded(): Chain;
-
     public static function uppercase(): Chain;
 
     public static function url(): Chain;
@@ -338,8 +326,6 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
     public static function uuid(int|null $version = null): Chain;
 
     public static function version(): Chain;
-
-    public static function videoUrl(string|null $service = null): Chain;
 
     public static function vowel(string ...$additionalChars): Chain;
 

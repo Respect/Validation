@@ -126,11 +126,7 @@ interface KeyBuilder
 
     public static function keyFalsy(int|string $key): Chain;
 
-    public static function keyFibonacci(int|string $key): Chain;
-
     public static function keyFile(int|string $key): Chain;
-
-    public static function keyFilterVar(int|string $key, int $filter, mixed $options = null): Chain;
 
     public static function keyFinite(int|string $key): Chain;
 
@@ -231,13 +227,9 @@ interface KeyBuilder
 
     public static function keyOneOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public static function keyPerfectSquare(int|string $key): Chain;
-
     public static function keyPesel(int|string $key): Chain;
 
     public static function keyPhone(int|string $key, string|null $countryCode = null): Chain;
-
-    public static function keyPhpLabel(int|string $key): Chain;
 
     public static function keyPis(int|string $key): Chain;
 
@@ -248,8 +240,6 @@ interface KeyBuilder
     public static function keyPositive(int|string $key): Chain;
 
     public static function keyPostalCode(int|string $key, string $countryCode, bool $formatted = false): Chain;
-
-    public static function keyPrimeNumber(int|string $key): Chain;
 
     public static function keyPrintable(int|string $key, string ...$additionalChars): Chain;
 
@@ -301,8 +291,6 @@ interface KeyBuilder
 
     public static function keyUnique(int|string $key): Chain;
 
-    public static function keyUploaded(int|string $key): Chain;
-
     public static function keyUppercase(int|string $key): Chain;
 
     public static function keyUrl(int|string $key): Chain;
@@ -310,8 +298,6 @@ interface KeyBuilder
     public static function keyUuid(int|string $key, int|null $version = null): Chain;
 
     public static function keyVersion(int|string $key): Chain;
-
-    public static function keyVideoUrl(int|string $key, string|null $service = null): Chain;
 
     public static function keyVowel(int|string $key, string ...$additionalChars): Chain;
 

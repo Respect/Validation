@@ -156,6 +156,39 @@ These validators have been replaced by `DateTimeDiff`, which provides more flexi
 + v::dateTimeDiff('years', v::between(18, 65))->assert($birthDate);
 ```
 
+##### `PrimeNumber`, `Fibonacci`, `PerfectSquare`
+
+Combine `Callback` with a mathematical library of your choice:
+
+```diff
+- v::primeNumber()->assert(7);
++ v::callback(static fn ($input) => \MathPHP\NumberTheory\Integer::isPrime($input))->assert(7);
+```
+
+See: https://github.com/markrogoyski/math-php
+
+##### `FilterVar`
+
+Use `Callback` instead:
+
+```diff
+- v::filterVar(FILTER_VALIDATE_INT)->assert(123);
++ v::callback(static fn($input) => filter_var($input, FILTER_VALIDATE_INT) !== false)->assert(123);
+```
+
+##### `Uploaded`
+
+Use `Callback` instead:
+
+```diff
+- v::uploaded()->assert($fileName);
++ v::callback('is_uploaded_file')->assert($fileName);
+```
+
+##### `VideoUrl`
+
+We offer no recommendation for replacing this validator.
+
 #### Behavior changes
 
 ##### `Attribute` replaced by `Property` variants

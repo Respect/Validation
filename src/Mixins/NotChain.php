@@ -128,11 +128,7 @@ interface NotChain
 
     public function notFalsy(): Chain;
 
-    public function notFibonacci(): Chain;
-
     public function notFile(): Chain;
-
-    public function notFilterVar(int $filter, mixed $options = null): Chain;
 
     public function notFinite(): Chain;
 
@@ -239,13 +235,9 @@ interface NotChain
 
     public function notOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public function notPerfectSquare(): Chain;
-
     public function notPesel(): Chain;
 
     public function notPhone(string|null $countryCode = null): Chain;
-
-    public function notPhpLabel(): Chain;
 
     public function notPis(): Chain;
 
@@ -256,8 +248,6 @@ interface NotChain
     public function notPositive(): Chain;
 
     public function notPostalCode(string $countryCode, bool $formatted = false): Chain;
-
-    public function notPrimeNumber(): Chain;
 
     public function notPrintable(string ...$additionalChars): Chain;
 
@@ -315,8 +305,6 @@ interface NotChain
 
     public function notUnique(): Chain;
 
-    public function notUploaded(): Chain;
-
     public function notUppercase(): Chain;
 
     public function notUrl(): Chain;
@@ -324,8 +312,6 @@ interface NotChain
     public function notUuid(int|null $version = null): Chain;
 
     public function notVersion(): Chain;
-
-    public function notVideoUrl(string|null $service = null): Chain;
 
     public function notVowel(string ...$additionalChars): Chain;
 

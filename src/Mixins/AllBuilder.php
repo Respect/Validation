@@ -124,11 +124,7 @@ interface AllBuilder
 
     public static function allFalsy(): Chain;
 
-    public static function allFibonacci(): Chain;
-
     public static function allFile(): Chain;
-
-    public static function allFilterVar(int $filter, mixed $options = null): Chain;
 
     public static function allFinite(): Chain;
 
@@ -229,13 +225,9 @@ interface AllBuilder
 
     public static function allOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public static function allPerfectSquare(): Chain;
-
     public static function allPesel(): Chain;
 
     public static function allPhone(string|null $countryCode = null): Chain;
-
-    public static function allPhpLabel(): Chain;
 
     public static function allPis(): Chain;
 
@@ -246,8 +238,6 @@ interface AllBuilder
     public static function allPositive(): Chain;
 
     public static function allPostalCode(string $countryCode, bool $formatted = false): Chain;
-
-    public static function allPrimeNumber(): Chain;
 
     public static function allPrintable(string ...$additionalChars): Chain;
 
@@ -299,8 +289,6 @@ interface AllBuilder
 
     public static function allUnique(): Chain;
 
-    public static function allUploaded(): Chain;
-
     public static function allUppercase(): Chain;
 
     public static function allUrl(): Chain;
@@ -308,8 +296,6 @@ interface AllBuilder
     public static function allUuid(int|null $version = null): Chain;
 
     public static function allVersion(): Chain;
-
-    public static function allVideoUrl(string|null $service = null): Chain;
 
     public static function allVowel(string ...$additionalChars): Chain;
 

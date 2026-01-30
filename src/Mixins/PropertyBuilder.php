@@ -126,11 +126,7 @@ interface PropertyBuilder
 
     public static function propertyFalsy(string $propertyName): Chain;
 
-    public static function propertyFibonacci(string $propertyName): Chain;
-
     public static function propertyFile(string $propertyName): Chain;
-
-    public static function propertyFilterVar(string $propertyName, int $filter, mixed $options = null): Chain;
 
     public static function propertyFinite(string $propertyName): Chain;
 
@@ -231,13 +227,9 @@ interface PropertyBuilder
 
     public static function propertyOneOf(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public static function propertyPerfectSquare(string $propertyName): Chain;
-
     public static function propertyPesel(string $propertyName): Chain;
 
     public static function propertyPhone(string $propertyName, string|null $countryCode = null): Chain;
-
-    public static function propertyPhpLabel(string $propertyName): Chain;
 
     public static function propertyPis(string $propertyName): Chain;
 
@@ -248,8 +240,6 @@ interface PropertyBuilder
     public static function propertyPositive(string $propertyName): Chain;
 
     public static function propertyPostalCode(string $propertyName, string $countryCode, bool $formatted = false): Chain;
-
-    public static function propertyPrimeNumber(string $propertyName): Chain;
 
     public static function propertyPrintable(string $propertyName, string ...$additionalChars): Chain;
 
@@ -301,8 +291,6 @@ interface PropertyBuilder
 
     public static function propertyUnique(string $propertyName): Chain;
 
-    public static function propertyUploaded(string $propertyName): Chain;
-
     public static function propertyUppercase(string $propertyName): Chain;
 
     public static function propertyUrl(string $propertyName): Chain;
@@ -310,8 +298,6 @@ interface PropertyBuilder
     public static function propertyUuid(string $propertyName, int|null $version = null): Chain;
 
     public static function propertyVersion(string $propertyName): Chain;
-
-    public static function propertyVideoUrl(string $propertyName, string|null $service = null): Chain;
 
     public static function propertyVowel(string $propertyName, string ...$additionalChars): Chain;
 

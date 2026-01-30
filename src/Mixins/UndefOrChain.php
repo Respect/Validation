@@ -126,11 +126,7 @@ interface UndefOrChain
 
     public function undefOrFalsy(): Chain;
 
-    public function undefOrFibonacci(): Chain;
-
     public function undefOrFile(): Chain;
-
-    public function undefOrFilterVar(int $filter, mixed $options = null): Chain;
 
     public function undefOrFinite(): Chain;
 
@@ -239,13 +235,9 @@ interface UndefOrChain
 
     public function undefOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public function undefOrPerfectSquare(): Chain;
-
     public function undefOrPesel(): Chain;
 
     public function undefOrPhone(string|null $countryCode = null): Chain;
-
-    public function undefOrPhpLabel(): Chain;
 
     public function undefOrPis(): Chain;
 
@@ -256,8 +248,6 @@ interface UndefOrChain
     public function undefOrPositive(): Chain;
 
     public function undefOrPostalCode(string $countryCode, bool $formatted = false): Chain;
-
-    public function undefOrPrimeNumber(): Chain;
 
     public function undefOrPrintable(string ...$additionalChars): Chain;
 
@@ -313,8 +303,6 @@ interface UndefOrChain
 
     public function undefOrUnique(): Chain;
 
-    public function undefOrUploaded(): Chain;
-
     public function undefOrUppercase(): Chain;
 
     public function undefOrUrl(): Chain;
@@ -322,8 +310,6 @@ interface UndefOrChain
     public function undefOrUuid(int|null $version = null): Chain;
 
     public function undefOrVersion(): Chain;
-
-    public function undefOrVideoUrl(string|null $service = null): Chain;
 
     public function undefOrVowel(string ...$additionalChars): Chain;
 

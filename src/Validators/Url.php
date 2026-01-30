@@ -13,7 +13,9 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Respect\Validation\Message\Template;
-use Respect\Validation\Validators\Core\Envelope;
+use Respect\Validation\Validators\Core\Simple;
+
+use function filter_var;
 
 use const FILTER_VALIDATE_URL;
 
@@ -22,10 +24,10 @@ use const FILTER_VALIDATE_URL;
     '{{subject}} must be a URL',
     '{{subject}} must not be a URL',
 )]
-final class Url extends Envelope
+final class Url extends Simple
 {
-    public function __construct()
+    public function isValid(mixed $input): bool
     {
-        parent::__construct(new FilterVar(FILTER_VALIDATE_URL));
+        return filter_var($input, FILTER_VALIDATE_URL) !== false;
     }
 }

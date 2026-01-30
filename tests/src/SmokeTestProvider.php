@@ -17,7 +17,6 @@ use stdClass;
 
 use function fopen;
 
-use const FILTER_VALIDATE_EMAIL;
 use const INF;
 
 trait SmokeTestProvider
@@ -79,9 +78,7 @@ trait SmokeTestProvider
         yield 'Factor' => [new vs\Factor(0), 36];
         yield 'FalseVal' => [new vs\FalseVal(), false];
         yield 'Falsy' => [new vs\Falsy(), 0];
-        yield 'Fibonacci' => [new vs\Fibonacci(), 13];
         yield 'File' => [new vs\File(), __FILE__];
-        yield 'FilterVar' => [new vs\FilterVar(FILTER_VALIDATE_EMAIL), 'bob@example.com'];
         yield 'Finite' => [new vs\Finite(), 1.23];
         yield 'FloatType' => [new vs\FloatType(), 1.23];
         yield 'FloatVal' => [new vs\FloatVal(), 1.23];
@@ -136,16 +133,13 @@ trait SmokeTestProvider
         yield 'ObjectType' => [new vs\ObjectType(), new stdClass()];
         yield 'Odd' => [new vs\Odd(), 3];
         yield 'OneOf' => [new vs\OneOf(new vs\Digit(), new vs\Alpha()), 'AB'];
-        yield 'PerfectSquare' => [new vs\PerfectSquare(), 16];
         yield 'Pesel' => [new vs\Pesel(), '21120209256'];
         yield 'Phone' => [new vs\Phone(), '+1 650 253 00 00'];
-        yield 'PhpLabel' => [new vs\PhpLabel(), 'valid_label'];
         yield 'Pis' => [new vs\Pis(), '120.0340.678-8'];
         yield 'PolishIdCard' => [new vs\PolishIdCard(), 'AYW036733'];
         yield 'PortugueseNif' => [new vs\PortugueseNif(), '123456789'];
         yield 'Positive' => [new vs\Positive(), 1];
         yield 'PostalCode' => [new vs\PostalCode('US'), '12345'];
-        yield 'PrimeNumber' => [new vs\PrimeNumber(), 7];
         yield 'Printable' => [new vs\Printable(), 'abc123!@#'];
         yield 'Property' => [new vs\Property('age', new vs\IntVal()), (object) ['age' => 18]];
         yield 'PropertyExists' => [new vs\PropertyExists('age'), (object) ['age' => 18]];
@@ -175,12 +169,10 @@ trait SmokeTestProvider
         yield 'Undef' => [new vs\Undef(), null];
         yield 'UndefOr' => [new vs\UndefOr(new vs\IntVal()), null];
         yield 'Unique' => [new vs\Unique(), [1, 2, 3]];
-        yield 'Uploaded' => [new vs\Uploaded(), 'tests/fixtures/valid-image.png'];
         yield 'Uppercase' => [new vs\Uppercase(), 'ABC'];
         yield 'Url' => [new vs\Url(), 'https://example.com'];
         yield 'Uuid' => [new vs\Uuid(), '123e4567-e89b-12d3-a456-426655440000'];
         yield 'Version' => [new vs\Version(), '1.2.3'];
-        yield 'VideoUrl' => [new vs\VideoUrl(), 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'];
         yield 'Vowel' => [new vs\Vowel(), 'aeiou'];
         yield 'When' => [new vs\When(new vs\IntVal(), new vs\AlwaysValid(), new vs\AlwaysInvalid()), 5];
         yield 'Writable' => [new vs\Writable(), 'tests/fixtures/valid-image.png'];
