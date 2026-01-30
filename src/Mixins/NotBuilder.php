@@ -128,11 +128,7 @@ interface NotBuilder
 
     public static function notFalsy(): Chain;
 
-    public static function notFibonacci(): Chain;
-
     public static function notFile(): Chain;
-
-    public static function notFilterVar(int $filter, mixed $options = null): Chain;
 
     public static function notFinite(): Chain;
 
@@ -239,13 +235,9 @@ interface NotBuilder
 
     public static function notOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public static function notPerfectSquare(): Chain;
-
     public static function notPesel(): Chain;
 
     public static function notPhone(string|null $countryCode = null): Chain;
-
-    public static function notPhpLabel(): Chain;
 
     public static function notPis(): Chain;
 
@@ -256,8 +248,6 @@ interface NotBuilder
     public static function notPositive(): Chain;
 
     public static function notPostalCode(string $countryCode, bool $formatted = false): Chain;
-
-    public static function notPrimeNumber(): Chain;
 
     public static function notPrintable(string ...$additionalChars): Chain;
 
@@ -315,8 +305,6 @@ interface NotBuilder
 
     public static function notUnique(): Chain;
 
-    public static function notUploaded(): Chain;
-
     public static function notUppercase(): Chain;
 
     public static function notUrl(): Chain;
@@ -324,8 +312,6 @@ interface NotBuilder
     public static function notUuid(int|null $version = null): Chain;
 
     public static function notVersion(): Chain;
-
-    public static function notVideoUrl(string|null $service = null): Chain;
 
     public static function notVowel(string ...$additionalChars): Chain;
 

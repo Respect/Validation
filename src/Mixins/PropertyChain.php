@@ -126,11 +126,7 @@ interface PropertyChain
 
     public function propertyFalsy(string $propertyName): Chain;
 
-    public function propertyFibonacci(string $propertyName): Chain;
-
     public function propertyFile(string $propertyName): Chain;
-
-    public function propertyFilterVar(string $propertyName, int $filter, mixed $options = null): Chain;
 
     public function propertyFinite(string $propertyName): Chain;
 
@@ -231,13 +227,9 @@ interface PropertyChain
 
     public function propertyOneOf(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public function propertyPerfectSquare(string $propertyName): Chain;
-
     public function propertyPesel(string $propertyName): Chain;
 
     public function propertyPhone(string $propertyName, string|null $countryCode = null): Chain;
-
-    public function propertyPhpLabel(string $propertyName): Chain;
 
     public function propertyPis(string $propertyName): Chain;
 
@@ -248,8 +240,6 @@ interface PropertyChain
     public function propertyPositive(string $propertyName): Chain;
 
     public function propertyPostalCode(string $propertyName, string $countryCode, bool $formatted = false): Chain;
-
-    public function propertyPrimeNumber(string $propertyName): Chain;
 
     public function propertyPrintable(string $propertyName, string ...$additionalChars): Chain;
 
@@ -301,8 +291,6 @@ interface PropertyChain
 
     public function propertyUnique(string $propertyName): Chain;
 
-    public function propertyUploaded(string $propertyName): Chain;
-
     public function propertyUppercase(string $propertyName): Chain;
 
     public function propertyUrl(string $propertyName): Chain;
@@ -310,8 +298,6 @@ interface PropertyChain
     public function propertyUuid(string $propertyName, int|null $version = null): Chain;
 
     public function propertyVersion(string $propertyName): Chain;
-
-    public function propertyVideoUrl(string $propertyName, string|null $service = null): Chain;
 
     public function propertyVowel(string $propertyName, string ...$additionalChars): Chain;
 

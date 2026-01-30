@@ -124,11 +124,7 @@ interface AllChain
 
     public function allFalsy(): Chain;
 
-    public function allFibonacci(): Chain;
-
     public function allFile(): Chain;
-
-    public function allFilterVar(int $filter, mixed $options = null): Chain;
 
     public function allFinite(): Chain;
 
@@ -229,13 +225,9 @@ interface AllChain
 
     public function allOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
-    public function allPerfectSquare(): Chain;
-
     public function allPesel(): Chain;
 
     public function allPhone(string|null $countryCode = null): Chain;
-
-    public function allPhpLabel(): Chain;
 
     public function allPis(): Chain;
 
@@ -246,8 +238,6 @@ interface AllChain
     public function allPositive(): Chain;
 
     public function allPostalCode(string $countryCode, bool $formatted = false): Chain;
-
-    public function allPrimeNumber(): Chain;
 
     public function allPrintable(string ...$additionalChars): Chain;
 
@@ -299,8 +289,6 @@ interface AllChain
 
     public function allUnique(): Chain;
 
-    public function allUploaded(): Chain;
-
     public function allUppercase(): Chain;
 
     public function allUrl(): Chain;
@@ -308,8 +296,6 @@ interface AllChain
     public function allUuid(int|null $version = null): Chain;
 
     public function allVersion(): Chain;
-
-    public function allVideoUrl(string|null $service = null): Chain;
 
     public function allVowel(string ...$additionalChars): Chain;
 

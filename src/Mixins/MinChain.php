@@ -24,8 +24,6 @@ interface MinChain
 
     public function minFactor(int $dividend): Chain;
 
-    public function minFibonacci(): Chain;
-
     public function minFinite(): Chain;
 
     public function minGreaterThan(mixed $compareTo): Chain;
@@ -46,9 +44,5 @@ interface MinChain
 
     public function minOdd(): Chain;
 
-    public function minPerfectSquare(): Chain;
-
     public function minPositive(): Chain;
-
-    public function minPrimeNumber(): Chain;
 }

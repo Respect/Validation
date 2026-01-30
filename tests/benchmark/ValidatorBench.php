@@ -20,7 +20,6 @@ class ValidatorBench
 
     /** @param array<Validator, mixed> $params */
     #[Bench\ParamProviders(['provideValidatorInput'])]
-    #[Bench\BeforeMethods('setFileUploadMock')]
     #[Bench\Iterations(10)]
     #[Bench\RetryThreshold(5)]
     #[Bench\Revs(5)]
@@ -35,10 +34,5 @@ class ValidatorBench
     {
         [$v, $input] = $params;
         $v->evaluate($input);
-    }
-
-    public function setFileUploadMock(): void
-    {
-        set_mock_is_uploaded_file_return(true);
     }
 }

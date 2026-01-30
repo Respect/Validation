@@ -25,27 +25,27 @@ In this page you will find a list of validators by their category.
 
 **Date and Time**: [Date][] - [DateTime][] - [DateTimeDiff][] - [LeapDate][] - [LeapYear][] - [Time][]
 
-**File system**: [Directory][] - [Executable][] - [Exists][] - [Extension][] - [File][] - [Image][] - [Mimetype][] - [Readable][] - [Size][] - [SymbolicLink][] - [Uploaded][] - [Writable][]
+**File system**: [Directory][] - [Executable][] - [Exists][] - [Extension][] - [File][] - [Image][] - [Mimetype][] - [Readable][] - [Size][] - [SymbolicLink][] - [Writable][]
 
 **ISO codes**: [CountryCode][] - [CurrencyCode][] - [LanguageCode][] - [SubdivisionCode][]
 
 **Identifications**: [Bsn][] - [Cnh][] - [Cnpj][] - [Cpf][] - [Hetu][] - [Imei][] - [Isbn][] - [Luhn][] - [MacAddress][] - [NfeAccessKey][] - [Nif][] - [Nip][] - [Pesel][] - [Pis][] - [PolishIdCard][] - [PortugueseNif][]
 
-**Internet**: [Domain][] - [Email][] - [Ip][] - [PublicDomainSuffix][] - [Tld][] - [Url][] - [VideoUrl][]
+**Internet**: [Domain][] - [Email][] - [Ip][] - [PublicDomainSuffix][] - [Tld][] - [Url][]
 
 **Localization**: [CountryCode][] - [CurrencyCode][] - [LanguageCode][] - [PostalCode][] - [SubdivisionCode][]
 
-**Math**: [Factor][] - [Fibonacci][] - [Finite][] - [Infinite][] - [Multiple][] - [Negative][] - [PerfectSquare][] - [Positive][] - [PrimeNumber][]
+**Math**: [Factor][] - [Finite][] - [Infinite][] - [Multiple][] - [Negative][] - [Positive][]
 
-**Miscellaneous**: [Blank][] - [Falsy][] - [FilterVar][] - [Named][] - [Templated][] - [Undef][]
+**Miscellaneous**: [Blank][] - [Falsy][] - [Named][] - [Templated][] - [Undef][]
 
 **Nesting**: [AllOf][] - [AnyOf][] - [Call][] - [Circuit][] - [Each][] - [Key][] - [KeySet][] - [Lazy][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
 
-**Numbers**: [Base][] - [Decimal][] - [Digit][] - [Even][] - [Factor][] - [Fibonacci][] - [Finite][] - [FloatType][] - [FloatVal][] - [Infinite][] - [IntType][] - [IntVal][] - [Multiple][] - [Negative][] - [Number][] - [NumericVal][] - [Odd][] - [PerfectSquare][] - [Positive][] - [PrimeNumber][] - [Roman][]
+**Numbers**: [Base][] - [Decimal][] - [Digit][] - [Even][] - [Factor][] - [Finite][] - [FloatType][] - [FloatVal][] - [Infinite][] - [IntType][] - [IntVal][] - [Multiple][] - [Negative][] - [Number][] - [NumericVal][] - [Odd][] - [Positive][] - [Roman][]
 
 **Objects**: [Attributes][] - [Instance][] - [ObjectType][] - [Property][] - [PropertyExists][] - [PropertyOptional][]
 
-**Strings**: [Alnum][] - [Alpha][] - [Base64][] - [Charset][] - [Consonant][] - [Contains][] - [ContainsAny][] - [ContainsCount][] - [Control][] - [Digit][] - [Emoji][] - [EndsWith][] - [Graph][] - [HexRgbColor][] - [In][] - [Json][] - [Lowercase][] - [Phone][] - [PhpLabel][] - [PostalCode][] - [Printable][] - [Punct][] - [Regex][] - [Slug][] - [Sorted][] - [Space][] - [Spaced][] - [StartsWith][] - [StringType][] - [StringVal][] - [Uppercase][] - [Uuid][] - [Version][] - [Vowel][] - [Xdigit][]
+**Strings**: [Alnum][] - [Alpha][] - [Base64][] - [Charset][] - [Consonant][] - [Contains][] - [ContainsAny][] - [ContainsCount][] - [Control][] - [Digit][] - [Emoji][] - [EndsWith][] - [Graph][] - [HexRgbColor][] - [In][] - [Json][] - [Lowercase][] - [Phone][] - [PostalCode][] - [Printable][] - [Punct][] - [Regex][] - [Slug][] - [Sorted][] - [Space][] - [Spaced][] - [StartsWith][] - [StringType][] - [StringVal][] - [Uppercase][] - [Uuid][] - [Version][] - [Vowel][] - [Xdigit][]
 
 **Structures**: [Attributes][] - [Key][] - [KeyExists][] - [KeyOptional][] - [KeySet][] - [Named][] - [Property][] - [PropertyExists][] - [PropertyOptional][] - [Templated][]
 
@@ -110,9 +110,7 @@ In this page you will find a list of validators by their category.
 - [Factor][] - `v::factor(0)->assert(5);`
 - [FalseVal][] - `v::falseVal()->assert(false);`
 - [Falsy][] - `v::falsy()->assert('');`
-- [Fibonacci][] - `v::fibonacci()->assert(1);`
 - [File][] - `v::file()->assert(__FILE__);`
-- [FilterVar][] - `v::filterVar(FILTER_VALIDATE_EMAIL)->assert('bob@example.com');`
 - [Finite][] - `v::finite()->assert('10');`
 - [FloatType][] - `v::floatType()->assert(1.5);`
 - [FloatVal][] - `v::floatVal()->assert(1.5);`
@@ -167,16 +165,13 @@ In this page you will find a list of validators by their category.
 - [ObjectType][] - `v::objectType()->assert(new stdClass);`
 - [Odd][] - `v::odd()->assert(3);`
 - [OneOf][] - `v::oneOf(v::digit(), v::alpha())->assert('AB');`
-- [PerfectSquare][] - `v::perfectSquare()->assert(25); // (5*5)`
 - [Pesel][] - `v::pesel()->assert('21120209256');`
 - [Phone][] - `v::phone()->assert('+1 650 253 00 00');`
-- [PhpLabel][] - `v::phpLabel()->assert('person'); //true`
 - [Pis][] - `v::pis()->assert('120.0340.678-8');`
 - [PolishIdCard][] - `v::polishIdCard()->assert('AYW036733');`
 - [PortugueseNif][] - `v::portugueseNif()->assert('124885446');`
 - [Positive][] - `v::positive()->assert(1);`
 - [PostalCode][] - `v::postalCode('BR')->assert('02179000');`
-- [PrimeNumber][] - `v::primeNumber()->assert(7);`
 - [Printable][] - `v::printable()->assert('LMKA0$% _123');`
 - [Property][] - `v::property('name', v::equals('The Respect Panda'))->assert($object);`
 - [PropertyExists][] - `v::propertyExists('name')->assert($object);`
@@ -206,12 +201,10 @@ In this page you will find a list of validators by their category.
 - [Undef][] - `v::undef()->assert('');`
 - [UndefOr][] - `v::undefOr(v::alpha())->assert('');`
 - [Unique][] - `v::unique()->assert([]);`
-- [Uploaded][] - ``
 - [Uppercase][] - `v::uppercase()->assert('W3C');`
 - [Url][] - `v::url()->assert('http://example.com');`
 - [Uuid][] - `v::uuid()->assert('eb3115e5-bd16-4939-ab12-2b95745a30f3');`
 - [Version][] - `v::version()->assert('1.0.0');`
-- [VideoUrl][] - `v::videoUrl()->assert('https://player.vimeo.com/video/71787467');`
 - [Vowel][] - `v::vowel()->assert('aei');`
 - [When][] - `v::when(v::intVal(), v::positive(), v::notBlank())->assert(1);`
 - [Writable][] - `v::writable()->assert('/path/to/file');`
@@ -272,9 +265,7 @@ In this page you will find a list of validators by their category.
 [Factor]: validators/Factor.md "Validates if the input is a factor of the defined dividend."
 [FalseVal]: validators/FalseVal.md "Validates if a value is considered as `false`."
 [Falsy]: validators/Falsy.md "Validates whether the given input is considered empty or falsy, similar to PHP's `empty()` function."
-[Fibonacci]: validators/Fibonacci.md "Validates whether the input follows the Fibonacci integer sequence."
 [File]: validators/File.md "Validates whether file input is as a regular filename."
-[FilterVar]: validators/FilterVar.md "Validates the input with the PHP's filter_var() function."
 [Finite]: validators/Finite.md "Validates if the input is a finite number."
 [FloatType]: validators/FloatType.md "Validates whether the type of the input is float."
 [FloatVal]: validators/FloatVal.md "Validate whether the input value is float."
@@ -329,16 +320,13 @@ In this page you will find a list of validators by their category.
 [ObjectType]: validators/ObjectType.md "Validates whether the input is an object."
 [Odd]: validators/Odd.md "Validates whether the input is an odd number or not."
 [OneOf]: validators/OneOf.md "Will validate if exactly one inner validator passes."
-[PerfectSquare]: validators/PerfectSquare.md "Validates whether the input is a perfect square."
 [Pesel]: validators/Pesel.md "Validates PESEL (Polish human identification number)."
 [Phone]: validators/Phone.md "Validates whether the input is a valid phone number. This validator requires"
-[PhpLabel]: validators/PhpLabel.md "Validates if a value is considered a valid PHP Label,"
 [Pis]: validators/Pis.md "Validates a Brazilian PIS/NIS number ignoring any non-digit char."
 [PolishIdCard]: validators/PolishIdCard.md "Validates whether the input is a Polish identity card (Dowód Osobisty)."
 [PortugueseNif]: validators/PortugueseNif.md "Validates Portugal's fiscal identification number (NIF)."
 [Positive]: validators/Positive.md "Validates whether the input is a positive number."
 [PostalCode]: validators/PostalCode.md "Validates whether the input is a valid postal code or not."
-[PrimeNumber]: validators/PrimeNumber.md "Validates a prime number"
 [Printable]: validators/Printable.md "Similar to `Graph` but accepts whitespace."
 [Property]: validators/Property.md "Validates an object property against a given validator."
 [PropertyExists]: validators/PropertyExists.md "Validates if an object property exists."
@@ -368,12 +356,10 @@ In this page you will find a list of validators by their category.
 [Undef]: validators/Undef.md "Validates if the given input is undefined. By _undefined_ we consider `null` or an empty string (`''`)."
 [UndefOr]: validators/UndefOr.md "Validates the input using a defined validator when the input is not `null` or an empty string (`''`)."
 [Unique]: validators/Unique.md "Validates whether the input array contains only unique values."
-[Uploaded]: validators/Uploaded.md "Validates if the given data is a file that was uploaded via HTTP POST."
 [Uppercase]: validators/Uppercase.md "Validates whether the characters in the input are uppercase."
 [Url]: validators/Url.md "Validates whether the input is a URL."
 [Uuid]: validators/Uuid.md "Validates whether the input is a valid UUID. It also supports validation of"
 [Version]: validators/Version.md "Validates version numbers using Semantic Versioning."
-[VideoUrl]: validators/VideoUrl.md "Validates if the input is a video URL value."
 [Vowel]: validators/Vowel.md "Validates whether the input contains only vowels."
 [When]: validators/When.md "A ternary validator that accepts three parameters."
 [Writable]: validators/Writable.md "Validates if the given input is writable file."

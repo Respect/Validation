@@ -18,7 +18,6 @@
     <rule ref="Respect" />
 
     <!-- Exclusions -->
-    <exclude-pattern>tests/bootstrap.php</exclude-pattern>
     <rule ref="Squiz.Arrays.ArrayDeclaration.ValueNoNewline">
         <exclude-pattern>src/Validators/Tld.php</exclude-pattern>
     </rule>
@@ -37,5 +36,4 @@
         <exclude-pattern>tests/Pest.php</exclude-pattern>
         <exclude-pattern>tests/feature</exclude-pattern>
     </rule>
-    <exclude-pattern>tests/bootstrap.php</exclude-pattern>
 </ruleset>
