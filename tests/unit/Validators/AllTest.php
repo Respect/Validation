@@ -29,6 +29,7 @@ final class AllTest extends TestCase
         yield 'all pass with ArrayObject' => [Stub::pass(3), new ArrayObject([1, 2, 3])];
         yield 'single element that passes' => [Stub::pass(1), ['value']];
         yield 'all pass with array of strings' => [Stub::pass(5), ['a', 'b', 'c', 'd', 'e']];
+        yield 'empty array' => [Stub::daze(), []];
     }
 
     /** @return iterable<string, array{Stub, mixed}> */
@@ -44,7 +45,6 @@ final class AllTest extends TestCase
         yield 'null input' => [Stub::daze(), null];
         yield 'boolean input' => [Stub::daze(), true];
         yield 'object input' => [Stub::daze(), (object) ['foo' => 'bar']];
-        yield 'empty array' => [Stub::daze(), []];
     }
 
     #[Test]

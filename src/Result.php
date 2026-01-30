@@ -33,6 +33,7 @@ final readonly class Result
         public string $template = Validator::TEMPLATE_STANDARD,
         public bool $hasInvertedMode = false,
         public bool $hasPrecedentName = true,
+        public bool $isIndeterminate = false,
         public Name|null $name = null,
         public Result|null $adjacent = null,
         public Path|null $path = null,
@@ -238,6 +239,11 @@ final readonly class Result
         );
 
         return count($childrenThatAllowAdjacent) === 1;
+    }
+
+    public function asIndeterminate(): self
+    {
+        return clone($this, ['isIndeterminate' => true]);
     }
 
     /** @return array<Result> */

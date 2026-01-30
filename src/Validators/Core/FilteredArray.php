@@ -12,17 +12,12 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators\Core;
 
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Circuit;
-use Respect\Validation\Validators\GreaterThan;
 use Respect\Validation\Validators\IterableType;
-use Respect\Validation\Validators\Length;
-use Respect\Validation\Validators\Not;
-use Respect\Validation\Validators\Undef;
 
 use function is_array;
 use function iterator_to_array;
 
-abstract class FilteredNonEmptyArray extends Wrapper
+abstract class FilteredArray extends Wrapper
 {
     public function evaluate(mixed $input): Result
     {
@@ -32,21 +27,16 @@ abstract class FilteredNonEmptyArray extends Wrapper
         }
 
         $array = $this->toArray($input);
-        $validator = new Circuit(
-            new Not(new Undef()),
-            new Length(new GreaterThan(0)),
-        );
-        $result = $validator->evaluate($array);
-        if (!$result->hasPassed) {
-            return $result->withIdFrom($this);
+
+        if ($array === []) {
+            return Result::passed($input, $this)->asIndeterminate();
         }
 
-        // @phpstan-ignore-next-line
-        return $this->evaluateNonEmptyArray($array);
+        return $this->evaluateArray($array);
     }
 
-    /** @param non-empty-array<mixed> $input */
-    abstract protected function evaluateNonEmptyArray(array $input): Result;
+    /** @param array<mixed> $input */
+    abstract protected function evaluateArray(array $input): Result;
 
     /**
      * @param iterable<mixed> $input

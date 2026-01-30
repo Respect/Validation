@@ -20,6 +20,22 @@ v::each(v::dateTime())->assert($releaseDates);
 // Validation passes successfully
 ```
 
+This validator is similar to [All](All.md), but while `All` displays a single message 
+generic to all failed entries, `Each` will display a message for each failed 
+entry instead.
+
+```php
+v::each(v::startsWith('2010'))->assert($releaseDates);
+// → - Each item in `["validation": "2010-01-01", "template": "2011-01-01", "relational": "2011-02-05"]` must be valid
+// →   - `.template` must start with "2010"
+// →   - `.relational` must start with "2010"
+
+v::named('Release Dates', v::each(v::startsWith('2010')))->assert($releaseDates);
+// → - Each item in Release Dates must be valid
+// →   - `.template` must start with "2010"
+// →   - `.relational` must start with "2010"
+```
+
 You can also validate array keys combining this validator with [Call](Call.md):
 
 ```php
@@ -29,7 +45,15 @@ v::call('array_keys', v::each(v::stringType()))->assert($releaseDates);
 
 ## Note
 
-This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail.
+This validator will pass if the input is empty. Use [Length](Length.md) with [GreaterThan][GreaterThan.md] to perform a stricter check:
+
+```php
+v::each(v::equals(10))->assert([]);
+// Validation passes successfully
+
+v::length(v::greaterThan(0))->each(v::equals(10))->assert([]);
+// → The length of `[]` must be greater than 0
+```
 
 ## Templates
 
@@ -54,11 +78,11 @@ This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] inter
 
 ## Changelog
 
-| Version | Description                                                 |
-| ------: | :---------------------------------------------------------- |
-|   3.0.0 | Rejected `stdClass`, non-iterable. or empty iterable values |
-|   2.0.0 | Remove support for key validation                           |
-|   0.3.9 | Created                                                     |
+| Version | Description                        |
+| ------: | :--------------------------------- |
+|   3.0.0 | Rejected `stdClass`, non-iterables |
+|   2.0.0 | Remove support for key validation  |
+|   0.3.9 | Created                            |
 
 ## See Also
 

@@ -15,18 +15,18 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\TestCase;
-use Respect\Validation\Test\Validators\Core\ConcreteFilteredNonEmptyArray;
+use Respect\Validation\Test\Validators\Core\ConcreteFilteredArray;
 use Respect\Validation\Test\Validators\Stub;
 
 #[Group('core')]
-#[CoversClass(FilteredNonEmptyArray::class)]
-final class FilteredNonEmptyArrayTest extends TestCase
+#[CoversClass(FilteredArray::class)]
+final class FilteredArrayTest extends TestCase
 {
     #[Test]
     #[DataProvider('providerForNonIterableTypes')]
     public function itShouldInvalidateNonIterableValues(mixed $input): void
     {
-        $sut = new ConcreteFilteredNonEmptyArray(Stub::daze());
+        $sut = new ConcreteFilteredArray(Stub::daze());
 
         self::assertInvalidInput($sut, $input);
     }
@@ -34,11 +34,11 @@ final class FilteredNonEmptyArrayTest extends TestCase
     /** @param iterable<mixed> $input */
     #[Test]
     #[DataProvider('providerForEmptyIterableValues')]
-    public function itShouldInvalidateEmptyIterableValues(iterable $input): void
+    public function itShouldValidateEmptyIterableValuesAndNoteTheIndeterminate(iterable $input): void
     {
-        $sut = new ConcreteFilteredNonEmptyArray(Stub::daze());
+        $sut = new ConcreteFilteredArray(Stub::daze());
 
-        self::assertInvalidInput($sut, $input);
+        $this->assertTrue($sut->evaluate($input)->isIndeterminate);
     }
 
     #[Test]
@@ -48,7 +48,7 @@ final class FilteredNonEmptyArrayTest extends TestCase
 
         $input = [1, 2, 3];
 
-        $sut = new ConcreteFilteredNonEmptyArray($validator);
+        $sut = new ConcreteFilteredArray($validator);
         $sut->evaluate($input);
 
         self::assertSame([$input], $validator->inputs);
@@ -57,18 +57,18 @@ final class FilteredNonEmptyArrayTest extends TestCase
     #[Test]
     public function itShouldKeepRuleIdWhenInvalidatingNonIterableValues(): void
     {
-        $sut = new ConcreteFilteredNonEmptyArray(Stub::daze());
+        $sut = new ConcreteFilteredArray(Stub::daze());
         $result = $sut->evaluate(null);
 
-        self::assertEquals('concreteFilteredNonEmptyArray', $result->id->value);
+        self::assertEquals('concreteFilteredArray', $result->id->value);
     }
 
     #[Test]
-    public function itShouldKeepRuleIdWhenInvalidatingEmptyIterableValues(): void
+    public function itShouldKeepRuleIdWhenValidatingEmptyIterableValues(): void
     {
-        $sut = new ConcreteFilteredNonEmptyArray(Stub::daze());
+        $sut = new ConcreteFilteredArray(Stub::daze());
         $result = $sut->evaluate([]);
 
-        self::assertEquals('concreteFilteredNonEmptyArray', $result->id->value);
+        self::assertEquals('concreteFilteredArray', $result->id->value);
     }
 }

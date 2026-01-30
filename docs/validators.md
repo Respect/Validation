@@ -57,7 +57,7 @@ In this page you will find a list of validators by their category.
 
 ## Alphabetically
 
-- [All][] - `v::all(v::intType())->assert([1, 2, 3]);`
+- [All][] - `v::all(v::dateTime())->assert($releaseDates);`
 - [AllOf][] - `v::allOf(v::intVal(), v::positive())->assert(15);`
 - [Alnum][] - `v::alnum(' ')->assert('foo 123');`
 - [Alpha][] - `v::alpha(' ')->assert('some name');`

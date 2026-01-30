@@ -39,6 +39,14 @@ final class NotTest extends RuleTestCase
         );
     }
 
+    #[Test]
+    public function shouldPassOnIndeterminateResults(): void
+    {
+        $validator = new Not(new All(new IntVal()));
+        $validator->evaluate([]);
+        self::assertTrue($validator->evaluate([])->hasPassed);
+    }
+
     /** @return iterable<string, array{Not, mixed}> */
     public static function providerForValidInput(): iterable
     {
