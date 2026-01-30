@@ -38,11 +38,11 @@ final class MaxTest extends TestCase
     /** @param iterable<mixed> $input */
     #[Test]
     #[DataProvider('providerForEmptyIterableValues')]
-    public function itShouldInvalidateEmptyIterableValues(iterable $input): void
+    public function itShouldValidateEmptyIterableValuesAndNoteTheIndeterminate(iterable $input): void
     {
         $validator = new Max(Stub::daze());
 
-        self::assertInvalidInput($validator, $input);
+        $this->assertTrue($validator->evaluate($input)->isIndeterminate);
     }
 
     /** @param iterable<mixed> $input */

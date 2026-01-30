@@ -26,7 +26,15 @@ v::max(v::greaterThan(15))->assert([4, 8, 12]);
 
 ## Note
 
-This validator uses [Length](Length.md) with [GreaterThan][GreaterThan.md] internally. If an input has no items, the validation will fail.
+This validator will pass if the input is empty. Use [Length](Length.md) with [GreaterThan][GreaterThan.md] to perform a stricter check:
+
+```php
+v::max(v::equals(10))->assert([]);
+// Validation passes successfully
+
+v::length(v::greaterThan(0))->max(v::equals(10))->assert([]);
+// → The length of `[]` must be greater than 0
+```
 
 ## Templates
 

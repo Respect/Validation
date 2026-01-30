@@ -28,6 +28,10 @@ final class Not extends Wrapper
     {
         $result = $this->validator->evaluate($input);
 
+        if ($result->isIndeterminate) {
+            return $result;
+        }
+
         return $result
             ->withToggledModeAndValidation()
             ->withId($result->id->withPrefix('not'));

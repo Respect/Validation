@@ -11,12 +11,12 @@ declare(strict_types=1);
 namespace Respect\Validation\Test\Validators\Core;
 
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\FilteredNonEmptyArray;
+use Respect\Validation\Validators\Core\FilteredArray;
 
-final class ConcreteFilteredNonEmptyArray extends FilteredNonEmptyArray
+final class ConcreteFilteredArray extends FilteredArray
 {
     /** @param non-empty-array<mixed> $input */
-    protected function evaluateNonEmptyArray(array $input): Result
+    protected function evaluateArray(array $input): Result
     {
         return $this->validator->evaluate($input);
     }

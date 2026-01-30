@@ -17,14 +17,14 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\FilteredNonEmptyArray;
+use Respect\Validation\Validators\Core\FilteredArray;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template('Every item in', 'Every item in')]
-final class All extends FilteredNonEmptyArray
+final class All extends FilteredArray
 {
     /** @param non-empty-array<mixed> $input */
-    protected function evaluateNonEmptyArray(array $input): Result
+    protected function evaluateArray(array $input): Result
     {
         $result = null;
         $hasPassed = true;

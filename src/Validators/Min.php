@@ -17,16 +17,16 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\FilteredNonEmptyArray;
+use Respect\Validation\Validators\Core\FilteredArray;
 
 use function min;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template('The minimum of', 'The minimum of')]
-final class Min extends FilteredNonEmptyArray
+final class Min extends FilteredArray
 {
     /** @param non-empty-array<mixed> $input */
-    protected function evaluateNonEmptyArray(array $input): Result
+    protected function evaluateArray(array $input): Result
     {
         $result = $this->validator->evaluate(min($input));
 

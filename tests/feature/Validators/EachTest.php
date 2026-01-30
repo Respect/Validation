@@ -18,14 +18,6 @@ test('Non-iterable', catchAll(
         ->and($messages)->toBe(['each' => '`null` must be iterable']),
 ));
 
-test('Empty', catchAll(
-    fn() => v::each(v::intType())->assert([]),
-    fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('The length of `[]` must be greater than 0')
-        ->and($fullMessage)->toBe('- The length of `[]` must be greater than 0')
-        ->and($messages)->toBe(['each' => 'The length of `[]` must be greater than 0']),
-));
-
 test('Default', catchAll(
     fn() => v::each(v::intType())->assert(['a', 'b', 'c']),
     fn(string $message, string $fullMessage, array $messages) => expect()
@@ -68,14 +60,6 @@ test('With name, non-iterable', catchAll(
         ->and($message)->toBe('`null` must be iterable')
         ->and($fullMessage)->toBe('- `null` must be iterable')
         ->and($messages)->toBe(['each' => '`null` must be iterable']),
-));
-
-test('With name, empty', catchAll(
-    fn() => v::each(v::named('Wrapped', v::intType()))->assert([]),
-    fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('The length of `[]` must be greater than 0')
-        ->and($fullMessage)->toBe('- The length of `[]` must be greater than 0')
-        ->and($messages)->toBe(['each' => 'The length of `[]` must be greater than 0']),
 ));
 
 test('With name, default', catchAll(
@@ -174,15 +158,6 @@ test('With template, non-iterable', catchAll(
         ->and($message)->toBe('You should have passed an iterable')
         ->and($fullMessage)->toBe('- You should have passed an iterable')
         ->and($messages)->toBe(['each' => 'You should have passed an iterable']),
-));
-
-test('With template, empty', catchAll(
-    fn() => v::templated('You should have passed an non-empty', v::each(v::intType()))
-        ->assert([]),
-    fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('You should have passed an non-empty')
-        ->and($fullMessage)->toBe('- You should have passed an non-empty')
-        ->and($messages)->toBe(['each' => 'You should have passed an non-empty']),
 ));
 
 test('With template, default', catchAll(

@@ -28,6 +28,8 @@ final class ResultBuilder
 
     private bool $hasPrecedentName = true;
 
+    private bool $isIndeterminate = false;
+
     private string $template = Validator::TEMPLATE_STANDARD;
 
     /** @var array<string, mixed> */
@@ -63,6 +65,7 @@ final class ResultBuilder
             $this->template,
             $this->hasInvertedMode,
             $this->hasPrecedentName,
+            $this->isIndeterminate,
             $this->name,
             $this->adjacent,
             $this->path,
@@ -144,6 +147,13 @@ final class ResultBuilder
     public function hasInvertedMode(): self
     {
         $this->hasInvertedMode = true;
+
+        return $this;
+    }
+
+    public function isIndeterminate(): self
+    {
+        $this->isIndeterminate = true;
 
         return $this;
     }

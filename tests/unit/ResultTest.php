@@ -15,6 +15,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\Builders\ResultBuilder;
 use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\Validators\Stub;
 
 #[Group('core')]
 #[CoversClass(Result::class)]
@@ -303,5 +304,13 @@ final class ResultTest extends TestCase
         self::assertSame($newInput, $updatedResult->input);
         self::assertSame($originalInput, $updatedResult->children[0]->input);
         self::assertSame($originalInput, $updatedResult->children[0]->children[0]->input);
+    }
+
+    #[Test]
+    public function shouldCreateIndeterminateResult(): void
+    {
+        $result = Result::passed('input', Stub::pass(1))->asIndeterminate();
+
+        self::assertTrue($result->isIndeterminate);
     }
 }

@@ -21,7 +21,7 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\FilteredNonEmptyArray;
+use Respect\Validation\Validators\Core\FilteredArray;
 
 use function array_reduce;
 
@@ -30,10 +30,10 @@ use function array_reduce;
     'Each item in {{subject}} must be valid',
     'Each item in {{subject}} must be invalid',
 )]
-final class Each extends FilteredNonEmptyArray
+final class Each extends FilteredArray
 {
-    /** @param non-empty-array<mixed> $input */
-    protected function evaluateNonEmptyArray(array $input): Result
+    /** @param array<mixed> $input */
+    protected function evaluateArray(array $input): Result
     {
         $children = [];
         foreach ($input as $key => $value) {

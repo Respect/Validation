@@ -279,12 +279,11 @@ The `size()` validator no longer accepts string sizes like `'5MB'`. Use the new 
 
 ##### `Each` validator stricter
 
-The `Each` validator now rejects `stdClass`, non-iterable values, and empty iterables:
+The `Each` validator now rejects `stdClass` and other non-iterable values:
 
 ```php
 // These now fail in 3.0
 v::each(v::alwaysValid())->isValid(new stdClass()); // false
-v::each(v::alwaysValid())->isValid([]);             // false (empty)
 ```
 
 ##### Composite validators require two or more validators
@@ -372,7 +371,13 @@ composer require ramsey/uuid
 + v::undefOr(v::email())->assert($email);
 ```
 
-Note: In 3.0, `Min` and `Max` validators exist but have different semantics — they extract the minimum/maximum value from a collection and validate it (see [Result composition](#result-composition)).
+In 3.0, `Min` and `Max` validators exist but have different semantics. They extract the minimum/maximum value from a collection and validate it (see [Result composition](#result-composition)).
+
+
+| Validator  | 2.x             | 3.x                                           |
+| ---------- | --------------- | --------------------------------------------- |
+| `Min`      | Single value >= | Pick minimum value from iterable and validate |
+| `Max`      | Single value <= | Pick minimum value from iterable and validate |
 
 ##### `NotBlank` logic inverted
 

@@ -26,10 +26,12 @@ use stdClass;
 #[CoversClass(Each::class)]
 final class EachTest extends RuleTestCase
 {
-    /** @return iterable<array{Each, mixed}> */
+    /** @return iterable<array{Each|Not, mixed}> */
     public static function providerForValidInput(): iterable
     {
         return [
+            [new Each(Stub::daze()), []],
+            [new Not(new Each(Stub::daze())), []],
             [new Each(Stub::pass(5)), [1, 2, 3, 4, 5]],
             [new Each(Stub::pass(5)), new ArrayObject([1, 2, 3, 4, 5])],
         ];
@@ -39,7 +41,6 @@ final class EachTest extends RuleTestCase
     public static function providerForInvalidInput(): iterable
     {
         return [
-            [new Each(Stub::daze()), []],
             [new Each(Stub::daze()), new stdClass()],
             [new Each(Stub::daze()), 123],
             [new Each(Stub::daze()), ''],
