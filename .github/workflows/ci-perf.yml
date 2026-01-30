@@ -1,16 +1,17 @@
 name: CI - Perf
 
+# EXPERIMENTAL: This workflow is running with --tolerate-failure flag for phpbench
+# This is to gather data for a future historical interleaving of performance benchmarks.
+
 on:
+  # Run once per day no matter what
+  schedule:
+    - cron: '0 0 * * *'
+  # Run on push to main, so we get a data point every merge
   push:
-    paths:
-      - 'src/**'
-      - 'tests/**'
-      - '.github/**'
-  pull_request:
-    paths:
-      - 'src/**'
-      - 'tests/**'
-      - '.github/**'
+    branches:
+      - main
+  # Allow manual triggering with rebaseline option
   workflow_dispatch:
     inputs:
       baseline:
@@ -26,10 +27,8 @@ jobs:
     name: Benchmarks
     runs-on: ubuntu-latest
 
-    continue-on-error: true # This job is experimental
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
       - uses: actions/checkout@v6
@@ -51,13 +50,9 @@ jobs:
           if [ -z "$(ls -A .phpbench)" ] || [ "${{ github.event.inputs.baseline || 'latest' }}" = "rebaseline" ]; then
             vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${GITHUB_SHA}
 
-          # On main branch push, update baseline with tolerance for failures.
-          elif [ "${GITHUB_REF}" = "refs/heads/main" ] && [ "${GITHUB_EVENT_NAME}" = "push" ]; then
+          # Baseline exists. Compare against it.
+          else
             vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${GITHUB_SHA} --ref=latest --tolerate-failure
-
-          # On other branches, compare against latest baseline, fails if worse.
-          else 
-            vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${GITHUB_SHA} --ref=latest
           fi
           
           # Generate report for human consumption
@@ -67,7 +62,11 @@ jobs:
           cat report.md
 
       - name: Commit Results
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        # only on: main push, schedule, workflow_dispatch+rebaseline
+        if: >-
+          (github.ref == 'refs/heads/main' && github.event_name == 'push') ||
+          (github.event_name == 'schedule') ||
+          (github.event_name == 'workflow_dispatch' && github.event.inputs.baseline == 'rebaseline')
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
