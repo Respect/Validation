@@ -105,6 +105,9 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function domain(bool $tldCheck = true): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public static function dynamic(callable $factory): Chain;
+
     public static function each(Validator $validator): Chain;
 
     public static function email(): Chain;
@@ -188,9 +191,6 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function languageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public static function lazy(callable $validatorCreator): Chain;
 
     public static function leapDate(string $format): Chain;
 

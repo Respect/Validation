@@ -17,13 +17,13 @@ v::circuit(v::intVal(), v::floatVal())->assert(15);
 
 This validator can be handy for getting the least error messages possible from a chain.
 
-This validator can be helpful in combinations with [Lazy](Lazy.md). An excellent example is when you want to validate a
+This validator can be helpful in combinations with [Dynamic](Dynamic.md). An excellent example is when you want to validate a
 country code and a subdivision code.
 
 ```php
 $validator = v::circuit(
     v::key('countryCode', v::countryCode()),
-    v::lazy(static fn($input) => v::key('subdivisionCode', v::subdivisionCode($input['countryCode']))),
+    v::dynamic(static fn($input) => v::key('subdivisionCode', v::subdivisionCode($input['countryCode']))),
 );
 
 $validator->assert([]);
@@ -63,7 +63,7 @@ This validator does not have any templates, because it will always return the re
 
 - [AllOf](AllOf.md)
 - [AnyOf](AnyOf.md)
-- [Lazy](Lazy.md)
+- [Dynamic](Dynamic.md)
 - [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)
 - [SubdivisionCode](SubdivisionCode.md)

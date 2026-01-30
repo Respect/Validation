@@ -18,22 +18,22 @@ use Respect\Validation\Validator;
 use function call_user_func;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final class Lazy implements Validator
+final class Dynamic implements Validator
 {
     /** @var callable(mixed): Validator */
-    private $validatorCreator;
+    private $factory;
 
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function __construct(callable $validatorCreator)
+    /** @param callable(mixed): Validator $factory */
+    public function __construct(callable $factory)
     {
-        $this->validatorCreator = $validatorCreator;
+        $this->factory = $factory;
     }
 
     public function evaluate(mixed $input): Result
     {
-        $validator = call_user_func($this->validatorCreator, $input);
+        $validator = call_user_func($this->factory, $input);
         if (!$validator instanceof Validator) {
-            throw new ComponentException('Lazy failed because it could not create the rule');
+            throw new ComponentException('Dynamic failed because it could not create the rule');
         }
 
         return $validator->evaluate($input);

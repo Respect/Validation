@@ -106,7 +106,7 @@ trait SmokeTestProvider
         yield 'KeyOptional' => [new vs\KeyOptional('missing', new vs\StringType()), ['name' => 'value']];
         yield 'KeySet' => [new vs\KeySet(new vs\Key('name', new vs\StringType())), ['name' => 'value']];
         yield 'LanguageCode' => [new vs\LanguageCode(), 'en'];
-        yield 'Lazy' => [new vs\Lazy([static::class, 'callableLazy']), 123];
+        yield 'Dynamic' => [new vs\Dynamic([static::class, 'callableDynamic']), 123];
         yield 'LeapDate' => [new vs\LeapDate('Y-m-d'), '2020-02-29'];
         yield 'LeapYear' => [new vs\LeapYear(), 2020];
         yield 'Length' => [new vs\Length(new vs\Equals(4)), 'abcd'];
@@ -185,7 +185,7 @@ trait SmokeTestProvider
         return true;
     }
 
-    public static function callableLazy(): Validator
+    public static function callableDynamic(): Validator
     {
         return new vs\IntVal();
     }

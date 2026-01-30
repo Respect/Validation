@@ -102,6 +102,9 @@ interface NotChain
 
     public function notDomain(bool $tldCheck = true): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function notDynamic(callable $factory): Chain;
+
     public function notEach(Validator $validator): Chain;
 
     public function notEmail(): Chain;
@@ -185,9 +188,6 @@ interface NotChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function notLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function notLazy(callable $validatorCreator): Chain;
 
     public function notLeapDate(string $format): Chain;
 

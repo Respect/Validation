@@ -102,6 +102,9 @@ interface KeyBuilder
 
     public static function keyDomain(int|string $key, bool $tldCheck = true): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public static function keyDynamic(int|string $key, callable $factory): Chain;
+
     public static function keyEach(int|string $key, Validator $validator): Chain;
 
     public static function keyEmail(int|string $key): Chain;
@@ -175,9 +178,6 @@ interface KeyBuilder
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function keyLanguageCode(int|string $key, string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public static function keyLazy(int|string $key, callable $validatorCreator): Chain;
 
     public static function keyLeapDate(int|string $key, string $format): Chain;
 

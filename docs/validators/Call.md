@@ -83,6 +83,6 @@ v::circuit(v::stringType(), v::call('strtolower', v::equals('abc')))->assert('AB
 ## See Also
 
 - [Callback](Callback.md)
+- [Dynamic](Dynamic.md)
 - [Each](Each.md)
-- [Lazy](Lazy.md)
 - [Sorted](Sorted.md)

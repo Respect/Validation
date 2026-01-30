@@ -100,6 +100,9 @@ interface AllChain
 
     public function allDomain(bool $tldCheck = true): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function allDynamic(callable $factory): Chain;
+
     public function allEach(Validator $validator): Chain;
 
     public function allEmail(): Chain;
@@ -173,9 +176,6 @@ interface AllChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function allLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function allLazy(callable $validatorCreator): Chain;
 
     public function allLeapDate(string $format): Chain;
 

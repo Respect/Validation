@@ -13,7 +13,7 @@ In this page you will find a list of validators by their category.
 
 **Booleans**: [AlwaysInvalid][] - [AlwaysValid][] - [BoolType][] - [BoolVal][] - [FalseVal][] - [TrueVal][]
 
-**Callables**: [Call][] - [CallableType][] - [Callback][] - [Lazy][]
+**Callables**: [Call][] - [CallableType][] - [Callback][] - [Dynamic][]
 
 **Comparisons**: [All][] - [Between][] - [BetweenExclusive][] - [Equals][] - [Equivalent][] - [GreaterThan][] - [GreaterThanOrEqual][] - [Identical][] - [In][] - [Length][] - [LessThan][] - [LessThanOrEqual][] - [Max][] - [Min][]
 
@@ -41,7 +41,7 @@ In this page you will find a list of validators by their category.
 
 **Miscellaneous**: [Blank][] - [Falsy][] - [Masked][] - [Named][] - [Templated][] - [Undef][]
 
-**Nesting**: [AllOf][] - [AnyOf][] - [Call][] - [Circuit][] - [Each][] - [Key][] - [KeySet][] - [Lazy][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
+**Nesting**: [AllOf][] - [AnyOf][] - [Call][] - [Circuit][] - [Dynamic][] - [Each][] - [Key][] - [KeySet][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
 
 **Numbers**: [Base][] - [Decimal][] - [Digit][] - [Even][] - [Factor][] - [Finite][] - [FloatType][] - [FloatVal][] - [Infinite][] - [IntType][] - [IntVal][] - [Multiple][] - [Negative][] - [Number][] - [NumericVal][] - [Odd][] - [Positive][] - [Roman][]
 
@@ -99,6 +99,7 @@ In this page you will find a list of validators by their category.
 - [Digit][] - `v::digit(' ')->assert('020 612 1851');`
 - [Directory][] - `v::directory()->assert(__DIR__);`
 - [Domain][] - `v::domain()->assert('google.com');`
+- [Dynamic][] - `v::dynamic(static fn($input) => v::boolVal())->assert(true);`
 - [Each][] - `v::each(v::dateTime())->assert($releaseDates);`
 - [Email][] - `v::email()->assert('alganet@gmail.com');`
 - [Emoji][] - `v::emoji()->assert('🍕');`
@@ -140,7 +141,6 @@ In this page you will find a list of validators by their category.
 - [KeyOptional][] - `v::keyOptional('name', v::stringType())->assert([]);`
 - [KeySet][] - `v::keySet(v::key('foo', v::intVal()))->assert(['foo' => 42]);`
 - [LanguageCode][] - `v::languageCode()->assert('pt');`
-- [Lazy][] - `v::lazy(static fn($input) => v::boolVal())->assert(true);`
 - [LeapDate][] - `v::leapDate('Y-m-d')->assert('1988-02-29');`
 - [LeapYear][] - `v::leapYear()->assert('1988');`
 - [Length][] - `v::length(v::between(1, 5))->assert('abc');`
@@ -255,6 +255,7 @@ In this page you will find a list of validators by their category.
 [Digit]: validators/Digit.md "Validates whether the input contains only digits."
 [Directory]: validators/Directory.md "Validates if the given path is a directory."
 [Domain]: validators/Domain.md "Validates whether the input is a valid domain name or not."
+[Dynamic]: validators/Dynamic.md "Validates the input using a validator that is created from a callback."
 [Each]: validators/Each.md "Validates whether each value in the input is valid according to another validator."
 [Email]: validators/Email.md "Validates an email address."
 [Emoji]: validators/Emoji.md "Validates if the input is an emoji or a sequence of emojis."
@@ -296,7 +297,6 @@ In this page you will find a list of validators by their category.
 [KeyOptional]: validators/KeyOptional.md "Validates the value of an array against a given validator when the key exists."
 [KeySet]: validators/KeySet.md "Validates a keys in a defined structure."
 [LanguageCode]: validators/LanguageCode.md "Validates whether the input is language code based on ISO 639."
-[Lazy]: validators/Lazy.md "Validates the input using a validator that is created from a callback."
 [LeapDate]: validators/LeapDate.md "Validates if a date is leap."
 [LeapYear]: validators/LeapYear.md "Validates if a year is leap."
 [Length]: validators/Length.md "Validates the length of the given input against a given validator."

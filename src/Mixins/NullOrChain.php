@@ -102,6 +102,9 @@ interface NullOrChain
 
     public function nullOrDomain(bool $tldCheck = true): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function nullOrDynamic(callable $factory): Chain;
+
     public function nullOrEach(Validator $validator): Chain;
 
     public function nullOrEmail(): Chain;
@@ -185,9 +188,6 @@ interface NullOrChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function nullOrLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function nullOrLazy(callable $validatorCreator): Chain;
 
     public function nullOrLeapDate(string $format): Chain;
 

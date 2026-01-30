@@ -100,6 +100,9 @@ interface UndefOrChain
 
     public function undefOrDomain(bool $tldCheck = true): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function undefOrDynamic(callable $factory): Chain;
+
     public function undefOrEach(Validator $validator): Chain;
 
     public function undefOrEmail(): Chain;
@@ -183,9 +186,6 @@ interface UndefOrChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function undefOrLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function undefOrLazy(callable $validatorCreator): Chain;
 
     public function undefOrLeapDate(string $format): Chain;
 

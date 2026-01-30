@@ -102,6 +102,9 @@ interface PropertyChain
 
     public function propertyDomain(string $propertyName, bool $tldCheck = true): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function propertyDynamic(string $propertyName, callable $factory): Chain;
+
     public function propertyEach(string $propertyName, Validator $validator): Chain;
 
     public function propertyEmail(string $propertyName): Chain;
@@ -175,9 +178,6 @@ interface PropertyChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function propertyLanguageCode(string $propertyName, string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function propertyLazy(string $propertyName, callable $validatorCreator): Chain;
 
     public function propertyLeapDate(string $propertyName, string $format): Chain;
 

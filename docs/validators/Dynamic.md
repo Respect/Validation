@@ -3,14 +3,14 @@ SPDX-FileCopyrightText: (c) Respect Project Contributors
 SPDX-License-Identifier: MIT
 -->
 
-# Lazy
+# Dynamic
 
-- `Lazy(callable(mixed): Validator $validatorCreator)`
+- `Dynamic(callable(mixed): Validator $factory)`
 
 Validates the input using a validator that is created from a callback.
 
 ```php
-v::lazy(static fn($input) => v::boolVal())->assert(true);
+v::dynamic(static fn($input) => v::boolVal())->assert(true);
 // Validation passes successfully
 ```
 
@@ -25,10 +25,10 @@ v::key('confirmation', v::equals($_POST['password'] ?? null))->assert($_POST);
 The issue with the code is that it’s hard to reuse because you’re relying upon the input itself (`$_POST`). That means
 you can create a chain of validators and use it everywhere.
 
-The `lazy()` validator makes this job much simpler and more elegantly:
+The `dynamic()` validator makes this job much simpler and more elegantly:
 
 ```php
-v::lazy(static fn($input) => v::key('confirmation', v::equals($input['password'] ?? null)))->assert($_POST);
+v::dynamic(static fn($input) => v::key('confirmation', v::equals($input['password'] ?? null)))->assert($_POST);
 // → `.confirmation` must be present
 ```
 
