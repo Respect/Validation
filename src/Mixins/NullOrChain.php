@@ -239,6 +239,8 @@ interface NullOrChain
 
     public function nullOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function nullOrPatterned(string $pattern, Validator $validator): Chain;
+
     public function nullOrPesel(): Chain;
 
     public function nullOrPhone(string|null $countryCode = null): Chain;

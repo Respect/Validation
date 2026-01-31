@@ -237,6 +237,8 @@ interface UndefOrChain
 
     public function undefOrOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function undefOrPatterned(string $pattern, Validator $validator): Chain;
+
     public function undefOrPesel(): Chain;
 
     public function undefOrPhone(string|null $countryCode = null): Chain;

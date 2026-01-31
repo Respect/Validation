@@ -227,6 +227,8 @@ interface AllBuilder
 
     public static function allOneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public static function allPatterned(string $pattern, Validator $validator): Chain;
+
     public static function allPesel(): Chain;
 
     public static function allPhone(string|null $countryCode = null): Chain;

@@ -229,6 +229,8 @@ interface PropertyBuilder
 
     public static function propertyOneOf(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public static function propertyPatterned(string $propertyName, string $pattern, Validator $validator): Chain;
+
     public static function propertyPesel(string $propertyName): Chain;
 
     public static function propertyPhone(string $propertyName, string|null $countryCode = null): Chain;

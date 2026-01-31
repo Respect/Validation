@@ -25,7 +25,7 @@ In this page you will find a list of validators by their category.
 
 **Date and Time**: [Date][] - [DateTime][] - [DateTimeDiff][] - [LeapDate][] - [LeapYear][] - [Time][]
 
-**Display**: [Masked][] - [Named][] - [Templated][]
+**Display**: [Masked][] - [Named][] - [Patterned][] - [Templated][]
 
 **File system**: [Directory][] - [Executable][] - [Exists][] - [Extension][] - [File][] - [Image][] - [Mimetype][] - [Readable][] - [Size][] - [SymbolicLink][] - [Writable][]
 
@@ -39,7 +39,7 @@ In this page you will find a list of validators by their category.
 
 **Math**: [Factor][] - [Finite][] - [Infinite][] - [Multiple][] - [Negative][] - [Positive][]
 
-**Miscellaneous**: [Blank][] - [Falsy][] - [Masked][] - [Named][] - [Templated][] - [Undef][]
+**Miscellaneous**: [Blank][] - [Falsy][] - [Masked][] - [Named][] - [Patterned][] - [Templated][] - [Undef][]
 
 **Nesting**: [AllOf][] - [AnyOf][] - [Call][] - [Circuit][] - [Each][] - [Key][] - [KeySet][] - [Lazy][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
 
@@ -168,6 +168,7 @@ In this page you will find a list of validators by their category.
 - [ObjectType][] - `v::objectType()->assert(new stdClass);`
 - [Odd][] - `v::odd()->assert(3);`
 - [OneOf][] - `v::oneOf(v::digit(), v::alpha())->assert('AB');`
+- [Patterned][] - `v::patterned('0000 0000 0000 0000', v::creditCard())->assert('4111111111111111');`
 - [Pesel][] - `v::pesel()->assert('21120209256');`
 - [Phone][] - `v::phone()->assert('+1 650 253 00 00');`
 - [Pis][] - `v::pis()->assert('120.0340.678-8');`
@@ -324,6 +325,7 @@ In this page you will find a list of validators by their category.
 [ObjectType]: validators/ObjectType.md "Validates whether the input is an object."
 [Odd]: validators/Odd.md "Validates whether the input is an odd number or not."
 [OneOf]: validators/OneOf.md "Will validate if exactly one inner validator passes."
+[Patterned]: validators/Patterned.md "Decorates a validator to format input values using a pattern in error messages while still validating the original unformatted input."
 [Pesel]: validators/Pesel.md "Validates PESEL (Polish human identification number)."
 [Phone]: validators/Phone.md "Validates whether the input is a valid phone number. This validator requires"
 [Pis]: validators/Pis.md "Validates a Brazilian PIS/NIS number ignoring any non-digit char."

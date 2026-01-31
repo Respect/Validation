@@ -581,6 +581,7 @@ Version 3.0 introduces several new validators:
 | `Lazy`             | Creates validators dynamically based on input              |
 | `Masked`           | Masks sensitive input values in error messages             |
 | `Named`            | Customizes the subject name in error messages              |
+| `Patterned`        | Formats input values using a pattern in error messages     |
 | `PropertyExists`   | Checks if an object property exists                        |
 | `PropertyOptional` | Validates an object property only if it exists             |
 | `Templated`        | Attaches custom error message templates                    |
@@ -716,6 +717,18 @@ v::masked('1-@', v::email(),v::email())->assert('invalid@example.com');
 
 v::masked('6-12', v::creditCard(), 'X')->assert('4111111111111211');
 // → "41111XXXXXXX1211" must be a valid credit card number
+```
+
+#### Patterned
+
+Decorates a validator to format input values using a pattern in error messages while still validating the original unformatted data. This is useful for displaying formatted values when the original input lacks formatting characters:
+
+```php
+v::patterned('0{3}.0{3}.0{3}-0{2}', v::cpf())->assert('12345678900');
+// → "123.456.789-00" must be a valid CPF number
+
+v::patterned('$00.00', v::phone())->assert(1297);
+// → "$12.97" must be a valid telephone number
 ```
 
 #### Named

@@ -248,6 +248,8 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function oneOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function patterned(string $pattern, Validator $validator): Chain;
+
     public function pesel(): Chain;
 
     public function phone(string|null $countryCode = null): Chain;

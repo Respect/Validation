@@ -229,6 +229,8 @@ interface KeyBuilder
 
     public static function keyOneOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public static function keyPatterned(int|string $key, string $pattern, Validator $validator): Chain;
+
     public static function keyPesel(int|string $key): Chain;
 
     public static function keyPhone(int|string $key, string|null $countryCode = null): Chain;

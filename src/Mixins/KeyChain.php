@@ -229,6 +229,8 @@ interface KeyChain
 
     public function keyOneOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
+    public function keyPatterned(int|string $key, string $pattern, Validator $validator): Chain;
+
     public function keyPesel(int|string $key): Chain;
 
     public function keyPhone(int|string $key, string|null $countryCode = null): Chain;

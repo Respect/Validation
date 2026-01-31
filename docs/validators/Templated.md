@@ -55,3 +55,4 @@ This validator does not have any templates, as you must define the templates you
 - [Masked](Masked.md)
 - [Named](Named.md)
 - [Not](Not.md)
+- [Patterned](Patterned.md)

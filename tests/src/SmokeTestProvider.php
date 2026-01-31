@@ -134,6 +134,7 @@ trait SmokeTestProvider
         yield 'ObjectType' => [new vs\ObjectType(), new stdClass()];
         yield 'Odd' => [new vs\Odd(), 3];
         yield 'OneOf' => [new vs\OneOf(new vs\Digit(), new vs\Alpha()), 'AB'];
+        yield 'Patterned' => [new vs\Patterned('\UAAA', new vs\Alpha()), 'abc'];
         yield 'Pesel' => [new vs\Pesel(), '21120209256'];
         yield 'Phone' => [new vs\Phone(), '+1 650 253 00 00'];
         yield 'Pis' => [new vs\Pis(), '120.0340.678-8'];
