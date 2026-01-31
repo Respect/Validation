@@ -25,7 +25,7 @@ In this page you will find a list of validators by their category.
 
 **Date and Time**: [Date][] - [DateTime][] - [DateTimeDiff][] - [LeapDate][] - [LeapYear][] - [Time][]
 
-**Display**: [Masked][] - [Named][] - [Templated][]
+**Display**: [Formatted][] - [Masked][] - [Named][] - [Templated][]
 
 **File system**: [Directory][] - [Executable][] - [Exists][] - [Extension][] - [File][] - [Image][] - [Mimetype][] - [Readable][] - [Size][] - [SymbolicLink][] - [Writable][]
 
@@ -51,7 +51,7 @@ In this page you will find a list of validators by their category.
 
 **Structures**: [Attributes][] - [Key][] - [KeyExists][] - [KeyOptional][] - [KeySet][] - [Property][] - [PropertyExists][] - [PropertyOptional][]
 
-**Transformations**: [All][] - [Call][] - [Each][] - [Length][] - [Max][] - [Min][] - [Size][]
+**Transformations**: [All][] - [Call][] - [Each][] - [Formatted][] - [Length][] - [Max][] - [Min][] - [Size][]
 
 **Types**: [ArrayType][] - [ArrayVal][] - [BoolType][] - [BoolVal][] - [CallableType][] - [Countable][] - [FloatType][] - [FloatVal][] - [IntType][] - [IntVal][] - [IterableType][] - [IterableVal][] - [NullType][] - [NumericVal][] - [ObjectType][] - [ResourceType][] - [ScalarVal][] - [StringType][] - [StringVal][]
 
@@ -116,6 +116,7 @@ In this page you will find a list of validators by their category.
 - [Finite][] - `v::finite()->assert('10');`
 - [FloatType][] - `v::floatType()->assert(1.5);`
 - [FloatVal][] - `v::floatVal()->assert(1.5);`
+- [Formatted][] - `v::formatted(f::mask('1-4'), v::email())->assert('foo@example.com');`
 - [Graph][] - `v::graph()->assert('LKM@#$%4;');`
 - [GreaterThan][] - `v::greaterThan(10)->assert(11);`
 - [GreaterThanOrEqual][] - `v::intVal()->greaterThanOrEqual(10)->assert(10);`
@@ -272,6 +273,7 @@ In this page you will find a list of validators by their category.
 [Finite]: validators/Finite.md "Validates if the input is a finite number."
 [FloatType]: validators/FloatType.md "Validates whether the type of the input is float."
 [FloatVal]: validators/FloatVal.md "Validate whether the input value is float."
+[Formatted]: validators/Formatted.md "Decorates a validator to format input values in error messages while still validating the original input."
 [Graph]: validators/Graph.md "Validates if all characters in the input are printable and actually creates"
 [GreaterThan]: validators/GreaterThan.md "Validates whether the input is greater than a value."
 [GreaterThanOrEqual]: validators/GreaterThanOrEqual.md "Validates whether the input is greater than or equal to a value."
