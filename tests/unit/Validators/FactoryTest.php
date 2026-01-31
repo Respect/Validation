@@ -19,17 +19,17 @@ use Respect\Validation\Test\TestCase;
 use Respect\Validation\Test\Validators\Stub;
 
 #[Group('validator')]
-#[CoversClass(Lazy::class)]
-final class LazyTest extends TestCase
+#[CoversClass(Factory::class)]
+final class FactoryTest extends TestCase
 {
     #[Test]
     public function itShouldThrowAnExceptionWhenRuleCreatorDoesNotReturnRule(): void
     {
         // @phpstan-ignore-next-line
-        $validator = new Lazy(static fn() => null);
+        $validator = new Factory(static fn() => null);
 
         $this->expectException(ComponentException::class);
-        $this->expectExceptionMessage('Lazy failed because it could not create the rule');
+        $this->expectExceptionMessage('Factory could not create validator');
 
         $validator->evaluate('something');
     }
@@ -38,14 +38,14 @@ final class LazyTest extends TestCase
     #[DataProvider('providerForAnyValues')]
     public function itShouldInvalidInputWhenCreatedRuleFails(mixed $input): void
     {
-        self::assertInvalidInput(new Lazy(static fn($creatorInput) => Stub::fail(1)), $input);
+        self::assertInvalidInput(new Factory(static fn($creatorInput) => Stub::fail(1)), $input);
     }
 
     #[Test]
     #[DataProvider('providerForAnyValues')]
     public function itShouldValidInputWhenCreatedRulePasses(mixed $input): void
     {
-        self::assertValidInput(new Lazy(static fn($creatorInput) => Stub::pass(1)), $input);
+        self::assertValidInput(new Factory(static fn($creatorInput) => Stub::pass(1)), $input);
     }
 
     #[Test]
@@ -54,7 +54,7 @@ final class LazyTest extends TestCase
     {
         $expected = Stub::fail(1)->evaluate($input);
 
-        $validator = new Lazy(static fn($creatorInput) => Stub::fail(1));
+        $validator = new Factory(static fn($creatorInput) => Stub::fail(1));
         $actual = $validator->evaluate($input);
 
         self::assertEquals($expected, $actual);

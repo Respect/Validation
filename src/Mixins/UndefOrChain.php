@@ -122,6 +122,9 @@ interface UndefOrChain
 
     public function undefOrFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function undefOrFactory(callable $factory): Chain;
+
     public function undefOrFalseVal(): Chain;
 
     public function undefOrFalsy(): Chain;
@@ -183,9 +186,6 @@ interface UndefOrChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function undefOrLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function undefOrLazy(callable $validatorCreator): Chain;
 
     public function undefOrLeapDate(string $format): Chain;
 

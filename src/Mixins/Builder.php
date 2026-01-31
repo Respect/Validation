@@ -127,6 +127,9 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function factor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public static function factory(callable $factory): Chain;
+
     public static function falseVal(): Chain;
 
     public static function falsy(): Chain;
@@ -188,9 +191,6 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function languageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public static function lazy(callable $validatorCreator): Chain;
 
     public static function leapDate(string $format): Chain;
 

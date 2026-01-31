@@ -363,7 +363,7 @@ composer require ramsey/uuid
 | `Max`      | `LessThanOrEqual`    | Clearer comparison semantics              |
 | `Nullable` | `NullOr`             | Consistent naming pattern                 |
 | `Optional` | `UndefOr`            | Validates if value is undefined or passes |
-| `KeyValue` | `Lazy`               | Deferred validator creation               |
+| `KeyValue` | `Factory`            | Deferred validator creation               |
 
 ```diff
 - v::min(18)->assert($age);
@@ -381,11 +381,10 @@ composer require ramsey/uuid
 
 In 3.0, `Min` and `Max` validators exist but have different semantics. They extract the minimum/maximum value from a collection and validate it (see [Result composition](#result-composition)).
 
-
-| Validator  | 2.x             | 3.x                                           |
-| ---------- | --------------- | --------------------------------------------- |
-| `Min`      | Single value >= | Pick minimum value from iterable and validate |
-| `Max`      | Single value <= | Pick minimum value from iterable and validate |
+| Validator | 2.x             | 3.x                                           |
+| --------- | --------------- | --------------------------------------------- |
+| `Min`     | Single value >= | Pick minimum value from iterable and validate |
+| `Max`     | Single value <= | Pick minimum value from iterable and validate |
 
 ##### `NotBlank` logic inverted
 
@@ -586,7 +585,7 @@ Version 3.0 introduces several new validators:
 | `Hetu`             | Validates Finnish personal identity codes (henkilötunnus)  |
 | `KeyExists`        | Checks if an array key exists                              |
 | `KeyOptional`      | Validates an array key only if it exists                   |
-| `Lazy`             | Creates validators dynamically based on input              |
+| `Factory`          | Creates validators dynamically based on input              |
 | `Masked`           | Masks sensitive input values in error messages             |
 | `Named`            | Customizes the subject name in error messages              |
 | `PropertyExists`   | Checks if an object property exists                        |
@@ -645,7 +644,7 @@ Validates input against a series of validators, stopping at the first failure. U
 ```php
 $validator = v::circuit(
     v::key('countryCode', v::countryCode()),
-    v::lazy(
+    v::factory(
         fn($input) => v::key(
             'subdivisionCode',
             v::subdivisionCode($input['countryCode'])
@@ -703,13 +702,13 @@ v::keyOptional('phone', v::phone())->assert(['phone' => '+1234567890']); // pass
 v::keyOptional('phone', v::phone())->assert(['phone' => 'invalid']); // fails
 ```
 
-#### Lazy
+#### Factory
 
 Creates validators dynamically based on the input, useful for cross-field validation:
 
 ```php
 // Validate that 'confirmation' matches 'password'
-v::lazy(
+v::factory(
     fn($input) => v::key('confirmation', v::equals($input['password'] ?? null))
 )->assert(['password' => 'secret', 'confirmation' => 'secret']); // passes
 ```

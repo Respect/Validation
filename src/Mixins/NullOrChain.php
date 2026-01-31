@@ -124,6 +124,9 @@ interface NullOrChain
 
     public function nullOrFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function nullOrFactory(callable $factory): Chain;
+
     public function nullOrFalseVal(): Chain;
 
     public function nullOrFalsy(): Chain;
@@ -185,9 +188,6 @@ interface NullOrChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function nullOrLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function nullOrLazy(callable $validatorCreator): Chain;
 
     public function nullOrLeapDate(string $format): Chain;
 
