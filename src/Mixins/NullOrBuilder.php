@@ -54,8 +54,6 @@ interface NullOrBuilder
 
     public static function nullOrCallableType(): Chain;
 
-    public static function nullOrCallback(callable $callback, mixed ...$arguments): Chain;
-
     public static function nullOrCharset(string $charset, string ...$charsets): Chain;
 
     public static function nullOrCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -272,6 +270,8 @@ interface NullOrBuilder
     public static function nullOrResourceType(): Chain;
 
     public static function nullOrRoman(): Chain;
+
+    public static function nullOrSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function nullOrScalarVal(): Chain;
 

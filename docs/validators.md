@@ -13,7 +13,7 @@ In this page you will find a list of validators by their category.
 
 **Booleans**: [AlwaysInvalid][] - [AlwaysValid][] - [BoolType][] - [BoolVal][] - [FalseVal][] - [TrueVal][]
 
-**Callables**: [Call][] - [CallableType][] - [Callback][] - [Factory][]
+**Callables**: [Call][] - [CallableType][] - [Factory][] - [Satisfies][]
 
 **Comparisons**: [All][] - [Between][] - [BetweenExclusive][] - [Equals][] - [Equivalent][] - [GreaterThan][] - [GreaterThanOrEqual][] - [Identical][] - [In][] - [Length][] - [LessThan][] - [LessThanOrEqual][] - [Max][] - [Min][]
 
@@ -77,7 +77,6 @@ In this page you will find a list of validators by their category.
 - [Bsn][] - `v::bsn()->assert('612890053');`
 - [Call][] - `v::call(str_split(...), v::arrayType()->lengthEquals(5))->assert('world');`
 - [CallableType][] - `v::callableType()->assert(function () {});`
-- [Callback][] - `v::callback(fn (int $input): bool => $input % 5 === 0,)->assert(10);`
 - [Charset][] - `v::charset('ASCII')->assert('sugar');`
 - [Circuit][] - `v::circuit(v::intVal(), v::floatVal())->assert(15);`
 - [Cnh][] - `v::cnh()->assert('02650306461');`
@@ -185,6 +184,7 @@ In this page you will find a list of validators by their category.
 - [Regex][] - `v::regex('/[a-z]/')->assert('a');`
 - [ResourceType][] - `v::resourceType()->assert(fopen('/path/to/file.txt', 'r'));`
 - [Roman][] - `v::roman()->assert('IV');`
+- [Satisfies][] - `v::satisfies(fn (int $input): bool => $input % 5 === 0,)->assert(10);`
 - [ScalarVal][] - `v::scalarVal()->assert(135.0);`
 - [Size][] - `v::size('KB', v::greaterThan(1))->assert('/path/to/file');`
 - [Slug][] - `v::slug()->assert('my-wordpress-title');`
@@ -233,7 +233,6 @@ In this page you will find a list of validators by their category.
 [Bsn]: validators/Bsn.md "Validates a Dutch citizen service number (BSN)."
 [Call]: validators/Call.md "Validates the return of a callable for a given input."
 [CallableType]: validators/CallableType.md "Validates whether the pseudo-type of the input is callable."
-[Callback]: validators/Callback.md "Validates the input using the return of a given callable."
 [Charset]: validators/Charset.md "Validates if a string is in a specific charset."
 [Circuit]: validators/Circuit.md "Validates the input against a series of validators until the first fails."
 [Cnh]: validators/Cnh.md "Validates a Brazilian driver's license."
@@ -341,6 +340,7 @@ In this page you will find a list of validators by their category.
 [Regex]: validators/Regex.md "Validates whether the input matches a defined regular expression."
 [ResourceType]: validators/ResourceType.md "Validates whether the input is a resource."
 [Roman]: validators/Roman.md "Validates if the input is a Roman numeral."
+[Satisfies]: validators/Satisfies.md "Validates the input using the return of a given callable."
 [ScalarVal]: validators/ScalarVal.md "Validates whether the input is a scalar value or not."
 [Size]: validators/Size.md "Validates whether the input is a file that is of a certain size or not."
 [Slug]: validators/Slug.md "Validates whether the input is a valid slug."

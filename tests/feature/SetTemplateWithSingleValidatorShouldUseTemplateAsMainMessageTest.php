@@ -11,6 +11,6 @@ declare(strict_types=1);
 use Respect\Validation\ValidatorBuilder;
 
 test('Scenario', catchMessage(
-    fn() => v::templated('{{subject}} is not tasty', ValidatorBuilder::callback('is_int'))->assert('something'),
+    fn() => v::templated('{{subject}} is not tasty', ValidatorBuilder::satisfies('is_int'))->assert('something'),
     fn(string $message) => expect($message)->toBe('"something" is not tasty'),
 ));

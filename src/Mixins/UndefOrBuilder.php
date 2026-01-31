@@ -52,8 +52,6 @@ interface UndefOrBuilder
 
     public static function undefOrCallableType(): Chain;
 
-    public static function undefOrCallback(callable $callback, mixed ...$arguments): Chain;
-
     public static function undefOrCharset(string $charset, string ...$charsets): Chain;
 
     public static function undefOrCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -270,6 +268,8 @@ interface UndefOrBuilder
     public static function undefOrResourceType(): Chain;
 
     public static function undefOrRoman(): Chain;
+
+    public static function undefOrSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function undefOrScalarVal(): Chain;
 

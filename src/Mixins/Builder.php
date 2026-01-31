@@ -57,8 +57,6 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function callableType(): Chain;
 
-    public static function callback(callable $callback, mixed ...$arguments): Chain;
-
     public static function charset(string $charset, string ...$charsets): Chain;
 
     public static function circuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -279,6 +277,8 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
     public static function resourceType(): Chain;
 
     public static function roman(): Chain;
+
+    public static function satisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function scalarVal(): Chain;
 

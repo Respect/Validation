@@ -54,8 +54,6 @@ interface KeyBuilder
 
     public static function keyCallableType(int|string $key): Chain;
 
-    public static function keyCallback(int|string $key, callable $callback, mixed ...$arguments): Chain;
-
     public static function keyCharset(int|string $key, string $charset, string ...$charsets): Chain;
 
     public static function keyCircuit(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -256,6 +254,8 @@ interface KeyBuilder
     public static function keyResourceType(int|string $key): Chain;
 
     public static function keyRoman(int|string $key): Chain;
+
+    public static function keySatisfies(int|string $key, callable $callback, mixed ...$arguments): Chain;
 
     public static function keyScalarVal(int|string $key): Chain;
 
