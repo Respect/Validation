@@ -300,14 +300,14 @@ v::each(v::alwaysValid())->isValid(new stdClass()); // false
 `Call` now does not handle PHP errors inside the callback you provided.
 
 ```php
-v::call('strtolower', v::equals('foo'))->assert(123); // Error bubbles out
+v::after('strtolower', v::equals('foo'))->assert(123); // Error bubbles out
 ```
 
 You can use anonymous functions to handle errors or perform type conversions
 instead:
 
 ```php
-v::call(static fn ($i) => strtolower((string) $i), v::equals('123'));
+v::after(static fn ($i) => strtolower((string) $i), v::equals('123'));
 ```
 
 ##### `Contains`, `ContainsAny`, `In`, `EndsWith` and `StartsWith` strict by default.

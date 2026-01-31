@@ -129,7 +129,7 @@ Beyond the examples above, Respect\Validation provides specialized validators fo
 - **Grouped validation**: Combine validators with AND/OR logic using [AllOf](validators/AllOf.md), [AnyOf](validators/AnyOf.md), [NoneOf](validators/NoneOf.md), [OneOf](validators/OneOf.md).
 - **Iteration**: Validate every item in a collection with [Each](validators/Each.md).
 - **Length, Min, Max**: Validate derived values with [Length](validators/Length.md), [Min](validators/Min.md), [Max](validators/Max.md).
-- **Special cases**: Handle dynamic rules with [Factory](validators/Factory.md), short-circuit on first failure with [Circuit](validators/Circuit.md), or transform input before validation with [Call](validators/Call.md).
+- **Special cases**: Handle dynamic rules with [Factory](validators/Factory.md), short-circuit on first failure with [Circuit](validators/Circuit.md), or transform input before validation with [After](validators/After.md).
 
 ## Customizing error messages
 

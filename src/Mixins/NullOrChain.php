@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface NullOrChain
 {
+    public function nullOrAfter(callable $callable, Validator $validator): Chain;
+
     public function nullOrAll(Validator $validator): Chain;
 
     public function nullOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -49,8 +51,6 @@ interface NullOrChain
     public function nullOrBoolVal(): Chain;
 
     public function nullOrBsn(): Chain;
-
-    public function nullOrCall(callable $callable, Validator $validator): Chain;
 
     public function nullOrCallableType(): Chain;
 

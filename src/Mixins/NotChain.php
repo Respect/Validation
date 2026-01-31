@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface NotChain
 {
+    public function notAfter(callable $callable, Validator $validator): Chain;
+
     public function notAll(Validator $validator): Chain;
 
     public function notAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -49,8 +51,6 @@ interface NotChain
     public function notBoolVal(): Chain;
 
     public function notBsn(): Chain;
-
-    public function notCall(callable $callable, Validator $validator): Chain;
 
     public function notCallableType(): Chain;
 

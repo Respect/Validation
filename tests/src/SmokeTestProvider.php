@@ -23,6 +23,7 @@ trait SmokeTestProvider
 {
     public static function provideValidatorInput(): Generator
     {
+        yield 'After' => [new vs\After('array_keys', new vs\Each(new vs\StringType())), ['a' => 'b']];
         yield 'All' => [new vs\All(new vs\IntVal()), [1, 2, 3]];
         yield 'AllOf' => [new vs\AllOf(new vs\IntVal(), new vs\GreaterThan(0)), 5];
         yield 'Alnum' => [new vs\Alnum(), 'abc123'];
@@ -41,7 +42,6 @@ trait SmokeTestProvider
         yield 'BoolType' => [new vs\BoolType(), true];
         yield 'BoolVal' => [new vs\BoolVal(), true];
         yield 'Bsn' => [new vs\Bsn(), '612890053'];
-        yield 'Call' => [new vs\Call('array_keys', new vs\Each(new vs\StringType())), ['a' => 'b']];
         yield 'CallableType' => [new vs\CallableType(), [static::class, 'callableTarget']];
         yield 'Charset' => [new vs\Charset('UTF-8'), 'example'];
         yield 'Circuit' => [new vs\Circuit(new vs\IntVal(), new vs\GreaterThan(0)), 5];

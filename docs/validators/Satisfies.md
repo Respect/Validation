@@ -42,7 +42,7 @@ v::satisfies(fn (int $input): bool => $input % 5 === 0,)->assert(10);
 
 ## See Also
 
-- [Call](Call.md)
+- [After](After.md)
 - [CallableType](CallableType.md)
 - [DateTime](DateTime.md)
 - [FilterVar](FilterVar.md)

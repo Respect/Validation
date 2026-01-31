@@ -26,10 +26,10 @@ v::sorted('ASC')->assert([1]);
 // Validation passes successfully
 ```
 
-You can also combine [Call](Call.md) to create custom validations:
+You can also combine [After](After.md) to create custom validations:
 
 ```php
-v::call(
+v::after(
         fn (array $input): array  => array_column($input, 'key'),
         v::sorted('ASC')
     )->assert([
@@ -39,10 +39,10 @@ v::call(
     ]);
 // Validation passes successfully
 
-v::call('strval', v::sorted('DESC'))->assert(4321);
+v::after('strval', v::sorted('DESC'))->assert(4321);
 // Validation passes successfully
 
-v::call('iterator_to_array', v::sorted('ASC'))->assert(new ArrayIterator([1, 7, 4]));
+v::after('iterator_to_array', v::sorted('ASC'))->assert(new ArrayIterator([1, 7, 4]));
 // → `[1, 7, 4]` must be sorted in ascending order
 ```
 
@@ -85,5 +85,5 @@ v::call('iterator_to_array', v::sorted('ASC'))->assert(new ArrayIterator([1, 7, 
 
 ## See Also
 
+- [After](After.md)
 - [ArrayVal](ArrayVal.md)
-- [Call](Call.md)

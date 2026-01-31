@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface KeyChain
 {
+    public function keyAfter(int|string $key, callable $callable, Validator $validator): Chain;
+
     public function keyAll(int|string $key, Validator $validator): Chain;
 
     public function keyAllOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -49,8 +51,6 @@ interface KeyChain
     public function keyBoolVal(int|string $key): Chain;
 
     public function keyBsn(int|string $key): Chain;
-
-    public function keyCall(int|string $key, callable $callable, Validator $validator): Chain;
 
     public function keyCallableType(int|string $key): Chain;
 
