@@ -120,6 +120,9 @@ interface AllBuilder
 
     public static function allFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public static function allFactory(callable $factory): Chain;
+
     public static function allFalseVal(): Chain;
 
     public static function allFalsy(): Chain;
@@ -173,9 +176,6 @@ interface AllBuilder
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function allLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public static function allLazy(callable $validatorCreator): Chain;
 
     public static function allLeapDate(string $format): Chain;
 

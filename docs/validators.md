@@ -13,7 +13,7 @@ In this page you will find a list of validators by their category.
 
 **Booleans**: [AlwaysInvalid][] - [AlwaysValid][] - [BoolType][] - [BoolVal][] - [FalseVal][] - [TrueVal][]
 
-**Callables**: [Call][] - [CallableType][] - [Callback][] - [Lazy][]
+**Callables**: [Call][] - [CallableType][] - [Callback][] - [Factory][]
 
 **Comparisons**: [All][] - [Between][] - [BetweenExclusive][] - [Equals][] - [Equivalent][] - [GreaterThan][] - [GreaterThanOrEqual][] - [Identical][] - [In][] - [Length][] - [LessThan][] - [LessThanOrEqual][] - [Max][] - [Min][]
 
@@ -41,7 +41,7 @@ In this page you will find a list of validators by their category.
 
 **Miscellaneous**: [Blank][] - [Falsy][] - [Masked][] - [Named][] - [Templated][] - [Undef][]
 
-**Nesting**: [AllOf][] - [AnyOf][] - [Call][] - [Circuit][] - [Each][] - [Key][] - [KeySet][] - [Lazy][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
+**Nesting**: [AllOf][] - [AnyOf][] - [Call][] - [Circuit][] - [Each][] - [Factory][] - [Key][] - [KeySet][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
 
 **Numbers**: [Base][] - [Decimal][] - [Digit][] - [Even][] - [Factor][] - [Finite][] - [FloatType][] - [FloatVal][] - [Infinite][] - [IntType][] - [IntVal][] - [Multiple][] - [Negative][] - [Number][] - [NumericVal][] - [Odd][] - [Positive][] - [Roman][]
 
@@ -110,6 +110,7 @@ In this page you will find a list of validators by their category.
 - [Exists][] - `v::exists()->assert(__FILE__);`
 - [Extension][] - `v::extension('png')->assert('image.png');`
 - [Factor][] - `v::factor(0)->assert(5);`
+- [Factory][] - `v::factory(static fn($input) => v::boolVal())->assert(true);`
 - [FalseVal][] - `v::falseVal()->assert(false);`
 - [Falsy][] - `v::falsy()->assert('');`
 - [File][] - `v::file()->assert(__FILE__);`
@@ -140,7 +141,6 @@ In this page you will find a list of validators by their category.
 - [KeyOptional][] - `v::keyOptional('name', v::stringType())->assert([]);`
 - [KeySet][] - `v::keySet(v::key('foo', v::intVal()))->assert(['foo' => 42]);`
 - [LanguageCode][] - `v::languageCode()->assert('pt');`
-- [Lazy][] - `v::lazy(static fn($input) => v::boolVal())->assert(true);`
 - [LeapDate][] - `v::leapDate('Y-m-d')->assert('1988-02-29');`
 - [LeapYear][] - `v::leapYear()->assert('1988');`
 - [Length][] - `v::length(v::between(1, 5))->assert('abc');`
@@ -266,6 +266,7 @@ In this page you will find a list of validators by their category.
 [Exists]: validators/Exists.md "Validates files or directories."
 [Extension]: validators/Extension.md "Validates if the file extension matches the expected one:"
 [Factor]: validators/Factor.md "Validates if the input is a factor of the defined dividend."
+[Factory]: validators/Factory.md "Validates the input using a validator that is created from a callback."
 [FalseVal]: validators/FalseVal.md "Validates if a value is considered as `false`."
 [Falsy]: validators/Falsy.md "Validates whether the given input is considered empty or falsy, similar to PHP's `empty()` function."
 [File]: validators/File.md "Validates whether file input is as a regular filename."
@@ -296,7 +297,6 @@ In this page you will find a list of validators by their category.
 [KeyOptional]: validators/KeyOptional.md "Validates the value of an array against a given validator when the key exists."
 [KeySet]: validators/KeySet.md "Validates a keys in a defined structure."
 [LanguageCode]: validators/LanguageCode.md "Validates whether the input is language code based on ISO 639."
-[Lazy]: validators/Lazy.md "Validates the input using a validator that is created from a callback."
 [LeapDate]: validators/LeapDate.md "Validates if a date is leap."
 [LeapYear]: validators/LeapYear.md "Validates if a year is leap."
 [Length]: validators/Length.md "Validates the length of the given input against a given validator."

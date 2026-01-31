@@ -20,8 +20,8 @@ v::each(v::dateTime())->assert($releaseDates);
 // Validation passes successfully
 ```
 
-This validator is similar to [All](All.md), but while `All` displays a single message 
-generic to all failed entries, `Each` will display a message for each failed 
+This validator is similar to [All](All.md), but while `All` displays a single message
+generic to all failed entries, `Each` will display a message for each failed
 entry instead.
 
 ```php

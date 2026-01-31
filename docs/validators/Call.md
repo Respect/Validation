@@ -53,7 +53,7 @@ v::call(
 ```
 
 Call does not handle possible errors (type mismatches). If you need to
-ensure that your callback is of a certain type, use [Circuit](Circuit.md) or 
+ensure that your callback is of a certain type, use [Circuit](Circuit.md) or
 handle it using a closure:
 
 ```php
@@ -84,5 +84,5 @@ v::circuit(v::stringType(), v::call('strtolower', v::equals('abc')))->assert('AB
 
 - [Callback](Callback.md)
 - [Each](Each.md)
-- [Lazy](Lazy.md)
+- [Factory](Factory.md)
 - [Sorted](Sorted.md)

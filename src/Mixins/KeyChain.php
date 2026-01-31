@@ -122,6 +122,9 @@ interface KeyChain
 
     public function keyFactor(int|string $key, int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function keyFactory(int|string $key, callable $factory): Chain;
+
     public function keyFalseVal(int|string $key): Chain;
 
     public function keyFalsy(int|string $key): Chain;
@@ -175,9 +178,6 @@ interface KeyChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function keyLanguageCode(int|string $key, string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function keyLazy(int|string $key, callable $validatorCreator): Chain;
 
     public function keyLeapDate(int|string $key, string $format): Chain;
 

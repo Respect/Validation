@@ -120,6 +120,9 @@ interface AllChain
 
     public function allFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function allFactory(callable $factory): Chain;
+
     public function allFalseVal(): Chain;
 
     public function allFalsy(): Chain;
@@ -173,9 +176,6 @@ interface AllChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function allLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function allLazy(callable $validatorCreator): Chain;
 
     public function allLeapDate(string $format): Chain;
 

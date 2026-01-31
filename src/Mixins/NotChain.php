@@ -124,6 +124,9 @@ interface NotChain
 
     public function notFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function notFactory(callable $factory): Chain;
+
     public function notFalseVal(): Chain;
 
     public function notFalsy(): Chain;
@@ -185,9 +188,6 @@ interface NotChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function notLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function notLazy(callable $validatorCreator): Chain;
 
     public function notLeapDate(string $format): Chain;
 

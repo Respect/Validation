@@ -122,6 +122,9 @@ interface PropertyChain
 
     public function propertyFactor(string $propertyName, int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function propertyFactory(string $propertyName, callable $factory): Chain;
+
     public function propertyFalseVal(string $propertyName): Chain;
 
     public function propertyFalsy(string $propertyName): Chain;
@@ -175,9 +178,6 @@ interface PropertyChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function propertyLanguageCode(string $propertyName, string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function propertyLazy(string $propertyName, callable $validatorCreator): Chain;
 
     public function propertyLeapDate(string $propertyName, string $format): Chain;
 

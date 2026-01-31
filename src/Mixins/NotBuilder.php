@@ -124,6 +124,9 @@ interface NotBuilder
 
     public static function notFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public static function notFactory(callable $factory): Chain;
+
     public static function notFalseVal(): Chain;
 
     public static function notFalsy(): Chain;
@@ -185,9 +188,6 @@ interface NotBuilder
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function notLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public static function notLazy(callable $validatorCreator): Chain;
 
     public static function notLeapDate(string $format): Chain;
 

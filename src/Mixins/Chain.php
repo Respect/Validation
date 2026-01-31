@@ -129,6 +129,9 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function factor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function factory(callable $factory): Chain;
+
     public function falseVal(): Chain;
 
     public function falsy(): Chain;
@@ -190,9 +193,6 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function languageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function lazy(callable $validatorCreator): Chain;
 
     public function leapDate(string $format): Chain;
 

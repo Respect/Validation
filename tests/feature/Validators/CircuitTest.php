@@ -93,7 +93,7 @@ test('With multiple templates', catchAll(
 test('Real example', catchAll(
     fn() => v::circuit(
         v::key('countyCode', v::countryCode()),
-        v::lazy(
+        v::factory(
             fn($input) => v::key('subdivisionCode', v::subdivisionCode($input['countyCode'])),
         ),
     )->assert(['countyCode' => 'BR', 'subdivisionCode' => 'CA']),
