@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
+use Respect\StringFormatter\Formatter;
 use Respect\Validation\Validator;
 
 interface NotChain
@@ -135,6 +136,8 @@ interface NotChain
     public function notFloatType(): Chain;
 
     public function notFloatVal(): Chain;
+
+    public function notFormatted(Formatter $formatter, Validator $validator): Chain;
 
     public function notGraph(string ...$additionalChars): Chain;
 

@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
+use Respect\StringFormatter\Formatter;
 use Respect\Validation\Validator;
 
 interface PropertyChain
@@ -133,6 +134,8 @@ interface PropertyChain
     public function propertyFloatType(string $propertyName): Chain;
 
     public function propertyFloatVal(string $propertyName): Chain;
+
+    public function propertyFormatted(string $propertyName, Formatter $formatter, Validator $validator): Chain;
 
     public function propertyGraph(string $propertyName, string ...$additionalChars): Chain;
 

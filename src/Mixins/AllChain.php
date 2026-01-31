@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
+use Respect\StringFormatter\Formatter;
 use Respect\Validation\Validator;
 
 interface AllChain
@@ -131,6 +132,8 @@ interface AllChain
     public function allFloatType(): Chain;
 
     public function allFloatVal(): Chain;
+
+    public function allFormatted(Formatter $formatter, Validator $validator): Chain;
 
     public function allGraph(string ...$additionalChars): Chain;
 

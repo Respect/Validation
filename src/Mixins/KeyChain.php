@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
+use Respect\StringFormatter\Formatter;
 use Respect\Validation\Validator;
 
 interface KeyChain
@@ -133,6 +134,8 @@ interface KeyChain
     public function keyFloatType(int|string $key): Chain;
 
     public function keyFloatVal(int|string $key): Chain;
+
+    public function keyFormatted(int|string $key, Formatter $formatter, Validator $validator): Chain;
 
     public function keyGraph(int|string $key, string ...$additionalChars): Chain;
 
