@@ -14,11 +14,14 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
+use DI;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Ramsey\Uuid\Uuid as RamseyUuid;
+use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
+use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Test\RuleTestCase;
 use stdClass;
 
@@ -65,6 +68,24 @@ final class UuidTest extends RuleTestCase
         self::expectExceptionMessage('Only versions 1 to 8 are supported: ' . $version . ' given');
 
         new Uuid($version);
+    }
+
+    #[Test]
+    public function shouldThrowWhenMissingComponent(): void
+    {
+        $mainContainer = ContainerRegistry::getContainer();
+        ContainerRegistry::setContainer((new DI\ContainerBuilder())->useAutowiring(false)->build());
+        try {
+            new Uuid();
+            $this->fail('Expected MissingComposerDependencyException was not thrown.');
+        } catch (MissingComposerDependencyException $e) {
+            $this->assertStringContainsString(
+                'Uuid rule requires ramsey/uuid package',
+                $e->getMessage(),
+            );
+        } finally {
+            ContainerRegistry::setContainer($mainContainer);
+        }
     }
 
     /** @return iterable<array{Uuid, mixed}> */
