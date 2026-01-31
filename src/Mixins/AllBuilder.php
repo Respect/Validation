@@ -48,7 +48,8 @@ interface AllBuilder
 
     public static function allBsn(): Chain;
 
-    public static function allCall(callable $callable, Validator $validator): Chain;
+    /** @param callable $callable */
+    public static function allCall(callable|array|string $callable, Validator $validator): Chain;
 
     public static function allCallableType(): Chain;
 

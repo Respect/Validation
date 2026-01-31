@@ -50,7 +50,8 @@ interface KeyBuilder
 
     public static function keyBsn(int|string $key): Chain;
 
-    public static function keyCall(int|string $key, callable $callable, Validator $validator): Chain;
+    /** @param callable $callable */
+    public static function keyCall(int|string $key, callable|array|string $callable, Validator $validator): Chain;
 
     public static function keyCallableType(int|string $key): Chain;
 

@@ -50,7 +50,8 @@ interface PropertyChain
 
     public function propertyBsn(string $propertyName): Chain;
 
-    public function propertyCall(string $propertyName, callable $callable, Validator $validator): Chain;
+    /** @param callable $callable */
+    public function propertyCall(string $propertyName, callable|array|string $callable, Validator $validator): Chain;
 
     public function propertyCallableType(string $propertyName): Chain;
 

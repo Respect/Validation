@@ -48,7 +48,8 @@ interface AllChain
 
     public function allBsn(): Chain;
 
-    public function allCall(callable $callable, Validator $validator): Chain;
+    /** @param callable $callable */
+    public function allCall(callable|array|string $callable, Validator $validator): Chain;
 
     public function allCallableType(): Chain;
 

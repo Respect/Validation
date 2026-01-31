@@ -331,6 +331,14 @@ _strict typing_.
 
 For more information, refer to [case-sensitiveness.md](case-sensitiveness.md)
 
+##### `Url` now validates domains, IP addresses and domains when appropriate.
+
+ - `news` scheme is now unsupported. Consult the validator documentation for
+   the list of supported schemes.
+ - `mailto` URLs now are also validated with the `Email` validator.
+ - Supported schemes now validate using `Ip` and `Domain` when appropriate.
+
+
 ##### New package dependencies
 
 Some validators now require additional packages:

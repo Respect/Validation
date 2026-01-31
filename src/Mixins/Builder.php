@@ -53,7 +53,8 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function bsn(): Chain;
 
-    public static function call(callable $callable, Validator $validator): Chain;
+    /** @param callable $callable */
+    public static function call(callable|array|string $callable, Validator $validator): Chain;
 
     public static function callableType(): Chain;
 
