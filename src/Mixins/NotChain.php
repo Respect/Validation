@@ -138,6 +138,8 @@ interface NotChain
 
     public function notFormat(Formatter $formatter): Chain;
 
+    public function notFormatted(Formatter $formatter, Validator $validator): Chain;
+
     public function notGraph(string ...$additionalChars): Chain;
 
     public function notGreaterThan(mixed $compareTo): Chain;

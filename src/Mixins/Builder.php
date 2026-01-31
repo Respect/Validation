@@ -141,6 +141,8 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function format(Formatter $formatter): Chain;
 
+    public static function formatted(Formatter $formatter, Validator $validator): Chain;
+
     public static function graph(string ...$additionalChars): Chain;
 
     public static function greaterThan(mixed $compareTo): Chain;

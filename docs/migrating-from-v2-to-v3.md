@@ -585,6 +585,7 @@ Version 3.0 introduces several new validators:
 | `BetweenExclusive` | Validates that a value is between two bounds (exclusive)   |
 | `ContainsCount`    | Validates the count of occurrences in a value              |
 | `DateTimeDiff`     | Validates date/time differences (replaces Age validators)  |
+| `Formatted`        | Formats input values in error messages                     |
 | `ShortCircuit`     | Stops at first failure instead of collecting all errors    |
 | `Hetu`             | Validates Finnish personal identity codes (henkilötunnus)  |
 | `KeyExists`        | Checks if an array key exists                              |
@@ -657,6 +658,20 @@ Validates date/time differences. Replaces the removed `Age`, `MinAge`, and `MaxA
 ```php
 v::dateTimeDiff('years', v::greaterThanOrEqual(18))->assert('2000-01-01'); // passes if 18+ years ago
 v::dateTimeDiff('days', v::lessThan(30))->assert('2024-01-15'); // passes if less than 30 days ago
+```
+
+#### Formatted
+
+Decorates a validator to format input values in error messages while still validating the original input:
+
+```php
+use Respect\StringFormatter\FormatterBuilder as f;
+
+v::formatted(f::mask('1-4'), v::email())->assert('not an email');
+// → "****an email" must be an email address
+
+v::formatted(f::pattern('#### #### #### ####'), v::creditCard())->assert('1234123412341234');
+// → "1234 1234 1234 1234" must be a credit card number
 ```
 
 #### ShortCircuit

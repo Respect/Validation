@@ -111,6 +111,7 @@ final class LintMixinCommand extends Command
         'PropertyExists',
         'PropertyOptional',
         'Attributes',
+        'Formatted',
         'Templated',
         'Named',
     ];
