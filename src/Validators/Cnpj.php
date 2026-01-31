@@ -24,8 +24,10 @@ use function array_map;
 use function array_sum;
 use function count;
 use function is_scalar;
+use function ord;
 use function preg_replace;
 use function str_split;
+use function strtoupper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
@@ -34,6 +36,8 @@ use function str_split;
 )]
 final class Cnpj extends Simple
 {
+    private const int BASE_ASCII = 48;
+
     public function isValid(mixed $input): bool
     {
         if (!is_scalar($input)) {
@@ -42,7 +46,8 @@ final class Cnpj extends Simple
 
         // Code ported from jsfromhell.com
         $bases = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-        $digits = $this->getDigits((string) $input);
+        $chars = $this->getChars((string) $input);
+        $digits = $this->transformToAscii($chars);
 
         if (array_sum($digits) < 1) {
             return false;
@@ -71,14 +76,22 @@ final class Cnpj extends Simple
         return $digits[13] == $check;
     }
 
-    /** @return int[] */
-    private function getDigits(string $input): array
+    /** @return string[] */
+    private function getChars(string $input): array
+    {
+        return str_split((string) preg_replace('/[\W_]/', '', strtoupper($input)));
+    }
+
+    /**
+     * @param array<string> $input
+     *
+     * @return int[]
+     */
+    private function transformToAscii(array $input): array
     {
         return array_map(
-            'intval',
-            str_split(
-                (string) preg_replace('/\D/', '', $input),
-            ),
+            static fn(string $character) => ord($character) - self::BASE_ASCII,
+            $input,
         );
     }
 }
