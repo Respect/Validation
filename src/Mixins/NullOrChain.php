@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface NullOrChain
 {
+    public function nullOrAfter(callable $callable, Validator $validator): Chain;
+
     public function nullOrAll(Validator $validator): Chain;
 
     public function nullOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -50,11 +52,7 @@ interface NullOrChain
 
     public function nullOrBsn(): Chain;
 
-    public function nullOrCall(callable $callable, Validator $validator): Chain;
-
     public function nullOrCallableType(): Chain;
-
-    public function nullOrCallback(callable $callback, mixed ...$arguments): Chain;
 
     public function nullOrCharset(string $charset, string ...$charsets): Chain;
 
@@ -124,6 +122,9 @@ interface NullOrChain
 
     public function nullOrFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function nullOrFactory(callable $factory): Chain;
+
     public function nullOrFalseVal(): Chain;
 
     public function nullOrFalsy(): Chain;
@@ -185,9 +186,6 @@ interface NullOrChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function nullOrLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function nullOrLazy(callable $validatorCreator): Chain;
 
     public function nullOrLeapDate(string $format): Chain;
 
@@ -272,6 +270,8 @@ interface NullOrChain
     public function nullOrResourceType(): Chain;
 
     public function nullOrRoman(): Chain;
+
+    public function nullOrSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public function nullOrScalarVal(): Chain;
 

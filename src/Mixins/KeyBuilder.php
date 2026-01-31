@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface KeyBuilder
 {
+    public static function keyAfter(int|string $key, callable $callable, Validator $validator): Chain;
+
     public static function keyAll(int|string $key, Validator $validator): Chain;
 
     public static function keyAllOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -50,11 +52,7 @@ interface KeyBuilder
 
     public static function keyBsn(int|string $key): Chain;
 
-    public static function keyCall(int|string $key, callable $callable, Validator $validator): Chain;
-
     public static function keyCallableType(int|string $key): Chain;
-
-    public static function keyCallback(int|string $key, callable $callback, mixed ...$arguments): Chain;
 
     public static function keyCharset(int|string $key, string $charset, string ...$charsets): Chain;
 
@@ -122,6 +120,9 @@ interface KeyBuilder
 
     public static function keyFactor(int|string $key, int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public static function keyFactory(int|string $key, callable $factory): Chain;
+
     public static function keyFalseVal(int|string $key): Chain;
 
     public static function keyFalsy(int|string $key): Chain;
@@ -175,9 +176,6 @@ interface KeyBuilder
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function keyLanguageCode(int|string $key, string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public static function keyLazy(int|string $key, callable $validatorCreator): Chain;
 
     public static function keyLeapDate(int|string $key, string $format): Chain;
 
@@ -256,6 +254,8 @@ interface KeyBuilder
     public static function keyResourceType(int|string $key): Chain;
 
     public static function keyRoman(int|string $key): Chain;
+
+    public static function keySatisfies(int|string $key, callable $callback, mixed ...$arguments): Chain;
 
     public static function keyScalarVal(int|string $key): Chain;
 

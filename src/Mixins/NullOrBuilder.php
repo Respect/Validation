@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface NullOrBuilder
 {
+    public static function nullOrAfter(callable $callable, Validator $validator): Chain;
+
     public static function nullOrAll(Validator $validator): Chain;
 
     public static function nullOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -50,11 +52,7 @@ interface NullOrBuilder
 
     public static function nullOrBsn(): Chain;
 
-    public static function nullOrCall(callable $callable, Validator $validator): Chain;
-
     public static function nullOrCallableType(): Chain;
-
-    public static function nullOrCallback(callable $callback, mixed ...$arguments): Chain;
 
     public static function nullOrCharset(string $charset, string ...$charsets): Chain;
 
@@ -124,6 +122,9 @@ interface NullOrBuilder
 
     public static function nullOrFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public static function nullOrFactory(callable $factory): Chain;
+
     public static function nullOrFalseVal(): Chain;
 
     public static function nullOrFalsy(): Chain;
@@ -185,9 +186,6 @@ interface NullOrBuilder
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function nullOrLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public static function nullOrLazy(callable $validatorCreator): Chain;
 
     public static function nullOrLeapDate(string $format): Chain;
 
@@ -272,6 +270,8 @@ interface NullOrBuilder
     public static function nullOrResourceType(): Chain;
 
     public static function nullOrRoman(): Chain;
+
+    public static function nullOrSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function nullOrScalarVal(): Chain;
 

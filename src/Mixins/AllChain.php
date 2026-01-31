@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface AllChain
 {
+    public function allAfter(callable $callable, Validator $validator): Chain;
+
     public function allAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public function allAlnum(string ...$additionalChars): Chain;
@@ -48,11 +50,7 @@ interface AllChain
 
     public function allBsn(): Chain;
 
-    public function allCall(callable $callable, Validator $validator): Chain;
-
     public function allCallableType(): Chain;
-
-    public function allCallback(callable $callback, mixed ...$arguments): Chain;
 
     public function allCharset(string $charset, string ...$charsets): Chain;
 
@@ -120,6 +118,9 @@ interface AllChain
 
     public function allFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function allFactory(callable $factory): Chain;
+
     public function allFalseVal(): Chain;
 
     public function allFalsy(): Chain;
@@ -173,9 +174,6 @@ interface AllChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function allLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function allLazy(callable $validatorCreator): Chain;
 
     public function allLeapDate(string $format): Chain;
 
@@ -254,6 +252,8 @@ interface AllChain
     public function allResourceType(): Chain;
 
     public function allRoman(): Chain;
+
+    public function allSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public function allScalarVal(): Chain;
 

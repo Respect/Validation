@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface NotChain
 {
+    public function notAfter(callable $callable, Validator $validator): Chain;
+
     public function notAll(Validator $validator): Chain;
 
     public function notAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -50,11 +52,7 @@ interface NotChain
 
     public function notBsn(): Chain;
 
-    public function notCall(callable $callable, Validator $validator): Chain;
-
     public function notCallableType(): Chain;
-
-    public function notCallback(callable $callback, mixed ...$arguments): Chain;
 
     public function notCharset(string $charset, string ...$charsets): Chain;
 
@@ -124,6 +122,9 @@ interface NotChain
 
     public function notFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function notFactory(callable $factory): Chain;
+
     public function notFalseVal(): Chain;
 
     public function notFalsy(): Chain;
@@ -185,9 +186,6 @@ interface NotChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function notLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function notLazy(callable $validatorCreator): Chain;
 
     public function notLeapDate(string $format): Chain;
 
@@ -270,6 +268,8 @@ interface NotChain
     public function notResourceType(): Chain;
 
     public function notRoman(): Chain;
+
+    public function notSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public function notScalarVal(): Chain;
 

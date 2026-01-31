@@ -17,6 +17,8 @@ use Respect\Validation\Validator;
 
 interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, MinBuilder, NotBuilder, NullOrBuilder, PropertyBuilder, UndefOrBuilder
 {
+    public static function after(callable $callable, Validator $validator): Chain;
+
     public static function all(Validator $validator): Chain;
 
     public static function allOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -53,11 +55,7 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function bsn(): Chain;
 
-    public static function call(callable $callable, Validator $validator): Chain;
-
     public static function callableType(): Chain;
-
-    public static function callback(callable $callback, mixed ...$arguments): Chain;
 
     public static function charset(string $charset, string ...$charsets): Chain;
 
@@ -127,6 +125,9 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function factor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public static function factory(callable $factory): Chain;
+
     public static function falseVal(): Chain;
 
     public static function falsy(): Chain;
@@ -188,9 +189,6 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function languageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public static function lazy(callable $validatorCreator): Chain;
 
     public static function leapDate(string $format): Chain;
 
@@ -279,6 +277,8 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
     public static function resourceType(): Chain;
 
     public static function roman(): Chain;
+
+    public static function satisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function scalarVal(): Chain;
 

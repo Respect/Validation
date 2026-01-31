@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface PropertyChain
 {
+    public function propertyAfter(string $propertyName, callable $callable, Validator $validator): Chain;
+
     public function propertyAll(string $propertyName, Validator $validator): Chain;
 
     public function propertyAllOf(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -50,11 +52,7 @@ interface PropertyChain
 
     public function propertyBsn(string $propertyName): Chain;
 
-    public function propertyCall(string $propertyName, callable $callable, Validator $validator): Chain;
-
     public function propertyCallableType(string $propertyName): Chain;
-
-    public function propertyCallback(string $propertyName, callable $callback, mixed ...$arguments): Chain;
 
     public function propertyCharset(string $propertyName, string $charset, string ...$charsets): Chain;
 
@@ -122,6 +120,9 @@ interface PropertyChain
 
     public function propertyFactor(string $propertyName, int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function propertyFactory(string $propertyName, callable $factory): Chain;
+
     public function propertyFalseVal(string $propertyName): Chain;
 
     public function propertyFalsy(string $propertyName): Chain;
@@ -175,9 +176,6 @@ interface PropertyChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function propertyLanguageCode(string $propertyName, string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function propertyLazy(string $propertyName, callable $validatorCreator): Chain;
 
     public function propertyLeapDate(string $propertyName, string $format): Chain;
 
@@ -256,6 +254,8 @@ interface PropertyChain
     public function propertyResourceType(string $propertyName): Chain;
 
     public function propertyRoman(string $propertyName): Chain;
+
+    public function propertySatisfies(string $propertyName, callable $callback, mixed ...$arguments): Chain;
 
     public function propertyScalarVal(string $propertyName): Chain;
 

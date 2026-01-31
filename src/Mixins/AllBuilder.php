@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface AllBuilder
 {
+    public static function allAfter(callable $callable, Validator $validator): Chain;
+
     public static function allAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allAlnum(string ...$additionalChars): Chain;
@@ -48,11 +50,7 @@ interface AllBuilder
 
     public static function allBsn(): Chain;
 
-    public static function allCall(callable $callable, Validator $validator): Chain;
-
     public static function allCallableType(): Chain;
-
-    public static function allCallback(callable $callback, mixed ...$arguments): Chain;
 
     public static function allCharset(string $charset, string ...$charsets): Chain;
 
@@ -120,6 +118,9 @@ interface AllBuilder
 
     public static function allFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public static function allFactory(callable $factory): Chain;
+
     public static function allFalseVal(): Chain;
 
     public static function allFalsy(): Chain;
@@ -173,9 +174,6 @@ interface AllBuilder
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function allLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public static function allLazy(callable $validatorCreator): Chain;
 
     public static function allLeapDate(string $format): Chain;
 
@@ -254,6 +252,8 @@ interface AllBuilder
     public static function allResourceType(): Chain;
 
     public static function allRoman(): Chain;
+
+    public static function allSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function allScalarVal(): Chain;
 

@@ -19,6 +19,8 @@ use Respect\Validation\ValidatorBuilder;
 /** @mixin ValidatorBuilder */
 interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, MinChain, NotChain, NullOrChain, PropertyChain, UndefOrChain
 {
+    public function after(callable $callable, Validator $validator): Chain;
+
     public function all(Validator $validator): Chain;
 
     public function allOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -55,11 +57,7 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function bsn(): Chain;
 
-    public function call(callable $callable, Validator $validator): Chain;
-
     public function callableType(): Chain;
-
-    public function callback(callable $callback, mixed ...$arguments): Chain;
 
     public function charset(string $charset, string ...$charsets): Chain;
 
@@ -129,6 +127,9 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function factor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function factory(callable $factory): Chain;
+
     public function falseVal(): Chain;
 
     public function falsy(): Chain;
@@ -190,9 +191,6 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function languageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function lazy(callable $validatorCreator): Chain;
 
     public function leapDate(string $format): Chain;
 
@@ -281,6 +279,8 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
     public function resourceType(): Chain;
 
     public function roman(): Chain;
+
+    public function satisfies(callable $callback, mixed ...$arguments): Chain;
 
     public function scalarVal(): Chain;
 

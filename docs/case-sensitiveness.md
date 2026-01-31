@@ -11,23 +11,23 @@ case normalization before comparison.
 For strings:
 
 ```php
-v::call(strtolower(...), v::contains('cde'))->assert('ABCDEF');
+v::after(strtolower(...), v::contains('cde'))->assert('ABCDEF');
 // Validation passes successfully
 
-v::call(strtolower(...), v::contains('xxx'))->assert('ABCDEF');
+v::after(strtolower(...), v::contains('xxx'))->assert('ABCDEF');
 // → "abcdef" must contain "xxx"
 ```
 
 For arrays:
 
 ```php
-v::call(
+v::after(
     static fn ($i) => array_map(strtolower(...), $i),
     v::contains('abc')
 )->assert(['ABC', 'DEF']);
 // Validation passes successfully
 
-v::call(
+v::after(
     static fn ($i) => array_map(strtolower(...), $i),
     v::contains('xxx')
 )->assert(['ABC', 'DEF']);

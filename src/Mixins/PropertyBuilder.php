@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface PropertyBuilder
 {
+    public static function propertyAfter(string $propertyName, callable $callable, Validator $validator): Chain;
+
     public static function propertyAll(string $propertyName, Validator $validator): Chain;
 
     public static function propertyAllOf(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -50,11 +52,7 @@ interface PropertyBuilder
 
     public static function propertyBsn(string $propertyName): Chain;
 
-    public static function propertyCall(string $propertyName, callable $callable, Validator $validator): Chain;
-
     public static function propertyCallableType(string $propertyName): Chain;
-
-    public static function propertyCallback(string $propertyName, callable $callback, mixed ...$arguments): Chain;
 
     public static function propertyCharset(string $propertyName, string $charset, string ...$charsets): Chain;
 
@@ -122,6 +120,9 @@ interface PropertyBuilder
 
     public static function propertyFactor(string $propertyName, int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public static function propertyFactory(string $propertyName, callable $factory): Chain;
+
     public static function propertyFalseVal(string $propertyName): Chain;
 
     public static function propertyFalsy(string $propertyName): Chain;
@@ -175,9 +176,6 @@ interface PropertyBuilder
 
     /** @param "alpha-2"|"alpha-3" $set */
     public static function propertyLanguageCode(string $propertyName, string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public static function propertyLazy(string $propertyName, callable $validatorCreator): Chain;
 
     public static function propertyLeapDate(string $propertyName, string $format): Chain;
 
@@ -256,6 +254,8 @@ interface PropertyBuilder
     public static function propertyResourceType(string $propertyName): Chain;
 
     public static function propertyRoman(string $propertyName): Chain;
+
+    public static function propertySatisfies(string $propertyName, callable $callback, mixed ...$arguments): Chain;
 
     public static function propertyScalarVal(string $propertyName): Chain;
 

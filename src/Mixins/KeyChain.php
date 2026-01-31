@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface KeyChain
 {
+    public function keyAfter(int|string $key, callable $callable, Validator $validator): Chain;
+
     public function keyAll(int|string $key, Validator $validator): Chain;
 
     public function keyAllOf(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -50,11 +52,7 @@ interface KeyChain
 
     public function keyBsn(int|string $key): Chain;
 
-    public function keyCall(int|string $key, callable $callable, Validator $validator): Chain;
-
     public function keyCallableType(int|string $key): Chain;
-
-    public function keyCallback(int|string $key, callable $callback, mixed ...$arguments): Chain;
 
     public function keyCharset(int|string $key, string $charset, string ...$charsets): Chain;
 
@@ -122,6 +120,9 @@ interface KeyChain
 
     public function keyFactor(int|string $key, int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function keyFactory(int|string $key, callable $factory): Chain;
+
     public function keyFalseVal(int|string $key): Chain;
 
     public function keyFalsy(int|string $key): Chain;
@@ -175,9 +176,6 @@ interface KeyChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function keyLanguageCode(int|string $key, string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function keyLazy(int|string $key, callable $validatorCreator): Chain;
 
     public function keyLeapDate(int|string $key, string $format): Chain;
 
@@ -256,6 +254,8 @@ interface KeyChain
     public function keyResourceType(int|string $key): Chain;
 
     public function keyRoman(int|string $key): Chain;
+
+    public function keySatisfies(int|string $key, callable $callback, mixed ...$arguments): Chain;
 
     public function keyScalarVal(int|string $key): Chain;
 

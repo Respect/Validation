@@ -158,31 +158,31 @@ These validators have been replaced by `DateTimeDiff`, which provides more flexi
 
 ##### `PrimeNumber`, `Fibonacci`, `PerfectSquare`
 
-Combine `Callback` with a mathematical library of your choice:
+Combine `Satisfies` with a mathematical library of your choice:
 
 ```diff
 - v::primeNumber()->assert(7);
-+ v::callback(static fn ($input) => \MathPHP\NumberTheory\Integer::isPrime($input))->assert(7);
++ v::satisfies(static fn ($input) => \MathPHP\NumberTheory\Integer::isPrime($input))->assert(7);
 ```
 
 See: https://github.com/markrogoyski/math-php
 
 ##### `FilterVar`
 
-Use `Callback` instead:
+Use `Satisfies` instead:
 
 ```diff
 - v::filterVar(FILTER_VALIDATE_INT)->assert(123);
-+ v::callback(static fn($input) => filter_var($input, FILTER_VALIDATE_INT) !== false)->assert(123);
++ v::satisfies(static fn($input) => filter_var($input, FILTER_VALIDATE_INT) !== false)->assert(123);
 ```
 
 ##### `Uploaded`
 
-Use `Callback` instead:
+Use `Satisfies` instead:
 
 ```diff
 - v::uploaded()->assert($fileName);
-+ v::callback('is_uploaded_file')->assert($fileName);
++ v::satisfies('is_uploaded_file')->assert($fileName);
 ```
 
 ##### `VideoUrl`
@@ -300,14 +300,14 @@ v::each(v::alwaysValid())->isValid(new stdClass()); // false
 `Call` now does not handle PHP errors inside the callback you provided.
 
 ```php
-v::call('strtolower', v::equals('foo'))->assert(123); // Error bubbles out
+v::after('strtolower', v::equals('foo'))->assert(123); // Error bubbles out
 ```
 
 You can use anonymous functions to handle errors or perform type conversions
 instead:
 
 ```php
-v::call(static fn ($i) => strtolower((string) $i), v::equals('123'));
+v::after(static fn ($i) => strtolower((string) $i), v::equals('123'));
 ```
 
 ##### `Contains`, `ContainsAny`, `In`, `EndsWith` and `StartsWith` strict by default.
@@ -355,7 +355,7 @@ composer require ramsey/uuid
 | `Max`      | `LessThanOrEqual`    | Clearer comparison semantics              |
 | `Nullable` | `NullOr`             | Consistent naming pattern                 |
 | `Optional` | `UndefOr`            | Validates if value is undefined or passes |
-| `KeyValue` | `Lazy`               | Deferred validator creation               |
+| `KeyValue` | `Factory`            | Deferred validator creation               |
 
 ```diff
 - v::min(18)->assert($age);
@@ -373,11 +373,10 @@ composer require ramsey/uuid
 
 In 3.0, `Min` and `Max` validators exist but have different semantics. They extract the minimum/maximum value from a collection and validate it (see [Result composition](#result-composition)).
 
-
-| Validator  | 2.x             | 3.x                                           |
-| ---------- | --------------- | --------------------------------------------- |
-| `Min`      | Single value >= | Pick minimum value from iterable and validate |
-| `Max`      | Single value <= | Pick minimum value from iterable and validate |
+| Validator | 2.x             | 3.x                                           |
+| --------- | --------------- | --------------------------------------------- |
+| `Min`     | Single value >= | Pick minimum value from iterable and validate |
+| `Max`     | Single value <= | Pick minimum value from iterable and validate |
 
 ##### `NotBlank` logic inverted
 
@@ -578,7 +577,7 @@ Version 3.0 introduces several new validators:
 | `Hetu`             | Validates Finnish personal identity codes (henkilötunnus)  |
 | `KeyExists`        | Checks if an array key exists                              |
 | `KeyOptional`      | Validates an array key only if it exists                   |
-| `Lazy`             | Creates validators dynamically based on input              |
+| `Factory`          | Creates validators dynamically based on input              |
 | `Masked`           | Masks sensitive input values in error messages             |
 | `Named`            | Customizes the subject name in error messages              |
 | `PropertyExists`   | Checks if an object property exists                        |
@@ -637,7 +636,7 @@ Validates input against a series of validators, stopping at the first failure. U
 ```php
 $validator = v::circuit(
     v::key('countryCode', v::countryCode()),
-    v::lazy(
+    v::factory(
         fn($input) => v::key(
             'subdivisionCode',
             v::subdivisionCode($input['countryCode'])
@@ -695,13 +694,13 @@ v::keyOptional('phone', v::phone())->assert(['phone' => '+1234567890']); // pass
 v::keyOptional('phone', v::phone())->assert(['phone' => 'invalid']); // fails
 ```
 
-#### Lazy
+#### Factory
 
 Creates validators dynamically based on the input, useful for cross-field validation:
 
 ```php
 // Validate that 'confirmation' matches 'password'
-v::lazy(
+v::factory(
     fn($input) => v::key('confirmation', v::equals($input['password'] ?? null))
 )->assert(['password' => 'secret', 'confirmation' => 'secret']); // passes
 ```

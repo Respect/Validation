@@ -20,8 +20,8 @@ v::each(v::dateTime())->assert($releaseDates);
 // Validation passes successfully
 ```
 
-This validator is similar to [All](All.md), but while `All` displays a single message 
-generic to all failed entries, `Each` will display a message for each failed 
+This validator is similar to [All](All.md), but while `All` displays a single message
+generic to all failed entries, `Each` will display a message for each failed
 entry instead.
 
 ```php
@@ -36,10 +36,10 @@ v::named('Release Dates', v::each(v::startsWith('2010')))->assert($releaseDates)
 // →   - `.relational` must start with "2010"
 ```
 
-You can also validate array keys combining this validator with [Call](Call.md):
+You can also validate array keys combining this validator with [After](After.md):
 
 ```php
-v::call('array_keys', v::each(v::stringType()))->assert($releaseDates);
+v::after('array_keys', v::each(v::stringType()))->assert($releaseDates);
 // Validation passes successfully
 ```
 
@@ -86,9 +86,9 @@ v::length(v::greaterThan(0))->each(v::equals(10))->assert([]);
 
 ## See Also
 
+- [After](After.md)
 - [All](All.md)
 - [ArrayVal](ArrayVal.md)
-- [Call](Call.md)
 - [Falsy](Falsy.md)
 - [IterableType](IterableType.md)
 - [IterableVal](IterableVal.md)

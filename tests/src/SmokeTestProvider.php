@@ -23,6 +23,7 @@ trait SmokeTestProvider
 {
     public static function provideValidatorInput(): Generator
     {
+        yield 'After' => [new vs\After('array_keys', new vs\Each(new vs\StringType())), ['a' => 'b']];
         yield 'All' => [new vs\All(new vs\IntVal()), [1, 2, 3]];
         yield 'AllOf' => [new vs\AllOf(new vs\IntVal(), new vs\GreaterThan(0)), 5];
         yield 'Alnum' => [new vs\Alnum(), 'abc123'];
@@ -41,9 +42,7 @@ trait SmokeTestProvider
         yield 'BoolType' => [new vs\BoolType(), true];
         yield 'BoolVal' => [new vs\BoolVal(), true];
         yield 'Bsn' => [new vs\Bsn(), '612890053'];
-        yield 'Call' => [new vs\Call('array_keys', new vs\Each(new vs\StringType())), ['a' => 'b']];
         yield 'CallableType' => [new vs\CallableType(), [static::class, 'callableTarget']];
-        yield 'Callback' => [new vs\Callback('is_string'), 'valid'];
         yield 'Charset' => [new vs\Charset('UTF-8'), 'example'];
         yield 'Circuit' => [new vs\Circuit(new vs\IntVal(), new vs\GreaterThan(0)), 5];
         yield 'Cnh' => [new vs\Cnh(), '02650306461'];
@@ -106,7 +105,7 @@ trait SmokeTestProvider
         yield 'KeyOptional' => [new vs\KeyOptional('missing', new vs\StringType()), ['name' => 'value']];
         yield 'KeySet' => [new vs\KeySet(new vs\Key('name', new vs\StringType())), ['name' => 'value']];
         yield 'LanguageCode' => [new vs\LanguageCode(), 'en'];
-        yield 'Lazy' => [new vs\Lazy([static::class, 'callableLazy']), 123];
+        yield 'Factory' => [new vs\Factory([static::class, 'callableFactory']), 123];
         yield 'LeapDate' => [new vs\LeapDate('Y-m-d'), '2020-02-29'];
         yield 'LeapYear' => [new vs\LeapYear(), 2020];
         yield 'Length' => [new vs\Length(new vs\Equals(4)), 'abcd'];
@@ -151,6 +150,7 @@ trait SmokeTestProvider
         yield 'Regex' => [new vs\Regex('/^[a-z]+$/'), 'abc'];
         yield 'ResourceType' => [new vs\ResourceType(), fopen('php://temp', 'r')];
         yield 'Roman' => [new vs\Roman(), 'XIV'];
+        yield 'Satisfies' => [new vs\Satisfies('is_string'), 'valid'];
         yield 'ScalarVal' => [new vs\ScalarVal(), 'example'];
         yield 'Size' => [new vs\Size('KB', new vs\Between(1, 1000)), 'tests/fixtures/valid-image.png'];
         yield 'Slug' => [new vs\Slug(), 'a-valid-slug'];
@@ -185,7 +185,7 @@ trait SmokeTestProvider
         return true;
     }
 
-    public static function callableLazy(): Validator
+    public static function callableFactory(): Validator
     {
         return new vs\IntVal();
     }

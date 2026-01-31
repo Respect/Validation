@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface UndefOrChain
 {
+    public function undefOrAfter(callable $callable, Validator $validator): Chain;
+
     public function undefOrAll(Validator $validator): Chain;
 
     public function undefOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -48,11 +50,7 @@ interface UndefOrChain
 
     public function undefOrBsn(): Chain;
 
-    public function undefOrCall(callable $callable, Validator $validator): Chain;
-
     public function undefOrCallableType(): Chain;
-
-    public function undefOrCallback(callable $callback, mixed ...$arguments): Chain;
 
     public function undefOrCharset(string $charset, string ...$charsets): Chain;
 
@@ -122,6 +120,9 @@ interface UndefOrChain
 
     public function undefOrFactor(int $dividend): Chain;
 
+    /** @param callable(mixed): Validator $factory */
+    public function undefOrFactory(callable $factory): Chain;
+
     public function undefOrFalseVal(): Chain;
 
     public function undefOrFalsy(): Chain;
@@ -183,9 +184,6 @@ interface UndefOrChain
 
     /** @param "alpha-2"|"alpha-3" $set */
     public function undefOrLanguageCode(string $set = 'alpha-2'): Chain;
-
-    /** @param callable(mixed): Validator $validatorCreator */
-    public function undefOrLazy(callable $validatorCreator): Chain;
 
     public function undefOrLeapDate(string $format): Chain;
 
@@ -270,6 +268,8 @@ interface UndefOrChain
     public function undefOrResourceType(): Chain;
 
     public function undefOrRoman(): Chain;
+
+    public function undefOrSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public function undefOrScalarVal(): Chain;
 

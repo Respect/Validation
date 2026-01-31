@@ -13,7 +13,7 @@ In this page you will find a list of validators by their category.
 
 **Booleans**: [AlwaysInvalid][] - [AlwaysValid][] - [BoolType][] - [BoolVal][] - [FalseVal][] - [TrueVal][]
 
-**Callables**: [Call][] - [CallableType][] - [Callback][] - [Lazy][]
+**Callables**: [After][] - [CallableType][] - [Factory][] - [Satisfies][]
 
 **Comparisons**: [All][] - [Between][] - [BetweenExclusive][] - [Equals][] - [Equivalent][] - [GreaterThan][] - [GreaterThanOrEqual][] - [Identical][] - [In][] - [Length][] - [LessThan][] - [LessThanOrEqual][] - [Max][] - [Min][]
 
@@ -41,7 +41,7 @@ In this page you will find a list of validators by their category.
 
 **Miscellaneous**: [Blank][] - [Falsy][] - [Masked][] - [Named][] - [Templated][] - [Undef][]
 
-**Nesting**: [AllOf][] - [AnyOf][] - [Call][] - [Circuit][] - [Each][] - [Key][] - [KeySet][] - [Lazy][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
+**Nesting**: [After][] - [AllOf][] - [AnyOf][] - [Circuit][] - [Each][] - [Factory][] - [Key][] - [KeySet][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
 
 **Numbers**: [Base][] - [Decimal][] - [Digit][] - [Even][] - [Factor][] - [Finite][] - [FloatType][] - [FloatVal][] - [Infinite][] - [IntType][] - [IntVal][] - [Multiple][] - [Negative][] - [Number][] - [NumericVal][] - [Odd][] - [Positive][] - [Roman][]
 
@@ -51,12 +51,13 @@ In this page you will find a list of validators by their category.
 
 **Structures**: [Attributes][] - [Key][] - [KeyExists][] - [KeyOptional][] - [KeySet][] - [Property][] - [PropertyExists][] - [PropertyOptional][]
 
-**Transformations**: [All][] - [Call][] - [Each][] - [Length][] - [Max][] - [Min][] - [Size][]
+**Transformations**: [After][] - [All][] - [Each][] - [Length][] - [Max][] - [Min][] - [Size][]
 
 **Types**: [ArrayType][] - [ArrayVal][] - [BoolType][] - [BoolVal][] - [CallableType][] - [Countable][] - [FloatType][] - [FloatVal][] - [IntType][] - [IntVal][] - [IterableType][] - [IterableVal][] - [NullType][] - [NumericVal][] - [ObjectType][] - [ResourceType][] - [ScalarVal][] - [StringType][] - [StringVal][]
 
 ## Alphabetically
 
+- [After][] - `v::after(str_split(...), v::arrayType()->lengthEquals(5))->assert('world');`
 - [All][] - `v::all(v::dateTime())->assert($releaseDates);`
 - [AllOf][] - `v::allOf(v::intVal(), v::positive())->assert(15);`
 - [Alnum][] - `v::alnum(' ')->assert('foo 123');`
@@ -75,9 +76,7 @@ In this page you will find a list of validators by their category.
 - [BoolType][] - `v::boolType()->assert(true);`
 - [BoolVal][] - `v::boolVal()->assert('on');`
 - [Bsn][] - `v::bsn()->assert('612890053');`
-- [Call][] - `v::call(str_split(...), v::arrayType()->lengthEquals(5))->assert('world');`
 - [CallableType][] - `v::callableType()->assert(function () {});`
-- [Callback][] - `v::callback(fn (int $input): bool => $input % 5 === 0,)->assert(10);`
 - [Charset][] - `v::charset('ASCII')->assert('sugar');`
 - [Circuit][] - `v::circuit(v::intVal(), v::floatVal())->assert(15);`
 - [Cnh][] - `v::cnh()->assert('02650306461');`
@@ -110,6 +109,7 @@ In this page you will find a list of validators by their category.
 - [Exists][] - `v::exists()->assert(__FILE__);`
 - [Extension][] - `v::extension('png')->assert('image.png');`
 - [Factor][] - `v::factor(0)->assert(5);`
+- [Factory][] - `v::factory(static fn($input) => v::boolVal())->assert(true);`
 - [FalseVal][] - `v::falseVal()->assert(false);`
 - [Falsy][] - `v::falsy()->assert('');`
 - [File][] - `v::file()->assert(__FILE__);`
@@ -140,7 +140,6 @@ In this page you will find a list of validators by their category.
 - [KeyOptional][] - `v::keyOptional('name', v::stringType())->assert([]);`
 - [KeySet][] - `v::keySet(v::key('foo', v::intVal()))->assert(['foo' => 42]);`
 - [LanguageCode][] - `v::languageCode()->assert('pt');`
-- [Lazy][] - `v::lazy(static fn($input) => v::boolVal())->assert(true);`
 - [LeapDate][] - `v::leapDate('Y-m-d')->assert('1988-02-29');`
 - [LeapYear][] - `v::leapYear()->assert('1988');`
 - [Length][] - `v::length(v::between(1, 5))->assert('abc');`
@@ -185,6 +184,7 @@ In this page you will find a list of validators by their category.
 - [Regex][] - `v::regex('/[a-z]/')->assert('a');`
 - [ResourceType][] - `v::resourceType()->assert(fopen('/path/to/file.txt', 'r'));`
 - [Roman][] - `v::roman()->assert('IV');`
+- [Satisfies][] - `v::satisfies(fn (int $input): bool => $input % 5 === 0,)->assert(10);`
 - [ScalarVal][] - `v::scalarVal()->assert(135.0);`
 - [Size][] - `v::size('KB', v::greaterThan(1))->assert('/path/to/file');`
 - [Slug][] - `v::slug()->assert('my-wordpress-title');`
@@ -213,6 +213,7 @@ In this page you will find a list of validators by their category.
 - [Writable][] - `v::writable()->assert('/path/to/file');`
 - [Xdigit][] - `v::xdigit()->assert('abc123');`
 
+[After]: validators/After.md "Validates the input after applying a callable to it."
 [All]: validators/All.md "Validates all items of the input against a given validator."
 [AllOf]: validators/AllOf.md "Will validate if all inner validators validates."
 [Alnum]: validators/Alnum.md "Validates whether the input is alphanumeric or not."
@@ -231,9 +232,7 @@ In this page you will find a list of validators by their category.
 [BoolType]: validators/BoolType.md "Validates whether the type of the input is boolean."
 [BoolVal]: validators/BoolVal.md "Validates if the input results in a boolean value:"
 [Bsn]: validators/Bsn.md "Validates a Dutch citizen service number (BSN)."
-[Call]: validators/Call.md "Validates the return of a callable for a given input."
 [CallableType]: validators/CallableType.md "Validates whether the pseudo-type of the input is callable."
-[Callback]: validators/Callback.md "Validates the input using the return of a given callable."
 [Charset]: validators/Charset.md "Validates if a string is in a specific charset."
 [Circuit]: validators/Circuit.md "Validates the input against a series of validators until the first fails."
 [Cnh]: validators/Cnh.md "Validates a Brazilian driver's license."
@@ -266,6 +265,7 @@ In this page you will find a list of validators by their category.
 [Exists]: validators/Exists.md "Validates files or directories."
 [Extension]: validators/Extension.md "Validates if the file extension matches the expected one:"
 [Factor]: validators/Factor.md "Validates if the input is a factor of the defined dividend."
+[Factory]: validators/Factory.md "Validates the input using a validator that is created from a callback."
 [FalseVal]: validators/FalseVal.md "Validates if a value is considered as `false`."
 [Falsy]: validators/Falsy.md "Validates whether the given input is considered empty or falsy, similar to PHP's `empty()` function."
 [File]: validators/File.md "Validates whether file input is as a regular filename."
@@ -296,7 +296,6 @@ In this page you will find a list of validators by their category.
 [KeyOptional]: validators/KeyOptional.md "Validates the value of an array against a given validator when the key exists."
 [KeySet]: validators/KeySet.md "Validates a keys in a defined structure."
 [LanguageCode]: validators/LanguageCode.md "Validates whether the input is language code based on ISO 639."
-[Lazy]: validators/Lazy.md "Validates the input using a validator that is created from a callback."
 [LeapDate]: validators/LeapDate.md "Validates if a date is leap."
 [LeapYear]: validators/LeapYear.md "Validates if a year is leap."
 [Length]: validators/Length.md "Validates the length of the given input against a given validator."
@@ -341,6 +340,7 @@ In this page you will find a list of validators by their category.
 [Regex]: validators/Regex.md "Validates whether the input matches a defined regular expression."
 [ResourceType]: validators/ResourceType.md "Validates whether the input is a resource."
 [Roman]: validators/Roman.md "Validates if the input is a Roman numeral."
+[Satisfies]: validators/Satisfies.md "Validates the input using the return of a given callable."
 [ScalarVal]: validators/ScalarVal.md "Validates whether the input is a scalar value or not."
 [Size]: validators/Size.md "Validates whether the input is a file that is of a certain size or not."
 [Slug]: validators/Slug.md "Validates whether the input is a valid slug."

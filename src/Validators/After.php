@@ -23,7 +23,7 @@ use Respect\Validation\Validator;
 use function call_user_func;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final class Call implements Validator
+final class After implements Validator
 {
     /** @var callable */
     private $callable;
