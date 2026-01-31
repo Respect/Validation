@@ -27,7 +27,7 @@ use function count;
     '{{subject}} must be valid',
     '{{subject}} must be invalid',
 )]
-final class Callback extends Simple
+final class Satisfies extends Simple
 {
     /** @var callable */
     private $callback;

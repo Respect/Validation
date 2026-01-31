@@ -55,12 +55,12 @@ offers some limitations.
 
 The way [DateTimeImmutable::createFromFormat()][] parses an input allows for many different conversions. Overall
 [DateTimeImmutable::createFromFormat()][] tend to be more lenient than [DateTime::format()][]. This might be what
-you desire, and you may want to use [Callback](Callback.md) to create a custom validation.
+you desire, and you may want to use [Satisfies](Satisfies.md) to create a custom validation.
 
 ```php
 $input = '2014-04-12T23:20:50.052Z';
 
-v::callback(fn($input) => is_string($input) && DateTime::createFromFormat(DateTime::RFC3339_EXTENDED, $input))
+v::satisfies(fn($input) => is_string($input) && DateTime::createFromFormat(DateTime::RFC3339_EXTENDED, $input))
     ->assert($input);
 // Validation passes successfully
 
@@ -107,11 +107,11 @@ v::dateTime(DateTime::RFC3339_EXTENDED)->assert($input);
 
 - [Between](Between.md)
 - [BetweenExclusive](BetweenExclusive.md)
-- [Callback](Callback.md)
 - [Date](Date.md)
 - [DateTimeDiff](DateTimeDiff.md)
 - [LeapDate](LeapDate.md)
 - [LeapYear](LeapYear.md)
+- [Satisfies](Satisfies.md)
 - [Time](Time.md)
 
 [DateTimeImmutable::createFromFormat()]: https://www.php.net/datetimeimmutable.createfromformat

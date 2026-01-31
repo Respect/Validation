@@ -54,8 +54,6 @@ interface NotBuilder
 
     public static function notCallableType(): Chain;
 
-    public static function notCallback(callable $callback, mixed ...$arguments): Chain;
-
     public static function notCharset(string $charset, string ...$charsets): Chain;
 
     public static function notCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -270,6 +268,8 @@ interface NotBuilder
     public static function notResourceType(): Chain;
 
     public static function notRoman(): Chain;
+
+    public static function notSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function notScalarVal(): Chain;
 

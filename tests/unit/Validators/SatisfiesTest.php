@@ -21,18 +21,18 @@ use Respect\Validation\Test\Validators\Stub;
 use stdClass;
 
 #[Group('validator')]
-#[CoversClass(Callback::class)]
-final class CallbackTest extends RuleTestCase
+#[CoversClass(Satisfies::class)]
+final class SatisfiesTest extends RuleTestCase
 {
-    /** @return iterable<array{Callback, mixed}> */
+    /** @return iterable<array{Satisfies, mixed}> */
     public static function providerForValidInput(): iterable
     {
         return [
-            [new Callback('is_a', 'stdClass'), new stdClass()],
-            [new Callback([Stub::pass(1), 'isValid']), 'test'],
-            [new Callback('is_string'), 'test'],
+            [new Satisfies('is_a', 'stdClass'), new stdClass()],
+            [new Satisfies([Stub::pass(1), 'isValid']), 'test'],
+            [new Satisfies('is_string'), 'test'],
             [
-                new Callback(static function () {
+                new Satisfies(static function () {
                     return true;
                 }),
                 'wpoiur',
@@ -40,18 +40,18 @@ final class CallbackTest extends RuleTestCase
         ];
     }
 
-    /** @return iterable<array{Callback, mixed}> */
+    /** @return iterable<array{Satisfies, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
         return [
             [
-                new Callback(static function () {
+                new Satisfies(static function () {
                     return false;
                 }),
                 'w poiur',
             ],
             [
-                new Callback(static function () {
+                new Satisfies(static function () {
                     return false;
                 }),
                 '',

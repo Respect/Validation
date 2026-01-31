@@ -54,8 +54,6 @@ interface PropertyBuilder
 
     public static function propertyCallableType(string $propertyName): Chain;
 
-    public static function propertyCallback(string $propertyName, callable $callback, mixed ...$arguments): Chain;
-
     public static function propertyCharset(string $propertyName, string $charset, string ...$charsets): Chain;
 
     public static function propertyCircuit(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -256,6 +254,8 @@ interface PropertyBuilder
     public static function propertyResourceType(string $propertyName): Chain;
 
     public static function propertyRoman(string $propertyName): Chain;
+
+    public static function propertySatisfies(string $propertyName, callable $callback, mixed ...$arguments): Chain;
 
     public static function propertyScalarVal(string $propertyName): Chain;
 

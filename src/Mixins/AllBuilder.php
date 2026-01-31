@@ -52,8 +52,6 @@ interface AllBuilder
 
     public static function allCallableType(): Chain;
 
-    public static function allCallback(callable $callback, mixed ...$arguments): Chain;
-
     public static function allCharset(string $charset, string ...$charsets): Chain;
 
     public static function allCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -254,6 +252,8 @@ interface AllBuilder
     public static function allResourceType(): Chain;
 
     public static function allRoman(): Chain;
+
+    public static function allSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function allScalarVal(): Chain;
 

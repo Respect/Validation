@@ -59,8 +59,6 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function callableType(): Chain;
 
-    public function callback(callable $callback, mixed ...$arguments): Chain;
-
     public function charset(string $charset, string ...$charsets): Chain;
 
     public function circuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -281,6 +279,8 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
     public function resourceType(): Chain;
 
     public function roman(): Chain;
+
+    public function satisfies(callable $callback, mixed ...$arguments): Chain;
 
     public function scalarVal(): Chain;
 

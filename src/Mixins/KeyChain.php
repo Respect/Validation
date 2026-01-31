@@ -54,8 +54,6 @@ interface KeyChain
 
     public function keyCallableType(int|string $key): Chain;
 
-    public function keyCallback(int|string $key, callable $callback, mixed ...$arguments): Chain;
-
     public function keyCharset(int|string $key, string $charset, string ...$charsets): Chain;
 
     public function keyCircuit(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -256,6 +254,8 @@ interface KeyChain
     public function keyResourceType(int|string $key): Chain;
 
     public function keyRoman(int|string $key): Chain;
+
+    public function keySatisfies(int|string $key, callable $callback, mixed ...$arguments): Chain;
 
     public function keyScalarVal(int|string $key): Chain;
 

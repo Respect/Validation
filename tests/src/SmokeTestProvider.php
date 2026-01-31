@@ -43,7 +43,6 @@ trait SmokeTestProvider
         yield 'Bsn' => [new vs\Bsn(), '612890053'];
         yield 'Call' => [new vs\Call('array_keys', new vs\Each(new vs\StringType())), ['a' => 'b']];
         yield 'CallableType' => [new vs\CallableType(), [static::class, 'callableTarget']];
-        yield 'Callback' => [new vs\Callback('is_string'), 'valid'];
         yield 'Charset' => [new vs\Charset('UTF-8'), 'example'];
         yield 'Circuit' => [new vs\Circuit(new vs\IntVal(), new vs\GreaterThan(0)), 5];
         yield 'Cnh' => [new vs\Cnh(), '02650306461'];
@@ -151,6 +150,7 @@ trait SmokeTestProvider
         yield 'Regex' => [new vs\Regex('/^[a-z]+$/'), 'abc'];
         yield 'ResourceType' => [new vs\ResourceType(), fopen('php://temp', 'r')];
         yield 'Roman' => [new vs\Roman(), 'XIV'];
+        yield 'Satisfies' => [new vs\Satisfies('is_string'), 'valid'];
         yield 'ScalarVal' => [new vs\ScalarVal(), 'example'];
         yield 'Size' => [new vs\Size('KB', new vs\Between(1, 1000)), 'tests/fixtures/valid-image.png'];
         yield 'Slug' => [new vs\Slug(), 'a-valid-slug'];

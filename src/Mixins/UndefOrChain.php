@@ -52,8 +52,6 @@ interface UndefOrChain
 
     public function undefOrCallableType(): Chain;
 
-    public function undefOrCallback(callable $callback, mixed ...$arguments): Chain;
-
     public function undefOrCharset(string $charset, string ...$charsets): Chain;
 
     public function undefOrCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -270,6 +268,8 @@ interface UndefOrChain
     public function undefOrResourceType(): Chain;
 
     public function undefOrRoman(): Chain;
+
+    public function undefOrSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public function undefOrScalarVal(): Chain;
 

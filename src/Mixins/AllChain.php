@@ -52,8 +52,6 @@ interface AllChain
 
     public function allCallableType(): Chain;
 
-    public function allCallback(callable $callback, mixed ...$arguments): Chain;
-
     public function allCharset(string $charset, string ...$charsets): Chain;
 
     public function allCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -254,6 +252,8 @@ interface AllChain
     public function allResourceType(): Chain;
 
     public function allRoman(): Chain;
+
+    public function allSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public function allScalarVal(): Chain;
 
