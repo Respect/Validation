@@ -8,17 +8,8 @@ SPDX-License-Identifier: MIT
 Contributions to Respect\Validation are always welcome. You make our lives
 easier by sending us your contributions through [pull requests][].
 
-Pull requests for bug fixes must be based on the oldest stable version's branch
-whereas pull requests for new features must be based on the `master` branch.
-
 Due to time constraints, we are not always able to respond as quickly as we
-would like. Please do not take delays personal and feel free to remind us here,
-on IRC, or on Gitter if you feel that we forgot to respond.
-
-Please see the [project documentation][] before proceeding. You should also know
-about [PHP-FIG][]'s standards and basic unit testing, but we're sure you can
-learn that just by looking at other validators. Pick the simple ones like `ArrayType`
-to begin.
+would like. Please do not take delays personally.
 
 Before writing anything, feature or bug fix:
 
@@ -28,7 +19,7 @@ Before writing anything, feature or bug fix:
     to work on that;
   - If there is, create a comment to notify everybody that you're going to
     work on that.
-- Make sure that what you need is not done yet
+- Make sure that what you need is not done yet.
 
 ## Adding a new validator
 
@@ -40,10 +31,9 @@ A common validator on Respect\Validation is composed of three classes:
 The classes are pretty straightforward. In the sample below, we're going to
 create a validator that validates if a string is equal to "Hello World".
 
-- Classes should be `final` unless they are used in a different scope;
-- Properties should be `private` unless they are used in a different scope;
-- Classes should use strict typing;
-- Some docblocks are required.
+- Validator classes should be `final` whenever possible.
+- Validator classes should `readonly` whenever possible.
+- Properties should be `private` and `readonly` whenever possible.
 
 ### Creating the validator
 
@@ -75,7 +65,7 @@ use Respect\Validation\Validators\Core\Simple;
     '{{subject}} must be a Hello World',
     '{{subject}} must not be a Hello World',
 )]
-final class HelloWorld extends Simple
+final readonly class HelloWorld extends Simple
 {
     protected function isValid(mixed $input): bool
     {
@@ -90,10 +80,8 @@ Finally, we need to test if everything is running smooth. We have `RuleTestCase`
 that allows us to make easier to test validators, but you fell free to use the
 `PHPUnit\Framework\TestCase` if you want or you need it's necessary.
 
-The `RuleTestCase` extends PHPUnit's `PHPUnit\Framework\TestCase` class, so you
-are able to use any methods of it. By extending `RuleTestCase` you should
-implement two methods that should return a [data provider][] with the validator as
-first item of the arrays:
+The `RuleTestCase` extends PHPUnit's `PHPUnit\Framework\TestCase` class with
+conventional [data provider][] methods:
 
 - `providerForValidInput`: Will test when `validate()` should return `true`
 - `providerForInvalidInput`: Will test when `validate()` should return `false`
@@ -142,60 +130,49 @@ for it other than what is covered by `RuleTestCase`.
 
 ### Helping us a little bit more
 
-Your validator will be accepted only with these 3 files (validator and unit test),
-but if you really want to help us, you can follow the example of [ArrayType][] by:
+You should include documentation to your new validator. A minimal document
+is acceptable. You can use `bin/console lint:docs` to help you ensure that
+document follows our conventions. `bin/console lint:docs --fix` will even
+fix some common mistakes automatically.
 
-- Adding your new validator on the `Validator`'s class docblock;
-- Writing a documentation for your new validator;
-- Creating integration tests with PHPT.
-
-As we already said, none of them are required but you will help us a lot.
+Additionally, consider adding a feature test to `tests/feature`. Those help
+us track common use cases and usage patterns.
 
 ## Documentation
 
 Our docs at https://respect-validation.readthedocs.io are generated from our
 Markdown files. Add your brand new validator and it should be soon available.
 
-## Running Tests
+You can preview how the docs will look like by running `composer docs-serve`.
 
-After run `composer install` on the library's root directory you must run PHPUnit.
+## Running Checks
 
-### Linux
+After run `composer install` on the library's root directory you must run
+`composer qa`.
 
-You can test the project using the commands:
+This alias will run several checks, including unit tests, static analysis
+and more.
 
-```sh
-$ vendor/bin/phpunit
-```
+Check out the `scripts` section on `composer.json` for more details on which
+checks are performed.
 
-or
+## Benchmarks
 
-```sh
-$ composer phpunit
-```
+If you want to improve the project performance or make sure your change doesn't
+introduce a performance regression, you can use our standard benchmark suite
+at `tests/benchmark`.
 
-### Windows
+Typical workflow:
 
-You can test the project using the commands:
+ - (Optional) Write a new benchmark in `tests/benchmark`.
+ - Run `vendor/bin/phpbench run --tag=before` before making a change.
+ - Change the code as you like.
+ - Run `vendor/bin/phpbench run --ref=before` to compare performance with the
+   tagged run.
 
-```sh
-> vendor\bin\phpunit
-```
+Check out the [phpbench documentation](https://phpbench.readthedocs.io/en/latest/index.html)
+for more information.
 
-or
-
-```sh
-> composer phpunit
-```
-
-No test should fail.
-
-You can tweak the PHPUnit's settings by copying `phpunit.xml.dist` to `phpunit.xml`
-and changing it according to your needs.
-
-[ArrayType]: https://github.com/Respect/Validation/commit/f08a1fa
-[data provider]: https://phpunit.de/manual/current/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers "PHPUnit Data Providers"
+[data provider]: https://docs.phpunit.de/en/12.5/writing-tests-for-phpunit.html#data-providers "PHPUnit Data Providers"
 [open an issue]: http://github.com/Respect/Validation/issues
-[PHP-FIG]: http://www.php-fig.org "PHP Framework Interop Group"
-[project documentation]: https://respect-validation.readthedocs.io/ "Respect\\Validation documentation"
 [pull requests]: http://help.github.com/pull-requests "GitHub pull requests"

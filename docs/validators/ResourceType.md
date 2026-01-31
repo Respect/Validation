@@ -50,6 +50,5 @@ v::resourceType()->assert(fopen('/path/to/file.txt', 'r'));
 - [NullType](NullType.md)
 - [Number](Number.md)
 - [ObjectType](ObjectType.md)
-- [PhpLabel](PhpLabel.md)
 - [StringType](StringType.md)
 - [StringVal](StringVal.md)

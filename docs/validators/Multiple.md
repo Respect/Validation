@@ -45,4 +45,3 @@ v::intVal()->multiple(3)->assert(9);
 
 - [Even](Even.md)
 - [Odd](Odd.md)
-- [PrimeNumber](PrimeNumber.md)

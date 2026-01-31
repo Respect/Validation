@@ -47,6 +47,4 @@ v::slug()->assert('my-wordpress-title-');
 
 ## See Also
 
-- [PhpLabel](PhpLabel.md)
 - [Url](Url.md)
-- [VideoUrl](VideoUrl.md)
