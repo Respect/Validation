@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
+use ArrayAccess;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -27,20 +28,20 @@ final class KeyExistsTest extends TestCase
         self::assertInvalidInput($validator, $input);
     }
 
-    /** @param array<mixed> $input  */
+    /** @param array<mixed>|ArrayAccess<int|string, mixed> $input  */
     #[Test]
     #[DataProvider('providerForArrayWithMissingKeys')]
-    public function itShouldInvalidateMissingKeys(int|string $key, array $input): void
+    public function itShouldInvalidateMissingKeys(int|string $key, array|ArrayAccess $input): void
     {
         $validator = new KeyExists($key);
 
         self::assertInvalidInput($validator, $input);
     }
 
-    /** @param array<mixed> $input  */
+    /** @param array<mixed>|ArrayAccess<int|string, mixed> $input  */
     #[Test]
     #[DataProvider('providerForArrayWithExistingKeys')]
-    public function itShouldValidateExistingKeys(int|string $key, array $input): void
+    public function itShouldValidateExistingKeys(int|string $key, array|ArrayAccess $input): void
     {
         $validator = new KeyExists($key);
 

@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
+use ArrayAccess;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
@@ -30,20 +31,20 @@ final class KeyOptionalTest extends TestCase
         self::assertValidInput($validator, $input);
     }
 
-    /** @param array<mixed> $input  */
+    /** @param array<mixed>|ArrayAccess<int|string, mixed> $input  */
     #[Test]
     #[DataProvider('providerForArrayWithMissingKeys')]
-    public function itShouldAlwaysValidateMissingKeys(int|string $key, array $input): void
+    public function itShouldAlwaysValidateMissingKeys(int|string $key, array|ArrayAccess $input): void
     {
         $validator = new KeyOptional($key, Stub::daze());
 
         self::assertValidInput($validator, $input);
     }
 
-    /** @param array<mixed> $input  */
+    /** @param array<mixed>|ArrayAccess<int|string, mixed> $input  */
     #[Test]
     #[DataProvider('providerForArrayWithExistingKeys')]
-    public function itShouldValidateExistingKeysWithWrappedRule(int|string $key, array $input): void
+    public function itShouldValidateExistingKeysWithWrappedRule(int|string $key, array|ArrayAccess $input): void
     {
         $wrapped = Stub::pass(1);
 

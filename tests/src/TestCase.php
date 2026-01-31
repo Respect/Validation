@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Test;
 
+use ArrayAccess;
+use ArrayObject;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 use Respect\Validation\Test\Stubs\WithProperties;
 use Respect\Validation\Test\Stubs\WithStaticProperties;
@@ -194,10 +196,11 @@ abstract class TestCase extends PHPUnitTestCase
         return self::providerForAnyValues()->without('resourceType');
     }
 
-    /** @return array<string, array{string|int, array<mixed>}> */
+    /** @return array<string, array{string|int, array<mixed>|ArrayAccess<int, mixed>}> */
     public static function providerForArrayWithMissingKeys(): array
     {
         return [
+            'missing key on an ArrayAccess object' => [1, new ArrayObject([])],
             'integer key, non-empty input' => [0, [1 => true, 2 => true]],
             'string key, non-empty input' => ['foo', ['bar' => true, 'baz' => true]],
             'integer key, empty input' => [0, []],
@@ -205,10 +208,11 @@ abstract class TestCase extends PHPUnitTestCase
         ];
     }
 
-    /** @return array<string, array{string|int, array<mixed>}> */
+    /** @return array<string, array{string|int, array<mixed>|ArrayAccess<int, mixed>}> */
     public static function providerForArrayWithExistingKeys(): array
     {
         return [
+            'key on an ArrayAccess object' => [1, new ArrayObject([1 => true])],
             'integer key with a single value array' => [1, [1 => true]],
             'integer key with a multiple value array' => [2, [1 => true, 2 => true]],
             'string key with a single value array' => ['foo', ['foo' => true, 'bar' => true]],
