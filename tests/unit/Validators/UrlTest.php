@@ -34,8 +34,6 @@ final class UrlTest extends RuleTestCase
             [$validator, 'ldap://[2001:db8::7]/c=GB?objectClass?one'],
             [$validator, 'mailto:John.Doe@example.com'],
             [$validator, 'mailto:mduerst@ifi.unizh.example.gov'],
-            [$validator, 'news:comp.infosystems.www.servers.unix'],
-            [$validator, 'news:comp.infosystems.www.servers.unix'],
             [$validator, 'telnet://192.0.2.16:80/'],
             [$validator, 'telnet://melvyl.ucop.example.edu/'],
         ];
@@ -48,6 +46,10 @@ final class UrlTest extends RuleTestCase
 
         return [
             [$validator, 'example.com'],
+            [$validator, 'news:comp.infosystems.www.servers.unix'],
+            [$validator, 'news:comp.infosystems.www.servers.unix'],
+            [$validator, 'mailto:not_an_actual_email'],
+            [$validator, 'https://example.this_tld_is_invalid'],
             [$validator, 'http:/example.com/'],
             [$validator, 'tel:+1-816-555-1212'],
             [$validator, 'urn:oasis:names:specification:docbook:dtd:xml:4.1.2'],
