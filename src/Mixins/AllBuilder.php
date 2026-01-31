@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface AllBuilder
 {
+    public static function allAfter(callable $callable, Validator $validator): Chain;
+
     public static function allAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
 
     public static function allAlnum(string ...$additionalChars): Chain;
@@ -47,8 +49,6 @@ interface AllBuilder
     public static function allBoolVal(): Chain;
 
     public static function allBsn(): Chain;
-
-    public static function allCall(callable $callable, Validator $validator): Chain;
 
     public static function allCallableType(): Chain;
 

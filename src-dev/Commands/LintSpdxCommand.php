@@ -66,7 +66,7 @@ final class LintSpdxCommand extends Command
         $pass = true;
         $root = dirname(__DIR__, 2);
         $finder = (new Finder())->in(array_map(static fn($dir) => $root . $dir, self::SEARCH_DIRS))->files();
-        $validator = ValidatorBuilder::call(
+        $validator = ValidatorBuilder::after(
             static fn($input) => array_filter(explode("\n", trim($input))),
             ValidatorBuilder::templated(
                 'Each header line of {{subject}}',

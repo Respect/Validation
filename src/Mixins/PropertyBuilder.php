@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface PropertyBuilder
 {
+    public static function propertyAfter(string $propertyName, callable $callable, Validator $validator): Chain;
+
     public static function propertyAll(string $propertyName, Validator $validator): Chain;
 
     public static function propertyAllOf(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -49,8 +51,6 @@ interface PropertyBuilder
     public static function propertyBoolVal(string $propertyName): Chain;
 
     public static function propertyBsn(string $propertyName): Chain;
-
-    public static function propertyCall(string $propertyName, callable $callable, Validator $validator): Chain;
 
     public static function propertyCallableType(string $propertyName): Chain;
 

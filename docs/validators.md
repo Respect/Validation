@@ -13,7 +13,7 @@ In this page you will find a list of validators by their category.
 
 **Booleans**: [AlwaysInvalid][] - [AlwaysValid][] - [BoolType][] - [BoolVal][] - [FalseVal][] - [TrueVal][]
 
-**Callables**: [Call][] - [CallableType][] - [Factory][] - [Satisfies][]
+**Callables**: [After][] - [CallableType][] - [Factory][] - [Satisfies][]
 
 **Comparisons**: [All][] - [Between][] - [BetweenExclusive][] - [Equals][] - [Equivalent][] - [GreaterThan][] - [GreaterThanOrEqual][] - [Identical][] - [In][] - [Length][] - [LessThan][] - [LessThanOrEqual][] - [Max][] - [Min][]
 
@@ -41,7 +41,7 @@ In this page you will find a list of validators by their category.
 
 **Miscellaneous**: [Blank][] - [Falsy][] - [Masked][] - [Named][] - [Templated][] - [Undef][]
 
-**Nesting**: [AllOf][] - [AnyOf][] - [Call][] - [Circuit][] - [Each][] - [Factory][] - [Key][] - [KeySet][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
+**Nesting**: [After][] - [AllOf][] - [AnyOf][] - [Circuit][] - [Each][] - [Factory][] - [Key][] - [KeySet][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
 
 **Numbers**: [Base][] - [Decimal][] - [Digit][] - [Even][] - [Factor][] - [Finite][] - [FloatType][] - [FloatVal][] - [Infinite][] - [IntType][] - [IntVal][] - [Multiple][] - [Negative][] - [Number][] - [NumericVal][] - [Odd][] - [Positive][] - [Roman][]
 
@@ -51,12 +51,13 @@ In this page you will find a list of validators by their category.
 
 **Structures**: [Attributes][] - [Key][] - [KeyExists][] - [KeyOptional][] - [KeySet][] - [Property][] - [PropertyExists][] - [PropertyOptional][]
 
-**Transformations**: [All][] - [Call][] - [Each][] - [Length][] - [Max][] - [Min][] - [Size][]
+**Transformations**: [After][] - [All][] - [Each][] - [Length][] - [Max][] - [Min][] - [Size][]
 
 **Types**: [ArrayType][] - [ArrayVal][] - [BoolType][] - [BoolVal][] - [CallableType][] - [Countable][] - [FloatType][] - [FloatVal][] - [IntType][] - [IntVal][] - [IterableType][] - [IterableVal][] - [NullType][] - [NumericVal][] - [ObjectType][] - [ResourceType][] - [ScalarVal][] - [StringType][] - [StringVal][]
 
 ## Alphabetically
 
+- [After][] - `v::after(str_split(...), v::arrayType()->lengthEquals(5))->assert('world');`
 - [All][] - `v::all(v::dateTime())->assert($releaseDates);`
 - [AllOf][] - `v::allOf(v::intVal(), v::positive())->assert(15);`
 - [Alnum][] - `v::alnum(' ')->assert('foo 123');`
@@ -75,7 +76,6 @@ In this page you will find a list of validators by their category.
 - [BoolType][] - `v::boolType()->assert(true);`
 - [BoolVal][] - `v::boolVal()->assert('on');`
 - [Bsn][] - `v::bsn()->assert('612890053');`
-- [Call][] - `v::call(str_split(...), v::arrayType()->lengthEquals(5))->assert('world');`
 - [CallableType][] - `v::callableType()->assert(function () {});`
 - [Charset][] - `v::charset('ASCII')->assert('sugar');`
 - [Circuit][] - `v::circuit(v::intVal(), v::floatVal())->assert(15);`
@@ -213,6 +213,7 @@ In this page you will find a list of validators by their category.
 - [Writable][] - `v::writable()->assert('/path/to/file');`
 - [Xdigit][] - `v::xdigit()->assert('abc123');`
 
+[After]: validators/After.md "Validates the input after applying a callable to it."
 [All]: validators/All.md "Validates all items of the input against a given validator."
 [AllOf]: validators/AllOf.md "Will validate if all inner validators validates."
 [Alnum]: validators/Alnum.md "Validates whether the input is alphanumeric or not."
@@ -231,7 +232,6 @@ In this page you will find a list of validators by their category.
 [BoolType]: validators/BoolType.md "Validates whether the type of the input is boolean."
 [BoolVal]: validators/BoolVal.md "Validates if the input results in a boolean value:"
 [Bsn]: validators/Bsn.md "Validates a Dutch citizen service number (BSN)."
-[Call]: validators/Call.md "Validates the return of a callable for a given input."
 [CallableType]: validators/CallableType.md "Validates whether the pseudo-type of the input is callable."
 [Charset]: validators/Charset.md "Validates if a string is in a specific charset."
 [Circuit]: validators/Circuit.md "Validates the input against a series of validators until the first fails."

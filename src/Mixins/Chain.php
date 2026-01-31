@@ -19,6 +19,8 @@ use Respect\Validation\ValidatorBuilder;
 /** @mixin ValidatorBuilder */
 interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, MinChain, NotChain, NullOrChain, PropertyChain, UndefOrChain
 {
+    public function after(callable $callable, Validator $validator): Chain;
+
     public function all(Validator $validator): Chain;
 
     public function allOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -54,8 +56,6 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
     public function boolVal(): Chain;
 
     public function bsn(): Chain;
-
-    public function call(callable $callable, Validator $validator): Chain;
 
     public function callableType(): Chain;
 

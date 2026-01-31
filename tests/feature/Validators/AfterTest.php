@@ -9,21 +9,21 @@
 declare(strict_types=1);
 
 test('Scenario #1', catchMessage(
-    fn() => v::call('trim', v::notSpaced())->assert(' two words '),
+    fn() => v::after('trim', v::notSpaced())->assert(' two words '),
     fn(string $message) => expect($message)->toBe('"two words" must not contain whitespaces'),
 ));
 
 test('Scenario #2', catchMessage(
-    fn() => v::not(v::call('stripslashes', v::stringType()))->assert(' some\thing '),
+    fn() => v::not(v::after('stripslashes', v::stringType()))->assert(' some\thing '),
     fn(string $message) => expect($message)->toBe('" something " must not be a string'),
 ));
 
 test('Scenario #3', catchFullMessage(
-    fn() => v::call('strval', v::intType())->assert(1234),
+    fn() => v::after('strval', v::intType())->assert(1234),
     fn(string $fullMessage) => expect($fullMessage)->toBe('- "1234" must be an integer'),
 ));
 
 test('Scenario #4', catchFullMessage(
-    fn() => v::not(v::call('is_float', v::boolType()))->assert(1.2),
+    fn() => v::not(v::after('is_float', v::boolType()))->assert(1.2),
     fn(string $fullMessage) => expect($fullMessage)->toBe('- `true` must not be a boolean'),
 ));

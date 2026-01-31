@@ -295,19 +295,19 @@ v::each(v::alwaysValid())->isValid(new stdClass()); // false
 + v::intType()->assert($input);
 ```
 
-##### Call does not handle errors anymore
+##### `After` does not handle errors anymore
 
-`Call` now does not handle PHP errors inside the callback you provided.
+`After` (previously `Call`) now does not handle PHP errors inside the callback you provided.
 
 ```php
-v::call('strtolower', v::equals('foo'))->assert(123); // Error bubbles out
+v::after('strtolower', v::equals('foo'))->assert(123); // Error bubbles out
 ```
 
 You can use anonymous functions to handle errors or perform type conversions
 instead:
 
 ```php
-v::call(static fn ($i) => strtolower((string) $i), v::equals('123'));
+v::after(static fn ($i) => strtolower((string) $i), v::equals('123'));
 ```
 
 ##### `Contains`, `ContainsAny`, `In`, `EndsWith` and `StartsWith` strict by default.
@@ -359,6 +359,7 @@ composer require ramsey/uuid
 
 | 2.x        | 3.0                  | Notes                                     |
 | ---------- | -------------------- | ----------------------------------------- |
+| `Call`     | `After`              | Clearer intent                            |
 | `Callback` | `Satisfies`          | Clearer intent                            |
 | `Min`      | `GreaterThanOrEqual` | Clearer comparison semantics              |
 | `Max`      | `LessThanOrEqual`    | Clearer comparison semantics              |
@@ -367,6 +368,9 @@ composer require ramsey/uuid
 | `KeyValue` | `Factory`            | Deferred validator creation               |
 
 ```diff
+- v::call('strtolower', v::equals('foo'))->assert($input);
++ v::after('strtolower', v::equals('foo'))->assert($input);
+
 - v::callback('is_int')->assert($input);
 + v::satisfies('is_int')->assert($input);
 

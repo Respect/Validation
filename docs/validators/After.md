@@ -3,14 +3,14 @@ SPDX-FileCopyrightText: (c) Respect Project Contributors
 SPDX-License-Identifier: MIT
 -->
 
-# Call
+# After
 
-- `Call(callable $callable, Validator $validator)`
+- `After(callable $callable, Validator $validator)`
 
-Validates the return of a [callable][] for a given input.
+Validates the input after applying a [callable][] to it.
 
 ```php
-v::call(str_split(...), v::arrayType()->lengthEquals(5))->assert('world');
+v::after(str_split(...), v::arrayType()->lengthEquals(5))->assert('world');
 // Validation passes successfully
 ```
 
@@ -41,7 +41,7 @@ v::arrayVal()
 Using `v::call()` you can do this in a single chain:
 
 ```php
-v::call(
+v::after(
     'parse_url',
      v::arrayVal()
         ->key('scheme', v::startsWith('http'))
@@ -52,18 +52,18 @@ v::call(
 // Validation passes successfully
 ```
 
-Call does not handle possible errors (type mismatches). If you need to
+`After` does not handle possible errors (type mismatches). If you need to
 ensure that your callback is of a certain type, use [Circuit](Circuit.md) or
 handle it using a closure:
 
 ```php
-v::call('strtolower', v::equals('ABC'))->assert(123);
+v::after('strtolower', v::equals('ABC'))->assert(123);
 // 𝙭 strtolower(): Argument #1 ($string) must be of type string, int given
 
-v::circuit(v::stringType(), v::call('strtolower', v::equals('abc')))->assert(123);
+v::circuit(v::stringType(), v::after('strtolower', v::equals('abc')))->assert(123);
 // → 123 must be a string
 
-v::circuit(v::stringType(), v::call('strtolower', v::equals('abc')))->assert('ABC');
+v::circuit(v::stringType(), v::after('strtolower', v::equals('abc')))->assert('ABC');
 // Validation passes successfully
 ```
 
@@ -75,10 +75,11 @@ v::circuit(v::stringType(), v::call('strtolower', v::equals('abc')))->assert('AB
 
 ## Changelog
 
-| Version | Description                   |
-| ------: | :---------------------------- |
-|   3.0.0 | No longer sets error handlers |
-|   0.3.9 | Created                       |
+| Version | Description                                              |
+| ------: | :------------------------------------------------------- |
+|   3.0.0 | No longer sets error handlers and got renamed to `After` |
+|   2.0.0 | Sets error handlers                                      |
+|   0.3.9 | Created as `Call`                                        |
 
 ## See Also
 

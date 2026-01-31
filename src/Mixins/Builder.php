@@ -17,6 +17,8 @@ use Respect\Validation\Validator;
 
 interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, MinBuilder, NotBuilder, NullOrBuilder, PropertyBuilder, UndefOrBuilder
 {
+    public static function after(callable $callable, Validator $validator): Chain;
+
     public static function all(Validator $validator): Chain;
 
     public static function allOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -52,8 +54,6 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
     public static function boolVal(): Chain;
 
     public static function bsn(): Chain;
-
-    public static function call(callable $callable, Validator $validator): Chain;
 
     public static function callableType(): Chain;
 

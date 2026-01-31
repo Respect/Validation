@@ -21,22 +21,22 @@ use Respect\Validation\Test\RuleTestCase;
 use TypeError;
 
 #[Group('validator')]
-#[CoversClass(Call::class)]
-final class CallTest extends RuleTestCase
+#[CoversClass(After::class)]
+final class AfterTest extends RuleTestCase
 {
-    /** @return iterable<string, array{Call, mixed}> */
+    /** @return iterable<string, array{After, mixed}> */
     public static function providerForValidInput(): iterable
     {
         return [
-            'callback true' => [new Call('strtolower', new Equals('abc')), 'ABC'],
+            'callback true' => [new After('strtolower', new Equals('abc')), 'ABC'],
         ];
     }
 
-    /** @return iterable<string, array{Call, mixed}> */
+    /** @return iterable<string, array{After, mixed}> */
     public static function providerForInvalidInput(): iterable
     {
         return [
-            'callback false' => [new Call('strtolower', new Equals('abc')), 'DEF'],
+            'callback false' => [new After('strtolower', new Equals('abc')), 'DEF'],
         ];
     }
 
@@ -45,7 +45,7 @@ final class CallTest extends RuleTestCase
     {
         $this->expectException(TypeError::class);
         $this->expectExceptionMessage('strtolower(): Argument #1 ($string) must be of type string, int given');
-        $validator = new Call('strtolower', new Equals('abc'));
+        $validator = new After('strtolower', new Equals('abc'));
         $validator->evaluate(123);
     }
 }

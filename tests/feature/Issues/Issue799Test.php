@@ -14,7 +14,7 @@ $input = 'http://www.google.com/search?q=respect.github.com';
 
 test('https://github.com/Respect/Validation/issues/799 | #1', catchAll(
     fn() => v::init()
-        ->call(
+        ->after(
             [new CountableStub(1), 'count'],
             v::arrayVal()->key('scheme', v::startsWith('https')),
         )
@@ -35,7 +35,7 @@ test('https://github.com/Respect/Validation/issues/799 | #1', catchAll(
 
 test('https://github.com/Respect/Validation/issues/799 | #2', catchAll(
     fn() => v::init()
-        ->call(
+        ->after(
             fn($url) => parse_url((string) $url),
             v::arrayVal()->key('scheme', v::startsWith('https')),
         )

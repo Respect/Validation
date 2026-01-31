@@ -25,7 +25,7 @@ final class Tld extends Envelope
     {
         parent::__construct(new Circuit(
             new StringType(),
-            new Call('mb_strtoupper', new In(DataLoader::load('domain/tld.php'))),
+            new After('mb_strtoupper', new In(DataLoader::load('domain/tld.php'))),
         ));
     }
 }

@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 
 interface UndefOrChain
 {
+    public function undefOrAfter(callable $callable, Validator $validator): Chain;
+
     public function undefOrAll(Validator $validator): Chain;
 
     public function undefOrAllOf(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
@@ -47,8 +49,6 @@ interface UndefOrChain
     public function undefOrBoolVal(): Chain;
 
     public function undefOrBsn(): Chain;
-
-    public function undefOrCall(callable $callable, Validator $validator): Chain;
 
     public function undefOrCallableType(): Chain;
 

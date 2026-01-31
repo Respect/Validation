@@ -32,7 +32,7 @@ final class Url implements Validator
 
     public function __construct()
     {
-        $this->validator = new Call(
+        $this->validator = new After(
             'parse_url',
             new Circuit(
                 new ArrayType(),
@@ -41,7 +41,7 @@ final class Url implements Validator
                         new Key('scheme', new In(['http', 'https', 'ftp', 'telnet', 'gopher', 'ldap'])),
                         new Key('host', new OneOf(
                             new Domain(),
-                            new Call([self::class, 'formatIp'], new Ip()),
+                            new After([self::class, 'formatIp'], new Ip()),
                         )),
                     ),
                     new Circuit(
