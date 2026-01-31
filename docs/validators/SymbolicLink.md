@@ -56,5 +56,4 @@ v::symbolicLink()->assert(new SplFileObject('/path/to/file'));
 - [Mimetype](Mimetype.md)
 - [Readable](Readable.md)
 - [Size](Size.md)
-- [Uploaded](Uploaded.md)
 - [Writable](Writable.md)

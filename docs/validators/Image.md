@@ -61,5 +61,4 @@ This validator relies on [fileinfo](http://php.net/fileinfo) PHP extension.
 - [Readable](Readable.md)
 - [Size](Size.md)
 - [SymbolicLink](SymbolicLink.md)
-- [Uploaded](Uploaded.md)
 - [Writable](Writable.md)

@@ -51,5 +51,4 @@ v::readable()->assert('/path/to/file.txt');
 - [Mimetype](Mimetype.md)
 - [Size](Size.md)
 - [SymbolicLink](SymbolicLink.md)
-- [Uploaded](Uploaded.md)
 - [Writable](Writable.md)

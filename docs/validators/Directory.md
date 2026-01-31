@@ -64,5 +64,4 @@ v::directory()->assert(dir('/'));
 - [Readable](Readable.md)
 - [Size](Size.md)
 - [SymbolicLink](SymbolicLink.md)
-- [Uploaded](Uploaded.md)
 - [Writable](Writable.md)
