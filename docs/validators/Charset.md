@@ -54,4 +54,3 @@ The array format is a logic OR, not AND.
 
 - [Alnum](Alnum.md)
 - [Alpha](Alpha.md)
-- [PhpLabel](PhpLabel.md)

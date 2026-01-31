@@ -90,7 +90,6 @@ v::size('KB', v::not(v::equals(56)))->assert('/path/to/file');
 - [Mimetype](Mimetype.md)
 - [Readable](Readable.md)
 - [SymbolicLink](SymbolicLink.md)
-- [Uploaded](Uploaded.md)
 - [Writable](Writable.md)
 
 [PSR-7]: https://www.php-fig.org/psr/psr-7/

@@ -45,4 +45,3 @@ v::callback(fn (int $input): bool => $input % 5 === 0,)->assert(10);
 - [Call](Call.md)
 - [CallableType](CallableType.md)
 - [DateTime](DateTime.md)
-- [FilterVar](FilterVar.md)

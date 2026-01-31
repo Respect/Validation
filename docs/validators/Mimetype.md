@@ -56,5 +56,4 @@ This validator is case-sensitive and requires [fileinfo](http://php.net/fileinfo
 - [Readable](Readable.md)
 - [Size](Size.md)
 - [SymbolicLink](SymbolicLink.md)
-- [Uploaded](Uploaded.md)
 - [Writable](Writable.md)

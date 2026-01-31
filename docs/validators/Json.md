@@ -43,6 +43,4 @@ v::json()->assert('{"foo":"bar"}');
 
 - [Domain](Domain.md)
 - [Email](Email.md)
-- [FilterVar](FilterVar.md)
 - [Phone](Phone.md)
-- [VideoUrl](VideoUrl.md)

@@ -54,5 +54,3 @@ v::factor(4)->assert(3);
 - [Finite](Finite.md)
 - [Infinite](Infinite.md)
 - [NumericVal](NumericVal.md)
-- [PerfectSquare](PerfectSquare.md)
-- [PrimeNumber](PrimeNumber.md)
