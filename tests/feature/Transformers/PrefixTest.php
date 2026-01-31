@@ -78,7 +78,7 @@ test('Property', catchAll(
 test('UndefOr', catchAll(
     fn() => v::undefOrUrl()->assert('string'),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('"string" must be a URL or must be undefined')
-        ->and($fullMessage)->toBe('- "string" must be a URL or must be undefined')
-        ->and($messages)->toBe(['undefOrUrl' => '"string" must be a URL or must be undefined']),
+        ->and($message)->toBe('"string" must be a valid URL or must be undefined')
+        ->and($fullMessage)->toBe('- "string" must be a valid URL or must be undefined')
+        ->and($messages)->toBe(['undefOrUrl' => '"string" must be a valid URL or must be undefined']),
 ));

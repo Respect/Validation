@@ -13,21 +13,58 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Respect\Validation\Message\Template;
-use Respect\Validation\Validators\Core\Simple;
+use Respect\Validation\Result;
+use Respect\Validation\Validator;
 
 use function filter_var;
+use function trim;
 
 use const FILTER_VALIDATE_URL;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a URL',
-    '{{subject}} must not be a URL',
+    '{{subject}} must be a valid URL',
+    '{{subject}} must not be a valid URL',
 )]
-final class Url extends Simple
+final class Url implements Validator
 {
-    public function isValid(mixed $input): bool
+    private readonly Validator $validator;
+
+    public function __construct()
     {
-        return filter_var($input, FILTER_VALIDATE_URL) !== false;
+        $this->validator = new Call(
+            'parse_url',
+            new Circuit(
+                new ArrayType(),
+                new OneOf(
+                    new Circuit(
+                        new Key('scheme', new In(['http', 'https', 'ftp', 'telnet', 'gopher', 'ldap'])),
+                        new Key('host', new OneOf(
+                            new Domain(),
+                            new Call([self::class, 'formatIp'], new Ip()),
+                        )),
+                    ),
+                    new Circuit(
+                        new Key('scheme', new Equals('mailto')),
+                        new Key('path', new Email()),
+                    ),
+                ),
+            ),
+        );
+    }
+
+    public function evaluate(mixed $input): Result
+    {
+        if (!filter_var($input, FILTER_VALIDATE_URL)) {
+            return Result::failed($input, $this);
+        }
+
+        return Result::of($this->validator->evaluate($input)->hasPassed, $input, $this, []);
+    }
+
+    /** @internal public so it can be accessed by unserialized instance */
+    public static function formatIp(string $ip): string
+    {
+        return trim($ip, '[]');
     }
 }
