@@ -20,16 +20,15 @@ use Attribute;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 
-use function call_user_func;
-
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 final class Call implements Validator
 {
     /** @var callable */
     private $callable;
 
+    /** @param callable $callable */
     public function __construct(
-        callable $callable,
+        callable|string|array $callable,
         private readonly Validator $validator,
     ) {
         $this->callable = $callable;
@@ -37,6 +36,6 @@ final class Call implements Validator
 
     public function evaluate(mixed $input): Result
     {
-        return $this->validator->evaluate(call_user_func($this->callable, $input));
+        return $this->validator->evaluate(($this->callable)($input));
     }
 }

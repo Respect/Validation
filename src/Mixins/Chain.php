@@ -55,7 +55,8 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function bsn(): Chain;
 
-    public function call(callable $callable, Validator $validator): Chain;
+    /** @param callable $callable */
+    public function call(callable|array|string $callable, Validator $validator): Chain;
 
     public function callableType(): Chain;
 

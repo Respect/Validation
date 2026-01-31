@@ -50,7 +50,8 @@ interface KeyChain
 
     public function keyBsn(int|string $key): Chain;
 
-    public function keyCall(int|string $key, callable $callable, Validator $validator): Chain;
+    /** @param callable $callable */
+    public function keyCall(int|string $key, callable|array|string $callable, Validator $validator): Chain;
 
     public function keyCallableType(int|string $key): Chain;
 

@@ -50,7 +50,8 @@ interface NullOrBuilder
 
     public static function nullOrBsn(): Chain;
 
-    public static function nullOrCall(callable $callable, Validator $validator): Chain;
+    /** @param callable $callable */
+    public static function nullOrCall(callable|array|string $callable, Validator $validator): Chain;
 
     public static function nullOrCallableType(): Chain;
 

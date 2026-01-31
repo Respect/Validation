@@ -50,7 +50,8 @@ interface NotChain
 
     public function notBsn(): Chain;
 
-    public function notCall(callable $callable, Validator $validator): Chain;
+    /** @param callable $callable */
+    public function notCall(callable|array|string $callable, Validator $validator): Chain;
 
     public function notCallableType(): Chain;
 

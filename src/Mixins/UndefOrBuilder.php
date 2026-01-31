@@ -48,7 +48,8 @@ interface UndefOrBuilder
 
     public static function undefOrBsn(): Chain;
 
-    public static function undefOrCall(callable $callable, Validator $validator): Chain;
+    /** @param callable $callable */
+    public static function undefOrCall(callable|array|string $callable, Validator $validator): Chain;
 
     public static function undefOrCallableType(): Chain;
 

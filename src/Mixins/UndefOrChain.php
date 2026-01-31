@@ -48,7 +48,8 @@ interface UndefOrChain
 
     public function undefOrBsn(): Chain;
 
-    public function undefOrCall(callable $callable, Validator $validator): Chain;
+    /** @param callable $callable */
+    public function undefOrCall(callable|array|string $callable, Validator $validator): Chain;
 
     public function undefOrCallableType(): Chain;
 

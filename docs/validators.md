@@ -361,7 +361,7 @@ In this page you will find a list of validators by their category.
 [UndefOr]: validators/UndefOr.md "Validates the input using a defined validator when the input is not `null` or an empty string (`''`)."
 [Unique]: validators/Unique.md "Validates whether the input array contains only unique values."
 [Uppercase]: validators/Uppercase.md "Validates whether the characters in the input are uppercase."
-[Url]: validators/Url.md "Validates whether the input is a URL."
+[Url]: validators/Url.md "Validates whether the input is a valid URL in a popular internet format."
 [Uuid]: validators/Uuid.md "Validates whether the input is a valid UUID. It also supports validation of"
 [Version]: validators/Version.md "Validates version numbers using Semantic Versioning."
 [Vowel]: validators/Vowel.md "Validates whether the input contains only vowels."
