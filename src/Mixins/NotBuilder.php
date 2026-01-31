@@ -64,6 +64,8 @@ interface NotBuilder
 
     public static function notCnpj(): Chain;
 
+    public static function notComposite(Validator ...$validators): Chain;
+
     public static function notConsonant(string ...$additionalChars): Chain;
 
     public static function notContains(mixed $containsValue): Chain;

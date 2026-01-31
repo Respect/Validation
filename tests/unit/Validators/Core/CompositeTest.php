@@ -14,18 +14,18 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Test\TestCase;
-use Respect\Validation\Test\Validators\Core\ConcreteComposite;
+use Respect\Validation\Test\Validators\Core\ConcreteLogicalComposite;
 use Respect\Validation\Test\Validators\Stub;
 
 #[Group('core')]
-#[CoversClass(Composite::class)]
+#[CoversClass(LogicalComposite::class)]
 final class CompositeTest extends TestCase
 {
     #[Test]
     public function itShouldReturnItsChildren(): void
     {
         $expected = [Stub::daze(), Stub::daze(), Stub::daze()];
-        $sut = new ConcreteComposite(...$expected);
+        $sut = new ConcreteLogicalComposite(...$expected);
         $actual = $sut->getValidators();
 
         self::assertCount(3, $actual);

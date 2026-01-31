@@ -62,6 +62,8 @@ interface AllBuilder
 
     public static function allCnpj(): Chain;
 
+    public static function allComposite(Validator ...$validators): Chain;
+
     public static function allConsonant(string ...$additionalChars): Chain;
 
     public static function allContains(mixed $containsValue): Chain;

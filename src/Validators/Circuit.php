@@ -13,10 +13,10 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validators\Core\LogicalComposite;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final class Circuit extends Composite
+final readonly class Circuit extends LogicalComposite
 {
     public function evaluate(mixed $input): Result
     {

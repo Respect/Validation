@@ -62,6 +62,8 @@ interface AllChain
 
     public function allCnpj(): Chain;
 
+    public function allComposite(Validator ...$validators): Chain;
+
     public function allConsonant(string ...$additionalChars): Chain;
 
     public function allContains(mixed $containsValue): Chain;

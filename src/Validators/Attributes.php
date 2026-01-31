@@ -19,7 +19,6 @@ use ReflectionProperty;
 use Respect\Validation\Id;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Respect\Validation\Validators\Core\Reducer;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 final class Attributes implements Validator
@@ -34,11 +33,8 @@ final class Attributes implements Validator
 
         $reflection = new ReflectionObject($input);
         $validators = [...$this->getClassValidators($reflection), ...$this->getPropertyValidators($reflection)];
-        if ($validators === []) {
-            return (new AlwaysValid())->evaluate($input)->withId($id);
-        }
 
-        return (new Reducer(...$validators))->evaluate($input)->withId($id);
+        return (new Composite(...$validators))->evaluate($input)->withId($id);
     }
 
     /** @return array<Validator> */
@@ -72,7 +68,7 @@ final class Attributes implements Validator
 
             $allowsNull = $property->getType()?->allowsNull() ?? false;
 
-            $childRule = new Reducer(...$propertyValidators);
+            $childRule = new Composite(...$propertyValidators);
             $validators[] = new Property($propertyName, $allowsNull ? new NullOr($childRule) : $childRule);
         }
 

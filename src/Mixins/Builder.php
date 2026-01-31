@@ -67,6 +67,8 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function cnpj(): Chain;
 
+    public static function composite(Validator ...$validators): Chain;
+
     public static function consonant(string ...$additionalChars): Chain;
 
     public static function contains(mixed $containsValue): Chain;
