@@ -47,16 +47,18 @@ final readonly class Property implements Validator
     private function getPropertyValue(object $object, string $propertyName): mixed
     {
         $reflection = new ReflectionObject($object);
+        $value = null;
         while ($reflection instanceof ReflectionClass) {
             if ($reflection->hasProperty($propertyName)) {
                 $property = $reflection->getProperty($propertyName);
 
-                return $property->isInitialized($object) ? $property->getValue($object) : null;
+                $value = $property->isInitialized($object) ? $property->getValue($object) : null;
+                break;
             }
 
             $reflection = $reflection->getParentClass();
         }
 
-        return null;
+        return $value;
     }
 }

@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Test;
@@ -23,10 +24,11 @@ use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Test\Validators\Stub;
 
+use function sprintf;
 use function uniqid;
 
 #[CoversClass(ValidatorBuilder::class)]
-final class ValidatorTest extends TestCase
+final class ValidatorBuilderTest extends TestCase
 {
     #[Test]
     public function invalidRuleClassShouldThrowComponentException(): void
@@ -164,5 +166,27 @@ final class ValidatorTest extends TestCase
         $result = $validator->evaluate('whatever');
 
         self::assertFalse($result->hasPassed);
+    }
+
+    #[Test]
+    public function itShouldThrowCustomExceptionWhenPassedToAssertMethod(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Custom exception message');
+
+        ValidatorBuilder::init(Stub::fail(1))
+            ->assert('whatever', new InvalidArgumentException('Custom exception message'));
+    }
+
+    #[Test]
+    public function itShouldThrowCustomExceptionWhenCallableUsedInAssertMethod(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Got: "whatever"');
+
+        ValidatorBuilder::init(Stub::fail(1))
+            ->assert('whatever', static fn($e) => new InvalidArgumentException(
+                sprintf('Got: %s', $e->getMessage()),
+            ));
     }
 }
