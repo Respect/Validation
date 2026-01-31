@@ -77,6 +77,7 @@
         "bench-profile": "vendor/bin/phpbench xdebug:profile",
         "bench": "vendor/bin/phpbench run",
         "docs-fix": "bin/console lint:docs --fix",
+        "docs-serve": "pip install -qr docs/requirements.txt && mkdocs serve",
         "docs": "bin/console lint:docs",
         "pest": "vendor/bin/pest --testsuite=feature --compact",
         "phpcs": "vendor/bin/phpcs",

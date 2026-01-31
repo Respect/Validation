@@ -55,4 +55,3 @@ v::writable()->assert('/path/to/non-writable');
 - [Readable](Readable.md)
 - [Size](Size.md)
 - [SymbolicLink](SymbolicLink.md)
-- [Uploaded](Uploaded.md)

@@ -16,6 +16,7 @@ use Respect\Dev\Markdown\Linter;
 use UnexpectedValueException;
 
 use function array_unique;
+use function file_exists;
 use function preg_match_all;
 use function sort;
 use function str_contains;
@@ -37,6 +38,10 @@ final readonly class ValidatorRelatedLinter implements Linter
         $content = new Content();
         $content->h2('See Also');
         foreach ($relatedValidators as $relatedValidator) {
+            if (!file_exists('docs/validators/' . $relatedValidator . '.md')) {
+                continue;
+            }
+
             $content->anchorListItem($relatedValidator, $relatedValidator . '.md');
         }
 

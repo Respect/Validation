@@ -51,7 +51,6 @@ Message template for this validator includes `{{regex}}`.
 - [Decimal](Decimal.md)
 - [Digit](Digit.md)
 - [EndsWith](EndsWith.md)
-- [PhpLabel](PhpLabel.md)
 - [Roman](Roman.md)
 - [StartsWith](StartsWith.md)
 - [Version](Version.md)

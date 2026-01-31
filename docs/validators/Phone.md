@@ -61,4 +61,3 @@ v::phone('BR')->assert('11 91111 1111');
 - [Email](Email.md)
 - [Json](Json.md)
 - [Url](Url.md)
-- [VideoUrl](VideoUrl.md)

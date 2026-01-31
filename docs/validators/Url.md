@@ -55,7 +55,5 @@ v::url()->assert('news:new.example.com');
 
 - [Domain](Domain.md)
 - [Email](Email.md)
-- [FilterVar](FilterVar.md)
 - [Phone](Phone.md)
 - [Slug](Slug.md)
-- [VideoUrl](VideoUrl.md)
