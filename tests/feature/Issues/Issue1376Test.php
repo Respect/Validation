@@ -32,8 +32,9 @@ test('https://github.com/Respect/Validation/issues/1376', catchAll(
             'title' => '`.title` must be present',
             'description' => '`.description` must be present',
             'author' => [
-                '`.author` must be an integer',
-                'The length of `.author` must be between 1 and 2',
+                '__root__' => '`.author` must pass all the rules',
+                0 => '`.author` must be an integer',
+                1 => 'The length of `.author` must be between 1 and 2',
             ],
             'user' => '`.user` must be present',
         ]),

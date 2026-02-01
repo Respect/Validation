@@ -63,8 +63,9 @@ test('https://github.com/Respect/Validation/issues/1289', catchAll(
             0 => [
                 '__root__' => '`.0` must pass the rules',
                 'default' => [
-                    '`.0.default` must be a string',
-                    '`.0.default` must be a boolean',
+                    '__root__' => '`.0.default` must pass one of the rules',
+                    0 => '`.0.default` must be a string',
+                    1 => '`.0.default` must be a boolean',
                 ],
                 'description' => '`.0.description` must be a string value',
             ],

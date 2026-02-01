@@ -60,8 +60,9 @@ test('Multiple attributes, all failed', catchAll(
             '__root__' => '`Respect\Validation\Test\Stubs\WithAttributes { +$name="" +$birthdate="not a date" #$phone="not a phone number" + ... }` must pass the rules',
             'name' => '`.name` must be defined',
             'birthdate' => [
-                '`.birthdate` must be a valid date in the format "2005-12-30"',
-                'For comparison with now, `.birthdate` must be a valid datetime',
+                '__root__' => '`.birthdate` must pass all the rules',
+                0 => '`.birthdate` must be a valid date in the format "2005-12-30"',
+                1 => 'For comparison with now, `.birthdate` must be a valid datetime',
             ],
             'phone' => '`.phone` must be a valid telephone number or must be null',
             'email' => '`.email` must be a valid email address or must be null',
