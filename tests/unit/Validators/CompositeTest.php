@@ -8,24 +8,32 @@
 
 declare(strict_types=1);
 
-namespace Respect\Validation\Validators\Core;
+namespace Respect\Validation\Validators;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Respect\Validation\Test\Validators\Stub;
-use Respect\Validation\Validators\AllOf;
 
-#[CoversClass(Reducer::class)]
-final class ReducerTest extends TestCase
+#[CoversClass(Composite::class)]
+final class CompositeTest extends TestCase
 {
     #[Test]
-    public function shouldWrapTheSingleRule(): void
+    public function shouldWrapAlwaysValidWhenNoValidatorsAreProvided(): void
+    {
+        $composite = new Composite();
+        $result = $composite->evaluate(null);
+
+        self::assertEquals(new AlwaysValid(), $result->validator);
+    }
+
+    #[Test]
+    public function shouldWrapTheSingleValidator(): void
     {
         $validator = Stub::any(1);
 
-        $reducer = new Reducer($validator);
-        $result = $reducer->evaluate(null);
+        $composite = new Composite($validator);
+        $result = $composite->evaluate(null);
 
         self::assertSame($validator, $result->validator);
     }
@@ -37,8 +45,8 @@ final class ReducerTest extends TestCase
         $validator2 = Stub::any(1);
         $validator3 = Stub::any(1);
 
-        $reducer = new Reducer($validator1, $validator2, $validator3);
-        $result = $reducer->evaluate(null);
+        $composite = new Composite($validator1, $validator2, $validator3);
+        $result = $composite->evaluate(null);
 
         self::assertEquals(new AllOf($validator1, $validator2, $validator3), $result->validator);
     }

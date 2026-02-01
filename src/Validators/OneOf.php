@@ -19,7 +19,7 @@ use Attribute;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validators\Core\LogicalComposite;
 
 use function array_filter;
 use function array_map;
@@ -38,7 +38,7 @@ use function usort;
     '{{subject}} must pass only one of the rules',
     self::TEMPLATE_MORE_THAN_ONE,
 )]
-final class OneOf extends Composite
+final readonly class OneOf extends LogicalComposite
 {
     public const string TEMPLATE_NONE = '__none__';
     public const string TEMPLATE_MORE_THAN_ONE = '__more_than_one__';

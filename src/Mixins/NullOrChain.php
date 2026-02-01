@@ -64,6 +64,8 @@ interface NullOrChain
 
     public function nullOrCnpj(): Chain;
 
+    public function nullOrComposite(Validator ...$validators): Chain;
+
     public function nullOrConsonant(string ...$additionalChars): Chain;
 
     public function nullOrContains(mixed $containsValue): Chain;

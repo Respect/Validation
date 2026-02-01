@@ -11,9 +11,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Test\Validators\Core;
 
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validators\Core\LogicalComposite;
 
-final class ConcreteComposite extends Composite
+final readonly class ConcreteLogicalComposite extends LogicalComposite
 {
     public function evaluate(mixed $input): Result
     {

@@ -64,6 +64,8 @@ interface KeyBuilder
 
     public static function keyCnpj(int|string $key): Chain;
 
+    public static function keyComposite(int|string $key, Validator ...$validators): Chain;
+
     public static function keyConsonant(int|string $key, string ...$additionalChars): Chain;
 
     public static function keyContains(int|string $key, mixed $containsValue): Chain;

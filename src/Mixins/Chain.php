@@ -69,6 +69,8 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function cnpj(): Chain;
 
+    public function composite(Validator ...$validators): Chain;
+
     public function consonant(string ...$additionalChars): Chain;
 
     public function contains(mixed $containsValue): Chain;

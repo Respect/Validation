@@ -64,6 +64,8 @@ interface KeyChain
 
     public function keyCnpj(int|string $key): Chain;
 
+    public function keyComposite(int|string $key, Validator ...$validators): Chain;
+
     public function keyConsonant(int|string $key, string ...$additionalChars): Chain;
 
     public function keyContains(int|string $key, mixed $containsValue): Chain;

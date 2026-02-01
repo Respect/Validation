@@ -21,7 +21,6 @@ use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\ValidatorBuilder;
 use Respect\Validation\Validators\Core\KeyRelated;
-use Respect\Validation\Validators\Core\Reducer;
 
 use function array_diff;
 use function array_filter;
@@ -84,7 +83,7 @@ final readonly class KeySet implements Validator
             return $arrayResult;
         }
 
-        $keys = new Reducer(...array_merge($this->validators, array_map(
+        $keys = new Composite(...array_merge($this->validators, array_map(
             static fn(string|int $key) => new Not(new KeyExists($key)),
             array_slice(array_diff(array_keys($input), $this->allKeys), 0, self::MAX_DIFF_KEYS),
         )));
