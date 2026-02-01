@@ -4,75 +4,87 @@
  * SPDX-License-Identifier: MIT
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
+ * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  */
 
 declare(strict_types=1);
 
 namespace Respect\Validation\Transformers;
 
-use function array_shift;
-use function in_array;
-use function str_starts_with;
-use function strlen;
-use function substr;
+use function array_keys;
+use function array_slice;
+use function implode;
+use function preg_match;
+use function sprintf;
 
 final class Prefix implements Transformer
 {
-    private const array RULES_TO_SKIP = [
-        'all',
-        'allOf',
-        'key',
-        'keyExists',
-        'keyOptional',
-        'keySet',
-        'length',
-        'max',
-        'maxAge',
-        'min',
-        'minAge',
-        'not',
-        'emoji',
-        'nullOr',
-        'property',
-        'propertyExists',
-        'propertyOptional',
-        'undefOr',
+    private const array RULES_THAT_PREFIX_OR_STAND_ALONE = [
+        'all' => true,
+        'allOf' => true,
+        'emoji' => true,
+        'key' => true,
+        'keyExists' => true,
+        'keyOptional' => true,
+        'keySet' => true,
+        'length' => true,
+        'max' => true,
+        'maxAge' => true,
+        'min' => true,
+        'minAge' => true,
+        'not' => true,
+        'nullOr' => true,
+        'property' => true,
+        'propertyExists' => true,
+        'propertyOptional' => true,
+        'undefOr' => true,
     ];
+    private const array RULES_THAT_USE_SUFFIX_AS_ARGUMENT = [
+        'key' => true,
+        'property' => true,
+    ];
+
+    private static string|null $regex = null;
 
     public function transform(ValidatorSpec $validatorSpec): ValidatorSpec
     {
-        if ($validatorSpec->wrapper !== null || in_array($validatorSpec->name, self::RULES_TO_SKIP, true)) {
+        $matches = $this->match($validatorSpec);
+        if ($matches === []) {
             return $validatorSpec;
         }
 
-        foreach (['all', 'length', 'max', 'min', 'not', 'nullOr', 'undefOr'] as $prefix) {
-            if (!str_starts_with($validatorSpec->name, $prefix)) {
-                continue;
-            }
-
+        if (!isset(self::RULES_THAT_USE_SUFFIX_AS_ARGUMENT[$matches['name']])) {
             return new ValidatorSpec(
-                substr($validatorSpec->name, strlen($prefix)),
+                $matches['rest'],
                 $validatorSpec->arguments,
-                new ValidatorSpec($prefix),
+                new ValidatorSpec($matches['name']),
             );
         }
 
-        foreach (['key', 'property'] as $prefix) {
-            if (!str_starts_with($validatorSpec->name, $prefix)) {
-                continue;
-            }
+        return new ValidatorSpec(
+            $matches['rest'],
+            array_slice($validatorSpec->arguments, 1),
+            new ValidatorSpec($matches['name'], [$validatorSpec->arguments[0]]),
+        );
+    }
 
-            $arguments = $validatorSpec->arguments;
-            array_shift($arguments);
-            $wrapperArguments = [$validatorSpec->arguments[0]];
-
-            return new ValidatorSpec(
-                substr($validatorSpec->name, strlen($prefix)),
-                $arguments,
-                new ValidatorSpec($prefix, $wrapperArguments),
-            );
+    /** @return array{}|array{name: string, rest: string} */
+    private function match(ValidatorSpec $validatorSpec): array
+    {
+        if ($validatorSpec->wrapper !== null || isset(self::RULES_THAT_PREFIX_OR_STAND_ALONE[$validatorSpec->name])) {
+            return [];
         }
 
-        return $validatorSpec;
+        preg_match(self::getRegex(), $validatorSpec->name, $matches);
+
+        return $matches;
+    }
+
+    private static function getRegex(): string
+    {
+        return self::$regex ?? self::$regex = sprintf(
+            '/^(?<name>%s)(?<rest>.+)$/',
+            implode('|', array_keys(self::RULES_THAT_PREFIX_OR_STAND_ALONE)),
+        );
     }
 }
