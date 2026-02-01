@@ -15,7 +15,7 @@ use Respect\Validation\Message\ArrayFormatter;
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Result;
 
-use function array_reduce;
+use function array_values;
 use function count;
 use function current;
 use function is_array;
@@ -31,25 +31,30 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
     public function format(Result $result, Renderer $renderer, array $templates): array
     {
         if ($result->children === []) {
-            return [$this->getKey($result) => $renderer->render($result, $templates)];
+            return [$result->path->value ?? $result->id->value => $renderer->render($result, $templates)];
         }
 
-        [$children, $hasString] = $this->prepareChildren($result->children);
+        $hasStringKey = false;
+        foreach ($result->children as $child) {
+            if (!is_numeric($child->path->value ?? $child->id->value)) {
+                $hasStringKey = true;
+                break;
+            }
+        }
 
-        $messages = array_reduce(
-            $children,
-            fn(array $messages, array $item) => $this->appendMessage(
+        $messages = [];
+        $childCount = count($result->children);
+        foreach ($result->children as $child) {
+            $messages = $this->formatChild(
                 $messages,
-                $item['key'],
-                $item['child'],
+                $child,
                 $renderer,
                 $templates,
-                $hasString,
+                $hasStringKey,
                 $result,
-                isParentVisible: count($children) > 1,
-            ),
-            [],
-        );
+                $childCount > 1,
+            );
+        }
 
         if (count($messages) > 1) {
             return ['__root__' => $renderer->render($result, $templates)] + $messages;
@@ -59,97 +64,91 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
     }
 
     /**
-     * @param array<Result> $children
-     *
-     * @return array{0: array<array{key: string|int, child: Result}>, 1: bool}
-     */
-    private function prepareChildren(array $children): array
-    {
-        $mapped = [];
-        $hasString = false;
-
-        foreach ($children as $child) {
-            $key = $this->getKey($child);
-            if (!is_numeric($key)) {
-                $hasString = true;
-            }
-
-            $mapped[] = ['key' => $key, 'child' => $child];
-        }
-
-        return [$mapped, $hasString];
-    }
-
-    /**
      * @param array<string|int, mixed> $messages
      * @param array<string|int, mixed> $templates
      *
      * @return array<string|int, mixed>
      */
-    private function appendMessage(
+    private function formatChild(
         array $messages,
-        string|int $key,
         Result $child,
         Renderer $renderer,
         array $templates,
-        bool $hasString,
+        bool $hasStringKey,
         Result $parent,
-        bool $isParentVisible,
+        bool $hasMultipleChildren,
     ): array {
-        if ($hasString && is_numeric($key)) {
-            $key = $child->id->value;
+        $rawKey = $child->path->value ?? $child->id->value;
+        $normalizedKey = $hasStringKey && is_numeric($rawKey) ? $child->id->value : $rawKey;
+
+        $formatted = $this->format(
+            $hasMultipleChildren && $child->name === $parent->name ? $child->withoutName() : $child,
+            $renderer,
+            $templates,
+        );
+
+        $childMessage = count($formatted) === 1 ? current($formatted) : $formatted;
+
+        if (is_array($childMessage) && count($childMessage) > 1 && !isset($childMessage['__root__'])) {
+            $childMessage = ['__root__' => $renderer->render($child, $templates)] + $childMessage;
         }
 
-        $message = $this->renderChild($child, $renderer, $templates, $parent, $isParentVisible);
-
-        if (!$hasString) {
-            $messages[] = $message;
+        if (!$hasStringKey) {
+            $messages[] = $childMessage;
 
             return $messages;
         }
 
-        if (isset($messages[$key])) {
-            if (!is_array($messages[$key])) {
+        if (!isset($messages[$normalizedKey])) {
+            $messages[$normalizedKey] = $childMessage;
+
+            return $messages;
+        }
+
+        if ($child->path !== null) {
+            return $this->mergeWithExistingPath($messages, $normalizedKey, $childMessage);
+        }
+
+        return $this->flattenToIndexedList($messages, $childMessage, $parent, $renderer, $templates);
+    }
+
+    /**
+     * @param array<string|int, mixed> $messages
+     * @param array<string|int, mixed>|string $childMessage
+     *
+     * @return array<string|int, mixed>
+     */
+    private function mergeWithExistingPath(array $messages, string|int $key, array|string $childMessage): array
+    {
+        if (is_array($messages[$key])) {
+            if (isset($messages[$key]['__root__'])) {
                 $messages[$key] = [$messages[$key]];
             }
 
-            $messages[$key][] = $message;
-
-            return $messages;
+            $messages[$key][] = $childMessage;
+        } else {
+            $messages[$key] = [$messages[$key], $childMessage];
         }
-
-        $messages[$key] = $message;
 
         return $messages;
     }
 
     /**
-     * @param array<string|int, array<string>> $templates
+     * @param array<string|int, mixed> $messages
+     * @param array<string|int, mixed>|string $childMessage
+     * @param array<string|int, mixed> $templates
      *
-     * @return array<string>|string
+     * @return array<string|int, mixed>
      */
-    private function renderChild(
-        Result $child,
+    private function flattenToIndexedList(
+        array $messages,
+        array|string $childMessage,
+        Result $parent,
         Renderer $renderer,
         array $templates,
-        Result $parent,
-        bool $isParentVisible,
-    ): array|string {
-        $formatted = $this->format(
-            $isParentVisible && $child->name === $parent->name ? $child->withoutName() : $child,
-            $renderer,
-            $templates,
-        );
+    ): array {
+        $parentMessage = $messages['__root__'] ?? $renderer->render($parent, $templates);
 
-        if (count($formatted) === 1) {
-            return current($formatted);
-        }
-
-        return $formatted;
-    }
-
-    private function getKey(Result $result): string|int
-    {
-        return $result->path->value ?? $result->id->value;
+        return ['__root__' => $parentMessage] + array_values($messages) + [count($messages) => $childMessage];
     }
 }

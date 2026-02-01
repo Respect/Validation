@@ -126,6 +126,63 @@ final class NestedArrayFormatterTest extends TestCase
                     'sameId' => ['msg2', 'msg3'],
                 ],
             ],
+            'with id collision and nested children' => [
+                (new ResultBuilder())->id('root')->template('root_msg')
+                    ->children(
+                        (new ResultBuilder())->id('sameId')->template('c1_root')
+                            ->children(
+                                (new ResultBuilder())->template('msg2')->path(new Path(0))->build(),
+                                (new ResultBuilder())->template('msg3')->path(new Path(1))->build(),
+                            )->build(),
+                        (new ResultBuilder())->id('sameId')->template('c2_root')
+                            ->children(
+                                (new ResultBuilder())->template('msg4')->path(new Path(0))->build(),
+                                (new ResultBuilder())->template('msg5')->path(new Path(1))->build(),
+                            )->build(),
+                    )->build(),
+                [
+                    '__root__' => 'root_msg',
+                    0 => [
+                        '__root__' => 'c1_root',
+                        0 => 'msg2',
+                        1 => 'msg3',
+                    ],
+                    1 => [
+                        '__root__' => 'c2_root',
+                        0 => 'msg4',
+                        1 => 'msg5',
+                    ],
+                ],
+            ],
+            'with string path collision and nested children' => [
+                (new ResultBuilder())->id('root')->template('root_msg')
+                    ->children(
+                        (new ResultBuilder())->id('c1')->template('c1_root')
+                            ->children(
+                                (new ResultBuilder())->template('msg2')->path(new Path(0))->build(),
+                                (new ResultBuilder())->template('msg3')->path(new Path(1))->build(),
+                            )->path(new Path('foo'))->build(),
+                        (new ResultBuilder())->id('c2')->template('c2_root')
+                            ->children(
+                                (new ResultBuilder())->template('msg4')->path(new Path(0))->build(),
+                                (new ResultBuilder())->template('msg5')->path(new Path(1))->build(),
+                            )->path(new Path('foo'))->build(),
+                    )->build(),
+                [
+                    'foo' => [
+                        0 => [
+                            '__root__' => 'c1_root',
+                            0 => 'msg2',
+                            1 => 'msg3',
+                        ],
+                        1 => [
+                            '__root__' => 'c2_root',
+                            0 => 'msg4',
+                            1 => 'msg5',
+                        ],
+                    ],
+                ],
+            ],
             'with pure numeric keys' => [
                 (new ResultBuilder())->id('root')->template('root_msg')
                     ->children(
