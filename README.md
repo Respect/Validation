@@ -13,9 +13,8 @@ SPDX-License-Identifier: MIT
 The most awesome validation engine ever created for PHP.
 
 - Complex validation made simple: `v::numericVal()->positive()->between(1, 255)->isValid($input)`.
-- [Granularity control](docs/handling-exceptions.md) for advanced reporting.
+- Advanced [exception handling](docs/handling-exceptions.md).
 - [More than 150](docs/validators.md) (fully tested) validators.
-- [A concrete API](docs/concrete-api.md) for non fluent usage.
 
 Learn More:
 
