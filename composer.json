@@ -21,8 +21,8 @@
     },
     "require": {
         "php": ">=8.5",
-        "php-di/php-di": "^7.1",
         "psr/container": "^2.0",
+        "respect/config": "dev-master",
         "respect/string-formatter": "^1.0",
         "respect/stringifier": "^3.0",
         "symfony/polyfill-mbstring": "^1.33"

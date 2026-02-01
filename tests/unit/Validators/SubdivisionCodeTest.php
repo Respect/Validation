@@ -12,10 +12,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
-use DI;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Config\Container;
 use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
@@ -37,8 +37,7 @@ final class SubdivisionCodeTest extends RuleTestCase
     #[Test]
     public function shouldThrowWhenMissingComponent(): void
     {
-        $mainContainer = ContainerRegistry::getContainer();
-        ContainerRegistry::setContainer((new DI\ContainerBuilder())->useAutowiring(false)->build());
+        ContainerRegistry::setContainer(new Container());
         try {
             new SubdivisionCode('US');
             $this->fail('Expected MissingComposerDependencyException was not thrown.');
@@ -48,7 +47,7 @@ final class SubdivisionCodeTest extends RuleTestCase
                 $e->getMessage(),
             );
         } finally {
-            ContainerRegistry::setContainer($mainContainer);
+            ContainerRegistry::resetContainer();
         }
     }
 

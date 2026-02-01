@@ -493,7 +493,7 @@ The `Factory` class has been replaced by a dependency injection container approa
 + ContainerRegistry::setContainer($container);
 ```
 
-The `ContainerRegistry::createContainer()` returns a [PHP-DI](https://php-di.org/) container. You can also use any PSR-11 compatible container with `ContainerRegistry::setContainer()`.
+The `ContainerRegistry::createContainer()` returns a PSR-11 compatible container.
 
 ### Custom validators
 

@@ -17,12 +17,12 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
-use DI;
 use libphonenumber\PhoneNumberUtil;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Config\Container;
 use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
@@ -74,15 +74,9 @@ final class PhoneTest extends TestCase
     #[Test]
     public function shouldThrowWhenMissingIsocodesComponent(): void
     {
-        $mainContainer = ContainerRegistry::getContainer();
-        ContainerRegistry::setContainer(
-            (new DI\ContainerBuilder())
-                ->addDefinitions([
-                    PhoneNumberUtil::class => DI\factory(static fn() => PhoneNumberUtil::getInstance()),
-                ])
-                ->useAutowiring(false)
-                ->build(),
-        );
+        $container = new Container();
+        $container[PhoneNumberUtil::class] = static fn() => PhoneNumberUtil::getInstance();
+        ContainerRegistry::setContainer($container);
         try {
             new Phone('US');
             $this->fail('Expected MissingComposerDependencyException was not thrown.');
@@ -92,22 +86,16 @@ final class PhoneTest extends TestCase
                 $e->getMessage(),
             );
         } finally {
-            ContainerRegistry::setContainer($mainContainer);
+            ContainerRegistry::resetContainer();
         }
     }
 
     #[Test]
     public function shouldThrowWhenMissingPhonesComponent(): void
     {
-        $mainContainer = ContainerRegistry::getContainer();
-        ContainerRegistry::setContainer(
-            (new DI\ContainerBuilder())
-                ->addDefinitions([
-                    Countries::class => DI\create(Countries::class),
-                ])
-                ->useAutowiring(false)
-                ->build(),
-        );
+        $container = new Container();
+        $container[Countries::class] = static fn() => new Countries();
+        ContainerRegistry::setContainer($container);
         try {
             new Phone('US');
             $this->fail('Expected MissingComposerDependencyException was not thrown.');
@@ -117,7 +105,7 @@ final class PhoneTest extends TestCase
                 $e->getMessage(),
             );
         } finally {
-            ContainerRegistry::setContainer($mainContainer);
+            ContainerRegistry::resetContainer();
         }
     }
 

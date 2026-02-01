@@ -49,4 +49,15 @@ final class ContainerRegistryTest extends TestCase
 
         self::assertSame($newContainer, ContainerRegistry::getContainer());
     }
+
+    #[Test]
+    public function itResetsTheContainerToTheDefaultState(): void
+    {
+        $newContainer = ContainerRegistry::createContainer(['foo' => 'bar']);
+        ContainerRegistry::setContainer($newContainer);
+        ContainerRegistry::resetContainer();
+        $defaultContainer = ContainerRegistry::getContainer();
+        self::assertNotSame($newContainer, $defaultContainer);
+        self::assertFalse($defaultContainer->has('foo'));
+    }
 }

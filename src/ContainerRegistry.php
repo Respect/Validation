@@ -10,9 +10,10 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-use DI\Container;
 use libphonenumber\PhoneNumberUtil;
 use Psr\Container\ContainerInterface;
+use Ramsey\Uuid\UuidFactory;
+use Respect\Config\Container;
 use Respect\StringFormatter\BypassTranslator;
 use Respect\StringFormatter\Modifier;
 use Respect\StringFormatter\Modifiers\ListModifier;
@@ -39,86 +40,103 @@ use Respect\Validation\Message\Parameters\ResultHandler;
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Transformers\Prefix;
 use Respect\Validation\Transformers\Transformer;
+use Sokil\IsoCodes\Database\Countries;
+use Sokil\IsoCodes\Database\Currencies;
+use Sokil\IsoCodes\Database\Languages;
+use Sokil\IsoCodes\Database\Subdivisions;
 use Symfony\Contracts\Translation\TranslatorInterface;
-
-use function DI\autowire;
-use function DI\create;
-use function DI\factory;
 
 final class ContainerRegistry
 {
-    private static ContainerInterface|null $container = null;
+    private static ContainerInterface|null $c = null;
 
     /** @param array<string, mixed> $definitions */
     public static function createContainer(array $definitions = []): Container
     {
-        return new Container($definitions + [
-            PhoneNumberUtil::class => factory(static fn() => PhoneNumberUtil::getInstance()),
-            Transformer::class => create(Prefix::class),
-            TemplateResolver::class => create(TemplateResolver::class),
-            TranslatorInterface::class => autowire(BypassTranslator::class),
-            Renderer::class => autowire(InterpolationRenderer::class),
-            ResultFilter::class => create(OnlyFailedChildrenResultFilter::class),
-            'respect.validation.formatter.message' => autowire(FirstResultStringFormatter::class),
-            'respect.validation.formatter.full_message' => autowire(NestedListStringFormatter::class),
-            'respect.validation.formatter.messages' => autowire(NestedArrayFormatter::class),
+        $c = new Container();
+
+        $definitions += [
+            // By key
+            'respect.validation.formatter.full_message' => static fn() => new NestedListStringFormatter(),
+            'respect.validation.formatter.message' => static fn() => new FirstResultStringFormatter(),
+            'respect.validation.formatter.messages' => static fn() => new NestedArrayFormatter(),
             'respect.validation.ignored_backtrace_paths' => [__DIR__ . '/ValidatorBuilder.php'],
             'respect.validation.rule_factory.namespaces' => ['Respect\\Validation\\Validators'],
-            ValidatorFactory::class => factory(static fn(Container $container) => new NamespacedValidatorFactory(
-                $container->get(Transformer::class),
-                $container->get('respect.validation.rule_factory.namespaces'),
-            )),
-            Quoter::class => create(CodeQuoter::class)->constructor(120),
-            Handler::class => factory(static function (Container $container) {
+
+            // By interface
+            Quoter::class => static fn() => new CodeQuoter(120),
+            Transformer::class => static fn() => new Prefix(),
+            TranslatorInterface::class => static fn() => new BypassTranslator(),
+            Renderer::class => static fn() => new InterpolationRenderer(
+                $c->get(TranslatorInterface::class),
+                $c->get(PlaceholderFormatter::class),
+                $c->get(TemplateResolver::class),
+            ),
+            Modifier::class => static fn() => new TransModifier(
+                new ListModifier(
+                    new QuoteModifier(new RawModifier(new StringifyModifier($c->get(Stringifier::class)))),
+                    $c->get(TranslatorInterface::class),
+                ),
+                $c->get(TranslatorInterface::class),
+            ),
+            ResultFilter::class => static fn() => new OnlyFailedChildrenResultFilter(),
+            Handler::class => static function () use ($c) {
                 $handler = CompositeHandler::create();
-                $handler->prependHandler(new PathHandler($container->get(Quoter::class)));
+                $handler->prependHandler(new PathHandler($c->get(Quoter::class)));
                 $handler->prependHandler(new NameHandler());
                 $handler->prependHandler(new ResultHandler($handler));
 
                 return $handler;
-            }),
-            PlaceholderFormatter::class => factory(static fn(Container $container) => new PlaceholderFormatter(
-                [],
-                $container->get(Modifier::class),
-            )),
-            Stringifier::class => factory(static fn(Container $container) => new HandlerStringifier(
-                $container->get(Handler::class),
-                new DumpStringifier(),
-            )),
-            Modifier::class => factory(static fn(Container $container) => new TransModifier(
-                new ListModifier(
-                    new QuoteModifier(
-                        new RawModifier(
-                            new StringifyModifier($container->get(Stringifier::class)),
-                        ),
-                    ),
-                    $container->get(TranslatorInterface::class),
-                ),
-                $container->get(TranslatorInterface::class),
-            )),
-            ValidatorBuilder::class => factory(static fn(Container $container) => new ValidatorBuilder(
-                $container->get(ValidatorFactory::class),
-                $container->get(Renderer::class),
-                $container->get('respect.validation.formatter.message'),
-                $container->get('respect.validation.formatter.full_message'),
-                $container->get('respect.validation.formatter.messages'),
-                $container->get(ResultFilter::class),
-                $container->get('respect.validation.ignored_backtrace_paths'),
-            )),
-        ]);
+            },
+            Stringifier::class => static fn() => new HandlerStringifier($c->get(Handler::class), new DumpStringifier()),
+
+            // By class
+            Countries::class => static fn() => new Countries(),
+            Currencies::class => static fn() => new Currencies(),
+            Languages::class => static fn() => new Languages(),
+            PhoneNumberUtil::class => static fn() => PhoneNumberUtil::getInstance(),
+            PlaceholderFormatter::class => static fn() => new PlaceholderFormatter([], $c->get(Modifier::class)),
+            Subdivisions::class => static fn() => new Subdivisions(),
+            TemplateResolver::class => static fn() => new TemplateResolver(),
+            UuidFactory::class => static fn() => new UuidFactory(),
+            ValidatorBuilder::class => static fn() => new ValidatorBuilder(
+                $c->get(ValidatorFactory::class),
+                $c->get(Renderer::class),
+                $c->get('respect.validation.formatter.message'),
+                $c->get('respect.validation.formatter.full_message'),
+                $c->get('respect.validation.formatter.messages'),
+                $c->get(ResultFilter::class),
+                $c->get('respect.validation.ignored_backtrace_paths'),
+            ),
+            ValidatorFactory::class => static fn() => new NamespacedValidatorFactory(
+                $c->get(Transformer::class),
+                $c->get('respect.validation.rule_factory.namespaces'),
+            ),
+        ];
+
+        foreach ($definitions as $key => $value) {
+            $c->$key = $value;
+        }
+
+        return $c;
     }
 
     public static function getContainer(): ContainerInterface
     {
-        if (!isset(self::$container)) {
-            self::$container = self::createContainer();
+        if (!isset(self::$c)) {
+            self::$c = self::createContainer();
         }
 
-        return self::$container;
+        return self::$c;
     }
 
     public static function setContainer(ContainerInterface $instance): void
     {
-        self::$container = $instance;
+        self::$c = $instance;
+    }
+
+    public static function resetContainer(): void
+    {
+        self::$c = null;
     }
 }

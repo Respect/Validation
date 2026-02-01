@@ -35,7 +35,7 @@ $translator->addResource(
     'en',
 );
 $container = ContainerRegistry::createContainer();
-$container->set(TranslatorInterface::class, $translator);
+$container[TranslatorInterface::class] = $translator;
 
 beforeAll(fn() => ContainerRegistry::setContainer($container));
 

@@ -21,10 +21,10 @@ final class MyValidator
         $defaultContainer = ContainerRegistry::getContainer();
 
         $container = ContainerRegistry::createContainer();
-        $container->set('respect.validation.ignored_backtrace_paths', [
+        $container['respect.validation.ignored_backtrace_paths'] = [
             __FILE__,
             ...$defaultContainer->get('respect.validation.ignored_backtrace_paths'),
-        ]);
+        ];
         ContainerRegistry::setContainer($container);
 
         try {
