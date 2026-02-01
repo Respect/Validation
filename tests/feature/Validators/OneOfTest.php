@@ -94,3 +94,11 @@ test('Inverted: fail, fail, pass', catchAll(
         ->and($fullMessage)->toBe('- -1 must not be a negative number')
         ->and($messages)->toBe(['negative' => '-1 must not be a negative number']),
 ));
+
+test('short-circuit: inverted when one validator passes', catchAll(
+    fn() => v::not(v::shortCircuit(v::oneOf(v::stringType(), v::intType())))->assert(5),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('5 must not be an integer')
+        ->and($fullMessage)->toBe('- 5 must not be an integer')
+        ->and($messages)->toBe(['intType' => '5 must not be an integer']),
+));

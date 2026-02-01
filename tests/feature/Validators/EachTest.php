@@ -301,3 +301,37 @@ test('Multiple nested rules', catchAll(
             ],
         ]),
 ));
+
+test('short-circuit: first item fails', catchAll(
+    fn() => v::shortCircuit(v::each(v::intType()))->assert(['a', 2, 3]),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.0` must be an integer')
+        ->and($fullMessage)->toBe('- `.0` must be an integer')
+        ->and($messages)->toBe([0 => '`.0` must be an integer']),
+));
+
+test('short-circuit: second item fails', catchAll(
+    fn() => v::shortCircuit(v::each(v::intType()))->assert([1, 2.5, 3]),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.1` must be an integer')
+        ->and($fullMessage)->toBe('- `.1` must be an integer')
+        ->and($messages)->toBe([1 => '`.1` must be an integer']),
+));
+
+test('short-circuit: all items pass', function (): void {
+    $validator = v::shortCircuit(v::each(v::intType()));
+    expect($validator->isValid([1, 2, 3]))->toBeTrue();
+});
+
+test('short-circuit: empty array', function (): void {
+    $validator = v::shortCircuit(v::each(v::intType()));
+    expect($validator->isValid([]))->toBeTrue();
+});
+
+test('short-circuit: non-iterable input', catchAll(
+    fn() => v::shortCircuit(v::each(v::intType()))->assert(null),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`null` must be iterable')
+        ->and($fullMessage)->toBe('- `null` must be iterable')
+        ->and($messages)->toBe(['each' => '`null` must be iterable']),
+));

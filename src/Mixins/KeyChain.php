@@ -57,8 +57,6 @@ interface KeyChain
 
     public function keyCharset(int|string $key, string $charset, string ...$charsets): Chain;
 
-    public function keyCircuit(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function keyCnh(int|string $key): Chain;
 
     public function keyCnpj(int|string $key): Chain;
@@ -261,6 +259,8 @@ interface KeyChain
     public function keySatisfies(int|string $key, callable $callback, mixed ...$arguments): Chain;
 
     public function keyScalarVal(int|string $key): Chain;
+
+    public function keyShortCircuit(int|string $key, Validator ...$validators): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function keySize(int|string $key, string $unit, Validator $validator): Chain;

@@ -57,8 +57,6 @@ interface NotBuilder
 
     public static function notCharset(string $charset, string ...$charsets): Chain;
 
-    public static function notCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function notCnh(): Chain;
 
     public static function notCnpj(): Chain;
@@ -275,6 +273,8 @@ interface NotBuilder
     public static function notSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function notScalarVal(): Chain;
+
+    public static function notShortCircuit(Validator ...$validators): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public static function notSize(string $unit, Validator $validator): Chain;

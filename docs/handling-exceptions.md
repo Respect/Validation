@@ -7,7 +7,9 @@ SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
 
 # Handling exceptions
 
-The `ValidatorBuilder::assert()` method throws a `ValidationException` when validation fails. This exception provides detailed feedback on what went wrong.
+Both `ValidatorBuilder::assert()` and `ValidatorBuilder::check()` throw a `ValidationException` when validation fails. This exception provides detailed feedback on what went wrong.
+
+The difference between the two methods is that `assert()` evaluates all validators in the chain and collects every error, while `check()` stops at the first failure (using `ShortCircuit` internally).
 
 ## The `ValidationException`
 
@@ -18,6 +20,16 @@ try {
     v::alnum()->assert($input);
 } catch (InvalidArgumentException $exception) {
     echo $exception->getMessage();
+}
+```
+
+The same applies to `check()`:
+
+```php
+try {
+    v::alnum()->lowercase()->check($input);
+} catch (InvalidArgumentException $exception) {
+    echo $exception->getMessage(); // Only the first failure
 }
 ```
 

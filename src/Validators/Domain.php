@@ -63,9 +63,9 @@ final class Domain implements Validator
         return Result::of($this->partsRule->evaluate($parts)->hasPassed, $input, $this);
     }
 
-    private function createGenericRule(): Circuit
+    private function createGenericRule(): ShortCircuit
     {
-        return new Circuit(
+        return new ShortCircuit(
             new StringType(),
             new Not(new Spaced()),
             new Contains('.'),
@@ -79,13 +79,13 @@ final class Domain implements Validator
             return new Tld();
         }
 
-        return new Circuit(new Not(new StartsWith('-')), new Length(new GreaterThanOrEqual(2)));
+        return new ShortCircuit(new Not(new StartsWith('-')), new Length(new GreaterThanOrEqual(2)));
     }
 
     private function createPartsRule(): Validator
     {
         return new Each(
-            new Circuit(
+            new ShortCircuit(
                 new Alnum('-'),
                 new Not(new StartsWith('-')),
                 new AnyOf(

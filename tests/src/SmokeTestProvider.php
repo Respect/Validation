@@ -46,7 +46,6 @@ trait SmokeTestProvider
         yield 'Bsn' => [new vs\Bsn(), '612890053'];
         yield 'CallableType' => [new vs\CallableType(), [static::class, 'callableTarget']];
         yield 'Charset' => [new vs\Charset('UTF-8'), 'example'];
-        yield 'Circuit' => [new vs\Circuit(new vs\IntVal(), new vs\GreaterThan(0)), 5];
         yield 'Cnh' => [new vs\Cnh(), '02650306461'];
         yield 'Cnpj' => [new vs\Cnpj(), '11444777000161'];
         yield 'Consonant' => [new vs\Consonant(), 'bcdf'];
@@ -77,6 +76,7 @@ trait SmokeTestProvider
         yield 'Exists' => [new vs\Exists(), 'tests/fixtures/valid-image.png'];
         yield 'Extension' => [new vs\Extension('png'), 'image.png'];
         yield 'Factor' => [new vs\Factor(0), 36];
+        yield 'ShortCircuit' => [new vs\ShortCircuit(new vs\IntVal(), new vs\GreaterThan(0)), 5];
         yield 'FalseVal' => [new vs\FalseVal(), false];
         yield 'Falsy' => [new vs\Falsy(), 0];
         yield 'File' => [new vs\File(), __FILE__];

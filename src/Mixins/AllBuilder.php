@@ -55,8 +55,6 @@ interface AllBuilder
 
     public static function allCharset(string $charset, string ...$charsets): Chain;
 
-    public static function allCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function allCnh(): Chain;
 
     public static function allCnpj(): Chain;
@@ -259,6 +257,8 @@ interface AllBuilder
     public static function allSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function allScalarVal(): Chain;
+
+    public static function allShortCircuit(Validator ...$validators): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public static function allSize(string $unit, Validator $validator): Chain;

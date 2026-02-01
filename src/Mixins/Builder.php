@@ -60,8 +60,6 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function charset(string $charset, string ...$charsets): Chain;
 
-    public static function circuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function cnh(): Chain;
 
     public static function cnpj(): Chain;
@@ -284,6 +282,8 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
     public static function satisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function scalarVal(): Chain;
+
+    public static function shortCircuit(Validator ...$validators): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public static function size(string $unit, Validator $validator): Chain;

@@ -9,6 +9,8 @@ parameters:
       path: src/Validators/ArrayVal.php
     - message: '/Call to an undefined method .+::expectException\(\)/'
       path: tests/Pest.php
+    - message: '/Call to an undefined method .+::throwsNoExceptions\(\)/'
+      path: tests/feature
     - message: '/Undefined variable: \$this/'
       path: tests/feature/Validators/SizeTest.php
     - message: '/Undefined variable: \$this/'

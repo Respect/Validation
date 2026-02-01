@@ -15,10 +15,12 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validators\Core\ShortCircuitable;
 
 use function array_map;
 use function array_reduce;
@@ -28,8 +30,10 @@ use function array_reduce;
     '{{subject}} must pass at least one of the rules',
     '{{subject}} must pass at least one of the rules',
 )]
-final class AnyOf extends Composite
+final class AnyOf extends Composite implements ShortCircuitable
 {
+    use CanEvaluateShortCircuit;
+
     public function evaluate(mixed $input): Result
     {
         $children = array_map(static fn(Validator $validator) => $validator->evaluate($input), $this->validators);
@@ -40,5 +44,19 @@ final class AnyOf extends Composite
         );
 
         return Result::of($valid, $input, $this)->withChildren(...$children);
+    }
+
+    public function evaluateShortCircuit(mixed $input): Result
+    {
+        $children = [];
+        foreach ($this->validators as $validator) {
+            $result = $this->evaluateShortCircuitWith($validator, $input);
+            $children[] = $result;
+            if ($result->hasPassed) {
+                return Result::passed($input, $this)->withChildren(...$children);
+            }
+        }
+
+        return Result::failed($input, $this)->withChildren(...$children);
     }
 }

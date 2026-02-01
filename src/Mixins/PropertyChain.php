@@ -57,8 +57,6 @@ interface PropertyChain
 
     public function propertyCharset(string $propertyName, string $charset, string ...$charsets): Chain;
 
-    public function propertyCircuit(string $propertyName, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function propertyCnh(string $propertyName): Chain;
 
     public function propertyCnpj(string $propertyName): Chain;
@@ -261,6 +259,8 @@ interface PropertyChain
     public function propertySatisfies(string $propertyName, callable $callback, mixed ...$arguments): Chain;
 
     public function propertyScalarVal(string $propertyName): Chain;
+
+    public function propertyShortCircuit(string $propertyName, Validator ...$validators): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function propertySize(string $propertyName, string $unit, Validator $validator): Chain;

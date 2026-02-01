@@ -53,13 +53,13 @@ v::subdivisionCode('US')->assert('CA');
 
 ## See Also
 
-- [Circuit](Circuit.md)
 - [CountryCode](CountryCode.md)
 - [CurrencyCode](CurrencyCode.md)
 - [Nip](Nip.md)
 - [Pesel](Pesel.md)
 - [PolishIdCard](PolishIdCard.md)
 - [PublicDomainSuffix](PublicDomainSuffix.md)
+- [ShortCircuit](ShortCircuit.md)
 - [Tld](Tld.md)
 
 [ISO 3166-1 alpha-2]: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 "ISO 3166-1 alpha-2"

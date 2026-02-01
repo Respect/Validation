@@ -76,6 +76,6 @@ Used when more than one validator has passed.
 
 - [AllOf](AllOf.md)
 - [AnyOf](AnyOf.md)
-- [Circuit](Circuit.md)
 - [NoneOf](NoneOf.md)
+- [ShortCircuit](ShortCircuit.md)
 - [When](When.md)

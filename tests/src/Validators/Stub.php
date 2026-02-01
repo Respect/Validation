@@ -30,7 +30,7 @@ final class Stub extends Simple
     public array $validations;
 
     /** @var array<mixed> */
-    public array $inputs;
+    public array $inputs = [];
 
     public function __construct(bool ...$validations)
     {

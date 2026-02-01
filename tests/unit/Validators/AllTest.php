@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
+use ArrayIterator;
 use ArrayObject;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -62,5 +63,76 @@ final class AllTest extends TestCase
     {
         $validator = new All($stub);
         self::assertInvalidInput($validator, $input);
+    }
+
+    #[Test]
+    public function shouldShortCircuitOnFirstFailure(): void
+    {
+        $stub = new Stub(true, false, true);
+        $validator = new All($stub);
+
+        $result = $validator->evaluateShortCircuit([1, 2, 3]);
+
+        self::assertFalse($result->hasPassed);
+        self::assertCount(2, $stub->inputs);
+    }
+
+    #[Test]
+    public function shouldShortCircuitPassWhenAllItemsPass(): void
+    {
+        $stub = Stub::pass(3);
+        $validator = new All($stub);
+
+        $result = $validator->evaluateShortCircuit([1, 2, 3]);
+
+        self::assertTrue($result->hasPassed);
+        self::assertCount(3, $stub->inputs);
+    }
+
+    #[Test]
+    public function shouldShortCircuitFailForNonIterableInput(): void
+    {
+        $stub = Stub::daze();
+        $validator = new All($stub);
+
+        $result = $validator->evaluateShortCircuit('not an array');
+
+        self::assertFalse($result->hasPassed);
+    }
+
+    #[Test]
+    public function shouldShortCircuitReturnIndeterminateForEmptyArray(): void
+    {
+        $stub = Stub::daze();
+        $validator = new All($stub);
+
+        $result = $validator->evaluateShortCircuit([]);
+
+        self::assertTrue($result->hasPassed);
+        self::assertTrue($result->isIndeterminate);
+    }
+
+    #[Test]
+    public function shouldShortCircuitWorkWithIterator(): void
+    {
+        $stub = new Stub(true, false, true);
+        $validator = new All($stub);
+
+        $result = $validator->evaluateShortCircuit(new ArrayIterator([1, 2, 3]));
+
+        self::assertFalse($result->hasPassed);
+        self::assertCount(2, $stub->inputs);
+    }
+
+    #[Test]
+    public function shouldShortCircuitIncludePathOnFailure(): void
+    {
+        $stub = new Stub(true, false, true);
+        $validator = new All($stub);
+
+        $result = $validator->evaluateShortCircuit(['a' => 1, 'b' => 2, 'c' => 3]);
+
+        self::assertFalse($result->hasPassed);
+        self::assertSame('b', $result->path?->value);
     }
 }

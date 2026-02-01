@@ -57,8 +57,6 @@ interface NullOrChain
 
     public function nullOrCharset(string $charset, string ...$charsets): Chain;
 
-    public function nullOrCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function nullOrCnh(): Chain;
 
     public function nullOrCnpj(): Chain;
@@ -277,6 +275,8 @@ interface NullOrChain
     public function nullOrSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public function nullOrScalarVal(): Chain;
+
+    public function nullOrShortCircuit(Validator ...$validators): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function nullOrSize(string $unit, Validator $validator): Chain;

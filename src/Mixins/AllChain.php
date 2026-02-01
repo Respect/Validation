@@ -55,8 +55,6 @@ interface AllChain
 
     public function allCharset(string $charset, string ...$charsets): Chain;
 
-    public function allCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function allCnh(): Chain;
 
     public function allCnpj(): Chain;
@@ -259,6 +257,8 @@ interface AllChain
     public function allSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public function allScalarVal(): Chain;
+
+    public function allShortCircuit(Validator ...$validators): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function allSize(string $unit, Validator $validator): Chain;

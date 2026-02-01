@@ -57,8 +57,6 @@ interface KeyBuilder
 
     public static function keyCharset(int|string $key, string $charset, string ...$charsets): Chain;
 
-    public static function keyCircuit(int|string $key, Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function keyCnh(int|string $key): Chain;
 
     public static function keyCnpj(int|string $key): Chain;
@@ -261,6 +259,8 @@ interface KeyBuilder
     public static function keySatisfies(int|string $key, callable $callback, mixed ...$arguments): Chain;
 
     public static function keyScalarVal(int|string $key): Chain;
+
+    public static function keyShortCircuit(int|string $key, Validator ...$validators): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public static function keySize(int|string $key, string $unit, Validator $validator): Chain;

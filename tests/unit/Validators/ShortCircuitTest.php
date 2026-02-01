@@ -21,21 +21,21 @@ use Respect\Validation\Test\Validators\Stub;
 use function rand;
 
 #[Group('validator')]
-#[CoversClass(Circuit::class)]
-final class CircuitTest extends TestCase
+#[CoversClass(ShortCircuit::class)]
+final class ShortCircuitTest extends TestCase
 {
     #[Test]
     #[DataProvider('providerForAnyValues')]
     public function itShouldValidateInputWhenAllValidatorsValidatesTheInput(mixed $input): void
     {
-        self::assertValidInput(new Circuit(Stub::pass(1), Stub::pass(1)), $input);
+        self::assertValidInput(new ShortCircuit(Stub::pass(1), Stub::pass(1)), $input);
     }
 
     #[Test]
     #[DataProvider('providerForFailingValidators')]
     public function itShouldExecuteValidatorsInSequenceUntilOneFails(Stub ...$stub): void
     {
-        $validator = new Circuit(...$stub);
+        $validator = new ShortCircuit(...$stub);
 
         self::assertInvalidInput($validator, rand());
     }
@@ -45,7 +45,7 @@ final class CircuitTest extends TestCase
     {
         $input = rand();
 
-        $validator = new Circuit(Stub::fail(1), Stub::daze());
+        $validator = new ShortCircuit(Stub::fail(1), Stub::daze());
 
         $actual = $validator->evaluate($input);
         $expected = Stub::fail(1)->evaluate($input);

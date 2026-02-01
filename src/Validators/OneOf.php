@@ -16,10 +16,12 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validators\Core\ShortCircuitable;
 
 use function array_filter;
 use function array_map;
@@ -38,8 +40,10 @@ use function usort;
     '{{subject}} must pass only one of the rules',
     self::TEMPLATE_MORE_THAN_ONE,
 )]
-final class OneOf extends Composite
+final class OneOf extends Composite implements ShortCircuitable
 {
+    use CanEvaluateShortCircuit;
+
     public const string TEMPLATE_NONE = '__none__';
     public const string TEMPLATE_MORE_THAN_ONE = '__more_than_one__';
 
@@ -65,5 +69,25 @@ final class OneOf extends Composite
         }
 
         return Result::of($valid, $input, $this, [], $template)->withChildren(...$children);
+    }
+
+    public function evaluateShortCircuit(mixed $input): Result
+    {
+        $children = [];
+        $passedCount = 0;
+        foreach ($this->validators as $validator) {
+            $result = $this->evaluateShortCircuitWith($validator, $input);
+            $children[] = $result;
+            if ($result->hasPassed) {
+                $passedCount++;
+            }
+
+            if ($passedCount > 1) {
+                return Result::failed($input, $this, [], self::TEMPLATE_MORE_THAN_ONE)->withChildren(...$children);
+            }
+        }
+
+        return Result::of($passedCount === 1, $input, $this, [], self::TEMPLATE_NONE)
+            ->withChildren(...$children);
     }
 }

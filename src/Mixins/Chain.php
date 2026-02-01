@@ -62,8 +62,6 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function charset(string $charset, string ...$charsets): Chain;
 
-    public function circuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public function cnh(): Chain;
 
     public function cnpj(): Chain;
@@ -286,6 +284,8 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
     public function satisfies(callable $callback, mixed ...$arguments): Chain;
 
     public function scalarVal(): Chain;
+
+    public function shortCircuit(Validator ...$validators): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public function size(string $unit, Validator $validator): Chain;

@@ -124,3 +124,35 @@ test('With multiple templates', catchAll(
             'uppercase' => 'Template for "uppercase"',
         ]),
 ));
+
+test('short-circuit: first validator fails', catchAll(
+    fn() => v::shortCircuit(v::intType(), v::negative(), v::greaterThan(10))->assert('string'),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('"string" must be an integer')
+        ->and($fullMessage)->toBe('- "string" must be an integer')
+        ->and($messages)->toBe(['intType' => '"string" must be an integer']),
+));
+
+test('short-circuit: second validator fails', catchAll(
+    fn() => v::shortCircuit(v::intType(), v::negative(), v::greaterThan(10))->assert(5),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('5 must be a negative number')
+        ->and($fullMessage)->toBe('- 5 must be a negative number')
+        ->and($messages)->toBe(['negative' => '5 must be a negative number']),
+));
+
+test('short-circuit: inverted when all validators pass', catchAll(
+    fn() => v::not(v::shortCircuit(v::allOf(v::intType(), v::negative())))->assert(-1),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('-1 must not be an integer')
+        ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
+            - -1 must pass all the rules
+              - -1 must not be an integer
+              - -1 must not be a negative number
+            FULL_MESSAGE)
+        ->and($messages)->toBe([
+            '__root__' => '-1 must pass all the rules',
+            'intType' => '-1 must not be an integer',
+            'negative' => '-1 must not be a negative number',
+        ]),
+));

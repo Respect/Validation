@@ -33,7 +33,7 @@ final class Tld extends Envelope
 {
     public function __construct()
     {
-        parent::__construct(new Circuit(
+        parent::__construct(new ShortCircuit(
             new StringType(),
             new After('mb_strtoupper', new In(DataLoader::load('domain/tld.php'))),
         ));

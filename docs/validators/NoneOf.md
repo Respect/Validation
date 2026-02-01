@@ -62,7 +62,7 @@ Used when all validators have passed.
 
 - [AllOf](AllOf.md)
 - [AnyOf](AnyOf.md)
-- [Circuit](Circuit.md)
 - [Not](Not.md)
 - [OneOf](OneOf.md)
+- [ShortCircuit](ShortCircuit.md)
 - [When](When.md)

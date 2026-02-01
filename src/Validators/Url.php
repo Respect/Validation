@@ -34,17 +34,17 @@ final class Url implements Validator
     {
         $this->validator = new After(
             'parse_url',
-            new Circuit(
+            new ShortCircuit(
                 new ArrayType(),
                 new OneOf(
-                    new Circuit(
+                    new ShortCircuit(
                         new Key('scheme', new In(['http', 'https', 'ftp', 'telnet', 'gopher', 'ldap'])),
                         new Key('host', new OneOf(
                             new Domain(),
                             new After([self::class, 'formatIp'], new Ip()),
                         )),
                     ),
-                    new Circuit(
+                    new ShortCircuit(
                         new Key('scheme', new Equals('mailto')),
                         new Key('path', new Email()),
                     ),

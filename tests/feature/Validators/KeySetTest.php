@@ -228,3 +228,134 @@ test('multiple rules / single missing key / single failed validation', catchAll(
             'baz' => '`.baz` must be present',
         ]),
 ));
+
+test('short-circuit / first key fails', catchAll(
+    fn() => v::shortCircuit(
+        v::keySet(
+            v::key('foo', v::intType()),
+            v::key('bar', v::intType()),
+        ),
+    )
+        ->assert(['foo' => 'string', 'bar' => 'string']),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.foo` must be an integer')
+        ->and($fullMessage)->toBe('- `.foo` must be an integer')
+        ->and($messages)->toBe(['foo' => '`.foo` must be an integer']),
+));
+
+test('short-circuit / extra key', catchAll(
+    fn() => v::shortCircuit(v::keySet(v::keyExists('foo')))->assert(['foo' => 42, 'bar' => 'extra']),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.bar` must not be present')
+        ->and($fullMessage)->toBe('- `.bar` must not be present')
+        ->and($messages)->toBe(['bar' => '`.bar` must not be present']),
+));
+
+test('short-circuit / not an array', catchAll(
+    fn() => v::shortCircuit(v::keySet(v::keyExists('foo')))->assert('not-an-array'),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('"not-an-array" must be an array')
+        ->and($fullMessage)->toBe('- "not-an-array" must be an array')
+        ->and($messages)->toBe(['arrayType' => '"not-an-array" must be an array']),
+));
+
+test('short-circuit / second key fails', catchAll(
+    fn() => v::shortCircuit(
+        v::keySet(
+            v::key('foo', v::intType()),
+            v::key('bar', v::intType()),
+            v::key('baz', v::intType()),
+        ),
+    )
+        ->assert(['foo' => 1, 'bar' => 'string', 'baz' => 3]),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.bar` must be an integer')
+        ->and($fullMessage)->toBe('- `.bar` must be an integer')
+        ->and($messages)->toBe(['bar' => '`.bar` must be an integer']),
+));
+
+test('short-circuit / third key fails', catchAll(
+    fn() => v::shortCircuit(
+        v::keySet(
+            v::key('foo', v::intType()),
+            v::key('bar', v::intType()),
+            v::key('baz', v::intType()),
+        ),
+    )
+        ->assert(['foo' => 1, 'bar' => 2, 'baz' => 'string']),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.baz` must be an integer')
+        ->and($fullMessage)->toBe('- `.baz` must be an integer')
+        ->and($messages)->toBe(['baz' => '`.baz` must be an integer']),
+));
+
+test('short-circuit / extra key before third key', catchAll(
+    fn() => v::shortCircuit(
+        v::keySet(
+            v::key('foo', v::intType()),
+            v::key('bar', v::intType()),
+        ),
+    )
+        ->assert(['foo' => 1, 'bar' => 2, 'baz' => 'extra']),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.baz` must not be present')
+        ->and($fullMessage)->toBe('- `.baz` must not be present')
+        ->and($messages)->toBe(['baz' => '`.baz` must not be present']),
+));
+
+test('short-circuit / first extra key fails', catchAll(
+    fn() => v::shortCircuit(
+        v::keySet(
+            v::keyExists('foo'),
+            v::keyExists('bar'),
+        ),
+    )
+        ->assert(['foo' => 1, 'bar' => 2, 'extra1' => 'value', 'extra2' => 'value']),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.extra1` must not be present')
+        ->and($fullMessage)->toBe('- `.extra1` must not be present')
+        ->and($messages)->toBe(['extra1' => '`.extra1` must not be present']),
+));
+
+test('short-circuit / missing key before extra keys', catchAll(
+    fn() => v::shortCircuit(v::keySet(v::keyExists('foo'), v::keyExists('bar')))->assert(['foo' => 1, 'extra' => 'value']),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.bar` must be present')
+        ->and($fullMessage)->toBe('- `.bar` must be present')
+        ->and($messages)->toBe(['bar' => '`.bar` must be present']),
+));
+
+test('short-circuit / nested KeySet fails', catchAll(
+    fn() => v::shortCircuit(
+        v::keySet(
+            v::key('user', v::keySet(
+                v::key('name', v::stringType()),
+                v::key('email', v::email()),
+            )),
+        ),
+    )
+        ->assert([
+            'user' => [
+                'name' => 'John Doe',
+                'email' => 'invalid-email',
+            ],
+        ]),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.user.email` must be an email address')
+        ->and($fullMessage)->toBe('- `.user.email` must be an email address')
+        ->and($messages)->toBe(['email' => '`.user.email` must be an email address']),
+));
+
+test('short-circuit / with keyOptional that fails', catchAll(
+    fn() => v::shortCircuit(
+        v::keySet(
+            v::key('foo', v::stringType()),
+            v::keyOptional('bar', v::intType()),
+        ),
+    )
+        ->assert(['foo' => 1, 'bar' => 'string']),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.foo` must be a string')
+        ->and($fullMessage)->toBe('- `.foo` must be a string')
+        ->and($messages)->toBe(['foo' => '`.foo` must be a string']),
+));

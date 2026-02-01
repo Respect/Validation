@@ -15,10 +15,12 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validators\Core\ShortCircuitable;
 
 use function array_filter;
 use function array_map;
@@ -36,8 +38,10 @@ use function count;
     '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
-final class AllOf extends Composite
+final class AllOf extends Composite implements ShortCircuitable
 {
+    use CanEvaluateShortCircuit;
+
     public const string TEMPLATE_ALL = '__all__';
     public const string TEMPLATE_SOME = '__some__';
 
@@ -52,5 +56,19 @@ final class AllOf extends Composite
         }
 
         return Result::of($valid, $input, $this, [], $template)->withChildren(...$children);
+    }
+
+    public function evaluateShortCircuit(mixed $input): Result
+    {
+        $children = [];
+        foreach ($this->validators as $validator) {
+            $result = $this->evaluateShortCircuitWith($validator, $input);
+            $children[] = $result;
+            if (!$result->hasPassed) {
+                return $result;
+            }
+        }
+
+        return Result::passed($input, $this, [], self::TEMPLATE_ALL)->withChildren(...$children);
     }
 }

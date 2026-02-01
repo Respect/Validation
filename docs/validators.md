@@ -19,9 +19,9 @@ In this page you will find a list of validators by their category.
 
 **Comparisons**: [All][] - [Between][] - [BetweenExclusive][] - [Equals][] - [Equivalent][] - [GreaterThan][] - [GreaterThanOrEqual][] - [Identical][] - [In][] - [Length][] - [LessThan][] - [LessThanOrEqual][] - [Max][] - [Min][]
 
-**Composite**: [AllOf][] - [AnyOf][] - [Circuit][] - [NoneOf][] - [OneOf][]
+**Composite**: [AllOf][] - [AnyOf][] - [NoneOf][] - [OneOf][] - [ShortCircuit][]
 
-**Conditions**: [Circuit][] - [Not][] - [When][]
+**Conditions**: [Not][] - [ShortCircuit][] - [When][]
 
 **Core**: [Named][] - [Not][] - [Templated][]
 
@@ -43,7 +43,7 @@ In this page you will find a list of validators by their category.
 
 **Miscellaneous**: [Blank][] - [Falsy][] - [Masked][] - [Named][] - [Templated][] - [Undef][]
 
-**Nesting**: [After][] - [AllOf][] - [AnyOf][] - [Circuit][] - [Each][] - [Factory][] - [Key][] - [KeySet][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [UndefOr][] - [When][]
+**Nesting**: [After][] - [AllOf][] - [AnyOf][] - [Each][] - [Factory][] - [Key][] - [KeySet][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [ShortCircuit][] - [UndefOr][] - [When][]
 
 **Numbers**: [Base][] - [Decimal][] - [Digit][] - [Even][] - [Factor][] - [Finite][] - [FloatType][] - [FloatVal][] - [Infinite][] - [IntType][] - [IntVal][] - [Multiple][] - [Negative][] - [Number][] - [NumericVal][] - [Odd][] - [Positive][] - [Roman][]
 
@@ -80,7 +80,6 @@ In this page you will find a list of validators by their category.
 - [Bsn][] - `v::bsn()->assert('612890053');`
 - [CallableType][] - `v::callableType()->assert(function () {});`
 - [Charset][] - `v::charset('ASCII')->assert('sugar');`
-- [Circuit][] - `v::circuit(v::intVal(), v::floatVal())->assert(15);`
 - [Cnh][] - `v::cnh()->assert('02650306461');`
 - [Cnpj][] - `v::cnpj()->assert('00394460005887');`
 - [Consonant][] - `v::consonant()->assert('xkcd');`
@@ -189,6 +188,7 @@ In this page you will find a list of validators by their category.
 - [Roman][] - `v::roman()->assert('IV');`
 - [Satisfies][] - `v::satisfies(fn (int $input): bool => $input % 5 === 0,)->assert(10);`
 - [ScalarVal][] - `v::scalarVal()->assert(135.0);`
+- [ShortCircuit][] - `v::shortCircuit(v::intVal(), v::positive())->assert(15);`
 - [Size][] - `v::size('KB', v::greaterThan(1))->assert('/path/to/file');`
 - [Slug][] - `v::slug()->assert('my-wordpress-title');`
 - [Sorted][] - `v::sorted('ASC')->assert([1, 2, 3]);`
@@ -237,7 +237,6 @@ In this page you will find a list of validators by their category.
 [Bsn]: validators/Bsn.md "Validates a Dutch citizen service number (BSN)."
 [CallableType]: validators/CallableType.md "Validates whether the pseudo-type of the input is callable."
 [Charset]: validators/Charset.md "Validates if a string is in a specific charset."
-[Circuit]: validators/Circuit.md "Validates the input against a series of validators until the first fails."
 [Cnh]: validators/Cnh.md "Validates a Brazilian driver's license."
 [Cnpj]: validators/Cnpj.md "Validates the structure and mathematical integrity of Brazilian CNPJ identifiers."
 [Consonant]: validators/Consonant.md "Validates if the input contains only consonants."
@@ -346,6 +345,7 @@ In this page you will find a list of validators by their category.
 [Roman]: validators/Roman.md "Validates if the input is a Roman numeral."
 [Satisfies]: validators/Satisfies.md "Validates the input using the return of a given callable."
 [ScalarVal]: validators/ScalarVal.md "Validates whether the input is a scalar value or not."
+[ShortCircuit]: validators/ShortCircuit.md "Validates the input against a series of validators, stopping at the first failure."
 [Size]: validators/Size.md "Validates whether the input is a file that is of a certain size or not."
 [Slug]: validators/Slug.md "Validates whether the input is a valid slug."
 [Sorted]: validators/Sorted.md "Validates whether the input is sorted in a certain order or not."

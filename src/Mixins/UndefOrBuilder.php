@@ -55,8 +55,6 @@ interface UndefOrBuilder
 
     public static function undefOrCharset(string $charset, string ...$charsets): Chain;
 
-    public static function undefOrCircuit(Validator $validator1, Validator $validator2, Validator ...$validators): Chain;
-
     public static function undefOrCnh(): Chain;
 
     public static function undefOrCnpj(): Chain;
@@ -275,6 +273,8 @@ interface UndefOrBuilder
     public static function undefOrSatisfies(callable $callback, mixed ...$arguments): Chain;
 
     public static function undefOrScalarVal(): Chain;
+
+    public static function undefOrShortCircuit(Validator ...$validators): Chain;
 
     /** @param "B"|"KB"|"MB"|"GB"|"TB"|"PB"|"EB"|"ZB"|"YB" $unit */
     public static function undefOrSize(string $unit, Validator $validator): Chain;

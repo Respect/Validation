@@ -53,8 +53,8 @@ so `AnyOf()` returns true.
 ## See Also
 
 - [AllOf](AllOf.md)
-- [Circuit](Circuit.md)
 - [ContainsAny](ContainsAny.md)
 - [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)
+- [ShortCircuit](ShortCircuit.md)
 - [When](When.md)

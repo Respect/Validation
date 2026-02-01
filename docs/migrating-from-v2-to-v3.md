@@ -69,29 +69,23 @@ In 2.x, `validate()` returned a boolean. In 3.0, it returns a `ResultQuery` obje
   }
 ```
 
-#### `check()` removed, `assert()` unified
+#### `check()` and `assert()` behavior changes
 
-In 2.x, there were two exception-based methods:
+In 2.x, both `check()` and `assert()` threw validator-specific exception classes (e.g., `IntTypeException`), which were children of `ValidationException`. The difference was that `check()` threw these exceptions directly and stopped at the first failure, while `assert()` threw a `NestedValidationException` (also a child of `ValidationException`) that collected all errors and provided methods like `getFullMessage()` and `getMessages()` not available on the base `ValidationException`.
 
-- `check()` threw rule-specific exceptions (e.g., `IntTypeException`)
-- `assert()` threw `NestedValidationException`
-
-In 3.0, both are unified into `assert()`, which throws `ValidationException`:
+In 3.0, validator-specific exception classes and `NestedValidationException` no longer exist. Both `check()` and `assert()` throw a unified `ValidationException` that includes `getMessage()`, `getFullMessage()`, and `getMessages()`. The behavioral distinction is preserved: `check()` still fails fast (stopping at the first failure, using `ShortCircuit` internally), while `assert()` collects all errors.
 
 ```diff
 -use Respect\Validation\Exceptions\IntTypeException;
 +use Respect\Validation\Exceptions\ValidationException;
 
 try {
--	v::intType()->check($input);
+    v::intType()->check($input);
 -} catch (IntTypeException $exception) {
-+	v::intType()->assert($input);
 +} catch (ValidationException $exception) {
     echo $exception->getMessage();
 }
 ```
-
-The `ValidationException` provides all methods previously split between exceptions:
 
 ```diff
 -use Respect\Validation\Exceptions\NestedValidationException;
@@ -589,9 +583,9 @@ Version 3.0 introduces several new validators:
 | `All`              | Validates that every item in an iterable passes validation |
 | `Attributes`       | Validates object properties using PHP attributes           |
 | `BetweenExclusive` | Validates that a value is between two bounds (exclusive)   |
-| `Circuit`          | Short-circuit validation, stops at first failure           |
 | `ContainsCount`    | Validates the count of occurrences in a value              |
 | `DateTimeDiff`     | Validates date/time differences (replaces Age validators)  |
+| `ShortCircuit`     | Stops at first failure instead of collecting all errors    |
 | `Hetu`             | Validates Finnish personal identity codes (henkilötunnus)  |
 | `KeyExists`        | Checks if an array key exists                              |
 | `KeyOptional`      | Validates an array key only if it exists                   |
@@ -647,26 +641,6 @@ v::betweenExclusive(1, 10)->assert(1); // fails (1 is not > 1)
 v::betweenExclusive(1, 10)->assert(10); // fails (10 is not < 10)
 ```
 
-#### Circuit
-
-Validates input against a series of validators, stopping at the first failure. Useful for dependent validations:
-
-```php
-$validator = v::circuit(
-    v::key('countryCode', v::countryCode()),
-    v::factory(
-        fn($input) => v::key(
-            'subdivisionCode',
-            v::subdivisionCode($input['countryCode'])
-        )
-    ),
-);
-
-$validator->assert([]); // → `.countryCode` must be present
-$validator->assert(['countryCode' => 'US']); // → `.subdivisionCode` must be present
-$validator->assert(['countryCode' => 'US', 'subdivisionCode' => 'CA']); // passes
-```
-
 #### ContainsCount
 
 Validates the count of occurrences of a value:
@@ -683,6 +657,26 @@ Validates date/time differences. Replaces the removed `Age`, `MinAge`, and `MaxA
 ```php
 v::dateTimeDiff('years', v::greaterThanOrEqual(18))->assert('2000-01-01'); // passes if 18+ years ago
 v::dateTimeDiff('days', v::lessThan(30))->assert('2024-01-15'); // passes if less than 30 days ago
+```
+
+#### ShortCircuit
+
+Validates input against a series of validators, stopping at the first failure. Useful for dependent validations:
+
+```php
+$validator = v::shortCircuit(
+    v::key('countryCode', v::countryCode()),
+    v::factory(
+        fn($input) => v::key(
+            'subdivisionCode',
+            v::subdivisionCode($input['countryCode'])
+        )
+    ),
+);
+
+$validator->assert([]); // → `.countryCode` must be present
+$validator->assert(['countryCode' => 'US']); // → `.subdivisionCode` must be present
+$validator->assert(['countryCode' => 'US', 'subdivisionCode' => 'CA']); // passes
 ```
 
 #### Hetu
@@ -983,11 +977,12 @@ v::templated(
 - v::intType()->validate($input);              // bool
 + v::intType()->isValid($input);               // bool
 
-  // Exception-based validation
-- v::intType()->check($input);   // IntTypeException
-+ v::intType()->assert($input);  // ValidationException
+  // Exception-based validation (fail-fast)
+- v::intType()->check($input);   // IntTypeException (child of ValidationException)
++ v::intType()->check($input);   // ValidationException
 
-- v::intType()->assert($input);  // NestedValidationException
+  // Exception-based validation (collect all errors)
+- v::intType()->assert($input);  // AllOfExceptopn (child of NestedValidationException)
 + v::intType()->assert($input);  // ValidationException
 
   // Renamed validators

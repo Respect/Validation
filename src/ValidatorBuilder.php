@@ -20,6 +20,8 @@ use Respect\Validation\Message\StringFormatter;
 use Respect\Validation\Mixins\Builder;
 use Respect\Validation\Validators\AllOf;
 use Respect\Validation\Validators\Core\Nameable;
+use Respect\Validation\Validators\Core\ShortCircuitable;
+use Respect\Validation\Validators\ShortCircuit;
 use Throwable;
 
 use function count;
@@ -29,7 +31,7 @@ use function is_callable;
 use function is_string;
 
 /** @mixin Builder */
-final readonly class ValidatorBuilder implements Nameable
+final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
 {
     /** @var array<Validator> */
     private array $validators;
@@ -68,6 +70,11 @@ final readonly class ValidatorBuilder implements Nameable
         return $validator->evaluate($input);
     }
 
+    public function evaluateShortCircuit(mixed $input): Result
+    {
+        return (new ShortCircuit(...$this->validators))->evaluate($input);
+    }
+
     /** @param array<string|int, mixed>|string|null $template */
     public function validate(mixed $input, array|string|null $template = null): ResultQuery
     {
@@ -76,29 +83,19 @@ final readonly class ValidatorBuilder implements Nameable
 
     public function isValid(mixed $input): bool
     {
-        return $this->evaluate($input)->hasPassed;
+        return $this->evaluateShortCircuit($input)->hasPassed;
+    }
+
+    /** @param array<string|int, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
+    public function check(mixed $input, array|string|Throwable|callable|null $template = null): void
+    {
+        $this->throwOnFailure($this->evaluateShortCircuit($input), $template);
     }
 
     /** @param array<string|int, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
     public function assert(mixed $input, array|string|Throwable|callable|null $template = null): void
     {
-        $result = $this->evaluate($input);
-        if ($result->hasPassed) {
-            return;
-        }
-
-        if ($template instanceof Throwable) {
-            throw $template;
-        }
-
-        $resultQuery = $this->toResultQuery($result, is_callable($template) ? null : $template);
-
-        $exception = new ValidationException($resultQuery->getMessage(), $resultQuery, ...$this->ignoredBacktracePaths);
-        if (is_callable($template)) {
-            throw $template($exception);
-        }
-
-        throw $exception;
+        $this->throwOnFailure($this->evaluate($input), $template);
     }
 
     public function with(Validator $validator, Validator ...$validators): self
@@ -132,6 +129,27 @@ final readonly class ValidatorBuilder implements Nameable
             $this->messagesFormatter,
             is_array($template) ? $template : [],
         );
+    }
+
+    /** @param array<string|int, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
+    private function throwOnFailure(Result $result, array|callable|Throwable|string|null $template): void
+    {
+        if ($result->hasPassed) {
+            return;
+        }
+
+        if ($template instanceof Throwable) {
+            throw $template;
+        }
+
+        $resultQuery = $this->toResultQuery($result, is_callable($template) ? null : $template);
+
+        $exception = new ValidationException($resultQuery->getMessage(), $resultQuery, ...$this->ignoredBacktracePaths);
+        if (is_callable($template)) {
+            throw $template($exception);
+        }
+
+        throw $exception;
     }
 
     /** @param array<int, mixed> $arguments */

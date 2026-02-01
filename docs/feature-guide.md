@@ -27,11 +27,19 @@ Note that you can combine multiple validators for a complex validation.
 
 ### Validating using exceptions
 
-The `assert()` method throws an exception when validation fails. You can handle those exceptions with `try/catch` for more robust error handling.
+The `assert()` method throws an exception when validation fails. It evaluates all validators in the chain and collects every error before throwing. You can handle those exceptions with `try/catch` for more robust error handling.
 
 ```php
 v::intType()->positive()->assert($input);
 ```
+
+The `check()` method also throws an exception when validation fails, but it stops at the first failure instead of collecting all errors. Internally, it wraps the chain in a `ShortCircuit` validator.
+
+```php
+v::intType()->positive()->check($input);
+```
+
+The difference is visible when multiple validators fail. With `assert()`, you get all error messages; with `check()`, you get only the first one.
 
 ### Validating using results
 
@@ -131,7 +139,9 @@ Beyond the examples above, Respect\Validation provides specialized validators fo
 - **Grouped validation**: Combine validators with AND/OR logic using [AllOf](validators/AllOf.md), [AnyOf](validators/AnyOf.md), [NoneOf](validators/NoneOf.md), [OneOf](validators/OneOf.md).
 - **Iteration**: Validate every item in a collection with [Each](validators/Each.md).
 - **Length, Min, Max**: Validate derived values with [Length](validators/Length.md), [Min](validators/Min.md), [Max](validators/Max.md).
-- **Special cases**: Handle dynamic rules with [Factory](validators/Factory.md), short-circuit on first failure with [Circuit](validators/Circuit.md), or transform input before validation with [After](validators/After.md).
+- **Special cases**: Handle dynamic rules with [Factory](validators/Factory.md), selectively short-circuit on first failure with [ShortCircuit](validators/ShortCircuit.md), or transform input before validation with [After](validators/After.md).
+
+Note: While `check()` automatically short-circuits the entire chain, the `ShortCircuit` validator gives you fine-grained control over which specific group of validators should stop at the first failure. Use `check()` when you want the whole chain to fail fast, and `ShortCircuit` when you want only a specific part of your validation to fail fast while the rest continues collecting errors.
 
 ## Customizing error messages
 

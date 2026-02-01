@@ -13,16 +13,27 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
-final class Circuit extends Composite
+final readonly class ShortCircuit implements Validator
 {
+    use CanEvaluateShortCircuit;
+
+    /** @var non-empty-array<Validator> */
+    private array $validators;
+
+    public function __construct(Validator ...$validators)
+    {
+        $this->validators = $validators === [] ? [new AlwaysValid()] : $validators;
+    }
+
     public function evaluate(mixed $input): Result
     {
         foreach ($this->validators as $validator) {
-            $result = $validator->evaluate($input);
+            $result = $this->evaluateShortCircuitWith($validator, $input);
             if (!$result->hasPassed) {
                 return $result;
             }

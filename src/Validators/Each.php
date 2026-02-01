@@ -18,10 +18,12 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Validators\Core\FilteredArray;
+use Respect\Validation\Validators\Core\ShortCircuitable;
 
 use function array_reduce;
 
@@ -30,8 +32,32 @@ use function array_reduce;
     'Each item in {{subject}} must be valid',
     'Each item in {{subject}} must be invalid',
 )]
-final class Each extends FilteredArray
+final class Each extends FilteredArray implements ShortCircuitable
 {
+    use CanEvaluateShortCircuit;
+
+    public function evaluateShortCircuit(mixed $input): Result
+    {
+        $iterableResult = (new IterableType())->evaluate($input);
+        if (!$iterableResult->hasPassed) {
+            return $iterableResult->withIdFrom($this);
+        }
+
+        $children = [];
+        foreach ($input as $key => $value) {
+            $result = $this->evaluateShortCircuitWith($this->validator, $value)
+                ->withPath(new Path($key))
+                ->withPrecedentName(false);
+            if (!$result->hasPassed) {
+                return $result;
+            }
+
+            $children[] = $result;
+        }
+
+        return Result::passed($input, $this)->withChildren(...$children);
+    }
+
     /** @param array<mixed> $input */
     protected function evaluateArray(array $input): Result
     {

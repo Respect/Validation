@@ -55,17 +55,17 @@ v::after(
 ```
 
 `After` does not handle possible errors (type mismatches). If you need to
-ensure that your callback is of a certain type, use [Circuit](Circuit.md) or
+ensure that your callback is of a certain type, use [ShortCircuit](ShortCircuit.md) or 
 handle it using a closure:
 
 ```php
 v::after('strtolower', v::equals('ABC'))->assert(123);
 // 𝙭 strtolower(): Argument #1 ($string) must be of type string, int given
 
-v::circuit(v::stringType(), v::after('strtolower', v::equals('abc')))->assert(123);
+v::shortCircuit(v::stringType(), v::after('strtolower', v::equals('abc')))->assert(123);
 // → 123 must be a string
 
-v::circuit(v::stringType(), v::after('strtolower', v::equals('abc')))->assert('ABC');
+v::shortCircuit(v::stringType(), v::after('strtolower', v::equals('abc')))->assert('ABC');
 // Validation passes successfully
 ```
 

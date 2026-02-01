@@ -16,12 +16,14 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Respect\Validation\Exceptions\InvalidValidatorException;
+use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\ValidatorBuilder;
 use Respect\Validation\Validators\Core\KeyRelated;
 use Respect\Validation\Validators\Core\Reducer;
+use Respect\Validation\Validators\Core\ShortCircuitable;
 
 use function array_diff;
 use function array_filter;
@@ -50,8 +52,10 @@ use function array_slice;
     '{{subject}} contains no missing keys',
     self::TEMPLATE_MISSING_KEYS,
 )]
-final readonly class KeySet implements Validator
+final readonly class KeySet implements ShortCircuitable
 {
+    use CanEvaluateShortCircuit;
+
     public const string TEMPLATE_BOTH = '__both__';
     public const string TEMPLATE_EXTRA_KEYS = '__extra_keys__';
     public const string TEMPLATE_MISSING_KEYS = '__missing_keys__';
@@ -94,6 +98,33 @@ final readonly class KeySet implements Validator
 
         return Result::of($keysResult->hasPassed, $input, $this, [], $template)
             ->withChildren(...($keysResult->children === [] ? [$keysResult] : $keysResult->children));
+    }
+
+    public function evaluateShortCircuit(mixed $input): Result
+    {
+        $arrayResult = (new ArrayType())->evaluate($input);
+        if (!$arrayResult->hasPassed) {
+            return $arrayResult;
+        }
+
+        $children = [];
+        foreach ($this->validators as $validator) {
+            $result = $this->evaluateShortCircuitWith($validator, $input);
+            if (!$result->hasPassed) {
+                return $result;
+            }
+
+            $children[] = $result;
+        }
+
+        $extraKeys = array_slice(array_diff(array_keys($input), $this->allKeys), 0, self::MAX_DIFF_KEYS);
+        foreach ($extraKeys as $key) {
+            return (new Not(new KeyExists($key)))->evaluate($input);
+        }
+
+        $template = $this->getTemplateFromKeys(array_keys($input));
+
+        return Result::passed($input, $this, [], $template)->withChildren(...$children);
     }
 
     /**

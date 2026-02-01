@@ -58,7 +58,7 @@ Used when all validators have failed.
 ## See Also
 
 - [AnyOf](AnyOf.md)
-- [Circuit](Circuit.md)
 - [NoneOf](NoneOf.md)
 - [OneOf](OneOf.md)
+- [ShortCircuit](ShortCircuit.md)
 - [When](When.md)
