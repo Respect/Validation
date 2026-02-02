@@ -29,8 +29,8 @@ use function str_split;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid CNPJ number',
-    '{{subject}} must not be a valid CNPJ number',
+    '{{subject}} must be a CNPJ',
+    '{{subject}} must not be a CNPJ',
 )]
 final class Cnpj extends Simple
 {

@@ -28,8 +28,8 @@ use function in_array;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid currency code',
-    '{{subject}} must not be a valid currency code',
+    '{{subject}} must be a currency code',
+    '{{subject}} must not be a currency code',
 )]
 final readonly class CurrencyCode implements Validator
 {

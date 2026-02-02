@@ -41,7 +41,7 @@ v::key('email', v::email())->assert([]);
 // → `.email` must be present
 
 v::key('email', v::email())->assert(['email' => 'not email']);
-// → `.email` must be a valid email address
+// → `.email` must be an email address
 ```
 
 ## Note
@@ -67,6 +67,7 @@ v::key('email', v::email())->assert(['email' => 'not email']);
 
 | Version | Description                                                          |
 | ------: | :------------------------------------------------------------------- |
+|   3.0.0 | Templates changed                                                    |
 |   3.0.0 | Split by [KeyExists](KeyExists.md) and [KeyOptional](KeyOptional.md) |
 |   0.3.9 | Created                                                              |
 

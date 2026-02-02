@@ -35,11 +35,11 @@ test('https://github.com/Respect/Validation/issues/1469', catchAll(
             ],
         ]),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('`.order_items.0.quantity` must be an integer value')
+        ->and($message)->toBe('`.order_items.0.quantity` must be an integer')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - Each item in `.order_items` must be valid
               - `.order_items.0` validation failed
-                - `.order_items.0.quantity` must be an integer value
+                - `.order_items.0.quantity` must be an integer
               - `.order_items.1` contains both missing and extra keys
                 - `.order_items.1.product_title` must be present
                 - `.order_items.1.quantity` must be present
@@ -48,7 +48,7 @@ test('https://github.com/Respect/Validation/issues/1469', catchAll(
         ->and($messages)->toBe([
             'keySet' => [
                 '__root__' => 'Each item in `.order_items` must be valid',
-                0 => '`.order_items.0.quantity` must be an integer value',
+                0 => '`.order_items.0.quantity` must be an integer',
                 1 => [
                     '__root__' => '`.order_items.1` contains both missing and extra keys',
                     'product_title' => '`.order_items.1.product_title` must be present',

@@ -28,8 +28,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid slug',
-    '{{subject}} must not be a valid slug',
+    '{{subject}} must be a slug',
+    '{{subject}} must not be a slug',
 )]
 final class Slug extends Simple
 {

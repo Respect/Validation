@@ -11,57 +11,57 @@ declare(strict_types=1);
 test('Default', catchAll(
     fn() => v::nullOr(v::alpha())->assert(1234),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('1234 must contain only letters (a-z) or must be null')
-        ->and($fullMessage)->toBe('- 1234 must contain only letters (a-z) or must be null')
-        ->and($messages)->toBe(['nullOrAlpha' => '1234 must contain only letters (a-z) or must be null']),
+        ->and($message)->toBe('1234 must consist only of letters (a-z) or must be null')
+        ->and($fullMessage)->toBe('- 1234 must consist only of letters (a-z) or must be null')
+        ->and($messages)->toBe(['nullOrAlpha' => '1234 must consist only of letters (a-z) or must be null']),
 ));
 
 test('Inverted wrapper', catchAll(
     fn() => v::not(v::nullOr(v::alpha()))->assert('alpha'),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('"alpha" must not contain letters (a-z) and must not be null')
-        ->and($fullMessage)->toBe('- "alpha" must not contain letters (a-z) and must not be null')
-        ->and($messages)->toBe(['notNullOrAlpha' => '"alpha" must not contain letters (a-z) and must not be null']),
+        ->and($message)->toBe('"alpha" must not consist only of letters (a-z) and must not be null')
+        ->and($fullMessage)->toBe('- "alpha" must not consist only of letters (a-z) and must not be null')
+        ->and($messages)->toBe(['notNullOrAlpha' => '"alpha" must not consist only of letters (a-z) and must not be null']),
 ));
 
 test('Inverted wrapped', catchAll(
     fn() => v::nullOr(v::not(v::alpha()))->assert('alpha'),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('"alpha" must not contain letters (a-z) or must be null')
-        ->and($fullMessage)->toBe('- "alpha" must not contain letters (a-z) or must be null')
-        ->and($messages)->toBe(['nullOrNotAlpha' => '"alpha" must not contain letters (a-z) or must be null']),
+        ->and($message)->toBe('"alpha" must not consist only of letters (a-z) or must be null')
+        ->and($fullMessage)->toBe('- "alpha" must not consist only of letters (a-z) or must be null')
+        ->and($messages)->toBe(['nullOrNotAlpha' => '"alpha" must not consist only of letters (a-z) or must be null']),
 ));
 
 test('Inverted nullined', catchAll(
     fn() => v::not(v::nullOr(v::alpha()))->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('`null` must not contain letters (a-z) and must not be null')
-        ->and($fullMessage)->toBe('- `null` must not contain letters (a-z) and must not be null')
-        ->and($messages)->toBe(['notNullOrAlpha' => '`null` must not contain letters (a-z) and must not be null']),
+        ->and($message)->toBe('`null` must not consist only of letters (a-z) and must not be null')
+        ->and($fullMessage)->toBe('- `null` must not consist only of letters (a-z) and must not be null')
+        ->and($messages)->toBe(['notNullOrAlpha' => '`null` must not consist only of letters (a-z) and must not be null']),
 ));
 
 test('Inverted nullined, wrapped name', catchAll(
     fn() => v::not(v::nullOr(v::named('Wrapped', v::alpha())))->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('Wrapped must not contain letters (a-z) and must not be null')
-        ->and($fullMessage)->toBe('- Wrapped must not contain letters (a-z) and must not be null')
-        ->and($messages)->toBe(['notNullOrAlpha' => 'Wrapped must not contain letters (a-z) and must not be null']),
+        ->and($message)->toBe('Wrapped must not consist only of letters (a-z) and must not be null')
+        ->and($fullMessage)->toBe('- Wrapped must not consist only of letters (a-z) and must not be null')
+        ->and($messages)->toBe(['notNullOrAlpha' => 'Wrapped must not consist only of letters (a-z) and must not be null']),
 ));
 
 test('Inverted nullined, wrapper name', catchAll(
     fn() => v::not(v::named('Wrapper', v::nullOr(v::alpha())))->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('Wrapper must not contain letters (a-z) and must not be null')
-        ->and($fullMessage)->toBe('- Wrapper must not contain letters (a-z) and must not be null')
-        ->and($messages)->toBe(['notNullOrAlpha' => 'Wrapper must not contain letters (a-z) and must not be null']),
+        ->and($message)->toBe('Wrapper must not consist only of letters (a-z) and must not be null')
+        ->and($fullMessage)->toBe('- Wrapper must not consist only of letters (a-z) and must not be null')
+        ->and($messages)->toBe(['notNullOrAlpha' => 'Wrapper must not consist only of letters (a-z) and must not be null']),
 ));
 
 test('Inverted nullined, not name', catchAll(
     fn() => v::named('Not', v::not(v::nullOr(v::alpha())))->assert(null),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('Not must not contain letters (a-z) and must not be null')
-        ->and($fullMessage)->toBe('- Not must not contain letters (a-z) and must not be null')
-        ->and($messages)->toBe(['notNullOrAlpha' => 'Not must not contain letters (a-z) and must not be null']),
+        ->and($message)->toBe('Not must not consist only of letters (a-z) and must not be null')
+        ->and($fullMessage)->toBe('- Not must not consist only of letters (a-z) and must not be null')
+        ->and($messages)->toBe(['notNullOrAlpha' => 'Not must not consist only of letters (a-z) and must not be null']),
 ));
 
 test('With template', catchAll(
@@ -91,15 +91,15 @@ test('Inverted nullined with template', catchAll(
 test('Without adjacent result', catchAll(
     fn() => v::nullOr(v::alpha()->stringType())->assert(1234),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('1234 must contain only letters (a-z) or must be null')
+        ->and($message)->toBe('1234 must consist only of letters (a-z) or must be null')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - 1234 must pass all the rules
-          - 1234 must contain only letters (a-z) or must be null
+          - 1234 must consist only of letters (a-z) or must be null
           - 1234 must be a string or must be null
         FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => '1234 must pass all the rules',
-            'nullOrAlpha' => '1234 must contain only letters (a-z) or must be null',
+            'nullOrAlpha' => '1234 must consist only of letters (a-z) or must be null',
             'nullOrStringType' => '1234 must be a string or must be null',
         ]),
 ));

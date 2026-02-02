@@ -29,8 +29,8 @@ use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid language code',
-    '{{subject}} must not be a valid language code',
+    '{{subject}} must be a language code',
+    '{{subject}} must not be a language code',
 )]
 final readonly class LanguageCode implements Validator
 {

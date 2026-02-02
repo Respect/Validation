@@ -24,8 +24,8 @@ use function str_split;
 /** @see https://en.wikipedia.org/wiki/VAT_identification_number */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid Polish VAT identification number',
-    '{{subject}} must not be a valid Polish VAT identification number',
+    '{{subject}} must be a Polish VAT identification number',
+    '{{subject}} must not be a Polish VAT identification number',
 )]
 final class Nip extends Simple
 {

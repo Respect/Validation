@@ -19,17 +19,17 @@ v::consonant()->assert('xkcd');
 
 ### `Consonant::TEMPLATE_STANDARD`
 
-|       Mode | Template                                 |
-| ---------: | :--------------------------------------- |
-|  `default` | {{subject}} must only contain consonants |
-| `inverted` | {{subject}} must not contain consonants  |
+|       Mode | Template                                        |
+| ---------: | :---------------------------------------------- |
+|  `default` | {{subject}} must consist only of consonants     |
+| `inverted` | {{subject}} must not consist only of consonants |
 
 ### `Consonant::TEMPLATE_EXTRA`
 
-|       Mode | Template                                                         |
-| ---------: | :--------------------------------------------------------------- |
-|  `default` | {{subject}} must only contain consonants and {{additionalChars}} |
-| `inverted` | {{subject}} must not contain consonants or {{additionalChars}}   |
+|       Mode | Template                                                               |
+| ---------: | :--------------------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of consonants or {{additionalChars}}     |
+| `inverted` | {{subject}} must not consist only of consonants or {{additionalChars}} |
 
 ## Template placeholders
 
@@ -46,6 +46,7 @@ v::consonant()->assert('xkcd');
 
 | Version | Description                              |
 | ------: | :--------------------------------------- |
+|   3.0.0 | Templates changed                        |
 |   0.5.0 | Renamed from `Consonants` to `Consonant` |
 |   0.3.9 | Created as `Consonants`                  |
 

@@ -24,8 +24,8 @@ use function mb_strtoupper;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must contain only uppercase letters',
-    '{{subject}} must not contain only uppercase letters',
+    '{{subject}} must consist only of uppercase letters',
+    '{{subject}} must not consist only of uppercase letters',
 )]
 final class Uppercase extends Simple
 {

@@ -27,20 +27,20 @@ test('Results with adjacent children results defined will display the name from 
 
 test('Results with a defined name cannot be overwritten by another name', catchMessage(
     fn() => v::named('Foo', v::key('email', v::named('Email', v::email())))->assert($input),
-    fn(string $message) => expect($message)->toBe('Email must be a valid email address'),
+    fn(string $message) => expect($message)->toBe('Email must be an email address'),
 ));
 
 test('Defining a name to a result with a path will add the path to the name', catchMessage(
     fn() => v::named('Email', v::key('email', v::email()))->assert($input),
-    fn(string $message) => expect($message)->toBe('`.email` (<- Email) must be a valid email address'),
+    fn(string $message) => expect($message)->toBe('`.email` (<- Email) must be an email address'),
 ));
 
 test('Results with a defined name will not be affected by a path', catchMessage(
     fn() => v::key('email', v::named('Email', v::email()))->assert($input),
-    fn(string $message) => expect($message)->toBe('Email must be a valid email address'),
+    fn(string $message) => expect($message)->toBe('Email must be an email address'),
 ));
 
 test('Not defining a name to a result with a path will display the path', catchMessage(
     fn() => v::key('email', v::email())->assert($input),
-    fn(string $message) => expect($message)->toBe('`.email` must be a valid email address'),
+    fn(string $message) => expect($message)->toBe('`.email` must be an email address'),
 ));

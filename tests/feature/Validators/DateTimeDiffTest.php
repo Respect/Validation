@@ -66,16 +66,16 @@ test('With custom $format', catchAll(
 test('With input in non-parseable date', catchAll(
     fn() => v::dateTimeDiff('years', v::equals(2))->assert('not a date'),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('For comparison with now, "not a date" must be a valid datetime')
-        ->and($fullMessage)->toBe('- For comparison with now, "not a date" must be a valid datetime')
-        ->and($messages)->toBe(['dateTimeDiffEquals' => 'For comparison with now, "not a date" must be a valid datetime']),
+        ->and($message)->toBe('For comparison with now, "not a date" must be a datetime')
+        ->and($fullMessage)->toBe('- For comparison with now, "not a date" must be a datetime')
+        ->and($messages)->toBe(['dateTimeDiffEquals' => 'For comparison with now, "not a date" must be a datetime']),
 ));
 
 test('With input in incorrect $format', catchAll(
     fn() => v::dateTimeDiff('years', v::equals(2), 'Y-m-d')->assert('1 year ago'),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toMatch('/For comparison with \d+-\d+-\d+, "1 year ago" must be a valid datetime in the format \d+-\d+-\d+/')
-        ->and($fullMessage)->toMatch('/- For comparison with \d+-\d+-\d+, "1 year ago" must be a valid datetime in the format \d+-\d+-\d+/'),
+        ->and($message)->toMatch('/For comparison with \d+-\d+-\d+, "1 year ago" must be a datetime in the format \d+-\d+-\d+/')
+        ->and($fullMessage)->toMatch('/- For comparison with \d+-\d+-\d+, "1 year ago" must be a datetime in the format \d+-\d+-\d+/'),
 ));
 
 test('With custom $now', catchAll(

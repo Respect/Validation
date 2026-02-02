@@ -14,17 +14,17 @@ v::executable()->assert('/path/to/executable');
 // Validation passes successfully
 
 v::executable()->assert('/path/to/file');
-// → "/path/to/file" must be an executable file
+// → "/path/to/file" must be an accessible existing executable file
 ```
 
 ## Templates
 
 ### `Executable::TEMPLATE_STANDARD`
 
-|       Mode | Template                                   |
-| ---------: | :----------------------------------------- |
-|  `default` | {{subject}} must be an executable file     |
-| `inverted` | {{subject}} must not be an executable file |
+|       Mode | Template                                                       |
+| ---------: | :------------------------------------------------------------- |
+|  `default` | {{subject}} must be an accessible existing executable file     |
+| `inverted` | {{subject}} must not be an accessible existing executable file |
 
 ## Template placeholders
 
@@ -38,9 +38,10 @@ v::executable()->assert('/path/to/file');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.7.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.7.0 | Created           |
 
 ## See Also
 

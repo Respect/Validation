@@ -18,17 +18,17 @@ v::countable()->assert(new ArrayObject());
 // Validation passes successfully
 
 v::countable()->assert('string');
-// → "string" must be a countable value
+// → "string" must be countable
 ```
 
 ## Templates
 
 ### `Countable::TEMPLATE_STANDARD`
 
-|       Mode | Template                                  |
-| ---------: | :---------------------------------------- |
-|  `default` | {{subject}} must be a countable value     |
-| `inverted` | {{subject}} must not be a countable value |
+|       Mode | Template                          |
+| ---------: | :-------------------------------- |
+|  `default` | {{subject}} must be countable     |
+| `inverted` | {{subject}} must not be countable |
 
 ## Template placeholders
 
@@ -44,6 +44,7 @@ v::countable()->assert('string');
 
 | Version | Description             |
 | ------: | :---------------------- |
+|   3.0.0 | Templates changed       |
 |   1.0.0 | Created from `ArrayVal` |
 
 ## See Also

@@ -22,7 +22,7 @@ $translator->addResource(
         'The length of' => 'O comprimento de',
         '{{subject}} must be a string' => '{{subject}} deve ser uma string',
         '{{subject}} must be between {{minValue}} and {{maxValue}}' => '{{subject}} deve possuir de {{minValue}} a {{maxValue}} caracteres',
-        '{{subject}} must be a valid telephone number for country {{countryName|trans}}' => '{{subject}} deve ser um número de telefone válido para o país {{countryName|trans}}',
+        '{{subject}} must be a phone number for country {{countryName|trans}}' => '{{subject}} deve ser um número de telefone válido para o país {{countryName|trans}}',
         'United States' => 'Estados Unidos',
         'years' => 'anos',
         'The number of {{type|trans}} between now and' => 'O número de {{type|trans}} entre agora e',

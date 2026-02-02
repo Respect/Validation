@@ -15,7 +15,7 @@ v::charset('ASCII')->assert('sugar');
 // Validation passes successfully
 
 v::charset('ASCII')->assert('açúcar');
-// → "açúcar" must only contain characters from the `["ASCII"]` charset
+// → "açúcar" must consist only of characters from the "ASCII" character-set
 
 v::charset('ISO-8859-1', 'EUC-JP')->assert('日本国');
 // Validation passes successfully
@@ -27,10 +27,10 @@ The array format is a logic OR, not AND.
 
 ### `Charset::TEMPLATE_STANDARD`
 
-|       Mode | Template                                                                          |
-| ---------: | :-------------------------------------------------------------------------------- |
-|  `default` | {{subject}} must only contain characters from the {{charset&#124;raw}} charset    |
-| `inverted` | {{subject}} must not contain any characters from the {{charset&#124;raw}} charset |
+|       Mode | Template                                                                                        |
+| ---------: | :---------------------------------------------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of characters from the {{charset&#124;list:or}} character-set     |
+| `inverted` | {{subject}} must not consist only of characters from the {{charset&#124;list:or}} character-set |
 
 ## Template placeholders
 
@@ -47,6 +47,7 @@ The array format is a logic OR, not AND.
 
 | Version | Description                                           |
 | ------: | :---------------------------------------------------- |
+|   3.0.0 | Templates changed                                     |
 |   2.0.0 | Charset supports multiple charsets on its constructor |
 |   0.5.0 | Created                                               |
 

@@ -33,10 +33,10 @@ v::digit()->cpf()->assert('11598647644');
 
 ### `Cpf::TEMPLATE_STANDARD`
 
-|       Mode | Template                                   |
-| ---------: | :----------------------------------------- |
-|  `default` | {{subject}} must be a valid CPF number     |
-| `inverted` | {{subject}} must not be a valid CPF number |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be a CPF     |
+| `inverted` | {{subject}} must not be a CPF |
 
 ## Template placeholders
 
@@ -50,9 +50,10 @@ v::digit()->cpf()->assert('11598647644');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.3.9 | Created           |
 
 ## See Also
 

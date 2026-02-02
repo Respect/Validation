@@ -20,17 +20,17 @@ v::control()->assert("\n\r\t");
 
 ### `Control::TEMPLATE_STANDARD`
 
-|       Mode | Template                                         |
-| ---------: | :----------------------------------------------- |
-|  `default` | {{subject}} must only contain control characters |
-| `inverted` | {{subject}} must not contain control characters  |
+|       Mode | Template                                                |
+| ---------: | :------------------------------------------------------ |
+|  `default` | {{subject}} must consist only of control characters     |
+| `inverted` | {{subject}} must not consist only of control characters |
 
 ### `Control::TEMPLATE_EXTRA`
 
-|       Mode | Template                                                                 |
-| ---------: | :----------------------------------------------------------------------- |
-|  `default` | {{subject}} must only contain control characters and {{additionalChars}} |
-| `inverted` | {{subject}} must not contain control characters or {{additionalChars}}   |
+|       Mode | Template                                                                       |
+| ---------: | :----------------------------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of control characters or {{additionalChars}}     |
+| `inverted` | {{subject}} must not consist only of control characters or {{additionalChars}} |
 
 ## Template placeholders
 
@@ -47,6 +47,7 @@ v::control()->assert("\n\r\t");
 
 | Version | Description                       |
 | ------: | :-------------------------------- |
+|   3.0.0 | Templates changed                 |
 |   2.0.0 | Renamed from `Cntrl` to `Control` |
 |   0.5.0 | Created                           |
 

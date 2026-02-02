@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 test('Scenario #1', catchMessage(
     fn() => v::leapYear()->assert('2009'),
-    fn(string $message) => expect($message)->toBe('"2009" must be a valid leap year'),
+    fn(string $message) => expect($message)->toBe('"2009" must be a leap year'),
 ));
 
 test('Scenario #2', catchMessage(
@@ -20,7 +20,7 @@ test('Scenario #2', catchMessage(
 
 test('Scenario #3', catchFullMessage(
     fn() => v::leapYear()->assert('2009-02-29'),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- "2009-02-29" must be a valid leap year'),
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "2009-02-29" must be a leap year'),
 ));
 
 test('Scenario #4', catchFullMessage(

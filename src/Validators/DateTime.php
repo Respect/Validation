@@ -29,13 +29,13 @@ use function strtotime;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid date/time',
-    '{{subject}} must not be a valid date/time',
+    '{{subject}} must be a date/time',
+    '{{subject}} must not be a date/time',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{subject}} must be a valid date/time in the format {{sample}}',
-    '{{subject}} must not be a valid date/time in the format {{sample}}',
+    '{{subject}} must be a date/time in the {{sample}} format',
+    '{{subject}} must not be a date/time in the {{sample}} format',
     self::TEMPLATE_FORMAT,
 )]
 final class DateTime implements Validator

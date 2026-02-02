@@ -15,26 +15,26 @@ v::iban()->assert('SE35 5000 0000 0549 1000 0003');
 // Validation passes successfully
 
 v::iban()->assert('ch9300762011623852957');
-// → "ch9300762011623852957" must be a valid IBAN
+// → "ch9300762011623852957" must be an IBAN
 
 v::iban()->assert('ZZ32 5000 5880 7742');
-// → "ZZ32 5000 5880 7742" must be a valid IBAN
+// → "ZZ32 5000 5880 7742" must be an IBAN
 
 v::iban()->assert(123456789);
-// → 123456789 must be a valid IBAN
+// → 123456789 must be an IBAN
 
 v::iban()->assert('');
-// → "" must be a valid IBAN
+// → "" must be an IBAN
 ```
 
 ## Templates
 
 ### `Iban::TEMPLATE_STANDARD`
 
-|       Mode | Template                             |
-| ---------: | :----------------------------------- |
-|  `default` | {{subject}} must be a valid IBAN     |
-| `inverted` | {{subject}} must not be a valid IBAN |
+|       Mode | Template                        |
+| ---------: | :------------------------------ |
+|  `default` | {{subject}} must be an IBAN     |
+| `inverted` | {{subject}} must not be an IBAN |
 
 ## Template placeholders
 
@@ -48,9 +48,10 @@ v::iban()->assert('');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   2.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   2.0.0 | Created           |
 
 ## See Also
 

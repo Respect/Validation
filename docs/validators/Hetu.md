@@ -20,7 +20,7 @@ v::hetu()->assert('280291+923X');
 // Validation passes successfully
 
 v::hetu()->assert('010106_9012');
-// → "010106_9012" must be a valid Finnish personal identity code
+// → "010106_9012" must be a Finnish personal identity code
 ```
 
 The validation is case-sensitive.
@@ -29,10 +29,10 @@ The validation is case-sensitive.
 
 ### `Hetu::TEMPLATE_STANDARD`
 
-|       Mode | Template                                                       |
-| ---------: | :------------------------------------------------------------- |
-|  `default` | {{subject}} must be a valid Finnish personal identity code     |
-| `inverted` | {{subject}} must not be a valid Finnish personal identity code |
+|       Mode | Template                                                 |
+| ---------: | :------------------------------------------------------- |
+|  `default` | {{subject}} must be a Finnish personal identity code     |
+| `inverted` | {{subject}} must not be a Finnish personal identity code |
 
 ## Template placeholders
 

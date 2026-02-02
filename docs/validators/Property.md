@@ -35,7 +35,7 @@ v::property(
     'address',
     v::property('postalCode', v::postalCode('BR'))
 )->assert($object);
-// → `.address.postalCode` must be a valid postal code on "BR"
+// → `.address.postalCode` must be a postal code for "BR"
 ```
 
 ## Note
@@ -63,6 +63,7 @@ This validator will validate public, private, protected, uninitialised, and stat
 
 | Version | Description                                                                                                                          |
 | ------: | :----------------------------------------------------------------------------------------------------------------------------------- |
+|   3.0.0 | Templates changed                                                                                                                    |
 |   3.0.0 | Renamed from `Attribute` to `Property`, and split by [PropertyExists](PropertyExists.md) and [PropertyOptional](PropertyOptional.md) |
 |   0.3.9 | Created                                                                                                                              |
 

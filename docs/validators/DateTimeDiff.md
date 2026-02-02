@@ -63,19 +63,19 @@ Used when `$format` or `$now` are defined.
 
 ### `DateTimeDiff::TEMPLATE_NOT_A_DATE`
 
-|       Mode | Template                                                                       |
-| ---------: | :----------------------------------------------------------------------------- |
-|  `default` | For comparison with {{now&#124;raw}}, {{subject}} must be a valid datetime     |
-| `inverted` | For comparison with {{now&#124;raw}}, {{subject}} must not be a valid datetime |
+|       Mode | Template                                                                 |
+| ---------: | :----------------------------------------------------------------------- |
+|  `default` | For comparison with {{now&#124;raw}}, {{subject}} must be a datetime     |
+| `inverted` | For comparison with {{now&#124;raw}}, {{subject}} must not be a datetime |
 
 ### `DateTimeDiff::TEMPLATE_WRONG_FORMAT`
 
 Used when the input cannot be parsed with the given format.
 
-|       Mode | Template                                                                                                         |
-| ---------: | :--------------------------------------------------------------------------------------------------------------- |
-|  `default` | For comparison with {{now&#124;raw}}, {{subject}} must be a valid datetime in the format {{sample&#124;raw}}     |
-| `inverted` | For comparison with {{now&#124;raw}}, {{subject}} must not be a valid datetime in the format {{sample&#124;raw}} |
+|       Mode | Template                                                                                                   |
+| ---------: | :--------------------------------------------------------------------------------------------------------- |
+|  `default` | For comparison with {{now&#124;raw}}, {{subject}} must be a datetime in the format {{sample&#124;raw}}     |
+| `inverted` | For comparison with {{now&#124;raw}}, {{subject}} must not be a datetime in the format {{sample&#124;raw}} |
 
 ## Template as prefix
 

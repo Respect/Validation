@@ -27,7 +27,7 @@ It will validate the keys in the array with the validators passed in the constru
 v::keySet(
     v::key('foo', v::intVal())
 )->assert(['foo' => 'string']);
-// → `.foo` must be an integer value
+// → `.foo` must be an integer
 ```
 
 Extra keys are not allowed:

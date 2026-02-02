@@ -14,7 +14,7 @@ v::base64()->assert('cmVzcGVjdCE=');
 // Validation passes successfully
 
 v::base64()->assert('respect!');
-// → "respect!" must be a base64 encoded string
+// → "respect!" must be a base64-encoded string
 ```
 
 ## Templates
@@ -23,8 +23,8 @@ v::base64()->assert('respect!');
 
 |       Mode | Template                                        |
 | ---------: | :---------------------------------------------- |
-|  `default` | {{subject}} must be a base64 encoded string     |
-| `inverted` | {{subject}} must not be a base64 encoded string |
+|  `default` | {{subject}} must be a base64-encoded string     |
+| `inverted` | {{subject}} must not be a base64-encoded string |
 
 ## Template placeholders
 
@@ -38,9 +38,10 @@ v::base64()->assert('respect!');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   2.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   2.0.0 | Created           |
 
 ## See Also
 

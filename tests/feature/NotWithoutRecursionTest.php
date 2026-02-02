@@ -14,4 +14,4 @@ test('Scenario #1', catchMessage(function (): void {
     $validator = ValidatorBuilder::not(ValidatorBuilder::intVal()->positive());
     $validator->assert(2);
 },
-fn(string $message) => expect($message)->toBe('2 must not be an integer value')));
+fn(string $message) => expect($message)->toBe('2 must not be an integer')));

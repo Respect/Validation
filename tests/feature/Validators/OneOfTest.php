@@ -32,13 +32,13 @@ test('Default: fail, pass, pass', catchAll(
         - "string" must pass only one of the rules
           - "string" must be an integer
           - "string" must be a string
-          - "string" must contain only letters (a-z)
+          - "string" must consist only of letters (a-z)
         FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => '"string" must pass only one of the rules',
             'intType' => '"string" must be an integer',
             'stringType' => '"string" must be a string',
-            'alpha' => '"string" must contain only letters (a-z)',
+            'alpha' => '"string" must consist only of letters (a-z)',
         ]),
 ));
 
@@ -50,13 +50,13 @@ test('Default: pass, fail, pass', catchAll(
         - "string" must pass only one of the rules
           - "string" must be an integer
           - "string" must be a string
-          - "string" must contain only letters (a-z)
+          - "string" must consist only of letters (a-z)
         FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => '"string" must pass only one of the rules',
             'intType' => '"string" must be an integer',
             'stringType' => '"string" must be a string',
-            'alpha' => '"string" must contain only letters (a-z)',
+            'alpha' => '"string" must consist only of letters (a-z)',
         ]),
 ));
 
@@ -68,13 +68,13 @@ test('Default: pass, pass, fail', catchAll(
         - "string" must pass only one of the rules
           - "string" must be an integer
           - "string" must be a string
-          - "string" must contain only letters (a-z)
+          - "string" must consist only of letters (a-z)
         FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => '"string" must pass only one of the rules',
             'intType' => '"string" must be an integer',
             'stringType' => '"string" must be a string',
-            'alpha' => '"string" must contain only letters (a-z)',
+            'alpha' => '"string" must consist only of letters (a-z)',
         ]),
 ));
 

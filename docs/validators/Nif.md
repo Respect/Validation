@@ -14,17 +14,17 @@ v::nif()->assert('49294492H');
 // Validation passes successfully
 
 v::nif()->assert('P6437358A');
-// → "P6437358A" must be a valid NIF
+// → "P6437358A" must be a NIF
 ```
 
 ## Templates
 
 ### `Nif::TEMPLATE_STANDARD`
 
-|       Mode | Template                            |
-| ---------: | :---------------------------------- |
-|  `default` | {{subject}} must be a valid NIF     |
-| `inverted` | {{subject}} must not be a valid NIF |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be a NIF     |
+| `inverted` | {{subject}} must not be a NIF |
 
 ## Template placeholders
 
@@ -38,9 +38,10 @@ v::nif()->assert('P6437358A');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   2.2.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   2.2.0 | Created           |
 
 ## See Also
 

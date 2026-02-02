@@ -67,15 +67,15 @@ test('Inverted: pass, pass', catchAll(
 test('Inverted: pass, fail, fail', catchAll(
     fn() => v::allOf(v::intType(), v::alpha(), v::stringType())->assert(2),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('2 must contain only letters (a-z)')
+        ->and($message)->toBe('2 must consist only of letters (a-z)')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - 2 must pass the rules
-              - 2 must contain only letters (a-z)
+              - 2 must consist only of letters (a-z)
               - 2 must be a string
             FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => '2 must pass the rules',
-            'alpha' => '2 must contain only letters (a-z)',
+            'alpha' => '2 must consist only of letters (a-z)',
             'stringType' => '2 must be a string',
         ]),
 ));

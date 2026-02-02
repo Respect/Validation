@@ -33,10 +33,10 @@ v::boolVal()->assert(0);
 
 ### `BoolVal::TEMPLATE_STANDARD`
 
-|       Mode | Template                                |
-| ---------: | :-------------------------------------- |
-|  `default` | {{subject}} must be a boolean value     |
-| `inverted` | {{subject}} must not be a boolean value |
+|       Mode | Template                          |
+| ---------: | :-------------------------------- |
+|  `default` | {{subject}} must be a boolean     |
+| `inverted` | {{subject}} must not be a boolean |
 
 ## Template placeholders
 

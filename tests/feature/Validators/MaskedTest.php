@@ -11,15 +11,15 @@ declare(strict_types=1);
 test('input is not a string', catchAll(
     fn() => v::masked('1-@', v::email())->assert(new stdClass()),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('`stdClass {}` must be a string value')
-        ->and($fullMessage)->toBe('- `stdClass {}` must be a string value')
-        ->and($messages)->toBe(['email' => '`stdClass {}` must be a string value']),
+        ->and($message)->toBe('`stdClass {}` must be a string')
+        ->and($fullMessage)->toBe('- `stdClass {}` must be a string')
+        ->and($messages)->toBe(['email' => '`stdClass {}` must be a string']),
 ));
 
 test('failed validator', catchAll(
     fn() => v::masked('1-@', v::email())->assert('in valid@email.com'),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('"********@email.com" must be a valid email address')
-        ->and($fullMessage)->toBe('- "********@email.com" must be a valid email address')
-        ->and($messages)->toBe(['email' => '"********@email.com" must be a valid email address']),
+        ->and($message)->toBe('"********@email.com" must be an email address')
+        ->and($fullMessage)->toBe('- "********@email.com" must be an email address')
+        ->and($messages)->toBe(['email' => '"********@email.com" must be an email address']),
 ));

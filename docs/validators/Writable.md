@@ -14,17 +14,17 @@ v::writable()->assert('/path/to/file');
 // Validation passes successfully
 
 v::writable()->assert('/path/to/non-writable');
-// → "/path/to/non-writable" must be writable
+// → "/path/to/non-writable" must be an accessible existing writable filesystem entry
 ```
 
 ## Templates
 
 ### `Writable::TEMPLATE_STANDARD`
 
-|       Mode | Template                         |
-| ---------: | :------------------------------- |
-|  `default` | {{subject}} must be writable     |
-| `inverted` | {{subject}} must not be writable |
+|       Mode | Template                                                                 |
+| ---------: | :----------------------------------------------------------------------- |
+|  `default` | {{subject}} must be an accessible existing writable filesystem entry     |
+| `inverted` | {{subject}} must not be an accessible existing writable filesystem entry |
 
 ## Template placeholders
 
@@ -40,6 +40,7 @@ v::writable()->assert('/path/to/non-writable');
 
 | Version | Description       |
 | ------: | :---------------- |
+|   3.0.0 | Templates changed |
 |   2.1.0 | Add PSR-7 support |
 |   0.5.0 | Created           |
 

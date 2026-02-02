@@ -52,6 +52,7 @@ Used when all validators have passed.
 
 | Version | Description                                   |
 | ------: | :-------------------------------------------- |
+|   3.0.0 | Templates changed                             |
 |   3.0.0 | Require at least two validators to be defined |
 |   0.3.9 | Created                                       |
 

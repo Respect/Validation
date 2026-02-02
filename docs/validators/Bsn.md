@@ -18,10 +18,10 @@ v::bsn()->assert('612890053');
 
 ### `Bsn::TEMPLATE_STANDARD`
 
-|       Mode | Template                            |
-| ---------: | :---------------------------------- |
-|  `default` | {{subject}} must be a valid BSN     |
-| `inverted` | {{subject}} must not be a valid BSN |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be a BSN     |
+| `inverted` | {{subject}} must not be a BSN |
 
 ## Template placeholders
 
@@ -35,9 +35,10 @@ v::bsn()->assert('612890053');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   1.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   1.0.0 | Created           |
 
 ## See Also
 

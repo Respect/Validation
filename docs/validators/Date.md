@@ -33,7 +33,7 @@ v::date()->assert('2020-02-29');
 // Validation passes successfully
 
 v::date()->assert('2019-02-29');
-// → "2019-02-29" must be a valid date in the format "2005-12-30"
+// → "2019-02-29" must be a date in the "2005-12-30" format
 
 v::date('m/d/y')->assert('12/31/17');
 // Validation passes successfully
@@ -49,10 +49,10 @@ v::date('Ydm')->assert(20173112);
 
 ### `Date::TEMPLATE_STANDARD`
 
-|       Mode | Template                                                      |
-| ---------: | :------------------------------------------------------------ |
-|  `default` | {{subject}} must be a valid date in the format {{sample}}     |
-| `inverted` | {{subject}} must not be a valid date in the format {{sample}} |
+|       Mode | Template                                                |
+| ---------: | :------------------------------------------------------ |
+|  `default` | {{subject}} must be a date in the {{sample}} format     |
+| `inverted` | {{subject}} must not be a date in the {{sample}} format |
 
 ## Template placeholders
 
@@ -69,6 +69,7 @@ v::date('Ydm')->assert(20173112);
 
 | Version | Description                    |
 | ------: | :----------------------------- |
+|   3.0.0 | Templates changed              |
 |   2.0.0 | Changed to only validate dates |
 |   0.3.9 | Created as `Date`              |
 

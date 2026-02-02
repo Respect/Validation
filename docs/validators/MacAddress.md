@@ -21,10 +21,10 @@ v::macAddress()->assert('af-AA-22-33-44-55');
 
 ### `MacAddress::TEMPLATE_STANDARD`
 
-|       Mode | Template                                    |
-| ---------: | :------------------------------------------ |
-|  `default` | {{subject}} must be a valid MAC address     |
-| `inverted` | {{subject}} must not be a valid MAC address |
+|       Mode | Template                              |
+| ---------: | :------------------------------------ |
+|  `default` | {{subject}} must be a MAC address     |
+| `inverted` | {{subject}} must not be a MAC address |
 
 ## Template placeholders
 
@@ -38,9 +38,10 @@ v::macAddress()->assert('af-AA-22-33-44-55');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.3.9 | Created           |
 
 ## See Also
 

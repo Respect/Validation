@@ -14,17 +14,17 @@ v::nfeAccessKey()->assert('52060433009911002506550120000007800267301615');
 // Validation passes successfully
 
 v::nfeAccessKey()->assert('31841136830118868211870485416765268625116906');
-// → "31841136830118868211870485416765268625116906" must be a valid NFe access key
+// → "31841136830118868211870485416765268625116906" must be a NFe access key
 ```
 
 ## Templates
 
 ### `NfeAccessKey::TEMPLATE_STANDARD`
 
-|       Mode | Template                                       |
-| ---------: | :--------------------------------------------- |
-|  `default` | {{subject}} must be a valid NFe access key     |
-| `inverted` | {{subject}} must not be a valid NFe access key |
+|       Mode | Template                                 |
+| ---------: | :--------------------------------------- |
+|  `default` | {{subject}} must be a NFe access key     |
+| `inverted` | {{subject}} must not be a NFe access key |
 
 ## Template placeholders
 
@@ -38,9 +38,10 @@ v::nfeAccessKey()->assert('31841136830118868211870485416765268625116906');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.6.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.6.0 | Created           |
 
 ## See Also
 

@@ -44,23 +44,23 @@ v::time('His')->assert(232059);
 // Validation passes successfully
 
 v::time()->assert('24:00:00');
-// → "24:00:00" must be a valid time in the format "23:59:59"
+// → "24:00:00" must be a time in the "23:59:59" format
 
 v::time()->assert(new DateTime());
-// → `DateTime { 2024-01-01T12:00:00+00:00 }` must be a valid time in the format "23:59:59"
+// → `DateTime { 2024-01-01T12:00:00+00:00 }` must be a time in the "23:59:59" format
 
 v::time()->assert(new DateTimeImmutable());
-// → `DateTimeImmutable { 2024-01-01T12:00:00+00:00 }` must be a valid time in the format "23:59:59"
+// → `DateTimeImmutable { 2024-01-01T12:00:00+00:00 }` must be a time in the "23:59:59" format
 ```
 
 ## Templates
 
 ### `Time::TEMPLATE_STANDARD`
 
-|       Mode | Template                                                      |
-| ---------: | :------------------------------------------------------------ |
-|  `default` | {{subject}} must be a valid time in the format {{sample}}     |
-| `inverted` | {{subject}} must not be a valid time in the format {{sample}} |
+|       Mode | Template                                                |
+| ---------: | :------------------------------------------------------ |
+|  `default` | {{subject}} must be a time in the {{sample}} format     |
+| `inverted` | {{subject}} must not be a time in the {{sample}} format |
 
 ## Template placeholders
 
@@ -75,9 +75,10 @@ v::time()->assert(new DateTimeImmutable());
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   2.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   2.0.0 | Created           |
 
 ## See Also
 

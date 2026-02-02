@@ -36,10 +36,10 @@ v::stringVal()->assert(new ClassWithToString());
 
 ### `StringVal::TEMPLATE_STANDARD`
 
-|       Mode | Template                               |
-| ---------: | :------------------------------------- |
-|  `default` | {{subject}} must be a string value     |
-| `inverted` | {{subject}} must not be a string value |
+|       Mode | Template                         |
+| ---------: | :------------------------------- |
+|  `default` | {{subject}} must be a string     |
+| `inverted` | {{subject}} must not be a string |
 
 ## Template placeholders
 
@@ -54,9 +54,10 @@ v::stringVal()->assert(new ClassWithToString());
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   2.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   2.0.0 | Created           |
 
 ## See Also
 

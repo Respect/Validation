@@ -28,8 +28,8 @@ use const FILEINFO_MIME_TYPE;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid image file',
-    '{{subject}} must not be a valid image file',
+    '{{subject}} must be an accessible existing image file',
+    '{{subject}} must not be an accessible existing image file',
 )]
 final readonly class Image implements Validator
 {

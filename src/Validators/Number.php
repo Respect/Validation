@@ -25,7 +25,7 @@ use function is_numeric;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid number',
+    '{{subject}} must be a number',
     '{{subject}} must not be a number',
 )]
 final class Number extends Simple

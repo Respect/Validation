@@ -19,10 +19,10 @@ v::cnpj()->assert('00394460005887');
 
 ### `Cnpj::TEMPLATE_STANDARD`
 
-|       Mode | Template                                    |
-| ---------: | :------------------------------------------ |
-|  `default` | {{subject}} must be a valid CNPJ number     |
-| `inverted` | {{subject}} must not be a valid CNPJ number |
+|       Mode | Template                       |
+| ---------: | :----------------------------- |
+|  `default` | {{subject}} must be a CNPJ     |
+| `inverted` | {{subject}} must not be a CNPJ |
 
 ## Template placeholders
 
@@ -36,9 +36,10 @@ v::cnpj()->assert('00394460005887');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.3.9 | Created           |
 
 ## See Also
 

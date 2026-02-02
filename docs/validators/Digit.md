@@ -15,10 +15,10 @@ v::digit(' ')->assert('020 612 1851');
 // Validation passes successfully
 
 v::digit()->assert('020 612 1851');
-// → "020 612 1851" must contain only digits (0-9)
+// → "020 612 1851" must consist only of digits (0-9)
 
 v::digit()->assert('172.655.537-21');
-// → "172.655.537-21" must contain only digits (0-9)
+// → "172.655.537-21" must consist only of digits (0-9)
 
 v::digit('.', '-')->assert('172.655.537-21');
 // Validation passes successfully
@@ -28,17 +28,17 @@ v::digit('.', '-')->assert('172.655.537-21');
 
 ### `Digit::TEMPLATE_STANDARD`
 
-|       Mode | Template                                   |
-| ---------: | :----------------------------------------- |
-|  `default` | {{subject}} must contain only digits (0-9) |
-| `inverted` | {{subject}} must not contain digits (0-9)  |
+|       Mode | Template                                          |
+| ---------: | :------------------------------------------------ |
+|  `default` | {{subject}} must consist only of digits (0-9)     |
+| `inverted` | {{subject}} must not consist only of digits (0-9) |
 
 ### `Digit::TEMPLATE_EXTRA`
 
-|       Mode | Template                                                           |
-| ---------: | :----------------------------------------------------------------- |
-|  `default` | {{subject}} must contain only digits (0-9) and {{additionalChars}} |
-| `inverted` | {{subject}} must not contain digits (0-9) and {{additionalChars}}  |
+|       Mode | Template                                                                 |
+| ---------: | :----------------------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of digits (0-9) or {{additionalChars}}     |
+| `inverted` | {{subject}} must not consist only of digits (0-9) or {{additionalChars}} |
 
 ## Template placeholders
 
@@ -56,6 +56,7 @@ v::digit('.', '-')->assert('172.655.537-21');
 
 | Version | Description                               |
 | ------: | :---------------------------------------- |
+|   3.0.0 | Templates changed                         |
 |   2.0.0 | Removed support to whitespaces by default |
 |   0.5.0 | Renamed from `Digits` to `Digit`          |
 |   0.3.9 | Created as `Digits`                       |

@@ -34,13 +34,13 @@ use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid UUID',
-    '{{subject}} must not be a valid UUID',
+    '{{subject}} must be a UUID',
+    '{{subject}} must not be a UUID',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{subject}} must be a valid UUID version {{version|raw}}',
-    '{{subject}} must not be a valid UUID version {{version|raw}}',
+    '{{subject}} must be a UUID v{{version|raw}}',
+    '{{subject}} must not be a UUID v{{version|raw}}',
     self::TEMPLATE_VERSION,
 )]
 final class Uuid implements Validator

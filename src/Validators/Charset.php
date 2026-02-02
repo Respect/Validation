@@ -30,8 +30,8 @@ use function mb_list_encodings;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must only contain characters from the {{charset|raw}} charset',
-    '{{subject}} must not contain any characters from the {{charset|raw}} charset',
+    '{{subject}} must consist only of characters from the {{charset|list:or}} character-set',
+    '{{subject}} must not consist only of characters from the {{charset|list:or}} character-set',
 )]
 final readonly class Charset implements Validator
 {

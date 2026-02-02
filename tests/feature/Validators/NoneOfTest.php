@@ -37,15 +37,15 @@ test('Default: pass, fail', catchAll(
 test('Default: pass, fail, fail', catchAll(
     fn() => v::noneOf(v::intType(), v::alpha(), v::stringType())->assert('string'),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('"string" must not contain letters (a-z)')
+        ->and($message)->toBe('"string" must not consist only of letters (a-z)')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - "string" must pass the rules
-          - "string" must not contain letters (a-z)
+          - "string" must not consist only of letters (a-z)
           - "string" must not be a string
         FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => '"string" must pass the rules',
-            'alpha' => '"string" must not contain letters (a-z)',
+            'alpha' => '"string" must not consist only of letters (a-z)',
             'stringType' => '"string" must not be a string',
         ]),
 ));

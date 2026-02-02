@@ -23,8 +23,8 @@ use const FILTER_VALIDATE_URL;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid URL',
-    '{{subject}} must not be a valid URL',
+    '{{subject}} must be a URL',
+    '{{subject}} must not be a URL',
 )]
 final class Url implements Validator
 {

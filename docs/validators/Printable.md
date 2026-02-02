@@ -19,17 +19,17 @@ v::printable()->assert('LMKA0$% _123');
 
 ### `Printable::TEMPLATE_STANDARD`
 
-|       Mode | Template                                           |
-| ---------: | :------------------------------------------------- |
-|  `default` | {{subject}} must contain only printable characters |
-| `inverted` | {{subject}} must not contain printable characters  |
+|       Mode | Template                                                  |
+| ---------: | :-------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of printable characters     |
+| `inverted` | {{subject}} must not consist only of printable characters |
 
 ### `Printable::TEMPLATE_EXTRA`
 
-|       Mode | Template                                                                   |
-| ---------: | :------------------------------------------------------------------------- |
-|  `default` | {{subject}} must contain only printable characters and {{additionalChars}} |
-| `inverted` | {{subject}} must not contain printable characters or {{additionalChars}}   |
+|       Mode | Template                                                                         |
+| ---------: | :------------------------------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of printable characters or {{additionalChars}}     |
+| `inverted` | {{subject}} must not consist only of printable characters or {{additionalChars}} |
 
 ## Template placeholders
 
@@ -44,9 +44,10 @@ v::printable()->assert('LMKA0$% _123');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.5.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.5.0 | Created           |
 
 ## See Also
 

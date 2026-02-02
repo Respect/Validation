@@ -20,10 +20,10 @@ validation.
 
 ```php
 v::not(v::numericVal())->uppercase()->assert('42');
-// → "42" must not be a numeric value
+// → "42" must not be numeric
 
 v::alnum()->uppercase()->assert('#$%!');
-// → "#$%!" must contain only letters (a-z) and digits (0-9)
+// → "#$%!" must consist only of letters (a-z) and digits (0-9)
 
 v::not(v::numericVal())->alnum()->uppercase()->assert('W3C');
 // Validation passes successfully
@@ -33,10 +33,10 @@ v::not(v::numericVal())->alnum()->uppercase()->assert('W3C');
 
 ### `Uppercase::TEMPLATE_STANDARD`
 
-|       Mode | Template                                            |
-| ---------: | :-------------------------------------------------- |
-|  `default` | {{subject}} must contain only uppercase letters     |
-| `inverted` | {{subject}} must not contain only uppercase letters |
+|       Mode | Template                                               |
+| ---------: | :----------------------------------------------------- |
+|  `default` | {{subject}} must consist only of uppercase letters     |
+| `inverted` | {{subject}} must not consist only of uppercase letters |
 
 ## Template placeholders
 
@@ -50,9 +50,10 @@ v::not(v::numericVal())->alnum()->uppercase()->assert('W3C');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.3.9 | Created           |
 
 ## See Also
 

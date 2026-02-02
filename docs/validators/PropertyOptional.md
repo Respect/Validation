@@ -27,7 +27,7 @@ v::propertyOptional('website', v::url())->assert($object);
 // Validation passes successfully
 
 v::propertyOptional('name', v::lowercase())->assert($object);
-// → `.name` must contain only lowercase letters
+// → `.name` must consist only of lowercase letters
 ```
 
 The name of this validator is automatically set to the property name.

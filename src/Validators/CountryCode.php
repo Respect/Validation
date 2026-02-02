@@ -32,8 +32,8 @@ use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid country code',
-    '{{subject}} must not be a valid country code',
+    '{{subject}} must be a country code',
+    '{{subject}} must not be a country code',
 )]
 final readonly class CountryCode implements Validator
 {

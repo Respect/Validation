@@ -26,10 +26,10 @@ This validator supports the two [ISO 4217][] sets:
 
 ### `CurrencyCode::TEMPLATE_STANDARD`
 
-|       Mode | Template                                      |
-| ---------: | :-------------------------------------------- |
-|  `default` | {{subject}} must be a valid currency code     |
-| `inverted` | {{subject}} must not be a valid currency code |
+|       Mode | Template                                |
+| ---------: | :-------------------------------------- |
+|  `default` | {{subject}} must be a currency code     |
+| `inverted` | {{subject}} must not be a currency code |
 
 ## Template placeholders
 
@@ -46,6 +46,7 @@ This validator supports the two [ISO 4217][] sets:
 
 | Version | Description                                                       |
 | ------: | :---------------------------------------------------------------- |
+|   3.0.0 | Templates changed                                                 |
 |   3.0.0 | Require [sokil/php-isocodes][] and [sokil/php-isocodes-db-only][] |
 |   2.0.0 | Became case-sensitive                                             |
 |   1.0.0 | Created                                                           |

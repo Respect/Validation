@@ -30,8 +30,8 @@ use function strtotime;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid date in the format {{sample}}',
-    '{{subject}} must not be a valid date in the format {{sample}}',
+    '{{subject}} must be a date in the {{sample}} format',
+    '{{subject}} must not be a date in the {{sample}} format',
 )]
 final readonly class Date implements Validator
 {

@@ -15,7 +15,7 @@ test('Scenario #1', catchMessage(
 
 test('Scenario #2', catchMessage(
     fn() => v::vowel('c')->assert('d'),
-    fn(string $message) => expect($message)->toBe('"d" must consist of vowels and "c"'),
+    fn(string $message) => expect($message)->toBe('"d" must consist of vowels or "c"'),
 ));
 
 test('Scenario #3', catchMessage(
@@ -35,7 +35,7 @@ test('Scenario #5', catchFullMessage(
 
 test('Scenario #6', catchFullMessage(
     fn() => v::vowel('h')->assert('j'),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- "j" must consist of vowels and "h"'),
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "j" must consist of vowels or "h"'),
 ));
 
 test('Scenario #7', catchFullMessage(

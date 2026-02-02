@@ -19,24 +19,24 @@ Notice, however, that it doesn't accept strings starting with 0x:
 
 ```php
 v::xdigit()->assert('0x1f');
-// → "0x1f" must only contain hexadecimal digits
+// → "0x1f" must consist only of hexadecimal digits
 ```
 
 ## Templates
 
 ### `Xdigit::TEMPLATE_STANDARD`
 
-|       Mode | Template                                             |
-| ---------: | :--------------------------------------------------- |
-|  `default` | {{subject}} must only contain hexadecimal digits     |
-| `inverted` | {{subject}} must not only contain hexadecimal digits |
+|       Mode | Template                                                |
+| ---------: | :------------------------------------------------------ |
+|  `default` | {{subject}} must consist only of hexadecimal digits     |
+| `inverted` | {{subject}} must not consist only of hexadecimal digits |
 
 ### `Xdigit::TEMPLATE_EXTRA`
 
-|       Mode | Template                                                               |
-| ---------: | :--------------------------------------------------------------------- |
-|  `default` | {{subject}} must contain hexadecimal digits and {{additionalChars}}    |
-| `inverted` | {{subject}} must not contain hexadecimal digits or {{additionalChars}} |
+|       Mode | Template                                                                       |
+| ---------: | :----------------------------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of hexadecimal digits or {{additionalChars}}     |
+| `inverted` | {{subject}} must not consist only of hexadecimal digits or {{additionalChars}} |
 
 ## Template placeholders
 
@@ -51,9 +51,10 @@ v::xdigit()->assert('0x1f');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.5.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.5.0 | Created           |
 
 ## See Also
 

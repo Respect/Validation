@@ -40,10 +40,10 @@ Messages for this validator will reflect validators above.
 
 ### `Domain::TEMPLATE_STANDARD`
 
-|       Mode | Template                               |
-| ---------: | :------------------------------------- |
-|  `default` | {{subject}} must be a valid domain     |
-| `inverted` | {{subject}} must not be a valid domain |
+|       Mode | Template                                   |
+| ---------: | :----------------------------------------- |
+|  `default` | {{subject}} must be an internet domain     |
+| `inverted` | {{subject}} must not be an internet domain |
 
 ## Template placeholders
 
@@ -59,6 +59,7 @@ Messages for this validator will reflect validators above.
 
 | Version | Description             |
 | ------: | :---------------------- |
+|   3.0.0 | Templates changed       |
 |   0.6.0 | Allow to skip TLD check |
 |   0.3.9 | Created                 |
 

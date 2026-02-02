@@ -14,17 +14,17 @@ v::scalarVal()->assert(135.0);
 // Validation passes successfully
 
 v::scalarVal()->assert([]);
-// → `[]` must be a scalar value
+// → `[]` must be a scalar
 ```
 
 ## Templates
 
 ### `ScalarVal::TEMPLATE_STANDARD`
 
-|       Mode | Template                               |
-| ---------: | :------------------------------------- |
-|  `default` | {{subject}} must be a scalar value     |
-| `inverted` | {{subject}} must not be a scalar value |
+|       Mode | Template                         |
+| ---------: | :------------------------------- |
+|  `default` | {{subject}} must be a scalar     |
+| `inverted` | {{subject}} must not be a scalar |
 
 ## Template placeholders
 
@@ -38,9 +38,10 @@ v::scalarVal()->assert([]);
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   1.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   1.0.0 | Created           |
 
 ## See Also
 

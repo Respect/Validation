@@ -29,7 +29,7 @@ use function preg_match;
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{subject}} must consist of vowels and {{additionalChars}}',
+    '{{subject}} must consist of vowels or {{additionalChars}}',
     '{{subject}} must not consist of vowels or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]

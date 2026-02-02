@@ -29,10 +29,10 @@ This validator relies on [fileinfo](http://php.net/fileinfo) PHP extension.
 
 ### `Image::TEMPLATE_STANDARD`
 
-|       Mode | Template                                   |
-| ---------: | :----------------------------------------- |
-|  `default` | {{subject}} must be a valid image file     |
-| `inverted` | {{subject}} must not be a valid image file |
+|       Mode | Template                                                  |
+| ---------: | :-------------------------------------------------------- |
+|  `default` | {{subject}} must be an accessible existing image file     |
+| `inverted` | {{subject}} must not be an accessible existing image file |
 
 ## Template placeholders
 
@@ -46,9 +46,10 @@ This validator relies on [fileinfo](http://php.net/fileinfo) PHP extension.
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   1.1.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   1.1.0 | Created           |
 
 ## See Also
 

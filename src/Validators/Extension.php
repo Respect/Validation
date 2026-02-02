@@ -25,8 +25,8 @@ use const PATHINFO_EXTENSION;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must have {{extension}} extension',
-    '{{subject}} must not have {{extension}} extension',
+    '{{subject}} must have the {{extension}} extension',
+    '{{subject}} must not have the {{extension}} extension',
 )]
 final readonly class Extension implements Validator
 {

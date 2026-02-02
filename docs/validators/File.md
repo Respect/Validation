@@ -14,7 +14,7 @@ v::file()->assert(__FILE__);
 // Validation passes successfully
 
 v::file()->assert(__DIR__);
-// → "/path/to/dir" must be a valid file
+// → "/path/to/dir" must be an accessible existing file
 ```
 
 This validator will consider SplFileInfo instances, so you can do something like:
@@ -28,10 +28,10 @@ v::file()->assert(new SplFileInfo('/path/to/file.txt'));
 
 ### `File::TEMPLATE_STANDARD`
 
-|       Mode | Template                            |
-| ---------: | :---------------------------------- |
-|  `default` | {{subject}} must be a valid file    |
-| `inverted` | {{subject}} must be an invalid file |
+|       Mode | Template                                            |
+| ---------: | :-------------------------------------------------- |
+|  `default` | {{subject}} must be an accessible existing file     |
+| `inverted` | {{subject}} must not be an accessible existing file |
 
 ## Template placeholders
 
@@ -45,9 +45,10 @@ v::file()->assert(new SplFileInfo('/path/to/file.txt'));
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.5.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.5.0 | Created           |
 
 ## See Also
 

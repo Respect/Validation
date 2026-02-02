@@ -32,8 +32,8 @@ use function is_string;
     Size::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{subject}} must be a filename or an instance of SplFileInfo or a PSR-7 interface',
-    '{{subject}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface',
+    '{{subject}} must be a filename, an instance of SplFileInfo or a PSR-7 interface',
+    '{{subject}} must not be a filename, an instance of SplFileInfo or a PSR-7 interface',
     self::TEMPLATE_WRONG_TYPE,
 )]
 final readonly class Size implements Validator

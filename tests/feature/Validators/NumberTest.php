@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 test('Scenario #1', catchMessage(
     fn() => v::number()->assert(acos(1.01)),
-    fn(string $message) => expect($message)->toBe('`NaN` must be a valid number'),
+    fn(string $message) => expect($message)->toBe('`NaN` must be a number'),
 ));
 
 test('Scenario #2', catchMessage(
@@ -20,7 +20,7 @@ test('Scenario #2', catchMessage(
 
 test('Scenario #3', catchFullMessage(
     fn() => v::number()->assert(NAN),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- `NaN` must be a valid number'),
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- `NaN` must be a number'),
 ));
 
 test('Scenario #4', catchFullMessage(

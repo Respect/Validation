@@ -34,9 +34,9 @@ test('Default', catchAll(
 test('Wrong type', catchAll(
     fn() => v::size('KB', v::lessThan(2))->assert(new stdClass()),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('`stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface')
-        ->and($fullMessage)->toBe('- `stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface')
-        ->and($messages)->toBe(['sizeLessThan' => '`stdClass {}` must be a filename or an instance of SplFileInfo or a PSR-7 interface']),
+        ->and($message)->toBe('`stdClass {}` must be a filename, an instance of SplFileInfo or a PSR-7 interface')
+        ->and($fullMessage)->toBe('- `stdClass {}` must be a filename, an instance of SplFileInfo or a PSR-7 interface')
+        ->and($messages)->toBe(['sizeLessThan' => '`stdClass {}` must be a filename, an instance of SplFileInfo or a PSR-7 interface']),
 ));
 
 test('Inverted', catchAll(

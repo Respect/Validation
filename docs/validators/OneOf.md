@@ -19,13 +19,13 @@ v::oneOf(v::digit(), v::alpha())->assert('12');
 
 v::oneOf(v::digit(), v::alpha())->assert('AB12');
 // → - "AB12" must pass one of the rules
-// →   - "AB12" must contain only digits (0-9)
-// →   - "AB12" must contain only letters (a-z)
+// →   - "AB12" must consist only of digits (0-9)
+// →   - "AB12" must consist only of letters (a-z)
 
 v::oneOf(v::digit(), v::alpha())->assert('*');
 // → - "*" must pass one of the rules
-// →   - "*" must contain only digits (0-9)
-// →   - "*" must contain only letters (a-z)
+// →   - "*" must consist only of digits (0-9)
+// →   - "*" must consist only of letters (a-z)
 ```
 
 The chains above validate if the input is either a digit or an alphabetic

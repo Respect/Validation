@@ -32,10 +32,10 @@ value this validator validates, without having surprises.
 
 ```php
 v::intVal()->assert(true);
-// → `true` must be an integer value
+// → `true` must be an integer
 
 v::intVal()->assert('89a');
-// → "89a" must be an integer value
+// → "89a" must be an integer
 ```
 
 Even though PHP can cast the values above as integers, this validator will not
@@ -45,10 +45,10 @@ consider them as valid.
 
 ### `IntVal::TEMPLATE_STANDARD`
 
-|       Mode | Template                                 |
-| ---------: | :--------------------------------------- |
-|  `default` | {{subject}} must be an integer value     |
-| `inverted` | {{subject}} must not be an integer value |
+|       Mode | Template                           |
+| ---------: | :--------------------------------- |
+|  `default` | {{subject}} must be an integer     |
+| `inverted` | {{subject}} must not be an integer |
 
 ## Template placeholders
 
@@ -65,6 +65,7 @@ consider them as valid.
 
 | Version | Description                                               |
 | ------: | :-------------------------------------------------------- |
+|   3.0.0 | Templates changed                                         |
 |   2.2.4 | Improved support for negative values with trailing zeroes |
 |  2.0.14 | Allow leading zeros                                       |
 |   1.0.0 | Renamed from `Int` to `IntVal`                            |

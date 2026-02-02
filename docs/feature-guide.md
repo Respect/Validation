@@ -149,7 +149,7 @@ Provide unique messages for each validator in a chain:
 
 ```php
 v::alnum()->lowercase()->assert($input, [
-    'alnum' => 'Your username must contain only letters and digits',
+    'alnum' => 'Your username must consist only of letters and digits',
     'lowercase' => 'Your username must be lowercase',
 ]);
 ```

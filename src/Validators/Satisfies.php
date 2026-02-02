@@ -25,7 +25,7 @@ use function count;
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be valid',
-    '{{subject}} must be invalid',
+    '{{subject}} must not be valid',
 )]
 final class Satisfies extends Simple
 {

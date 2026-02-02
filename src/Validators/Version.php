@@ -24,8 +24,8 @@ use function preg_match;
 /** @see http://semver.org/ */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a version',
-    '{{subject}} must not be a version',
+    '{{subject}} must be a version number',
+    '{{subject}} must not be a version number',
 )]
 final class Version extends Simple
 {

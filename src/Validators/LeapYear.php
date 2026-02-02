@@ -28,7 +28,7 @@ use function strtotime;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid leap year',
+    '{{subject}} must be a leap year',
     '{{subject}} must not be a leap year',
 )]
 final class LeapYear extends Simple

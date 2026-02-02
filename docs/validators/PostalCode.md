@@ -18,7 +18,7 @@ v::postalCode('BR')->assert('02179-000');
 // Validation passes successfully
 
 v::postalCode('US')->assert('02179-000');
-// → "02179-000" must be a valid postal code on "US"
+// → "02179-000" must be a postal code for "US"
 
 v::postalCode('US')->assert('55372');
 // Validation passes successfully
@@ -31,7 +31,7 @@ By default, `PostalCode` won't validate the format (puncts, spaces), unless you 
 
 ```php
 v::postalCode('BR', true)->assert('02179000');
-// → "02179000" must be a valid postal code on "BR"
+// → "02179000" must be a postal code for "BR"
 
 v::postalCode('BR', true)->assert('02179-000');
 // Validation passes successfully
@@ -45,10 +45,10 @@ Extracted from [GeoNames](http://www.geonames.org/).
 
 ### `PostalCode::TEMPLATE_STANDARD`
 
-|       Mode | Template                                                       |
-| ---------: | :------------------------------------------------------------- |
-|  `default` | {{subject}} must be a valid postal code on {{countryCode}}     |
-| `inverted` | {{subject}} must not be a valid postal code on {{countryCode}} |
+|       Mode | Template                                                  |
+| ---------: | :-------------------------------------------------------- |
+|  `default` | {{subject}} must be a postal code for {{countryCode}}     |
+| `inverted` | {{subject}} must not be a postal code for {{countryCode}} |
 
 ## Template placeholders
 
@@ -66,6 +66,7 @@ Extracted from [GeoNames](http://www.geonames.org/).
 
 | Version | Description                                       |
 | ------: | :------------------------------------------------ |
+|   3.0.0 | Templates changed                                 |
 |   2.3.0 | Add option to validate formatting                 |
 |   2.2.4 | Cambodian postal codes now support 5 and 6 digits |
 |   0.7.0 | Created                                           |

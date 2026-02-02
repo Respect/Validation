@@ -25,8 +25,8 @@ v::notSpaced()->alnum()->assert('username');
 
 v::notSpaced()->alnum()->assert('user name');
 // → - "user name" must pass all the rules
-// →   - "user name" must not contain whitespaces
-// →   - "user name" must contain only letters (a-z) and digits (0-9)
+// →   - "user name" must not contain whitespace
+// →   - "user name" must consist only of letters (a-z) and digits (0-9)
 ```
 
 ## Templates
@@ -36,7 +36,7 @@ v::notSpaced()->alnum()->assert('user name');
 |       Mode | Template                                         |
 | ---------: | :----------------------------------------------- |
 |  `default` | {{subject}} must contain at least one whitespace |
-| `inverted` | {{subject}} must not contain whitespaces         |
+| `inverted` | {{subject}} must not contain whitespace          |
 
 ## Template placeholders
 

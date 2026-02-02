@@ -24,8 +24,8 @@ use function mb_strtolower;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must contain only lowercase letters',
-    '{{subject}} must not contain only lowercase letters',
+    '{{subject}} must consist only of lowercase letters',
+    '{{subject}} must not consist only of lowercase letters',
 )]
 final class Lowercase extends Simple
 {

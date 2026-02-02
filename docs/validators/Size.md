@@ -42,10 +42,10 @@ This validator will accept:
 
 Used when the input is not a valid file path, a `SplFileInfo` object, or a PSR-7 interface.
 
-|       Mode | Template                                                                              |
-| ---------: | :------------------------------------------------------------------------------------ |
-|  `default` | {{subject}} must be a filename or an instance of SplFileInfo or a PSR-7 interface     |
-| `inverted` | {{subject}} must not be a filename or an instance of SplFileInfo or a PSR-7 interface |
+|       Mode | Template                                                                            |
+| ---------: | :---------------------------------------------------------------------------------- |
+|  `default` | {{subject}} must be a filename, an instance of SplFileInfo or a PSR-7 interface     |
+| `inverted` | {{subject}} must not be a filename, an instance of SplFileInfo or a PSR-7 interface |
 
 ## Template as prefix
 
@@ -75,6 +75,7 @@ v::size('KB', v::not(v::equals(56)))->assert('/path/to/file');
 
 | Version | Description             |
 | ------: | :---------------------- |
+|   3.0.0 | Templates changed       |
 |   3.0.0 | Became a transformation |
 |   2.1.0 | Add [PSR-7][] support   |
 |   1.0.0 | Created                 |

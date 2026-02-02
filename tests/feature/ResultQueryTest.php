@@ -21,7 +21,7 @@ test('findByPath with nested keys', function (): void {
     expect()
         ->and($emailResult)->not->toBeNull()
         ->and($emailResult?->hasFailed())->toBeTrue()
-        ->and($emailResult?->getMessage())->toBe('`.user.email` must be a valid email address');
+        ->and($emailResult?->getMessage())->toBe('`.user.email` must be an email address');
 });
 
 test('findByPath with array index', function (): void {
@@ -45,7 +45,7 @@ test('findByName with named validator', function (): void {
     expect()
         ->and($namedResult)->not->toBeNull()
         ->and($namedResult?->hasFailed())->toBeTrue()
-        ->and($namedResult?->getMessage())->toBe('User Email must be a valid email address');
+        ->and($namedResult?->getMessage())->toBe('User Email must be an email address');
 });
 
 test('findById with validator id', function (): void {

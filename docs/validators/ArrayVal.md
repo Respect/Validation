@@ -25,10 +25,10 @@ v::arrayVal()->assert(new SimpleXMLElement('<xml></xml>'));
 
 ### `ArrayVal::TEMPLATE_STANDARD`
 
-|       Mode | Template                               |
-| ---------: | :------------------------------------- |
-|  `default` | {{subject}} must be an array value     |
-| `inverted` | {{subject}} must not be an array value |
+|       Mode | Template                         |
+| ---------: | :------------------------------- |
+|  `default` | {{subject}} must be an array     |
+| `inverted` | {{subject}} must not be an array |
 
 ## Template placeholders
 
@@ -45,6 +45,7 @@ v::arrayVal()->assert(new SimpleXMLElement('<xml></xml>'));
 
 | Version | Description                                                                                  |
 | ------: | :------------------------------------------------------------------------------------------- |
+|   3.0.0 | Templates changed                                                                            |
 |   2.0.0 | `SimpleXMLElement` is also considered as valid                                               |
 |   1.0.0 | Renamed from `Arr` to `ArrayVal` and validate only if the input can be used as an array (#1) |
 |   0.3.9 | Created as `Arr`                                                                             |

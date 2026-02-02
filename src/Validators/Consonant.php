@@ -24,13 +24,13 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must only contain consonants',
-    '{{subject}} must not contain consonants',
+    '{{subject}} must consist only of consonants',
+    '{{subject}} must not consist only of consonants',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{subject}} must only contain consonants and {{additionalChars}}',
-    '{{subject}} must not contain consonants or {{additionalChars}}',
+    '{{subject}} must consist only of consonants or {{additionalChars}}',
+    '{{subject}} must not consist only of consonants or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Consonant extends FilteredString

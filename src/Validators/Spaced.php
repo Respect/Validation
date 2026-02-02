@@ -25,7 +25,7 @@ use function preg_match;
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must contain at least one whitespace',
-    '{{subject}} must not contain whitespaces',
+    '{{subject}} must not contain whitespace',
 )]
 final class Spaced extends Simple
 {

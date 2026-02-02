@@ -36,10 +36,10 @@ Use the `|trans` modifier to translate parameter values:
 
 ```php
 // Message template
-'{{subject}} must be a valid telephone number for country {{countryName|trans}}'
+'{{subject}} must be a valid phone number for country {{countryName|trans}}'
 
 // Translations needed
-'{{subject}} must be a valid telephone number for country {{countryName|trans}}' => '{{subject}} deve ser um número de telefone válido para o país {{countryName|trans}}',
+'{{subject}} must be a valid phone number for country {{countryName|trans}}' => '{{subject}} deve ser um número de telefone válido para o país {{countryName|trans}}',
 'Palestine' => 'Palestina',
 ```
 

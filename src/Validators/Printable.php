@@ -23,13 +23,13 @@ use function ctype_print;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must contain only printable characters',
-    '{{subject}} must not contain printable characters',
+    '{{subject}} must consist only of printable characters',
+    '{{subject}} must not consist only of printable characters',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{subject}} must contain only printable characters and {{additionalChars}}',
-    '{{subject}} must not contain printable characters or {{additionalChars}}',
+    '{{subject}} must consist only of printable characters or {{additionalChars}}',
+    '{{subject}} must not consist only of printable characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Printable extends FilteredString

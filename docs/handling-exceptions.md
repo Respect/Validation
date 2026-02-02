@@ -49,7 +49,7 @@ try {
 The code above generates the following output:
 
 ```no-highlight
-"The Panda" must contain only letters (a-z) and digits (0-9)
+"The Panda" must consist only of letters (a-z) and digits (0-9)
 ```
 
 ### Full exception message
@@ -71,8 +71,8 @@ The code above generates the following output:
 
 ```no-highlight
 - "The Panda" must pass all the rules
-  - "The Panda" must contain only letters (a-z) and digits (0-9)
-  - "The Panda" must contain only lowercase letters
+  - "The Panda" must consist only of letters (a-z) and digits (0-9)
+  - "The Panda" must consist only of lowercase letters
 ```
 
 ### Full exception messages as an array
@@ -96,8 +96,8 @@ The code above generates the following output:
 Array
 (
     [__root__] => "The Panda" must pass all the rules
-    [alnum] => "The Panda" must contain only letters (a-z) and digits (0-9)
-    [lowercase] => "The Panda" must contain only lowercase letters
+    [alnum] => "The Panda" must consist only of letters (a-z) and digits (0-9)
+    [lowercase] => "The Panda" must consist only of lowercase letters
 )
 ```
 
@@ -183,7 +183,7 @@ try {
             'The Panda',
             [
                 '__root__' => 'The given input is not valid',
-                'alnum' => 'Your username must contain only letters and digits',
+                'alnum' => 'Your username must consist only of letters and digits',
                 'lowercase' => 'Your username must be lowercase',
             ]
         );
@@ -198,7 +198,7 @@ The code above generates the following output.
 Array
 (
     [__root__] => The given input is not valid
-    [alnum] => Your username must contain only letters and digits
+    [alnum] => Your username must consist only of letters and digits
     [lowercase] => Your username must be lowercase
 )
 ```
