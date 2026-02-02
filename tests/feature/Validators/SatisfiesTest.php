@@ -16,7 +16,7 @@ test('Scenario #1', catchMessage(
 
 test('Scenario #2', catchMessage(
     fn() => v::not(v::satisfies('is_string'))->assert('foo'),
-    fn(string $message) => expect($message)->toBe('"foo" must be invalid'),
+    fn(string $message) => expect($message)->toBe('"foo" must not be valid'),
 ));
 
 test('Scenario #3', catchFullMessage(
@@ -26,5 +26,5 @@ test('Scenario #3', catchFullMessage(
 
 test('Scenario #4', catchFullMessage(
     fn() => v::not(v::satisfies('is_string'))->assert('foo'),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- "foo" must be invalid'),
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "foo" must not be valid'),
 ));

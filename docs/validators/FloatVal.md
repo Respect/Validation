@@ -25,10 +25,10 @@ v::floatVal()->assert('1e5');
 
 ### `FloatVal::TEMPLATE_STANDARD`
 
-|       Mode | Template                              |
-| ---------: | :------------------------------------ |
-|  `default` | {{subject}} must be a float value     |
-| `inverted` | {{subject}} must not be a float value |
+|       Mode | Template                                        |
+| ---------: | :---------------------------------------------- |
+|  `default` | {{subject}} must be a floating-point number     |
+| `inverted` | {{subject}} must not be a floating-point number |
 
 ## Template placeholders
 
@@ -43,9 +43,10 @@ v::floatVal()->assert('1e5');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   1.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   1.0.0 | Created           |
 
 ## See Also
 

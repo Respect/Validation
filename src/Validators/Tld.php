@@ -26,8 +26,8 @@ use Respect\Validation\Validators\Core\Envelope;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid top-level domain name',
-    '{{subject}} must not be a valid top-level domain name',
+    '{{subject}} must be a top-level domain name',
+    '{{subject}} must not be a top-level domain name',
 )]
 final class Tld extends Envelope
 {

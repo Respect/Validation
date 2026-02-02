@@ -30,8 +30,8 @@ use function preg_replace;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid CPF number',
-    '{{subject}} must not be a valid CPF number',
+    '{{subject}} must be a CPF',
+    '{{subject}} must not be a CPF',
 )]
 final class Cpf extends Simple
 {

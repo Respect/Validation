@@ -25,8 +25,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must match the pattern {{regex|quote}}',
-    '{{subject}} must not match the pattern {{regex|quote}}',
+    '{{subject}} must match the {{regex|quote}} pattern',
+    '{{subject}} must not match the {{regex|quote}} pattern',
 )]
 final readonly class Regex implements Validator
 {

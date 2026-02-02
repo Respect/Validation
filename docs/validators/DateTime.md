@@ -42,7 +42,7 @@ You can pass a format when validating strings:
 
 ```php
 v::dateTime('Y-m-d')->assert('01-01-2009');
-// → "01-01-2009" must be a valid date/time in the format "2005-12-30"
+// → "01-01-2009" must be a date/time in the "2005-12-30" format
 ```
 
 Format has no effect when validating DateTime instances.
@@ -67,24 +67,24 @@ v::satisfies(fn($input) => is_string($input) && DateTime::createFromFormat(DateT
 // Validation passes successfully
 
 v::dateTime(DateTime::RFC3339_EXTENDED)->assert($input);
-// → "2014-04-12T23:20:50.052Z" must be a valid date/time in the format "2005-12-30T01:02:03.000+00:00"
+// → "2014-04-12T23:20:50.052Z" must be a date/time in the "2005-12-30T01:02:03.000+00:00" format
 ```
 
 ## Templates
 
 ### `DateTime::TEMPLATE_STANDARD`
 
-|       Mode | Template                                  |
-| ---------: | :---------------------------------------- |
-|  `default` | {{subject}} must be a valid date/time     |
-| `inverted` | {{subject}} must not be a valid date/time |
+|       Mode | Template                            |
+| ---------: | :---------------------------------- |
+|  `default` | {{subject}} must be a date/time     |
+| `inverted` | {{subject}} must not be a date/time |
 
 ### `DateTime::TEMPLATE_FORMAT`
 
-|       Mode | Template                                                           |
-| ---------: | :----------------------------------------------------------------- |
-|  `default` | {{subject}} must be a valid date/time in the format {{sample}}     |
-| `inverted` | {{subject}} must not be a valid date/time in the format {{sample}} |
+|       Mode | Template                                                     |
+| ---------: | :----------------------------------------------------------- |
+|  `default` | {{subject}} must be a date/time in the {{sample}} format     |
+| `inverted` | {{subject}} must not be a date/time in the {{sample}} format |
 
 ## Template placeholders
 
@@ -101,6 +101,7 @@ v::dateTime(DateTime::RFC3339_EXTENDED)->assert($input);
 
 | Version | Description                                |
 | ------: | :----------------------------------------- |
+|   3.0.0 | Templates changed                          |
 |   2.3.0 | Validation became a lot stricter           |
 |   2.2.4 | `v::dateTime('z')` is no longer supported. |
 |   2.0.0 | Created                                    |

@@ -20,10 +20,10 @@ v::resourceType()->assert(fopen('/path/to/file.txt', 'r'));
 
 ### `ResourceType::TEMPLATE_STANDARD`
 
-|       Mode | Template                           |
-| ---------: | :--------------------------------- |
-|  `default` | {{subject}} must be a resource     |
-| `inverted` | {{subject}} must not be a resource |
+|       Mode | Template                                     |
+| ---------: | :------------------------------------------- |
+|  `default` | {{subject}} must be an internal resource     |
+| `inverted` | {{subject}} must not be an internal resource |
 
 ## Template placeholders
 
@@ -37,9 +37,10 @@ v::resourceType()->assert(fopen('/path/to/file.txt', 'r'));
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   1.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   1.0.0 | Created           |
 
 ## See Also
 

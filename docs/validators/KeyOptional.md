@@ -25,14 +25,14 @@ v::keyOptional('email', v::email())->assert(['email' => 'therespectpanda@gmail.c
 // Validation passes successfully
 
 v::keyOptional('age', v::intVal())->assert(['age' => 'Twenty-Five']);
-// → `.age` must be an integer value
+// → `.age` must be an integer
 ```
 
 The name of this validator is automatically set to the key name.
 
 ```php
 v::keyOptional('age', v::intVal())->assert(['age' => 'Twenty-Five']);
-// → `.age` must be an integer value
+// → `.age` must be an integer
 ```
 
 ## Note

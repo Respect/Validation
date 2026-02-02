@@ -28,8 +28,8 @@ use function str_split;
 /** @see https://es.wikipedia.org/wiki/N%C3%BAmero_de_identificaci%C3%B3n_fiscal */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid NIF',
-    '{{subject}} must not be a valid NIF',
+    '{{subject}} must be a NIF',
+    '{{subject}} must not be a NIF',
 )]
 final class Nif extends Simple
 {

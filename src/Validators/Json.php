@@ -28,8 +28,8 @@ use function json_validate;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid JSON string',
-    '{{subject}} must not be a valid JSON string',
+    '{{subject}} must be a JSON string',
+    '{{subject}} must not be a JSON string',
 )]
 final class Json extends Simple
 {

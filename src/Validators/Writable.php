@@ -26,8 +26,8 @@ use function is_writable;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be writable',
-    '{{subject}} must not be writable',
+    '{{subject}} must be an accessible existing writable filesystem entry',
+    '{{subject}} must not be an accessible existing writable filesystem entry',
 )]
 final class Writable extends Simple
 {

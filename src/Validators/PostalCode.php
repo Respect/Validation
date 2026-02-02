@@ -34,8 +34,8 @@ use Respect\Validation\Validators\Core\Envelope;
 /** @see http://download.geonames.org/export/dump/countryInfo.txt */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid postal code on {{countryCode}}',
-    '{{subject}} must not be a valid postal code on {{countryCode}}',
+    '{{subject}} must be a postal code for {{countryCode}}',
+    '{{subject}} must not be a postal code for {{countryCode}}',
 )]
 final class PostalCode extends Envelope
 {

@@ -23,13 +23,13 @@ use function ctype_punct;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must contain only punctuation characters',
-    '{{subject}} must not contain punctuation characters',
+    '{{subject}} must consist only of punctuation characters',
+    '{{subject}} must not consist only of punctuation characters',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{subject}} must contain only punctuation characters and {{additionalChars}}',
-    '{{subject}} must not contain punctuation characters or {{additionalChars}}',
+    '{{subject}} must consist only of punctuation characters or {{additionalChars}}',
+    '{{subject}} must not consist only of punctuation characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Punct extends FilteredString

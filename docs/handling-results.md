@@ -55,8 +55,8 @@ $result = v::alnum()->lowercase()->validate('The Panda');
 
 echo $result->getFullMessage();
 // → - "The Panda" must pass all the rules
-// →   - "The Panda" must contain only letters (a-z) and digits (0-9)
-// →   - "The Panda" must contain only lowercase letters
+// →   - "The Panda" must consist only of letters (a-z) and digits (0-9)
+// →   - "The Panda" must consist only of lowercase letters
 ```
 
 ### getMessages()
@@ -70,8 +70,8 @@ print_r($result->getMessages());
 // Array
 // (
 //     [__root__] => "The Panda" must pass all the rules
-//     [alnum] => "The Panda" must contain only letters (a-z) and digits (0-9)
-//     [lowercase] => "The Panda" must contain only lowercase letters
+//     [alnum] => "The Panda" must consist only of letters (a-z) and digits (0-9)
+//     [lowercase] => "The Panda" must consist only of lowercase letters
 // )
 ```
 

@@ -22,10 +22,10 @@ v::satisfies(fn (int $input): bool => $input % 5 === 0,)->assert(10);
 
 ### `Satisfies::TEMPLATE_STANDARD`
 
-|       Mode | Template                    |
-| ---------: | :-------------------------- |
-|  `default` | {{subject}} must be valid   |
-| `inverted` | {{subject}} must be invalid |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be valid     |
+| `inverted` | {{subject}} must not be valid |
 
 ## Template placeholders
 

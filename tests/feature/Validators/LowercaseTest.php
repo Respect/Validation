@@ -11,20 +11,20 @@ declare(strict_types=1);
 
 test('Scenario #1', catchMessage(
     fn() => v::lowercase()->assert('UPPERCASE'),
-    fn(string $message) => expect($message)->toBe('"UPPERCASE" must contain only lowercase letters'),
+    fn(string $message) => expect($message)->toBe('"UPPERCASE" must consist only of lowercase letters'),
 ));
 
 test('Scenario #2', catchMessage(
     fn() => v::not(v::lowercase())->assert('lowercase'),
-    fn(string $message) => expect($message)->toBe('"lowercase" must not contain only lowercase letters'),
+    fn(string $message) => expect($message)->toBe('"lowercase" must not consist only of lowercase letters'),
 ));
 
 test('Scenario #3', catchFullMessage(
     fn() => v::lowercase()->assert('UPPERCASE'),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- "UPPERCASE" must contain only lowercase letters'),
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "UPPERCASE" must consist only of lowercase letters'),
 ));
 
 test('Scenario #4', catchFullMessage(
     fn() => v::not(v::lowercase())->assert('lowercase'),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- "lowercase" must not contain only lowercase letters'),
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "lowercase" must not consist only of lowercase letters'),
 ));

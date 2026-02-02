@@ -23,17 +23,17 @@ v::punct()->assert('&,.;[]');
 
 ### `Punct::TEMPLATE_STANDARD`
 
-|       Mode | Template                                             |
-| ---------: | :--------------------------------------------------- |
-|  `default` | {{subject}} must contain only punctuation characters |
-| `inverted` | {{subject}} must not contain punctuation characters  |
+|       Mode | Template                                                    |
+| ---------: | :---------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of punctuation characters     |
+| `inverted` | {{subject}} must not consist only of punctuation characters |
 
 ### `Punct::TEMPLATE_EXTRA`
 
-|       Mode | Template                                                                     |
-| ---------: | :--------------------------------------------------------------------------- |
-|  `default` | {{subject}} must contain only punctuation characters and {{additionalChars}} |
-| `inverted` | {{subject}} must not contain punctuation characters or {{additionalChars}}   |
+|       Mode | Template                                                                           |
+| ---------: | :--------------------------------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of punctuation characters or {{additionalChars}}     |
+| `inverted` | {{subject}} must not consist only of punctuation characters or {{additionalChars}} |
 
 ## Template placeholders
 
@@ -48,9 +48,10 @@ v::punct()->assert('&,.;[]');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.5.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.5.0 | Created           |
 
 ## See Also
 

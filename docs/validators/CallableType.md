@@ -26,10 +26,10 @@ v::callableType()->assert([new DateTime(), 'format']);
 
 ### `CallableType::TEMPLATE_STANDARD`
 
-|       Mode | Template                           |
-| ---------: | :--------------------------------- |
-|  `default` | {{subject}} must be a callable     |
-| `inverted` | {{subject}} must not be a callable |
+|       Mode | Template                                    |
+| ---------: | :------------------------------------------ |
+|  `default` | {{subject}} must be a callable function     |
+| `inverted` | {{subject}} must not be a callable function |
 
 ## Template placeholders
 

@@ -22,10 +22,10 @@ v::cnh()->assert('02650306461');
 
 ### `Cnh::TEMPLATE_STANDARD`
 
-|       Mode | Template                                   |
-| ---------: | :----------------------------------------- |
-|  `default` | {{subject}} must be a valid CNH number     |
-| `inverted` | {{subject}} must not be a valid CNH number |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be a CNH     |
+| `inverted` | {{subject}} must not be a CNH |
 
 ## Template placeholders
 
@@ -39,9 +39,10 @@ v::cnh()->assert('02650306461');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.5.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.5.0 | Created           |
 
 ## See Also
 

@@ -59,7 +59,7 @@ The template serves as a prefix to the template of the inner validator.
 
 ```php
 v::all(v::floatType())->assert([1.5, 2]);
-// → Every item in `[1.5, 2]` must be float
+// → Every item in `[1.5, 2]` must be a float
 
 v::not(v::all(v::intType()))->assert([1, 2, -3]);
 // → Every item in `[1, 2, -3]` must not be an integer

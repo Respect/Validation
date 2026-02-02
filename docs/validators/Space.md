@@ -22,17 +22,17 @@ v::space()->assert('    ');
 
 ### `Space::TEMPLATE_STANDARD`
 
-|       Mode | Template                                       |
-| ---------: | :--------------------------------------------- |
-|  `default` | {{subject}} must contain only space characters |
-| `inverted` | {{subject}} must not contain space characters  |
+|       Mode | Template                                              |
+| ---------: | :---------------------------------------------------- |
+|  `default` | {{subject}} must consist only of space characters     |
+| `inverted` | {{subject}} must not consist only of space characters |
 
 ### `Space::TEMPLATE_EXTRA`
 
-|       Mode | Template                                                               |
-| ---------: | :--------------------------------------------------------------------- |
-|  `default` | {{subject}} must contain only space characters and {{additionalChars}} |
-| `inverted` | {{subject}} must not contain space characters or {{additionalChars}}   |
+|       Mode | Template                                                                     |
+| ---------: | :--------------------------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of space characters or {{additionalChars}}     |
+| `inverted` | {{subject}} must not consist only of space characters or {{additionalChars}} |
 
 ## Template placeholders
 
@@ -47,9 +47,10 @@ v::space()->assert('    ');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.5.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.5.0 | Created           |
 
 ## See Also
 

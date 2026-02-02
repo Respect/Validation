@@ -24,8 +24,8 @@ use function preg_replace;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid IMEI number',
-    '{{subject}} must not be a valid IMEI number',
+    '{{subject}} must be an IMEI number',
+    '{{subject}} must not be an IMEI number',
 )]
 final class Imei extends Simple
 {

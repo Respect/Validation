@@ -25,8 +25,8 @@ use function var_export;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must have {{decimals}} decimals',
-    '{{subject}} must not have {{decimals}} decimals',
+    '{{subject}} must have {{decimals}} decimal places',
+    '{{subject}} must not have {{decimals}} decimal places',
 )]
 final readonly class Decimal implements Validator
 {

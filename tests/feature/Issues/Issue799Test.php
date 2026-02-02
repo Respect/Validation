@@ -21,15 +21,15 @@ test('https://github.com/Respect/Validation/issues/799 | #1', catchAll(
         )
         ->assert($input),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('1 must be an array value')
+        ->and($message)->toBe('1 must be an array')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
             - 1 must pass all the rules
-              - 1 must be an array value
+              - 1 must be an array
               - `.scheme` must be present
             FULL_MESSAGE)
         ->and($messages)->toBe([
             '__root__' => '1 must pass all the rules',
-            'arrayVal' => '1 must be an array value',
+            'arrayVal' => '1 must be an array',
             'scheme' => '`.scheme` must be present',
         ]),
 ));

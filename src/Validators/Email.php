@@ -33,7 +33,7 @@ use const FILTER_VALIDATE_EMAIL;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid email address',
+    '{{subject}} must be an email address',
     '{{subject}} must not be an email address',
 )]
 final class Email extends Simple

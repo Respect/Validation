@@ -57,7 +57,7 @@ test('https://github.com/Respect/Validation/issues/1289', catchAll(
               - `.0.default` must pass one of the rules
                 - `.0.default` must be a string
                 - `.0.default` must be a boolean
-              - `.0.description` must be a string value
+              - `.0.description` must be a string
             FULL_MESSAGE)
         ->and($messages)->toBe([
             0 => [
@@ -67,7 +67,7 @@ test('https://github.com/Respect/Validation/issues/1289', catchAll(
                     0 => '`.0.default` must be a string',
                     1 => '`.0.default` must be a boolean',
                 ],
-                'description' => '`.0.description` must be a string value',
+                'description' => '`.0.description` must be a string',
             ],
         ]),
 ));

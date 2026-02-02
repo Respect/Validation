@@ -24,8 +24,8 @@ use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid file',
-    '{{subject}} must be an invalid file',
+    '{{subject}} must be an accessible existing file',
+    '{{subject}} must not be an accessible existing file',
 )]
 final class File extends Simple
 {

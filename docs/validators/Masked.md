@@ -16,13 +16,13 @@ v::masked('1-@', v::email())->assert('foo@example.com');
 // Validation passes successfully
 
 v::masked('1-@', v::email())->assert('invalid username@domain.com');
-// → "****************@domain.com" must be a valid email address
+// → "****************@domain.com" must be an email address
 
 v::masked('1-', v::lengthGreaterThan(10))->assert('password');
 // → The length of "********" must be greater than 10
 
 v::masked('6-12', v::creditCard(), 'X')->assert('4111111111111211');
-// → "41111XXXXXXX1211" must be a valid credit card number
+// → "41111XXXXXXX1211" must be a credit card number
 ```
 
 This validator is useful for security-sensitive applications where error messages should not expose sensitive data like credit card numbers, passwords, or email addresses.

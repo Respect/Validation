@@ -20,7 +20,7 @@ test('default template', catchAll(
 test('inverted template', catchAll(
     fn() => v::not(v::spaced())->assert('two words'),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('"two words" must not contain whitespaces')
-        ->and($fullMessage)->toBe('- "two words" must not contain whitespaces')
-        ->and($messages)->toBe(['notSpaced' => '"two words" must not contain whitespaces']),
+        ->and($message)->toBe('"two words" must not contain whitespace')
+        ->and($fullMessage)->toBe('- "two words" must not contain whitespace')
+        ->and($messages)->toBe(['notSpaced' => '"two words" must not contain whitespace']),
 ));

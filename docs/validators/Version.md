@@ -20,10 +20,10 @@ v::version()->assert('1.0.0');
 
 ### `Version::TEMPLATE_STANDARD`
 
-|       Mode | Template                          |
-| ---------: | :-------------------------------- |
-|  `default` | {{subject}} must be a version     |
-| `inverted` | {{subject}} must not be a version |
+|       Mode | Template                                 |
+| ---------: | :--------------------------------------- |
+|  `default` | {{subject}} must be a version number     |
+| `inverted` | {{subject}} must not be a version number |
 
 ## Template placeholders
 
@@ -37,9 +37,10 @@ v::version()->assert('1.0.0');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.3.9 | Created           |
 
 ## See Also
 

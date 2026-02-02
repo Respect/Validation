@@ -45,10 +45,10 @@ Used when it's possible to get the length of the input.
 
 ### `Length::TEMPLATE_WRONG_TYPE`
 
-|       Mode | Template                                              |
-| ---------: | :---------------------------------------------------- |
-|  `default` | {{subject}} must be a countable value or a string     |
-| `inverted` | {{subject}} must not be a countable value or a string |
+|       Mode | Template                                      |
+| ---------: | :-------------------------------------------- |
+|  `default` | {{subject}} must be countable or a string     |
+| `inverted` | {{subject}} must not be countable or a string |
 
 ## Template as prefix
 

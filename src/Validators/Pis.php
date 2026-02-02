@@ -24,8 +24,8 @@ use function preg_replace;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid PIS number',
-    '{{subject}} must not be a valid PIS number',
+    '{{subject}} must be a PIS number',
+    '{{subject}} must not be a PIS number',
 )]
 final class Pis extends Simple
 {

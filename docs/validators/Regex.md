@@ -25,8 +25,8 @@ Message template for this validator includes `{{regex}}`.
 
 |       Mode | Template                                                    |
 | ---------: | :---------------------------------------------------------- |
-|  `default` | {{subject}} must match the pattern {{regex&#124;quote}}     |
-| `inverted` | {{subject}} must not match the pattern {{regex&#124;quote}} |
+|  `default` | {{subject}} must match the {{regex&#124;quote}} pattern     |
+| `inverted` | {{subject}} must not match the {{regex&#124;quote}} pattern |
 
 ## Template placeholders
 
@@ -41,9 +41,10 @@ Message template for this validator includes `{{regex}}`.
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.3.9 | Created           |
 
 ## See Also
 

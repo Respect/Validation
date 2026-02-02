@@ -22,8 +22,8 @@ use function is_numeric;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a numeric value',
-    '{{subject}} must not be a numeric value',
+    '{{subject}} must be numeric',
+    '{{subject}} must not be numeric',
 )]
 final class NumericVal extends Simple
 {

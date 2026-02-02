@@ -22,7 +22,7 @@ v::iterableVal()->assert(new stdClass());
 // Validation passes successfully
 
 v::iterableVal()->assert('string');
-// → "string" must be an iterable value
+// → "string" must be iterable
 ```
 
 ## Note
@@ -33,10 +33,10 @@ This validator doesn't behave as PHP's [is_iterable()][] function because it con
 
 ### `IterableVal::TEMPLATE_STANDARD`
 
-|       Mode | Template                                  |
-| ---------: | :---------------------------------------- |
-|  `default` | {{subject}} must be an iterable value     |
-| `inverted` | {{subject}} must not be an iterable value |
+|       Mode | Template                         |
+| ---------: | :------------------------------- |
+|  `default` | {{subject}} must be iterable     |
+| `inverted` | {{subject}} must not be iterable |
 
 ## Template placeholders
 
@@ -52,6 +52,7 @@ This validator doesn't behave as PHP's [is_iterable()][] function because it con
 
 | Version | Description                                  |
 | ------: | :------------------------------------------- |
+|   3.0.0 | Templates changed                            |
 |   3.0.0 | Renamed from `IterableType` to `IterableVal` |
 |   1.0.8 | Renamed from `Iterable` to `IterableType`    |
 |   1.0.0 | Created as `Iterable`                        |

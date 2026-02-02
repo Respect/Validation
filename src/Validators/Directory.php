@@ -25,8 +25,8 @@ use function is_scalar;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a directory',
-    '{{subject}} must not be a directory',
+    '{{subject}} must be an accessible existing directory',
+    '{{subject}} must not be an accessible existing directory',
 )]
 final class Directory extends Simple
 {

@@ -17,17 +17,17 @@ v::luhn()->assert('2222400041240011');
 // Validation passes successfully
 
 v::luhn()->assert('respect!');
-// → "respect!" must be a valid Luhn number
+// → "respect!" must be a Luhn number
 ```
 
 ## Templates
 
 ### `Luhn::TEMPLATE_STANDARD`
 
-|       Mode | Template                                    |
-| ---------: | :------------------------------------------ |
-|  `default` | {{subject}} must be a valid Luhn number     |
-| `inverted` | {{subject}} must not be a valid Luhn number |
+|       Mode | Template                              |
+| ---------: | :------------------------------------ |
+|  `default` | {{subject}} must be a Luhn number     |
+| `inverted` | {{subject}} must not be a Luhn number |
 
 ## Template placeholders
 
@@ -41,9 +41,10 @@ v::luhn()->assert('respect!');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   2.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   2.0.0 | Created           |
 
 ## See Also
 

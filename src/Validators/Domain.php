@@ -27,8 +27,8 @@ use function explode;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid domain',
-    '{{subject}} must not be a valid domain',
+    '{{subject}} must be an internet domain',
+    '{{subject}} must not be an internet domain',
 )]
 final class Domain implements Validator
 {

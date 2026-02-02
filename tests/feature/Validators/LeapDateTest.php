@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 test('Scenario #1', catchMessage(
     fn() => v::leapDate('Y-m-d')->assert('1989-02-29'),
-    fn(string $message) => expect($message)->toBe('"1989-02-29" must be a valid leap date'),
+    fn(string $message) => expect($message)->toBe('"1989-02-29" must be a leap date'),
 ));
 
 test('Scenario #2', catchMessage(
@@ -21,7 +21,7 @@ test('Scenario #2', catchMessage(
 
 test('Scenario #3', catchFullMessage(
     fn() => v::leapDate('Y-m-d')->assert('1990-02-29'),
-    fn(string $fullMessage) => expect($fullMessage)->toBe('- "1990-02-29" must be a valid leap date'),
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "1990-02-29" must be a leap date'),
 ));
 
 test('Scenario #4', catchFullMessage(

@@ -26,8 +26,8 @@ use function strval;
 /** @see https://nl.wikipedia.org/wiki/Burgerservicenummer */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid BSN',
-    '{{subject}} must not be a valid BSN',
+    '{{subject}} must be a BSN',
+    '{{subject}} must not be a BSN',
 )]
 final class Bsn extends Simple
 {

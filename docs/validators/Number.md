@@ -17,7 +17,7 @@ v::number()->assert(42);
 // Validation passes successfully
 
 v::number()->assert(acos(8));
-// → `NaN` must be a valid number
+// → `NaN` must be a number
 ```
 
 > "In computing, NaN, standing for not a number, is a numeric data type value
@@ -28,10 +28,10 @@ v::number()->assert(acos(8));
 
 ### `Number::TEMPLATE_STANDARD`
 
-|       Mode | Template                           |
-| ---------: | :--------------------------------- |
-|  `default` | {{subject}} must be a valid number |
-| `inverted` | {{subject}} must not be a number   |
+|       Mode | Template                         |
+| ---------: | :------------------------------- |
+|  `default` | {{subject}} must be a number     |
+| `inverted` | {{subject}} must not be a number |
 
 ## Template placeholders
 
@@ -45,9 +45,10 @@ v::number()->assert(acos(8));
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   2.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   2.0.0 | Created           |
 
 ## See Also
 

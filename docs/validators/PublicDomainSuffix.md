@@ -54,9 +54,10 @@ v::oneOf(v::tld(), v::publicDomainSuffix())->assert('tk');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   2.3.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   2.3.0 | Created           |
 
 ## See Also
 

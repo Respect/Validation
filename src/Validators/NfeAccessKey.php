@@ -26,8 +26,8 @@ use function str_split;
 /** @see (pt-br) Manual de Integração do Contribuinte v4.0.1 em http://www.nfe.fazenda.gov.br */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid NFe access key',
-    '{{subject}} must not be a valid NFe access key',
+    '{{subject}} must be a NFe access key',
+    '{{subject}} must not be a NFe access key',
 )]
 final class NfeAccessKey extends Simple
 {

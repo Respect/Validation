@@ -21,7 +21,7 @@ test('Scenario #1', catchMessage(
             ),
         ),
     )->assert(2),
-    fn(string $message) => expect($message)->toBe('2 must not be an integer value'),
+    fn(string $message) => expect($message)->toBe('2 must not be an integer'),
 ));
 
 test('Scenario #2', catchFullMessage(
@@ -38,7 +38,7 @@ test('Scenario #2', catchFullMessage(
     )->assert(2),
     fn(string $fullMessage) => expect($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - 2 must pass the rules
-          - 2 must not be an integer value
+          - 2 must not be an integer
           - 2 must not be a positive number
         FULL_MESSAGE),
 ));

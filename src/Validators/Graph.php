@@ -23,13 +23,13 @@ use function ctype_graph;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must contain only graphical characters',
-    '{{subject}} must not contain graphical characters',
+    '{{subject}} must consist only of printable non-spacing characters',
+    '{{subject}} must not consist only of printable non-spacing characters',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{subject}} must contain only graphical characters and {{additionalChars}}',
-    '{{subject}} must not contain graphical characters or {{additionalChars}}',
+    '{{subject}} must consist only of printable non-spacing characters or {{additionalChars}}',
+    '{{subject}} must not consist only of printable non-spacing characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Graph extends FilteredString

@@ -29,8 +29,8 @@ use const FILTER_VALIDATE_BOOLEAN;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a boolean value',
-    '{{subject}} must not be a boolean value',
+    '{{subject}} must be a boolean',
+    '{{subject}} must not be a boolean',
 )]
 final class BoolVal extends Simple
 {

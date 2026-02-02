@@ -49,13 +49,13 @@ v::attributes()->assert(new Person('', '2020-06-23', 'john.doe@gmail.com', '+120
 // → `.name` must be defined
 
 v::attributes()->assert(new Person('John Doe', 'not a date', 'john.doe@gmail.com', '+12024561111'));
-// → `.birthdate` must be a valid date in the format "2005-12-30"
+// → `.birthdate` must be a date in the "2005-12-30" format
 
 v::attributes()->assert(new Person('John Doe', '2020-06-23', 'not an email', '+12024561111'));
-// → `.email` must be a valid email address or must be null
+// → `.email` must be an email address or must be null
 
 v::attributes()->assert(new Person('John Doe', '2020-06-23', 'john.doe@gmail.com', 'not a phone number'));
-// → `.phone` must be a valid telephone number or must be null
+// → `.phone` must be a phone number or must be null
 
 v::attributes()->assert(new Person('John Doe', '2020-06-23'));
 // → - `Person { +$name="John Doe" +$birthdate="2020-06-23" +$email=null +$phone=null }` must pass at least one of the rules
@@ -65,9 +65,9 @@ v::attributes()->assert(new Person('John Doe', '2020-06-23'));
 v::attributes()->assert(new Person('', 'not a date', 'not an email', 'not a phone number'));
 // → - `Person { +$name="" +$birthdate="not a date" +$email="not an email" +$phone="not a phone number" }` must pass the rules
 // →   - `.name` must be defined
-// →   - `.birthdate` must be a valid date in the format "2005-12-30"
-// →   - `.email` must be a valid email address or must be null
-// →   - `.phone` must be a valid telephone number or must be null
+// →   - `.birthdate` must be a date in the "2005-12-30" format
+// →   - `.email` must be an email address or must be null
+// →   - `.phone` must be a phone number or must be null
 ```
 
 ## Caveats

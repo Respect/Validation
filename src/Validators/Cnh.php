@@ -27,8 +27,8 @@ use function preg_replace;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid CNH number',
-    '{{subject}} must not be a valid CNH number',
+    '{{subject}} must be a CNH',
+    '{{subject}} must not be a CNH',
 )]
 final class Cnh extends Simple
 {

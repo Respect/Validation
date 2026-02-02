@@ -18,10 +18,10 @@ v::alpha(' ')->assert('some name');
 // Validation passes successfully
 
 v::alpha()->assert('some name');
-// → "some name" must contain only letters (a-z)
+// → "some name" must consist only of letters (a-z)
 
 v::alpha()->assert('Cedric-Fabian');
-// → "Cedric-Fabian" must contain only letters (a-z)
+// → "Cedric-Fabian" must consist only of letters (a-z)
 
 v::alpha('-')->assert('Cedric-Fabian');
 // Validation passes successfully
@@ -35,24 +35,24 @@ You can restrict case using the [Lowercase](Lowercase.md) and
 
 ```php
 v::alpha()->uppercase()->assert('example');
-// → "example" must contain only uppercase letters
+// → "example" must consist only of uppercase letters
 ```
 
 ## Templates
 
 ### `Alpha::TEMPLATE_STANDARD`
 
-|       Mode | Template                                    |
-| ---------: | :------------------------------------------ |
-|  `default` | {{subject}} must contain only letters (a-z) |
-| `inverted` | {{subject}} must not contain letters (a-z)  |
+|       Mode | Template                                           |
+| ---------: | :------------------------------------------------- |
+|  `default` | {{subject}} must consist only of letters (a-z)     |
+| `inverted` | {{subject}} must not consist only of letters (a-z) |
 
 ### `Alpha::TEMPLATE_EXTRA`
 
-|       Mode | Template                                                            |
-| ---------: | :------------------------------------------------------------------ |
-|  `default` | {{subject}} must contain only letters (a-z) and {{additionalChars}} |
-| `inverted` | {{subject}} must not contain letters (a-z) or {{additionalChars}}   |
+|       Mode | Template                                                                  |
+| ---------: | :------------------------------------------------------------------------ |
+|  `default` | {{subject}} must consist only of letters (a-z) or {{additionalChars}}     |
+| `inverted` | {{subject}} must not consist only of letters (a-z) or {{additionalChars}} |
 
 ## Template placeholders
 
@@ -69,6 +69,7 @@ v::alpha()->uppercase()->assert('example');
 
 | Version | Description                               |
 | ------: | :---------------------------------------- |
+|   3.0.0 | Templates changed                         |
 |   2.0.0 | Removed support to whitespaces by default |
 |   0.3.9 | Created                                   |
 

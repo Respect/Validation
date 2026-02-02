@@ -16,7 +16,7 @@ v::decimal(2)->assert('27990.50');
 // Validation passes successfully
 
 v::decimal(1)->assert('27990.50');
-// → "27990.50" must have 1 decimals
+// → "27990.50" must have 1 decimal places
 
 v::decimal(1)->assert(1.5);
 // Validation passes successfully
@@ -36,10 +36,10 @@ v::decimal(1)->assert(1.50);
 
 ### `Decimal::TEMPLATE_STANDARD`
 
-|       Mode | Template                                        |
-| ---------: | :---------------------------------------------- |
-|  `default` | {{subject}} must have {{decimals}} decimals     |
-| `inverted` | {{subject}} must not have {{decimals}} decimals |
+|       Mode | Template                                              |
+| ---------: | :---------------------------------------------------- |
+|  `default` | {{subject}} must have {{decimals}} decimal places     |
+| `inverted` | {{subject}} must not have {{decimals}} decimal places |
 
 ## Template placeholders
 
@@ -56,6 +56,7 @@ v::decimal(1)->assert(1.50);
 
 | Version | Description                                     |
 | ------: | :---------------------------------------------- |
+|   3.0.0 | Templates changed                               |
 |   2.2.4 | Float values with trailing zeroes are now valid |
 |   2.0.0 | Created                                         |
 

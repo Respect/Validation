@@ -31,7 +31,7 @@ v::vowel()->assert('aei');
 
 |       Mode | Template                                                      |
 | ---------: | :------------------------------------------------------------ |
-|  `default` | {{subject}} must consist of vowels and {{additionalChars}}    |
+|  `default` | {{subject}} must consist of vowels or {{additionalChars}}     |
 | `inverted` | {{subject}} must not consist of vowels or {{additionalChars}} |
 
 ## Template placeholders
@@ -49,6 +49,7 @@ v::vowel()->assert('aei');
 
 | Version | Description                          |
 | ------: | :----------------------------------- |
+|   3.0.0 | Templates changed                    |
 |   2.0.0 | Do not consider whitespaces as valid |
 |   0.5.0 | Renamed from `Vowels` to `Vowel`     |
 |   0.3.9 | Created as `Vowels`                  |

@@ -29,17 +29,17 @@ v::phone('BR')->assert('11 91111 1111');
 
 ### `Phone::TEMPLATE_INTERNATIONAL`
 
-|       Mode | Template                                         |
-| ---------: | :----------------------------------------------- |
-|  `default` | {{subject}} must be a valid telephone number     |
-| `inverted` | {{subject}} must not be a valid telephone number |
+|       Mode | Template                               |
+| ---------: | :------------------------------------- |
+|  `default` | {{subject}} must be a phone number     |
+| `inverted` | {{subject}} must not be a phone number |
 
 ### `Phone::TEMPLATE_FOR_COUNTRY`
 
-|       Mode | Template                                                                                |
-| ---------: | :-------------------------------------------------------------------------------------- |
-|  `default` | {{subject}} must be a valid telephone number for country {{countryName&#124;trans}}     |
-| `inverted` | {{subject}} must not be a valid telephone number for country {{countryName&#124;trans}} |
+|       Mode | Template                                                                      |
+| ---------: | :---------------------------------------------------------------------------- |
+|  `default` | {{subject}} must be a phone number for country {{countryName&#124;trans}}     |
+| `inverted` | {{subject}} must not be a phone number for country {{countryName&#124;trans}} |
 
 ## Template placeholders
 
@@ -56,6 +56,7 @@ v::phone('BR')->assert('11 91111 1111');
 
 | Version | Description                       |
 | ------: | :-------------------------------- |
+|   3.0.0 | Templates changed                 |
 |   2.3.0 | Updated to use external validator |
 |   0.5.0 | Created                           |
 

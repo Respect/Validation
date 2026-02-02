@@ -25,8 +25,8 @@ use function str_split;
 /** @see https://en.wikipedia.org/wiki/Luhn_algorithm */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid Luhn number',
-    '{{subject}} must not be a valid Luhn number',
+    '{{subject}} must be a Luhn number',
+    '{{subject}} must not be a Luhn number',
 )]
 final class Luhn extends Simple
 {

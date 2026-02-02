@@ -27,8 +27,8 @@ use function is_array;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a countable value',
-    '{{subject}} must not be a countable value',
+    '{{subject}} must be countable',
+    '{{subject}} must not be countable',
 )]
 final class Countable extends Simple
 {

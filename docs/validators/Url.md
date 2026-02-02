@@ -25,7 +25,7 @@ v::url()->assert('mailto:john.doe@example.com');
 // Validation passes successfully
 
 v::url()->assert('http://example.this_top_level_domain_does_not_exist');
-// → "http://example.this_top_level_domain_does_not_exist" must be a valid URL
+// → "http://example.this_top_level_domain_does_not_exist" must be a URL
 ```
 
 This validator uses [Ip][Ip.md], [Domain][Domain.md] and [Email][Email.md] internally,
@@ -46,10 +46,10 @@ v::startsWith('http')->url()->assert('ftp://example.com');
 
 ### `Url::TEMPLATE_STANDARD`
 
-|       Mode | Template                            |
-| ---------: | :---------------------------------- |
-|  `default` | {{subject}} must be a valid URL     |
-| `inverted` | {{subject}} must not be a valid URL |
+|       Mode | Template                      |
+| ---------: | :---------------------------- |
+|  `default` | {{subject}} must be a URL     |
+| `inverted` | {{subject}} must not be a URL |
 
 ## Template placeholders
 
@@ -65,6 +65,7 @@ v::startsWith('http')->url()->assert('ftp://example.com');
 
 | Version | Description                                                                 |
 | ------: | :-------------------------------------------------------------------------- |
+|   3.0.0 | Templates changed                                                           |
 |   3.0.0 | Stricter use of `Ip`, `Domain` and `Email` internally. Select schemes only. |
 |   0.8.0 | Created                                                                     |
 

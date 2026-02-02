@@ -18,7 +18,7 @@ v::floatType()->assert(1.5);
 // Validation passes successfully
 
 v::floatType()->assert('1.5');
-// → "1.5" must be float
+// → "1.5" must be a float
 
 v::floatType()->assert(0e5);
 // Validation passes successfully
@@ -28,10 +28,10 @@ v::floatType()->assert(0e5);
 
 ### `FloatType::TEMPLATE_STANDARD`
 
-|       Mode | Template                      |
-| ---------: | :---------------------------- |
-|  `default` | {{subject}} must be float     |
-| `inverted` | {{subject}} must not be float |
+|       Mode | Template                        |
+| ---------: | :------------------------------ |
+|  `default` | {{subject}} must be a float     |
+| `inverted` | {{subject}} must not be a float |
 
 ## Template placeholders
 
@@ -46,9 +46,10 @@ v::floatType()->assert(0e5);
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   1.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   1.0.0 | Created           |
 
 ## See Also
 

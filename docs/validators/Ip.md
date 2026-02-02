@@ -81,6 +81,7 @@ v::ip('*', FILTER_FLAG_IPV6)->assert('2001:0db8:85a3:08d3:1319:8a2e:0370:7334');
 
 | Version | Description                                            |
 | ------: | :----------------------------------------------------- |
+|   3.0.0 | Templates changed                                      |
 |   2.0.0 | Allow to define range and options to the same instance |
 |   0.5.0 | Implemented IP range validation                        |
 |   0.3.9 | Created                                                |

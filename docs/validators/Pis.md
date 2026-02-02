@@ -33,10 +33,10 @@ v::pis()->assert('12003406788');
 
 ### `Pis::TEMPLATE_STANDARD`
 
-|       Mode | Template                                   |
-| ---------: | :----------------------------------------- |
-|  `default` | {{subject}} must be a valid PIS number     |
-| `inverted` | {{subject}} must not be a valid PIS number |
+|       Mode | Template                             |
+| ---------: | :----------------------------------- |
+|  `default` | {{subject}} must be a PIS number     |
+| `inverted` | {{subject}} must not be a PIS number |
 
 ## Template placeholders
 
@@ -50,9 +50,10 @@ v::pis()->assert('12003406788');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   2.0.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   2.0.0 | Created           |
 
 ## See Also
 

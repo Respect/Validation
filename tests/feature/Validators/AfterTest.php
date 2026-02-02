@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 test('Scenario #1', catchMessage(
     fn() => v::after('trim', v::notSpaced())->assert(' two words '),
-    fn(string $message) => expect($message)->toBe('"two words" must not contain whitespaces'),
+    fn(string $message) => expect($message)->toBe('"two words" must not contain whitespace'),
 ));
 
 test('Scenario #2', catchMessage(

@@ -28,8 +28,8 @@ use function substr;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid IBAN',
-    '{{subject}} must not be a valid IBAN',
+    '{{subject}} must be an IBAN',
+    '{{subject}} must not be an IBAN',
 )]
 final class Iban extends Simple
 {

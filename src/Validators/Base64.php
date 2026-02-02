@@ -26,8 +26,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a base64 encoded string',
-    '{{subject}} must not be a base64 encoded string',
+    '{{subject}} must be a base64-encoded string',
+    '{{subject}} must not be a base64-encoded string',
 )]
 final class Base64 extends Simple
 {

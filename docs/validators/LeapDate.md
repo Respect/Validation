@@ -23,10 +23,10 @@ parameter is mandatory.
 
 ### `LeapDate::TEMPLATE_STANDARD`
 
-|       Mode | Template                              |
-| ---------: | :------------------------------------ |
-|  `default` | {{subject}} must be a valid leap date |
-| `inverted` | {{subject}} must not be a leap date   |
+|       Mode | Template                            |
+| ---------: | :---------------------------------- |
+|  `default` | {{subject}} must be a leap date     |
+| `inverted` | {{subject}} must not be a leap date |
 
 ## Template placeholders
 
@@ -40,9 +40,10 @@ parameter is mandatory.
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.3.9 | Created           |
 
 ## See Also
 

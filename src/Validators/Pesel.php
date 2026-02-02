@@ -22,8 +22,8 @@ use function preg_match;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must be a valid PESEL',
-    '{{subject}} must not be a valid PESEL',
+    '{{subject}} must be a PESEL',
+    '{{subject}} must not be a PESEL',
 )]
 final class Pesel extends Simple
 {

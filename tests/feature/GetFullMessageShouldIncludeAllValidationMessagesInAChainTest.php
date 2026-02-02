@@ -16,6 +16,6 @@ test('Scenario #1', catchFullMessage(
     fn(string $fullMessage) => expect($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - 0 must pass all the rules
           - 0 must be a string
-          - 0 must be a countable value or a string
+          - 0 must be countable or a string
         FULL_MESSAGE),
 ));

@@ -20,20 +20,20 @@ v::pesel()->assert('97072704800');
 // Validation passes successfully
 
 v::pesel()->assert('97072704801');
-// → "97072704801" must be a valid PESEL
+// → "97072704801" must be a PESEL
 
 v::pesel()->assert('PESEL123456');
-// → "PESEL123456" must be a valid PESEL
+// → "PESEL123456" must be a PESEL
 ```
 
 ## Templates
 
 ### `Pesel::TEMPLATE_STANDARD`
 
-|       Mode | Template                              |
-| ---------: | :------------------------------------ |
-|  `default` | {{subject}} must be a valid PESEL     |
-| `inverted` | {{subject}} must not be a valid PESEL |
+|       Mode | Template                        |
+| ---------: | :------------------------------ |
+|  `default` | {{subject}} must be a PESEL     |
+| `inverted` | {{subject}} must not be a PESEL |
 
 ## Template placeholders
 
@@ -47,9 +47,10 @@ v::pesel()->assert('PESEL123456');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   1.1.0 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   1.1.0 | Created           |
 
 ## See Also
 

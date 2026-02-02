@@ -22,13 +22,13 @@ use function ctype_xdigit;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
-    '{{subject}} must only contain hexadecimal digits',
-    '{{subject}} must not only contain hexadecimal digits',
+    '{{subject}} must consist only of hexadecimal digits',
+    '{{subject}} must not consist only of hexadecimal digits',
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{subject}} must contain hexadecimal digits and {{additionalChars}}',
-    '{{subject}} must not contain hexadecimal digits or {{additionalChars}}',
+    '{{subject}} must consist only of hexadecimal digits or {{additionalChars}}',
+    '{{subject}} must not consist only of hexadecimal digits or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
 final class Xdigit extends FilteredString

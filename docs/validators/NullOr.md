@@ -21,7 +21,7 @@ v::nullOr(v::email())->assert('example@example.com');
 // Validation passes successfully
 
 v::nullOr(v::email())->assert('not an email');
-// → "not an email" must be a valid email address or must be null
+// → "not an email" must be an email address or must be null
 ```
 
 ## Prefix
@@ -30,7 +30,7 @@ For convenience, you can use `nullOr` as a prefix to any validator:
 
 ```php
 v::nullOrEmail()->assert('not an email');
-// → "not an email" must be a valid email address or must be null
+// → "not an email" must be an email address or must be null
 
 v::nullOrBetween(1, 3)->assert(2);
 // Validation passes successfully
@@ -54,10 +54,10 @@ The template serves as a suffix to the template of the inner validator.
 
 ```php
 v::nullOr(v::alpha())->assert('has1number');
-// → "has1number" must contain only letters (a-z) or must be null
+// → "has1number" must consist only of letters (a-z) or must be null
 
 v::not(v::nullOr(v::alpha()))->assert("alpha");
-// → "alpha" must not contain letters (a-z) and must not be null
+// → "alpha" must not consist only of letters (a-z) and must not be null
 ```
 
 ## Template placeholders
@@ -74,6 +74,7 @@ v::not(v::nullOr(v::alpha()))->assert("alpha");
 
 | Version | Description           |
 | ------: | :-------------------- |
+|   3.0.0 | Templates changed     |
 |   3.0.0 | Renamed to `NullOr`   |
 |   2.0.0 | Created as `Nullable` |
 

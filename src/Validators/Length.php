@@ -36,8 +36,8 @@ use function mb_strlen;
     self::TEMPLATE_STANDARD,
 )]
 #[Template(
-    '{{subject}} must be a countable value or a string',
-    '{{subject}} must not be a countable value or a string',
+    '{{subject}} must be countable or a string',
+    '{{subject}} must not be countable or a string',
     self::TEMPLATE_WRONG_TYPE,
 )]
 final readonly class Length implements Validator

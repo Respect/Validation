@@ -17,20 +17,20 @@ v::slug()->assert('my-wordpress-title');
 // Validation passes successfully
 
 v::slug()->assert('my-wordpress--title');
-// → "my-wordpress--title" must be a valid slug
+// → "my-wordpress--title" must be a slug
 
 v::slug()->assert('my-wordpress-title-');
-// → "my-wordpress-title-" must be a valid slug
+// → "my-wordpress-title-" must be a slug
 ```
 
 ## Templates
 
 ### `Slug::TEMPLATE_STANDARD`
 
-|       Mode | Template                             |
-| ---------: | :----------------------------------- |
-|  `default` | {{subject}} must be a valid slug     |
-| `inverted` | {{subject}} must not be a valid slug |
+|       Mode | Template                       |
+| ---------: | :----------------------------- |
+|  `default` | {{subject}} must be a slug     |
+| `inverted` | {{subject}} must not be a slug |
 
 ## Template placeholders
 
@@ -44,9 +44,10 @@ v::slug()->assert('my-wordpress-title-');
 
 ## Changelog
 
-| Version | Description |
-| ------: | :---------- |
-|   0.3.9 | Created     |
+| Version | Description       |
+| ------: | :---------------- |
+|   3.0.0 | Templates changed |
+|   0.3.9 | Created           |
 
 ## See Also
 

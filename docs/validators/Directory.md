@@ -17,7 +17,7 @@ v::directory()->assert(__DIR__);
 // Validation passes successfully
 
 v::directory()->assert(__FILE__);
-// → "/path/to/file" must be a directory
+// → "/path/to/file" must be an accessible existing directory
 ```
 
 This validator will consider SplFileInfo instances, so you can do something like:
@@ -34,10 +34,10 @@ v::directory()->assert(dir('/'));
 
 ### `Directory::TEMPLATE_STANDARD`
 
-|       Mode | Template                            |
-| ---------: | :---------------------------------- |
-|  `default` | {{subject}} must be a directory     |
-| `inverted` | {{subject}} must not be a directory |
+|       Mode | Template                                                 |
+| ---------: | :------------------------------------------------------- |
+|  `default` | {{subject}} must be an accessible existing directory     |
+| `inverted` | {{subject}} must not be an accessible existing directory |
 
 ## Template placeholders
 
@@ -53,6 +53,7 @@ v::directory()->assert(dir('/'));
 
 | Version | Description                       |
 | ------: | :-------------------------------- |
+|   3.0.0 | Templates changed                 |
 |   2.0.0 | Validates PHP's `Directory` class |
 |   0.4.4 | Created                           |
 

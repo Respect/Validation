@@ -20,10 +20,10 @@ v::alnum(' ')->assert('foo 123');
 // Validation passes successfully
 
 v::alnum()->assert('foo 123');
-// → "foo 123" must contain only letters (a-z) and digits (0-9)
+// → "foo 123" must consist only of letters (a-z) and digits (0-9)
 
 v::alnum()->assert('100%');
-// → "100%" must contain only letters (a-z) and digits (0-9)
+// → "100%" must consist only of letters (a-z) and digits (0-9)
 
 v::alnum('%')->assert('100%');
 // Validation passes successfully
@@ -37,7 +37,7 @@ You can restrict case using the [Lowercase](Lowercase.md) and
 
 ```php
 v::alnum()->uppercase()->assert('example');
-// → "example" must contain only uppercase letters
+// → "example" must consist only of uppercase letters
 ```
 
 Message template for this validator includes `{{additionalChars}}` as the string
@@ -47,17 +47,17 @@ of extra chars passed as the parameter.
 
 ### `Alnum::TEMPLATE_STANDARD`
 
-|       Mode | Template                                                     |
-| ---------: | :----------------------------------------------------------- |
-|  `default` | {{subject}} must contain only letters (a-z) and digits (0-9) |
-| `inverted` | {{subject}} must not contain letters (a-z) or digits (0-9)   |
+|       Mode | Template                                                           |
+| ---------: | :----------------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of letters (a-z) and digits (0-9)    |
+| `inverted` | {{subject}} must not consist only of letters (a-z) or digits (0-9) |
 
 ### `Alnum::TEMPLATE_EXTRA`
 
-|       Mode | Template                                                                           |
-| ---------: | :--------------------------------------------------------------------------------- |
-|  `default` | {{subject}} must contain only letters (a-z), digits (0-9), and {{additionalChars}} |
-| `inverted` | {{subject}} must not contain letters (a-z), digits (0-9), or {{additionalChars}}   |
+|       Mode | Template                                                                                 |
+| ---------: | :--------------------------------------------------------------------------------------- |
+|  `default` | {{subject}} must consist only of letters (a-z), digits (0-9), or {{additionalChars}}     |
+| `inverted` | {{subject}} must not consist only of letters (a-z), digits (0-9), or {{additionalChars}} |
 
 ## Template placeholders
 
@@ -74,6 +74,7 @@ of extra chars passed as the parameter.
 
 | Version | Description                               |
 | ------: | :---------------------------------------- |
+|   3.0.0 | Templates changed                         |
 |   2.0.0 | Removed support to whitespaces by default |
 |   0.3.9 | Created                                   |
 

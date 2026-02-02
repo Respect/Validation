@@ -19,6 +19,6 @@ test('Scenario #1', catchFullMessage(
     fn(string $fullMessage) => expect($fullMessage)->toBe(<<<'FULL_MESSAGE'
         - User Subscription Form must pass all the rules
           - The length of `.username` must be between 2 and 32
-          - `.birthdate` must be a valid date/time
+          - `.birthdate` must be a date/time
         FULL_MESSAGE),
 ));
