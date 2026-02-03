@@ -6,8 +6,6 @@
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Gabriel Caruso <carusogabriel34@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
- * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
- * SPDX-FileContributor: Pascal Borreli <pascal@borreli.com>
  */
 
 declare(strict_types=1);

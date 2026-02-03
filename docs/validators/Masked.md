@@ -1,6 +1,7 @@
 <!--
 SPDX-License-Identifier: MIT
 SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
 -->
 
 # Masked

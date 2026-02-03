@@ -5,10 +5,8 @@
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Andy Snell <andysnell@gmail.com>
- * SPDX-FileContributor: Gabriel Caruso <carusogabriel34@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Jean Pimentel <jeanfap@gmail.com>
- * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
  * SPDX-FileContributor: Rakshit <rakshit087@gmail.com>
  * SPDX-FileContributor: William Espindola <oi@williamespindola.com.br>
  */

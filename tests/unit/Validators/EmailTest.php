@@ -5,12 +5,10 @@
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Eduardo Gulias Davis <me@egulias.com>
- * SPDX-FileContributor: Gabriel Caruso <carusogabriel34@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Kir Kolyshkin <kolyshkin@gmail.com>
  * SPDX-FileContributor: Konstantin <kolodnitsky@gmail.com>
- * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
- * SPDX-FileContributor: paul karikari <paulkarikari1@gmail.com>
+ * SPDX-FileContributor: Paul Karikari <paulkarikari1@gmail.com>
  */
 
 declare(strict_types=1);

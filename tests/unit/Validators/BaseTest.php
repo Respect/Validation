@@ -8,7 +8,6 @@
  * SPDX-FileContributor: Danilo Correa <danilosilva87@gmail.com>
  * SPDX-FileContributor: Gabriel Caruso <carusogabriel34@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
- * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
  * SPDX-FileContributor: William Espindola <oi@williamespindola.com.br>
  */
 

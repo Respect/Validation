@@ -8,8 +8,6 @@
  * SPDX-FileContributor: Gabriel Caruso <carusogabriel34@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Nawarian <nickolas@phpsp.org.br>
- * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
- * SPDX-FileContributor: Pascal Borreli <pascal@borreli.com>
  * SPDX-FileContributor: William Espindola <oi@williamespindola.com.br>
  */
 

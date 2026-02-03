@@ -8,7 +8,6 @@
  * SPDX-FileContributor: Gabriel Caruso <carusogabriel34@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Jean Pimentel <jeanfap@gmail.com>
- * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
  */
 
 declare(strict_types=1);

@@ -3,7 +3,7 @@
 /*
  * SPDX-License-Identifier: MIT
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
- * SPDX-FileContributor: Alexander Wühr <l-x@mailbox.org>
+ * SPDX-FileContributor: Alexander Wühr <wuehr@sc-networks.com>
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Danilo Correa <danilosilva87@gmail.com>
  * SPDX-FileContributor: Devin Torres <devin@devintorres.com>

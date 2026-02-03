@@ -9,7 +9,6 @@
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Kleber Hamada Sato <kleberhs007@yahoo.com>
  * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
- * SPDX-FileContributor: Pascal Borreli <pascal@borreli.com>
  */
 
 declare(strict_types=1);

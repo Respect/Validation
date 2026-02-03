@@ -6,7 +6,7 @@
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Gabriel Caruso <carusogabriel34@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
- * SPDX-FileContributor: paul karikari <paulkarikari1@gmail.com>
+ * SPDX-FileContributor: Paul Karikari <paulkarikari1@gmail.com>
  */
 
 declare(strict_types=1);

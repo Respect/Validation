@@ -9,8 +9,8 @@
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Jean Pimentel <jeanfap@gmail.com>
  * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
+ * SPDX-FileContributor: Paul Karikari <paulkarikari1@gmail.com>
  * SPDX-FileContributor: Torben Brodt <t.brodt@gmail.com>
- * SPDX-FileContributor: paul karikari <paulkarikari1@gmail.com>
  */
 
 declare(strict_types=1);

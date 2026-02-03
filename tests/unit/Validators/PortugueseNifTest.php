@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: MIT
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
- * SPDX-FileContributor: Danilo Correa <danilosilva87@gmail.com>
  * SPDX-FileContributor: Gonçalo Andrade <goncalo.andrade@premium-minds.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  */

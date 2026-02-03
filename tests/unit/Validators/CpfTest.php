@@ -8,8 +8,6 @@
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Jair Henrique <jair.henrique@gmail.com>
  * SPDX-FileContributor: Jean Pimentel <jeanfap@gmail.com>
- * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
- * SPDX-FileContributor: Paulo Dias <prmdjweb@gmail.com>
  * SPDX-FileContributor: William Espindola <oi@williamespindola.com.br>
  */
 

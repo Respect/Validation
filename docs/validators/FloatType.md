@@ -1,6 +1,10 @@
 <!--
 SPDX-License-Identifier: MIT
 SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
+SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
+SPDX-FileContributor: Reginaldo Junior <76regi@gmail.com>
+SPDX-FileContributor: Vitaliy <reboot.m@gmail.com>
 -->
 
 # FloatType

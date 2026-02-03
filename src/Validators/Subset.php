@@ -8,8 +8,8 @@
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Krzysztof Śmiałek <admin@avensome.net>
  * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
+ * SPDX-FileContributor: Paul Karikari <paulkarikari1@gmail.com>
  * SPDX-FileContributor: Singwai Chan <singwai.chan@live.com>
- * SPDX-FileContributor: paul karikari <paulkarikari1@gmail.com>
  */
 
 declare(strict_types=1);

@@ -4,13 +4,8 @@
  * SPDX-License-Identifier: MIT
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
- * SPDX-FileContributor: Andre Ramaciotti <andre@ramaciotti.com>
  * SPDX-FileContributor: Gabriel Caruso <carusogabriel34@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
- * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
- * SPDX-FileContributor: Pascal Borreli <pascal@borreli.com>
- * SPDX-FileContributor: Torben Brodt <t.brodt@gmail.com>
- * SPDX-FileContributor: Vicente Mendoza <vicentemmor@yahoo.com.mx>
  */
 
 declare(strict_types=1);

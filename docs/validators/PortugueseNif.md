@@ -1,6 +1,10 @@
 <!--
 SPDX-License-Identifier: MIT
 SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
+SPDX-FileContributor: Gonçalo Andrade <goncalo.andrade@premium-minds.com>
+SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
+SPDX-FileContributor: Ville Hukkamäki <vhukkamaki@gmail.com>
 -->
 
 # PortugueseNif

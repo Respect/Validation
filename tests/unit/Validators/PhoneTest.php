@@ -5,11 +5,8 @@
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Danilo Correa <danilosilva87@gmail.com>
- * SPDX-FileContributor: Eduardo Reveles <me@osiux.ws>
  * SPDX-FileContributor: Gabriel Caruso <carusogabriel34@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
- * SPDX-FileContributor: Henrique Oliveira <henrique.oliveira83@yahoo.com.br>
- * SPDX-FileContributor: RCooLeR <roman.derevianko@gmail.com>
  * SPDX-FileContributor: mf <michael.firsikov@gmail.com>
  */
 

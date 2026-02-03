@@ -1,6 +1,8 @@
 <!--
 SPDX-License-Identifier: MIT
 SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-FileContributor: Antonio <info@antoniodelucas.es>
+SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
 -->
 
 # Feature Guide

@@ -1,6 +1,9 @@
 <!--
 SPDX-License-Identifier: MIT
 SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-FileContributor: Aleksandr Gorshkov <mazanax@yandex.ru>
+SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
+SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
 -->
 
 # Luhn

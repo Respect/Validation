@@ -7,7 +7,7 @@
  * SPDX-FileContributor: Ayesh Karunaratne
  * SPDX-FileContributor: Danilo Benevides <danilobenevides01@gmail.com>
  * SPDX-FileContributor: Emerson Carvalho <emerson.broga@gmail.com>
- * SPDX-FileContributor: Emmerson <emmersonsiqueira@gmail.com>
+ * SPDX-FileContributor: Emmerson Siqueira <emmersonsiqueira@gmail.com>
  * SPDX-FileContributor: Graham Campbell <graham@mineuk.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Jair Henrique <jair.henrique@gmail.com>

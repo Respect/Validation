@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
  * SPDX-FileContributor: Alan Taylor <alan@gtrbunny.com>
- * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
+ * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  */
 
 declare(strict_types=1);

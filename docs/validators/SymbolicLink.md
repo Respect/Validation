@@ -1,6 +1,9 @@
 <!--
 SPDX-License-Identifier: MIT
 SPDX-FileCopyrightText: (c) Respect Project Contributors
+SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
+SPDX-FileContributor: Gus Antoniassi <gus.antoniassi@gmail.com>
+SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
 -->
 
 # SymbolicLink

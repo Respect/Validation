@@ -11,7 +11,7 @@
  * SPDX-FileContributor: Konstantin <kolodnitsky@gmail.com>
  * SPDX-FileContributor: Mikko Pesari <mikko@pesari.fi>
  * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
- * SPDX-FileContributor: paul karikari <paulkarikari1@gmail.com>
+ * SPDX-FileContributor: Paul Karikari <paulkarikari1@gmail.com>
  */
 
 declare(strict_types=1);

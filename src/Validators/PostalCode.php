@@ -3,6 +3,7 @@
 /*
  * SPDX-License-Identifier: MIT
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Alexandre Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Axel Wargnier <axel@axessweb.fr>
  * SPDX-FileContributor: Bogus <g.predl@edis.at>

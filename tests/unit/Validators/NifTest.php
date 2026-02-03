@@ -6,7 +6,6 @@
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Julián Gutiérrez <juliangut@gmail.com>
- * SPDX-FileContributor: Senén <senen@instasent.com>
  */
 
 declare(strict_types=1);

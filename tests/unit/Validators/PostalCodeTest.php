@@ -3,20 +3,14 @@
 /*
  * SPDX-License-Identifier: MIT
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Alexandre Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
- * SPDX-FileContributor: Axel Wargnier <axel@axessweb.fr>
  * SPDX-FileContributor: Bogus <g.predl@edis.at>
- * SPDX-FileContributor: Brian Johnson
- * SPDX-FileContributor: Daniel Alt <julien.altenburg@gmail.com>
  * SPDX-FileContributor: Daniel Altenburg
- * SPDX-FileContributor: Danilo Correa <danilosilva87@gmail.com>
  * SPDX-FileContributor: Gabriel Caruso <carusogabriel34@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Markus.Lauer <markus@kfm-motorraeder.de>
  * SPDX-FileContributor: Mateusz Burzyński <matburzy@gmail.com>
- * SPDX-FileContributor: Sebastian <me@sebastianpontow.de>
- * SPDX-FileContributor: William Espindola <oi@williamespindola.com.br>
- * SPDX-FileContributor: ong-ar <reclusis@gmail.com>
  */
 
 declare(strict_types=1);

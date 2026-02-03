@@ -6,10 +6,7 @@
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Danilo Correa <danilosilva87@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
- * SPDX-FileContributor: João Torquato <joao.otl@gmail.com>
- * SPDX-FileContributor: Justin Hook <justinhook88@yahoo.co.uk>
  * SPDX-FileContributor: Singwai Chan <singwai.chan@live.com>
- * SPDX-FileContributor: William Espindola <oi@williamespindola.com.br>
  */
 
 declare(strict_types=1);
