@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Test;
 
 use Generator;
+use Respect\StringFormatter as fo;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators as vs;
 use stdClass;
@@ -82,6 +83,7 @@ trait SmokeTestProvider
         yield 'Finite' => [new vs\Finite(), 1.23];
         yield 'FloatType' => [new vs\FloatType(), 1.23];
         yield 'FloatVal' => [new vs\FloatVal(), 1.23];
+        yield 'Format' => [new vs\Format(new fo\PatternFormatter('0-0')), '1-2'];
         yield 'Graph' => [new vs\Graph(), 'abc123!@#'];
         yield 'GreaterThan' => [new vs\GreaterThan(0), 1];
         yield 'GreaterThanOrEqual' => [new vs\GreaterThanOrEqual(1), 1];

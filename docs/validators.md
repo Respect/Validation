@@ -27,7 +27,7 @@ In this page you will find a list of validators by their category.
 
 **Date and Time**: [Date][] - [DateTime][] - [DateTimeDiff][] - [LeapDate][] - [LeapYear][] - [Time][]
 
-**Display**: [Masked][] - [Named][] - [Templated][]
+**Display**: [Format][] - [Masked][] - [Named][] - [Templated][]
 
 **File system**: [Directory][] - [Executable][] - [Exists][] - [Extension][] - [File][] - [Image][] - [Mimetype][] - [Readable][] - [Size][] - [SymbolicLink][] - [Writable][]
 
@@ -49,7 +49,7 @@ In this page you will find a list of validators by their category.
 
 **Objects**: [Attributes][] - [Instance][] - [ObjectType][] - [Property][] - [PropertyExists][] - [PropertyOptional][]
 
-**Strings**: [Alnum][] - [Alpha][] - [Base64][] - [Charset][] - [Consonant][] - [Contains][] - [ContainsAny][] - [ContainsCount][] - [Control][] - [Digit][] - [Emoji][] - [EndsWith][] - [Graph][] - [HexRgbColor][] - [In][] - [Json][] - [Lowercase][] - [Phone][] - [PostalCode][] - [Printable][] - [Punct][] - [Regex][] - [Slug][] - [Sorted][] - [Space][] - [Spaced][] - [StartsWith][] - [StringType][] - [StringVal][] - [Uppercase][] - [Uuid][] - [Version][] - [Vowel][] - [Xdigit][]
+**Strings**: [Alnum][] - [Alpha][] - [Base64][] - [Charset][] - [Consonant][] - [Contains][] - [ContainsAny][] - [ContainsCount][] - [Control][] - [Digit][] - [Emoji][] - [EndsWith][] - [Format][] - [Graph][] - [HexRgbColor][] - [In][] - [Json][] - [Lowercase][] - [Phone][] - [PostalCode][] - [Printable][] - [Punct][] - [Regex][] - [Slug][] - [Sorted][] - [Space][] - [Spaced][] - [StartsWith][] - [StringType][] - [StringVal][] - [Uppercase][] - [Uuid][] - [Version][] - [Vowel][] - [Xdigit][]
 
 **Structures**: [Attributes][] - [Key][] - [KeyExists][] - [KeyOptional][] - [KeySet][] - [Property][] - [PropertyExists][] - [PropertyOptional][]
 
@@ -118,6 +118,7 @@ In this page you will find a list of validators by their category.
 - [Finite][] - `v::finite()->assert('10');`
 - [FloatType][] - `v::floatType()->assert(1.5);`
 - [FloatVal][] - `v::floatVal()->assert(1.5);`
+- [Format][] - `v::format(f::pattern('00-00'))->assert('42-33');`
 - [Graph][] - `v::graph()->assert('LKM@#$%4;');`
 - [GreaterThan][] - `v::greaterThan(10)->assert(11);`
 - [GreaterThanOrEqual][] - `v::intVal()->greaterThanOrEqual(10)->assert(10);`
@@ -274,6 +275,7 @@ In this page you will find a list of validators by their category.
 [Finite]: validators/Finite.md "Validates if the input is a finite number."
 [FloatType]: validators/FloatType.md "Validates whether the type of the input is float."
 [FloatVal]: validators/FloatVal.md "Validate whether the input value is float."
+[Format]: validators/Format.md "Validates whether an input is already formatted as the result of applying a provided"
 [Graph]: validators/Graph.md "Validates if all characters in the input are printable and actually creates"
 [GreaterThan]: validators/GreaterThan.md "Validates whether the input is greater than a value."
 [GreaterThanOrEqual]: validators/GreaterThanOrEqual.md "Validates whether the input is greater than or equal to a value."

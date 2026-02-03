@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
+use Respect\StringFormatter\Formatter;
 use Respect\Validation\Validator;
 
 interface UndefOrBuilder
@@ -134,6 +135,8 @@ interface UndefOrBuilder
     public static function undefOrFloatType(): Chain;
 
     public static function undefOrFloatVal(): Chain;
+
+    public static function undefOrFormat(Formatter $formatter): Chain;
 
     public static function undefOrGraph(string ...$additionalChars): Chain;
 
