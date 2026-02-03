@@ -1,6 +1,16 @@
 /* export-ignore
-/composer.json -export-ignore
-/data -export-ignore
-/library -export-ignore
-/LICENSE -export-ignore
+
+# Project files
 /README.md -export-ignore
+/composer.json -export-ignore
+/aliases.php -export
+/data -export-ignore
+/src -export-ignore
+
+# SBOM information
+/LICENSE -export-ignore
+/LICENSES -export-ignore
+/REUSE.toml -export-ignore
+
+# Simplify diffs
+src/Mixins/** linguist-generated=true
