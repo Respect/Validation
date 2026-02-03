@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Mixins;
 
 use DateTimeImmutable;
+use Respect\StringFormatter\Formatter;
 use Respect\Validation\Validator;
 
 interface NullOrChain
@@ -136,6 +137,8 @@ interface NullOrChain
     public function nullOrFloatType(): Chain;
 
     public function nullOrFloatVal(): Chain;
+
+    public function nullOrFormat(Formatter $formatter): Chain;
 
     public function nullOrGraph(string ...$additionalChars): Chain;
 
