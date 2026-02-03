@@ -7,12 +7,12 @@
  * SPDX-FileContributor: Alexander Wühr <l-x@mailbox.org>
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Andrei Drulchenko <andrdru@gmail.com>
- * SPDX-FileContributor: bmorg <contact@bmorg.io>
  * SPDX-FileContributor: Danilo Benevides <danilobenevides01@gmail.com>
  * SPDX-FileContributor: Fabian Wiget <fabacino@gmail.com>
  * SPDX-FileContributor: Graham Campbell <graham@mineuk.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
+ * SPDX-FileContributor: bmorg <contact@bmorg.io>
  */
 
 declare(strict_types=1);

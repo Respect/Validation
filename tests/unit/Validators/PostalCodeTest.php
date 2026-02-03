@@ -14,9 +14,9 @@
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Markus.Lauer <markus@kfm-motorraeder.de>
  * SPDX-FileContributor: Mateusz Burzyński <matburzy@gmail.com>
- * SPDX-FileContributor: ong-ar <reclusis@gmail.com>
  * SPDX-FileContributor: Sebastian <me@sebastianpontow.de>
  * SPDX-FileContributor: William Espindola <oi@williamespindola.com.br>
+ * SPDX-FileContributor: ong-ar <reclusis@gmail.com>
  */
 
 declare(strict_types=1);

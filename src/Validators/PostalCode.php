@@ -15,9 +15,9 @@
  * SPDX-FileContributor: Markus.Lauer <markus@kfm-motorraeder.de>
  * SPDX-FileContributor: Mateusz Burzyński <matburzy@gmail.com>
  * SPDX-FileContributor: Michał Prochowski <Michal.Prochowski@komputronik.pl>
- * SPDX-FileContributor: ong-ar <reclusis@gmail.com>
  * SPDX-FileContributor: Sebastian <me@sebastianpontow.de>
  * SPDX-FileContributor: Tomasz Regdos <tomek@regdos.com>
+ * SPDX-FileContributor: ong-ar <reclusis@gmail.com>
  */
 
 declare(strict_types=1);

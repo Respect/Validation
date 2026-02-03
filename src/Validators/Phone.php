@@ -9,9 +9,9 @@
  * SPDX-FileContributor: Graham Campbell <graham@mineuk.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
  * SPDX-FileContributor: Henrique Oliveira <henrique.oliveira83@yahoo.com.br>
- * SPDX-FileContributor: mf <michael.firsikov@gmail.com>
  * SPDX-FileContributor: Michael Firsikov <michael@vstadi.com>
  * SPDX-FileContributor: RCooLeR <roman.derevianko@gmail.com>
+ * SPDX-FileContributor: mf <michael.firsikov@gmail.com>
  */
 
 declare(strict_types=1);

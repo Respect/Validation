@@ -7,8 +7,8 @@
  * SPDX-FileContributor: Danilo Correa <danilosilva87@gmail.com>
  * SPDX-FileContributor: Graham Campbell <graham@mineuk.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
- * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
  * SPDX-FileContributor: Kir Kolyshkin <kolyshkin@gmail.com>
+ * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
  */
 
 declare(strict_types=1);

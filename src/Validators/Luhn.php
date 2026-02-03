@@ -3,11 +3,11 @@
 /*
  * SPDX-License-Identifier: MIT
  * SPDX-FileCopyrightText: (c) Respect Project Contributors
+ * SPDX-FileContributor: Aleksandr Gorshkov <mazanax@yandex.ru>
  * SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
  * SPDX-FileContributor: Danilo Correa <danilosilva87@gmail.com>
  * SPDX-FileContributor: Fabio Ribeiro <faabiosr@gmail.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
- * SPDX-FileContributor: Aleksandr Gorshkov <mazanax@yandex.ru>
  */
 
 declare(strict_types=1);

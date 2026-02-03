@@ -1,6 +1,6 @@
 <!--
-SPDX-FileCopyrightText: (c) Respect Project Contributors
 SPDX-License-Identifier: MIT
+SPDX-FileCopyrightText: (c) Respect Project Contributors
 -->
 
 # Migrating from v2.x to v3.x

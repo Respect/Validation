@@ -7,11 +7,11 @@
  * SPDX-FileContributor: Eduardo Gulias Davis <me@egulias.com>
  * SPDX-FileContributor: Graham Campbell <graham@mineuk.com>
  * SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
+ * SPDX-FileContributor: Kir Kolyshkin <kolyshkin@gmail.com>
  * SPDX-FileContributor: Konstantin <kolodnitsky@gmail.com>
  * SPDX-FileContributor: Mikko Pesari <mikko@pesari.fi>
  * SPDX-FileContributor: Nick Lombard <github@jigsoft.co.za>
  * SPDX-FileContributor: paul karikari <paulkarikari1@gmail.com>
- * SPDX-FileContributor: Kir Kolyshkin <kolyshkin@gmail.com>
  */
 
 declare(strict_types=1);

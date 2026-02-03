@@ -44,7 +44,7 @@ return (static function () {
         new ValidatorChangelogLinter(),
     )));
     $application->addCommand(new LintMixinCommand($differ));
-    $application->addCommand(new LintSpdxCommand());
+    $application->addCommand(new LintSpdxCommand($differ));
     $application->addCommand(new UpdateDomainSuffixesCommand($dataSaver));
     $application->addCommand(new UpdateDomainToplevelCommand($dataSaver));
     $application->addCommand(new UpdatePostalCodesCommand($dataSaver));
