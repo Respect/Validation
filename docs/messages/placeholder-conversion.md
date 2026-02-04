@@ -35,19 +35,7 @@ ContainerRegistry::setContainer(
 );
 ```
 
-See [PlaceholderFormatter][] documentation for more information on creating custom modifiers.
-
-## Container configuration
-
-The `ContainerRegistry::createContainer()` method returns a [PHP-DI](https://php-di.org/) container. The definitions array follows the [PHP-DI definitions format](https://php-di.org/doc/php-definitions.html).
-
-If you prefer to use a different container, `ContainerRegistry::setContainer()` accepts any [PSR-11](https://www.php-fig.org/psr/psr-11/) compatible container:
-
-```php
-use Respect\Validation\ContainerRegistry;
-
-ContainerRegistry::setContainer($yourPsr11Container);
-```
+See [PlaceholderFormatter][] documentation for more information on creating custom modifiers and the [configuration](../configuration.md) section for more details on container setup.
 
 [PlaceholderFormatter]: https://github.com/Respect/StringFormatter/blob/main/docs/PlaceholderFormatter.md
 [Respect\StringFormatter]: https://github.com/Respect/StringFormatter

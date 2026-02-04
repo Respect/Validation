@@ -10,30 +10,38 @@
 declare(strict_types=1);
 
 use Respect\Validation\ContainerRegistry;
+use Respect\Validation\Message\TemplateRegistry;
+use Respect\Validation\Validators as vs;
 use Symfony\Component\Translation\Loader\ArrayLoader;
 use Symfony\Component\Translation\Translator;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-$translator = new Translator('en');
+$templates = new TemplateRegistry();
+$translator = new Translator('pt_BR');
 $translator->addLoader('array', new ArrayLoader());
 $translator->addResource(
     'array',
     [
-        '{{subject}} must pass all the rules' => 'Todas as regras requeridas devem passar para {{subject}}',
-        'The length of' => 'O comprimento de',
-        '{{subject}} must be a string' => '{{subject}} deve ser uma string',
-        '{{subject}} must be between {{minValue}} and {{maxValue}}' => '{{subject}} deve possuir de {{minValue}} a {{maxValue}} caracteres',
-        '{{subject}} must be a phone number for country {{countryName|trans}}' => '{{subject}} deve ser um número de telefone válido para o país {{countryName|trans}}',
+        // Directly translating validator messages
+        $templates->get(vs\AllOf::class, vs\AllOf::TEMPLATE_ALL)->default => 'Todas as regras requeridas devem passar para {{subject}}',
+        $templates->get(vs\Length::class)->default => 'O comprimento de',
+        $templates->get(vs\StringVal::class)->default => '{{subject}} deve ser uma string',
+        $templates->get(vs\Between::class)->default => '{{subject}} deve possuir de {{minValue}} a {{maxValue}} caracteres',
+        $templates->get(vs\Phone::class, vs\Phone::TEMPLATE_FOR_COUNTRY)->default => '{{subject}} deve ser um número de telefone válido para o país {{countryName|trans}}',
+        $templates->get(vs\DateTimeDiff::class)->default => 'O número de {{type|trans}} entre agora e',
+        $templates->get(vs\Equals::class)->default => '{{subject}} deve ser igual a {{compareTo}}',
+
+        // Custom templates set during runtime
+        'Your name must be {{haystack|list:or}}' => 'Seu nome deve ser {{haystack|list:or}}',
+        '{{haystack|list:and}} are the only possible names' => '{{haystack|list:and}} são os únicos nomes possíveis',
+
+        // Miscellaneous translations
         'United States' => 'Estados Unidos',
         'years' => 'anos',
-        'The number of {{type|trans}} between now and' => 'O número de {{type|trans}} entre agora e',
-        '{{subject}} must be equal to {{compareTo}}' => '{{subject}} deve ser igual a {{compareTo}}',
-        'Your name must be {{haystack|list:or}}' => 'Seu nome deve ser {{haystack|list:or}}',
         'or' => 'ou',
-        '{{haystack|list:and}} are the only possible names' => '{{haystack|list:and}} são os únicos nomes possíveis',
         'and' => 'e',
     ],
-    'en',
+    'pt_BR',
 );
 $container = ContainerRegistry::createContainer();
 $container->set(TranslatorInterface::class, $translator);

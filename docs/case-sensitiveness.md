@@ -7,7 +7,7 @@ SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
 
 # Case Insensitive Validation
 
-For most simple cases, you can use `v::call` wrappers to perform
+For most simple cases, you can use `v::after` wrappers to perform
 case normalization before comparison.
 
 For strings:

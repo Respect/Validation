@@ -926,6 +926,13 @@ v::email()->assert(
 );
 ```
 
+### Translation
+
+The project now uses Symfony [translation contracts](https://github.com/symfony/translation-contracts)
+instead of a custom callback.
+
+See [messages/translation.md](messages/translation.md) for more info.
+
 ### Placeholder pipes
 
 Customize how values are rendered in templates using pipes:
