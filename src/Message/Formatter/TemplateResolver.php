@@ -11,11 +11,9 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Message\Formatter;
 
-use ReflectionClass;
-use Respect\Validation\Message\Template;
+use Respect\Validation\Message\TemplateRegistry;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
-use Respect\Validation\Validator;
 
 use function array_reduce;
 use function array_reverse;
@@ -24,8 +22,10 @@ use function is_string;
 
 final class TemplateResolver
 {
-    /** @var array<string, array<Template>> */
-    private array $templates = [];
+    public function __construct(
+        private TemplateRegistry $templateRegistry,
+    ) {
+    }
 
     /** @param array<string|int, mixed> $templates */
     public function getGivenTemplate(Result $result, array $templates): string|null
@@ -53,7 +53,7 @@ final class TemplateResolver
 
     public function getValidatorTemplate(Result $result): string
     {
-        foreach ($this->extractTemplates($result->validator) as $template) {
+        foreach ($this->templateRegistry->getTemplates($result->validator::class) as $template) {
             if ($template->id !== $result->template) {
                 continue;
             }
@@ -66,19 +66,6 @@ final class TemplateResolver
         }
 
         return $result->template;
-    }
-
-    /** @return array<Template> */
-    private function extractTemplates(Validator $validator): array
-    {
-        if (!isset($this->templates[$validator::class])) {
-            $reflection = new ReflectionClass($validator);
-            foreach ($reflection->getAttributes(Template::class) as $attribute) {
-                $this->templates[$validator::class][] = $attribute->newInstance();
-            }
-        }
-
-        return $this->templates[$validator::class] ?? [];
     }
 
     /**

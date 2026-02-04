@@ -38,6 +38,7 @@ use Respect\Validation\Message\Parameters\NameHandler;
 use Respect\Validation\Message\Parameters\PathHandler;
 use Respect\Validation\Message\Parameters\ResultHandler;
 use Respect\Validation\Message\Renderer;
+use Respect\Validation\Message\TemplateRegistry;
 use Respect\Validation\Transformers\Prefix;
 use Respect\Validation\Transformers\Transformer;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -56,7 +57,8 @@ final class ContainerRegistry
         return new Container($definitions + [
             PhoneNumberUtil::class => factory(static fn() => PhoneNumberUtil::getInstance()),
             Transformer::class => create(Prefix::class),
-            TemplateResolver::class => create(TemplateResolver::class),
+            TemplateRegistry::class => create(TemplateRegistry::class),
+            TemplateResolver::class => autowire(TemplateResolver::class),
             TranslatorInterface::class => autowire(BypassTranslator::class),
             Renderer::class => autowire(InterpolationRenderer::class),
             ResultFilter::class => create(OnlyFailedChildrenResultFilter::class),

@@ -28,7 +28,7 @@ final class InterpolationRendererTest extends TestCase
         $renderer = new InterpolationRenderer(
             new TestingTranslator(),
             new PlaceholderFormatter([]),
-            new TemplateResolver(),
+            new TemplateResolver(new TemplateRegistry()),
         );
 
         $result = (new ResultBuilder())->template('This is my template')->build();
@@ -47,7 +47,11 @@ final class InterpolationRendererTest extends TestCase
             ->template($template)
             ->parameters($parameters)
             ->build();
-        $renderer = new InterpolationRenderer(new TestingTranslator(), $formatter, new TemplateResolver());
+        $renderer = new InterpolationRenderer(
+            new TestingTranslator(),
+            $formatter,
+            new TemplateResolver(new TemplateRegistry()),
+        );
 
         $actual = $renderer->render($result, []);
 
@@ -65,7 +69,11 @@ final class InterpolationRendererTest extends TestCase
             ->template($template)
             ->input($input)
             ->build();
-        $renderer = new InterpolationRenderer(new TestingTranslator(), $formatter, new TemplateResolver());
+        $renderer = new InterpolationRenderer(
+            new TestingTranslator(),
+            $formatter,
+            new TemplateResolver(new TemplateRegistry()),
+        );
 
         $actual = $renderer->render($result, []);
 
@@ -83,7 +91,11 @@ final class InterpolationRendererTest extends TestCase
             ->input($subject)
             ->build();
         $expected = $formatter->formatUsing($template, ['subject' => $result]);
-        $renderer = new InterpolationRenderer(new TestingTranslator(), $formatter, new TemplateResolver());
+        $renderer = new InterpolationRenderer(
+            new TestingTranslator(),
+            $formatter,
+            new TemplateResolver(new TemplateRegistry()),
+        );
 
         $actual = $renderer->render($result, []);
 
@@ -99,7 +111,11 @@ final class InterpolationRendererTest extends TestCase
             ->template($template)
             ->build();
         $expected = $formatter->formatUsing($template, ['path' => $result->path]);
-        $renderer = new InterpolationRenderer(new TestingTranslator(), $formatter, new TemplateResolver());
+        $renderer = new InterpolationRenderer(
+            new TestingTranslator(),
+            $formatter,
+            new TemplateResolver(new TemplateRegistry()),
+        );
 
         $actual = $renderer->render($result, []);
 
@@ -119,7 +135,11 @@ final class InterpolationRendererTest extends TestCase
             ->input($input)
             ->parameters($parameters)
             ->build();
-        $renderer = new InterpolationRenderer(new TestingTranslator(), $formatter, new TemplateResolver());
+        $renderer = new InterpolationRenderer(
+            new TestingTranslator(),
+            $formatter,
+            new TemplateResolver(new TemplateRegistry()),
+        );
 
         $actual = $renderer->render($result, []);
 
@@ -137,7 +157,7 @@ final class InterpolationRendererTest extends TestCase
         $result = (new ResultBuilder())
             ->template($template)
             ->build();
-        $renderer = new InterpolationRenderer($translator, $formatter, new TemplateResolver());
+        $renderer = new InterpolationRenderer($translator, $formatter, new TemplateResolver(new TemplateRegistry()));
 
         $actual = $renderer->render($result, []);
 
@@ -150,7 +170,7 @@ final class InterpolationRendererTest extends TestCase
         $renderer = new InterpolationRenderer(
             new TestingTranslator(),
             new PlaceholderFormatter([]),
-            new TemplateResolver(),
+            new TemplateResolver(new TemplateRegistry()),
         );
 
         $result = (new ResultBuilder())->build();
@@ -166,7 +186,7 @@ final class InterpolationRendererTest extends TestCase
         $renderer = new InterpolationRenderer(
             new TestingTranslator(),
             new PlaceholderFormatter([]),
-            new TemplateResolver(),
+            new TemplateResolver(new TemplateRegistry()),
         );
 
         $result = (new ResultBuilder())->hasInvertedMode()->build();
@@ -182,7 +202,7 @@ final class InterpolationRendererTest extends TestCase
         $renderer = new InterpolationRenderer(
             new TestingTranslator(),
             new PlaceholderFormatter([]),
-            new TemplateResolver(),
+            new TemplateResolver(new TemplateRegistry()),
         );
 
         $result = (new ResultBuilder())->template('__1st__')
@@ -208,7 +228,7 @@ final class InterpolationRendererTest extends TestCase
         $renderer = new InterpolationRenderer(
             new TestingTranslator(),
             new PlaceholderFormatter([]),
-            new TemplateResolver(),
+            new TemplateResolver(new TemplateRegistry()),
         );
 
         $result = (new ResultBuilder())->template($template)
