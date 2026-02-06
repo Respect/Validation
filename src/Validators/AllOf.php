@@ -19,7 +19,7 @@ use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validators\Core\LogicalComposite;
 use Respect\Validation\Validators\Core\ShortCircuitable;
 
 use function array_filter;
@@ -38,7 +38,7 @@ use function count;
     '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
-final class AllOf extends Composite implements ShortCircuitable
+final class AllOf extends LogicalComposite implements ShortCircuitable
 {
     use CanEvaluateShortCircuit;
 

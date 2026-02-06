@@ -15,7 +15,7 @@ use Respect\Validation\Validator;
 
 use function array_merge;
 
-abstract class Composite implements Validator
+abstract class LogicalComposite implements Validator
 {
     /** @var non-empty-array<Validator> */
     protected readonly array $validators;

@@ -18,7 +18,7 @@ use Attribute;
 use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
-use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validators\Core\LogicalComposite;
 use Respect\Validation\Validators\Core\ShortCircuitable;
 
 use function count;
@@ -34,7 +34,7 @@ use function count;
     '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
-final class NoneOf extends Composite implements ShortCircuitable
+final class NoneOf extends LogicalComposite implements ShortCircuitable
 {
     use CanEvaluateShortCircuit;
 

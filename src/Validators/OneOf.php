@@ -20,7 +20,7 @@ use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Respect\Validation\Validators\Core\Composite;
+use Respect\Validation\Validators\Core\LogicalComposite;
 use Respect\Validation\Validators\Core\ShortCircuitable;
 
 use function array_filter;
@@ -40,7 +40,7 @@ use function usort;
     '{{subject}} must pass only one of the rules',
     self::TEMPLATE_MORE_THAN_ONE,
 )]
-final class OneOf extends Composite implements ShortCircuitable
+final class OneOf extends LogicalComposite implements ShortCircuitable
 {
     use CanEvaluateShortCircuit;
 
