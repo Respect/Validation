@@ -41,5 +41,4 @@ runs:
       run: pip install ${{ inputs.python-deps }}
       shell: bash
 
-    - run: composer install --prefer-dist
-      shell: bash
+    - uses: "ramsey/composer-install@v3"
