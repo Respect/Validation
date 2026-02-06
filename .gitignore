@@ -3,7 +3,6 @@
 .phpbench/
 .phpcs.cache
 .phpunit.cache/
-composer.lock
 Makefile
 phpbench.json
 phpcs.xml
