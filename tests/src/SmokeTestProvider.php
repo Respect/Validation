@@ -118,7 +118,6 @@ trait SmokeTestProvider
         yield 'Lowercase' => [new vs\Lowercase(), 'abc'];
         yield 'Luhn' => [new vs\Luhn(), '2222400041240011'];
         yield 'MacAddress' => [new vs\MacAddress(), '00:11:22:33:44:55'];
-        yield 'Masked' => [new vs\Masked('1-', new vs\IntVal()), 123];
         yield 'Max' => [new vs\Max(new vs\Equals(30)), [10, 20, 30]];
         yield 'Min' => [new vs\Min(new vs\Equals(10)), [10, 20, 30]];
         yield 'Mimetype' => [new vs\Mimetype('image/png'), 'tests/fixtures/valid-image.png'];

@@ -206,8 +206,6 @@ interface NullOrBuilder
 
     public static function nullOrMacAddress(): Chain;
 
-    public static function nullOrMasked(string $range, Validator $validator, string $replacement = '*'): Chain;
-
     public static function nullOrMax(Validator $validator): Chain;
 
     public static function nullOrMimetype(string $mimetype): Chain;

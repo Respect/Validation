@@ -47,6 +47,5 @@ The validator first ensures the input is a valid string using `StringVal`. If th
 
 ## See Also
 
-- [Masked](Masked.md)
 - [Named](Named.md)
 - [Templated](Templated.md)

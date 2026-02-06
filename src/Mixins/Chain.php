@@ -211,8 +211,6 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function macAddress(): Chain;
 
-    public function masked(string $range, Validator $validator, string $replacement = '*'): Chain;
-
     public function max(Validator $validator): Chain;
 
     public function mimetype(string $mimetype): Chain;

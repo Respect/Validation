@@ -62,7 +62,6 @@ stored data follows a required display format).
 
 ## See Also
 
-- [Masked](Masked.md)
 - [Templated](Templated.md)
 
 [Respect\StringFormatter]: https://github.com/Respect/StringFormatter

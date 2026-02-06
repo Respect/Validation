@@ -54,6 +54,5 @@ This validator does not have any templates, as you must define the templates you
 ## See Also
 
 - [Attributes](Attributes.md)
-- [Masked](Masked.md)
 - [Named](Named.md)
 - [Not](Not.md)

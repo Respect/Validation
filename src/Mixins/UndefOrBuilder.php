@@ -204,8 +204,6 @@ interface UndefOrBuilder
 
     public static function undefOrMacAddress(): Chain;
 
-    public static function undefOrMasked(string $range, Validator $validator, string $replacement = '*'): Chain;
-
     public static function undefOrMax(Validator $validator): Chain;
 
     public static function undefOrMimetype(string $mimetype): Chain;

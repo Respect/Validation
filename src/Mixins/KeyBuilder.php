@@ -194,8 +194,6 @@ interface KeyBuilder
 
     public static function keyMacAddress(int|string $key): Chain;
 
-    public static function keyMasked(int|string $key, string $range, Validator $validator, string $replacement = '*'): Chain;
-
     public static function keyMax(int|string $key, Validator $validator): Chain;
 
     public static function keyMimetype(int|string $key, string $mimetype): Chain;
