@@ -20,11 +20,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BUMP: patch
-          RELEASE_BRANCHES: ${{ github.ref_name }}
-          TAG_CONTEXT: branch
+      - name: Create patch tag
+        run: |
+          BRANCH="${{ github.ref_name }}"
+          LATEST_TAG=$(git tag -l "${BRANCH}.*" --sort=-v:refname | head -n1)
+
+          if [ -z "$LATEST_TAG" ]; then
+            NEW_TAG="${BRANCH}.0"
+          else
+            PATCH=$(echo "$LATEST_TAG" | cut -d. -f3)
+            NEW_TAG="${BRANCH}.$((PATCH + 1))"
+          fi
+
+          echo "Creating tag: $NEW_TAG"
+          git tag "$NEW_TAG"
+          git push origin "$NEW_TAG"
 
