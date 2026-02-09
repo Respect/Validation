@@ -250,16 +250,16 @@
         },
         {
             "name": "respect/string-formatter",
-            "version": "1.2.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/StringFormatter.git",
-                "reference": "801a389ab44e97b1757c4a9c0b3f55c2998a3c13"
+                "reference": "faeaead9e19d81561b6a68c6ae273aa777c618de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/StringFormatter/zipball/801a389ab44e97b1757c4a9c0b3f55c2998a3c13",
-                "reference": "801a389ab44e97b1757c4a9c0b3f55c2998a3c13",
+                "url": "https://api.github.com/repos/Respect/StringFormatter/zipball/faeaead9e19d81561b6a68c6ae273aa777c618de",
+                "reference": "faeaead9e19d81561b6a68c6ae273aa777c618de",
                 "shasum": ""
             },
             "require": {
@@ -299,9 +299,9 @@
             "description": "A powerful and flexible way of formatting and transforming strings",
             "support": {
                 "issues": "https://github.com/Respect/StringFormatter/issues",
-                "source": "https://github.com/Respect/StringFormatter/tree/1.2.0"
+                "source": "https://github.com/Respect/StringFormatter/tree/1.4.0"
             },
-            "time": "2026-02-05T16:22:59+00:00"
+            "time": "2026-02-08T23:42:55+00:00"
         },
         {
             "name": "respect/stringifier",
@@ -6440,5 +6440,5 @@
         "php": ">=8.5"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }
