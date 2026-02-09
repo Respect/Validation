@@ -48,7 +48,7 @@
         "squizlabs/php_codesniffer": "^4.0",
         "symfony/console": "^7.4",
         "symfony/translation": "^8.0",
-        "symfony/var-exporter": "^6.4 || ^7.0"
+        "symfony/var-exporter": "^6.4 || ^7.0 || ^8.0"
     },
     "suggest": {
         "ext-bcmath": "Arbitrary Precision Mathematics",
