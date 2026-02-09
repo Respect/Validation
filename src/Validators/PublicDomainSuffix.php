@@ -19,10 +19,14 @@ use Respect\Validation\Validators\Core\Simple;
 
 use function array_pop;
 use function explode;
+use function idn_to_ascii;
 use function in_array;
 use function is_scalar;
 use function mb_strtoupper;
 use function strtoupper;
+
+use const IDNA_DEFAULT;
+use const INTL_IDNA_VARIANT_UTS46;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
@@ -41,8 +45,12 @@ final class PublicDomainSuffix extends Simple
 
         $parts = explode('.', (string) $input);
         $tld = array_pop($parts);
+        if ($tld === '') {
+            return true;
+        }
 
-        $dataSource = DataLoader::load('domain/public-suffix/' . mb_strtoupper($tld) . '.php');
+        $punycodedTld = idn_to_ascii($tld, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46) ?: $tld;
+        $dataSource = DataLoader::load('domain/public-suffix/' . mb_strtoupper($punycodedTld) . '.php');
         if ($this->isUndefined($input) && $dataSource === []) {
             return true;
         }

@@ -25,6 +25,7 @@ use function dirname;
 use function explode;
 use function file_get_contents;
 use function glob;
+use function idn_to_ascii;
 use function is_dir;
 use function mb_strtoupper;
 use function mkdir;
@@ -36,6 +37,9 @@ use function str_replace;
 use function str_starts_with;
 use function trim;
 use function unlink;
+
+use const IDNA_DEFAULT;
+use const INTL_IDNA_VARIANT_UTS46;
 
 #[AsCommand(
     name: 'update:domain-suffixes',
@@ -103,11 +107,13 @@ final class UpdateDomainSuffixesCommand extends Command
                 continue;
             }
 
+            $punycodedTld = idn_to_ascii($tld, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46) ?: $tld;
+
             $this->dataSaver->save(
                 $suffixList,
                 '2007–22 Mozilla Foundation',
                 'MPL-2.0-no-copyleft-exception',
-                sprintf('domain/public-suffix/%s.php', $tld),
+                sprintf('domain/public-suffix/%s.php', $punycodedTld),
             );
 
             $progressBar->advance();
