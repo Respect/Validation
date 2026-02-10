@@ -1,0 +1,43 @@
+name: TheRespectPanda Bot
+
+on:
+  issue_comment:
+    types: [created]
+    if: startsWith(github.event.comment.body, '@TheRespectPanda')
+
+jobs:
+  listen-comment:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.PANDA_GITHUB_PAT }}
+          script: |
+            const body = (context.payload.comment && context.payload.comment.body).trim() || '';
+            const usage = 'Usage: `@TheRespectPanda ping|help`';
+
+            if (!body.startsWith('@TheRespectPanda')) {
+              return;
+            }
+
+            switch (body) {
+              case '@TheRespectPanda ping':
+                answer = 'Pong! 🐼';
+                break;
+              case '@TheRespectPanda':
+              case '@TheRespectPanda help':
+                answer = 'Hello! I am TheRespectPanda Bot. ' + usage;
+                break;
+              default:
+                answer = "I'm sorry, I don't understand that command. " + usage;
+            }
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: answer
+            });
