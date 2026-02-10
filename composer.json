@@ -3,7 +3,7 @@
     "description": "The most awesome validation engine ever created for PHP",
     "keywords": ["respect", "validation", "validator"],
     "type": "library",
-    "homepage": "http://respect.github.io/Validation/",
+    "homepage": "http://github.com/Respect",
     "license": "MIT",
     "authors": [
         {
@@ -11,6 +11,11 @@
             "homepage": "https://github.com/Respect/Validation/graphs/contributors"
         }
     ],
+    "extra": {
+        "branch-alias": {
+            "dev-main": "3.0.x-dev"
+        }
+    },
     "config": {
         "sort-packages": true,
         "allow-plugins": {
