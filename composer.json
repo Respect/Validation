@@ -3,7 +3,7 @@
     "description": "The most awesome validation engine ever created for PHP",
     "keywords": ["respect", "validation", "validator"],
     "type": "library",
-    "homepage": "http://respect.github.io/Validation/",
+    "homepage": "http://respect.github.io/",
     "license": "MIT",
     "authors": [
         {
