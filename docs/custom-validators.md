@@ -27,7 +27,7 @@ use Respect\Validation\Validators\Core\Simple;
 )]
 final class Something extends Simple
 {
-    protected function isValid(mixed $input): bool
+    public function isValid(mixed $input): bool
     {
         // Do something here with the $input and return a boolean value
     }
@@ -42,9 +42,15 @@ Validation to execute your validator (or validators) in the chain, you must over
 default `Factory`.
 
 ```php
-Factory::setDefaultInstance(
-    (new Factory())
-        ->withNamespace('My\\Validation\\Validators')
+use Respect\Validation\ContainerRegistry;
+
+ContainerRegistry::setContainer(
+    ContainerRegistry::createContainer([
+        'respect.validation.rule_factory.namespaces' => [
+            'My\\Validation\\Validators',
+            'Respect\\Validation\\Validators',
+        ],
+    ])
 );
 v::something(); // Try to load "My\Validation\Validators\Something" if any
 ```
