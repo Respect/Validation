@@ -21,19 +21,41 @@ on:
         options:
           - 'latest'
           - 'rebaseline'
+      pull:
+        description: 'Pull request number to benchmark (optional)'
+        required: false
 
 jobs:
-  tests:
-    name: Benchmarks
+  pr-benchmarks:
+    name: PR Benchmarks
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.pull }}
     runs-on: ubuntu-latest
+    env:
+      BENCHMARK_SHA: ${{ github.sha }}
 
     permissions:
-      contents: write
+      contents: read
 
     steps:
       - uses: actions/checkout@v6
         with:
-          persist-credentials: true
+          persist-credentials: false
+
+      - name: Checkout PR head
+        run: |
+          set -euo pipefail
+          PR=${{ github.event.inputs.pull }}
+          # Validate that PR is numeric to avoid injection or unexpected ref resolution
+          if ! printf '%s\n' "$PR" | grep -Eq '^[0-9]+$'; then
+            echo "Invalid pull request number: '$PR'. Expected a numeric value." >&2
+            exit 1
+          fi
+          # fetch the pull request head (works for forks)
+          git fetch origin "pull/${PR}/head:pr-${PR}" || git fetch origin "+refs/pull/${PR}/head:pr-${PR}"
+          git checkout "pr-${PR}"
+          echo "Checked out PR #${PR}"
+          echo "BENCHMARK_SHA=$(git rev-parse --verify HEAD)" >> "$GITHUB_ENV"
+
       - uses: ./.github/actions/setup-action
         with:
           extensions: xdebug
@@ -48,13 +70,57 @@ jobs:
         run: |
           # Baseline does not exist or rebaseline requested. Generate it.
           if [ -z "$(ls -A .phpbench)" ] || [ "${{ github.event.inputs.baseline || 'latest' }}" = "rebaseline" ]; then
-            vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${GITHUB_SHA}
+            vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${BENCHMARK_SHA}
 
           # Baseline exists. Compare against it.
           else
-            vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${GITHUB_SHA} --ref=latest --tolerate-failure
+            vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${BENCHMARK_SHA} --ref=latest --tolerate-failure
           fi
           
+          # Generate report for human consumption
+          vendor/bin/phpbench report --report=aggregate --ref=latest |
+            tail -n+2 | head -n-2 | tr '+' '|' > report.md
+
+          cat report.md > "$GITHUB_STEP_SUMMARY"
+
+  historical-benchmarks:
+    name: Historical Benchmarks
+    if: >-
+      github.event_name != 'workflow_dispatch' ||
+      !github.event.inputs.pull
+    runs-on: ubuntu-latest
+    env:
+      BENCHMARK_SHA: ${{ github.sha }}
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: true
+
+      - uses: ./.github/actions/setup-action
+        with:
+          extensions: xdebug
+
+      - name: Fetch Benchmarks
+        run: |
+          git fetch origin benchmarks
+          mkdir -p .phpbench
+          git checkout origin/benchmarks -- .phpbench || echo "No previous benchmarks found"
+
+      - name: Run Benchmarks
+        run: |
+          # Baseline does not exist or rebaseline requested. Generate it.
+          if [ -z "$(ls -A .phpbench)" ] || [ "${{ github.event.inputs.baseline || 'latest' }}" = "rebaseline" ]; then
+            vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${BENCHMARK_SHA}
+
+          # Baseline exists. Compare against it.
+          else
+            vendor/bin/phpbench run --report=aggregate --progress=plain --store --tag=${BENCHMARK_SHA} --ref=latest --tolerate-failure
+          fi
+
           # Generate report for human consumption
           vendor/bin/phpbench report --report=aggregate --ref=latest |
             tail -n+2 | head -n-2 | tr '+' '|' > report.md

@@ -3,34 +3,77 @@ name: TheRespectPanda Bot
 on:
   issue_comment:
     types: [created]
-    if: startsWith(github.event.comment.body, '@TheRespectPanda')
 
 jobs:
   listen-comment:
+    if: startsWith(github.event.comment.body, '@TheRespectPanda')
     runs-on: ubuntu-latest
     permissions:
       issues: write
-      pull-requests: write
+      actions: write
     steps:
       - uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.PANDA_GITHUB_PAT }}
           script: |
             const body = (context.payload.comment && context.payload.comment.body).trim() || '';
-            const usage = 'Usage: `@TheRespectPanda ping|help`';
+            const usage = 'Usage: `@TheRespectPanda ping|help|benchmark`';
 
             if (!body.startsWith('@TheRespectPanda')) {
               return;
             }
 
+            let answer;
+
             switch (body) {
               case '@TheRespectPanda ping':
                 answer = 'Pong! 🐼';
                 break;
+
               case '@TheRespectPanda':
               case '@TheRespectPanda help':
                 answer = 'Hello! I am TheRespectPanda Bot. ' + usage;
                 break;
+
+              case '@TheRespectPanda benchmark':
+                // Only runnable on pull requests
+                if (!context.payload.issue.pull_request) {
+                  answer = 'The `benchmark` command can only be used on pull requests.';
+                  break;
+                }
+
+                // Only members can trigger benchmarks
+                const association = context.payload.comment.author_association;
+                const allowedAssociations = ['OWNER', 'MEMBER', 'COLLABORATOR'];
+                if (!allowedAssociations.includes(association)) {
+                  answer = 'Only repository members can trigger benchmarks.';
+                  break;
+                }
+
+                try {
+                  // dispatch the perf workflow
+                  const ref = (context.payload.repository && context.payload.repository.default_branch) || 'main';
+
+                  const workflowId = 'ci-perf.yml';
+                  await github.rest.actions.createWorkflowDispatch({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    workflow_id: workflowId,
+                    ref,
+                    inputs: {
+                      baseline: 'latest',
+                      pull: String(context.issue.number)
+                    }
+                  });
+
+                  const runUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/workflows/${workflowId}`;
+                  answer = `Triggered phpbench benchmarks for PR #${context.issue.number} — workflow run: ${runUrl}`;
+                } catch (err) {
+                  answer = `Failed to trigger benchmarks: ${err.message}`;
+                }
+
+                break;
+
               default:
                 answer = "I'm sorry, I don't understand that command. " + usage;
             }
