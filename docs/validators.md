@@ -49,7 +49,7 @@ In this page you will find a list of validators by their category.
 
 **Objects**: [Attributes][] - [Instance][] - [ObjectType][] - [Property][] - [PropertyExists][] - [PropertyOptional][]
 
-**Strings**: [Alnum][] - [Alpha][] - [Base64][] - [Charset][] - [Consonant][] - [Contains][] - [ContainsAny][] - [ContainsCount][] - [Control][] - [Digit][] - [Emoji][] - [EndsWith][] - [Format][] - [Graph][] - [HexRgbColor][] - [In][] - [Json][] - [Lowercase][] - [Phone][] - [PostalCode][] - [Printable][] - [Punct][] - [Regex][] - [Slug][] - [Sorted][] - [Space][] - [Spaced][] - [StartsWith][] - [StringType][] - [StringVal][] - [Uppercase][] - [Uuid][] - [Version][] - [Vowel][] - [Xdigit][]
+**Strings**: [Alnum][] - [Alpha][] - [Base64][] - [Charset][] - [Consonant][] - [Contains][] - [ContainsAny][] - [ContainsCount][] - [Control][] - [Digit][] - [Emoji][] - [EndsWith][] - [Format][] - [Graph][] - [HexRgbColor][] - [In][] - [Json][] - [Lowercase][] - [Phone][] - [PostalCode][] - [Printable][] - [Punct][] - [Regex][] - [Slug][] - [Sorted][] - [Space][] - [Spaced][] - [StartsWith][] - [StringType][] - [StringVal][] - [Trimmed][] - [Uppercase][] - [Uuid][] - [Version][] - [Vowel][] - [Xdigit][]
 
 **Structures**: [Attributes][] - [Key][] - [KeyExists][] - [KeyOptional][] - [KeySet][] - [Property][] - [PropertyExists][] - [PropertyOptional][]
 
@@ -203,6 +203,7 @@ In this page you will find a list of validators by their category.
 - [Templated][] - `v::templated('You must provide a valid email', v::email())->assert('foo@bar.com');`
 - [Time][] - `v::time()->assert('00:00:00');`
 - [Tld][] - `v::tld()->assert('com');`
+- [Trimmed][] - `v::trimmed()->assert('lorem ipsum');`
 - [TrueVal][] - `v::trueVal()->assert(true);`
 - [Undef][] - `v::undef()->assert('');`
 - [UndefOr][] - `v::undefOr(v::alpha())->assert('');`
@@ -351,7 +352,7 @@ In this page you will find a list of validators by their category.
 [Sorted]: validators/Sorted.md "Validates whether the input is sorted in a certain order or not."
 [Space]: validators/Space.md "Validates whether the input contains only whitespaces characters."
 [Spaced]: validators/Spaced.md "Validates if a string contains at least one whitespace (spaces, tabs, or line breaks);"
-[StartsWith]: validators/StartsWith.md "Validates whether the input starts with a given value."
+[StartsWith]: validators/StartsWith.md "Validates whether the input starts with one of the given values."
 [StringType]: validators/StringType.md "Validates whether the type of an input is string or not."
 [StringVal]: validators/StringVal.md "Validates whether the input can be used as a string."
 [SubdivisionCode]: validators/SubdivisionCode.md "Validates subdivision country codes according to ISO 3166-2."
@@ -360,6 +361,7 @@ In this page you will find a list of validators by their category.
 [Templated]: validators/Templated.md "Defines a validator with a custom message template."
 [Time]: validators/Time.md "Validates whether an input is a time or not. The `$format` argument should be in"
 [Tld]: validators/Tld.md "Validates whether the input is a top-level domain."
+[Trimmed]: validators/Trimmed.md "Validates whether the input string does not start or end with the given values."
 [TrueVal]: validators/TrueVal.md "Validates if a value is considered as `true`."
 [Undef]: validators/Undef.md "Validates if the given input is undefined. By _undefined_ we consider `null` or an empty string (`''`)."
 [UndefOr]: validators/UndefOr.md "Validates the input using a defined validator when the input is not `null` or an empty string (`''`)."

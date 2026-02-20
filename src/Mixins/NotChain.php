@@ -105,7 +105,7 @@ interface NotChain
 
     public function notEmoji(): Chain;
 
-    public function notEndsWith(mixed $endValue): Chain;
+    public function notEndsWith(mixed $endValue, mixed ...$endValues): Chain;
 
     public function notEquals(mixed $compareTo): Chain;
 
@@ -287,7 +287,7 @@ interface NotChain
 
     public function notSpaced(): Chain;
 
-    public function notStartsWith(mixed $startValue): Chain;
+    public function notStartsWith(mixed $startValue, mixed ...$startValues): Chain;
 
     public function notStringType(): Chain;
 
@@ -303,6 +303,8 @@ interface NotChain
     public function notTime(string $format = 'H:i:s'): Chain;
 
     public function notTld(): Chain;
+
+    public function notTrimmed(string ...$trimValues): Chain;
 
     public function notTrueVal(): Chain;
 

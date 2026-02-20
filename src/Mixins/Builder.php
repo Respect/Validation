@@ -108,7 +108,7 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function emoji(): Chain;
 
-    public static function endsWith(mixed $endValue): Chain;
+    public static function endsWith(mixed $endValue, mixed ...$endValues): Chain;
 
     public static function equals(mixed $compareTo): Chain;
 
@@ -296,7 +296,7 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function spaced(): Chain;
 
-    public static function startsWith(mixed $startValue): Chain;
+    public static function startsWith(mixed $startValue, mixed ...$startValues): Chain;
 
     public static function stringType(): Chain;
 
@@ -315,6 +315,8 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
     public static function time(string $format = 'H:i:s'): Chain;
 
     public static function tld(): Chain;
+
+    public static function trimmed(string ...$trimValues): Chain;
 
     public static function trueVal(): Chain;
 

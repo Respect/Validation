@@ -105,7 +105,7 @@ interface NullOrBuilder
 
     public static function nullOrEmoji(): Chain;
 
-    public static function nullOrEndsWith(mixed $endValue): Chain;
+    public static function nullOrEndsWith(mixed $endValue, mixed ...$endValues): Chain;
 
     public static function nullOrEquals(mixed $compareTo): Chain;
 
@@ -289,7 +289,7 @@ interface NullOrBuilder
 
     public static function nullOrSpaced(): Chain;
 
-    public static function nullOrStartsWith(mixed $startValue): Chain;
+    public static function nullOrStartsWith(mixed $startValue, mixed ...$startValues): Chain;
 
     public static function nullOrStringType(): Chain;
 
@@ -305,6 +305,8 @@ interface NullOrBuilder
     public static function nullOrTime(string $format = 'H:i:s'): Chain;
 
     public static function nullOrTld(): Chain;
+
+    public static function nullOrTrimmed(string ...$trimValues): Chain;
 
     public static function nullOrTrueVal(): Chain;
 

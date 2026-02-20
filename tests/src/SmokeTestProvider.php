@@ -169,6 +169,7 @@ trait SmokeTestProvider
         yield 'Templated' => [new vs\Templated('Foo', new vs\StringVal()), 'foo'];
         yield 'Time' => [new vs\Time(), '12:34:56'];
         yield 'Tld' => [new vs\Tld(), 'com'];
+        yield 'Trimmed' => [new vs\Trimmed(), 'example'];
         yield 'TrueVal' => [new vs\TrueVal(), true];
         yield 'Undef' => [new vs\Undef(), null];
         yield 'UndefOr' => [new vs\UndefOr(new vs\IntVal()), null];

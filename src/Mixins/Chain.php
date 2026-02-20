@@ -110,7 +110,7 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function emoji(): Chain;
 
-    public function endsWith(mixed $endValue): Chain;
+    public function endsWith(mixed $endValue, mixed ...$endValues): Chain;
 
     public function equals(mixed $compareTo): Chain;
 
@@ -298,7 +298,7 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function spaced(): Chain;
 
-    public function startsWith(mixed $startValue): Chain;
+    public function startsWith(mixed $startValue, mixed ...$startValues): Chain;
 
     public function stringType(): Chain;
 
@@ -317,6 +317,8 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
     public function time(string $format = 'H:i:s'): Chain;
 
     public function tld(): Chain;
+
+    public function trimmed(string ...$trimValues): Chain;
 
     public function trueVal(): Chain;
 

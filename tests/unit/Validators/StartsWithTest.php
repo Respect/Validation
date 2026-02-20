@@ -28,6 +28,8 @@ final class StartsWithTest extends RuleTestCase
             [new StartsWith('foo'), ['foo', 'bar']],
             [new StartsWith('foo'), 'foobarbaz'],
             [new StartsWith('foo'), 'foobazfoo'],
+            [new StartsWith('foo', 'bar'), 'barbaz'],
+            [new StartsWith('foo', 'bar'), ['bar', 'baz']],
             [new StartsWith('1'), ['1', 2, 3]],
         ];
     }
@@ -44,6 +46,8 @@ final class StartsWithTest extends RuleTestCase
             [new StartsWith('foo'), 'faabarbaz'],
             [new StartsWith('foo'), 'baabazfaa'],
             [new StartsWith('foo'), 'baafoofaa'],
+            [new StartsWith('foo', 'bar'), 'bazfoo'],
+            [new StartsWith('foo', 'bar'), ['baz', 'foo']],
             [new StartsWith('1'), [1, '1', 3]],
             [new StartsWith('1'), [1, 2, 3]],
         ];

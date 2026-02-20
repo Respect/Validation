@@ -28,3 +28,13 @@ test('Scenario #4', catchFullMessage(
     fn() => v::not(v::startsWith('c'))->assert(['c', 'd']),
     fn(string $fullMessage) => expect($fullMessage)->toBe('- `["c", "d"]` must not start with "c"'),
 ));
+
+test('Scenario #5', catchMessage(
+    fn() => v::startsWith('Mr.', 'Dr.')->assert('John Doe'),
+    fn(string $message) => expect($message)->toBe('"John Doe" must start with "Mr." or "Dr."'),
+));
+
+test('Scenario #6', catchFullMessage(
+    fn() => v::not(v::startsWith('Mr.', 'Dr.'))->assert('Dr. John Doe'),
+    fn(string $fullMessage) => expect($fullMessage)->toBe('- "Dr. John Doe" must not start with "Mr." or "Dr."'),
+));
