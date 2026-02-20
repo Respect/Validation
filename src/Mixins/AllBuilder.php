@@ -103,7 +103,7 @@ interface AllBuilder
 
     public static function allEmoji(): Chain;
 
-    public static function allEndsWith(mixed $endValue): Chain;
+    public static function allEndsWith(mixed $endValue, mixed ...$endValues): Chain;
 
     public static function allEquals(mixed $compareTo): Chain;
 
@@ -269,7 +269,7 @@ interface AllBuilder
 
     public static function allSpaced(): Chain;
 
-    public static function allStartsWith(mixed $startValue): Chain;
+    public static function allStartsWith(mixed $startValue, mixed ...$startValues): Chain;
 
     public static function allStringType(): Chain;
 
@@ -285,6 +285,8 @@ interface AllBuilder
     public static function allTime(string $format = 'H:i:s'): Chain;
 
     public static function allTld(): Chain;
+
+    public static function allTrimmed(string ...$trimValues): Chain;
 
     public static function allTrueVal(): Chain;
 

@@ -105,7 +105,7 @@ interface KeyBuilder
 
     public static function keyEmoji(int|string $key): Chain;
 
-    public static function keyEndsWith(int|string $key, mixed $endValue): Chain;
+    public static function keyEndsWith(int|string $key, mixed $endValue, mixed ...$endValues): Chain;
 
     public static function keyEquals(int|string $key, mixed $compareTo): Chain;
 
@@ -271,7 +271,7 @@ interface KeyBuilder
 
     public static function keySpaced(int|string $key): Chain;
 
-    public static function keyStartsWith(int|string $key, mixed $startValue): Chain;
+    public static function keyStartsWith(int|string $key, mixed $startValue, mixed ...$startValues): Chain;
 
     public static function keyStringType(int|string $key): Chain;
 
@@ -287,6 +287,8 @@ interface KeyBuilder
     public static function keyTime(int|string $key, string $format = 'H:i:s'): Chain;
 
     public static function keyTld(int|string $key): Chain;
+
+    public static function keyTrimmed(int|string $key, string ...$trimValues): Chain;
 
     public static function keyTrueVal(int|string $key): Chain;
 

@@ -105,7 +105,7 @@ interface PropertyChain
 
     public function propertyEmoji(string $propertyName): Chain;
 
-    public function propertyEndsWith(string $propertyName, mixed $endValue): Chain;
+    public function propertyEndsWith(string $propertyName, mixed $endValue, mixed ...$endValues): Chain;
 
     public function propertyEquals(string $propertyName, mixed $compareTo): Chain;
 
@@ -271,7 +271,7 @@ interface PropertyChain
 
     public function propertySpaced(string $propertyName): Chain;
 
-    public function propertyStartsWith(string $propertyName, mixed $startValue): Chain;
+    public function propertyStartsWith(string $propertyName, mixed $startValue, mixed ...$startValues): Chain;
 
     public function propertyStringType(string $propertyName): Chain;
 
@@ -287,6 +287,8 @@ interface PropertyChain
     public function propertyTime(string $propertyName, string $format = 'H:i:s'): Chain;
 
     public function propertyTld(string $propertyName): Chain;
+
+    public function propertyTrimmed(string $propertyName, string ...$trimValues): Chain;
 
     public function propertyTrueVal(string $propertyName): Chain;
 

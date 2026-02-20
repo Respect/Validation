@@ -103,7 +103,7 @@ interface UndefOrChain
 
     public function undefOrEmoji(): Chain;
 
-    public function undefOrEndsWith(mixed $endValue): Chain;
+    public function undefOrEndsWith(mixed $endValue, mixed ...$endValues): Chain;
 
     public function undefOrEquals(mixed $compareTo): Chain;
 
@@ -287,7 +287,7 @@ interface UndefOrChain
 
     public function undefOrSpaced(): Chain;
 
-    public function undefOrStartsWith(mixed $startValue): Chain;
+    public function undefOrStartsWith(mixed $startValue, mixed ...$startValues): Chain;
 
     public function undefOrStringType(): Chain;
 
@@ -303,6 +303,8 @@ interface UndefOrChain
     public function undefOrTime(string $format = 'H:i:s'): Chain;
 
     public function undefOrTld(): Chain;
+
+    public function undefOrTrimmed(string ...$trimValues): Chain;
 
     public function undefOrTrueVal(): Chain;
 

@@ -105,7 +105,7 @@ interface KeyChain
 
     public function keyEmoji(int|string $key): Chain;
 
-    public function keyEndsWith(int|string $key, mixed $endValue): Chain;
+    public function keyEndsWith(int|string $key, mixed $endValue, mixed ...$endValues): Chain;
 
     public function keyEquals(int|string $key, mixed $compareTo): Chain;
 
@@ -271,7 +271,7 @@ interface KeyChain
 
     public function keySpaced(int|string $key): Chain;
 
-    public function keyStartsWith(int|string $key, mixed $startValue): Chain;
+    public function keyStartsWith(int|string $key, mixed $startValue, mixed ...$startValues): Chain;
 
     public function keyStringType(int|string $key): Chain;
 
@@ -287,6 +287,8 @@ interface KeyChain
     public function keyTime(int|string $key, string $format = 'H:i:s'): Chain;
 
     public function keyTld(int|string $key): Chain;
+
+    public function keyTrimmed(int|string $key, string ...$trimValues): Chain;
 
     public function keyTrueVal(int|string $key): Chain;
 

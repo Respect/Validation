@@ -105,7 +105,7 @@ interface NotBuilder
 
     public static function notEmoji(): Chain;
 
-    public static function notEndsWith(mixed $endValue): Chain;
+    public static function notEndsWith(mixed $endValue, mixed ...$endValues): Chain;
 
     public static function notEquals(mixed $compareTo): Chain;
 
@@ -287,7 +287,7 @@ interface NotBuilder
 
     public static function notSpaced(): Chain;
 
-    public static function notStartsWith(mixed $startValue): Chain;
+    public static function notStartsWith(mixed $startValue, mixed ...$startValues): Chain;
 
     public static function notStringType(): Chain;
 
@@ -303,6 +303,8 @@ interface NotBuilder
     public static function notTime(string $format = 'H:i:s'): Chain;
 
     public static function notTld(): Chain;
+
+    public static function notTrimmed(string ...$trimValues): Chain;
 
     public static function notTrueVal(): Chain;
 

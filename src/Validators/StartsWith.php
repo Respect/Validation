@@ -20,6 +20,7 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 
+use function count;
 use function is_array;
 use function is_string;
 use function mb_strpos;
@@ -30,28 +31,50 @@ use function reset;
     '{{subject}} must start with {{startValue}}',
     '{{subject}} must not start with {{startValue}}',
 )]
+#[Template(
+    '{{subject}} must start with {{startValues|list:or}}',
+    '{{subject}} must not start with {{startValues|list:or}}',
+    self::TEMPLATE_MULTIPLE_VALUES,
+)]
 final readonly class StartsWith implements Validator
 {
+    public const string TEMPLATE_MULTIPLE_VALUES = '__multiple_values__';
+
+    /** @var non-empty-array<mixed> */
+    private array $startValues;
+
     public function __construct(
-        private mixed $startValue,
+        mixed $startValue,
+        mixed ...$startValues,
     ) {
+        $this->startValues = [$startValue, ...$startValues];
     }
 
     public function evaluate(mixed $input): Result
     {
-        $parameters = ['startValue' => $this->startValue];
+        $template = self::TEMPLATE_STANDARD;
+        $parameters = [
+            'startValue' => $this->startValues[0],
+            'startValues' => $this->startValues,
+        ];
 
-        return Result::of($this->validateIdentical($input), $input, $this, $parameters);
+        if (count($this->startValues) > 1) {
+            $template = self::TEMPLATE_MULTIPLE_VALUES;
+        }
+
+        return Result::of($this->validateIdentical($input), $input, $this, $parameters, $template);
     }
 
     protected function validateIdentical(mixed $input): bool
     {
-        if (is_array($input)) {
-            return reset($input) === $this->startValue;
-        }
+        foreach ($this->startValues as $startValue) {
+            if (is_array($input) && reset($input) === $startValue) {
+                return true;
+            }
 
-        if (is_string($input) && is_string($this->startValue)) {
-            return mb_strpos($input, $this->startValue) === 0;
+            if (is_string($input) && is_string($startValue) && mb_strpos($input, $startValue) === 0) {
+                return true;
+            }
         }
 
         return false;

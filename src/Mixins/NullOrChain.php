@@ -105,7 +105,7 @@ interface NullOrChain
 
     public function nullOrEmoji(): Chain;
 
-    public function nullOrEndsWith(mixed $endValue): Chain;
+    public function nullOrEndsWith(mixed $endValue, mixed ...$endValues): Chain;
 
     public function nullOrEquals(mixed $compareTo): Chain;
 
@@ -289,7 +289,7 @@ interface NullOrChain
 
     public function nullOrSpaced(): Chain;
 
-    public function nullOrStartsWith(mixed $startValue): Chain;
+    public function nullOrStartsWith(mixed $startValue, mixed ...$startValues): Chain;
 
     public function nullOrStringType(): Chain;
 
@@ -305,6 +305,8 @@ interface NullOrChain
     public function nullOrTime(string $format = 'H:i:s'): Chain;
 
     public function nullOrTld(): Chain;
+
+    public function nullOrTrimmed(string ...$trimValues): Chain;
 
     public function nullOrTrueVal(): Chain;
 
