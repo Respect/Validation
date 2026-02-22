@@ -2,5 +2,10 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'GOV.IE',
+    'exceptions' => [],
+    'rules' => [
+        'GOV.IE',
+        'MYSPREADSHOP.IE',
+    ],
+    'wildcards' => [],
 ];

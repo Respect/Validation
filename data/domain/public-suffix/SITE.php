@@ -1,0 +1,42 @@
+<?php declare(strict_types=1);
+// SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
+// SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
+return [
+    'exceptions' => [],
+    'rules' => [
+        'BARSY.SITE',
+        'BYEN.SITE',
+        'CAFFEINE.SITE',
+        'CO.SITE',
+        'CONVEX.SITE',
+        'CPANEL.SITE',
+        'CYON.SITE',
+        'EU-WEST-1.CONVEX.SITE',
+        'FASTVPS.SITE',
+        'FIGMA-GOV.SITE',
+        'FIGMA.SITE',
+        'HEYFLOW.SITE',
+        'JELE.SITE',
+        'JOUWWEB.SITE',
+        'LOGINLINE.SITE',
+        'MADETHIS.SITE',
+        'MY.CANVA.SITE',
+        'NOTION.SITE',
+        'NOVECORE.SITE',
+        'OMNIWE.SITE',
+        'OPENSOCIAL.SITE',
+        'PREVIEW.SITE',
+        'SOL.SITE',
+        'SOURCECRAFT.SITE',
+        'SQUARE.SITE',
+        'SRHT.SITE',
+        'SUPPORT.SITE',
+        'US-EAST-1.CONVEX.SITE',
+        'WPSQUARED.SITE',
+    ],
+    'wildcards' => [
+        'CLOUDERA.SITE',
+        'PLATFORMSH.SITE',
+        'TST.SITE',
+    ],
+];

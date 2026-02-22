@@ -9,20 +9,26 @@ SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
 
 - `PublicDomainSuffix()`
 
-Validates whether the input is a public ICANN domain suffix.
+Validates whether the input is a public domain suffix from the [Public Suffix List](https://publicsuffix.org/list/), including wildcard, exception, ICANN and private section rules.
 
 ```php
 v::publicDomainSuffix()->assert('co.uk');
 // Validation passes successfully
 
-v::publicDomainSuffix()->assert('CO.UK');
+v::publicDomainSuffix()->assert('co.ck');
 // Validation passes successfully
 
-v::publicDomainSuffix()->assert('nom.br');
+v::publicDomainSuffix()->assert('www.ck');
+// → "www.ck" must be a public domain suffix
+
+v::publicDomainSuffix()->assert('myname.nom.br');
 // Validation passes successfully
 
 v::publicDomainSuffix()->assert('invalid.com');
 // → "invalid.com" must be a public domain suffix
+
+v::publicDomainSuffix()->assert('blogspot.com');
+// Validation passes successfully
 ```
 
 This validator will not match top level domains such as `tk`.

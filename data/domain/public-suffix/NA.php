@@ -2,10 +2,14 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'ALT.NA',
-    'CO.NA',
-    'COM.NA',
-    'GOV.NA',
-    'NET.NA',
-    'ORG.NA',
+    'exceptions' => [],
+    'rules' => [
+        'ALT.NA',
+        'CO.NA',
+        'COM.NA',
+        'GOV.NA',
+        'NET.NA',
+        'ORG.NA',
+    ],
+    'wildcards' => [],
 ];

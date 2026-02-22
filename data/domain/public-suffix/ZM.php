@@ -2,15 +2,19 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'AC.ZM',
-    'BIZ.ZM',
-    'CO.ZM',
-    'COM.ZM',
-    'EDU.ZM',
-    'GOV.ZM',
-    'INFO.ZM',
-    'MIL.ZM',
-    'NET.ZM',
-    'ORG.ZM',
-    'SCH.ZM',
+    'exceptions' => [],
+    'rules' => [
+        'AC.ZM',
+        'BIZ.ZM',
+        'CO.ZM',
+        'COM.ZM',
+        'EDU.ZM',
+        'GOV.ZM',
+        'INFO.ZM',
+        'MIL.ZM',
+        'NET.ZM',
+        'ORG.ZM',
+        'SCH.ZM',
+    ],
+    'wildcards' => [],
 ];

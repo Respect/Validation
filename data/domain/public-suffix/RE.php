@@ -2,6 +2,12 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'ASSO.RE',
-    'COM.RE',
+    'exceptions' => [],
+    'rules' => [
+        'ASSO.RE',
+        'CAN.RE',
+        'COM.RE',
+        'NETLIB.RE',
+    ],
+    'wildcards' => [],
 ];

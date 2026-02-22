@@ -2,8 +2,12 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'COM.VU',
-    'EDU.VU',
-    'NET.VU',
-    'ORG.VU',
+    'exceptions' => [],
+    'rules' => [
+        'COM.VU',
+        'EDU.VU',
+        'NET.VU',
+        'ORG.VU',
+    ],
+    'wildcards' => [],
 ];

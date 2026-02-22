@@ -29,12 +29,12 @@ use function idn_to_ascii;
 use function is_dir;
 use function mb_strtoupper;
 use function mkdir;
-use function preg_match;
 use function rmdir;
 use function sort;
 use function sprintf;
-use function str_replace;
 use function str_starts_with;
+use function strrpos;
+use function substr;
 use function trim;
 use function unlink;
 
@@ -108,12 +108,13 @@ final class UpdateDomainSuffixesCommand extends Command
             }
 
             $punycodedTld = idn_to_ascii($tld, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46) ?: $tld;
+            $filenameTld = mb_strtoupper($punycodedTld, 'UTF-8');
 
             $this->dataSaver->save(
                 $suffixList,
                 '2007–22 Mozilla Foundation',
                 'MPL-2.0-no-copyleft-exception',
-                sprintf('domain/public-suffix/%s.php', $punycodedTld),
+                sprintf('domain/public-suffix/%s.php', $filenameTld),
             );
 
             $progressBar->advance();
@@ -127,64 +128,66 @@ final class UpdateDomainSuffixesCommand extends Command
         return Command::SUCCESS;
     }
 
-    /** @return array<string, array<string>> */
+    /** @return array<string, array{rules: array<string>, wildcards: array<string>, exceptions: array<string>}> */
     private function parseTldsList(string $content): array
     {
         $lines = explode("\n", $content);
         $suffixes = [];
-        $icannOnly = true;
 
         foreach ($lines as $line) {
             $line = trim($line);
 
-            // Check if we've reached the end of ICANN domains
-            if ($line === '// ===END ICANN DOMAINS===') {
-                $icannOnly = false;
-            }
-
-            // Skip comments and empty lines
             if ($line === '' || str_starts_with($line, '//')) {
                 continue;
             }
 
-            // Process the suffix
-            $suffix = $line;
+            $type = 'rules';
+            if (str_starts_with($line, '*.')) {
+                $type = 'wildcards';
+                $line = substr($line, 2);
+            } elseif (str_starts_with($line, '!')) {
+                $type = 'exceptions';
+                $line = substr($line, 1);
+            }
 
-            // Remove wildcards and exceptions
-            $suffix = str_replace('*.', '', $suffix);
-            $suffix = str_replace('!', '', $suffix);
-
-            // Convert to uppercase (using multibyte for international characters)
-            $suffix = mb_strtoupper($suffix, 'UTF-8');
-
-            // Split into TLD and prefix
-            if (!preg_match('/^([^.]+)$|^(.+)\.([^.]+)$/', $suffix, $matches)) {
+            $suffix = $this->normalizeRule($line);
+            $separator = strrpos($suffix, '.');
+            if ($separator === false && $type !== 'wildcards') {
                 continue;
             }
 
-            if (isset($matches[3])) {
-                // Has a prefix
-                $tld = $matches[3];
-                $prefix = $matches[2];
-
-                if (!isset($suffixes[$tld])) {
-                    $suffixes[$tld] = [];
-                }
-
-                // Only add ICANN domains
-                if ($icannOnly) {
-                    $suffixes[$tld][] = $prefix . '.' . $tld;
-                }
+            if ($separator === false) {
+                $tld = $suffix;
             } else {
-                // Just a TLD
-                $tld = $matches[1];
-                if (!isset($suffixes[$tld])) {
-                    $suffixes[$tld] = [];
-                }
+                $tld = substr($suffix, $separator + 1);
+            }
+
+            if (!isset($suffixes[$tld])) {
+                $suffixes[$tld] = [
+                    'rules' => [],
+                    'wildcards' => [],
+                    'exceptions' => [],
+                ];
+            }
+
+            $suffixes[$tld][$type][] = $suffix;
+        }
+
+        foreach ($suffixes as &$rulesByType) {
+            foreach ($rulesByType as &$rules) {
+                $rules = array_unique($rules);
+                sort($rules);
             }
         }
 
         return $suffixes;
+    }
+
+    private function normalizeRule(string $rule): string
+    {
+        $asciiRule = idn_to_ascii($rule, IDNA_DEFAULT, INTL_IDNA_VARIANT_UTS46) ?: $rule;
+
+        return mb_strtoupper($asciiRule, 'UTF-8');
     }
 
     private function removeDirectory(string $directory): void

@@ -2,15 +2,22 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'ARTS.RO',
-    'COM.RO',
-    'FIRM.RO',
-    'INFO.RO',
-    'NOM.RO',
-    'NT.RO',
-    'ORG.RO',
-    'REC.RO',
-    'STORE.RO',
-    'TM.RO',
-    'WWW.RO',
+    'exceptions' => [],
+    'rules' => [
+        'ARTS.RO',
+        'BARSY.RO',
+        'CO.RO',
+        'COM.RO',
+        'FIRM.RO',
+        'INFO.RO',
+        'NOM.RO',
+        'NT.RO',
+        'ORG.RO',
+        'REC.RO',
+        'SHOP.RO',
+        'STORE.RO',
+        'TM.RO',
+        'WWW.RO',
+    ],
+    'wildcards' => [],
 ];

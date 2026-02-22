@@ -2,5 +2,19 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'GOV.CX',
+    'exceptions' => [],
+    'rules' => [
+        'ASSESSMENTS.CX',
+        'ATH.CX',
+        'CALCULATORS.CX',
+        'CLOUDNS.CX',
+        'FUNNELS.CX',
+        'GOV.CX',
+        'INFO.CX',
+        'PAYNOW.CX',
+        'QUIZZES.CX',
+        'RESEARCHED.CX',
+        'TESTS.CX',
+    ],
+    'wildcards' => [],
 ];

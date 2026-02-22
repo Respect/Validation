@@ -2,5 +2,18 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'ALAND.FI',
+    'exceptions' => [],
+    'rules' => [
+        '123KOTISIVU.FI',
+        'ALAND.FI',
+        'DEMO.DATACENTER.FI',
+        'DY.FI',
+        'FI.CLOUDPLATFORM.FI',
+        'IKI.FI',
+        'KAPSI.FI',
+        'MYSPREADSHOP.FI',
+        'PAAS.DATACENTER.FI',
+        'XN--HKKINEN-5WA.FI',
+    ],
+    'wildcards' => [],
 ];
