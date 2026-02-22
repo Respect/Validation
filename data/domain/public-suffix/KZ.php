@@ -2,10 +2,15 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'COM.KZ',
-    'EDU.KZ',
-    'GOV.KZ',
-    'MIL.KZ',
-    'NET.KZ',
-    'ORG.KZ',
+    'exceptions' => [],
+    'rules' => [
+        'COM.KZ',
+        'EDU.KZ',
+        'GOV.KZ',
+        'JCLOUD.KZ',
+        'MIL.KZ',
+        'NET.KZ',
+        'ORG.KZ',
+    ],
+    'wildcards' => [],
 ];

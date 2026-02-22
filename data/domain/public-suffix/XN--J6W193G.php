@@ -2,10 +2,14 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    '個人.香港',
-    '公司.香港',
-    '政府.香港',
-    '教育.香港',
-    '組織.香港',
-    '網絡.香港',
+    'exceptions' => [],
+    'rules' => [
+        'XN--55QX5D.XN--J6W193G',
+        'XN--GMQW5A.XN--J6W193G',
+        'XN--MXTQ1M.XN--J6W193G',
+        'XN--OD0ALG.XN--J6W193G',
+        'XN--UC0ATV.XN--J6W193G',
+        'XN--WCVS22D.XN--J6W193G',
+    ],
+    'wildcards' => [],
 ];

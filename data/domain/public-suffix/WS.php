@@ -2,9 +2,18 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'COM.WS',
-    'EDU.WS',
-    'GOV.WS',
-    'NET.WS',
-    'ORG.WS',
+    'exceptions' => [],
+    'rules' => [
+        'CLOUD66.WS',
+        'COM.WS',
+        'DYNDNS.WS',
+        'EDU.WS',
+        'GOV.WS',
+        'MYPETS.WS',
+        'NET.WS',
+        'ORG.WS',
+    ],
+    'wildcards' => [
+        'ADVISOR.WS',
+    ],
 ];

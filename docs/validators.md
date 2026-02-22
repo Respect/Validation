@@ -337,7 +337,7 @@ In this page you will find a list of validators by their category.
 [Property]: validators/Property.md "Validates an object property against a given validator."
 [PropertyExists]: validators/PropertyExists.md "Validates if an object property exists."
 [PropertyOptional]: validators/PropertyOptional.md "Validates an object property against a given validator only if the property exists."
-[PublicDomainSuffix]: validators/PublicDomainSuffix.md "Validates whether the input is a public ICANN domain suffix."
+[PublicDomainSuffix]: validators/PublicDomainSuffix.md "Validates whether the input is a public domain suffix from the Public Suffix List, including wildcard, exception, ICANN and private section rules."
 [Punct]: validators/Punct.md "Validates whether the input composed by only punctuation characters."
 [Readable]: validators/Readable.md "Validates if the given data is a file exists and is readable."
 [Regex]: validators/Regex.md "Validates whether the input matches a defined regular expression."

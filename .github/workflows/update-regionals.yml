@@ -3,7 +3,8 @@ name: Update Regional Information
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 0 * * *'
+    - cron: '0 0 * * 1' # weekly on mondays at 00:00
+    - cron: '0 0 * * 4' # weekly on thursdays at 00:00
 
 permissions:
   contents: write
@@ -16,13 +17,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install xmlstarlet
-        run: sudo apt install xmlstarlet idn2
-
       - name: Checkout
         uses: actions/checkout@v6
         with:
           ref: ${{ secrets.LAST_MINOR_VERSION }}
+
+      - name: Setup environment
+        uses: ./.github/actions/setup-action
 
       - name: Update top level domains
         run: bin/console update:domain-toplevel

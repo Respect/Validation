@@ -2,8 +2,13 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'CO.CL',
-    'GOB.CL',
-    'GOV.CL',
-    'MIL.CL',
+    'exceptions' => [],
+    'rules' => [
+        'CLOUDNS.CL',
+        'CO.CL',
+        'GOB.CL',
+        'GOV.CL',
+        'MIL.CL',
+    ],
+    'wildcards' => [],
 ];

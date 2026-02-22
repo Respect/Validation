@@ -2,7 +2,12 @@
 // SPDX-FileCopyrightText: 2007–22 Mozilla Foundation
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
-    'EDU.MN',
-    'GOV.MN',
-    'ORG.MN',
+    'exceptions' => [],
+    'rules' => [
+        'EDU.MN',
+        'GOV.MN',
+        'NYC.MN',
+        'ORG.MN',
+    ],
+    'wildcards' => [],
 ];
