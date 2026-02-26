@@ -25,6 +25,7 @@ return [
         'LOGINTO.ME',
         'LOHMUS.ME',
         'MCDIR.ME',
+        'MYBOX.ME',
         'MYDS.ME',
         'NET.ME',
         'NOHOST.ME',
