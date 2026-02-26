@@ -4,10 +4,7 @@
 return [
     'exceptions' => [],
     'rules' => [
-        'INTOUCH.EMAIL',
-        'ON.CRISP.EMAIL',
-        'P.TAWK.EMAIL',
-        'P.TAWKTO.EMAIL',
+        'MYBOX.COMPANY',
     ],
     'wildcards' => [],
 ];

@@ -9,6 +9,7 @@ return [
         'DEUXFLEURS.PAGE',
         'HEYFLOW.PAGE',
         'HLX.PAGE',
+        'MYBOX.PAGE',
         'PDNS.PAGE',
         'PLESK.PAGE',
         'PRVCY.PAGE',
