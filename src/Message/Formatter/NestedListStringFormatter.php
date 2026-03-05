@@ -17,7 +17,6 @@ use Respect\Validation\Name;
 use Respect\Validation\Result;
 
 use function array_filter;
-use function array_reduce;
 use function count;
 use function rtrim;
 use function sprintf;
@@ -89,13 +88,14 @@ final readonly class NestedListStringFormatter implements StringFormatter
         }
 
         // The visibility of a result then will depend on whether any of its siblings is visible
-        return array_reduce(
-            $siblings,
-            fn(bool $carry, Result $currentSibling) => $carry || $this->isVisible(
-                $currentSibling,
-                ...array_filter($siblings, static fn(Result $sibling) => $sibling !== $currentSibling),
-            ),
-            true,
-        );
+        foreach ($siblings as $key => $currentSibling) {
+            $otherSiblings = $siblings;
+            unset($otherSiblings[$key]);
+            if ($this->isVisible($currentSibling, ...$otherSiblings)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
