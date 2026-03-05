@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Dev\CodeGen\Attributes\Mixin;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -23,6 +24,7 @@ use function is_int;
 use function is_numeric;
 use function preg_match;
 
+#[Mixin(include: ['length', 'max', 'min'])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be a factor of {{dividend|raw}}',

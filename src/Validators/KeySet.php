@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Dev\CodeGen\Attributes\Mixin;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
@@ -32,6 +33,7 @@ use function array_map;
 use function array_merge;
 use function array_slice;
 
+#[Mixin(exclude: ['all', 'key', 'property'])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} validation failed',

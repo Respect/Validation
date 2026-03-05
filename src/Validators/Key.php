@@ -16,11 +16,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Dev\CodeGen\Attributes\Mixin;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators\Core\KeyRelated;
 
+#[Mixin(prefix: 'key', prefixParameter: true, exclude: ['all', 'key', 'property'])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 final readonly class Key implements KeyRelated
 {
