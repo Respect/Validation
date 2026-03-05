@@ -9,6 +9,7 @@ return [
         'CLOUD.INTERHOSTSOLUTIONS.BE',
         'CLOUDNS.BE',
         'EZPROXY.KULEUVEN.BE',
+        'MY.BE',
         'MYSPREADSHOP.BE',
         'WEBHOSTING.BE',
     ],
