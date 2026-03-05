@@ -15,9 +15,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Dev\CodeGen\Attributes\Mixin;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Comparison;
 
+#[Mixin(include: ['length', 'max', 'min'])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be less than {{compareTo}}',

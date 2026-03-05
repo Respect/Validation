@@ -18,9 +18,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Dev\CodeGen\Attributes\Mixin;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 
+#[Mixin(prefix: 'not', exclude: ['not'])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 final readonly class Not implements Validator
 {

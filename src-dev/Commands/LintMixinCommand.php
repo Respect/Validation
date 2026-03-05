@@ -11,36 +11,12 @@ declare(strict_types=1);
 
 namespace Respect\Dev\Commands;
 
-use DirectoryIterator;
-use Nette\PhpGenerator\InterfaceType;
-use Nette\PhpGenerator\Method;
-use Nette\PhpGenerator\PhpNamespace;
-use Nette\PhpGenerator\Printer;
-use ReflectionClass;
-use ReflectionNamedType;
-use ReflectionParameter;
-use ReflectionUnionType;
+use Respect\Dev\CodeGen\InterfaceConfig;
+use Respect\Dev\CodeGen\MethodBuilder;
+use Respect\Dev\CodeGen\MixinGenerator;
 use Respect\Dev\Differ\ConsoleDiffer;
 use Respect\Dev\Differ\Item;
-use Respect\Validation\Mixins\AllBuilder;
-use Respect\Validation\Mixins\AllChain;
 use Respect\Validation\Mixins\Chain;
-use Respect\Validation\Mixins\KeyBuilder;
-use Respect\Validation\Mixins\KeyChain;
-use Respect\Validation\Mixins\LengthBuilder;
-use Respect\Validation\Mixins\LengthChain;
-use Respect\Validation\Mixins\MaxBuilder;
-use Respect\Validation\Mixins\MaxChain;
-use Respect\Validation\Mixins\MinBuilder;
-use Respect\Validation\Mixins\MinChain;
-use Respect\Validation\Mixins\NotBuilder;
-use Respect\Validation\Mixins\NotChain;
-use Respect\Validation\Mixins\NullOrBuilder;
-use Respect\Validation\Mixins\NullOrChain;
-use Respect\Validation\Mixins\PropertyBuilder;
-use Respect\Validation\Mixins\PropertyChain;
-use Respect\Validation\Mixins\UndefOrBuilder;
-use Respect\Validation\Mixins\UndefOrChain;
 use Respect\Validation\Validator;
 use Respect\Validation\ValidatorBuilder;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -48,27 +24,13 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use function array_keys;
-use function array_merge;
-use function array_values;
 use function count;
 use function dirname;
 use function file_get_contents;
 use function file_put_contents;
-use function implode;
-use function in_array;
-use function is_object;
-use function ksort;
-use function lcfirst;
-use function preg_match;
-use function preg_replace;
+use function is_file;
+use function is_readable;
 use function sprintf;
-use function str_contains;
-use function str_starts_with;
-use function trim;
-use function ucfirst;
-
-use const PHP_EOL;
 
 #[AsCommand(
     name: 'lint:mixin',
@@ -76,46 +38,6 @@ use const PHP_EOL;
 )]
 final class LintMixinCommand extends Command
 {
-    private const array NUMBER_RELATED_VALIDATORS = [
-        'Between',
-        'BetweenExclusive',
-        'Equals',
-        'Equivalent',
-        'Even',
-        'Factor',
-        'Fibonacci',
-        'Finite',
-        'GreaterThan',
-        'Identical',
-        'In',
-        'Infinite',
-        'LessThan',
-        'LessThanOrEqual',
-        'GreaterThanOrEqual',
-        'Multiple',
-        'Odd',
-        'PerfectSquare',
-        'Positive',
-        'PrimeNumber',
-    ];
-
-    private const array STRUCTURE_RELATED_VALIDATORS = [
-        'Exists',
-        'Key',
-        'KeyExists',
-        'KeyOptional',
-        'KeySet',
-        'NullOr',
-        'UndefOr',
-        'Property',
-        'PropertyExists',
-        'PropertyOptional',
-        'Attributes',
-        'Formatted',
-        'Templated',
-        'Named',
-    ];
-
     public function __construct(
         private readonly ConsoleDiffer $differ,
     ) {
@@ -134,102 +56,51 @@ final class LintMixinCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        // Scan validators directory
         $srcDir = dirname(__DIR__, 2) . '/src';
-        $validatorsDir = $srcDir . '/Validators';
-        $validators = $this->scanValidators($validatorsDir);
 
-        // Define mixins
-        $mixins = [
-            ['All', 'all', [], array_merge(['All'], self::STRUCTURE_RELATED_VALIDATORS)],
-            ['Key', 'key', [], self::STRUCTURE_RELATED_VALIDATORS],
-            ['Length', 'length', self::NUMBER_RELATED_VALIDATORS, []],
-            ['Max', 'max', self::NUMBER_RELATED_VALIDATORS, []],
-            ['Min', 'min', self::NUMBER_RELATED_VALIDATORS, []],
-            ['Not', 'not', [], ['Not', 'NullOr', 'UndefOr', 'Attributes', 'Templated', 'Named']],
-            ['NullOr', 'nullOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Templated', 'Named']],
-            ['Property', 'property', [], self::STRUCTURE_RELATED_VALIDATORS],
-            ['UndefOr', 'undefOr', [], ['NullOr', 'Blank', 'Undef', 'UndefOr', 'Attributes', 'Templated', 'Named']],
-            [null, null, [], []],
-        ];
+        $generator = new MixinGenerator(
+            sourceDir: $srcDir . '/Validators',
+            sourceNamespace: 'Respect\\Validation\\Validators',
+            outputDir: $srcDir . '/Mixins',
+            outputNamespace: 'Respect\\Validation\\Mixins',
+            methodBuilder: new MethodBuilder(
+                excludedTypePrefixes: ['Sokil', 'Egulias'],
+                excludedTypeNames: ['finfo'],
+            ),
+            interfaces: [
+                new InterfaceConfig(
+                    suffix: 'Builder',
+                    returnType: Chain::class,
+                    static: true,
+                ),
+                new InterfaceConfig(
+                    suffix: 'Chain',
+                    returnType: Chain::class,
+                    rootExtends: [Validator::class],
+                    rootComment: '@mixin ValidatorBuilder',
+                    rootUses: [ValidatorBuilder::class],
+                ),
+            ],
+        );
+
+        $files = $generator->generate();
 
         $updatableFiles = [];
-
-        foreach ($mixins as [$name, $prefix, $allowList, $denyList]) {
-            $chainedNamespace = new PhpNamespace('Respect\\Validation\\Mixins');
-            $chainedInterface = $chainedNamespace->addInterface($name . 'Chain');
-
-            $staticNamespace = new PhpNamespace('Respect\\Validation\\Mixins');
-            $staticInterface = $staticNamespace->addInterface($name . 'Builder');
-
-            if ($name === null) {
-                $chainedInterface->addExtend(Validator::class);
-                $chainedInterface->addExtend(AllChain::class);
-                $chainedInterface->addExtend(KeyChain::class);
-                $chainedInterface->addExtend(LengthChain::class);
-                $chainedInterface->addExtend(MaxChain::class);
-                $chainedInterface->addExtend(MinChain::class);
-                $chainedInterface->addExtend(NotChain::class);
-                $chainedInterface->addExtend(NullOrChain::class);
-                $chainedInterface->addExtend(PropertyChain::class);
-                $chainedInterface->addExtend(UndefOrChain::class);
-                $chainedInterface->addComment('@mixin ValidatorBuilder');
-                $chainedNamespace->addUse(ValidatorBuilder::class);
-
-                $staticInterface->addExtend(AllBuilder::class);
-                $staticInterface->addExtend(KeyBuilder::class);
-                $staticInterface->addExtend(LengthBuilder::class);
-                $staticInterface->addExtend(MaxBuilder::class);
-                $staticInterface->addExtend(MinBuilder::class);
-                $staticInterface->addExtend(NotBuilder::class);
-                $staticInterface->addExtend(NullOrBuilder::class);
-                $staticInterface->addExtend(PropertyBuilder::class);
-                $staticInterface->addExtend(UndefOrBuilder::class);
+        foreach ($files as $filename => $content) {
+            $existingContent = '';
+            if (is_file($filename) && is_readable($filename)) {
+                $existingContent = file_get_contents($filename) ?: '';
             }
 
-            foreach ($validators as $originalName => $reflection) {
-                $this->addMethodToInterface(
-                    $staticNamespace,
-                    $originalName,
-                    $staticInterface,
-                    $reflection,
-                    $prefix,
-                    $allowList,
-                    $denyList,
-                );
-                $this->addMethodToInterface(
-                    $chainedNamespace,
-                    $originalName,
-                    $chainedInterface,
-                    $reflection,
-                    $prefix,
-                    $allowList,
-                    $denyList,
-                );
+            if ($content === $existingContent) {
+                continue;
             }
 
-            $printer = new Printer();
-            $printer->wrapLength = 300;
-
-            foreach (
-                [
-                    [$staticNamespace, $staticInterface],
-                    [$chainedNamespace, $chainedInterface],
-                ] as [$namespace, $interface]
-            ) {
-                $filename = sprintf('%s/Mixins/%s.php', $srcDir, $interface->getName());
-                $existingContent = file_get_contents($filename);
-                $formattedContent = $this->getFormattedContent($printer->printNamespace($namespace), $existingContent);
-                if ($formattedContent === $existingContent) {
-                    continue;
-                }
-
-                $updatableFiles[$filename] = $formattedContent;
-                $output->writeln($this->differ->diff(
-                    new Item($filename, $existingContent),
-                    new Item($filename, $formattedContent),
-                ));
-            }
+            $updatableFiles[$filename] = $content;
+            $output->writeln($this->differ->diff(
+                new Item($filename, $existingContent),
+                new Item($filename, $content),
+            ));
         }
 
         if ($updatableFiles === []) {
@@ -247,168 +118,5 @@ final class LintMixinCommand extends Command
         }
 
         return Command::SUCCESS;
-    }
-
-    /** @return array<string, ReflectionClass> */
-    private function scanValidators(string $directory): array
-    {
-        $names = [];
-
-        foreach (new DirectoryIterator($directory) as $file) {
-            if (!$file->isFile()) {
-                continue;
-            }
-
-            $className = 'Respect\\Validation\\Validators\\' . $file->getBasename('.php');
-            $reflection = new ReflectionClass($className);
-
-            if ($reflection->isAbstract()) {
-                continue;
-            }
-
-            $names[$reflection->getShortName()] = $reflection;
-        }
-
-        ksort($names);
-
-        return $names;
-    }
-
-    /**
-     * @param array<string> $allowList
-     * @param array<string> $denyList
-     */
-    private function addMethodToInterface(
-        PhpNamespace $namespace,
-        string $originalName,
-        InterfaceType $interfaceType,
-        ReflectionClass $reflection,
-        string|null $prefix,
-        array $allowList,
-        array $denyList,
-    ): void {
-        if ($allowList !== [] && !in_array($reflection->getShortName(), $allowList, true)) {
-            return;
-        }
-
-        if ($denyList !== [] && in_array($reflection->getShortName(), $denyList, true)) {
-            return;
-        }
-
-        $name = $prefix ? $prefix . ucfirst($originalName) : lcfirst($originalName);
-        $method = $interfaceType->addMethod($name)->setPublic()->setReturnType(Chain::class);
-
-        if (str_contains($interfaceType->getName(), 'Builder')) {
-            $method->setStatic();
-        }
-
-        if ($prefix === 'key') {
-            $method->addParameter('key')->setType('int|string');
-        }
-
-        if ($prefix === 'property') {
-            $method->addParameter('propertyName')->setType('string');
-        }
-
-        $reflectionConstructor = $reflection->getConstructor();
-        if ($reflectionConstructor === null) {
-            return;
-        }
-
-        $comment = $reflectionConstructor->getDocComment();
-        if ($comment) {
-            $method->addComment(preg_replace('@(/\*\* *| +\* +| +\*/)@', '', $comment));
-        }
-
-        foreach ($reflectionConstructor->getParameters() as $reflectionParameter) {
-            $this->addParameterToMethod($method, $reflectionParameter, $namespace);
-        }
-    }
-
-    private function addParameterToMethod(
-        Method $method,
-        ReflectionParameter $reflectionParameter,
-        PhpNamespace $namespace,
-    ): void {
-        if ($reflectionParameter->isVariadic()) {
-            $method->setVariadic();
-        }
-
-        $type = $reflectionParameter->getType();
-        $types = [];
-
-        if ($type instanceof ReflectionUnionType) {
-            foreach ($type->getTypes() as $subType) {
-                $types[] = $subType->getName();
-                if ($subType->isBuiltin()) {
-                    continue;
-                }
-
-                $namespace->addUse($subType->getName());
-            }
-        } elseif ($type instanceof ReflectionNamedType) {
-            $types[] = $type->getName();
-            if (
-                str_starts_with($type->getName(), 'Sokil')
-                || str_starts_with($type->getName(), 'Egulias')
-                || $type->getName() === 'finfo'
-            ) {
-                return;
-            }
-
-            if (!$type->isBuiltin()) {
-                $namespace->addUse($type->getName());
-            }
-        }
-
-        $parameter = $method->addParameter($reflectionParameter->getName());
-        $parameter->setType(implode('|', $types));
-
-        if (!$reflectionParameter->isDefaultValueAvailable()) {
-            $parameter->setNullable($reflectionParameter->isOptional());
-        }
-
-        if (count($types) > 1 || $reflectionParameter->isVariadic()) {
-            $parameter->setNullable(false);
-        }
-
-        if (!$reflectionParameter->isDefaultValueAvailable()) {
-            return;
-        }
-
-        $defaultValue = $reflectionParameter->getDefaultValue();
-        if (is_object($defaultValue)) {
-            $parameter->setDefaultValue(null);
-            $parameter->setNullable(true);
-
-            return;
-        }
-
-        $parameter->setDefaultValue($defaultValue);
-        $parameter->setNullable(false);
-    }
-
-    private function getFormattedContent(string $content, string $existingContent): string
-    {
-        preg_match('/^<\?php\s*\/\*[\s\S]*?\*\//', $existingContent, $matches);
-        $existingHeader = $matches[0] ?? '';
-
-        $replacements = [
-            '/\n\n\t(public|\/\*\*)/m' => PHP_EOL . '    $1',
-            '/\t/m' => '    ',
-            '/\?([a-zA-Z]+) \$/' => '$1|null $',
-            '/\/\*\*\n +\* (.+)\n +\*\//m' => '/** $1 */',
-        ];
-
-        return implode(PHP_EOL, [
-            trim($existingHeader) . PHP_EOL,
-            'declare(strict_types=1);',
-            '',
-            preg_replace(
-                array_keys($replacements),
-                array_values($replacements),
-                $content,
-            ),
-        ]);
     }
 }

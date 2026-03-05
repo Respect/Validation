@@ -15,12 +15,14 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Dev\CodeGen\Attributes\Mixin;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Comparison;
 
 use function is_scalar;
 use function mb_strtoupper;
 
+#[Mixin(include: ['length', 'max', 'min'])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be equivalent to {{compareTo}}',

@@ -17,11 +17,13 @@ use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionObject;
 use ReflectionProperty;
+use Respect\Dev\CodeGen\Attributes\Mixin;
 use Respect\Validation\Id;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators\Core\Reducer;
 
+#[Mixin(exclude: ['all', 'key', 'property', 'not', 'undefOr'])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 final class Attributes implements Validator
 {
