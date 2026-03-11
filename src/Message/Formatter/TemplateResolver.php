@@ -15,8 +15,6 @@ use Respect\Validation\Message\TemplateRegistry;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
 
-use function array_reduce;
-use function array_reverse;
 use function is_array;
 use function is_string;
 
@@ -28,24 +26,31 @@ final class TemplateResolver
     }
 
     /** @param array<string|int, mixed> $templates */
-    public function getGivenTemplate(Result $result, array $templates): string|null
+    public function getGivenTemplate(Result $result, array $templates, bool $isRoot = true): string|null
     {
         if ($result->hasCustomTemplate()) {
             return $result->template;
         }
 
+        $filtered = $templates;
+        $isAtCorrectScope = $isRoot;
+
         if ($result->path !== null) {
-            $templates = $this->filterByPath($result->path, $templates);
+            [$filtered, $isAtCorrectScope] = $this->filterByPath($result->path, $templates);
         }
 
-        foreach ([$result->path?->value, $result->name?->value, $result->id->value, '__root__'] as $key) {
-            if ($key === null || !isset($templates[$key])) {
+        foreach ([$result->path?->value, $result->name?->value, $result->id->value] as $key) {
+            if ($key === null || !isset($filtered[$key])) {
                 continue;
             }
 
-            if (is_string($templates[$key])) {
-                return $templates[$key];
+            if (is_string($filtered[$key])) {
+                return $filtered[$key];
             }
+        }
+
+        if ($isAtCorrectScope && isset($filtered['__root__']) && is_string($filtered['__root__'])) {
+            return $filtered['__root__'];
         }
 
         return null;
@@ -69,31 +74,22 @@ final class TemplateResolver
     }
 
     /**
-     * @param array<string|int> $nodes
-     *
-     * @return non-empty-array<string|int>
-     */
-    private function getNodes(Path $path, array $nodes = []): array
-    {
-        $nodes[] = $path->value;
-        if ($path->parent !== null) {
-            return $this->getNodes($path->parent, $nodes);
-        }
-
-        return $nodes;
-    }
-
-    /**
      * @param array<string|int, mixed> $templates
      *
-     * @return array<string|int, mixed>
+     * @return array{array<string|int, mixed>, bool}
      */
     private function filterByPath(Path $path, array $templates): array
     {
-        return array_reduce(
-            array_reverse($this->getNodes($path)),
-            static fn(array $carry, $node) => isset($carry[$node]) && is_array($carry[$node]) ? $carry[$node] : $carry,
-            $templates,
-        );
+        if ($path->parent !== null) {
+            [$templates, $fullyConsumed] = $this->filterByPath($path->parent, $templates);
+        } else {
+            $fullyConsumed = true;
+        }
+
+        if (isset($templates[$path->value]) && is_array($templates[$path->value])) {
+            return [$templates[$path->value], $fullyConsumed];
+        }
+
+        return [$templates, false];
     }
 }

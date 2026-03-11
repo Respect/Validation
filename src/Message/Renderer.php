@@ -16,5 +16,5 @@ use Respect\Validation\Result;
 interface Renderer
 {
     /** @param array<string|int, mixed> $templates */
-    public function render(Result $result, array $templates): string;
+    public function render(Result $result, array $templates, bool $isRoot = true): string;
 }

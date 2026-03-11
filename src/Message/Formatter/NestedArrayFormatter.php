@@ -28,10 +28,10 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
      *
      * @return array<string|int, mixed>
      */
-    public function format(Result $result, Renderer $renderer, array $templates): array
+    public function format(Result $result, Renderer $renderer, array $templates, bool $isRoot = true): array
     {
         if ($result->children === []) {
-            return [$result->path->value ?? $result->id->value => $renderer->render($result, $templates)];
+            return [$result->path->value ?? $result->id->value => $renderer->render($result, $templates, $isRoot)];
         }
 
         $hasStringKey = false;
@@ -57,7 +57,7 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
         }
 
         if (count($messages) > 1) {
-            return ['__root__' => $renderer->render($result, $templates)] + $messages;
+            return ['__root__' => $renderer->render($result, $templates, $isRoot)] + $messages;
         }
 
         return $messages;
@@ -85,12 +85,13 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
             $hasMultipleChildren && $child->name === $parent->name ? $child->withoutName() : $child,
             $renderer,
             $templates,
+            false,
         );
 
         $childMessage = count($formatted) === 1 ? current($formatted) : $formatted;
 
         if (is_array($childMessage) && count($childMessage) > 1 && !isset($childMessage['__root__'])) {
-            $childMessage = ['__root__' => $renderer->render($child, $templates)] + $childMessage;
+            $childMessage = ['__root__' => $renderer->render($child, $templates, false)] + $childMessage;
         }
 
         if (!$hasStringKey) {
@@ -147,7 +148,7 @@ final readonly class NestedArrayFormatter implements ArrayFormatter
         Renderer $renderer,
         array $templates,
     ): array {
-        $parentMessage = $messages['__root__'] ?? $renderer->render($parent, $templates);
+        $parentMessage = $messages['__root__'] ?? $renderer->render($parent, $templates, false);
 
         return ['__root__' => $parentMessage] + array_values($messages) + [count($messages) => $childMessage];
     }

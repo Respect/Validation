@@ -17,7 +17,7 @@ use Respect\Validation\Result;
 final class TestingMessageRenderer implements Renderer
 {
     /** @param array<string|int, mixed> $templates */
-    public function render(Result $result, array $templates): string
+    public function render(Result $result, array $templates, bool $isRoot = true): string
     {
         return $result->template;
     }

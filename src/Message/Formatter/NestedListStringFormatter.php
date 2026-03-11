@@ -29,7 +29,7 @@ final readonly class NestedListStringFormatter implements StringFormatter
     /** @param array<string|int, mixed> $templates */
     public function format(Result $result, Renderer $renderer, array $templates): string
     {
-        return $this->formatRecursively($result, $renderer, $templates, 0, null);
+        return $this->formatRecursively($result, $renderer, $templates, 0, null, true);
     }
 
     /** @param array<string|int, mixed> $templates */
@@ -39,6 +39,7 @@ final readonly class NestedListStringFormatter implements StringFormatter
         array $templates,
         int $depth,
         Name|null $lastVisibleName,
+        bool $isRoot,
         Result ...$siblings,
     ): string {
         $formatted = '';
@@ -50,6 +51,7 @@ final readonly class NestedListStringFormatter implements StringFormatter
                 $renderer->render(
                     $lastVisibleName === $result->name ? $result->withoutName() : $result,
                     $templates,
+                    $isRoot,
                 ),
             );
             $lastVisibleName ??= $result->name;
@@ -63,6 +65,7 @@ final readonly class NestedListStringFormatter implements StringFormatter
                 $templates,
                 $depth,
                 $lastVisibleName,
+                false,
                 ...array_filter($result->children, static fn(Result $sibling) => $sibling !== $child),
             );
             $formatted .= PHP_EOL;
@@ -77,21 +80,12 @@ final readonly class NestedListStringFormatter implements StringFormatter
             return true;
         }
 
-        // Parents of an only child are not visible by default
         if (count($result->children) !== 1) {
             return true;
         }
 
-        // Only children are always visible
-        if (count($siblings) === 0) {
-            return false;
-        }
-
-        // The visibility of a result then will depend on whether any of its siblings is visible
-        foreach ($siblings as $key => $currentSibling) {
-            $otherSiblings = $siblings;
-            unset($otherSiblings[$key]);
-            if ($this->isVisible($currentSibling, ...$otherSiblings)) {
+        foreach ($siblings as $sibling) {
+            if ($sibling->hasCustomTemplate() || count($sibling->children) !== 1) {
                 return true;
             }
         }

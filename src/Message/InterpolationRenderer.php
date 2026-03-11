@@ -26,21 +26,20 @@ final readonly class InterpolationRenderer implements Renderer
     }
 
     /** @param array<string|int, mixed> $templates */
-    public function render(Result $result, array $templates): string
+    public function render(Result $result, array $templates, bool $isRoot = true): string
     {
         $parameters = ['path' => $result->path, 'input' => $result->input, 'subject' => $result];
         $parameters += $result->parameters;
 
-        $givenTemplate = $this->templateResolver->getGivenTemplate($result, $templates);
-        $ruleTemplate = $this->templateResolver->getValidatorTemplate($result);
+        $givenTemplate = $this->templateResolver->getGivenTemplate($result, $templates, $isRoot);
 
         $rendered = $this->formatter->formatUsing(
-            $this->translator->trans($givenTemplate ?? $ruleTemplate),
+            $this->translator->trans($givenTemplate ?? $this->templateResolver->getValidatorTemplate($result)),
             $parameters,
         );
 
         if (!$result->hasCustomTemplate() && $givenTemplate === null && $result->adjacent !== null) {
-            $rendered .= ' ' . $this->render($result->adjacent, $templates);
+            $rendered .= ' ' . $this->render($result->adjacent, $templates, false);
         }
 
         return $rendered;
