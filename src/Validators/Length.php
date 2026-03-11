@@ -20,7 +20,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Countable as PhpCountable;
-use Respect\Dev\CodeGen\Attributes\Mixin;
+use Respect\Dev\CodeGen\FluentBuilder\Mixin;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;

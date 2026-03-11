@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Respect\Dev\CodeGen;
+namespace Respect\Dev\CodeGen\FluentBuilder;
 
 use Nette\PhpGenerator\Method;
 use Nette\PhpGenerator\PhpNamespace;
@@ -41,13 +41,13 @@ final class MethodBuilder
 
     public function build(
         PhpNamespace $namespace,
-        ReflectionClass $validatorReflection,
+        ReflectionClass $nodeReflection,
         string $returnType,
         string|null $prefix = null,
         bool $static = false,
         ReflectionParameter|null $prefixParameter = null,
     ): Method {
-        $originalName = $validatorReflection->getShortName();
+        $originalName = $nodeReflection->getShortName();
         $name = $prefix ? $prefix . ucfirst($originalName) : lcfirst($originalName);
 
         $method = new Method($name);
@@ -61,7 +61,7 @@ final class MethodBuilder
             $this->addPrefixParameter($method, $prefixParameter);
         }
 
-        $constructor = $validatorReflection->getConstructor();
+        $constructor = $nodeReflection->getConstructor();
         if ($constructor === null) {
             return $method;
         }

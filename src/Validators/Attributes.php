@@ -17,7 +17,7 @@ use ReflectionAttribute;
 use ReflectionClass;
 use ReflectionObject;
 use ReflectionProperty;
-use Respect\Dev\CodeGen\Attributes\Mixin;
+use Respect\Dev\CodeGen\FluentBuilder\Mixin;
 use Respect\Validation\Id;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;

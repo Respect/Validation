@@ -14,7 +14,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use ReflectionClass;
 use ReflectionObject;
-use Respect\Dev\CodeGen\Attributes\Mixin;
+use Respect\Dev\CodeGen\FluentBuilder\Mixin;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
 use Respect\Validation\Result;

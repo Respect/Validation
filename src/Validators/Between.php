@@ -15,7 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Dev\CodeGen\Attributes\Mixin;
+use Respect\Dev\CodeGen\FluentBuilder\Mixin;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\CanCompareValues;
 use Respect\Validation\Message\Template;

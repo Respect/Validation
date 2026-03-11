@@ -27,7 +27,7 @@ final class OutputFormatter
         $existingHeader = $matches[0] ?? '';
 
         $replacements = [
-            '/\n\n\t(public|\/\*\*)/m' => PHP_EOL . '    $1',
+            '/\n\n\t(public|private|\/\*\*)/m' => PHP_EOL . '    $1',
             '/\t/m' => '    ',
             '/\?([a-zA-Z]+) \$/' => '$1|null $',
             '/\/\*\*\n +\* (.+)\n +\*\//m' => '/** $1 */',
