@@ -126,7 +126,7 @@ test('findByPath with nested wildcards', function (): void {
 
     $firstMatch = $result->findByPath('groups.*.*');
 
-    expect($firstMatch?->getMessage())->toBe('`.groups.items.1` must be a string');
+    expect($firstMatch?->getMessage())->toBe('`.groups.0.items.1` must be a string');
 });
 
 test('findByPath with wildcard returns null when no matches', function (): void {
