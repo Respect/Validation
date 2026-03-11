@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Respect\Dev\CodeGen\Attributes;
+namespace Respect\Dev\CodeGen\FluentBuilder;
 
 use Attribute;
 

@@ -11,9 +11,11 @@ declare(strict_types=1);
 
 namespace Respect\Dev\Commands;
 
+use Respect\Dev\CodeGen\Config;
+use Respect\Dev\CodeGen\FluentBuilder\MethodBuilder;
+use Respect\Dev\CodeGen\FluentBuilder\MixinGenerator;
+use Respect\Dev\CodeGen\FluentBuilder\PrefixMapGenerator;
 use Respect\Dev\CodeGen\InterfaceConfig;
-use Respect\Dev\CodeGen\MethodBuilder;
-use Respect\Dev\CodeGen\MixinGenerator;
 use Respect\Dev\Differ\ConsoleDiffer;
 use Respect\Dev\Differ\Item;
 use Respect\Validation\Mixins\Chain;
@@ -58,11 +60,15 @@ final class LintMixinCommand extends Command
     {
         $srcDir = dirname(__DIR__, 2) . '/src';
 
-        $generator = new MixinGenerator(
+        $config = new Config(
             sourceDir: $srcDir . '/Validators',
             sourceNamespace: 'Respect\\Validation\\Validators',
             outputDir: $srcDir . '/Mixins',
             outputNamespace: 'Respect\\Validation\\Mixins',
+        );
+
+        $generator = new MixinGenerator(
+            config: $config,
             methodBuilder: new MethodBuilder(
                 excludedTypePrefixes: ['Sokil', 'Egulias'],
                 excludedTypeNames: ['finfo'],
@@ -83,7 +89,12 @@ final class LintMixinCommand extends Command
             ],
         );
 
-        $files = $generator->generate();
+        $prefixMapGenerator = new PrefixMapGenerator(
+            config: $config,
+            outputClassName: 'PrefixMap',
+        );
+
+        $files = $generator->generate() + $prefixMapGenerator->generate();
 
         $updatableFiles = [];
         foreach ($files as $filename => $content) {
