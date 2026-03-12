@@ -45,6 +45,8 @@ return [
         'NOOP.APP',
         'NYAT.APP',
         'ON-FLEEK.APP',
+        'ON.EXPO.APP',
+        'ON.STAGING.EXPO.APP',
         'ONDIGITALOCEAN.APP',
         'ONHERCULES.APP',
         'PREVIEW.CSB.APP',
