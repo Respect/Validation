@@ -18,7 +18,7 @@ use function sprintf;
 /**
  * Validates whether the input is a valid UUID.
  *
- * It also supports validation of specific versions 1, 3, 4 and 5.
+ * It also supports validation of specific versions 1 to 8.
  *
  * @author Dick van der Heiden <d.vanderheiden@inthere.nl>
  * @author Henrique Moody <henriquemoody@gmail.com>
@@ -46,7 +46,7 @@ final class Uuid extends AbstractRule
     public function __construct(?int $version = null)
     {
         if ($version !== null && !$this->isSupportedVersion($version)) {
-            throw new ComponentException(sprintf('Only versions 1, 3, 4, and 5 are supported: %d given', $version));
+            throw new ComponentException(sprintf('Only versions 1 to 8 are supported: %d given', $version));
         }
 
         $this->version = $version;
@@ -66,7 +66,7 @@ final class Uuid extends AbstractRule
 
     private function isSupportedVersion(int $version): bool
     {
-        return $version >= 1 && $version <= 5 && $version !== 2;
+        return $version >= 1 && $version <= 8;
     }
 
     private function getPattern(): string
@@ -75,6 +75,6 @@ final class Uuid extends AbstractRule
             return sprintf(self::PATTERN_FORMAT, $this->version);
         }
 
-        return sprintf(self::PATTERN_FORMAT, '[13-5]');
+        return sprintf(self::PATTERN_FORMAT, '[1-8]');
     }
 }
