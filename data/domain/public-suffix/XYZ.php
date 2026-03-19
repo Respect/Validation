@@ -6,6 +6,7 @@ return [
     'rules' => [
         'BOTDASH.XYZ',
         'CAFFEINE.XYZ',
+        'EXE.XYZ',
     ],
     'wildcards' => [
         'TELEBIT.XYZ',
