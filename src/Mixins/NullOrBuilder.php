@@ -179,11 +179,11 @@ interface NullOrBuilder
 
     public static function nullOrJson(): Chain;
 
-    public static function nullOrKey(string|int $key, Validator $validator): Chain;
+    public static function nullOrKey(int|string $key, Validator $validator): Chain;
 
-    public static function nullOrKeyExists(string|int $key): Chain;
+    public static function nullOrKeyExists(int|string $key): Chain;
 
-    public static function nullOrKeyOptional(string|int $key, Validator $validator): Chain;
+    public static function nullOrKeyOptional(int|string $key, Validator $validator): Chain;
 
     public static function nullOrKeySet(Validator $validator, Validator ...$validators): Chain;
 

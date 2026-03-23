@@ -13,7 +13,7 @@ namespace Respect\Validation\Validators;
 
 use ArrayAccess;
 use Attribute;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
@@ -23,7 +23,7 @@ use Respect\Validation\Validators\Core\KeyRelated;
 use function array_key_exists;
 use function is_array;
 
-#[Mixin(exclude: ['all', 'key', 'property'])]
+#[Composable(without: [All::class, Key::class, Property::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be present',

@@ -182,11 +182,11 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function json(): Chain;
 
-    public static function key(string|int $key, Validator $validator): Chain;
+    public static function key(int|string $key, Validator $validator): Chain;
 
-    public static function keyExists(string|int $key): Chain;
+    public static function keyExists(int|string $key): Chain;
 
-    public static function keyOptional(string|int $key, Validator $validator): Chain;
+    public static function keyOptional(int|string $key, Validator $validator): Chain;
 
     public static function keySet(Validator $validator, Validator ...$validators): Chain;
 

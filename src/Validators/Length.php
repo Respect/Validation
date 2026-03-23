@@ -20,7 +20,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Countable as PhpCountable;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -30,7 +30,7 @@ use function is_array;
 use function is_string;
 use function mb_strlen;
 
-#[Mixin(prefix: 'length', requireInclusion: true)]
+#[Composable(prefix: self::class, optIn: true)]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     'The length of',

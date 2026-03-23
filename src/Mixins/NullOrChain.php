@@ -179,11 +179,11 @@ interface NullOrChain
 
     public function nullOrJson(): Chain;
 
-    public function nullOrKey(string|int $key, Validator $validator): Chain;
+    public function nullOrKey(int|string $key, Validator $validator): Chain;
 
-    public function nullOrKeyExists(string|int $key): Chain;
+    public function nullOrKeyExists(int|string $key): Chain;
 
-    public function nullOrKeyOptional(string|int $key, Validator $validator): Chain;
+    public function nullOrKeyOptional(int|string $key, Validator $validator): Chain;
 
     public function nullOrKeySet(Validator $validator, Validator ...$validators): Chain;
 

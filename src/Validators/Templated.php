@@ -12,11 +12,11 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 
-#[Mixin(exclude: ['all', 'key', 'property', 'not', 'nullOr', 'undefOr'])]
+#[Composable(without: [All::class, Key::class, Property::class, Not::class, NullOr::class, UndefOr::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
 final readonly class Templated implements Validator
 {
