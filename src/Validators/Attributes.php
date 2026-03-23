@@ -20,7 +20,7 @@ use ReflectionNamedType;
 use ReflectionObject;
 use ReflectionProperty;
 use ReflectionUnionType;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Id;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -29,7 +29,7 @@ use Respect\Validation\Validators\Core\Reducer;
 
 use function spl_object_id;
 
-#[Mixin(exclude: ['all', 'key', 'property', 'not', 'undefOr'])]
+#[Composable(without: [All::class, Key::class, Property::class, Not::class, UndefOr::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must not contain a circular reference',

@@ -11,12 +11,12 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Composable;
 use Respect\StringFormatter\Formatter;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 
-#[Mixin(exclude: ['all', 'key', 'property'])]
+#[Composable(without: [All::class, Key::class, Property::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 final readonly class Formatted implements Validator
 {

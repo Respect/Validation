@@ -8,10 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Respect\Dev\CodeGen;
+namespace Respect\Validation\Test\Validators;
 
-interface CodeGenerator
+final class NonPublic
 {
-    /** @return array<string, string> filename => content */
-    public function generate(): array;
+    private function __construct()
+    {
+    }
 }
