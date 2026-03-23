@@ -12,12 +12,20 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use Respect\Fluent\Attributes\AssuranceAssertion;
+use Respect\Fluent\Attributes\AssuranceParameter;
+use Respect\Fluent\Attributes\FluentNamespace;
+use Respect\Fluent\Factories\ComposingLookup;
+use Respect\Fluent\Factories\NamespaceLookup;
+use Respect\Fluent\Resolvers\ComposableMap;
+use Respect\Fluent\Resolvers\Ucfirst;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\ArrayFormatter;
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\StringFormatter;
 use Respect\Validation\Mixins\Builder;
+use Respect\Validation\Mixins\PrefixConstants;
 use Respect\Validation\Validators\AllOf;
 use Respect\Validation\Validators\Core\Nameable;
 use Respect\Validation\Validators\Core\ShortCircuitable;
@@ -31,6 +39,14 @@ use function is_callable;
 use function is_string;
 
 /** @mixin Builder */
+#[FluentNamespace(new ComposingLookup(
+    new NamespaceLookup(new Ucfirst(), Validator::class, 'Respect\\Validation\\Validators'),
+    new ComposableMap(
+        PrefixConstants::COMPOSABLE,
+        PrefixConstants::COMPOSABLE_WITH_ARGUMENT,
+        PrefixConstants::FORBIDDEN,
+    ),
+))]
 final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
 {
     /** @var array<Validator> */
@@ -81,20 +97,31 @@ final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
         return $this->toResultQuery($this->evaluate($input), $template);
     }
 
-    public function isValid(mixed $input): bool
-    {
+    #[AssuranceAssertion]
+    public function isValid(
+        #[AssuranceParameter]
+        mixed $input,
+    ): bool {
         return $this->evaluateShortCircuit($input)->hasPassed;
     }
 
     /** @param array<string|int, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
-    public function check(mixed $input, array|string|Throwable|callable|null $template = null): void
-    {
+    #[AssuranceAssertion]
+    public function check(
+        #[AssuranceParameter]
+        mixed $input,
+        array|string|Throwable|callable|null $template = null,
+    ): void {
         $this->throwOnFailure($this->evaluateShortCircuit($input), $template);
     }
 
     /** @param array<string|int, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
-    public function assert(mixed $input, array|string|Throwable|callable|null $template = null): void
-    {
+    #[AssuranceAssertion]
+    public function assert(
+        #[AssuranceParameter]
+        mixed $input,
+        array|string|Throwable|callable|null $template = null,
+    ): void {
         $this->throwOnFailure($this->evaluate($input), $template);
     }
 

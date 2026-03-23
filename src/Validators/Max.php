@@ -15,14 +15,14 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validators\Core\FilteredArray;
 
 use function max;
 
-#[Mixin(prefix: 'max', requireInclusion: true)]
+#[Composable(prefix: self::class, optIn: true)]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template('The maximum of', 'The maximum of')]
 final class Max extends FilteredArray

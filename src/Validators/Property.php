@@ -19,16 +19,18 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use ReflectionClass;
 use ReflectionObject;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Composable;
+use Respect\Fluent\Attributes\ComposableParameter;
 use Respect\Validation\Path;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 
-#[Mixin(prefix: 'property', prefixParameter: true, exclude: ['all', 'key', 'property'])]
+#[Composable(prefix: self::class, without: [All::class, Key::class, self::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 final readonly class Property implements Validator
 {
     public function __construct(
+        #[ComposableParameter]
         private string $propertyName,
         private Validator $validator,
     ) {
