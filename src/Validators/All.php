@@ -15,7 +15,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceFrom;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
@@ -23,9 +25,10 @@ use Respect\Validation\Result;
 use Respect\Validation\Validators\Core\FilteredArray;
 use Respect\Validation\Validators\Core\ShortCircuitable;
 
-#[Mixin(prefix: 'all', exclude: ['all'])]
+#[Composable(prefix: self::class, without: [self::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template('Every item in', 'Every item in')]
+#[Assurance(from: AssuranceFrom::Elements)]
 final class All extends FilteredArray implements ShortCircuitable
 {
     use CanEvaluateShortCircuit;

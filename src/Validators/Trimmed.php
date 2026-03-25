@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators\Core\Envelope;
@@ -26,6 +27,7 @@ use Respect\Validation\Validators\Core\Envelope;
     '{{subject}} must contain leading or trailing {{trimValues|list:or}}',
     self::TEMPLATE_CUSTOM,
 )]
+#[Assurance(type: 'string')]
 final class Trimmed extends Envelope
 {
     public const string TEMPLATE_CUSTOM = '__custom__';

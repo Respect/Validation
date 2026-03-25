@@ -17,7 +17,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -26,12 +27,13 @@ use function is_numeric;
 
 use const FILTER_VALIDATE_INT;
 
-#[Mixin(include: ['length', 'max', 'min'])]
+#[Composable(with: [Length::class, Max::class, Min::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be an odd number',
     '{{subject}} must be an even number',
 )]
+#[Assurance(type: 'int')]
 final class Odd extends Simple
 {
     public function isValid(mixed $input): bool

@@ -11,13 +11,14 @@ declare(strict_types=1);
 
 namespace Respect\Dev\Commands;
 
-use Respect\Dev\CodeGen\Config;
-use Respect\Dev\CodeGen\FluentBuilder\MethodBuilder;
-use Respect\Dev\CodeGen\FluentBuilder\MixinGenerator;
-use Respect\Dev\CodeGen\FluentBuilder\PrefixMapGenerator;
-use Respect\Dev\CodeGen\InterfaceConfig;
 use Respect\Dev\Differ\ConsoleDiffer;
 use Respect\Dev\Differ\Item;
+use Respect\FluentGen\Config;
+use Respect\FluentGen\Fluent\InterfaceConfig;
+use Respect\FluentGen\Fluent\MethodBuilder;
+use Respect\FluentGen\Fluent\MixinGenerator;
+use Respect\FluentGen\Fluent\PrefixConstantsGenerator;
+use Respect\FluentGen\NamespaceScanner;
 use Respect\Validation\Mixins\Chain;
 use Respect\Validation\Validator;
 use Respect\Validation\ValidatorBuilder;
@@ -67,8 +68,11 @@ final class LintMixinCommand extends Command
             outputNamespace: 'Respect\\Validation\\Mixins',
         );
 
+        $scanner = new NamespaceScanner();
+
         $generator = new MixinGenerator(
             config: $config,
+            scanner: $scanner,
             methodBuilder: new MethodBuilder(
                 excludedTypePrefixes: ['Sokil', 'Egulias'],
                 excludedTypeNames: ['finfo'],
@@ -89,9 +93,10 @@ final class LintMixinCommand extends Command
             ],
         );
 
-        $prefixMapGenerator = new PrefixMapGenerator(
+        $prefixMapGenerator = new PrefixConstantsGenerator(
             config: $config,
-            outputClassName: 'PrefixMap',
+            scanner: $scanner,
+            outputClassName: 'PrefixConstants',
         );
 
         $files = $generator->generate() + $prefixMapGenerator->generate();

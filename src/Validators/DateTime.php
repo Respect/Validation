@@ -18,6 +18,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use DateTimeInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -38,6 +39,7 @@ use function strtotime;
     '{{subject}} must not be a date/time in the {{sample}} format',
     self::TEMPLATE_FORMAT,
 )]
+#[Assurance(type: ['string', DateTimeInterface::class])]
 final class DateTime implements Validator
 {
     use CanValidateDateTime;

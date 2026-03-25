@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -23,6 +24,7 @@ use function preg_match;
     '{{subject}} must be an emoji',
     '{{subject}} must not be an emoji',
 )]
+#[Assurance(type: 'string')]
 final class Emoji extends Simple
 {
     private const string REGEX = <<<'REGEX'

@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -26,6 +27,7 @@ use function sprintf;
     '{{subject}} must be an ISBN',
     '{{subject}} must not be an ISBN',
 )]
+#[Assurance(type: 'string')]
 final class Isbn extends Simple
 {
     /** @see https://howtodoinjava.com/regex/java-regex-validate-international-standard-book-number-isbns */

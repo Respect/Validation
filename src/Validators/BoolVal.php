@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -32,6 +33,7 @@ use const FILTER_VALIDATE_BOOLEAN;
     '{{subject}} must be a boolean',
     '{{subject}} must not be a boolean',
 )]
+#[Assurance(type: 'bool')]
 final class BoolVal extends Simple
 {
     public function isValid(mixed $input): bool

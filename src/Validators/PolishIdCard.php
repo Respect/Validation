@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -25,6 +26,7 @@ use function preg_match;
     '{{subject}} must be a Polish Identity Card number',
     '{{subject}} must not be a Polish Identity Card number',
 )]
+#[Assurance(type: 'string')]
 final class PolishIdCard extends Simple
 {
     private const int ASCII_CODE_0 = 48;

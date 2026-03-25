@@ -14,6 +14,9 @@ namespace Respect\Validation;
 use DI\Container;
 use libphonenumber\PhoneNumberUtil;
 use Psr\Container\ContainerInterface;
+use ReflectionClass;
+use Respect\Fluent\Attributes\FluentNamespace;
+use Respect\Fluent\FluentFactory;
 use Respect\StringFormatter\BypassTranslator;
 use Respect\StringFormatter\Modifier;
 use Respect\StringFormatter\Modifiers\FormatterModifier;
@@ -40,8 +43,6 @@ use Respect\Validation\Message\Parameters\PathHandler;
 use Respect\Validation\Message\Parameters\ResultHandler;
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\TemplateRegistry;
-use Respect\Validation\Transformers\Prefix;
-use Respect\Validation\Transformers\Transformer;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 use function DI\autowire;
@@ -57,7 +58,6 @@ final class ContainerRegistry
     {
         return new Container($definitions + [
             PhoneNumberUtil::class => factory(static fn() => PhoneNumberUtil::getInstance()),
-            Transformer::class => create(Prefix::class),
             TemplateRegistry::class => create(TemplateRegistry::class),
             TemplateResolver::class => autowire(TemplateResolver::class),
             TranslatorInterface::class => autowire(BypassTranslator::class),
@@ -67,11 +67,19 @@ final class ContainerRegistry
             'respect.validation.formatter.full_message' => autowire(NestedListStringFormatter::class),
             'respect.validation.formatter.messages' => autowire(NestedArrayFormatter::class),
             'respect.validation.ignored_backtrace_paths' => [__DIR__ . '/ValidatorBuilder.php'],
-            'respect.validation.rule_factory.namespaces' => ['Respect\\Validation\\Validators'],
-            ValidatorFactory::class => factory(static fn(Container $container) => new NamespacedValidatorFactory(
-                $container->get(Transformer::class),
-                $container->get('respect.validation.rule_factory.namespaces'),
-            )),
+            'respect.validation.rule_factory.namespaces' => [],
+            FluentFactory::class => factory(static function (Container $container) {
+                $factory = (new ReflectionClass(ValidatorBuilder::class))
+                    ->getAttributes(FluentNamespace::class)[0]
+                    ->newInstance()
+                    ->factory;
+
+                foreach ($container->get('respect.validation.rule_factory.namespaces') as $namespace) {
+                    $factory = $factory->withNamespace($namespace);
+                }
+
+                return $factory;
+            }),
             Quoter::class => create(CodeQuoter::class)->constructor(120),
             Handler::class => factory(static function (Container $container) {
                 $handler = CompositeHandler::create();
@@ -101,7 +109,7 @@ final class ContainerRegistry
                 $container->get(TranslatorInterface::class),
             )),
             ValidatorBuilder::class => factory(static fn(Container $container) => new ValidatorBuilder(
-                $container->get(ValidatorFactory::class),
+                $container->get(FluentFactory::class),
                 $container->get(Renderer::class),
                 $container->get('respect.validation.formatter.message'),
                 $container->get('respect.validation.formatter.full_message'),

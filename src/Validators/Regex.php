@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -28,6 +29,7 @@ use function preg_match;
     '{{subject}} must match the {{regex|quote}} pattern',
     '{{subject}} must not match the {{regex|quote}} pattern',
 )]
+#[Assurance(type: 'string')]
 final readonly class Regex implements Validator
 {
     public function __construct(

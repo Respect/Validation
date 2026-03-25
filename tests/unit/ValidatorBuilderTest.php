@@ -17,6 +17,7 @@ use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Fluent\Exceptions\CouldNotResolve;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Test\TestCase;
@@ -31,7 +32,7 @@ final class ValidatorBuilderTest extends TestCase
     #[Test]
     public function invalidRuleClassShouldThrowComponentException(): void
     {
-        $this->expectException(ComponentException::class);
+        $this->expectException(CouldNotResolve::class);
 
         // @phpstan-ignore-next-line
         ValidatorBuilder::iDoNotExistSoIShouldThrowException();
@@ -42,7 +43,6 @@ final class ValidatorBuilderTest extends TestCase
     {
         $validator = ValidatorBuilder::init();
 
-        // @phpstan-ignore-next-line
         self::assertNotSame($validator, $validator->not($validator->falsy()));
     }
 

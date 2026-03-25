@@ -23,6 +23,7 @@
         "php": ">=8.5",
         "php-di/php-di": "^7.1",
         "psr/container": "^2.0",
+        "respect/fluent": "^2.0",
         "respect/string-formatter": "^1.7",
         "respect/stringifier": "^3.0",
         "symfony/polyfill-intl-idn": "^1.33",
@@ -36,13 +37,15 @@
         "pestphp/pest": "^4.2",
         "phpbench/phpbench": "^1.4",
         "phpstan/extension-installer": "^1.4",
-        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-deprecation-rules": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpunit/phpunit": "^12.5",
         "psr/http-message": "^1.0 || ^2.0",
         "ramsey/uuid": "^4",
         "respect/coding-standard": "^5.0",
+        "respect/fluent-analysis": "^2.0",
+        "respect/fluentgen": "^2.0",
         "sebastian/diff": "^7.0",
         "sokil/php-isocodes": "^4.2.1",
         "sokil/php-isocodes-db-only": "^4.0",
@@ -61,6 +64,11 @@
         "sokil/php-isocodes": "Enable rules that validate ISO codes",
         "sokil/php-isocodes-db-only": "Enable rules that validate ISO codes"
     },
+    "extra": {
+        "phpstan": {
+            "includes": ["fluent.neon"]
+        }
+    },
     "autoload": {
         "psr-4": {
             "Respect\\Validation\\": "src/"
@@ -71,7 +79,8 @@
         "psr-4": {
             "Respect\\Dev\\": "src-dev/",
             "Respect\\Validation\\": "tests/unit/",
-            "Respect\\Validation\\Test\\": "tests/src/"
+            "Respect\\Validation\\Test\\": "tests/src/",
+            "Respect\\Validation\\Test\\Inference\\": "tests/inference/"
         }
     },
     "scripts": {
@@ -84,6 +93,7 @@
         "phpcs": "vendor/bin/phpcs",
         "phpstan": "vendor/bin/phpstan analyze",
         "phpunit": "vendor/bin/phpunit --testsuite=unit",
+        "inference": "vendor/bin/phpunit --testsuite=inference",
         "smoke-complete": "bin/console smoke-tests:check-complete",
         "spdx-lint": "bin/console lint:spdx",
         "qa": [
@@ -92,6 +102,7 @@
             "@phpstan",
             "@phpunit",
             "@pest",
+            "@inference",
             "@docs",
             "@smoke-complete"
         ]

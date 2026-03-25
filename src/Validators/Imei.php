@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -27,6 +28,7 @@ use function preg_replace;
     '{{subject}} must be an IMEI number',
     '{{subject}} must not be an IMEI number',
 )]
+#[Assurance(type: 'string')]
 final class Imei extends Simple
 {
     private const int IMEI_SIZE = 15;

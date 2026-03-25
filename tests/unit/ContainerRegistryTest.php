@@ -50,4 +50,21 @@ final class ContainerRegistryTest extends TestCase
 
         self::assertSame($newContainer, ContainerRegistry::getContainer());
     }
+
+    #[Test]
+    public function extraNamespacesResolveCustomValidators(): void
+    {
+        $mainContainer = ContainerRegistry::getContainer();
+        ContainerRegistry::setContainer(ContainerRegistry::createContainer([
+            'respect.validation.rule_factory.namespaces' => ['Respect\\Validation\\Test\\Validators'],
+        ]));
+
+        try {
+            // 'CustomRule' exists in Test\Validators but not in Validators
+            $builder = ValidatorBuilder::customRule(); // @phpstan-ignore staticMethod.notFound
+            self::assertCount(1, $builder->getValidators());
+        } finally {
+            ContainerRegistry::setContainer($mainContainer);
+        }
+    }
 }

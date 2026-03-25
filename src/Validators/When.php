@@ -17,10 +17,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceCompose;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
+#[Assurance(compose: AssuranceCompose::Union, composeRange: [1, null])]
 final readonly class When implements Validator
 {
     public function __construct(

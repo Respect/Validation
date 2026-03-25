@@ -18,12 +18,15 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceModifier;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 
-#[Mixin(prefix: 'not', exclude: ['not'])]
+#[Composable(prefix: self::class, without: [self::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_CLASS | Attribute::IS_REPEATABLE)]
+#[Assurance(modifier: AssuranceModifier::Exclude)]
 final readonly class Not implements Validator
 {
     public function __construct(

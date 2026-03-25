@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -41,6 +42,7 @@ use function preg_replace;
     '{{subject}} must not be a {{brand|raw}} credit card number',
     self::TEMPLATE_BRANDED,
 )]
+#[Assurance(type: 'string')]
 final readonly class CreditCard implements Validator
 {
     public const string TEMPLATE_BRANDED = '__branded__';

@@ -14,19 +14,25 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceModifier;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 
 use function array_map;
 
-#[Mixin(prefix: 'nullOr', exclude: ['all', 'key', 'property', 'not', 'nullOr', 'undefOr'])]
+#[Composable(
+    prefix: self::class,
+    without: [All::class, Key::class, Property::class, Not::class, self::class, UndefOr::class],
+)]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     'or must be null',
     'and must not be null',
 )]
+#[Assurance(modifier: AssuranceModifier::Nullable)]
 final readonly class NullOr implements Validator
 {
     public function __construct(

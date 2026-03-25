@@ -22,6 +22,7 @@ use Attribute;
 use Ramsey\Uuid\Rfc4122\FieldsInterface;
 use Ramsey\Uuid\UuidFactory;
 use Ramsey\Uuid\UuidInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
@@ -43,6 +44,7 @@ use function is_string;
     '{{subject}} must not be a UUID v{{version|raw}}',
     self::TEMPLATE_VERSION,
 )]
+#[Assurance(type: 'string')]
 final class Uuid implements Validator
 {
     public const string TEMPLATE_VERSION = '__version__';

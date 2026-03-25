@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\FilteredString;
 
@@ -32,6 +33,7 @@ use function ctype_punct;
     '{{subject}} must not consist only of punctuation characters or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
+#[Assurance(type: 'string')]
 final class Punct extends FilteredString
 {
     protected function isValid(string $input): bool

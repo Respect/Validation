@@ -15,6 +15,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceCompose;
 use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -38,6 +40,7 @@ use function count;
     '{{subject}} must pass all the rules',
     self::TEMPLATE_ALL,
 )]
+#[Assurance(compose: AssuranceCompose::Intersect)]
 final class AllOf extends LogicalComposite implements ShortCircuitable
 {
     use CanEvaluateShortCircuit;

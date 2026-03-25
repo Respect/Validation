@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -34,6 +35,7 @@ use function strtoupper;
     '{{subject}} must be a CNPJ',
     '{{subject}} must not be a CNPJ',
 )]
+#[Assurance(type: 'string')]
 final class Cnpj extends Simple
 {
     private const int BASE_ASCII = 48;

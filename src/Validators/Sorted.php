@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -35,6 +36,7 @@ use function str_split;
     '{{subject}} must not be sorted in descending order',
     self::TEMPLATE_DESCENDING,
 )]
+#[Assurance(type: 'array|string')]
 final readonly class Sorted implements Validator
 {
     public const string TEMPLATE_ASCENDING = '__ascending__';

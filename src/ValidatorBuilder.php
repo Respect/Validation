@@ -12,12 +12,22 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use Respect\Fluent\Attributes\AssuranceAssertion;
+use Respect\Fluent\Attributes\AssuranceParameter;
+use Respect\Fluent\Attributes\FluentNamespace;
+use Respect\Fluent\Builders\Append;
+use Respect\Fluent\Factories\ComposingLookup;
+use Respect\Fluent\Factories\NamespaceLookup;
+use Respect\Fluent\FluentFactory;
+use Respect\Fluent\Resolvers\ComposableMap;
+use Respect\Fluent\Resolvers\Ucfirst;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\ArrayFormatter;
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\StringFormatter;
 use Respect\Validation\Mixins\Builder;
+use Respect\Validation\Mixins\PrefixConstants;
 use Respect\Validation\Validators\AllOf;
 use Respect\Validation\Validators\Core\Nameable;
 use Respect\Validation\Validators\Core\ShortCircuitable;
@@ -31,14 +41,15 @@ use function is_callable;
 use function is_string;
 
 /** @mixin Builder */
-final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
+#[FluentNamespace(new ComposingLookup(
+    new NamespaceLookup(new Ucfirst(), Validator::class, 'Respect\\Validation\\Validators'),
+    new ComposableMap(PrefixConstants::COMPOSABLE, PrefixConstants::COMPOSABLE_WITH_ARGUMENT),
+))]
+final readonly class ValidatorBuilder extends Append implements Nameable, ShortCircuitable
 {
-    /** @var array<Validator> */
-    private array $validators;
-
     /** @param array<string> $ignoredBacktracePaths */
     public function __construct(
-        private ValidatorFactory $validatorFactory,
+        FluentFactory $factory,
         private Renderer $renderer,
         private StringFormatter $mainMessageFormatter,
         private StringFormatter $fullMessageFormatter,
@@ -47,7 +58,7 @@ final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
         private array $ignoredBacktracePaths,
         Validator ...$validators,
     ) {
-        $this->validators = $validators;
+        parent::__construct($factory, ...$validators);
     }
 
     public static function init(Validator ...$validators): self
@@ -56,15 +67,17 @@ final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
             return ContainerRegistry::getContainer()->get(self::class);
         }
 
-        return ContainerRegistry::getContainer()->get(self::class)->with(...$validators);
+        return ContainerRegistry::getContainer()->get(self::class)->attach(...$validators);
     }
 
     public function evaluate(mixed $input): Result
     {
-        $validator = match (count($this->validators)) {
+        $validators = $this->getValidators();
+
+        $validator = match (count($validators)) {
             0 => throw new ComponentException('No validators have been added.'),
-            1 => current($this->validators),
-            default => new AllOf(...$this->validators),
+            1 => current($validators),
+            default => new AllOf(...$validators),
         };
 
         return $validator->evaluate($input);
@@ -72,7 +85,9 @@ final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
 
     public function evaluateShortCircuit(mixed $input): Result
     {
-        return (new ShortCircuit(...$this->validators))->evaluate($input);
+        $validators = $this->getValidators();
+
+        return (new ShortCircuit(...$validators))->evaluate($input);
     }
 
     /** @param array<string|int, mixed>|string|null $template */
@@ -81,38 +96,46 @@ final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
         return $this->toResultQuery($this->evaluate($input), $template);
     }
 
-    public function isValid(mixed $input): bool
-    {
+    #[AssuranceAssertion]
+    public function isValid(
+        #[AssuranceParameter]
+        mixed $input,
+    ): bool {
         return $this->evaluateShortCircuit($input)->hasPassed;
     }
 
     /** @param array<string|int, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
-    public function check(mixed $input, array|string|Throwable|callable|null $template = null): void
-    {
+    #[AssuranceAssertion]
+    public function check(
+        #[AssuranceParameter]
+        mixed $input,
+        array|string|Throwable|callable|null $template = null,
+    ): void {
         $this->throwOnFailure($this->evaluateShortCircuit($input), $template);
     }
 
     /** @param array<string|int, mixed>|callable(ValidationException): Throwable|string|Throwable|null $template */
-    public function assert(mixed $input, array|string|Throwable|callable|null $template = null): void
-    {
+    #[AssuranceAssertion]
+    public function assert(
+        #[AssuranceParameter]
+        mixed $input,
+        array|string|Throwable|callable|null $template = null,
+    ): void {
         $this->throwOnFailure($this->evaluate($input), $template);
-    }
-
-    public function with(Validator $validator, Validator ...$validators): self
-    {
-        return clone ($this, ['validators' => [...$this->validators, $validator, ...$validators]]);
     }
 
     /** @return array<Validator> */
     public function getValidators(): array
     {
-        return $this->validators;
+        return $this->getNodes();
     }
 
     public function getName(): Name|null
     {
-        if (count($this->validators) === 1 && current($this->validators) instanceof Nameable) {
-            return current($this->validators)->getName();
+        $validators = $this->getNodes();
+
+        if (count($validators) === 1 && current($validators) instanceof Nameable) {
+            return current($validators)->getName();
         }
 
         return null;
@@ -153,14 +176,8 @@ final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
     }
 
     /** @param array<int, mixed> $arguments */
-    public static function __callStatic(string $ruleName, array $arguments): self
+    public static function __callStatic(string $ruleName, array $arguments): static
     {
         return self::init()->__call($ruleName, $arguments);
-    }
-
-    /** @param array<int, mixed> $arguments */
-    public function __call(string $ruleName, array $arguments): self
-    {
-        return $this->with($this->validatorFactory->create($ruleName, $arguments));
     }
 }

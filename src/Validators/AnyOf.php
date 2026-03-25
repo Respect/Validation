@@ -15,6 +15,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceCompose;
 use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -30,6 +32,7 @@ use function array_reduce;
     '{{subject}} must pass at least one of the rules',
     '{{subject}} must pass at least one of the rules',
 )]
+#[Assurance(compose: AssuranceCompose::Union)]
 final class AnyOf extends LogicalComposite implements ShortCircuitable
 {
     use CanEvaluateShortCircuit;

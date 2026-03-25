@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\FilteredString;
 
@@ -33,6 +34,7 @@ use function preg_match;
     '{{subject}} must not consist of vowels or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
+#[Assurance(type: 'string')]
 final class Vowel extends FilteredString
 {
     protected function isValid(string $input): bool
