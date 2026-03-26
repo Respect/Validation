@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Helpers\DataLoader;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
@@ -36,6 +37,7 @@ use const INTL_IDNA_VARIANT_UTS46;
     '{{subject}} must be a public domain suffix',
     '{{subject}} must not be a public domain suffix',
 )]
+#[Assurance(type: 'string')]
 final class PublicDomainSuffix extends Simple
 {
     public function isValid(mixed $input): bool

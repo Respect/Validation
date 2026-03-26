@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -29,6 +30,7 @@ use function strval;
     '{{subject}} must be a BSN',
     '{{subject}} must not be a BSN',
 )]
+#[Assurance(type: 'string')]
 final class Bsn extends Simple
 {
     public function isValid(mixed $input): bool

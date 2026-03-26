@@ -18,6 +18,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use DateTimeImmutable;
 use DateTimeInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -28,6 +29,7 @@ use function is_scalar;
     '{{subject}} must be a leap date',
     '{{subject}} must not be a leap date',
 )]
+#[Assurance(type: 'string')]
 final class LeapDate extends Simple
 {
     public function __construct(

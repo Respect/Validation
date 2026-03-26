@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -27,6 +28,7 @@ use function str_split;
     '{{subject}} must be a Polish VAT identification number',
     '{{subject}} must not be a Polish VAT identification number',
 )]
+#[Assurance(type: 'string')]
 final class Nip extends Simple
 {
     public function isValid(mixed $input): bool

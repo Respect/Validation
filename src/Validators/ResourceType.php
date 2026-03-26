@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -24,6 +25,7 @@ use function is_resource;
     '{{subject}} must be an internal resource',
     '{{subject}} must not be an internal resource',
 )]
+#[Assurance(type: 'resource')]
 final class ResourceType extends Simple
 {
     public function isValid(mixed $input): bool

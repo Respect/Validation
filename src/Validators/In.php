@@ -16,7 +16,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceFrom;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -25,12 +27,13 @@ use function in_array;
 use function is_array;
 use function mb_strpos;
 
-#[Mixin(include: ['length', 'max', 'min'])]
+#[Composable(with: [Length::class, Max::class, Min::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be in {{haystack}}',
     '{{subject}} must not be in {{haystack}}',
 )]
+#[Assurance(from: AssuranceFrom::Member)]
 final readonly class In implements Validator
 {
     public function __construct(

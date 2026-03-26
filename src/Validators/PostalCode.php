@@ -26,6 +26,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\DataLoader;
 use Respect\Validation\Message\Template;
@@ -37,6 +38,7 @@ use Respect\Validation\Validators\Core\Envelope;
     '{{subject}} must be a postal code for {{countryCode}}',
     '{{subject}} must not be a postal code for {{countryCode}}',
 )]
+#[Assurance(type: 'string')]
 final class PostalCode extends Envelope
 {
     private const array POSTAL_CODES_EXTRA = [

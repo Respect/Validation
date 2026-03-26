@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Envelope;
 
@@ -21,6 +22,7 @@ use Respect\Validation\Validators\Core\Envelope;
     '{{subject}} must be a hex RGB color',
     '{{subject}} must not be a hex RGB color',
 )]
+#[Assurance(type: 'string')]
 final class HexRgbColor extends Envelope
 {
     public function __construct()

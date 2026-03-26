@@ -21,6 +21,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -36,6 +37,7 @@ use const FILTER_VALIDATE_EMAIL;
     '{{subject}} must be an email address',
     '{{subject}} must not be an email address',
 )]
+#[Assurance(type: 'string')]
 final class Email extends Simple
 {
     private readonly EmailValidator|null $validator;

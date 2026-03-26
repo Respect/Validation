@@ -56,4 +56,5 @@ jobs:
 
       - run: composer phpcs
       - run: composer phpstan
+      - run: composer inference
       - run: bin/console lint:mixin

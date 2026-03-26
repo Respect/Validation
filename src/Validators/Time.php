@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
@@ -33,6 +34,7 @@ use function strtotime;
     '{{subject}} must be a time in the {{sample}} format',
     '{{subject}} must not be a time in the {{sample}} format',
 )]
+#[Assurance(type: 'string')]
 final readonly class Time implements Validator
 {
     use CanValidateDateTime;

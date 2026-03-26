@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -25,6 +26,7 @@ use function is_iterable;
     '{{subject}} must be iterable',
     '{{subject}} must not iterable',
 )]
+#[Assurance(type: 'iterable')]
 final class IterableType extends Simple
 {
     public function isValid(mixed $input): bool

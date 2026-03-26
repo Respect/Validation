@@ -184,11 +184,11 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function json(): Chain;
 
-    public function key(string|int $key, Validator $validator): Chain;
+    public function key(int|string $key, Validator $validator): Chain;
 
-    public function keyExists(string|int $key): Chain;
+    public function keyExists(int|string $key): Chain;
 
-    public function keyOptional(string|int $key, Validator $validator): Chain;
+    public function keyOptional(int|string $key, Validator $validator): Chain;
 
     public function keySet(Validator $validator, Validator ...$validators): Chain;
 

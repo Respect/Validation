@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -30,6 +31,7 @@ use function preg_replace;
     '{{subject}} must be a CNH',
     '{{subject}} must not be a CNH',
 )]
+#[Assurance(type: 'string')]
 final class Cnh extends Simple
 {
     public function isValid(mixed $input): bool

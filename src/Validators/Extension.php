@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -28,6 +29,7 @@ use const PATHINFO_EXTENSION;
     '{{subject}} must have the {{extension}} extension',
     '{{subject}} must not have the {{extension}} extension',
 )]
+#[Assurance(type: ['string', SplFileInfo::class])]
 final readonly class Extension implements Validator
 {
     public function __construct(

@@ -14,6 +14,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use finfo;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -29,6 +30,7 @@ use const FILEINFO_MIME_TYPE;
     '{{subject}} must have the {{mimetype}} MIME type',
     '{{subject}} must not have the {{mimetype}} MIME type',
 )]
+#[Assurance(type: 'string')]
 final readonly class Mimetype implements Validator
 {
     public function __construct(

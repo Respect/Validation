@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\FilteredString;
 
@@ -31,6 +32,7 @@ use function ctype_alpha;
     '{{subject}} must not consist only of letters (a-z) or {{additionalChars}}',
     self::TEMPLATE_EXTRA,
 )]
+#[Assurance(type: 'string')]
 final class Alpha extends FilteredString
 {
     protected function isValid(string $input): bool

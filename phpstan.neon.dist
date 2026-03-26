@@ -1,3 +1,6 @@
+includes:
+  - fluent.neon
+
 parameters:
   fileExtensions:
     - php

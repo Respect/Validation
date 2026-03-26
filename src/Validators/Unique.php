@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -29,6 +30,7 @@ use const SORT_REGULAR;
     '{{subject}} must not contain duplicates',
     '{{subject}} must contain duplicates',
 )]
+#[Assurance(type: 'array')]
 final class Unique extends Simple
 {
     public function isValid(mixed $input): bool

@@ -19,6 +19,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Psr\Container\NotFoundExceptionInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
@@ -35,6 +36,7 @@ use function is_string;
     '{{subject}} must be a country code',
     '{{subject}} must not be a country code',
 )]
+#[Assurance(type: 'string')]
 final readonly class CountryCode implements Validator
 {
     private Countries $countries;

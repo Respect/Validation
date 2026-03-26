@@ -17,6 +17,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use DateTimeInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -31,6 +32,7 @@ use function strtotime;
     '{{subject}} must be a leap year',
     '{{subject}} must not be a leap year',
 )]
+#[Assurance(type: 'int|string')]
 final class LeapYear extends Simple
 {
     public function isValid(mixed $input): bool

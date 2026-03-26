@@ -22,6 +22,7 @@ use Attribute;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
 use Psr\Container\NotFoundExceptionInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
@@ -43,6 +44,7 @@ use function is_scalar;
     '{{subject}} must not be a phone number for country {{countryName|trans}}',
     self::TEMPLATE_FOR_COUNTRY,
 )]
+#[Assurance(type: 'string')]
 final class Phone implements Validator
 {
     public const string TEMPLATE_FOR_COUNTRY = '__for_country__';

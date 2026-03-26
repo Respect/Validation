@@ -15,6 +15,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Psr\Container\NotFoundExceptionInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
@@ -31,6 +32,7 @@ use function is_string;
     '{{subject}} must be a language code',
     '{{subject}} must not be a language code',
 )]
+#[Assurance(type: 'string')]
 final readonly class LanguageCode implements Validator
 {
     private Languages $languages;

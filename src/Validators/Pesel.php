@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -25,6 +26,7 @@ use function preg_match;
     '{{subject}} must be a PESEL',
     '{{subject}} must not be a PESEL',
 )]
+#[Assurance(type: 'string')]
 final class Pesel extends Simple
 {
     public function isValid(mixed $input): bool

@@ -15,6 +15,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceParameter;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -24,10 +26,12 @@ use Respect\Validation\Validator;
     '{{subject}} must be an instance of {{class|quote}}',
     '{{subject}} must not be an instance of {{class|quote}}',
 )]
+#[Assurance]
 final readonly class Instance implements Validator
 {
     /** @param class-string $class */
     public function __construct(
+        #[AssuranceParameter]
         private string $class,
     ) {
     }

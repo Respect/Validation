@@ -15,19 +15,21 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
 use function is_finite;
 use function is_numeric;
 
-#[Mixin(include: ['length', 'max', 'min'])]
+#[Composable(with: [Length::class, Max::class, Min::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be a finite number',
     '{{subject}} must not be a finite number',
 )]
+#[Assurance(type: 'int|float|numeric-string')]
 final class Finite extends Simple
 {
     public function isValid(mixed $input): bool

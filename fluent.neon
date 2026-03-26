@@ -1,0 +1,4 @@
+parameters:
+	fluent:
+		builders:
+			- builder: Respect\Validation\ValidatorBuilder

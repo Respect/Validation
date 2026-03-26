@@ -179,11 +179,11 @@ interface NotChain
 
     public function notJson(): Chain;
 
-    public function notKey(string|int $key, Validator $validator): Chain;
+    public function notKey(int|string $key, Validator $validator): Chain;
 
-    public function notKeyExists(string|int $key): Chain;
+    public function notKeyExists(int|string $key): Chain;
 
-    public function notKeyOptional(string|int $key, Validator $validator): Chain;
+    public function notKeyOptional(int|string $key, Validator $validator): Chain;
 
     public function notKeySet(Validator $validator, Validator ...$validators): Chain;
 

@@ -13,6 +13,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Psr\Container\NotFoundExceptionInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
@@ -28,6 +29,7 @@ use Sokil\IsoCodes\Database\Subdivisions;
     '{{subject}} must be a subdivision code of {{countryName|trans}}',
     '{{subject}} must not be a subdivision code of {{countryName|trans}}',
 )]
+#[Assurance(type: 'string')]
 final readonly class SubdivisionCode implements Validator
 {
     use CanValidateUndefined;

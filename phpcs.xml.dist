@@ -23,6 +23,10 @@
     </rule>
     <rule ref="Squiz.Functions.GlobalFunction">
         <exclude-pattern>tests/Pest.php</exclude-pattern>
+        <exclude-pattern>tests/inference/</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Commenting.FunctionComment.WrongStyle">
+        <exclude-pattern>tests/inference/</exclude-pattern>
     </rule>
     <rule ref="Generic.Files.LineLength.TooLong">
         <exclude-pattern>src/Mixins/</exclude-pattern>

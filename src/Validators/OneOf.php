@@ -16,6 +16,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceCompose;
 use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -40,6 +42,7 @@ use function usort;
     '{{subject}} must pass only one of the rules',
     self::TEMPLATE_MORE_THAN_ONE,
 )]
+#[Assurance(compose: AssuranceCompose::Union)]
 final class OneOf extends LogicalComposite implements ShortCircuitable
 {
     use CanEvaluateShortCircuit;

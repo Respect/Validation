@@ -15,6 +15,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use finfo;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -31,6 +32,7 @@ use const FILEINFO_MIME_TYPE;
     '{{subject}} must be an accessible existing image file',
     '{{subject}} must not be an accessible existing image file',
 )]
+#[Assurance(type: 'string')]
 final readonly class Image implements Validator
 {
     public function evaluate(mixed $input): Result
