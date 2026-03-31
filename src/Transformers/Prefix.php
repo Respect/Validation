@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Transformers;
 
-use Respect\Validation\Mixins\PrefixMap;
+use Respect\Validation\Mixins\PrefixConstants;
 
 use function array_keys;
 use function array_slice;
@@ -30,7 +30,7 @@ final class Prefix implements Transformer
             return $validatorSpec;
         }
 
-        if (!isset(PrefixMap::COMPOSABLE_WITH_ARGUMENT[$matches['prefix']])) {
+        if (!isset(PrefixConstants::COMPOSABLE_WITH_ARGUMENT[$matches['prefix']])) {
             return new ValidatorSpec(
                 $matches['suffix'],
                 $validatorSpec->arguments,
@@ -48,7 +48,7 @@ final class Prefix implements Transformer
     /** @return array{}|array{prefix: string, suffix: string} */
     private function match(ValidatorSpec $validatorSpec): array
     {
-        if ($validatorSpec->wrapper !== null || isset(PrefixMap::COMPOSABLE[$validatorSpec->name])) {
+        if ($validatorSpec->wrapper !== null || isset(PrefixConstants::COMPOSABLE[$validatorSpec->name])) {
             return [];
         }
 
@@ -65,7 +65,7 @@ final class Prefix implements Transformer
     {
         return self::$regex ?? self::$regex = sprintf(
             '/^(?<prefix>%s)(?<suffix>.+)$/',
-            implode('|', array_keys(PrefixMap::COMPOSABLE)),
+            implode('|', array_keys(PrefixConstants::COMPOSABLE)),
         );
     }
 }

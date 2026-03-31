@@ -179,11 +179,11 @@ interface NotBuilder
 
     public static function notJson(): Chain;
 
-    public static function notKey(string|int $key, Validator $validator): Chain;
+    public static function notKey(int|string $key, Validator $validator): Chain;
 
-    public static function notKeyExists(string|int $key): Chain;
+    public static function notKeyExists(int|string $key): Chain;
 
-    public static function notKeyOptional(string|int $key, Validator $validator): Chain;
+    public static function notKeyOptional(int|string $key, Validator $validator): Chain;
 
     public static function notKeySet(Validator $validator, Validator ...$validators): Chain;
 

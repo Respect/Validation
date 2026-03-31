@@ -14,6 +14,10 @@ namespace Respect\Validation;
 use DI\Container;
 use libphonenumber\PhoneNumberUtil;
 use Psr\Container\ContainerInterface;
+use Respect\Fluent\Factories\ComposingLookup;
+use Respect\Fluent\Factories\NamespaceLookup;
+use Respect\Fluent\Resolvers\ComposableMap;
+use Respect\Fluent\Resolvers\Ucfirst;
 use Respect\StringFormatter\BypassTranslator;
 use Respect\StringFormatter\Modifier;
 use Respect\StringFormatter\Modifiers\FormatterModifier;
@@ -40,13 +44,14 @@ use Respect\Validation\Message\Parameters\PathHandler;
 use Respect\Validation\Message\Parameters\ResultHandler;
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\TemplateRegistry;
-use Respect\Validation\Transformers\Prefix;
-use Respect\Validation\Transformers\Transformer;
+use Respect\Validation\Mixins\PrefixConstants;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+use function array_map;
 use function DI\autowire;
 use function DI\create;
 use function DI\factory;
+use function trim;
 
 final class ContainerRegistry
 {
@@ -57,7 +62,6 @@ final class ContainerRegistry
     {
         return new Container($definitions + [
             PhoneNumberUtil::class => factory(static fn() => PhoneNumberUtil::getInstance()),
-            Transformer::class => create(Prefix::class),
             TemplateRegistry::class => create(TemplateRegistry::class),
             TemplateResolver::class => autowire(TemplateResolver::class),
             TranslatorInterface::class => autowire(BypassTranslator::class),
@@ -68,10 +72,26 @@ final class ContainerRegistry
             'respect.validation.formatter.messages' => autowire(NestedArrayFormatter::class),
             'respect.validation.ignored_backtrace_paths' => [__DIR__ . '/ValidatorBuilder.php'],
             'respect.validation.rule_factory.namespaces' => ['Respect\\Validation\\Validators'],
-            ValidatorFactory::class => factory(static fn(Container $container) => new NamespacedValidatorFactory(
-                $container->get(Transformer::class),
-                $container->get('respect.validation.rule_factory.namespaces'),
-            )),
+            ValidatorFactory::class => factory(static function (Container $container) {
+                $namespaces = array_map(
+                    static fn($ns) => trim($ns, '\\'),
+                    $container->get('respect.validation.rule_factory.namespaces'),
+                );
+
+                return new FluentValidatorFactory(
+                    new ComposingLookup(
+                        new NamespaceLookup(
+                            new Ucfirst(),
+                            Validator::class,
+                            ...$namespaces,
+                        ),
+                        new ComposableMap(
+                            PrefixConstants::COMPOSABLE,
+                            PrefixConstants::COMPOSABLE_WITH_ARGUMENT,
+                        ),
+                    ),
+                );
+            }),
             Quoter::class => create(CodeQuoter::class)->constructor(120),
             Handler::class => factory(static function (Container $container) {
                 $handler = CompositeHandler::create();

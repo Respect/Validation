@@ -12,13 +12,13 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\CanCompareValues;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Envelope;
 
-#[Mixin(include: ['length', 'max', 'min'])]
+#[Composable(with: [Length::class, Max::class, Min::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be greater than {{minValue}} and less than {{maxValue}}',

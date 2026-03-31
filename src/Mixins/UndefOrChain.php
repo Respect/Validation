@@ -177,11 +177,11 @@ interface UndefOrChain
 
     public function undefOrJson(): Chain;
 
-    public function undefOrKey(string|int $key, Validator $validator): Chain;
+    public function undefOrKey(int|string $key, Validator $validator): Chain;
 
-    public function undefOrKeyExists(string|int $key): Chain;
+    public function undefOrKeyExists(int|string $key): Chain;
 
-    public function undefOrKeyOptional(string|int $key, Validator $validator): Chain;
+    public function undefOrKeyOptional(int|string $key, Validator $validator): Chain;
 
     public function undefOrKeySet(Validator $validator, Validator ...$validators): Chain;
 
