@@ -49,6 +49,7 @@ return [
         'ON.STAGING.EXPO.APP',
         'ONDIGITALOCEAN.APP',
         'ONHERCULES.APP',
+        'PPLX.APP',
         'PREVIEW.CSB.APP',
         'RELAY.EVERVAULT.APP',
         'REPLIT.APP',
