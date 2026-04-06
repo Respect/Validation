@@ -48,6 +48,7 @@ return [
         'PAGES.DEV',
         'PANEL.DEV',
         'PARIS.REPLIT.DEV',
+        'PAYLOAD.DEV',
         'PICARD.REPLIT.DEV',
         'PIKE.REPLIT.DEV',
         'PLATTER-APP.DEV',
