@@ -18,6 +18,7 @@ return [
         'INSTANCES.SPAWN.CC',
         'MYPHOTOS.CC',
         'SCRAPPING.CC',
+        'SRYZE.CC',
         'TWMAIL.CC',
         'UK.CC',
         'US.CC',

@@ -32,6 +32,7 @@ return [
         'NOIP.ME',
         'ORG.ME',
         'PRIV.ME',
+        'SEPROX.HOOC.ME',
         'SITE.TRANSIP.ME',
         'SOUNDCAST.ME',
         'SYNOLOGY.ME',
