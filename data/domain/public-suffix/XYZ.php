@@ -7,6 +7,7 @@ return [
         'BOTDASH.XYZ',
         'CAFFEINE.XYZ',
         'EXE.XYZ',
+        'OPENTUNNEL.XYZ',
     ],
     'wildcards' => [
         'TELEBIT.XYZ',
