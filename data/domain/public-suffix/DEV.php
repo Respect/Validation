@@ -67,6 +67,7 @@ return [
         'TEAMS.REPLIT.DEV',
         'TUCKER.REPLIT.DEV',
         'VERCEL.DEV',
+        'VIVENUSHOP.DEV',
         'WEB.ERP.DEV',
         'WESLEY.REPLIT.DEV',
         'WORF.REPLIT.DEV',
