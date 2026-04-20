@@ -2,6 +2,12 @@ parameters:
   fileExtensions:
     - php
     - phpt
+  universalObjectCratesClasses:
+    # Why: Pest annotates the $this inside test/beforeEach closures as TestCall,
+    # but TestCall is not in Pest's own universalObjectCratesClasses. Tests use
+    # the documented pattern of setting fixtures on $this in beforeEach and
+    # reading them in tests, so treat TestCall as a property bag.
+    - Pest\PendingCalls\TestCall
   ignoreErrors:
     -
       # Why: SimpleXMLElement is weird and doesn't implement anything ArrayAccess-like
@@ -9,20 +15,14 @@ parameters:
       path: src/Validators/ArrayVal.php
     - message: '/Call to an undefined method .+::expectException\(\)/'
       path: tests/Pest.php
-    - message: '/Call to an undefined method .+::throwsNoExceptions\(\)/'
-      path: tests/feature
     - message: '/Undefined variable: \$this/'
       path: tests/feature/Validators/SizeTest.php
     - message: '/Undefined variable: \$this/'
       path: tests/Pest.php
     - message: '/Method .+\\TestingHandler::handle\(\) never returns null so it can be removed from the return type./'
       path: tests/src/Message/TestingHandler.php
-    - message: '/Access to an undefined property PHPUnit\\Framework\\TestCase/'
-      path: tests/feature/Validators/SizeTest.php
     - message: '/Property Respect\\Validation\\Test\\Stubs\\.+::\$[a-zA-Z]+ is never read, only written./'
       path: tests/src/Stubs
-    - message: '/Call to an undefined method Pest\\PendingCalls\\TestCall|Pest\\Support\\HigherOrderTapProxy::with\(\)./'
-      path: tests/feature/SerializableTest.php
   level: 8
   treatPhpDocTypesAsCertain: false
   paths:
