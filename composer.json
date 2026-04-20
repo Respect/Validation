@@ -33,7 +33,7 @@
         "giggsey/libphonenumber-for-php-lite": "^8.13 || ^9.0",
         "mikey179/vfsstream": "^1.6",
         "nette/php-generator": "^4.1",
-        "pestphp/pest": "^4.2",
+        "pestphp/pest": "^4.6",
         "phpbench/phpbench": "^1.4",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.0",
