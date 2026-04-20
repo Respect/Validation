@@ -744,6 +744,7 @@ return [
     'MEMORIAL',
     'MEN',
     'MENU',
+    'MERCK',
     'MERCKMSD',
     'MG',
     'MH',
