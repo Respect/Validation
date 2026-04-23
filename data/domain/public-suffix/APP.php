@@ -10,6 +10,7 @@ return [
         'BOOKONLINE.APP',
         'BOTDASH.APP',
         'BRAVE.APP',
+        'CLAUDE.APP',
         'CLERK.APP',
         'CLERKSTAGE.APP',
         'CLOUDFLARE.APP',
