@@ -5,6 +5,7 @@ return [
     'exceptions' => [],
     'rules' => [
         'APP-IONOS.SPACE',
+        'DEPLOYAGENT.SPACE',
         'HEIYU.SPACE',
         'HF.SPACE',
         'MYFAST.SPACE',
