@@ -25,6 +25,7 @@ return [
         'NOVECORE.SITE',
         'OMNIWE.SITE',
         'OPENSOCIAL.SITE',
+        'PIEBOX.SITE',
         'PREVIEW.SITE',
         'SOL.SITE',
         'SOURCECRAFT.SITE',

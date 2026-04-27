@@ -63,6 +63,7 @@ return [
         'FREEDDNS.ORG',
         'FREEDESKTOP.ORG',
         'FROM-ME.ORG',
+        'FSPAGES.ORG',
         'GAME-HOST.ORG',
         'GO.DYNDNS.ORG',
         'GOTDNS.ORG',
