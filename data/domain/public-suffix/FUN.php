@@ -5,6 +5,9 @@ return [
     'exceptions' => [],
     'rules' => [
         'MS.FUN',
+        'VICP.FUN',
+        'YICP.FUN',
+        'ZICP.FUN',
     ],
     'wildcards' => [],
 ];
