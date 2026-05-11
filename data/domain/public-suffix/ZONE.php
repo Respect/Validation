@@ -5,9 +5,11 @@ return [
     'exceptions' => [],
     'rules' => [
         'LIMA.ZONE',
+        'PRG1-ZEROPS.ZONE',
         'STACKIT.ZONE',
     ],
     'wildcards' => [
         'TRITON.ZONE',
+        'ZEROPS.ZONE',
     ],
 ];
