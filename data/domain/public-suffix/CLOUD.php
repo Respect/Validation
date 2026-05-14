@@ -30,6 +30,7 @@ return [
         'FR-PAR-1.BAREMETAL.SCW.CLOUD',
         'FR-PAR-2.BAREMETAL.SCW.CLOUD',
         'FUNCTIONS.FNC.FR-PAR.SCW.CLOUD',
+        'HSTGR.CLOUD',
         'IFR.FR-PAR.SCW.CLOUD',
         'IFR.NL-AMS.SCW.CLOUD',
         'IFR.PL-WAW.SCW.CLOUD',
