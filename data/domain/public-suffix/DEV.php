@@ -63,6 +63,8 @@ return [
         'SPOCK.REPLIT.DEV',
         'STAGING.REPLIT.DEV',
         'SULU.REPLIT.DEV',
+        'T3.STORAGE.DEV',
+        'T3.STORAGEAPI.DEV',
         'TARPIT.REPLIT.DEV',
         'TEAMS.REPLIT.DEV',
         'TUCKER.REPLIT.DEV',
