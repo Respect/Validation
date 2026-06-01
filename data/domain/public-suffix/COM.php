@@ -560,7 +560,6 @@ return [
         'READTHEDOCS-HOSTED.COM',
         'REMOTEWD.COM',
         'RESERVD.COM',
-        'RESERVE-ONLINE.COM',
         'RHCLOUD.COM',
         'RICE-LABS.COM',
         'ROUTINGTHECLOUD.COM',

@@ -5,6 +5,7 @@ return [
     'exceptions' => [],
     'rules' => [
         'BARSY.ONLINE',
+        'BOOK.ONLINE',
         'EERO-STAGE.ONLINE',
         'EERO.ONLINE',
         'LEAPCELL.ONLINE',

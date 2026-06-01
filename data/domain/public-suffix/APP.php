@@ -7,7 +7,6 @@ return [
         'ADAPTABLE.APP',
         'AIVEN.APP',
         'BASE44.APP',
-        'BOOKONLINE.APP',
         'BOTDASH.APP',
         'BRAVE.APP',
         'CLAUDE.APP',

@@ -39,6 +39,7 @@ return [
         'JL.CN',
         'JS.CN',
         'JX.CN',
+        'KHSJ.CN',
         'LN.CN',
         'MIL.CN',
         'MO.CN',
