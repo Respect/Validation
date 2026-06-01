@@ -4,6 +4,7 @@
 return [
     'exceptions' => [],
     'rules' => [
+        'CANVA.LINK',
         'CYON.LINK',
         'IPFS.NFTSTORAGE.LINK',
         'IPFS.STORACHA.LINK',

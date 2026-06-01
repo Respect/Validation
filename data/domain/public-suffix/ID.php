@@ -5,6 +5,7 @@ return [
     'exceptions' => [],
     'rules' => [
         'AC.ID',
+        'AI.ID',
         'BIZ.ID',
         'CO.ID',
         'DESA.ID',
