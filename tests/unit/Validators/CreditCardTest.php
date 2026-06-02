@@ -94,6 +94,7 @@ final class CreditCardTest extends RuleTestCase
             [$diners, '4012888888881881'], // Visa
             [$discover, '371449635398431'], // American Express
             [$jcb, '38520000023237'], // Diners Club
+            [$master, '05105105105105100'], // Over-long (17-digit) Luhn-valid number; regression for missing ^ anchor
         ];
     }
 }
