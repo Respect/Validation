@@ -23,7 +23,7 @@ Before writing anything, feature or bug fix:
 
 ## Adding a new validator
 
-A common validator on Respect\Validation is composed of three classes:
+A common validator on Respect\Validation is composed of two files:
 
 - `src/Validators/YourValidatorName.php`: the validator itself
 - `tests/unit/Validators/YourValidatorNameTest.php`: tests for the validator
@@ -76,9 +76,9 @@ final readonly class HelloWorld extends Simple
 
 ### Creating unit tests
 
-Finally, we need to test if everything is running smooth. We have `RuleTestCase`
-that allows us to make easier to test validators, but you fell free to use the
-`PHPUnit\Framework\TestCase` if you want or you need it's necessary.
+Finally, we need to test if everything is running smoothly. We have `RuleTestCase`
+that makes it easier to test validators, but feel free to use
+`PHPUnit\Framework\TestCase` if you want or if you need it.
 
 The `RuleTestCase` extends PHPUnit's `PHPUnit\Framework\TestCase` class with
 conventional [data provider][] methods:
@@ -130,9 +130,9 @@ for it other than what is covered by `RuleTestCase`.
 
 ### Helping us a little bit more
 
-You should include documentation to your new validator. A minimal document
+You should include documentation for your new validator. A minimal document
 is acceptable. You can use `bin/console lint:docs` to help you ensure that
-document follows our conventions. `bin/console lint:docs --fix` will even
+the document follows our conventions. `bin/console lint:docs --fix` will even
 fix some common mistakes automatically.
 
 Additionally, consider adding a feature test to `tests/feature`. Those help
@@ -147,7 +147,7 @@ You can preview how the docs will look like by running `composer docs-serve`.
 
 ## Running Checks
 
-After run `composer install` on the library's root directory you must run
+After running `composer install` in the library's root directory you must run
 `composer qa`.
 
 This alias will run several checks, including unit tests, static analysis
