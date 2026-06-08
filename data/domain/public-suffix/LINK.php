@@ -3,19 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'CANVA.LINK',
-        'CYON.LINK',
-        'IPFS.NFTSTORAGE.LINK',
-        'IPFS.STORACHA.LINK',
-        'IPFS.W3S.LINK',
-        'JOINMC.LINK',
-        'KEENETIC.LINK',
-        'MYFRITZ.LINK',
-        'MYPEP.LINK',
-    ],
-    'wildcards' => [
-        'DWEB.LINK',
-        'INBROWSER.LINK',
-    ],
+    'rules' => ['CANVA.LINK', 'CYON.LINK', 'IPFS.NFTSTORAGE.LINK', 'IPFS.STORACHA.LINK', 'IPFS.W3S.LINK', 'JOINMC.LINK', 'KEENETIC.LINK', 'MYFRITZ.LINK', 'MYPEP.LINK'],
+    'wildcards' => ['DWEB.LINK', 'INBROWSER.LINK'],
 ];

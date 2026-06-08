@@ -3,13 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'BETTER-THAN.TV',
-        'DYNDNS.TV',
-        'FROM.TV',
-        'ON-THE-WEB.TV',
-        'SAKURA.TV',
-        'WORSE-THAN.TV',
-    ],
+    'rules' => ['BETTER-THAN.TV', 'DYNDNS.TV', 'FROM.TV', 'ON-THE-WEB.TV', 'SAKURA.TV', 'WORSE-THAN.TV'],
     'wildcards' => [],
 ];

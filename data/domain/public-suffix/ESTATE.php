@@ -4,7 +4,5 @@
 return [
     'exceptions' => [],
     'rules' => [],
-    'wildcards' => [
-        'COMPUTE.ESTATE',
-    ],
+    'wildcards' => ['COMPUTE.ESTATE'],
 ];

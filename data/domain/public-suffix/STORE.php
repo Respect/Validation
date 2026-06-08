@@ -3,11 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'BARSY.STORE',
-        'SELLFY.STORE',
-        'SHOPWARE.STORE',
-        'STOREBASE.STORE',
-    ],
+    'rules' => ['BARSY.STORE', 'SELLFY.STORE', 'SHOPWARE.STORE', 'STOREBASE.STORE'],
     'wildcards' => [],
 ];

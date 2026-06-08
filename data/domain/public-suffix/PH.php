@@ -3,16 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'CLOUDNS.PH',
-        'COM.PH',
-        'EDU.PH',
-        'GOV.PH',
-        'I.PH',
-        'MIL.PH',
-        'NET.PH',
-        'NGO.PH',
-        'ORG.PH',
-    ],
+    'rules' => ['CLOUDNS.PH', 'COM.PH', 'EDU.PH', 'GOV.PH', 'I.PH', 'MIL.PH', 'NET.PH', 'NGO.PH', 'ORG.PH'],
     'wildcards' => [],
 ];

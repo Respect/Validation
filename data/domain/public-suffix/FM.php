@@ -3,14 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'COM.FM',
-        'EDU.FM',
-        'NET.FM',
-        'ORG.FM',
-        'RADIO.FM',
-    ],
-    'wildcards' => [
-        'USER.FM',
-    ],
+    'rules' => ['COM.FM', 'EDU.FM', 'NET.FM', 'ORG.FM', 'RADIO.FM'],
+    'wildcards' => ['USER.FM'],
 ];

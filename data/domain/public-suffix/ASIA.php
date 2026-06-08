@@ -3,10 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'CLOUDNS.ASIA',
-        'DAEMON.ASIA',
-        'DIX.ASIA',
-    ],
+    'rules' => ['CLOUDNS.ASIA', 'DAEMON.ASIA', 'DIX.ASIA'],
     'wildcards' => [],
 ];

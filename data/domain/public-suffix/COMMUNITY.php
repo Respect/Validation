@@ -3,10 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'MYFORUM.COMMUNITY',
-        'NOG.COMMUNITY',
-        'RAVENDB.COMMUNITY',
-    ],
+    'rules' => ['MYFORUM.COMMUNITY', 'NOG.COMMUNITY', 'RAVENDB.COMMUNITY'],
     'wildcards' => [],
 ];

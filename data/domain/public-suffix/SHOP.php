@@ -3,12 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'BARSY.SHOP',
-        'BARSYONLINE.SHOP',
-        'BASE.SHOP',
-        'HOPLIX.SHOP',
-        'SHOPWARE.SHOP',
-    ],
+    'rules' => ['BARSY.SHOP', 'BARSYONLINE.SHOP', 'BASE.SHOP', 'HOPLIX.SHOP', 'SHOPWARE.SHOP'],
     'wildcards' => [],
 ];

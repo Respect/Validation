@@ -3,13 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'BARSY.ONLINE',
-        'BOOK.ONLINE',
-        'EERO-STAGE.ONLINE',
-        'EERO.ONLINE',
-        'LEAPCELL.ONLINE',
-        'WEBSITEBUILDER.ONLINE',
-    ],
+    'rules' => ['BARSY.ONLINE', 'BOOK.ONLINE', 'EERO-STAGE.ONLINE', 'EERO.ONLINE', 'LEAPCELL.ONLINE', 'WEBSITEBUILDER.ONLINE'],
     'wildcards' => [],
 ];

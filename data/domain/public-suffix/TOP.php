@@ -3,10 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'NTDLL.TOP',
-    ],
-    'wildcards' => [
-        'WADL.TOP',
-    ],
+    'rules' => ['NTDLL.TOP'],
+    'wildcards' => ['WADL.TOP'],
 ];

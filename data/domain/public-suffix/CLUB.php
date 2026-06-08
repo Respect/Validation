@@ -3,10 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'BARSY.CLUB',
-        'CLOUDNS.CLUB',
-        'JELE.CLUB',
-    ],
+    'rules' => ['BARSY.CLUB', 'CLOUDNS.CLUB', 'JELE.CLUB'],
     'wildcards' => [],
 ];

@@ -3,11 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'AEM.LIVE',
-        'HLX.LIVE',
-    ],
-    'wildcards' => [
-        'EWP.LIVE',
-    ],
+    'rules' => ['AEM.LIVE', 'HLX.LIVE'],
+    'wildcards' => ['EWP.LIVE'],
 ];

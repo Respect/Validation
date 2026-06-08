@@ -3,8 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'SCH.TF',
-    ],
+    'rules' => ['SCH.TF'],
     'wildcards' => [],
 ];

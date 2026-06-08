@@ -3,25 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'ADULT.HT',
-        'ART.HT',
-        'ASSO.HT',
-        'COM.HT',
-        'COOP.HT',
-        'EDU.HT',
-        'FIRM.HT',
-        'GOUV.HT',
-        'INFO.HT',
-        'MED.HT',
-        'NET.HT',
-        'ORG.HT',
-        'PERSO.HT',
-        'POL.HT',
-        'PRO.HT',
-        'REL.HT',
-        'RT.HT',
-        'SHOP.HT',
-    ],
+    'rules' => ['ADULT.HT', 'ART.HT', 'ASSO.HT', 'COM.HT', 'COOP.HT', 'EDU.HT', 'FIRM.HT', 'GOUV.HT', 'INFO.HT', 'MED.HT', 'NET.HT', 'ORG.HT', 'PERSO.HT', 'POL.HT', 'PRO.HT', 'REL.HT', 'RT.HT', 'SHOP.HT'],
     'wildcards' => [],
 ];

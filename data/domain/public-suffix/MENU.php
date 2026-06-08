@@ -3,9 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'BARSY.MENU',
-        'BARSYONLINE.MENU',
-    ],
+    'rules' => ['BARSY.MENU', 'BARSYONLINE.MENU'],
     'wildcards' => [],
 ];

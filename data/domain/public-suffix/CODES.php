@@ -4,7 +4,5 @@
 return [
     'exceptions' => [],
     'rules' => [],
-    'wildcards' => [
-        'OWO.CODES',
-    ],
+    'wildcards' => ['OWO.CODES'],
 ];

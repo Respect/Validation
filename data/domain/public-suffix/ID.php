@@ -3,24 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'AC.ID',
-        'AI.ID',
-        'BIZ.ID',
-        'CO.ID',
-        'DESA.ID',
-        'E.ID',
-        'GO.ID',
-        'KOP.ID',
-        'MIL.ID',
-        'MY.ID',
-        'NET.ID',
-        'OR.ID',
-        'PONPES.ID',
-        'SCH.ID',
-        'WEB.ID',
-        'XN--9TFKY.ID',
-        'ZONE.ID',
-    ],
+    'rules' => ['AC.ID', 'AI.ID', 'BIZ.ID', 'CO.ID', 'DESA.ID', 'E.ID', 'GO.ID', 'KOP.ID', 'MIL.ID', 'MY.ID', 'NET.ID', 'OR.ID', 'PONPES.ID', 'SCH.ID', 'WEB.ID', 'XN--9TFKY.ID', 'ZONE.ID'],
     'wildcards' => [],
 ];

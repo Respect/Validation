@@ -3,14 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'COM.KZ',
-        'EDU.KZ',
-        'GOV.KZ',
-        'JCLOUD.KZ',
-        'MIL.KZ',
-        'NET.KZ',
-        'ORG.KZ',
-    ],
+    'rules' => ['COM.KZ', 'EDU.KZ', 'GOV.KZ', 'JCLOUD.KZ', 'MIL.KZ', 'NET.KZ', 'ORG.KZ'],
     'wildcards' => [],
 ];

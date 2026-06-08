@@ -3,10 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'INTOUCH.EMAIL',
-        'P.TAWK.EMAIL',
-        'P.TAWKTO.EMAIL',
-    ],
+    'rules' => ['INTOUCH.EMAIL', 'P.TAWK.EMAIL', 'P.TAWKTO.EMAIL'],
     'wildcards' => [],
 ];

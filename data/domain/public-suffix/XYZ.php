@@ -3,13 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'BOTDASH.XYZ',
-        'CAFFEINE.XYZ',
-        'EXE.XYZ',
-        'OPENTUNNEL.XYZ',
-    ],
-    'wildcards' => [
-        'TELEBIT.XYZ',
-    ],
+    'rules' => ['BOTDASH.XYZ', 'CAFFEINE.XYZ', 'EXE.XYZ', 'OPENTUNNEL.XYZ'],
+    'wildcards' => ['TELEBIT.XYZ'],
 ];
