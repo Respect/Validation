@@ -3,13 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'LIMA.ZONE',
-        'PRG1-ZEROPS.ZONE',
-        'STACKIT.ZONE',
-    ],
-    'wildcards' => [
-        'TRITON.ZONE',
-        'ZEROPS.ZONE',
-    ],
+    'rules' => ['LIMA.ZONE', 'PRG1-ZEROPS.ZONE', 'STACKIT.ZONE'],
+    'wildcards' => ['TRITON.ZONE', 'ZEROPS.ZONE'],
 ];

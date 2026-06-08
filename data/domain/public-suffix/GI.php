@@ -3,13 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'COM.GI',
-        'EDU.GI',
-        'GOV.GI',
-        'LTD.GI',
-        'MOD.GI',
-        'ORG.GI',
-    ],
+    'rules' => ['COM.GI', 'EDU.GI', 'GOV.GI', 'LTD.GI', 'MOD.GI', 'ORG.GI'],
     'wildcards' => [],
 ];

@@ -3,16 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'APP-IONOS.SPACE',
-        'DEPLOYAGENT.SPACE',
-        'HEIYU.SPACE',
-        'HF.SPACE',
-        'MYFAST.SPACE',
-        'PROJECT.SPACE',
-        'STATIC.HF.SPACE',
-        'UBER.SPACE',
-        'XS4ALL.SPACE',
-    ],
+    'rules' => ['APP-IONOS.SPACE', 'DEPLOYAGENT.SPACE', 'HEIYU.SPACE', 'HF.SPACE', 'MYFAST.SPACE', 'PROJECT.SPACE', 'STATIC.HF.SPACE', 'UBER.SPACE', 'XS4ALL.SPACE'],
     'wildcards' => [],
 ];

@@ -3,20 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'BIZ.AZ',
-        'CO.AZ',
-        'COM.AZ',
-        'EDU.AZ',
-        'GOV.AZ',
-        'INFO.AZ',
-        'INT.AZ',
-        'MIL.AZ',
-        'NAME.AZ',
-        'NET.AZ',
-        'ORG.AZ',
-        'PP.AZ',
-        'PRO.AZ',
-    ],
+    'rules' => ['BIZ.AZ', 'CO.AZ', 'COM.AZ', 'EDU.AZ', 'GOV.AZ', 'INFO.AZ', 'INT.AZ', 'MIL.AZ', 'NAME.AZ', 'NET.AZ', 'ORG.AZ', 'PP.AZ', 'PRO.AZ'],
     'wildcards' => [],
 ];

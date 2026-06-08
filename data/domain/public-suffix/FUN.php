@@ -3,11 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'MS.FUN',
-        'VICP.FUN',
-        'YICP.FUN',
-        'ZICP.FUN',
-    ],
+    'rules' => ['MS.FUN', 'VICP.FUN', 'YICP.FUN', 'ZICP.FUN'],
     'wildcards' => [],
 ];

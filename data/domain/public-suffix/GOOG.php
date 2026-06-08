@@ -3,11 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'CLOUD.GOOG',
-        'TRANSLATE.GOOG',
-    ],
-    'wildcards' => [
-        'USERCONTENT.GOOG',
-    ],
+    'rules' => ['CLOUD.GOOG', 'TRANSLATE.GOOG'],
+    'wildcards' => ['USERCONTENT.GOOG'],
 ];

@@ -3,10 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'F5.SI',
-        'GITAPP.SI',
-        'GITPAGE.SI',
-    ],
+    'rules' => ['F5.SI', 'GITAPP.SI', 'GITPAGE.SI'],
     'wildcards' => [],
 ];

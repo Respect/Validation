@@ -3,10 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'CLOUDNS.PW',
-        'GOV.PW',
-        'X443.PW',
-    ],
+    'rules' => ['CLOUDNS.PW', 'GOV.PW', 'X443.PW'],
     'wildcards' => [],
 ];

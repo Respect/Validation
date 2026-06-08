@@ -3,9 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'DYN.ADDR.TOOLS',
-        'MYADDR.TOOLS',
-    ],
+    'rules' => ['DYN.ADDR.TOOLS', 'MYADDR.TOOLS'],
     'wildcards' => [],
 ];

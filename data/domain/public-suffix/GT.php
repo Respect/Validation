@@ -3,14 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'COM.GT',
-        'EDU.GT',
-        'GOB.GT',
-        'IND.GT',
-        'MIL.GT',
-        'NET.GT',
-        'ORG.GT',
-    ],
+    'rules' => ['COM.GT', 'EDU.GT', 'GOB.GT', 'IND.GT', 'MIL.GT', 'NET.GT', 'ORG.GT'],
     'wildcards' => [],
 ];

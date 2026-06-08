@@ -3,11 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'ENTERPRISECLOUD.NU',
-        'MERSEINE.NU',
-        'MINE.NU',
-        'SHACKNET.NU',
-    ],
+    'rules' => ['ENTERPRISECLOUD.NU', 'MERSEINE.NU', 'MINE.NU', 'SHACKNET.NU'],
     'wildcards' => [],
 ];

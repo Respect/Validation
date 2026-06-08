@@ -3,11 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'FORGOT.HER.NAME',
-        'FORGOT.HIS.NAME',
-        'ISPMANAGER.NAME',
-        'KEENETIC.NAME',
-    ],
+    'rules' => ['FORGOT.HER.NAME', 'FORGOT.HIS.NAME', 'ISPMANAGER.NAME', 'KEENETIC.NAME'],
     'wildcards' => [],
 ];

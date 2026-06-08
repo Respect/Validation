@@ -3,14 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'COM.AI',
-        'FRAMER.AI',
-        'KILOAPPS.AI',
-        'NET.AI',
-        'OFF.AI',
-        'ORG.AI',
-        'UWU.AI',
-    ],
+    'rules' => ['COM.AI', 'FRAMER.AI', 'KILOAPPS.AI', 'NET.AI', 'OFF.AI', 'ORG.AI', 'UWU.AI'],
     'wildcards' => [],
 ];

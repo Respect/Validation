@@ -3,11 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'PLAYIT.PLUS',
-        'WITH.PLAYIT.PLUS',
-    ],
-    'wildcards' => [
-        'AT.PLAYIT.PLUS',
-    ],
+    'rules' => ['PLAYIT.PLUS', 'WITH.PLAYIT.PLUS'],
+    'wildcards' => ['AT.PLAYIT.PLUS'],
 ];

@@ -3,10 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'SHIPTODAY.BUILD',
-        'V0.BUILD',
-        'WINDSURF.BUILD',
-    ],
+    'rules' => ['SHIPTODAY.BUILD', 'V0.BUILD', 'WINDSURF.BUILD'],
     'wildcards' => [],
 ];

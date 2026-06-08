@@ -3,21 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'AC.NI',
-        'BIZ.NI',
-        'CO.NI',
-        'COM.NI',
-        'EDU.NI',
-        'GOB.NI',
-        'IN.NI',
-        'INFO.NI',
-        'INT.NI',
-        'MIL.NI',
-        'NET.NI',
-        'NOM.NI',
-        'ORG.NI',
-        'WEB.NI',
-    ],
+    'rules' => ['AC.NI', 'BIZ.NI', 'CO.NI', 'COM.NI', 'EDU.NI', 'GOB.NI', 'IN.NI', 'INFO.NI', 'INT.NI', 'MIL.NI', 'NET.NI', 'NOM.NI', 'ORG.NI', 'WEB.NI'],
     'wildcards' => [],
 ];

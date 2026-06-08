@@ -3,14 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'COM.GE',
-        'EDU.GE',
-        'GOV.GE',
-        'NET.GE',
-        'ORG.GE',
-        'PVT.GE',
-        'SCHOOL.GE',
-    ],
+    'rules' => ['COM.GE', 'EDU.GE', 'GOV.GE', 'NET.GE', 'ORG.GE', 'PVT.GE', 'SCHOOL.GE'],
     'wildcards' => [],
 ];

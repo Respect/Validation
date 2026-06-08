@@ -3,14 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        '123HJEMMESIDE.DK',
-        'BIZ.DK',
-        'CO.DK',
-        'FIRM.DK',
-        'MYSPREADSHOP.DK',
-        'REG.DK',
-        'STORE.DK',
-    ],
+    'rules' => ['123HJEMMESIDE.DK', 'BIZ.DK', 'CO.DK', 'FIRM.DK', 'MYSPREADSHOP.DK', 'REG.DK', 'STORE.DK'],
     'wildcards' => [],
 ];

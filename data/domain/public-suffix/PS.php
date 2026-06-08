@@ -3,14 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'COM.PS',
-        'EDU.PS',
-        'GOV.PS',
-        'NET.PS',
-        'ORG.PS',
-        'PLO.PS',
-        'SEC.PS',
-    ],
+    'rules' => ['COM.PS', 'EDU.PS', 'GOV.PS', 'NET.PS', 'ORG.PS', 'PLO.PS', 'SEC.PS'],
     'wildcards' => [],
 ];

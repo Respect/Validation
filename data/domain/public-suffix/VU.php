@@ -3,11 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'COM.VU',
-        'EDU.VU',
-        'NET.VU',
-        'ORG.VU',
-    ],
+    'rules' => ['COM.VU', 'EDU.VU', 'NET.VU', 'ORG.VU'],
     'wildcards' => [],
 ];

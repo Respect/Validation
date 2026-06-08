@@ -3,20 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'BOTDA.SH',
-        'COM.SH',
-        'ENT.PLATFORM.SH',
-        'EU.PLATFORM.SH',
-        'GOV.SH',
-        'HASHBANG.SH',
-        'LOVABLE.SH',
-        'MIL.SH',
-        'NET.SH',
-        'NOW.SH',
-        'ORG.SH',
-        'TELEPORT.SH',
-        'US.PLATFORM.SH',
-    ],
+    'rules' => ['BOTDA.SH', 'COM.SH', 'ENT.PLATFORM.SH', 'EU.PLATFORM.SH', 'GOV.SH', 'HASHBANG.SH', 'LOVABLE.SH', 'MIL.SH', 'NET.SH', 'NOW.SH', 'ORG.SH', 'TELEPORT.SH', 'US.PLATFORM.SH'],
     'wildcards' => [],
 ];

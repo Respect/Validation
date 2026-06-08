@@ -3,16 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'CO.OM',
-        'COM.OM',
-        'EDU.OM',
-        'GOV.OM',
-        'MED.OM',
-        'MUSEUM.OM',
-        'NET.OM',
-        'ORG.OM',
-        'PRO.OM',
-    ],
+    'rules' => ['CO.OM', 'COM.OM', 'EDU.OM', 'GOV.OM', 'MED.OM', 'MUSEUM.OM', 'NET.OM', 'ORG.OM', 'PRO.OM'],
     'wildcards' => [],
 ];

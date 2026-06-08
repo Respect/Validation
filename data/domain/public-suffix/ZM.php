@@ -3,18 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'AC.ZM',
-        'BIZ.ZM',
-        'CO.ZM',
-        'COM.ZM',
-        'EDU.ZM',
-        'GOV.ZM',
-        'INFO.ZM',
-        'MIL.ZM',
-        'NET.ZM',
-        'ORG.ZM',
-        'SCH.ZM',
-    ],
+    'rules' => ['AC.ZM', 'BIZ.ZM', 'CO.ZM', 'COM.ZM', 'EDU.ZM', 'GOV.ZM', 'INFO.ZM', 'MIL.ZM', 'NET.ZM', 'ORG.ZM', 'SCH.ZM'],
     'wildcards' => [],
 ];

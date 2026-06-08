@@ -3,15 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'AEM.NETWORK',
-        'APPWRITE.NETWORK',
-        'ARVO.NETWORK',
-        'AZIMUTH.NETWORK',
-        'CO.NETWORK',
-        'TLON.NETWORK',
-    ],
-    'wildcards' => [
-        'ALCES.NETWORK',
-    ],
+    'rules' => ['AEM.NETWORK', 'APPWRITE.NETWORK', 'ARVO.NETWORK', 'AZIMUTH.NETWORK', 'CO.NETWORK', 'TLON.NETWORK'],
+    'wildcards' => ['ALCES.NETWORK'],
 ];

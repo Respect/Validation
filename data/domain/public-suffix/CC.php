@@ -3,25 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'CCWU.CC',
-        'CLEVERAPPS.CC',
-        'CLOUD-IP.CC',
-        'CLOUDNS.CC',
-        'CSX.CC',
-        'EC.CC',
-        'EU.CC',
-        'FANTASYLEAGUE.CC',
-        'FTPACCESS.CC',
-        'GAME-SERVER.CC',
-        'GU.CC',
-        'INSTANCES.SPAWN.CC',
-        'MYPHOTOS.CC',
-        'SCRAPPING.CC',
-        'SRYZE.CC',
-        'TWMAIL.CC',
-        'UK.CC',
-        'US.CC',
-    ],
+    'rules' => ['CCWU.CC', 'CLEVERAPPS.CC', 'CLOUD-IP.CC', 'CLOUDNS.CC', 'CSX.CC', 'EC.CC', 'EU.CC', 'FANTASYLEAGUE.CC', 'FTPACCESS.CC', 'GAME-SERVER.CC', 'GU.CC', 'INSTANCES.SPAWN.CC', 'MYPHOTOS.CC', 'SCRAPPING.CC', 'SRYZE.CC', 'TWMAIL.CC', 'UK.CC', 'US.CC'],
     'wildcards' => [],
 ];

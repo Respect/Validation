@@ -3,15 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'COM.GU',
-        'EDU.GU',
-        'GOV.GU',
-        'GUAM.GU',
-        'INFO.GU',
-        'NET.GU',
-        'ORG.GU',
-        'WEB.GU',
-    ],
+    'rules' => ['COM.GU', 'EDU.GU', 'GOV.GU', 'GUAM.GU', 'INFO.GU', 'NET.GU', 'ORG.GU', 'WEB.GU'],
     'wildcards' => [],
 ];

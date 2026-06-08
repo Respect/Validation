@@ -3,12 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'COM.HR',
-        'FROM.HR',
-        'IZ.HR',
-        'NAME.HR',
-        'SHOP.BRENDLY.HR',
-    ],
+    'rules' => ['COM.HR', 'FROM.HR', 'IZ.HR', 'NAME.HR', 'SHOP.BRENDLY.HR'],
     'wildcards' => [],
 ];

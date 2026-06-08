@@ -3,12 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'CO.GL',
-        'COM.GL',
-        'EDU.GL',
-        'NET.GL',
-        'ORG.GL',
-    ],
+    'rules' => ['CO.GL', 'COM.GL', 'EDU.GL', 'NET.GL', 'ORG.GL'],
     'wildcards' => [],
 ];

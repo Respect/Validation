@@ -3,20 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => [
-        'AC.CY',
-        'BIZ.CY',
-        'COM.CY',
-        'EKLOGES.CY',
-        'GOV.CY',
-        'J.SCALEFORCE.COM.CY',
-        'LTD.CY',
-        'MIL.CY',
-        'NET.CY',
-        'ORG.CY',
-        'PRESS.CY',
-        'PRO.CY',
-        'TM.CY',
-    ],
+    'rules' => ['AC.CY', 'BIZ.CY', 'COM.CY', 'EKLOGES.CY', 'GOV.CY', 'J.SCALEFORCE.COM.CY', 'LTD.CY', 'MIL.CY', 'NET.CY', 'ORG.CY', 'PRESS.CY', 'PRO.CY', 'TM.CY'],
     'wildcards' => [],
 ];
