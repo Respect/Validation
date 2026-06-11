@@ -136,6 +136,8 @@ interface KeyBuilder
 
     public static function keyFormat(int|string $key, Formatter $formatter): Chain;
 
+    public static function keyGiven(int|string $key, Validator $when, Validator $then): Chain;
+
     public static function keyGraph(int|string $key, string ...$additionalChars): Chain;
 
     public static function keyGreaterThan(int|string $key, mixed $compareTo): Chain;

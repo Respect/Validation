@@ -134,6 +134,8 @@ interface AllChain
 
     public function allFormat(Formatter $formatter): Chain;
 
+    public function allGiven(Validator $when, Validator $then): Chain;
+
     public function allGraph(string ...$additionalChars): Chain;
 
     public function allGreaterThan(mixed $compareTo): Chain;

@@ -140,6 +140,8 @@ interface NullOrBuilder
 
     public static function nullOrFormatted(Formatter $formatter, Validator $validator): Chain;
 
+    public static function nullOrGiven(Validator $when, Validator $then): Chain;
+
     public static function nullOrGraph(string ...$additionalChars): Chain;
 
     public static function nullOrGreaterThan(mixed $compareTo): Chain;

@@ -138,6 +138,8 @@ interface UndefOrChain
 
     public function undefOrFormatted(Formatter $formatter, Validator $validator): Chain;
 
+    public function undefOrGiven(Validator $when, Validator $then): Chain;
+
     public function undefOrGraph(string ...$additionalChars): Chain;
 
     public function undefOrGreaterThan(mixed $compareTo): Chain;

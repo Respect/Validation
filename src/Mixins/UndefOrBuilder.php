@@ -138,6 +138,8 @@ interface UndefOrBuilder
 
     public static function undefOrFormatted(Formatter $formatter, Validator $validator): Chain;
 
+    public static function undefOrGiven(Validator $when, Validator $then): Chain;
+
     public static function undefOrGraph(string ...$additionalChars): Chain;
 
     public static function undefOrGreaterThan(mixed $compareTo): Chain;

@@ -136,6 +136,8 @@ interface PropertyChain
 
     public function propertyFormat(string $propertyName, Formatter $formatter): Chain;
 
+    public function propertyGiven(string $propertyName, Validator $when, Validator $then): Chain;
+
     public function propertyGraph(string $propertyName, string ...$additionalChars): Chain;
 
     public function propertyGreaterThan(string $propertyName, mixed $compareTo): Chain;

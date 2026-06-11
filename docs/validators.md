@@ -21,7 +21,7 @@ In this page you will find a list of validators by their category.
 
 **Composite**: [AllOf][] - [AnyOf][] - [NoneOf][] - [OneOf][] - [ShortCircuit][]
 
-**Conditions**: [Not][] - [ShortCircuit][] - [When][]
+**Conditions**: [Given][] - [Not][] - [ShortCircuit][] - [When][]
 
 **Core**: [Named][] - [Not][] - [Templated][]
 
@@ -43,7 +43,7 @@ In this page you will find a list of validators by their category.
 
 **Miscellaneous**: [Blank][] - [Falsy][] - [Named][] - [Templated][] - [Undef][]
 
-**Nesting**: [After][] - [AllOf][] - [AnyOf][] - [Each][] - [Factory][] - [Key][] - [KeySet][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [ShortCircuit][] - [UndefOr][] - [When][]
+**Nesting**: [After][] - [AllOf][] - [AnyOf][] - [Each][] - [Factory][] - [Given][] - [Key][] - [KeySet][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [ShortCircuit][] - [UndefOr][] - [When][]
 
 **Numbers**: [Base][] - [Decimal][] - [Digit][] - [Even][] - [Factor][] - [Finite][] - [FloatType][] - [FloatVal][] - [Infinite][] - [IntType][] - [IntVal][] - [Multiple][] - [Negative][] - [Number][] - [NumericVal][] - [Odd][] - [Positive][] - [Roman][]
 
@@ -119,6 +119,7 @@ In this page you will find a list of validators by their category.
 - [FloatVal][] - `v::floatVal()->assert(1.5);`
 - [Format][] - `v::format(f::pattern('00-00'))->assert('42-33');`
 - [Formatted][] - `v::formatted(f::mask('1-4'), v::email())->assert('foo@example.com');`
+- [Given][] - `v::given(v::intVal(), v::positive())->assert(5);`
 - [Graph][] - `v::graph()->assert('LKM@#$%4;');`
 - [GreaterThan][] - `v::greaterThan(10)->assert(11);`
 - [GreaterThanOrEqual][] - `v::intVal()->greaterThanOrEqual(10)->assert(10);`
@@ -277,6 +278,7 @@ In this page you will find a list of validators by their category.
 [FloatVal]: validators/FloatVal.md "Validate whether the input value is float."
 [Format]: validators/Format.md "Validates whether an input is already formatted as the result of applying a provided"
 [Formatted]: validators/Formatted.md "Decorates a validator to format input values in error messages while still validating the original input."
+[Given]: validators/Given.md "A conditional validator. When `$when` passes, validates `$then`; otherwise passes silently."
 [Graph]: validators/Graph.md "Validates if all characters in the input are printable and actually creates"
 [GreaterThan]: validators/GreaterThan.md "Validates whether the input is greater than a value."
 [GreaterThanOrEqual]: validators/GreaterThanOrEqual.md "Validates whether the input is greater than or equal to a value."

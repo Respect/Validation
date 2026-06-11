@@ -140,6 +140,8 @@ interface NullOrChain
 
     public function nullOrFormatted(Formatter $formatter, Validator $validator): Chain;
 
+    public function nullOrGiven(Validator $when, Validator $then): Chain;
+
     public function nullOrGraph(string ...$additionalChars): Chain;
 
     public function nullOrGreaterThan(mixed $compareTo): Chain;

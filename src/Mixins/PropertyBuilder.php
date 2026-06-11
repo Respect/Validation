@@ -136,6 +136,8 @@ interface PropertyBuilder
 
     public static function propertyFormat(string $propertyName, Formatter $formatter): Chain;
 
+    public static function propertyGiven(string $propertyName, Validator $when, Validator $then): Chain;
+
     public static function propertyGraph(string $propertyName, string ...$additionalChars): Chain;
 
     public static function propertyGreaterThan(string $propertyName, mixed $compareTo): Chain;

@@ -136,6 +136,8 @@ interface KeyChain
 
     public function keyFormat(int|string $key, Formatter $formatter): Chain;
 
+    public function keyGiven(int|string $key, Validator $when, Validator $then): Chain;
+
     public function keyGraph(int|string $key, string ...$additionalChars): Chain;
 
     public function keyGreaterThan(int|string $key, mixed $compareTo): Chain;

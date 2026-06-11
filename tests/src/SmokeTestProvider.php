@@ -85,6 +85,7 @@ trait SmokeTestProvider
         yield 'FloatVal' => [new vs\FloatVal(), 1.23];
         yield 'Format' => [new vs\Format(new fo\PatternFormatter('0-0')), '1-2'];
         yield 'Formatted' => [new vs\Formatted(new fo\MaskFormatter('1-'), new vs\StringType()), 'unmasked'];
+        yield 'Given' => [new vs\Given(new vs\IntVal(), new vs\AlwaysValid()), 5];
         yield 'Graph' => [new vs\Graph(), 'abc123!@#'];
         yield 'GreaterThan' => [new vs\GreaterThan(0), 1];
         yield 'GreaterThanOrEqual' => [new vs\GreaterThanOrEqual(1), 1];

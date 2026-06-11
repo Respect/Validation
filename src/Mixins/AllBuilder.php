@@ -134,6 +134,8 @@ interface AllBuilder
 
     public static function allFormat(Formatter $formatter): Chain;
 
+    public static function allGiven(Validator $when, Validator $then): Chain;
+
     public static function allGraph(string ...$additionalChars): Chain;
 
     public static function allGreaterThan(mixed $compareTo): Chain;

@@ -145,6 +145,8 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function formatted(Formatter $formatter, Validator $validator): Chain;
 
+    public function given(Validator $when, Validator $then): Chain;
+
     public function graph(string ...$additionalChars): Chain;
 
     public function greaterThan(mixed $compareTo): Chain;
