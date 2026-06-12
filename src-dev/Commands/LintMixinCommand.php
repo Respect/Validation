@@ -18,6 +18,7 @@ use Respect\Dev\CodeGen\FluentBuilder\PrefixMapGenerator;
 use Respect\Dev\CodeGen\InterfaceConfig;
 use Respect\Dev\Differ\ConsoleDiffer;
 use Respect\Dev\Differ\Item;
+use Respect\Validation\ArgumentsResolver;
 use Respect\Validation\Mixins\Chain;
 use Respect\Validation\Validator;
 use Respect\Validation\ValidatorBuilder;
@@ -70,8 +71,8 @@ final class LintMixinCommand extends Command
         $generator = new MixinGenerator(
             config: $config,
             methodBuilder: new MethodBuilder(
-                excludedTypePrefixes: ['Sokil', 'Egulias'],
-                excludedTypeNames: ['finfo'],
+                excludedTypePrefixes: ['Sokil', 'Egulias', 'libphonenumber', 'Ramsey'],
+                excludedTypeNames: ['finfo', ArgumentsResolver::class],
             ),
             interfaces: [
                 new InterfaceConfig(

@@ -9,6 +9,8 @@ parameters:
     # reading them in tests, so treat TestCall as a property bag.
     - Pest\PendingCalls\TestCall
   ignoreErrors:
+    - identifier: class.notFound
+      path: tests/src/Functions/functionWithNonExistentType.php
     -
       # Why: SimpleXMLElement is weird and doesn't implement anything ArrayAccess-like
       message: '/Instanceof between mixed and SimpleXMLElement will always evaluate to false\./'

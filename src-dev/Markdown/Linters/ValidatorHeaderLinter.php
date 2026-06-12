@@ -18,6 +18,7 @@ use ReflectionParameter;
 use ReflectionUnionType;
 use Respect\Dev\Markdown\File;
 use Respect\Dev\Markdown\Linter;
+use Respect\Validation\ArgumentsResolver;
 
 use function array_filter;
 use function array_keys;
@@ -174,6 +175,9 @@ final readonly class ValidatorHeaderLinter implements Linter
             if (
                 str_starts_with($type->getName(), 'Sokil')
                 || str_starts_with($type->getName(), 'Egulias')
+                || str_starts_with($type->getName(), 'libphonenumber')
+                || str_starts_with($type->getName(), 'Ramsey')
+                || $type->getName() === ArgumentsResolver::class
                 || $type->getName() === 'finfo'
             ) {
                 return null;

@@ -21,8 +21,6 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
-use Psr\Container\NotFoundExceptionInterface;
-use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
@@ -30,6 +28,7 @@ use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Sokil\IsoCodes\Database\Countries;
 
+use function class_exists;
 use function is_scalar;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -50,14 +49,21 @@ final class Phone implements Validator
 
     private readonly Countries\Country|null $country;
 
-    public function __construct(string|null $countryCode = null, Countries|null $countries = null)
-    {
-        if (!ContainerRegistry::getContainer()->has(PhoneNumberUtil::class)) {
+    private readonly PhoneNumberUtil $phoneNumberUtil;
+
+    public function __construct(
+        string|null $countryCode = null,
+        Countries|null $countries = null,
+        PhoneNumberUtil|null $phoneNumberUtil = null,
+    ) {
+        if ($phoneNumberUtil === null && !class_exists(PhoneNumberUtil::class)) {
             throw new MissingComposerDependencyException(
                 'Phone rule requires libphonenumber for PHP',
                 'giggsey/libphonenumber-for-php',
             );
         }
+
+        $this->phoneNumberUtil = $phoneNumberUtil ?? PhoneNumberUtil::getInstance();
 
         if ($countryCode == null) {
             $this->country = null;
@@ -65,9 +71,7 @@ final class Phone implements Validator
             return;
         }
 
-        try {
-            $countries ??= ContainerRegistry::getContainer()->get(Countries::class);
-        } catch (NotFoundExceptionInterface) {
+        if ($countries === null && !class_exists(Countries::class)) {
             throw new MissingComposerDependencyException(
                 'Phone rule with country code requires PHP ISO Codes',
                 'sokil/php-isocodes',
@@ -75,7 +79,7 @@ final class Phone implements Validator
             );
         }
 
-        $this->country = $countries->getByAlpha2($countryCode);
+        $this->country = ($countries ?? new Countries())->getByAlpha2($countryCode);
         if ($this->country === null) {
             throw new InvalidValidatorException('Invalid country code %s', $countryCode);
         }
@@ -95,13 +99,12 @@ final class Phone implements Validator
     private function isValidPhone(string $input): bool
     {
         try {
-            $phoneNumberUtil = ContainerRegistry::getContainer()->get(PhoneNumberUtil::class);
-            $phoneNumberObject = $phoneNumberUtil->parse($input, $this->country?->getAlpha2());
+            $phoneNumberObject = $this->phoneNumberUtil->parse($input, $this->country?->getAlpha2());
             if ($this->country === null) {
-                return $phoneNumberUtil->isValidNumber($phoneNumberObject);
+                return $this->phoneNumberUtil->isValidNumber($phoneNumberObject);
             }
 
-            return $phoneNumberUtil->getRegionCodeForNumber($phoneNumberObject) === $this->country->getAlpha2();
+            return $this->phoneNumberUtil->getRegionCodeForNumber($phoneNumberObject) === $this->country->getAlpha2();
         } catch (NumberParseException) {
         }
 

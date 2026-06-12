@@ -11,12 +11,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
+use DI\Container;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Validation\ContainerArgumentsResolver;
 use Respect\Validation\Test\Stubs\WithAttributes;
 use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\Transformers\StubTransformer;
+use Respect\Validation\Test\Validators\Injectable;
+use Respect\Validation\Transformers\Transformer;
 
 #[Group(' rule')]
 #[CoversClass(Attributes::class)]
@@ -47,6 +52,43 @@ final class AttributesTest extends TestCase
     #[DataProvider('providerForObjectsWithInvalidPropertyValues')]
     public function shouldNotEvaluateObjectsWithInvalidPropertyValues(object $input): void
     {
+        self::assertInvalidInput(new Attributes(), $input);
+    }
+
+    #[Test]
+    public function shouldCreateAttributeValidatorsWithArgumentsFromContainerWhenResolverIsGiven(): void
+    {
+        $resolver = new ContainerArgumentsResolver(new Container([Transformer::class => new StubTransformer()]));
+
+        $input = new class {
+            #[Injectable('some name')]
+            public string $property = 'value';
+        };
+
+        self::assertValidInput(new Attributes($resolver), $input);
+    }
+
+    #[Test]
+    public function shouldCreateAttributeValidatorsFromContainerWhenResolverGivenAndAttributeHasNoConstructor(): void
+    {
+        $resolver = new ContainerArgumentsResolver(new Container());
+
+        $input = new class {
+            #[AlwaysValid]
+            public string $property = 'value';
+        };
+
+        self::assertValidInput(new Attributes($resolver), $input);
+    }
+
+    #[Test]
+    public function shouldCreateAttributeValidatorsWithTheirDefaultsWithoutResolver(): void
+    {
+        $input = new class {
+            #[Injectable('some name')]
+            public string $property = 'value';
+        };
+
         self::assertInvalidInput(new Attributes(), $input);
     }
 

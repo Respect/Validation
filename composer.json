@@ -72,7 +72,8 @@
             "Respect\\Dev\\": "src-dev/",
             "Respect\\Validation\\": "tests/unit/",
             "Respect\\Validation\\Test\\": "tests/src/"
-        }
+        },
+        "files": ["tests/src/Functions/namedFunctionWithTransformer.php"]
     },
     "scripts": {
         "bench-profile": "vendor/bin/phpbench xdebug:profile",

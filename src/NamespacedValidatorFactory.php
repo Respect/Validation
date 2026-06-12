@@ -30,6 +30,7 @@ final readonly class NamespacedValidatorFactory implements ValidatorFactory
     public function __construct(
         private Transformer $transformer,
         private array $rulesNamespaces,
+        private ArgumentsResolver|null $argumentsResolver = null,
     ) {
     }
 
@@ -88,11 +89,27 @@ final readonly class NamespacedValidatorFactory implements ValidatorFactory
         }
 
         try {
-            return $reflection->newInstanceArgs($arguments);
+            return $reflection->newInstanceArgs($this->resolveArguments($reflection, $arguments));
         } catch (ReflectionException) {
             throw new InvalidClassException(
                 sprintf('"%s" could not be instantiated with arguments %s', $ruleName, stringify($arguments)),
             );
         }
+    }
+
+    /**
+     * @param ReflectionClass<Validator> $reflection
+     * @param array<int, mixed> $arguments
+     *
+     * @return array<int|string, mixed>
+     */
+    private function resolveArguments(ReflectionClass $reflection, array $arguments): array
+    {
+        $constructor = $reflection->getConstructor();
+        if ($constructor === null || $this->argumentsResolver === null) {
+            return $arguments;
+        }
+
+        return $this->argumentsResolver->resolve($constructor, $arguments);
     }
 }

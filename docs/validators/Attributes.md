@@ -75,6 +75,7 @@ v::attributes()->assert(new Person('', 'not a date', 'not an email', 'not a phon
 - If the object has no attributes, the validation will always pass.
 - When the property is nullable, this validator will wrap the validator on the property into [NullOr](NullOr.md) validator.
 - This validator has no templates because it uses the templates of the validators that are applied to the properties.
+- When created with `v::attributes()`, the validators used as attributes will have their service dependencies — such as `PhoneNumberUtil` for [Phone](Phone.md) — resolved according to the [container configuration](../configuration.md). When instantiated directly with `new Attributes()`, attribute validators are created with their default dependencies instead.
 
 ## Categorization
 

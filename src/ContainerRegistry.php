@@ -68,9 +68,13 @@ final class ContainerRegistry
             'respect.validation.formatter.messages' => autowire(NestedArrayFormatter::class),
             'respect.validation.ignored_backtrace_paths' => [__DIR__ . '/ValidatorBuilder.php'],
             'respect.validation.rule_factory.namespaces' => ['Respect\\Validation\\Validators'],
+            ArgumentsResolver::class => factory(
+                static fn(Container $container) => new ContainerArgumentsResolver($container),
+            ),
             ValidatorFactory::class => factory(static fn(Container $container) => new NamespacedValidatorFactory(
                 $container->get(Transformer::class),
                 $container->get('respect.validation.rule_factory.namespaces'),
+                $container->get(ArgumentsResolver::class),
             )),
             Quoter::class => create(CodeQuoter::class)->constructor(120),
             Handler::class => factory(static function (Container $container) {

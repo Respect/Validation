@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use DI\Container;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
@@ -19,10 +20,12 @@ use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Test\TestCase;
 use Respect\Validation\Test\Transformers\StubTransformer;
+use Respect\Validation\Test\Validators\Injectable;
 use Respect\Validation\Test\Validators\Invalid;
 use Respect\Validation\Test\Validators\MyAbstractClass;
 use Respect\Validation\Test\Validators\Stub;
 use Respect\Validation\Test\Validators\Valid;
+use Respect\Validation\Transformers\Transformer;
 
 use function assert;
 use function sprintf;
@@ -60,6 +63,57 @@ final class NamespacedRuleFactoryTest extends TestCase
         assert($validator instanceof Stub);
 
         self::assertSame($constructorArguments, $validator->validations);
+    }
+
+    #[Test]
+    public function shouldInjectServicesFromContainerIntoUnfilledConstructorParameters(): void
+    {
+        $transformer = new StubTransformer();
+        $resolver = new ContainerArgumentsResolver(new Container([Transformer::class => $transformer]));
+
+        $factory = new NamespacedValidatorFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE], $resolver);
+        $validator = $factory->create('injectable', ['some name']);
+        assert($validator instanceof Injectable);
+
+        self::assertSame('some name', $validator->name);
+        self::assertSame($transformer, $validator->transformer);
+    }
+
+    #[Test]
+    public function shouldNotInjectServicesIntoParametersFilledByArguments(): void
+    {
+        $argumentTransformer = new StubTransformer();
+        $resolver = new ContainerArgumentsResolver(new Container([Transformer::class => new StubTransformer()]));
+
+        $factory = new NamespacedValidatorFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE], $resolver);
+        $validator = $factory->create('injectable', ['some name', $argumentTransformer]);
+        assert($validator instanceof Injectable);
+
+        self::assertSame($argumentTransformer, $validator->transformer);
+    }
+
+    #[Test]
+    public function shouldNotInjectServicesWhenCreatedWithoutArgumentsResolver(): void
+    {
+        $factory = new NamespacedValidatorFactory(new StubTransformer(), [self::TEST_RULES_NAMESPACE]);
+        $validator = $factory->create('injectable');
+        assert($validator instanceof Injectable);
+
+        self::assertNull($validator->transformer);
+    }
+
+    #[Test]
+    public function shouldNotInjectServicesTheContainerDoesNotHave(): void
+    {
+        $factory = new NamespacedValidatorFactory(
+            new StubTransformer(),
+            [self::TEST_RULES_NAMESPACE],
+            new ContainerArgumentsResolver(new Container()),
+        );
+        $validator = $factory->create('injectable');
+        assert($validator instanceof Injectable);
+
+        self::assertNull($validator->transformer);
     }
 
     #[Test]

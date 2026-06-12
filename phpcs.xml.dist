@@ -36,4 +36,13 @@
         <exclude-pattern>tests/Pest.php</exclude-pattern>
         <exclude-pattern>tests/feature</exclude-pattern>
     </rule>
+    <rule ref="Squiz.Functions.GlobalFunction.Found">
+        <exclude-pattern>tests/src/Functions/functionWithNonExistentType.php</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Functions.GlobalFunction.Found">
+        <exclude-pattern>tests/src/Functions/namedFunctionWithTransformer.php</exclude-pattern>
+    </rule>
+    <rule ref="PSR2.Files.EndFileNewline.NoneFound">
+        <exclude-pattern>tests/src/Functions/namedFunctionWithTransformer.php</exclude-pattern>
+    </rule>
 </ruleset>

@@ -18,6 +18,7 @@ use ReflectionClass;
 use ReflectionObject;
 use ReflectionProperty;
 use Respect\Dev\CodeGen\FluentBuilder\Mixin;
+use Respect\Validation\ArgumentsResolver;
 use Respect\Validation\Id;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -27,6 +28,11 @@ use Respect\Validation\Validators\Core\Reducer;
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 final class Attributes implements Validator
 {
+    public function __construct(
+        private readonly ArgumentsResolver|null $argumentsResolver = null,
+    ) {
+    }
+
     public function evaluate(mixed $input): Result
     {
         $id = new Id('attributes');
@@ -50,7 +56,7 @@ final class Attributes implements Validator
         $validators = [];
         while ($reflection instanceof ReflectionClass) {
             foreach ($reflection->getAttributes(Validator::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
-                $validators[] = $attribute->newInstance();
+                $validators[] = $this->createValidator($attribute);
             }
 
             $reflection = $reflection->getParentClass();
@@ -66,7 +72,7 @@ final class Attributes implements Validator
         foreach ($this->getProperties($reflection) as $propertyName => $property) {
             $propertyValidators = [];
             foreach ($property->getAttributes(Validator::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
-                $propertyValidators[] = $attribute->newInstance();
+                $propertyValidators[] = $this->createValidator($attribute);
             }
 
             if ($propertyValidators === []) {
@@ -80,6 +86,24 @@ final class Attributes implements Validator
         }
 
         return $validators;
+    }
+
+    /** @param ReflectionAttribute<Validator> $attribute */
+    private function createValidator(ReflectionAttribute $attribute): Validator
+    {
+        if ($this->argumentsResolver === null) {
+            return $attribute->newInstance();
+        }
+
+        $reflection = new ReflectionClass($attribute->getName());
+        $constructor = $reflection->getConstructor();
+        if ($constructor === null) {
+            return $attribute->newInstance();
+        }
+
+        return $reflection->newInstanceArgs(
+            $this->argumentsResolver->resolve($constructor, $attribute->getArguments()),
+        );
     }
 
     /** @return array<ReflectionProperty> */
