@@ -9,7 +9,14 @@
 
 declare(strict_types=1);
 
+use Respect\Validation\Test\Stubs\CyclicNode;
+use Respect\Validation\Test\Stubs\NestedAddress;
+use Respect\Validation\Test\Stubs\NestedWithAttributes;
 use Respect\Validation\Test\Stubs\WithAttributes;
+use Respect\Validation\Test\Stubs\WithCyclicAttributes;
+use Respect\Validation\Test\Stubs\WithIntersectionTypeNested;
+use Respect\Validation\Test\Stubs\WithNestedAttributes;
+use Respect\Validation\Test\Stubs\WithUnionTypeNested;
 
 test('Default', catchAll(
     fn() => v::attributes()->assert(new WithAttributes('', '2024-06-23', 'john.doe@gmail.com')),
@@ -93,4 +100,40 @@ test('Multiple attributes, one failed', catchAll(
         ->and($message)->toBe('`.birthdate` must be a date in the "2005-12-30" format')
         ->and($fullMessage)->toBe('- `.birthdate` must be a date in the "2005-12-30" format')
         ->and($messages)->toBe(['birthdate' => '`.birthdate` must be a date in the "2005-12-30" format']),
+));
+
+test('Recursive: invalid nested object property', catchAll(
+    fn() => v::attributes()->assert(new WithNestedAttributes('John Doe', new NestedAddress('', 'Springfield'))),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.address.street` must be defined')
+        ->and($fullMessage)->toBe('- `.address.street` must be defined')
+        ->and($messages)->toBe(['address' => '`.address.street` must be defined']),
+));
+
+test('Recursive: union type with invalid nested object property', catchAll(
+    fn() => v::attributes()->assert(new WithUnionTypeNested('John Doe', new NestedAddress('', 'Springfield'))),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.address.street` must be defined')
+        ->and($fullMessage)->toBe('- `.address.street` must be defined')
+        ->and($messages)->toBe(['address' => '`.address.street` must be defined']),
+));
+
+test('Recursive: intersection type with invalid nested object property', catchAll(
+    fn() => v::attributes()->assert(new WithIntersectionTypeNested('John Doe', new NestedWithAttributes('', 'Springfield'))),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.address.street` must be defined')
+        ->and($fullMessage)->toBe('- `.address.street` must be defined')
+        ->and($messages)->toBe(['address' => '`.address.street` must be defined']),
+));
+
+test('Circular reference: self-referencing', catchAll(
+    fn() => (function (): void {
+        $node = new CyclicNode('hello');
+        $node->next = $node;
+        v::attributes()->assert(new WithCyclicAttributes('John Doe', $node));
+    })(),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.next.next` must not contain a circular reference or must be null')
+        ->and($fullMessage)->toBe('- `.next.next` must not contain a circular reference or must be null')
+        ->and($messages)->toBe(['next' => '`.next.next` must not contain a circular reference or must be null']),
 ));

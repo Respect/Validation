@@ -15,18 +15,34 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use ReflectionAttribute;
 use ReflectionClass;
+use ReflectionIntersectionType;
+use ReflectionNamedType;
 use ReflectionObject;
 use ReflectionProperty;
+use ReflectionUnionType;
 use Respect\Dev\CodeGen\FluentBuilder\Mixin;
 use Respect\Validation\Id;
+use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators\Core\Reducer;
 
+use function spl_object_id;
+
 #[Mixin(exclude: ['all', 'key', 'property', 'not', 'undefOr'])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
+#[Template(
+    '{{subject}} must not contain a circular reference',
+    '{{subject}} must contain a circular reference',
+    Attributes::TEMPLATE_CIRCULAR_REFERENCE,
+)]
 final class Attributes implements Validator
 {
+    public const string TEMPLATE_CIRCULAR_REFERENCE = '__circular_reference__';
+
+    /** @var array<int, true> */
+    private array $visited = [];
+
     public function evaluate(mixed $input): Result
     {
         $id = new Id('attributes');
@@ -34,6 +50,13 @@ final class Attributes implements Validator
         if (!$objectType->hasPassed) {
             return $objectType->withId($id);
         }
+
+        $objectId = spl_object_id($input);
+        if (isset($this->visited[$objectId])) {
+            return Result::failed($input, $this, [], self::TEMPLATE_CIRCULAR_REFERENCE)->withId($id);
+        }
+
+        $this->visited[$objectId] = true;
 
         $reflection = new ReflectionObject($input);
         $validators = [...$this->getClassValidators($reflection), ...$this->getPropertyValidators($reflection)];
@@ -64,11 +87,7 @@ final class Attributes implements Validator
     {
         $validators = [];
         foreach ($this->getProperties($reflection) as $propertyName => $property) {
-            $propertyValidators = [];
-            foreach ($property->getAttributes(Validator::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
-                $propertyValidators[] = $attribute->newInstance();
-            }
-
+            $propertyValidators = $this->getPropertyInnerValidators($property);
             if ($propertyValidators === []) {
                 continue;
             }
@@ -80,6 +99,47 @@ final class Attributes implements Validator
         }
 
         return $validators;
+    }
+
+    /** @return array<Validator> */
+    private function getPropertyInnerValidators(ReflectionProperty $property): array
+    {
+        $propertyValidators = [];
+        $hasExplicitAttributes = false;
+        foreach ($property->getAttributes(Validator::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
+            $propertyValidator = $attribute->getName() === self::class ? $this : $attribute->newInstance();
+            $hasExplicitAttributes = $propertyValidator === $this;
+            $propertyValidators[] = $propertyValidator;
+        }
+
+        if ($hasExplicitAttributes) {
+            return $propertyValidators;
+        }
+
+        $type = $property->getType();
+        if ($type instanceof ReflectionNamedType) {
+            if (!$type->isBuiltin()) {
+                $propertyValidators[] = $this;
+            }
+        }
+
+        if ($type instanceof ReflectionIntersectionType) {
+            $propertyValidators[] = $this;
+        }
+
+        if ($type instanceof ReflectionUnionType) {
+            foreach ($type->getTypes() as $innerType) {
+                if (!$innerType instanceof ReflectionNamedType || $innerType->isBuiltin()) {
+                    continue;
+                }
+
+                /** @var class-string $class */
+                $class = $innerType->getName();
+                $propertyValidators[] = new Given(new Instance($class), $this);
+            }
+        }
+
+        return $propertyValidators;
     }
 
     /** @return array<ReflectionProperty> */

@@ -72,9 +72,38 @@ v::attributes()->assert(new Person('', 'not a date', 'not an email', 'not a phon
 
 ## Caveats
 
-- If the object has no attributes, the validation will always pass.
-- When the property is nullable, this validator will wrap the validator on the property into [NullOr](NullOr.md) validator.
-- This validator has no templates because it uses the templates of the validators that are applied to the properties.
+### Empty objects
+
+If the object has no validator attributes on any of its properties or class, the validation will always pass.
+
+### Nullable properties
+
+When a property is nullable (e.g., `?string $email`), `Attributes` wraps the property's validator into [NullOr](NullOr.md), so `null` values are accepted automatically.
+
+### Nested object validation
+
+When a property's type is a class (named, union, or intersection type), `Attributes` recursively validates that object's own properties, so there is no need to explicitly add `#[Attributes]` on the property.
+
+- **Named types** (`NestedAddress $address`): the nested object is validated directly.
+- **Union types** (`string|NestedAddress $address`): the nested object is only validated if it passes an `Instance` check first, so string values in the union are safely skipped.
+- **Intersection types** (`NestedWithAttributes&Nested $address`): the nested object is validated directly, since it must satisfy all types in the intersection.
+- **Untyped properties** (no type declaration, or builtin types like `string`): are never recursively validated.
+- **Array properties**: `Attributes` **does not** recursively validate objects inside arrays. To validate each element, use the `#[Each]` attribute on the property (e.g., `#[Each(new Attributes())]`).
+
+### Circular references
+
+When a nested object graph contains a cycle (e.g., `$a->next = $b`, `$b->next = $a`), `Attributes` detects the revisit and fails with the `TEMPLATE_CIRCULAR_REFERENCE` template. This prevents infinite recursion and stack overflow.
+
+Note that circular reference detection only works for direct object references. If a cycle passes through an array (e.g., `$a->items = [$b]`, `$b->parent = $a`), `Attributes` cannot track the reference and the validation will recurse infinitely, causing a stack overflow.
+
+## Templates
+
+### `Attributes::TEMPLATE_CIRCULAR_REFERENCE`
+
+|       Mode | Template                                          |
+| ---------: | :------------------------------------------------ |
+|  `default` | {{subject}} must not contain a circular reference |
+| `inverted` | {{subject}} must contain a circular reference     |
 
 ## Categorization
 
