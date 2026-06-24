@@ -99,6 +99,8 @@ interface AllChain
 
     public function allEach(Validator $validator): Chain;
 
+    public function allEachKey(Validator $validator): Chain;
+
     public function allEmail(): Chain;
 
     public function allEmoji(): Chain;

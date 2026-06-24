@@ -99,6 +99,8 @@ interface AllBuilder
 
     public static function allEach(Validator $validator): Chain;
 
+    public static function allEachKey(Validator $validator): Chain;
+
     public static function allEmail(): Chain;
 
     public static function allEmoji(): Chain;

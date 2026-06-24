@@ -106,6 +106,8 @@ interface Chain extends Validator, AllChain, KeyChain, LengthChain, MaxChain, Mi
 
     public function each(Validator $validator): Chain;
 
+    public function eachKey(Validator $validator): Chain;
+
     public function email(): Chain;
 
     public function emoji(): Chain;

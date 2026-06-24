@@ -66,6 +66,7 @@ trait SmokeTestProvider
         yield 'Directory' => [new vs\Directory(), 'tests/fixtures'];
         yield 'Domain' => [new vs\Domain(), 'example.com'];
         yield 'Each' => [new vs\Each(new vs\StringType()), ['a', 'b']];
+        yield 'EachKey' => [new vs\EachKey(new vs\StringType()), ['a' => 1, 'b' => 2]];
         yield 'Email' => [new vs\Email(), 'bob@example.com'];
         yield 'Emoji' => [new vs\Emoji(), '😀'];
         yield 'EndsWith' => [new vs\EndsWith('.com'), 'example.com'];

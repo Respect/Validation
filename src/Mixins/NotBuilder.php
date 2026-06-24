@@ -101,6 +101,8 @@ interface NotBuilder
 
     public static function notEach(Validator $validator): Chain;
 
+    public static function notEachKey(Validator $validator): Chain;
+
     public static function notEmail(): Chain;
 
     public static function notEmoji(): Chain;

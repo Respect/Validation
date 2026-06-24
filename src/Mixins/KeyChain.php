@@ -101,6 +101,8 @@ interface KeyChain
 
     public function keyEach(int|string $key, Validator $validator): Chain;
 
+    public function keyEachKey(int|string $key, Validator $validator): Chain;
+
     public function keyEmail(int|string $key): Chain;
 
     public function keyEmoji(int|string $key): Chain;

@@ -101,6 +101,8 @@ interface NullOrChain
 
     public function nullOrEach(Validator $validator): Chain;
 
+    public function nullOrEachKey(Validator $validator): Chain;
+
     public function nullOrEmail(): Chain;
 
     public function nullOrEmoji(): Chain;

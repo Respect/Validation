@@ -101,6 +101,8 @@ interface PropertyBuilder
 
     public static function propertyEach(string $propertyName, Validator $validator): Chain;
 
+    public static function propertyEachKey(string $propertyName, Validator $validator): Chain;
+
     public static function propertyEmail(string $propertyName): Chain;
 
     public static function propertyEmoji(string $propertyName): Chain;

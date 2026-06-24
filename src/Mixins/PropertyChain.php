@@ -101,6 +101,8 @@ interface PropertyChain
 
     public function propertyEach(string $propertyName, Validator $validator): Chain;
 
+    public function propertyEachKey(string $propertyName, Validator $validator): Chain;
+
     public function propertyEmail(string $propertyName): Chain;
 
     public function propertyEmoji(string $propertyName): Chain;

@@ -9,7 +9,7 @@ SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
 
 In this page you will find a list of validators by their category.
 
-**Arrays**: [ArrayType][] - [ArrayVal][] - [Contains][] - [ContainsAny][] - [ContainsCount][] - [Each][] - [EndsWith][] - [In][] - [Key][] - [KeyExists][] - [KeyOptional][] - [KeySet][] - [Sorted][] - [StartsWith][] - [Subset][] - [Unique][]
+**Arrays**: [ArrayType][] - [ArrayVal][] - [Contains][] - [ContainsAny][] - [ContainsCount][] - [Each][] - [EachKey][] - [EndsWith][] - [In][] - [Key][] - [KeyExists][] - [KeyOptional][] - [KeySet][] - [Sorted][] - [StartsWith][] - [Subset][] - [Unique][]
 
 **Banking**: [CreditCard][] - [Iban][]
 
@@ -43,7 +43,7 @@ In this page you will find a list of validators by their category.
 
 **Miscellaneous**: [Blank][] - [Falsy][] - [Named][] - [Templated][] - [Undef][]
 
-**Nesting**: [After][] - [AllOf][] - [AnyOf][] - [Each][] - [Factory][] - [Given][] - [Key][] - [KeySet][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [ShortCircuit][] - [UndefOr][] - [When][]
+**Nesting**: [After][] - [AllOf][] - [AnyOf][] - [Each][] - [EachKey][] - [Factory][] - [Given][] - [Key][] - [KeySet][] - [NoneOf][] - [Not][] - [NullOr][] - [OneOf][] - [Property][] - [PropertyOptional][] - [ShortCircuit][] - [UndefOr][] - [When][]
 
 **Numbers**: [Base][] - [Decimal][] - [Digit][] - [Even][] - [Factor][] - [Finite][] - [FloatType][] - [FloatVal][] - [Infinite][] - [IntType][] - [IntVal][] - [Multiple][] - [Negative][] - [Number][] - [NumericVal][] - [Odd][] - [Positive][] - [Roman][]
 
@@ -100,6 +100,7 @@ In this page you will find a list of validators by their category.
 - [Directory][] - `v::directory()->assert(__DIR__);`
 - [Domain][] - `v::domain()->assert('google.com');`
 - [Each][] - `v::each(v::dateTime())->assert($releaseDates);`
+- [EachKey][] - `v::eachKey(v::stringType())->assert($releaseDates);`
 - [Email][] - `v::email()->assert('alganet@gmail.com');`
 - [Emoji][] - `v::emoji()->assert('🍕');`
 - [EndsWith][] - `v::endsWith('ipsum')->assert('lorem ipsum');`
@@ -259,6 +260,7 @@ In this page you will find a list of validators by their category.
 [Directory]: validators/Directory.md "Validates if the given path is a directory."
 [Domain]: validators/Domain.md "Validates whether the input is a valid domain name or not."
 [Each]: validators/Each.md "Validates whether each value in the input is valid according to another validator."
+[EachKey]: validators/EachKey.md "Validates whether each key in the input is valid according to another validator."
 [Email]: validators/Email.md "Validates an email address."
 [Emoji]: validators/Emoji.md "Validates if the input is an emoji or a sequence of emojis."
 [EndsWith]: validators/EndsWith.md "This validator is similar to `Contains()`, but validates"

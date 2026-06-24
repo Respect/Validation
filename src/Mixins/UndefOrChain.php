@@ -99,6 +99,8 @@ interface UndefOrChain
 
     public function undefOrEach(Validator $validator): Chain;
 
+    public function undefOrEachKey(Validator $validator): Chain;
+
     public function undefOrEmail(): Chain;
 
     public function undefOrEmoji(): Chain;

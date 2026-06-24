@@ -101,6 +101,8 @@ interface KeyBuilder
 
     public static function keyEach(int|string $key, Validator $validator): Chain;
 
+    public static function keyEachKey(int|string $key, Validator $validator): Chain;
+
     public static function keyEmail(int|string $key): Chain;
 
     public static function keyEmoji(int|string $key): Chain;

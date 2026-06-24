@@ -101,6 +101,8 @@ interface NotChain
 
     public function notEach(Validator $validator): Chain;
 
+    public function notEachKey(Validator $validator): Chain;
+
     public function notEmail(): Chain;
 
     public function notEmoji(): Chain;

@@ -104,6 +104,8 @@ interface Builder extends AllBuilder, KeyBuilder, LengthBuilder, MaxBuilder, Min
 
     public static function each(Validator $validator): Chain;
 
+    public static function eachKey(Validator $validator): Chain;
+
     public static function email(): Chain;
 
     public static function emoji(): Chain;
