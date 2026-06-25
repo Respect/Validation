@@ -22,6 +22,7 @@ use Respect\FluentGen\NamespaceScanner;
 use Respect\Validation\Mixins\Chain;
 use Respect\Validation\Validator;
 use Respect\Validation\ValidatorBuilder;
+use Respect\Validation\Validators\Attributes\PropertyResolver;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -75,7 +76,7 @@ final class LintMixinCommand extends Command
             scanner: $scanner,
             methodBuilder: new MethodBuilder(
                 excludedTypePrefixes: ['Sokil', 'Egulias', 'Ramsey', 'libphonenumber'],
-                excludedTypeNames: ['Respect\\Parameter\\Resolver'],
+                excludedTypeNames: ['finfo', PropertyResolver::class],
             ),
             interfaces: [
                 new InterfaceConfig(

@@ -15,17 +15,18 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use ReflectionAttribute;
 use ReflectionClass;
-use ReflectionIntersectionType;
-use ReflectionNamedType;
 use ReflectionObject;
 use ReflectionProperty;
-use ReflectionUnionType;
 use Respect\Fluent\Attributes\Composable;
-use Respect\Parameter\Resolver;
 use Respect\Validation\Id;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
+use Respect\Validation\Validators\Attributes\BypassResolver;
+use Respect\Validation\Validators\Attributes\CompositePropertyResolver;
+use Respect\Validation\Validators\Attributes\DeclaredTypePropertyResolver;
+use Respect\Validation\Validators\Attributes\ExplicitAttributePropertyResolver;
+use Respect\Validation\Validators\Attributes\PropertyResolver;
 use Respect\Validation\Validators\Core\Reducer;
 
 use function spl_object_id;
@@ -44,8 +45,15 @@ final class Attributes implements Validator
     /** @var array<int, true> */
     private array $visited = [];
 
-    public function __construct(private readonly Resolver|null $resolver = null)
-    {
+    private readonly PropertyResolver $propertyResolver;
+
+    public function __construct(
+        PropertyResolver|null $propertyResolver = null,
+    ) {
+        $this->propertyResolver = $propertyResolver ?? new CompositePropertyResolver(
+            new ExplicitAttributePropertyResolver(new BypassResolver()),
+            new DeclaredTypePropertyResolver(),
+        );
     }
 
     public function evaluate(mixed $input): Result
@@ -78,7 +86,7 @@ final class Attributes implements Validator
         $validators = [];
         while ($reflection instanceof ReflectionClass) {
             foreach ($reflection->getAttributes(Validator::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
-                $validators[] = $this->instantiateAttribute($attribute);
+                $validators[] = $attribute->newInstance();
             }
 
             $reflection = $reflection->getParentClass();
@@ -92,7 +100,7 @@ final class Attributes implements Validator
     {
         $validators = [];
         foreach ($this->getProperties($reflection) as $propertyName => $property) {
-            $propertyValidators = $this->getPropertyInnerValidators($property);
+            $propertyValidators = $this->propertyResolver->resolve($property, $this);
             if ($propertyValidators === []) {
                 continue;
             }
@@ -104,52 +112,6 @@ final class Attributes implements Validator
         }
 
         return $validators;
-    }
-
-    /** @return array<Validator> */
-    private function getPropertyInnerValidators(ReflectionProperty $property): array
-    {
-        $propertyValidators = [];
-        $hasExplicitAttributes = false;
-        foreach ($property->getAttributes(Validator::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
-            if ($attribute->getName() === self::class) {
-                $propertyValidator = $this;
-            } else {
-                $propertyValidator = $this->instantiateAttribute($attribute);
-            }
-
-            $hasExplicitAttributes = $hasExplicitAttributes || $propertyValidator === $this;
-            $propertyValidators[] = $propertyValidator;
-        }
-
-        if ($hasExplicitAttributes) {
-            return $propertyValidators;
-        }
-
-        $type = $property->getType();
-        if ($type instanceof ReflectionNamedType) {
-            if (!$type->isBuiltin()) {
-                $propertyValidators[] = $this;
-            }
-        }
-
-        if ($type instanceof ReflectionIntersectionType) {
-            $propertyValidators[] = $this;
-        }
-
-        if ($type instanceof ReflectionUnionType) {
-            foreach ($type->getTypes() as $innerType) {
-                if (!$innerType instanceof ReflectionNamedType || $innerType->isBuiltin()) {
-                    continue;
-                }
-
-                /** @var class-string $class */
-                $class = $innerType->getName();
-                $propertyValidators[] = new Given(new Instance($class), $this);
-            }
-        }
-
-        return $propertyValidators;
     }
 
     /** @return array<ReflectionProperty> */
@@ -165,21 +127,5 @@ final class Attributes implements Validator
         }
 
         return $properties;
-    }
-
-    /** @param ReflectionAttribute<Validator> $attribute */
-    private function instantiateAttribute(ReflectionAttribute $attribute): Validator
-    {
-        if ($this->resolver === null) {
-            return $attribute->newInstance();
-        }
-
-        $reflection = new ReflectionClass($attribute->getName());
-        $constructor = $reflection->getConstructor();
-        if ($constructor === null) {
-            return $attribute->newInstance();
-        }
-
-        return $reflection->newInstanceArgs($this->resolver->resolve($constructor, $attribute->getArguments()));
     }
 }
