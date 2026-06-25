@@ -21,6 +21,7 @@ use ReflectionObject;
 use ReflectionProperty;
 use ReflectionUnionType;
 use Respect\Fluent\Attributes\Composable;
+use Respect\Parameter\Resolver;
 use Respect\Validation\Id;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -42,6 +43,10 @@ final class Attributes implements Validator
 
     /** @var array<int, true> */
     private array $visited = [];
+
+    public function __construct(private readonly Resolver|null $resolver = null)
+    {
+    }
 
     public function evaluate(mixed $input): Result
     {
@@ -73,7 +78,7 @@ final class Attributes implements Validator
         $validators = [];
         while ($reflection instanceof ReflectionClass) {
             foreach ($reflection->getAttributes(Validator::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
-                $validators[] = $attribute->newInstance();
+                $validators[] = $this->instantiateAttribute($attribute);
             }
 
             $reflection = $reflection->getParentClass();
@@ -107,8 +112,13 @@ final class Attributes implements Validator
         $propertyValidators = [];
         $hasExplicitAttributes = false;
         foreach ($property->getAttributes(Validator::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
-            $propertyValidator = $attribute->getName() === self::class ? $this : $attribute->newInstance();
-            $hasExplicitAttributes = $propertyValidator === $this;
+            if ($attribute->getName() === self::class) {
+                $propertyValidator = $this;
+            } else {
+                $propertyValidator = $this->instantiateAttribute($attribute);
+            }
+
+            $hasExplicitAttributes = $hasExplicitAttributes || $propertyValidator === $this;
             $propertyValidators[] = $propertyValidator;
         }
 
@@ -155,5 +165,21 @@ final class Attributes implements Validator
         }
 
         return $properties;
+    }
+
+    /** @param ReflectionAttribute<Validator> $attribute */
+    private function instantiateAttribute(ReflectionAttribute $attribute): Validator
+    {
+        if ($this->resolver === null) {
+            return $attribute->newInstance();
+        }
+
+        $reflection = new ReflectionClass($attribute->getName());
+        $constructor = $reflection->getConstructor();
+        if ($constructor === null) {
+            return $attribute->newInstance();
+        }
+
+        return $reflection->newInstanceArgs($this->resolver->resolve($constructor, $attribute->getArguments()));
     }
 }

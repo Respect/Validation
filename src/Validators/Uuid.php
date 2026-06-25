@@ -22,7 +22,6 @@ use Attribute;
 use Ramsey\Uuid\Rfc4122\FieldsInterface;
 use Ramsey\Uuid\UuidFactory;
 use Ramsey\Uuid\UuidInterface;
-use Respect\Validation\ContainerRegistry;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
@@ -30,6 +29,7 @@ use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Throwable;
 
+use function class_exists;
 use function is_string;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -47,15 +47,20 @@ final class Uuid implements Validator
 {
     public const string TEMPLATE_VERSION = '__version__';
 
+    private readonly UuidFactory $uuidFactory;
+
     public function __construct(
         private readonly int|null $version = null,
+        UuidFactory|null $uuidFactory = null,
     ) {
-        if (!ContainerRegistry::getContainer()->has(UuidFactory::class)) {
+        if ($uuidFactory === null && !class_exists(UuidFactory::class)) {
             throw new MissingComposerDependencyException(
                 'Uuid rule requires ramsey/uuid package',
                 'ramsey/uuid',
             );
         }
+
+        $this->uuidFactory = $uuidFactory ?? new UuidFactory();
 
         if ($version !== null && !$this->isSupportedVersion($version)) {
             throw new InvalidValidatorException(
@@ -75,9 +80,7 @@ final class Uuid implements Validator
         }
 
         try {
-            $uuid = is_string($input) ? ContainerRegistry::getContainer()
-                ->get(UuidFactory::class)
-                ->fromString($input) : $input;
+            $uuid = is_string($input) ? $this->uuidFactory->fromString($input) : $input;
         } catch (Throwable) {
             return Result::failed($input, $this, $parameters, $template);
         }

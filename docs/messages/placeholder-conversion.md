@@ -16,20 +16,16 @@ You can add custom modifiers by providing a custom `PlaceholderFormatter` to the
 `ContainerRegistry`:
 
 ```php
-use DI\Container;
+use Respect\Config\Container;
 use Respect\StringFormatter\Modifier;
 use Respect\StringFormatter\PlaceholderFormatter;
 use Respect\Validation\ContainerRegistry;
 
-use function DI\factory;
-
 ContainerRegistry::setContainer(
     ContainerRegistry::createContainer([
-        PlaceholderFormatter::class => factory(
-            fn(Container $container) => new PlaceholderFormatter(
-                [],
-                new MyCustomModifier($container->get(Modifier::class)),
-            ),
+        PlaceholderFormatter::class => static fn(Container $container) => new PlaceholderFormatter(
+            [],
+            new MyCustomModifier($container->get(Modifier::class)),
         ),
     ])
 );

@@ -8,9 +8,9 @@ SPDX-FileContributor: Alexandre Gomes Gaigalas <alganet@gmail.com>
 
 ## Container configuration
 
-The `ContainerRegistry::createContainer()` method returns a [PHP-DI](https://php-di.org/) container. The definitions array follows the [PHP-DI definitions format](https://php-di.org/doc/php-definitions.html).
+The `ContainerRegistry::createContainer()` method returns a [Respect\Config](https://github.com/Respect/Config) container, which is [PSR-11](https://www.php-fig.org/psr/psr-11/) compatible. Definitions may be plain values, closures, or Respect\Config's `Autowire`, `Instantiator`, and `Ref` helpers.
 
-If you prefer to use a different container, `ContainerRegistry::setContainer()` accepts any [PSR-11](https://www.php-fig.org/psr/psr-11/) compatible container:
+If you prefer to use a different container, `ContainerRegistry::setContainer()` accepts any PSR-11 compatible container:
 
 ```php
 use Respect\Validation\ContainerRegistry;

@@ -22,6 +22,7 @@ use Respect\Validation\Test\Stubs\NestedValidated;
 use Respect\Validation\Test\Stubs\NestedWithAttributes;
 use Respect\Validation\Test\Stubs\NestedWithoutAttributes;
 use Respect\Validation\Test\Stubs\WithAttributes;
+use Respect\Validation\Test\Stubs\WithAttributesNotLastOnNested;
 use Respect\Validation\Test\Stubs\WithCyclicAttributes;
 use Respect\Validation\Test\Stubs\WithDeeplyNestedAttributes;
 use Respect\Validation\Test\Stubs\WithExplicitAttributesOnNested;
@@ -238,6 +239,14 @@ final class AttributesTest extends TestCase
         $input = new WithExplicitAttributesOnNested('John Doe', $invalidAddress);
 
         self::assertInvalidInput(new Attributes(), $input);
+    }
+
+    #[Test]
+    public function shouldNotDuplicateAttributesWhenNotTheLastAttributeOnNestedProperty(): void
+    {
+        $input = new WithAttributesNotLastOnNested(new NestedAddress('123 Main St', 'Springfield'));
+
+        self::assertValidInput(new Attributes(), $input);
     }
 
     #[Test]
