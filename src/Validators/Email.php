@@ -26,7 +26,6 @@ use Respect\Validation\Validators\Core\Simple;
 
 use function class_exists;
 use function filter_var;
-use function func_num_args;
 use function is_string;
 
 use const FILTER_VALIDATE_EMAIL;
@@ -42,7 +41,7 @@ final class Email extends Simple
 
     public function __construct(EmailValidator|null $validator = null)
     {
-        if ($validator === null && func_num_args() === 0 && class_exists(EmailValidator::class)) {
+        if ($validator === null && class_exists(EmailValidator::class)) {
             $validator = new EmailValidator();
         }
 

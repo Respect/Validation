@@ -12,6 +12,7 @@ SPDX-FileContributor: steven.lewis <stevenlewis@gowebprint.com>
 
 - `Uuid()`
 - `Uuid(int $version)`
+- `Uuid(int $version, UuidFactory $uuidFactory)`
 
 Validates whether the input is a valid UUID. It also supports validation of
 specific versions 1 to 8.

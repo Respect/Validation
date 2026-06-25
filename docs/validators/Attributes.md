@@ -8,6 +8,7 @@ SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
 # Attributes
 
 - `Attributes()`
+- `Attributes(Resolver $resolver)`
 
 Validates the PHP attributes defined in the properties of the input.
 

@@ -11,13 +11,17 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
-use DI\Container;
 use libphonenumber\PhoneNumberUtil;
 use Psr\Container\ContainerInterface;
-use Respect\Fluent\Factories\ComposingLookup;
+use Ramsey\Uuid\UuidFactory;
+use Respect\Config\Autowire;
+use Respect\Config\Container;
+use Respect\Config\Instantiator;
 use Respect\Fluent\Factories\NamespaceLookup;
 use Respect\Fluent\Resolvers\ComposableMap;
 use Respect\Fluent\Resolvers\Ucfirst;
+use Respect\Parameter\ContainerResolver;
+use Respect\Parameter\Resolver;
 use Respect\StringFormatter\BypassTranslator;
 use Respect\StringFormatter\Modifier;
 use Respect\StringFormatter\Modifiers\FormatterModifier;
@@ -45,11 +49,11 @@ use Respect\Validation\Message\Parameters\ResultHandler;
 use Respect\Validation\Message\Renderer;
 use Respect\Validation\Message\TemplateRegistry;
 use Respect\Validation\Mixins\PrefixConstants;
+use Sokil\IsoCodes\Database\Countries;
+use Sokil\IsoCodes\Database\Currencies;
+use Sokil\IsoCodes\Database\Languages;
+use Sokil\IsoCodes\Database\Subdivisions;
 use Symfony\Contracts\Translation\TranslatorInterface;
-
-use function DI\autowire;
-use function DI\create;
-use function DI\factory;
 
 final class ContainerRegistry
 {
@@ -59,50 +63,56 @@ final class ContainerRegistry
     public static function createContainer(array $definitions = []): Container
     {
         return new Container($definitions + [
-            PhoneNumberUtil::class => factory(static fn() => PhoneNumberUtil::getInstance()),
-            TemplateRegistry::class => create(TemplateRegistry::class),
-            TemplateResolver::class => autowire(TemplateResolver::class),
-            TranslatorInterface::class => autowire(BypassTranslator::class),
-            Renderer::class => autowire(InterpolationRenderer::class),
-            ResultFilter::class => create(OnlyFailedChildrenResultFilter::class),
-            'respect.validation.formatter.message' => autowire(FirstResultStringFormatter::class),
-            'respect.validation.formatter.full_message' => autowire(NestedListStringFormatter::class),
-            'respect.validation.formatter.messages' => autowire(NestedArrayFormatter::class),
+            Countries::class => new Instantiator(Countries::class),
+            Currencies::class => new Instantiator(Currencies::class),
+            Languages::class => new Instantiator(Languages::class),
+            Subdivisions::class => new Instantiator(Subdivisions::class),
+            UuidFactory::class => new Instantiator(UuidFactory::class),
+            PhoneNumberUtil::class => static fn() => PhoneNumberUtil::getInstance(),
+            TemplateRegistry::class => new Instantiator(TemplateRegistry::class),
+            TemplateResolver::class => new Autowire(TemplateResolver::class),
+            TranslatorInterface::class => new Autowire(BypassTranslator::class),
+            Renderer::class => new Autowire(InterpolationRenderer::class),
+            ResultFilter::class => new Instantiator(OnlyFailedChildrenResultFilter::class),
+            'respect.validation.formatter.message' => new Autowire(FirstResultStringFormatter::class),
+            'respect.validation.formatter.full_message' => new Autowire(NestedListStringFormatter::class),
+            'respect.validation.formatter.messages' => new Autowire(NestedArrayFormatter::class),
             'respect.validation.ignored_backtrace_paths' => [__DIR__ . '/ValidatorBuilder.php'],
             'respect.validation.rule_factory.namespaces' => ['Respect\\Validation\\Validators'],
-            ValidatorFactory::class => factory(static function (Container $container) {
+            Resolver::class => static fn(Container $container) => new ContainerResolver($container),
+            ValidatorFactory::class => static function (Container $container) {
+                $lookup = new NamespaceLookup(
+                    new Ucfirst(),
+                    Validator::class,
+                    ...$container->get('respect.validation.rule_factory.namespaces'),
+                );
+
                 return new FluentValidatorFactory(
-                    new ComposingLookup(
-                        new NamespaceLookup(
-                            new Ucfirst(),
-                            Validator::class,
-                            ...$container->get('respect.validation.rule_factory.namespaces'),
-                        ),
-                        new ComposableMap(
-                            PrefixConstants::COMPOSABLE,
-                            PrefixConstants::COMPOSABLE_WITH_ARGUMENT,
-                        ),
+                    new AutowiringLookup(
+                        $lookup,
+                        new ComposableMap(PrefixConstants::COMPOSABLE, PrefixConstants::COMPOSABLE_WITH_ARGUMENT),
+                        $container->get(Resolver::class),
                     ),
                 );
-            }),
-            Quoter::class => create(CodeQuoter::class)->constructor(120),
-            Handler::class => factory(static function (Container $container) {
+            },
+            Quoter::class => new Instantiator(CodeQuoter::class, ['maximumLength' => 120]),
+            Handler::class => static function (Container $container) {
                 $handler = CompositeHandler::create();
                 $handler->prependHandler(new PathHandler($container->get(Quoter::class)));
                 $handler->prependHandler(new NameHandler());
                 $handler->prependHandler(new ResultHandler($handler));
 
                 return $handler;
-            }),
-            PlaceholderFormatter::class => factory(static fn(Container $container) => new PlaceholderFormatter(
+            },
+            PlaceholderFormatter::class => static fn(Container $container) => new PlaceholderFormatter(
                 [],
                 $container->get(Modifier::class),
-            )),
-            Stringifier::class => factory(static fn(Container $container) => new HandlerStringifier(
+            ),
+            Stringifier::class => static fn(Container $container) => new HandlerStringifier(
                 $container->get(Handler::class),
                 new DumpStringifier(),
-            )),
-            Modifier::class => factory(static fn(Container $container) => new TransModifier(
+            ),
+            Modifier::class => static fn(Container $container) => new TransModifier(
                 new ListModifier(
                     new QuoteModifier(
                         new RawModifier(
@@ -112,8 +122,8 @@ final class ContainerRegistry
                     $container->get(TranslatorInterface::class),
                 ),
                 $container->get(TranslatorInterface::class),
-            )),
-            ValidatorBuilder::class => factory(static fn(Container $container) => new ValidatorBuilder(
+            ),
+            ValidatorBuilder::class => static fn(Container $container) => new ValidatorBuilder(
                 $container->get(ValidatorFactory::class),
                 $container->get(Renderer::class),
                 $container->get('respect.validation.formatter.message'),
@@ -121,7 +131,7 @@ final class ContainerRegistry
                 $container->get('respect.validation.formatter.messages'),
                 $container->get(ResultFilter::class),
                 $container->get('respect.validation.ignored_backtrace_paths'),
-            )),
+            ),
         ]);
     }
 

@@ -4,197 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c007f19e671e2fec2eb7341be4146b75",
+    "content-hash": "683a4f0e3e7054eddcef31faf9cc9b1c",
     "packages": [
-        {
-            "name": "laravel/serializable-closure",
-            "version": "v2.0.13",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "b566ee0dd251f3c4078bed003a7ce015f5ea6dce"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/b566ee0dd251f3c4078bed003a7ce015f5ea6dce",
-                "reference": "b566ee0dd251f3c4078bed003a7ce015f5ea6dce",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.1"
-            },
-            "require-dev": {
-                "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
-                "nesbot/carbon": "^2.67|^3.0",
-                "pestphp/pest": "^2.36|^3.0|^4.0",
-                "phpstan/phpstan": "^2.0",
-                "symfony/var-dumper": "^6.2.0|^7.0.0|^8.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\SerializableClosure\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                },
-                {
-                    "name": "Nuno Maduro",
-                    "email": "nuno@laravel.com"
-                }
-            ],
-            "description": "Laravel Serializable Closure provides an easy and secure way to serialize closures in PHP.",
-            "keywords": [
-                "closure",
-                "laravel",
-                "serializable"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel/serializable-closure/issues",
-                "source": "https://github.com/laravel/serializable-closure"
-            },
-            "time": "2026-04-16T14:03:50+00:00"
-        },
-        {
-            "name": "php-di/invoker",
-            "version": "2.3.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHP-DI/Invoker.git",
-                "reference": "3c1ddfdef181431fbc4be83378f6d036d59e81e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/Invoker/zipball/3c1ddfdef181431fbc4be83378f6d036d59e81e1",
-                "reference": "3c1ddfdef181431fbc4be83378f6d036d59e81e1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.3",
-                "psr/container": "^1.0|^2.0"
-            },
-            "require-dev": {
-                "athletic/athletic": "~0.1.8",
-                "mnapoli/hard-mode": "~0.3.0",
-                "phpunit/phpunit": "^9.0 || ^10 || ^11 || ^12"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Invoker\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Generic and extensible callable invoker",
-            "homepage": "https://github.com/PHP-DI/Invoker",
-            "keywords": [
-                "callable",
-                "dependency",
-                "dependency-injection",
-                "injection",
-                "invoke",
-                "invoker"
-            ],
-            "support": {
-                "issues": "https://github.com/PHP-DI/Invoker/issues",
-                "source": "https://github.com/PHP-DI/Invoker/tree/2.3.7"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/mnapoli",
-                    "type": "github"
-                }
-            ],
-            "time": "2025-08-30T10:22:22+00:00"
-        },
-        {
-            "name": "php-di/php-di",
-            "version": "7.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHP-DI/PHP-DI.git",
-                "reference": "f88054cc052e40dbe7b383c8817c19442d480352"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/f88054cc052e40dbe7b383c8817c19442d480352",
-                "reference": "f88054cc052e40dbe7b383c8817c19442d480352",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/serializable-closure": "^1.0 || ^2.0",
-                "php": ">=8.0",
-                "php-di/invoker": "^2.0",
-                "psr/container": "^1.1 || ^2.0"
-            },
-            "provide": {
-                "psr/container-implementation": "^1.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3",
-                "friendsofphp/proxy-manager-lts": "^1",
-                "mnapoli/phpunit-easymock": "^1.3",
-                "phpunit/phpunit": "^9.6 || ^10 || ^11",
-                "vimeo/psalm": "^5|^6"
-            },
-            "suggest": {
-                "friendsofphp/proxy-manager-lts": "Install it if you want to use lazy injection (version ^1)"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
-                "psr-4": {
-                    "DI\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "The dependency injection container for humans",
-            "homepage": "https://php-di.org/",
-            "keywords": [
-                "PSR-11",
-                "container",
-                "container-interop",
-                "dependency injection",
-                "di",
-                "ioc",
-                "psr11"
-            ],
-            "support": {
-                "issues": "https://github.com/PHP-DI/PHP-DI/issues",
-                "source": "https://github.com/PHP-DI/PHP-DI/tree/7.1.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/mnapoli",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/php-di/php-di",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2025-08-16T11:10:48+00:00"
-        },
         {
             "name": "psr/container",
             "version": "2.0.2",
@@ -249,6 +60,67 @@
             "time": "2021-11-05T16:47:00+00:00"
         },
         {
+            "name": "respect/config",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Respect/Config.git",
+                "reference": "5dc7046d21e192083306e0472bf48e48d2968ff3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Respect/Config/zipball/5dc7046d21e192083306e0472bf48e48d2968ff3",
+                "reference": "5dc7046d21e192083306e0472bf48e48d2968ff3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.5",
+                "psr/container": "^2.0",
+                "respect/parameter": "^3.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpstan/phpstan": "^2.0",
+                "phpunit/phpunit": "^12.5 || ^13.0",
+                "respect/coding-standard": "^5.0",
+                "squizlabs/php_codesniffer": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Respect\\Config\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Respect/Config Contributors",
+                    "homepage": "https://github.com/Respect/Config/graphs/contributors"
+                }
+            ],
+            "description": "A powerful, small, deadly simple configurator and dependency injection container made to be easy.",
+            "homepage": "https://github.com/Respect/Config",
+            "keywords": [
+                "config",
+                "dependency injection",
+                "dic",
+                "respect"
+            ],
+            "support": {
+                "issues": "https://github.com/Respect/Config/issues",
+                "source": "https://github.com/Respect/Config/tree/3.0.1"
+            },
+            "time": "2026-06-25T22:41:57+00:00"
+        },
+        {
             "name": "respect/fluent",
             "version": "2.0.1",
             "source": {
@@ -300,6 +172,63 @@
                 "source": "https://github.com/Respect/Fluent/tree/2.0.1"
             },
             "time": "2026-03-26T04:24:51+00:00"
+        },
+        {
+            "name": "respect/parameter",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Respect/Parameter.git",
+                "reference": "5dd531c196113bc3d12d2ada1f966193e921744b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Respect/Parameter/zipball/5dd531c196113bc3d12d2ada1f966193e921744b",
+                "reference": "5dd531c196113bc3d12d2ada1f966193e921744b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.5",
+                "psr/container": "^2.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^2.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "phpstan/phpstan-strict-rules": "^2.0",
+                "phpunit/phpunit": "^12.5 || ^13.0",
+                "respect/coding-standard": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Respect\\Parameter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Respect/Parameter Contributors",
+                    "homepage": "https://github.com/Respect/Parameter/graphs/contributors"
+                }
+            ],
+            "description": "Resolves function/constructor parameters via type and name lookup",
+            "keywords": [
+                "Autowiring",
+                "PSR-11",
+                "dependency-injection",
+                "parameter",
+                "resolver",
+                "respect"
+            ],
+            "support": {
+                "issues": "https://github.com/Respect/Parameter/issues",
+                "source": "https://github.com/Respect/Parameter/tree/3.0.0"
+            },
+            "time": "2026-06-25T22:35:05+00:00"
         },
         {
             "name": "respect/string-formatter",
@@ -5164,16 +5093,16 @@
         },
         {
             "name": "seld/jsonlint",
-            "version": "1.12.0",
+            "version": "1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/jsonlint.git",
-                "reference": "d95c42df9c4a713ca1d4a45b37f0416dee1ea73a"
+                "reference": "9a90eb5d32d5a500296bf43f946d60246444d5f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/d95c42df9c4a713ca1d4a45b37f0416dee1ea73a",
-                "reference": "d95c42df9c4a713ca1d4a45b37f0416dee1ea73a",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/9a90eb5d32d5a500296bf43f946d60246444d5f7",
+                "reference": "9a90eb5d32d5a500296bf43f946d60246444d5f7",
                 "shasum": ""
             },
             "require": {
@@ -5212,7 +5141,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/jsonlint/issues",
-                "source": "https://github.com/Seldaek/jsonlint/tree/1.12.0"
+                "source": "https://github.com/Seldaek/jsonlint/tree/1.12.1"
             },
             "funding": [
                 {
@@ -5224,7 +5153,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-06-11T13:43:55+00:00"
+            "time": "2026-06-12T11:32:29+00:00"
         },
         {
             "name": "slevomat/coding-standard",
@@ -5989,16 +5918,16 @@
         },
         {
             "name": "symfony/polyfill-deepclone",
-            "version": "v1.39.0",
+            "version": "v1.40.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-deepclone.git",
-                "reference": "1b034bc050d84cc9c187de373f744912e1e35f1f"
+                "reference": "dca4ccba5f360070b574414dce4c1e7a559844fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-deepclone/zipball/1b034bc050d84cc9c187de373f744912e1e35f1f",
-                "reference": "1b034bc050d84cc9c187de373f744912e1e35f1f",
+                "url": "https://api.github.com/repos/symfony/polyfill-deepclone/zipball/dca4ccba5f360070b574414dce4c1e7a559844fa",
+                "reference": "dca4ccba5f360070b574414dce4c1e7a559844fa",
                 "shasum": ""
             },
             "require": {
@@ -6052,7 +5981,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-deepclone/tree/v1.39.0"
+                "source": "https://github.com/symfony/polyfill-deepclone/tree/v1.40.0"
             },
             "funding": [
                 {
@@ -6072,7 +6001,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-06-10T20:07:50+00:00"
+            "time": "2026-06-12T07:27:17+00:00"
         },
         {
             "name": "symfony/polyfill-intl-grapheme",

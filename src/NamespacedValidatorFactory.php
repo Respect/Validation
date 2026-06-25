@@ -24,6 +24,11 @@ use function sprintf;
 use function trim;
 use function ucfirst;
 
+/**
+ * @deprecated This has been superseeded by Respect\Fluent
+ *
+ * @see \Respect\Validation\FluentValidatorFactory
+ */
 final readonly class NamespacedValidatorFactory implements ValidatorFactory
 {
     /** @param array<int, string> $rulesNamespaces */

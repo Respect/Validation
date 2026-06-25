@@ -74,8 +74,8 @@ final class LintMixinCommand extends Command
             config: $config,
             scanner: $scanner,
             methodBuilder: new MethodBuilder(
-                excludedTypePrefixes: ['Sokil', 'Egulias'],
-                excludedTypeNames: ['finfo'],
+                excludedTypePrefixes: ['Sokil', 'Egulias', 'Ramsey', 'libphonenumber'],
+                excludedTypeNames: ['Respect\\Parameter\\Resolver'],
             ),
             interfaces: [
                 new InterfaceConfig(
