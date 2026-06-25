@@ -28,8 +28,7 @@ use Respect\Validation\Validators\Attributes\DeclaredTypePropertyResolver;
 use Respect\Validation\Validators\Attributes\ExplicitAttributePropertyResolver;
 use Respect\Validation\Validators\Attributes\PropertyResolver;
 use Respect\Validation\Validators\Core\Reducer;
-
-use function spl_object_id;
+use WeakMap;
 
 #[Composable(without: [All::class, Key::class, Property::class, Not::class, UndefOr::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
@@ -42,8 +41,8 @@ final class Attributes implements Validator
 {
     public const string TEMPLATE_CIRCULAR_REFERENCE = '__circular_reference__';
 
-    /** @var array<int, true> */
-    private array $visited = [];
+    /** @var WeakMap<object, true> */
+    private WeakMap $visited;
 
     private readonly PropertyResolver $propertyResolver;
 
@@ -54,6 +53,7 @@ final class Attributes implements Validator
             new ExplicitAttributePropertyResolver(new BypassResolver()),
             new DeclaredTypePropertyResolver(),
         );
+        $this->visited = new WeakMap();
     }
 
     public function evaluate(mixed $input): Result
@@ -64,12 +64,11 @@ final class Attributes implements Validator
             return $objectType->withId($id);
         }
 
-        $objectId = spl_object_id($input);
-        if (isset($this->visited[$objectId])) {
+        if ($this->visited->offsetExists($input)) {
             return Result::failed($input, $this, [], self::TEMPLATE_CIRCULAR_REFERENCE)->withId($id);
         }
 
-        $this->visited[$objectId] = true;
+        $this->visited[$input] = true;
 
         $reflection = new ReflectionObject($input);
         $validators = [...$this->getClassValidators($reflection), ...$this->getPropertyValidators($reflection)];
@@ -127,5 +126,16 @@ final class Attributes implements Validator
         }
 
         return $properties;
+    }
+
+    /** @return list<string> */
+    public function __sleep(): array
+    {
+        return ['propertyResolver'];
+    }
+
+    public function __wakeup(): void
+    {
+        $this->visited = new WeakMap();
     }
 }
