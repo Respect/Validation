@@ -13,6 +13,7 @@ namespace Respect\Validation\Validators;
 
 use ArrayAccess;
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
@@ -29,6 +30,7 @@ use function is_array;
     '{{subject}} must be present',
     '{{subject}} must not be present',
 )]
+#[Assurance(type: ['array', ArrayAccess::class])]
 final class KeyExists implements Validator, KeyRelated
 {
     public function __construct(

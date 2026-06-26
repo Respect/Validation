@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Envelope;
@@ -25,6 +26,7 @@ use function count;
     '{{subject}} must contain at least one value from {{needles}}',
     '{{subject}} must not contain any value from {{needles}}',
 )]
+#[Assurance(type: 'scalar|array')]
 final class ContainsAny extends Envelope
 {
     /** @param non-empty-array<mixed> $needles */

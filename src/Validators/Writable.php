@@ -17,6 +17,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Psr\Http\Message\StreamInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 use SplFileInfo;
@@ -29,6 +30,7 @@ use function is_writable;
     '{{subject}} must be an accessible existing writable filesystem entry',
     '{{subject}} must not be an accessible existing writable filesystem entry',
 )]
+#[Assurance(type: ['string', SplFileInfo::class, StreamInterface::class])]
 final class Writable extends Simple
 {
     public function isValid(mixed $input): bool

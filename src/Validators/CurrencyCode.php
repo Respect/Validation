@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
@@ -30,6 +31,7 @@ use function in_array;
     '{{subject}} must be a currency code',
     '{{subject}} must not be a currency code',
 )]
+#[Assurance(type: 'string')]
 final readonly class CurrencyCode implements Validator
 {
     private Currencies $currencies;

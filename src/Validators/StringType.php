@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -24,6 +25,7 @@ use function is_string;
     '{{subject}} must be a string',
     '{{subject}} must not be a string',
 )]
+#[Assurance(type: 'string')]
 final class StringType extends Simple
 {
     public function isValid(mixed $input): bool

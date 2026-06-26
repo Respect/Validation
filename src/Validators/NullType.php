@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -22,6 +23,7 @@ use Respect\Validation\Validators\Core\Simple;
     '{{subject}} must be null',
     '{{subject}} must not be null',
 )]
+#[Assurance(type: 'null')]
 final class NullType extends Simple
 {
     public function isValid(mixed $input): bool

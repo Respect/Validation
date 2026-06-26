@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -49,6 +50,7 @@ use const PHP_INT_MAX;
     '{{subject}} must not be an IP address in the {{range|raw}} range',
     self::TEMPLATE_NETWORK_RANGE,
 )]
+#[Assurance(type: 'string')]
 final class Ip implements Validator
 {
     public const string TEMPLATE_NETWORK_RANGE = '__network_range__';

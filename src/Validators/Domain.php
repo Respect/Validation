@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -30,6 +31,7 @@ use function explode;
     '{{subject}} must be an internet domain',
     '{{subject}} must not be an internet domain',
 )]
+#[Assurance(type: 'string')]
 final class Domain implements Validator
 {
     private readonly Validator $genericRule;

@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -37,6 +38,7 @@ use function mb_strrpos;
     '{{subject}} must not end with {{endValues|list:or}}',
     self::TEMPLATE_MULTIPLE_VALUES,
 )]
+#[Assurance(type: 'array|string')]
 final readonly class EndsWith implements Validator
 {
     public const string TEMPLATE_MULTIPLE_VALUES = '__multiple_values__';

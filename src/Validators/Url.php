@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -26,6 +27,7 @@ use const FILTER_VALIDATE_URL;
     '{{subject}} must be a URL',
     '{{subject}} must not be a URL',
 )]
+#[Assurance(type: 'string')]
 final class Url implements Validator
 {
     private readonly Validator $validator;
