@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -32,6 +33,7 @@ use function strlen;
     '{{subject}} must be a Portuguese NIF',
     '{{subject}} must not be a Portuguese NIF',
 )]
+#[Assurance(type: 'string')]
 final class PortugueseNif extends Simple
 {
     public function isValid(mixed $input): bool

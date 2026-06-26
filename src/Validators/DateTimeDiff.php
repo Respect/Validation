@@ -14,6 +14,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use DateTimeImmutable;
 use DateTimeInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
@@ -44,6 +45,7 @@ use function in_array;
     'For comparison with {{now|raw}}, {{subject}} must not be a datetime in the format {{sample|raw}}',
     self::TEMPLATE_WRONG_FORMAT,
 )]
+#[Assurance(type: ['string', DateTimeInterface::class])]
 final readonly class DateTimeDiff implements Validator
 {
     use CanValidateDateTime;

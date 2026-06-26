@@ -20,6 +20,9 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Countable as PhpCountable;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceSubject;
+use Respect\Fluent\Attributes\AssuranceSubjectMode;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -42,6 +45,8 @@ use function mb_strlen;
     '{{subject}} must not be countable or a string',
     self::TEMPLATE_WRONG_TYPE,
 )]
+#[Assurance(type: ['string', 'array', PhpCountable::class])]
+#[AssuranceSubject(AssuranceSubjectMode::Container)]
 final readonly class Length implements Validator
 {
     public const string TEMPLATE_WRONG_TYPE = '__wrong_type__';

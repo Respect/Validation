@@ -12,16 +12,19 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\StringFormatter\Formatter;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
+use Stringable;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be formatted as {{formatted}}',
     '{{subject}} must not be formatted as {{formatted}}',
 )]
+#[Assurance(type: ['scalar', Stringable::class])]
 final readonly class Format implements Validator
 {
     public function __construct(

@@ -14,6 +14,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceSubject;
+use Respect\Fluent\Attributes\AssuranceSubjectMode;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -30,6 +33,8 @@ use function array_map;
     'or must be null',
     'and must not be null',
 )]
+#[Assurance(type: 'null')]
+#[AssuranceSubject(AssuranceSubjectMode::Wrap)]
 final readonly class NullOr implements Validator
 {
     public function __construct(

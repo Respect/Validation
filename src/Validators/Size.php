@@ -16,6 +16,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -36,6 +37,7 @@ use function is_string;
     '{{subject}} must not be a filename, an instance of SplFileInfo or a PSR-7 interface',
     self::TEMPLATE_WRONG_TYPE,
 )]
+#[Assurance(type: ['string', SplFileInfo::class, UploadedFileInterface::class, StreamInterface::class])]
 final readonly class Size implements Validator
 {
     public const string TEMPLATE_WRONG_TYPE = '__wrong_type__';
