@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
@@ -32,6 +33,7 @@ use const FILTER_VALIDATE_INT;
     '{{subject}} must be an odd number',
     '{{subject}} must be an even number',
 )]
+#[Assurance(type: 'int|float|numeric-string')]
 final class Odd extends Simple
 {
     public function isValid(mixed $input): bool

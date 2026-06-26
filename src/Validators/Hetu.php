@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
@@ -27,6 +28,7 @@ use function str_split;
     '{{subject}} must be a Finnish personal identity code',
     '{{subject}} must not be a Finnish personal identity code',
 )]
+#[Assurance(type: 'string')]
 final class Hetu extends Simple
 {
     use CanValidateDateTime;

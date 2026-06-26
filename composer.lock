@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "683a4f0e3e7054eddcef31faf9cc9b1c",
+    "content-hash": "eb09c441327241556e460c98c2728154",
     "packages": [
         {
             "name": "psr/container",
@@ -122,16 +122,16 @@
         },
         {
             "name": "respect/fluent",
-            "version": "2.0.1",
+            "version": "dev-ide-narrowing",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Fluent.git",
-                "reference": "f32c76e37a82a9e63d6fe700a27201534f72da60"
+                "reference": "8469e6e8d30d28f36c0b79a381703ea9b26b0ecd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Fluent/zipball/f32c76e37a82a9e63d6fe700a27201534f72da60",
-                "reference": "f32c76e37a82a9e63d6fe700a27201534f72da60",
+                "url": "https://api.github.com/repos/Respect/Fluent/zipball/8469e6e8d30d28f36c0b79a381703ea9b26b0ecd",
+                "reference": "8469e6e8d30d28f36c0b79a381703ea9b26b0ecd",
                 "shasum": ""
             },
             "require": {
@@ -142,10 +142,15 @@
                 "phpstan/phpstan-deprecation-rules": "^2.0",
                 "phpstan/phpstan-phpunit": "^2.0",
                 "phpstan/phpstan-strict-rules": "^2.0",
-                "phpunit/phpunit": "^12.5",
+                "phpunit/phpunit": "^12.5 || ^13.0",
                 "respect/coding-standard": "^5.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-ide-narrowing": "3.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Respect\\Fluent\\": "src/"
@@ -169,9 +174,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Respect/Fluent/issues",
-                "source": "https://github.com/Respect/Fluent/tree/2.0.1"
+                "source": "https://github.com/Respect/Fluent/tree/ide-narrowing"
             },
-            "time": "2026-03-26T04:24:51+00:00"
+            "time": "2026-06-26T19:36:25+00:00"
         },
         {
             "name": "respect/parameter",
@@ -2191,16 +2196,16 @@
         },
         {
             "name": "pestphp/pest",
-            "version": "v4.7.3",
+            "version": "v4.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pestphp/pest.git",
-                "reference": "87882a8561bf3ddf230b9a6b764f367f687d5b2f"
+                "reference": "ee2e97e932d158faceeaa63a4dc17324b15152cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pestphp/pest/zipball/87882a8561bf3ddf230b9a6b764f367f687d5b2f",
-                "reference": "87882a8561bf3ddf230b9a6b764f367f687d5b2f",
+                "url": "https://api.github.com/repos/pestphp/pest/zipball/ee2e97e932d158faceeaa63a4dc17324b15152cb",
+                "reference": "ee2e97e932d158faceeaa63a4dc17324b15152cb",
                 "shasum": ""
             },
             "require": {
@@ -2213,12 +2218,12 @@
                 "pestphp/pest-plugin-mutate": "^4.0.1",
                 "pestphp/pest-plugin-profanity": "^4.2.1",
                 "php": "^8.3.0",
-                "phpunit/phpunit": "^12.5.29",
+                "phpunit/phpunit": "^12.5.30",
                 "symfony/process": "^7.4.13|^8.1.0"
             },
             "conflict": {
                 "filp/whoops": "<2.18.3",
-                "phpunit/phpunit": ">12.5.29",
+                "phpunit/phpunit": ">12.5.30",
                 "sebastian/exporter": "<7.0.0",
                 "webmozart/assert": "<1.11.0"
             },
@@ -2294,7 +2299,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pestphp/pest/issues",
-                "source": "https://github.com/pestphp/pest/tree/v4.7.3"
+                "source": "https://github.com/pestphp/pest/tree/v4.7.4"
             },
             "funding": [
                 {
@@ -2306,7 +2311,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-06-12T05:57:27+00:00"
+            "time": "2026-06-25T19:09:05+00:00"
         },
         {
             "name": "pestphp/pest-plugin",
@@ -3636,16 +3641,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.5.29",
+            "version": "12.5.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "9aa66a47db3ea70f1a468e66dd969f67e594945a"
+                "reference": "900400a5b616d6fb306f9549f6da33ba615d3fbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9aa66a47db3ea70f1a468e66dd969f67e594945a",
-                "reference": "9aa66a47db3ea70f1a468e66dd969f67e594945a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/900400a5b616d6fb306f9549f6da33ba615d3fbb",
+                "reference": "900400a5b616d6fb306f9549f6da33ba615d3fbb",
                 "shasum": ""
             },
             "require": {
@@ -3714,7 +3719,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.29"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.30"
             },
             "funding": [
                 {
@@ -3722,7 +3727,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2026-06-04T06:14:42+00:00"
+            "time": "2026-06-15T13:12:30+00:00"
         },
         {
             "name": "psr/cache",
@@ -4126,16 +4131,16 @@
         },
         {
             "name": "respect/fluentgen",
-            "version": "2.0.0",
+            "version": "dev-ide-narrowing",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/FluentGen.git",
-                "reference": "6a9065516f403c5f5abc86646290bd08e44c538e"
+                "reference": "518208d2a690ad0229c05ae6f001348dc6936da0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/FluentGen/zipball/6a9065516f403c5f5abc86646290bd08e44c538e",
-                "reference": "6a9065516f403c5f5abc86646290bd08e44c538e",
+                "url": "https://api.github.com/repos/Respect/FluentGen/zipball/518208d2a690ad0229c05ae6f001348dc6936da0",
+                "reference": "518208d2a690ad0229c05ae6f001348dc6936da0",
                 "shasum": ""
             },
             "require": {
@@ -4148,12 +4153,17 @@
                 "phpstan/phpstan-strict-rules": "^2.0",
                 "phpunit/phpunit": "^12.5",
                 "respect/coding-standard": "^5.0",
-                "respect/fluent": "^2.0"
+                "respect/fluent": "3.0.x-dev"
             },
             "suggest": {
                 "respect/fluent": "Enables #[Composable] prefix composition support"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-ide-narrowing": "2.1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Respect\\FluentGen\\": "src/"
@@ -4178,9 +4188,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Respect/FluentGen/issues",
-                "source": "https://github.com/Respect/FluentGen/tree/2.0.0"
+                "source": "https://github.com/Respect/FluentGen/tree/ide-narrowing"
             },
-            "time": "2026-03-25T05:50:09+00:00"
+            "time": "2026-06-26T19:40:15+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -6809,9 +6819,12 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {},
-    "prefer-stable": false,
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "respect/fluent": 20,
+        "respect/fluentgen": 20
+    },
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.5"

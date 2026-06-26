@@ -17,6 +17,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Psr\Http\Message\StreamInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 use SplFileInfo;
@@ -29,6 +30,7 @@ use function is_string;
     '{{subject}} must be readable',
     '{{subject}} must not be readable',
 )]
+#[Assurance(type: ['string', SplFileInfo::class, StreamInterface::class])]
 final class Readable extends Simple
 {
     public function isValid(mixed $input): bool

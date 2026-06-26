@@ -11,13 +11,16 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Fluent\Attributes\Composable;
 use Respect\StringFormatter\Formatter;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
+use Stringable;
 
 #[Composable(without: [All::class, Key::class, Property::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
+#[Assurance(type: ['scalar', Stringable::class])]
 final readonly class Formatted implements Validator
 {
     public function __construct(

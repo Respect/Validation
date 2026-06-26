@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\CanEvaluateShortCircuit;
@@ -54,6 +55,7 @@ use function array_slice;
     '{{subject}} contains no missing keys',
     self::TEMPLATE_MISSING_KEYS,
 )]
+#[Assurance(type: 'array')]
 final readonly class KeySet implements ShortCircuitable
 {
     use CanEvaluateShortCircuit;

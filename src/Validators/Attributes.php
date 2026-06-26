@@ -20,6 +20,7 @@ use ReflectionNamedType;
 use ReflectionObject;
 use ReflectionProperty;
 use ReflectionUnionType;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Parameter\Resolver;
 use Respect\Validation\Id;
@@ -37,6 +38,7 @@ use function spl_object_id;
     '{{subject}} must contain a circular reference',
     Attributes::TEMPLATE_CIRCULAR_REFERENCE,
 )]
+#[Assurance(type: 'object')]
 final class Attributes implements Validator
 {
     public const string TEMPLATE_CIRCULAR_REFERENCE = '__circular_reference__';

@@ -15,6 +15,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceFrom;
+use Respect\Fluent\Attributes\AssuranceParameter;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -26,9 +29,11 @@ use Respect\Validation\Validator;
     '{{subject}} must be identical to {{compareTo}}',
     '{{subject}} must not be identical to {{compareTo}}',
 )]
+#[Assurance(from: AssuranceFrom::Value)]
 final readonly class Identical implements Validator
 {
     public function __construct(
+        #[AssuranceParameter]
         private mixed $compareTo,
     ) {
     }

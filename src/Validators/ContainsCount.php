@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -32,6 +33,7 @@ use function mb_substr_count;
     '{{subject}} must not contain {{containsValue}} only once',
     self::TEMPLATE_ONCE,
 )]
+#[Assurance(type: 'scalar|array')]
 final readonly class ContainsCount implements Validator
 {
     public const string TEMPLATE_TIMES = '__times__';

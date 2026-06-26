@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Helpers\CanValidateUndefined;
@@ -28,6 +29,7 @@ use function class_exists;
     '{{subject}} must be a subdivision code of {{countryName|trans}}',
     '{{subject}} must not be a subdivision code of {{countryName|trans}}',
 )]
+#[Assurance(type: 'scalar|null')]
 final readonly class SubdivisionCode implements Validator
 {
     use CanValidateUndefined;

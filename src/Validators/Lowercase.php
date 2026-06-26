@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -27,6 +28,7 @@ use function mb_strtolower;
     '{{subject}} must consist only of lowercase letters',
     '{{subject}} must not consist only of lowercase letters',
 )]
+#[Assurance(type: 'string')]
 final class Lowercase extends Simple
 {
     public function isValid(mixed $input): bool

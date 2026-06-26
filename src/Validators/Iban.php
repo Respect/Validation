@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -31,6 +32,7 @@ use function substr;
     '{{subject}} must be an IBAN',
     '{{subject}} must not be an IBAN',
 )]
+#[Assurance(type: 'string')]
 final class Iban extends Simple
 {
     private const array COUNTRIES_LENGTHS = [
