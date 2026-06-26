@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -24,6 +25,7 @@ use function is_scalar;
     '{{subject}} must be a scalar',
     '{{subject}} must not be a scalar',
 )]
+#[Assurance(type: 'int|float|bool|string')]
 final class ScalarVal extends Simple
 {
     public function isValid(mixed $input): bool

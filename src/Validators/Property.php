@@ -19,6 +19,9 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use ReflectionClass;
 use ReflectionObject;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceSubject;
+use Respect\Fluent\Attributes\AssuranceSubjectMode;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Fluent\Attributes\ComposableParameter;
 use Respect\Validation\Path;
@@ -27,6 +30,8 @@ use Respect\Validation\Validator;
 
 #[Composable(prefix: self::class, without: [All::class, Key::class, self::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
+#[Assurance(type: 'object')]
+#[AssuranceSubject(AssuranceSubjectMode::Container)]
 final readonly class Property implements Validator
 {
     public function __construct(

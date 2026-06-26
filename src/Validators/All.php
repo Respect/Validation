@@ -15,6 +15,10 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceFrom;
+use Respect\Fluent\Attributes\AssuranceSubject;
+use Respect\Fluent\Attributes\AssuranceSubjectMode;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
@@ -26,6 +30,8 @@ use Respect\Validation\Validators\Core\ShortCircuitable;
 #[Composable(prefix: self::class, without: [self::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template('Every item in', 'Every item in')]
+#[Assurance(from: AssuranceFrom::Elements)]
+#[AssuranceSubject(AssuranceSubjectMode::Elements)]
 final class All extends FilteredArray implements ShortCircuitable
 {
     use CanEvaluateShortCircuit;

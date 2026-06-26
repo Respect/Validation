@@ -20,6 +20,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Countable as CountableInterface;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -30,6 +31,7 @@ use function is_array;
     '{{subject}} must be countable',
     '{{subject}} must not be countable',
 )]
+#[Assurance(type: ['array', CountableInterface::class])]
 final class Countable extends Simple
 {
     public function isValid(mixed $input): bool

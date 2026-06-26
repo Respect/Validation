@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -29,6 +30,7 @@ use function preg_match;
     '{{subject}} must be a MAC address',
     '{{subject}} must not be a MAC address',
 )]
+#[Assurance(type: 'string')]
 final class MacAddress extends Simple
 {
     public function isValid(mixed $input): bool

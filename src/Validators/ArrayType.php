@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -27,6 +28,7 @@ use function is_array;
     '{{subject}} must be an array',
     '{{subject}} must not be an array',
 )]
+#[Assurance(type: 'array')]
 final class ArrayType extends Simple
 {
     public function isValid(mixed $input): bool

@@ -13,6 +13,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceSubject;
+use Respect\Fluent\Attributes\AssuranceSubjectMode;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Message\Template;
@@ -30,6 +33,8 @@ use function array_map;
     'or must be undefined',
     'and must not be undefined',
 )]
+#[Assurance(type: "null|''")]
+#[AssuranceSubject(AssuranceSubjectMode::Wrap)]
 final readonly class UndefOr implements Validator
 {
     use CanValidateUndefined;

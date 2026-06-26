@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -33,6 +34,7 @@ use function mb_list_encodings;
     '{{subject}} must consist only of characters from the {{charset|list:or}} character-set',
     '{{subject}} must not consist only of characters from the {{charset|list:or}} character-set',
 )]
+#[Assurance(type: 'string')]
 final readonly class Charset implements Validator
 {
     /** @var non-empty-array<string> */

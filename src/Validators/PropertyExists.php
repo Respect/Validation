@@ -14,6 +14,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use ReflectionClass;
 use ReflectionObject;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
@@ -28,6 +29,7 @@ use function is_object;
     '{{subject}} must be present',
     '{{subject}} must not be present',
 )]
+#[Assurance(type: 'object')]
 final readonly class PropertyExists implements Validator
 {
     public function __construct(

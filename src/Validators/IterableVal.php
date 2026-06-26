@@ -16,15 +16,19 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Helpers\CanValidateIterable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
+use stdClass;
+use Traversable;
 
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template(
     '{{subject}} must be iterable',
     '{{subject}} must not be iterable',
 )]
+#[Assurance(type: ['array', stdClass::class, Traversable::class])]
 final class IterableVal extends Simple
 {
     use CanValidateIterable;

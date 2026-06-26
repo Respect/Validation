@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Envelope;
 
@@ -26,6 +27,7 @@ use Respect\Validation\Validators\Core\Envelope;
     '{{subject}} must be a Roman numeral',
     '{{subject}} must not be a Roman numeral',
 )]
+#[Assurance(type: 'string')]
 final class Roman extends Envelope
 {
     public function __construct()

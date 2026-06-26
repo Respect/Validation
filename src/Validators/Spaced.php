@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -27,6 +28,7 @@ use function preg_match;
     '{{subject}} must contain at least one whitespace',
     '{{subject}} must not contain whitespace',
 )]
+#[Assurance(type: 'string')]
 final class Spaced extends Simple
 {
     public function isValid(mixed $input): bool

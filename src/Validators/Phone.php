@@ -21,6 +21,7 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberUtil;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
@@ -42,6 +43,7 @@ use function is_scalar;
     '{{subject}} must not be a phone number for country {{countryName|trans}}',
     self::TEMPLATE_FOR_COUNTRY,
 )]
+#[Assurance(type: 'scalar')]
 final class Phone implements Validator
 {
     public const string TEMPLATE_FOR_COUNTRY = '__for_country__';

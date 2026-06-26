@@ -15,6 +15,9 @@
     <file>src-dev/</file>
     <file>tests/</file>
 
+    <!-- PHPStan type-inference fixtures: intentional global functions + assertType() calls. -->
+    <exclude-pattern>tests/inference/assertions/*</exclude-pattern>
+
     <rule ref="Respect" />
 
     <!-- Exclusions -->
@@ -27,6 +30,21 @@
     <rule ref="Generic.Files.LineLength.TooLong">
         <exclude-pattern>src/Mixins/</exclude-pattern>
         <exclude-pattern>tests/feature/</exclude-pattern>
+    </rule>
+    <!-- Generated mixin docblocks carry @template/@param/@return narrowing types whose
+         formatting (annotation groups, fully-qualified class names, bare iterable item
+         types, null ordering) is the generator's concern, not hand-maintained style. -->
+    <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing">
+        <exclude-pattern>src/Mixins/</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.ReferenceViaFullyQualifiedName">
+        <exclude-pattern>src/Mixins/</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingTraversableTypeHintSpecification">
+        <exclude-pattern>src/Mixins/</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.NullTypeHintOnLastPosition">
+        <exclude-pattern>src/Mixins/</exclude-pattern>
     </rule>
     <rule ref="SlevomatCodingStandard.Functions.StaticClosure.ClosureNotStatic">
         <exclude-pattern>tests/Pest.php</exclude-pattern>

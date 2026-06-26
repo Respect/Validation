@@ -16,6 +16,7 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use Directory as NativeDirectory;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 use SplFileInfo;
@@ -28,6 +29,7 @@ use function is_scalar;
     '{{subject}} must be an accessible existing directory',
     '{{subject}} must not be an accessible existing directory',
 )]
+#[Assurance(type: ['string', SplFileInfo::class])]
 final class Directory extends Simple
 {
     public function isValid(mixed $input): bool
