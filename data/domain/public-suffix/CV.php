@@ -3,6 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => ['COM.CV', 'EDU.CV', 'ID.CV', 'INT.CV', 'NET.CV', 'NOME.CV', 'ORG.CV', 'PUBL.CV'],
+    'rules' => ['COM.CV', 'DEV.CV', 'EDU.CV', 'ID.CV', 'INT.CV', 'NET.CV', 'NOME.CV', 'ORG.CV', 'PUBL.CV', 'STORE.CV'],
     'wildcards' => [],
 ];
