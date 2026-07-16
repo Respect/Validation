@@ -4,9 +4,9 @@
 return [
     'exceptions' => [],
     'rules' => [
-        '5G.IN', '6G.IN', 'AC.IN', 'AI.IN', 'AM.IN', 'BANK.IN', 'BARSY.IN', 'BIHAR.IN', 'BIZ.IN', 'BUSINESS.IN', 'CA.IN', 'CLOUDNS.IN', 'CN.IN', 'CO.IN', 'COM.IN', 'COOP.IN', 'CS.IN', 'DELHI.IN', 'DR.IN', 'EDU.IN',
-        'ER.IN', 'FIN.IN', 'FIRM.IN', 'GEN.IN', 'GOV.IN', 'GUJARAT.IN', 'IND.IN', 'INDEVS.IN', 'INFO.IN', 'INT.IN', 'INTERNET.IN', 'IO.IN', 'ME.IN', 'MIL.IN', 'NET.IN', 'NIC.IN', 'ORG.IN', 'PG.IN', 'POST.IN', 'PRO.IN',
-        'RES.IN', 'SUPABASE.IN', 'TRAVEL.IN', 'TV.IN', 'UK.IN', 'UP.IN', 'US.IN', 'WEB.IN',
+        '5G.IN', '6G.IN', 'AC.IN', 'AERO.IN', 'AI.IN', 'ALUMNI.IN', 'AM.IN', 'BANK.IN', 'BARSY.IN', 'BIHAR.IN', 'BIZ.IN', 'BUSINESS.IN', 'CA.IN', 'CLOUDNS.IN', 'CN.IN', 'CO.IN', 'COM.IN', 'COOP.IN', 'CS.IN', 'DELHI.IN',
+        'DR.IN', 'EDU.IN', 'ER.IN', 'FIN.IN', 'FIRM.IN', 'GEN.IN', 'GOV.IN', 'GUJARAT.IN', 'IND.IN', 'INDEVS.IN', 'INFO.IN', 'INT.IN', 'INTERNET.IN', 'IO.IN', 'ME.IN', 'MIL.IN', 'NET.IN', 'NIC.IN', 'ORG.IN', 'PG.IN',
+        'POST.IN', 'PRO.IN', 'RES.IN', 'SCHOOL.IN', 'SUPABASE.IN', 'TRAVEL.IN', 'TV.IN', 'UB.IN', 'UK.IN', 'UP.IN', 'US.IN', 'WEB.IN',
     ],
     'wildcards' => [],
 ];
