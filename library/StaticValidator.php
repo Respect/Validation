@@ -85,6 +85,11 @@ interface StaticValidator
      */
     public static function containsAny(array $needles, bool $strictCompareArray = false): ChainedValidator;
 
+    /**
+     * @param mixed $containsValue
+     */
+    public static function containsCount($containsValue, int $count): ChainedValidator;
+
     public static function countable(): ChainedValidator;
 
     public static function countryCode(?string $set = null): ChainedValidator;

@@ -83,6 +83,11 @@ interface ChainedValidator extends Validatable
      */
     public function containsAny(array $needles, bool $strictCompareArray = false): ChainedValidator;
 
+    /**
+     * @param mixed $containsValue
+     */
+    public function containsCount($containsValue, int $count): ChainedValidator;
+
     public function countable(): ChainedValidator;
 
     public function countryCode(?string $set = null): ChainedValidator;
