@@ -45,6 +45,12 @@ interface ChainedValidator extends Validatable
      */
     public function between($minimum, $maximum): ChainedValidator;
 
+    /**
+     * @param mixed $minimum
+     * @param mixed $maximum
+     */
+    public function betweenExclusive($minimum, $maximum): ChainedValidator;
+
     public function boolType(): ChainedValidator;
 
     public function boolVal(): ChainedValidator;

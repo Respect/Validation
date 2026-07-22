@@ -45,6 +45,12 @@ interface StaticValidator
      */
     public static function between($minimum, $maximum): ChainedValidator;
 
+    /**
+     * @param mixed $minimum
+     * @param mixed $maximum
+     */
+    public static function betweenExclusive($minimum, $maximum): ChainedValidator;
+
     public static function bic(string $countryCode): ChainedValidator;
 
     public static function boolType(): ChainedValidator;
