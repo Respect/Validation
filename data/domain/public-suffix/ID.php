@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'AC.ID',
+    'AI.ID',
     'BIZ.ID',
     'CO.ID',
     'DESA.ID',

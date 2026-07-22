@@ -38,6 +38,7 @@ return [
     'HAUGIANG.VN',
     'HEALTH.VN',
     'HOABINH.VN',
+    'HUE.VN',
     'HUNGYEN.VN',
     'ID.VN',
     'INFO.VN',
