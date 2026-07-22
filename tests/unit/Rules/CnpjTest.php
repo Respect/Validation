@@ -43,6 +43,11 @@ final class CnpjTest extends RuleTestCase
             [$rule, '12774546000189'],
             [$rule, '77456211000168'],
             [$rule, '02023077000102'],
+            // Alphanumeric CNPJ (letters allowed in the first twelve positions since 2026)
+            [$rule, '12.ABC.345/01DE-35'],
+            [$rule, '12ABC34501DE35'],
+            [$rule, 'A1B2C3D4E5F668'],
+            [$rule, 'ZZZZZZZZ000191'],
         ];
     }
 
@@ -75,6 +80,8 @@ final class CnpjTest extends RuleTestCase
             [$rule, '123'],
             [$rule, '992999999999929384'],
             [$rule, '99-010-0.'],
+            // Alphanumeric base with wrong check digits
+            [$rule, '12ABC34501DE99'],
             [$rule, null],
         ];
     }

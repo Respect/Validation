@@ -3,7 +3,10 @@
 - `Cnpj()`
 
 Validates if the input is a Brazilian National Registry of Legal Entities (CNPJ) number.
-Ignores non-digit chars, so use `->digit()` if needed.
+
+Since 2026 the CNPJ can be alphanumeric: the first twelve positions may contain the
+letters `A` to `Z` as well as digits, while the last two (the check digits) remain numeric.
+Non-alphanumeric chars (such as `.`, `/` and `-`) are ignored, so use `->digit()` if needed.
 
 ## Categorization
 
@@ -13,6 +16,7 @@ Ignores non-digit chars, so use `->digit()` if needed.
 
 Version | Description
 --------|-------------
+  2.5.0 | Added support for alphanumeric CNPJ
   0.3.9 | Created
 
 ***
