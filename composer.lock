@@ -1535,16 +1535,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php-lite",
-            "version": "9.0.34",
+            "version": "9.0.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php-lite.git",
-                "reference": "a9f129a296b1e31f7f9b73fd81845415d302bee2"
+                "reference": "2fcb98690acb17febf87c9f8f1ab846390e7574f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php-lite/zipball/a9f129a296b1e31f7f9b73fd81845415d302bee2",
-                "reference": "a9f129a296b1e31f7f9b73fd81845415d302bee2",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php-lite/zipball/2fcb98690acb17febf87c9f8f1ab846390e7574f",
+                "reference": "2fcb98690acb17febf87c9f8f1ab846390e7574f",
                 "shasum": ""
             },
             "require": {
@@ -1609,7 +1609,7 @@
                 "issues": "https://github.com/giggsey/libphonenumber-for-php-lite/issues",
                 "source": "https://github.com/giggsey/libphonenumber-for-php-lite"
             },
-            "time": "2026-07-03T10:23:06+00:00"
+            "time": "2026-07-17T13:11:35+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
