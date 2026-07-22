@@ -154,6 +154,8 @@ interface StaticValidator
      */
     public static function greaterThan($compareTo): ChainedValidator;
 
+    public static function hetu(): ChainedValidator;
+
     public static function hexRgbColor(): ChainedValidator;
 
     public static function iban(): ChainedValidator;
