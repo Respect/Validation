@@ -8,7 +8,11 @@ SPDX-FileContributor: Henrique Moody <henriquemoody@gmail.com>
 # Attributes
 
 - `Attributes()`
+<<<<<<< HEAD
 - `Attributes(Resolver $resolver)`
+=======
+- `Attributes(PropertyResolver $propertyResolver)`
+>>>>>>> f2ab556e (Extract PropertyResolver strategy)
 
 Validates the PHP attributes defined in the properties of the input.
 
