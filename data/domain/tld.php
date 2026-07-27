@@ -1236,6 +1236,7 @@ return [
     'WATCHES',
     'WEATHER',
     'WEATHERCHANNEL',
+    'WEB',
     'WEBCAM',
     'WEBER',
     'WEBSITE',
