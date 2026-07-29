@@ -24,6 +24,7 @@ use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
 use function intval;
+use function is_scalar;
 use function mb_strlen;
 use function preg_match;
 use function preg_replace;
@@ -37,8 +38,12 @@ final class Cpf extends Simple
 {
     public function isValid(mixed $input): bool
     {
+        if (!is_scalar($input)) {
+            return false;
+        }
+
         // Code ported from jsfromhell.com
-        $c = preg_replace('/\D/', '', $input);
+        $c = (string) preg_replace('/\D/', '', (string) $input);
 
         if (mb_strlen($c) != 11 || preg_match('/^' . $c[0] . '{11}$/', $c) || $c === '01234567890') {
             return false;

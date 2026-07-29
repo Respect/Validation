@@ -18,6 +18,7 @@ namespace Respect\Validation\Validators;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 #[Group('validator')]
 #[CoversClass(Cpf::class)]
@@ -35,6 +36,7 @@ final class CpfTest extends RuleTestCase
             [$validator, '693-319-118-40'],
             [$validator, '3.6.8.8.9.2.5.5.4.8.8'],
             [$validator, '11598647644'],
+            [$validator, 11598647644],
             [$validator, '86734718697'],
             [$validator, '86223423284'],
             [$validator, '24845408333'],
@@ -66,6 +68,10 @@ final class CpfTest extends RuleTestCase
             [$validator, '22'],
             [$validator, '123'],
             [$validator, '992999999999929384'],
+            [$validator, []],
+            [$validator, new stdClass()],
+            [$validator, null],
+            [$validator, true],
         ];
     }
 }

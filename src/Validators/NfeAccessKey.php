@@ -20,6 +20,7 @@ use Respect\Validation\Validators\Core\Simple;
 
 use function array_map;
 use function floor;
+use function is_scalar;
 use function mb_strlen;
 use function str_split;
 
@@ -33,11 +34,15 @@ final class NfeAccessKey extends Simple
 {
     public function isValid(mixed $input): bool
     {
-        if (mb_strlen($input) !== 44) {
+        if (!is_scalar($input)) {
             return false;
         }
 
-        $digits = array_map('intval', str_split($input));
+        if (mb_strlen((string) $input) !== 44) {
+            return false;
+        }
+
+        $digits = array_map('intval', str_split((string) $input));
         $w = [];
         for ($i = 0, $z = 5, $m = 43; $i <= $m; ++$i) {
             $z = $i < $m ? $z - 1 == 1 ? 9 : $z - 1 : 0;
