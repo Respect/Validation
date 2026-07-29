@@ -17,6 +17,7 @@ namespace Respect\Validation\Validators;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use Respect\Validation\Test\RuleTestCase;
+use stdClass;
 
 #[Group('validator')]
 #[CoversClass(NfeAccessKey::class)]
@@ -57,6 +58,10 @@ final class NfeAccessKeyTest extends RuleTestCase
             [$nfe, '5858836670181917762140106857095788313119136'],
             [$nfe, '6098412281885524361833754087461339281130'],
             [$nfe, '9025299113310221'],
+            [$nfe, []],
+            [$nfe, new stdClass()],
+            [$nfe, null],
+            [$nfe, true],
         ];
     }
 }
