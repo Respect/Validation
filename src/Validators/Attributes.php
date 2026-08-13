@@ -19,6 +19,8 @@ use ReflectionIntersectionType;
 use ReflectionNamedType;
 use ReflectionObject;
 use ReflectionProperty;
+use ReflectionReference;
+use ReflectionType;
 use ReflectionUnionType;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Parameter\Resolver;
@@ -28,6 +30,7 @@ use Respect\Validation\Result;
 use Respect\Validation\Validator;
 use Respect\Validation\Validators\Core\Reducer;
 
+use function is_array;
 use function spl_object_id;
 
 #[Composable(without: [All::class, Key::class, Property::class, Not::class, UndefOr::class])]
@@ -37,15 +40,16 @@ use function spl_object_id;
     '{{subject}} must contain a circular reference',
     Attributes::TEMPLATE_CIRCULAR_REFERENCE,
 )]
-final class Attributes implements Validator
+final readonly class Attributes implements Validator
 {
     public const string TEMPLATE_CIRCULAR_REFERENCE = '__circular_reference__';
 
     /** @var array<int, true> */
-    private array $visited = [];
+    private array $path;
 
-    public function __construct(private readonly Resolver|null $resolver = null)
+    public function __construct(private Resolver|null $resolver = null)
     {
+        $this->path = self::rootPath();
     }
 
     public function evaluate(mixed $input): Result
@@ -57,19 +61,24 @@ final class Attributes implements Validator
         }
 
         $objectId = spl_object_id($input);
-        if (isset($this->visited[$objectId])) {
+        if (isset($this->path[$objectId])) {
             return Result::failed($input, $this, [], self::TEMPLATE_CIRCULAR_REFERENCE)->withId($id);
         }
 
-        $this->visited[$objectId] = true;
+        $path = $this->path + [$objectId => true];
+        $child = clone ($this, ['path' => $path]);
 
         $reflection = new ReflectionObject($input);
-        $validators = [...$this->getClassValidators($reflection), ...$this->getPropertyValidators($reflection)];
-        if ($validators === []) {
-            return (new AlwaysValid())->evaluate($input)->withId($id);
-        }
+        $validators = [...$child->getClassValidators($reflection), ...$child->getPropertyValidators($reflection)];
+        $rule = $validators === [] ? new AlwaysValid() : new Reducer(...$validators);
 
-        return (new Reducer(...$validators))->evaluate($input)->withId($id);
+        return $rule->evaluate($input)->withId($id);
+    }
+
+    /** @return array<int, true> */
+    private static function rootPath(): array
+    {
+        return [];
     }
 
     /** @return array<Validator> */
@@ -110,46 +119,119 @@ final class Attributes implements Validator
     private function getPropertyInnerValidators(ReflectionProperty $property): array
     {
         $propertyValidators = [];
-        $hasExplicitAttributes = false;
         foreach ($property->getAttributes(Validator::class, ReflectionAttribute::IS_INSTANCEOF) as $attribute) {
             if ($attribute->getName() === self::class) {
-                $propertyValidator = $this;
-            } else {
-                $propertyValidator = $this->instantiateAttribute($attribute);
+                $propertyValidators[] = $this;
+
+                continue;
             }
 
-            $hasExplicitAttributes = $hasExplicitAttributes || $propertyValidator === $this;
-            $propertyValidators[] = $propertyValidator;
+            $propertyValidators[] = $this->instantiateAttribute($attribute);
         }
 
-        if ($hasExplicitAttributes) {
+        $recursion = $this->getRecursionValidator($property->getType());
+        if ($recursion === null) {
             return $propertyValidators;
         }
 
-        $type = $property->getType();
-        if ($type instanceof ReflectionNamedType) {
-            if (!$type->isBuiltin()) {
-                $propertyValidators[] = $this;
+        foreach ($propertyValidators as $propertyValidator) {
+            if (self::containsSelf($propertyValidator)) {
+                return $propertyValidators;
             }
+        }
+
+        $propertyValidators[] = $recursion;
+
+        return $propertyValidators;
+    }
+
+    private function getRecursionValidator(ReflectionType|null $type): Validator|null
+    {
+        if ($type instanceof ReflectionNamedType) {
+            return $type->isBuiltin() ? null : $this;
         }
 
         if ($type instanceof ReflectionIntersectionType) {
-            $propertyValidators[] = $this;
+            return $this;
         }
 
-        if ($type instanceof ReflectionUnionType) {
-            foreach ($type->getTypes() as $innerType) {
-                if (!$innerType instanceof ReflectionNamedType || $innerType->isBuiltin()) {
-                    continue;
-                }
+        if (!$type instanceof ReflectionUnionType) {
+            return null;
+        }
 
-                /** @var class-string $class */
-                $class = $innerType->getName();
-                $propertyValidators[] = new Given(new Instance($class), $this);
+        foreach ($type->getTypes() as $innerType) {
+            if ($this->getRecursionValidator($innerType) !== null) {
+                return new Given(new ObjectType(), $this);
             }
         }
 
-        return $propertyValidators;
+        return null;
+    }
+
+    /** @param array<string, true> $visited */
+    private static function containsSelf(mixed $value, array &$visited = []): bool
+    {
+        if ($value instanceof self) {
+            return true;
+        }
+
+        if (is_array($value)) {
+            foreach ($value as $key => $item) {
+                if (is_array($item) && !self::isUnvisitedReference($value, $key, $visited)) {
+                    continue;
+                }
+
+                if (self::containsSelf($item, $visited)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        if (!$value instanceof Validator) {
+            return false;
+        }
+
+        $objectId = 'validator:' . spl_object_id($value);
+        if (isset($visited[$objectId])) {
+            return false;
+        }
+
+        $visited[$objectId] = true;
+        $reflection = new ReflectionObject($value);
+        while ($reflection instanceof ReflectionClass) {
+            foreach ($reflection->getProperties() as $property) {
+                if ($property->isInitialized($value) && self::containsSelf($property->getValue($value), $visited)) {
+                    return true;
+                }
+            }
+
+            $reflection = $reflection->getParentClass();
+        }
+
+        return false;
+    }
+
+    /**
+     * @param array<mixed> $array
+     * @param array<string, true> $visited
+     */
+    private static function isUnvisitedReference(array $array, int|string $key, array &$visited): bool
+    {
+        $reference = ReflectionReference::fromArrayElement($array, $key);
+        if ($reference === null) {
+            return true;
+        }
+
+        $referenceId = 'reference:' . $reference->getId();
+        if (isset($visited[$referenceId])) {
+            return false;
+        }
+
+        $visited[$referenceId] = true;
+
+        return true;
     }
 
     /** @return array<ReflectionProperty> */

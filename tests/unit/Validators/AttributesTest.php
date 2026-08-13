@@ -15,23 +15,37 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
+use Respect\Config\Container;
+use Respect\Parameter\ContainerResolver;
 use Respect\Validation\Test\Stubs\CyclicNode;
+use Respect\Validation\Test\Stubs\EnvelopeAttributes;
 use Respect\Validation\Test\Stubs\NestedAddress;
 use Respect\Validation\Test\Stubs\NestedPassThrough;
 use Respect\Validation\Test\Stubs\NestedValidated;
 use Respect\Validation\Test\Stubs\NestedWithAttributes;
 use Respect\Validation\Test\Stubs\NestedWithoutAttributes;
+use Respect\Validation\Test\Stubs\ResolvedDependency;
+use Respect\Validation\Test\Stubs\WithArrayValidator;
 use Respect\Validation\Test\Stubs\WithAttributes;
 use Respect\Validation\Test\Stubs\WithAttributesNotLastOnNested;
 use Respect\Validation\Test\Stubs\WithCyclicAttributes;
+use Respect\Validation\Test\Stubs\WithCyclicValidator;
 use Respect\Validation\Test\Stubs\WithDeeplyNestedAttributes;
+use Respect\Validation\Test\Stubs\WithDnfUnionTypeNested;
+use Respect\Validation\Test\Stubs\WithEnvelopeAttributesOnNested;
 use Respect\Validation\Test\Stubs\WithExplicitAttributesOnNested;
 use Respect\Validation\Test\Stubs\WithIntersectionTypeNested;
+use Respect\Validation\Test\Stubs\WithNestedArrayValidator;
 use Respect\Validation\Test\Stubs\WithNestedAttributes;
 use Respect\Validation\Test\Stubs\WithNestedWithoutAttributes;
 use Respect\Validation\Test\Stubs\WithNullableNestedAttributes;
+use Respect\Validation\Test\Stubs\WithOverlappingUnionTypeNested;
+use Respect\Validation\Test\Stubs\WithResolvedValidator;
+use Respect\Validation\Test\Stubs\WithSharedNested;
 use Respect\Validation\Test\Stubs\WithUnionTypeNested;
+use Respect\Validation\Test\Stubs\WithWrappedAttributesOnNested;
 use Respect\Validation\Test\TestCase;
+use stdClass;
 
 #[Group(' rule')]
 #[CoversClass(Attributes::class)]
@@ -206,6 +220,48 @@ final class AttributesTest extends TestCase
     }
 
     #[Test]
+    public function shouldRecursivelyValidateDnfUnionTypeNestedWhenValid(): void
+    {
+        $input = new WithDnfUnionTypeNested(new NestedAddress('123 Main St', 'Springfield'));
+
+        self::assertValidInput(new Attributes(), $input);
+    }
+
+    #[Test]
+    public function shouldRecursivelyValidateDnfUnionTypeNestedWhenInvalid(): void
+    {
+        $input = new WithDnfUnionTypeNested(new NestedWithAttributes('', 'Springfield'));
+
+        self::assertInvalidInput(new Attributes(), $input);
+    }
+
+    #[Test]
+    public function shouldNotRecursivelyValidateBuiltinUnionTypes(): void
+    {
+        $input = new class {
+            #[StringType]
+            public string|int $value = 42;
+        };
+
+        $result = (new Attributes())->evaluate($input);
+
+        self::assertFalse($result->hasPassed);
+        self::assertInstanceOf(StringType::class, $result->validator);
+    }
+
+    #[Test]
+    public function shouldNotRecursivelyValidateUntypedProperties(): void
+    {
+        $input = new stdClass();
+        $input->value = 'anything';
+
+        $result = (new Attributes())->evaluate($input);
+
+        self::assertTrue($result->hasPassed);
+        self::assertInstanceOf(AlwaysValid::class, $result->validator);
+    }
+
+    #[Test]
     public function shouldRecursivelyValidateIntersectionTypeNestedWhenValid(): void
     {
         $validAddress = new NestedWithAttributes('123 Main St', 'Springfield');
@@ -247,6 +303,79 @@ final class AttributesTest extends TestCase
         $input = new WithAttributesNotLastOnNested(new NestedAddress('123 Main St', 'Springfield'));
 
         self::assertValidInput(new Attributes(), $input);
+    }
+
+    #[Test]
+    public function shouldNotDuplicateAttributesWhenWrappedOnNestedProperty(): void
+    {
+        $input = new WithWrappedAttributesOnNested(new NestedAddress('123 Main St', 'Springfield'));
+
+        self::assertValidInput(new Attributes(), $input);
+    }
+
+    #[Test]
+    public function shouldNotDuplicateAttributesWhenWrappedByAnAncestor(): void
+    {
+        $input = new WithEnvelopeAttributesOnNested(new NestedAddress('', 'Springfield'));
+        $result = (new Attributes())->evaluate($input);
+
+        self::assertFalse($result->hasPassed);
+        self::assertInstanceOf(EnvelopeAttributes::class, $result->validator);
+    }
+
+    #[Test]
+    public function shouldNotDuplicateAttributesWrappedByCyclicValidator(): void
+    {
+        self::assertValidInput(new Attributes(), new WithCyclicValidator(new NestedAddress('', '')));
+    }
+
+    #[Test]
+    public function shouldNotDuplicateAttributesWrappedInNestedValidatorArrays(): void
+    {
+        self::assertValidInput(new Attributes(), new WithNestedArrayValidator(new NestedAddress('', '')));
+    }
+
+    #[Test]
+    public function shouldRecursivelyValidateThroughSelfReferentialValidatorArrays(): void
+    {
+        self::assertInvalidInput(new Attributes(), new WithArrayValidator(new NestedAddress('', '')));
+    }
+
+    #[Test]
+    public function shouldNotDuplicateAttributesWhenUnionTypesOverlap(): void
+    {
+        $input = new WithOverlappingUnionTypeNested(new NestedWithAttributes('123 Main St', 'Springfield'));
+
+        self::assertValidInput(new Attributes(), $input);
+    }
+
+    #[Test]
+    public function shouldNotTreatSharedReferencesAsCircular(): void
+    {
+        $address = new NestedAddress('123 Main St', 'Springfield');
+
+        self::assertValidInput(new Attributes(), new WithSharedNested($address, $address));
+    }
+
+    #[Test]
+    public function shouldBeReusableAcrossEvaluations(): void
+    {
+        $rule = new Attributes();
+        $input = new WithNestedAttributes('John Doe', new NestedAddress('123 Main St', 'Springfield'));
+
+        self::assertValidInput($rule, $input);
+        self::assertValidInput($rule, $input);
+    }
+
+    #[Test]
+    public function shouldInstantiateAttributesWithTheGivenResolver(): void
+    {
+        $resolver = new ContainerResolver(
+            new Container([ResolvedDependency::class => new ResolvedDependency('expected')]),
+        );
+
+        self::assertInvalidInput(new Attributes(), new WithResolvedValidator('expected'));
+        self::assertValidInput(new Attributes($resolver), new WithResolvedValidator('expected'));
     }
 
     #[Test]
