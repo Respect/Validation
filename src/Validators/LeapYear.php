@@ -17,6 +17,8 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use DateTimeInterface;
+use Lcobucci\Clock\SystemClock;
+use Psr\Clock\ClockInterface;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -33,6 +35,13 @@ use function strtotime;
 )]
 final class LeapYear extends Simple
 {
+    private readonly ClockInterface $clock;
+
+    public function __construct(ClockInterface|null $clock = null)
+    {
+        $this->clock = $clock ?? SystemClock::fromSystemTimezone();
+    }
+
     public function isValid(mixed $input): bool
     {
         if (is_numeric($input)) {
@@ -42,7 +51,9 @@ final class LeapYear extends Simple
         }
 
         if (is_scalar($input)) {
-            return $this->isValid((int) date('Y', (int) strtotime((string) $input)));
+            $timestamp = strtotime((string) $input, $this->clock->now()->getTimestamp());
+
+            return $this->isValid((int) date('Y', (int) $timestamp));
         }
 
         if ($input instanceof DateTimeInterface) {

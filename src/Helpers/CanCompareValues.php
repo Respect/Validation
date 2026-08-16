@@ -13,9 +13,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Helpers;
 
 use Countable;
-use DateTimeImmutable;
 use DateTimeInterface;
-use Throwable;
+use Lcobucci\Clock\SystemClock;
+use Psr\Clock\ClockInterface;
 
 use function is_numeric;
 use function is_scalar;
@@ -24,7 +24,9 @@ use function mb_strlen;
 
 trait CanCompareValues
 {
-    private function toComparable(mixed $value): mixed
+    use CanResolveDateTime;
+
+    private function toComparable(mixed $value, ClockInterface|null $clock = null): mixed
     {
         if ($value instanceof Countable) {
             return $value->count();
@@ -38,11 +40,7 @@ trait CanCompareValues
             return $value;
         }
 
-        try {
-            return new DateTimeImmutable($value);
-        } catch (Throwable) {
-            return $value;
-        }
+        return $this->resolveDateTime($value, $clock ?? SystemClock::fromSystemTimezone()) ?? $value;
     }
 
     private function isAbleToCompareValues(mixed $left, mixed $right): bool

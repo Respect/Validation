@@ -16,8 +16,10 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
-use DateTimeImmutable;
 use DateTimeInterface;
+use Lcobucci\Clock\SystemClock;
+use Psr\Clock\ClockInterface;
+use Respect\Validation\Helpers\CanResolveDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -30,9 +32,15 @@ use function is_scalar;
 )]
 final class LeapDate extends Simple
 {
+    use CanResolveDateTime;
+
+    private readonly ClockInterface $clock;
+
     public function __construct(
         private readonly string $format,
+        ClockInterface|null $clock = null,
     ) {
+        $this->clock = $clock ?? SystemClock::fromSystemTimezone();
     }
 
     public function isValid(mixed $input): bool
@@ -42,7 +50,7 @@ final class LeapDate extends Simple
         }
 
         if (is_scalar($input)) {
-            return $this->isValid(DateTimeImmutable::createFromFormat($this->format, (string) $input));
+            return $this->isValid($this->resolveDateTimeFromFormat($this->format, (string) $input, $this->clock));
         }
 
         return false;

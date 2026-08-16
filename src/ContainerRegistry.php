@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use Lcobucci\Clock\SystemClock;
 use libphonenumber\PhoneNumberUtil;
 use Psr\Container\ContainerInterface;
 use Ramsey\Uuid\UuidFactory;
@@ -78,6 +79,7 @@ final class ContainerRegistry
             'respect.validation.formatter.full_message' => new Autowire(NestedListStringFormatter::class),
             'respect.validation.formatter.messages' => new Autowire(NestedArrayFormatter::class),
             'respect.validation.ignored_backtrace_paths' => [__DIR__ . '/ValidatorBuilder.php'],
+            'respect.validation.clock' => SystemClock::class,
             'respect.validation.rule_factory.namespaces' => ['Respect\\Validation\\Validators'],
             Resolver::class => static fn(Container $container) => new ContainerResolver($container),
             ValidatorFactory::class => static function (Container $container) {

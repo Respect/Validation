@@ -14,14 +14,21 @@ declare(strict_types=1);
 namespace Respect\Validation;
 
 use InvalidArgumentException;
+use Lcobucci\Clock\FrozenClock;
+use Lcobucci\Clock\SystemClock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 use PHPUnit\Framework\Attributes\Test;
+use Psr\Clock\ClockInterface;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
+use Respect\Validation\Test\Stubs\ForeignContainer;
 use Respect\Validation\Test\TestCase;
+use Respect\Validation\Test\Validators\ClockProbe;
 use Respect\Validation\Test\Validators\Stub;
 
+use function array_filter;
+use function array_values;
 use function sprintf;
 use function uniqid;
 
@@ -186,5 +193,116 @@ final class ValidatorBuilderTest extends TestCase
             ->assert('whatever', static fn($e) => new InvalidArgumentException(
                 sprintf('Got: %s', $e->getMessage()),
             ));
+    }
+
+    #[Test]
+    public function itShouldGiveEveryValidatorOfTheChainTheSameClock(): void
+    {
+        $this->useContainerWithClock(FrozenClock::class);
+
+        [$first, $second] = $this->probesOf($this->chainWithTwoProbes());
+
+        self::assertSame($first->clock, $second->clock);
+    }
+
+    #[Test]
+    public function itShouldGiveEachChainItsOwnClock(): void
+    {
+        $this->useContainerWithClock(FrozenClock::class);
+
+        [$first] = $this->probesOf($this->chainWithTwoProbes());
+        [$second] = $this->probesOf($this->chainWithTwoProbes());
+
+        self::assertNotSame($first->clock, $second->clock);
+    }
+
+    #[Test]
+    public function itShouldLeaveClocksThatCannotBeHeldStillWhereTheyAre(): void
+    {
+        $this->useContainerWithClock();
+
+        [$first, $second] = $this->probesOf($this->chainWithTwoProbes());
+
+        self::assertNotSame($first->clock, $second->clock);
+    }
+
+    #[Test]
+    public function itShouldLeaveTheClockAloneWhenTheContainerIsNotTheOneItKnows(): void
+    {
+        ContainerRegistry::setContainer(new ForeignContainer(ContainerRegistry::createContainer([
+            'respect.validation.clock' => FrozenClock::class,
+            'respect.validation.rule_factory.namespaces' => [
+                'Respect\\Validation\\Test\\Validators',
+                'Respect\\Validation\\Validators',
+            ],
+        ])));
+
+        [$first, $second] = $this->probesOf($this->chainWithTwoProbes());
+
+        self::assertNotSame($first->clock, $second->clock);
+    }
+
+    #[Test]
+    public function itShouldFreezeTheClockWhileTheChainRuns(): void
+    {
+        $this->useContainerWithClock(FrozenClock::class);
+
+        $validator = $this->chainWithTwoProbes();
+        $validator->isValid('whatever');
+
+        [$first, $second] = $this->probesOf($validator);
+
+        self::assertEquals($first->instants[0], $second->instants[0]);
+    }
+
+    #[Test]
+    public function itShouldRenewTheFrozenInstantOnEachRun(): void
+    {
+        $this->useContainerWithClock(FrozenClock::class);
+
+        $validator = $this->chainWithTwoProbes();
+        $validator->isValid('whatever');
+        $validator->isValid('whatever');
+
+        [$first] = $this->probesOf($validator);
+
+        self::assertNotEquals($first->instants[0], $first->instants[1]);
+    }
+
+    protected function tearDown(): void
+    {
+        ContainerRegistry::setContainer(ContainerRegistry::createContainer());
+    }
+
+    /** @param class-string<ClockInterface> $clock */
+    private function useContainerWithClock(string $clock = SystemClock::class): void
+    {
+        $this->useContainer(['respect.validation.clock' => $clock]);
+    }
+
+    /** @param array<string, mixed> $definitions */
+    private function useContainer(array $definitions): void
+    {
+        ContainerRegistry::setContainer(ContainerRegistry::createContainer($definitions + [
+            'respect.validation.rule_factory.namespaces' => [
+                'Respect\\Validation\\Test\\Validators',
+                'Respect\\Validation\\Validators',
+            ],
+        ]));
+    }
+
+    private function chainWithTwoProbes(): ValidatorBuilder
+    {
+        // @phpstan-ignore-next-line
+        return ValidatorBuilder::clockProbe()->clockProbe();
+    }
+
+    /** @return array<ClockProbe> */
+    private function probesOf(ValidatorBuilder $validator): array
+    {
+        return array_values(array_filter(
+            $validator->getValidators(),
+            static fn(Validator $rule): bool => $rule instanceof ClockProbe,
+        ));
     }
 }

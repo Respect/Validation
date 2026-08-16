@@ -15,6 +15,7 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Fluent\Factories\NamespaceLookup;
 use Respect\Fluent\Resolvers\Ucfirst;
+use Respect\Parameter\ContainerResolver;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 use Respect\Validation\Test\TestCase;
@@ -35,6 +36,16 @@ final class FluentValidatorFactoryTest extends TestCase
         );
 
         self::assertInstanceOf(Valid::class, $factory->create('valid'));
+    }
+
+    #[Test]
+    public function itShouldKeepItselfWhenTheFactoryItWrapsTakesNoResolver(): void
+    {
+        $factory = new FluentValidatorFactory(
+            new NamespaceLookup(new Ucfirst(), Validator::class, self::TEST_NAMESPACE),
+        );
+
+        self::assertSame($factory, $factory->withResolver(new ContainerResolver(ContainerRegistry::createContainer())));
     }
 
     #[Test]

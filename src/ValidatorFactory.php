@@ -13,6 +13,6 @@ namespace Respect\Validation;
 
 interface ValidatorFactory
 {
-    /** @param array<int, mixed> $arguments */
+    /** @param array<int|string, mixed> $arguments */
     public function create(string $ruleName, array $arguments = []): Validator;
 }

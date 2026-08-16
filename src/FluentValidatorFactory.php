@@ -14,6 +14,7 @@ use Error;
 use Respect\Fluent\Exceptions\CouldNotCreate;
 use Respect\Fluent\Exceptions\CouldNotResolve;
 use Respect\Fluent\FluentFactory;
+use Respect\Parameter\Resolver;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\InvalidClassException;
 
@@ -27,7 +28,7 @@ final readonly class FluentValidatorFactory implements ValidatorFactory
     ) {
     }
 
-    /** @param array<int, mixed> $arguments */
+    /** @param array<int|string, mixed> $arguments */
     public function create(string $ruleName, array $arguments = []): Validator
     {
         try {
@@ -50,5 +51,14 @@ final readonly class FluentValidatorFactory implements ValidatorFactory
     public function withNamespace(string $rulesNamespace): self
     {
         return new self($this->factory->withNamespace(trim($rulesNamespace, '\\')));
+    }
+
+    public function withResolver(Resolver $resolver): self
+    {
+        if (!$this->factory instanceof AutowiringLookup) {
+            return $this;
+        }
+
+        return new self($this->factory->withResolver($resolver));
     }
 }

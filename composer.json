@@ -21,6 +21,7 @@
     },
     "require": {
         "php": ">=8.5",
+        "lcobucci/clock": "^3.6",
         "psr/container": "^2.0",
         "respect/config": "^3.0",
         "respect/fluent": "^2.0",
