@@ -127,38 +127,44 @@ test('Wrapper with custom template', catchAll(
 ));
 
 test('Without adjacent result', catchAll(
-    fn() => v::dateTimeDiff('years', v::positive()->between(2, 5))->assert('1 year ago'),
+    fn() => v::dateTimeDiff('years', v::positive()->between(2, 5))->assert('1 year ago + 1 minute'),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('The number of years between now and "1 year ago" must be a positive number')
+        ->and($message)
+        ->toBe('The number of years between now and "1 year ago + 1 minute" must be a positive number')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
-        - "1 year ago" must pass all the rules
-          - The number of years between now and "1 year ago" must be a positive number
-          - The number of years between now and "1 year ago" must be between 2 and 5
+        - "1 year ago + 1 minute" must pass all the rules
+          - The number of years between now and "1 year ago + 1 minute" must be a positive number
+          - The number of years between now and "1 year ago + 1 minute" must be between 2 and 5
         FULL_MESSAGE)
         ->and($messages)->toBe([
-            '__root__' => '"1 year ago" must pass all the rules',
-            'dateTimeDiffPositive' => 'The number of years between now and "1 year ago" must be a positive number',
-            'dateTimeDiffBetween' => 'The number of years between now and "1 year ago" must be between 2 and 5',
+            '__root__' => '"1 year ago + 1 minute" must pass all the rules',
+            'dateTimeDiffPositive'
+                => 'The number of years between now and "1 year ago + 1 minute" must be a positive number',
+            'dateTimeDiffBetween'
+                => 'The number of years between now and "1 year ago + 1 minute" must be between 2 and 5',
         ]),
 ));
 
 test('Without adjacent result with templates', catchAll(
-    fn() => v::dateTimeDiff('years', v::positive()->between(2, 5))->assert('1 year ago', [
+    fn() => v::dateTimeDiff('years', v::positive()->between(2, 5))->assert('1 year ago + 1 minute', [
         'dateTimeDiff' => [
             'positive' => 'Interval must be a positive number',
             'between' => 'Interval must be between 2 and 5',
         ],
     ]),
     fn(string $message, string $fullMessage, array $messages) => expect()
-        ->and($message)->toBe('The number of years between now and "1 year ago" must be a positive number')
+        ->and($message)
+        ->toBe('The number of years between now and "1 year ago + 1 minute" must be a positive number')
         ->and($fullMessage)->toBe(<<<'FULL_MESSAGE'
-        - "1 year ago" must pass all the rules
-          - The number of years between now and "1 year ago" must be a positive number
-          - The number of years between now and "1 year ago" must be between 2 and 5
+        - "1 year ago + 1 minute" must pass all the rules
+          - The number of years between now and "1 year ago + 1 minute" must be a positive number
+          - The number of years between now and "1 year ago + 1 minute" must be between 2 and 5
         FULL_MESSAGE)
         ->and($messages)->toBe([
-            '__root__' => '"1 year ago" must pass all the rules',
-            'dateTimeDiffPositive' => 'The number of years between now and "1 year ago" must be a positive number',
-            'dateTimeDiffBetween' => 'The number of years between now and "1 year ago" must be between 2 and 5',
+            '__root__' => '"1 year ago + 1 minute" must pass all the rules',
+            'dateTimeDiffPositive'
+                => 'The number of years between now and "1 year ago + 1 minute" must be a positive number',
+            'dateTimeDiffBetween'
+                => 'The number of years between now and "1 year ago + 1 minute" must be between 2 and 5',
         ]),
 ));
