@@ -17,6 +17,7 @@ use Respect\Validation\Test\Stubs\WithCyclicAttributes;
 use Respect\Validation\Test\Stubs\WithIntersectionTypeNested;
 use Respect\Validation\Test\Stubs\WithNestedAttributes;
 use Respect\Validation\Test\Stubs\WithUnionTypeNested;
+use Respect\Validation\Test\Stubs\WithWrappedAttributesOnNested;
 
 test('Default', catchAll(
     fn() => v::attributes()->assert(new WithAttributes('', '2024-06-23', 'john.doe@gmail.com')),
@@ -116,6 +117,14 @@ test('Recursive: union type with invalid nested object property', catchAll(
         ->and($message)->toBe('`.address.street` must be defined')
         ->and($fullMessage)->toBe('- `.address.street` must be defined')
         ->and($messages)->toBe(['address' => '`.address.street` must be defined']),
+));
+
+test('Recursive: wrapped Attributes on nested property is not duplicated', catchAll(
+    fn() => v::attributes()->assert(new WithWrappedAttributesOnNested(new NestedAddress('', 'Springfield'))),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('`.address.street` must be defined')
+        ->and($fullMessage)->toBe('- `.address.street` must be defined')
+        ->and($messages)->toBe(['street' => '`.address.street` must be defined']),
 ));
 
 test('Recursive: intersection type with invalid nested object property', catchAll(

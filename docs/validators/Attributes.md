@@ -86,16 +86,24 @@ When a property is nullable (e.g., `?string $email`), `Attributes` wraps the pro
 When a property's type is a class (named, union, or intersection type), `Attributes` recursively validates that object's own properties, so there is no need to explicitly add `#[Attributes]` on the property.
 
 - **Named types** (`NestedAddress $address`): the nested object is validated directly.
-- **Union types** (`string|NestedAddress $address`): the nested object is only validated if it passes an `Instance` check first, so string values in the union are safely skipped.
+- **Union types** (`string|NestedAddress $address`): the nested value is only validated when it is an object, so string values in the union are safely skipped.
 - **Intersection types** (`NestedWithAttributes&Nested $address`): the nested object is validated directly, since it must satisfy all types in the intersection.
 - **Untyped properties** (no type declaration, or builtin types like `string`): are never recursively validated.
 - **Array properties**: `Attributes` **does not** recursively validate objects inside arrays. To validate each element, use the `#[Each]` attribute on the property (e.g., `#[Each(new Attributes())]`).
+
+An explicit `Attributes` rule prevents implicit recursion, so the nested value is validated once. Direct `#[Attributes]` shares the current traversal; a new instance inside another rule (e.g., `#[NullOr(new Attributes())]`) starts a separate one.
+
+Any other attribute on the property is combined with the implicit recursion instead of replacing it, so `#[Instance(Address::class)] public Address $address` still validates the nested object's own attributes.
 
 ### Circular references
 
 When a nested object graph contains a cycle (e.g., `$a->next = $b`, `$b->next = $a`), `Attributes` detects the revisit and fails with the `TEMPLATE_CIRCULAR_REFERENCE` template. This prevents infinite recursion and stack overflow.
 
-Note that circular reference detection only works for direct object references. If a cycle passes through an array (e.g., `$a->items = [$b]`, `$b->parent = $a`), `Attributes` cannot track the reference and the validation will recurse infinitely, causing a stack overflow.
+Detection is per *path*: a shared object on two sibling properties is not a cycle and is validated on each path.
+
+A separate `Attributes` instance does not know the current path, so cycles through it recurse indefinitely.
+
+Cycles through arrays are not detected and recurse indefinitely.
 
 ## Templates
 
