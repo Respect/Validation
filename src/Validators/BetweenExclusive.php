@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Psr\Clock\ClockInterface;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\CanCompareValues;
@@ -28,14 +29,14 @@ final class BetweenExclusive extends Envelope
 {
     use CanCompareValues;
 
-    public function __construct(mixed $minimum, mixed $maximum)
+    public function __construct(mixed $minimum, mixed $maximum, ClockInterface|null $clock = null)
     {
-        if ($this->toComparable($minimum) >= $this->toComparable($maximum)) {
+        if ($this->toComparable($minimum, $clock) >= $this->toComparable($maximum, $clock)) {
             throw new InvalidValidatorException('Minimum cannot be less than or equals to maximum');
         }
 
         parent::__construct(
-            new AllOf(new GreaterThan($minimum), new LessThan($maximum)),
+            new AllOf(new GreaterThan($minimum, $clock), new LessThan($maximum, $clock)),
             ['minValue' => $minimum, 'maxValue' => $maximum],
         );
     }

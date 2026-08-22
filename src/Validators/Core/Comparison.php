@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators\Core;
 
+use Lcobucci\Clock\SystemClock;
+use Psr\Clock\ClockInterface;
 use Respect\Validation\Helpers\CanCompareValues;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -21,15 +23,19 @@ abstract class Comparison implements Validator
 {
     use CanCompareValues;
 
+    private readonly ClockInterface $clock;
+
     public function __construct(
         private readonly mixed $compareTo,
+        ClockInterface|null $clock = null,
     ) {
+        $this->clock = $clock ?? SystemClock::fromSystemTimezone();
     }
 
     public function evaluate(mixed $input): Result
     {
-        $left = $this->toComparable($input);
-        $right = $this->toComparable($this->compareTo);
+        $left = $this->toComparable($input, $this->clock);
+        $right = $this->toComparable($this->compareTo, $this->clock);
 
         $parameters = ['compareTo' => $this->compareTo];
 

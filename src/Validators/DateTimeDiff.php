@@ -14,12 +14,14 @@ namespace Respect\Validation\Validators;
 use Attribute;
 use DateTimeImmutable;
 use DateTimeInterface;
+use Lcobucci\Clock\SystemClock;
+use Psr\Clock\ClockInterface;
 use Respect\Validation\Exceptions\InvalidValidatorException;
+use Respect\Validation\Helpers\CanResolveDateTime;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
-use Throwable;
 
 use function in_array;
 
@@ -46,11 +48,14 @@ use function in_array;
 )]
 final readonly class DateTimeDiff implements Validator
 {
+    use CanResolveDateTime;
     use CanValidateDateTime;
 
     public const string TEMPLATE_CUSTOMIZED = '__customized__';
     public const string TEMPLATE_NOT_A_DATE = '__not_a_date__';
     public const string TEMPLATE_WRONG_FORMAT = '__wrong_format__';
+
+    private ClockInterface $clock;
 
     /** @param "years"|"months"|"days"|"hours"|"minutes"|"seconds"|"microseconds" $type */
     public function __construct(
@@ -58,6 +63,7 @@ final readonly class DateTimeDiff implements Validator
         private Validator $validator,
         private string|null $format = null,
         private DateTimeImmutable|null $now = null,
+        ClockInterface|null $clock = null,
     ) {
         $availableTypes = ['years', 'months', 'days', 'hours', 'minutes', 'seconds', 'microseconds'];
         if (!in_array($this->type, $availableTypes, true)) {
@@ -67,11 +73,13 @@ final readonly class DateTimeDiff implements Validator
                 $availableTypes,
             );
         }
+
+        $this->clock = $clock ?? SystemClock::fromSystemTimezone();
     }
 
     public function evaluate(mixed $input): Result
     {
-        $now = $this->now ?? new DateTimeImmutable();
+        $now = $this->now ?? $this->clock->now();
         $compareTo = $this->createDateTimeObject($input);
         if ($compareTo === null) {
             $template = $this->format === null ? self::TEMPLATE_NOT_A_DATE : self::TEMPLATE_WRONG_FORMAT;
@@ -130,19 +138,11 @@ final readonly class DateTimeDiff implements Validator
         }
 
         if ($this->format === null) {
-            try {
-                return new DateTimeImmutable((string) $input);
-            } catch (Throwable) {
-                return null;
-            }
+            return $this->resolveDateTime($input, $this->clock);
         }
 
         $format = $this->getExceptionalFormats()[$this->format] ?? $this->format;
-        $dateTime = DateTimeImmutable::createFromFormat($format, (string) $input);
-        if ($dateTime === false) {
-            return null;
-        }
 
-        return $dateTime;
+        return $this->resolveDateTimeFromFormat($format, (string) $input, $this->clock);
     }
 }

@@ -17,6 +17,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Lcobucci\Clock\SystemClock;
+use Psr\Clock\ClockInterface;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
@@ -37,17 +39,23 @@ final readonly class Time implements Validator
 {
     use CanValidateDateTime;
 
+    private readonly ClockInterface $clock;
+
     public function __construct(
         private string $format = 'H:i:s',
+        ClockInterface|null $clock = null,
     ) {
         if (!preg_match('/^[gGhHisuvaA\W]+$/', $format)) {
             throw new InvalidValidatorException('"%s" is not a valid date format', $format);
         }
+
+        $this->clock = $clock ?? SystemClock::fromSystemTimezone();
     }
 
     public function evaluate(mixed $input): Result
     {
-        $parameters = ['sample' => date($this->format, strtotime('23:59:59'))];
+        $sample = strtotime('23:59:59', $this->clock->now()->getTimestamp());
+        $parameters = ['sample' => date($this->format, (int) $sample)];
         if (!is_scalar($input)) {
             return Result::failed($input, $this, $parameters);
         }

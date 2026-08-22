@@ -33,6 +33,11 @@ v::dateTimeDiff('months', v::between(1, 18))->assert('5 months ago');
 // Validation passes successfully
 ```
 
+A value such as `"7 years ago"` is resolved when the validation runs, a moment after the time it is compared against
+was read, so it falls just short of seven years and counts as six. Freezing the [clock](../configuration.md#clock)
+makes both the comparison and the value use the very same moment, and such a value then counts as the seven years it
+names.
+
 The supported types are:
 
 - `years`

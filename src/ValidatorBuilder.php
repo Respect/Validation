@@ -12,6 +12,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use DateTimeImmutable;
+use Lcobucci\Clock\FrozenClock;
+use Psr\Clock\ClockInterface;
+use Psr\Container\ContainerInterface;
+use Respect\Config\Container;
 use Respect\Fluent\Attributes\AssuranceAssertion;
 use Respect\Fluent\Attributes\AssuranceParameter;
 use Respect\Fluent\Attributes\FluentNamespace;
@@ -19,6 +24,8 @@ use Respect\Fluent\Factories\ComposingLookup;
 use Respect\Fluent\Factories\NamespaceLookup;
 use Respect\Fluent\Resolvers\ComposableMap;
 use Respect\Fluent\Resolvers\Ucfirst;
+use Respect\Parameter\ContainerResolver;
+use Respect\Parameter\Resolver;
 use Respect\Validation\Exceptions\ComponentException;
 use Respect\Validation\Exceptions\ValidationException;
 use Respect\Validation\Message\ArrayFormatter;
@@ -61,6 +68,7 @@ final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
         private ArrayFormatter $messagesFormatter,
         private ResultFilter $resultFilter,
         private array $ignoredBacktracePaths,
+        private FrozenClock|null $clock = null,
         Validator ...$validators,
     ) {
         $this->validators = $validators;
@@ -68,11 +76,14 @@ final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
 
     public static function init(Validator ...$validators): self
     {
+        $container = ContainerRegistry::getContainer();
+        $builder = $container->get(self::class)->withClockFrom($container);
+
         if ($validators === []) {
-            return ContainerRegistry::getContainer()->get(self::class);
+            return $builder;
         }
 
-        return ContainerRegistry::getContainer()->get(self::class)->with(...$validators);
+        return $builder->with(...$validators);
     }
 
     public function evaluate(mixed $input): Result
@@ -83,11 +94,15 @@ final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
             default => new AllOf(...$this->validators),
         };
 
+        $this->freezeClock();
+
         return $validator->evaluate($input);
     }
 
     public function evaluateShortCircuit(mixed $input): Result
     {
+        $this->freezeClock();
+
         return (new ShortCircuit(...$this->validators))->evaluate($input);
     }
 
@@ -143,6 +158,32 @@ final readonly class ValidatorBuilder implements Nameable, ShortCircuitable
         }
 
         return null;
+    }
+
+    private function withClockFrom(ContainerInterface $container): self
+    {
+        if (!$container instanceof Container || !$this->validatorFactory instanceof FluentValidatorFactory) {
+            return $this;
+        }
+
+        if ($container->get('respect.validation.clock') !== FrozenClock::class) {
+            return $this;
+        }
+
+        $clock = FrozenClock::fromSystemTimezone();
+        $chainContainer = clone $container;
+        $chainContainer->set(ClockInterface::class, $clock);
+        $chainContainer->set(Resolver::class, new ContainerResolver($chainContainer));
+
+        return clone ($this, [
+            'validatorFactory' => $this->validatorFactory->withResolver($chainContainer->get(Resolver::class)),
+            'clock' => $clock,
+        ]);
+    }
+
+    private function freezeClock(): void
+    {
+        $this->clock?->setTo(new DateTimeImmutable());
     }
 
     /** @param array<string|int, mixed>|string|null $template */

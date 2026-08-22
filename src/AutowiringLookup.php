@@ -34,6 +34,11 @@ final readonly class AutowiringLookup implements FluentFactory
         return clone ($this, ['lookup' => $this->lookup->withNamespace($namespace)]);
     }
 
+    public function withResolver(Resolver $parameterResolver): static
+    {
+        return clone ($this, ['parameterResolver' => $parameterResolver]);
+    }
+
     /** @param array<int|string, mixed> $arguments */
     public function create(string $name, array $arguments = []): object
     {
