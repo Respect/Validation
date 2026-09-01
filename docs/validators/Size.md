@@ -50,6 +50,15 @@ Used when the input is not a valid file path, a `SplFileInfo` object, or a PSR-7
 |  `default` | {{subject}} must be a filename, an instance of SplFileInfo or a PSR-7 interface     |
 | `inverted` | {{subject}} must not be a filename, an instance of SplFileInfo or a PSR-7 interface |
 
+### `Size::TEMPLATE_UNKNOWN_SIZE`
+
+Used when it's impossible to get the size of the input.
+
+|       Mode | Template                                                |
+| ---------: | :------------------------------------------------------ |
+|  `default` | It is not possible to determine the size of {{subject}} |
+| `inverted` | It is not possible to determine the size of {{subject}} |
+
 ## Template as prefix
 
 The template serves as a prefix to the template of the inner validator.
@@ -76,12 +85,13 @@ v::size('KB', v::not(v::equals(56)))->assert('/path/to/file');
 
 ## Changelog
 
-| Version | Description             |
-| ------: | :---------------------- |
-|   3.0.0 | Templates changed       |
-|   3.0.0 | Became a transformation |
-|   2.1.0 | Add [PSR-7][] support   |
-|   1.0.0 | Created                 |
+| Version | Description                   |
+| ------: | :---------------------------- |
+|   3.2.0 | Added `TEMPLATE_UNKNOWN_SIZE` |
+|   3.0.0 | Templates changed             |
+|   3.0.0 | Became a transformation       |
+|   2.1.0 | Add [PSR-7][] support         |
+|   1.0.0 | Created                       |
 
 ## See Also
 

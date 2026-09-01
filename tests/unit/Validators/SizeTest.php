@@ -17,9 +17,11 @@ use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use PHPUnit\Framework\Attributes\Before;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use Respect\Validation\Exceptions\InvalidValidatorException;
+use Respect\Validation\Test\Stubs\SplFileInfoStub;
 use Respect\Validation\Test\Stubs\StreamStub;
 use Respect\Validation\Test\Stubs\UploadedFileStub;
 use Respect\Validation\Test\TestCase;
@@ -100,5 +102,54 @@ final class SizeTest extends TestCase
         $validator->evaluate($file);
 
         self::assertSame([2], $wrapped->inputs);
+    }
+
+    #[Test]
+    public function shouldGetTheSizeOfFilePassedAsSplFileInfoOverridingGetSize(): void
+    {
+        $wrapped = Stub::pass(1);
+        $validator = new Size('KB', $wrapped);
+        $validator->evaluate(SplFileInfoStub::createWithSize(uniqid(), 3 * 1024));
+
+        self::assertSame([3], $wrapped->inputs);
+    }
+
+    #[Test]
+    public function shouldReportWrongTypeWhenTheInputTypeIsNotSupported(): void
+    {
+        $input = 1;
+
+        $wrapped = Stub::pass(1);
+        $result = (new Size('KB', $wrapped))->evaluate($input);
+
+        self::assertFalse($result->hasPassed);
+        self::assertSame(Size::TEMPLATE_WRONG_TYPE, $result->template);
+        self::assertSame([$input], $wrapped->inputs);
+    }
+
+    #[Test]
+    #[DataProvider('providerForInputWithUndeterminableSize')]
+    public function shouldReportUnknownSizeWhenTheSizeCannotBeDetermined(mixed $input): void
+    {
+        $wrapped = Stub::pass(1);
+        $result = (new Size('KB', $wrapped))->evaluate($input);
+
+        self::assertFalse($result->hasPassed);
+        self::assertSame(Size::TEMPLATE_UNKNOWN_SIZE, $result->template);
+        self::assertSame([$input], $wrapped->inputs, 'The inner validator must not be given a size');
+    }
+
+    /** @return array<string, array{mixed}> */
+    public static function providerForInputWithUndeterminableSize(): array
+    {
+        $missingFilename = 'vfs://root/' . uniqid();
+
+        return [
+            'filename that does not exist' => [$missingFilename],
+            'SplFileInfo whose "stat" fails' => [new SplFileInfo($missingFilename)],
+            'SplFileInfo whose "getSize()" returns FALSE' => [SplFileInfoStub::createWithoutSize($missingFilename)],
+            'UploadedFileInterface with an unknown size' => [UploadedFileStub::create()],
+            'StreamInterface with an unknown size' => [StreamStub::create()],
+        ];
     }
 }
