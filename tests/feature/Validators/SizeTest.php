@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 use org\bovigo\vfs\content\LargeFileContent;
 use org\bovigo\vfs\vfsStream;
+use Respect\Validation\Test\Stubs\StreamStub;
 
 beforeEach(function (): void {
     $this->root = vfsStream::setup();
@@ -38,6 +39,26 @@ test('Wrong type', catchAll(
         ->and($message)->toBe('`stdClass {}` must be a filename, an instance of SplFileInfo or a PSR-7 interface')
         ->and($fullMessage)->toBe('- `stdClass {}` must be a filename, an instance of SplFileInfo or a PSR-7 interface')
         ->and($messages)->toBe(['sizeLessThan' => '`stdClass {}` must be a filename, an instance of SplFileInfo or a PSR-7 interface']),
+));
+
+test('Unknown size of a filename that does not exist', catchAll(
+    fn() => v::size('KB', v::lessThan(2))->assert('vfs://root/does-not-exist.txt'),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('It is not possible to determine the size of "vfs://root/does-not-exist.txt"')
+        ->and($fullMessage)->toBe('- It is not possible to determine the size of "vfs://root/does-not-exist.txt"')
+        ->and($messages)->toBe(['sizeLessThan' => 'It is not possible to determine the size of "vfs://root/does-not-exist.txt"']),
+));
+
+test('Unknown size of a stream', catchAll(
+    fn() => v::size('KB', v::lessThan(2))->assert(StreamStub::create()),
+    fn(string $message, string $fullMessage, array $messages) => expect()
+        ->and($message)->toBe('It is not possible to determine the size of `Respect\\Validation\\Test\\Stubs\\StreamStub { __toString() => "" }`')
+        ->and($fullMessage)->toBe('- It is not possible to determine the size of '
+            . '`Respect\\Validation\\Test\\Stubs\\StreamStub { __toString() => "" }`')
+        ->and($messages)->toBe([
+            'sizeLessThan' => 'It is not possible to determine the size of '
+                . '`Respect\\Validation\\Test\\Stubs\\StreamStub { __toString() => "" }`',
+        ]),
 ));
 
 test('Inverted', catchAll(
