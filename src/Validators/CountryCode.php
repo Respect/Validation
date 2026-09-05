@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
@@ -34,6 +35,7 @@ use function is_string;
     '{{subject}} must be a country code',
     '{{subject}} must not be a country code',
 )]
+#[Assurance(type: 'string')]
 final readonly class CountryCode implements Validator
 {
     private Countries $countries;

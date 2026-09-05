@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Helpers\CanValidateUndefined;
 use Respect\Validation\Message\Template;
@@ -28,6 +29,7 @@ use Respect\Validation\Validator;
     '{{subject}} must be undefined',
     '{{subject}} must be defined',
 )]
+#[Assurance(type: "null|''")]
 final class Undef implements Validator
 {
     use CanValidateUndefined;

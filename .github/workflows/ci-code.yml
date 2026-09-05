@@ -27,6 +27,7 @@ jobs:
 
       - run: composer phpunit
       - run: composer pest
+      - run: composer inference
 
   code-coverage:
     name: Code Coverage

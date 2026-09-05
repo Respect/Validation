@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
 use Respect\Validation\Validator;
@@ -30,6 +31,7 @@ use function mb_strpos;
     '{{subject}} must contain {{containsValue}}',
     '{{subject}} must not contain {{containsValue}}',
 )]
+#[Assurance(type: 'scalar|array')]
 final readonly class Contains implements Validator
 {
     public function __construct(private mixed $containsValue)

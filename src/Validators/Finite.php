@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
@@ -28,6 +29,7 @@ use function is_numeric;
     '{{subject}} must be a finite number',
     '{{subject}} must not be a finite number',
 )]
+#[Assurance(type: 'int|float|numeric-string')]
 final class Finite extends Simple
 {
     public function isValid(mixed $input): bool

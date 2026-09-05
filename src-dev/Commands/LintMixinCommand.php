@@ -18,6 +18,7 @@ use Respect\FluentGen\Fluent\InterfaceConfig;
 use Respect\FluentGen\Fluent\MethodBuilder;
 use Respect\FluentGen\Fluent\MixinGenerator;
 use Respect\FluentGen\Fluent\PrefixConstantsGenerator;
+use Respect\FluentGen\Fluent\TerminalMethod;
 use Respect\FluentGen\NamespaceScanner;
 use Respect\Validation\Mixins\Chain;
 use Respect\Validation\Validator;
@@ -82,6 +83,7 @@ final class LintMixinCommand extends Command
                     suffix: 'Builder',
                     returnType: Chain::class,
                     static: true,
+                    emitNarrowing: true,
                 ),
                 new InterfaceConfig(
                     suffix: 'Chain',
@@ -89,6 +91,29 @@ final class LintMixinCommand extends Command
                     rootExtends: [Validator::class],
                     rootComment: '@mixin ValidatorBuilder',
                     rootUses: [ValidatorBuilder::class],
+                    emitNarrowing: true,
+                    templateParam: 'TSure',
+                    terminalMethods: [
+                        new TerminalMethod(
+                            name: 'assert',
+                            returnType: 'void',
+                            parameters: ['input' => 'mixed'],
+                            comments: ['@phpstan-assert TSure $input', '@psalm-assert TSure $input'],
+                            optionalParameters: ['template' => 'mixed'],
+                        ),
+                        new TerminalMethod(
+                            name: 'check',
+                            returnType: 'void',
+                            parameters: ['input' => 'mixed'],
+                            comments: ['@phpstan-assert TSure $input', '@psalm-assert TSure $input'],
+                            optionalParameters: ['template' => 'mixed'],
+                        ),
+                        new TerminalMethod(
+                            name: 'isValid',
+                            returnType: 'bool',
+                            parameters: ['input' => 'mixed'],
+                        ),
+                    ],
                 ),
             ],
         );

@@ -15,6 +15,9 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceSubject;
+use Respect\Fluent\Attributes\AssuranceSubjectMode;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -25,6 +28,8 @@ use function min;
 #[Composable(prefix: self::class, optIn: true)]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 #[Template('The minimum of', 'The minimum of')]
+#[Assurance(type: 'iterable')]
+#[AssuranceSubject(AssuranceSubjectMode::Container)]
 final class Min extends FilteredArray
 {
     /** @param non-empty-array<mixed> $input */

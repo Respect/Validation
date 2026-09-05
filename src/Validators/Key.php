@@ -15,7 +15,11 @@ declare(strict_types=1);
 
 namespace Respect\Validation\Validators;
 
+use ArrayAccess;
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceSubject;
+use Respect\Fluent\Attributes\AssuranceSubjectMode;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Fluent\Attributes\ComposableParameter;
 use Respect\Validation\Path;
@@ -25,6 +29,8 @@ use Respect\Validation\Validators\Core\KeyRelated;
 
 #[Composable(prefix: self::class, without: [All::class, self::class, Property::class])]
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
+#[Assurance(type: ['array', ArrayAccess::class])]
+#[AssuranceSubject(AssuranceSubjectMode::Container)]
 final readonly class Key implements KeyRelated
 {
     public function __construct(

@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Fluent\Attributes\Composable;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
@@ -29,6 +30,7 @@ use function is_string;
     '{{subject}} must be an existing file',
     '{{subject}} must not be an existing file',
 )]
+#[Assurance(type: ['string', SplFileInfo::class])]
 final class Exists extends Simple
 {
     public function isValid(mixed $input): bool

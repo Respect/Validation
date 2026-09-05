@@ -23,6 +23,16 @@ parameters:
       path: tests/src/Message/TestingHandler.php
     - message: '/Property Respect\\Validation\\Test\\Stubs\\.+::\$[a-zA-Z]+ is never read, only written./'
       path: tests/src/Stubs
+    -
+      # Why: src/Mixins/* are generated typing aids. Their @return Chain<...> carry the
+      # narrowing types derived from #[Assurance] (the same ones FluentAnalysis computes
+      # at analysis time), e.g. bare `array` or `ArrayAccess`. Fully parameterising those
+      # generics would only clutter the IDE-facing types without adding narrowing value.
+      identifier: missingType.iterableValue
+      path: src/Mixins/*
+    -
+      identifier: missingType.generics
+      path: src/Mixins/*
   level: 8
   treatPhpDocTypesAsCertain: false
   paths:

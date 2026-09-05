@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Validators\Core\Simple;
 
@@ -25,6 +26,7 @@ use function is_bool;
     '{{subject}} must be a boolean',
     '{{subject}} must not be a boolean',
 )]
+#[Assurance(type: 'bool')]
 final class BoolType extends Simple
 {
     public function isValid(mixed $input): bool

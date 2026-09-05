@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
 use Respect\Validation\Exceptions\InvalidValidatorException;
 use Respect\Validation\Exceptions\MissingComposerDependencyException;
 use Respect\Validation\Message\Template;
@@ -30,6 +31,7 @@ use function is_string;
     '{{subject}} must be a language code',
     '{{subject}} must not be a language code',
 )]
+#[Assurance(type: 'string')]
 final readonly class LanguageCode implements Validator
 {
     private Languages $languages;

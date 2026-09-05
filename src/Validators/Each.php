@@ -18,6 +18,8 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use Attribute;
+use Respect\Fluent\Attributes\Assurance;
+use Respect\Fluent\Attributes\AssuranceFrom;
 use Respect\Validation\Helpers\CanEvaluateShortCircuit;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Path;
@@ -32,6 +34,7 @@ use function array_reduce;
     'Each item in {{subject}} must be valid',
     'Each item in {{subject}} must be invalid',
 )]
+#[Assurance(from: AssuranceFrom::Elements)]
 final class Each extends FilteredArray implements ShortCircuitable
 {
     use CanEvaluateShortCircuit;
