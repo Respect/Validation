@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Respect\Validation\Validators;
 
 use DateTimeImmutable;
+use Lcobucci\Clock\FrozenClock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
@@ -34,6 +35,65 @@ final class DateTimeDiffTest extends RuleTestCase
 
         // @phpstan-ignore-next-line
         new DateTimeDiff('invalid', Stub::daze());
+    }
+
+    #[Test]
+    public function itShouldCompareAgainstTheTimeGivenByTheClock(): void
+    {
+        $validator = Stub::pass(1);
+
+        (new DateTimeDiff('years', $validator, null, null, self::clockAt('2024-01-01 12:00:00')))
+            ->evaluate('2000-01-01');
+
+        self::assertSame(24, $validator->inputs[0]);
+    }
+
+    #[Test]
+    public function itShouldCompareRelativeInputAgainstTheSameInstantItIsResolvedWith(): void
+    {
+        $validator = Stub::pass(1);
+
+        (new DateTimeDiff('years', $validator, null, null, self::clockAt('2024-01-01 12:00:00')))
+            ->evaluate('7 years ago');
+
+        self::assertSame(7, $validator->inputs[0]);
+    }
+
+    #[Test]
+    public function itShouldTakeTheTimeTheFormatDoesNotAskForFromTheClock(): void
+    {
+        $validator = Stub::pass(1);
+
+        (new DateTimeDiff('hours', $validator, 'Y-m-d', null, self::clockAt('2024-01-01 12:00:00')))
+            ->evaluate('2024-01-01');
+
+        self::assertSame(0, $validator->inputs[0]);
+    }
+
+    #[Test]
+    public function itShouldPreferTheGivenNowOverTheClock(): void
+    {
+        $validator = Stub::pass(1);
+
+        (new DateTimeDiff(
+            'years',
+            $validator,
+            null,
+            new DateTimeImmutable('2024-01-01 12:00:00'),
+            self::clockAt('1999-01-01 12:00:00'),
+        ))->evaluate('2000-01-01');
+
+        self::assertSame(24, $validator->inputs[0]);
+    }
+
+    #[Test]
+    public function itShouldKeepReportingTimeAsNowWhenOnlyTheClockIsGiven(): void
+    {
+        $result = (new DateTimeDiff('years', Stub::fail(1), null, null, self::clockAt('2024-01-01 12:00:00')))
+            ->evaluate('2000-01-01');
+
+        self::assertSame('now', $result->parameters['now']);
+        self::assertSame(DateTimeDiff::TEMPLATE_STANDARD, $result->template);
     }
 
     /** @return array<string|int, array{DateTimeDiff, mixed}> */
@@ -84,5 +144,10 @@ final class DateTimeDiffTest extends RuleTestCase
             static fn(array $args): array => [new DateTimeDiff('years', Stub::fail(1)), new DateTimeImmutable()],
             iterator_to_array(self::providerForNonScalarValues()),
         );
+    }
+
+    private static function clockAt(string $instant): FrozenClock
+    {
+        return new FrozenClock(new DateTimeImmutable($instant));
     }
 }

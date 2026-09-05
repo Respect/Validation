@@ -174,6 +174,7 @@ final readonly class ValidatorHeaderLinter implements Linter
             if (
                 str_starts_with($type->getName(), 'Sokil')
                 || str_starts_with($type->getName(), 'Egulias')
+                || str_starts_with($type->getName(), 'Psr\\Clock')
                 || $type->getName() === 'finfo'
             ) {
                 return null;

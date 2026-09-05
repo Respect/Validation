@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Respect\Validation;
 
+use Lcobucci\Clock\SystemClock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
@@ -34,6 +35,14 @@ final class ContainerRegistryTest extends TestCase
         $container = ContainerRegistry::createContainer(['foo' => 'bar']);
 
         self::assertSame('bar', $container->get('foo'));
+    }
+
+    #[Test]
+    public function itShouldProvideTheSystemClockByDefault(): void
+    {
+        $container = ContainerRegistry::createContainer();
+
+        self::assertSame(SystemClock::class, $container->get('respect.validation.clock'));
     }
 
     #[Test]

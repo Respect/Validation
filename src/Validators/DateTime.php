@@ -18,6 +18,8 @@ namespace Respect\Validation\Validators;
 
 use Attribute;
 use DateTimeInterface;
+use Lcobucci\Clock\SystemClock;
+use Psr\Clock\ClockInterface;
 use Respect\Validation\Helpers\CanValidateDateTime;
 use Respect\Validation\Message\Template;
 use Respect\Validation\Result;
@@ -44,9 +46,13 @@ final class DateTime implements Validator
 
     public const string TEMPLATE_FORMAT = '__format__';
 
+    private readonly ClockInterface $clock;
+
     public function __construct(
         private readonly string|null $format = null,
+        ClockInterface|null $clock = null,
     ) {
+        $this->clock = $clock ?? SystemClock::fromSystemTimezone();
     }
 
     public function evaluate(mixed $input): Result
@@ -62,7 +68,9 @@ final class DateTime implements Validator
         }
 
         if ($this->format === null) {
-            return Result::of(strtotime((string) $input) !== false, $input, $this, $parameters, $template);
+            $timestamp = strtotime((string) $input, $this->clock->now()->getTimestamp());
+
+            return Result::of($timestamp !== false, $input, $this, $parameters, $template);
         }
 
         return Result::of($this->isDateTime($this->format, (string) $input), $input, $this, $parameters, $template);
