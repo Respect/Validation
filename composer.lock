@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "683a4f0e3e7054eddcef31faf9cc9b1c",
+    "content-hash": "37931ed00dd0268204a97a4cf91ae68d",
     "packages": [
         {
             "name": "psr/container",
@@ -122,16 +122,16 @@
         },
         {
             "name": "respect/fluent",
-            "version": "2.0.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Fluent.git",
-                "reference": "f32c76e37a82a9e63d6fe700a27201534f72da60"
+                "reference": "a77c71d05c59f082459c29503c0190e6e26c68f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Fluent/zipball/f32c76e37a82a9e63d6fe700a27201534f72da60",
-                "reference": "f32c76e37a82a9e63d6fe700a27201534f72da60",
+                "url": "https://api.github.com/repos/Respect/Fluent/zipball/a77c71d05c59f082459c29503c0190e6e26c68f9",
+                "reference": "a77c71d05c59f082459c29503c0190e6e26c68f9",
                 "shasum": ""
             },
             "require": {
@@ -142,7 +142,7 @@
                 "phpstan/phpstan-deprecation-rules": "^2.0",
                 "phpstan/phpstan-phpunit": "^2.0",
                 "phpstan/phpstan-strict-rules": "^2.0",
-                "phpunit/phpunit": "^12.5",
+                "phpunit/phpunit": "^12.5 || ^13.0",
                 "respect/coding-standard": "^5.0"
             },
             "type": "library",
@@ -169,9 +169,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Respect/Fluent/issues",
-                "source": "https://github.com/Respect/Fluent/tree/2.0.1"
+                "source": "https://github.com/Respect/Fluent/tree/3.0.0"
             },
-            "time": "2026-03-26T04:24:51+00:00"
+            "time": "2026-09-05T17:11:56+00:00"
         },
         {
             "name": "respect/parameter",

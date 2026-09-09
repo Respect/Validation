@@ -23,7 +23,7 @@
         "php": ">=8.5",
         "psr/container": "^2.0",
         "respect/config": "^3.0",
-        "respect/fluent": "^2.0",
+        "respect/fluent": "^2.0 || ^3.0",
         "respect/parameter": "^3.0",
         "respect/string-formatter": "^1.7",
         "respect/stringifier": "^3.0",
