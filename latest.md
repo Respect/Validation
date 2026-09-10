@@ -1,48 +1,48 @@
 | benchmark                | subject           | set                | revs | its | mem_peak | mode      | rstdev  |
 |--------------------------|-------------------|--------------------|------|-----|----------|-----------|---------|
-| ValidatorBench           | evaluate          | After              | 5    | 10  | 2.088mb  | 4.000μs   | ±2.33%  |
-| ValidatorBench           | evaluate          | All                | 5    | 10  | 2.087mb  | 4.400μs   | ±2.05%  |
+| ValidatorBench           | evaluate          | After              | 5    | 10  | 2.088mb  | 4.000μs   | ±1.51%  |
+| ValidatorBench           | evaluate          | All                | 5    | 10  | 2.087mb  | 4.400μs   | ±2.11%  |
 | ValidatorBench           | evaluate          | AllOf              | 5    | 10  | 2.088mb  | 3.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Alnum              | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | Alnum              | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Alpha              | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | AlwaysInvalid      | 5    | 10  | 2.087mb  | 1.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | AlwaysValid        | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | AnyOf              | 5    | 10  | 2.087mb  | 2.600μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | AnyOf              | 5    | 10  | 2.087mb  | 2.402μs   | ±4.00%  |
 | ValidatorBench           | evaluate          | ArrayType          | 5    | 10  | 2.087mb  | 0.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | ArrayVal           | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Attributes         | 5    | 10  | 2.087mb  | 3.001μs   | ±3.18%  |
-| ValidatorBench           | evaluate          | Base               | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | Attributes         | 5    | 10  | 2.087mb  | 3.000μs   | ±3.00%  |
+| ValidatorBench           | evaluate          | Base               | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Base64             | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Between            | 5    | 10  | 2.088mb  | 4.000μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | Between            | 5    | 10  | 2.088mb  | 4.000μs   | ±2.02%  |
 | ValidatorBench           | evaluate          | BetweenExclusive   | 5    | 10  | 2.088mb  | 4.000μs   | ±1.51%  |
 | ValidatorBench           | evaluate          | Blank              | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | BoolType           | 5    | 10  | 2.087mb  | 0.800μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | BoolType           | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | BoolVal            | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Bsn                | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | CallableType       | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Charset            | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Cnh                | 5    | 10  | 2.087mb  | 1.800μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Cnpj               | 5    | 10  | 2.087mb  | 2.600μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Consonant          | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | Cnpj               | 5    | 10  | 2.087mb  | 2.601μs   | ±3.66%  |
+| ValidatorBench           | evaluate          | Consonant          | 5    | 10  | 2.087mb  | 1.400μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Contains           | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | ContainsAny        | 5    | 10  | 2.088mb  | 3.400μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | ContainsAny        | 5    | 10  | 2.088mb  | 3.400μs   | ±2.65%  |
 | ValidatorBench           | evaluate          | ContainsCount      | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Control            | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Countable          | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | Countable          | 5    | 10  | 2.087mb  | 0.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | CountryCode        | 5    | 10  | 2.346mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Cpf                | 5    | 10  | 2.087mb  | 2.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | CreditCard         | 5    | 10  | 2.087mb  | 4.000μs   | ±1.49%  |
+| ValidatorBench           | evaluate          | CreditCard         | 5    | 10  | 2.087mb  | 4.000μs   | ±2.02%  |
 | ValidatorBench           | evaluate          | CurrencyCode       | 5    | 10  | 2.213mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Date               | 5    | 10  | 2.087mb  | 4.400μs   | ±2.11%  |
+| ValidatorBench           | evaluate          | Date               | 5    | 10  | 2.087mb  | 4.200μs   | ±1.89%  |
 | ValidatorBench           | evaluate          | DateTime           | 5    | 10  | 2.087mb  | 2.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | DateTimeDiff       | 5    | 10  | 2.088mb  | 6.000μs   | ±1.34%  |
 | ValidatorBench           | evaluate          | Decimal            | 5    | 10  | 2.087mb  | 1.400μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Digit              | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Directory          | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Domain             | 5    | 10  | 2.351mb  | 20.958μs  | ±1.58%  |
-| ValidatorBench           | evaluate          | Each               | 5    | 10  | 2.087mb  | 4.999μs   | ±1.99%  |
-| ValidatorBench           | evaluate          | EachKey            | 5    | 10  | 2.087mb  | 7.800μs   | ±1.99%  |
-| ValidatorBench           | evaluate          | Email              | 5    | 10  | 2.265mb  | 18.440μs  | ±1.12%  |
+| ValidatorBench           | evaluate          | Domain             | 5    | 10  | 2.351mb  | 20.987μs  | ±1.03%  |
+| ValidatorBench           | evaluate          | Each               | 5    | 10  | 2.087mb  | 4.800μs   | ±1.89%  |
+| ValidatorBench           | evaluate          | EachKey            | 5    | 10  | 2.087mb  | 7.973μs   | ±1.99%  |
+| ValidatorBench           | evaluate          | Email              | 5    | 10  | 2.265mb  | 18.402μs  | ±1.67%  |
 | ValidatorBench           | evaluate          | Emoji              | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | EndsWith           | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Equals             | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
@@ -57,24 +57,24 @@
 | ValidatorBench           | evaluate          | Falsy              | 5    | 10  | 2.087mb  | 0.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | File               | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Finite             | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | FloatType          | 5    | 10  | 2.087mb  | 0.800μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | FloatType          | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | FloatVal           | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Format             | 5    | 10  | 2.088mb  | 3.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Formatted          | 5    | 10  | 2.088mb  | 4.000μs   | ±2.02%  |
+| ValidatorBench           | evaluate          | Formatted          | 5    | 10  | 2.088mb  | 4.000μs   | ±2.33%  |
 | ValidatorBench           | evaluate          | Given              | 5    | 10  | 2.088mb  | 1.200μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Graph              | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | Graph              | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | GreaterThan        | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | GreaterThanOrEqual | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Hetu               | 5    | 10  | 2.087mb  | 4.601μs   | ±2.09%  |
+| ValidatorBench           | evaluate          | Hetu               | 5    | 10  | 2.087mb  | 4.798μs   | ±2.13%  |
 | ValidatorBench           | evaluate          | HexRgbColor        | 5    | 10  | 2.088mb  | 1.600μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Iban               | 5    | 10  | 2.087mb  | 2.400μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Identical          | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Image              | 5    | 10  | 9.865mb  | 169.222μs | ±2.56%  |
-| ValidatorBench           | evaluate          | Imei               | 5    | 10  | 2.087mb  | 3.000μs   | ±3.00%  |
+| ValidatorBench           | evaluate          | Image              | 5    | 10  | 9.865mb  | 164.020μs | ±1.52%  |
+| ValidatorBench           | evaluate          | Imei               | 5    | 10  | 2.087mb  | 3.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | In                 | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Infinite           | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Instance           | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | IntType            | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | IntType            | 5    | 10  | 2.087mb  | 0.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | IntVal             | 5    | 10  | 2.087mb  | 0.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Ip                 | 5    | 10  | 2.088mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Isbn               | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
@@ -84,7 +84,7 @@
 | ValidatorBench           | evaluate          | Key                | 5    | 10  | 2.087mb  | 2.400μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | KeyExists          | 5    | 10  | 2.087mb  | 1.600μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | KeyOptional        | 5    | 10  | 2.088mb  | 2.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | KeySet             | 5    | 10  | 2.088mb  | 4.998μs   | ±2.04%  |
+| ValidatorBench           | evaluate          | KeySet             | 5    | 10  | 2.088mb  | 4.999μs   | ±1.99%  |
 | ValidatorBench           | evaluate          | LanguageCode       | 5    | 10  | 9.293mb  | 1.600μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Factory            | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | LeapDate           | 5    | 10  | 2.087mb  | 2.000μs   | ±0.00%  |
@@ -95,44 +95,44 @@
 | ValidatorBench           | evaluate          | Lowercase          | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Luhn               | 5    | 10  | 2.087mb  | 2.801μs   | ±3.40%  |
 | ValidatorBench           | evaluate          | MacAddress         | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Max                | 5    | 10  | 2.087mb  | 3.601μs   | ±2.66%  |
-| ValidatorBench           | evaluate          | Min                | 5    | 10  | 2.087mb  | 3.799μs   | ±2.63%  |
-| ValidatorBench           | evaluate          | Mimetype           | 5    | 10  | 9.867mb  | 162.720μs | ±1.30%  |
+| ValidatorBench           | evaluate          | Max                | 5    | 10  | 2.087mb  | 3.799μs   | ±2.63%  |
+| ValidatorBench           | evaluate          | Min                | 5    | 10  | 2.087mb  | 3.800μs   | ±2.13%  |
+| ValidatorBench           | evaluate          | Mimetype           | 5    | 10  | 9.867mb  | 164.874μs | ±1.67%  |
 | ValidatorBench           | evaluate          | Multiple           | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Named              | 5    | 10  | 2.088mb  | 1.600μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Negative           | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | NfeAccessKey       | 5    | 10  | 2.087mb  | 4.000μs   | ±1.98%  |
+| ValidatorBench           | evaluate          | NfeAccessKey       | 5    | 10  | 2.087mb  | 4.000μs   | ±1.49%  |
 | ValidatorBench           | evaluate          | Nif                | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Nip                | 5    | 10  | 2.087mb  | 1.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | NoneOf             | 5    | 10  | 2.087mb  | 3.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Not                | 5    | 10  | 2.087mb  | 2.000μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | Not                | 5    | 10  | 2.087mb  | 1.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | NullOr             | 5    | 10  | 2.087mb  | 2.400μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Number             | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | NullType           | 5    | 10  | 2.087mb  | 0.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | NumericVal         | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | ObjectType         | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Odd                | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | OneOf              | 5    | 10  | 2.088mb  | 3.399μs   | ±2.95%  |
-| ValidatorBench           | evaluate          | Pesel              | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Phone              | 5    | 10  | 2.895mb  | 28.866μs  | ±1.33%  |
+| ValidatorBench           | evaluate          | OneOf              | 5    | 10  | 2.088mb  | 3.200μs   | ±2.81%  |
+| ValidatorBench           | evaluate          | Pesel              | 5    | 10  | 2.087mb  | 1.400μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | Phone              | 5    | 10  | 2.895mb  | 28.752μs  | ±2.16%  |
 | ValidatorBench           | evaluate          | Pis                | 5    | 10  | 2.087mb  | 1.800μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | PolishIdCard       | 5    | 10  | 2.087mb  | 1.400μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | PolishIdCard       | 5    | 10  | 2.087mb  | 1.600μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | PortugueseNif      | 5    | 10  | 2.087mb  | 2.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Positive           | 5    | 10  | 2.087mb  | 0.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | PostalCode         | 5    | 10  | 2.088mb  | 1.600μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Printable          | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | Printable          | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Property           | 5    | 10  | 2.087mb  | 3.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | PropertyExists     | 5    | 10  | 2.087mb  | 1.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | PropertyOptional   | 5    | 10  | 2.095mb  | 2.400μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | PublicDomainSuffix | 5    | 10  | 2.087mb  | 2.000μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | PublicDomainSuffix | 5    | 10  | 2.087mb  | 2.400μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Punct              | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Readable           | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | Readable           | 5    | 10  | 2.087mb  | 1.400μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Regex              | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | ResourceType       | 5    | 10  | 2.087mb  | 0.800μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Roman              | 5    | 10  | 2.088mb  | 1.600μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Satisfies          | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | ScalarVal          | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Size               | 5    | 10  | 2.090mb  | 7.200μs   | ±1.24%  |
+| ValidatorBench           | evaluate          | Size               | 5    | 10  | 2.090mb  | 7.200μs   | ±1.12%  |
 | ValidatorBench           | evaluate          | Slug               | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Sorted             | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Space              | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
@@ -143,47 +143,47 @@
 | ValidatorBench           | evaluate          | SubdivisionCode    | 5    | 10  | 6.964mb  | 2.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Subset             | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | SymbolicLink       | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Templated          | 5    | 10  | 2.088mb  | 1.600μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Time               | 5    | 10  | 2.087mb  | 3.000μs   | ±3.00%  |
-| ValidatorBench           | evaluate          | Tld                | 5    | 10  | 2.214mb  | 3.600μs   | ±2.59%  |
-| ValidatorBench           | evaluate          | Trimmed            | 5    | 10  | 2.091mb  | 10.200μs  | ±1.46%  |
+| ValidatorBench           | evaluate          | Templated          | 5    | 10  | 2.088mb  | 1.800μs   | ±0.00%  |
+| ValidatorBench           | evaluate          | Time               | 5    | 10  | 2.087mb  | 3.001μs   | ±3.18%  |
+| ValidatorBench           | evaluate          | Tld                | 5    | 10  | 2.214mb  | 3.202μs   | ±3.03%  |
+| ValidatorBench           | evaluate          | Trimmed            | 5    | 10  | 2.091mb  | 10.200μs  | ±0.90%  |
 | ValidatorBench           | evaluate          | TrueVal            | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Undef              | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | UndefOr            | 5    | 10  | 2.087mb  | 2.600μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Unique             | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Uppercase          | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Url                | 5    | 10  | 2.531mb  | 35.855μs  | ±1.59%  |
-| ValidatorBench           | evaluate          | Uuid               | 5    | 10  | 2.597mb  | 5.400μs   | ±2.87%  |
+| ValidatorBench           | evaluate          | Url                | 5    | 10  | 2.531mb  | 35.977μs  | ±0.84%  |
+| ValidatorBench           | evaluate          | Uuid               | 5    | 10  | 2.597mb  | 5.227μs   | ±2.93%  |
 | ValidatorBench           | evaluate          | Version            | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Vowel              | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | When               | 5    | 10  | 2.088mb  | 1.200μs   | ±0.00%  |
 | ValidatorBench           | evaluate          | Writable           | 5    | 10  | 2.087mb  | 1.400μs   | ±0.00%  |
-| ValidatorBench           | evaluate          | Xdigit             | 5    | 10  | 2.087mb  | 1.200μs   | ±0.00%  |
-| CompositeValidatorsBench | isValidGrouped    | allOf(10)          | 50   | 5   | 2.469mb  | 5.241μs   | ±16.61% |
-| CompositeValidatorsBench | isValidGrouped    | oneOf(10)          | 50   | 5   | 2.472mb  | 7.111μs   | ±1.41%  |
-| CompositeValidatorsBench | isValidGrouped    | anyOf(10)          | 50   | 5   | 2.468mb  | 6.270μs   | ±2.69%  |
-| CompositeValidatorsBench | isValidGrouped    | noneOf(10)         | 50   | 5   | 2.468mb  | 6.010μs   | ±7.27%  |
-| CompositeValidatorsBench | isValidGrouped    | shortCircuit(10)   | 50   | 5   | 2.458mb  | 6.072μs   | ±5.34%  |
-| CompositeValidatorsBench | isValidGrouped    | allOf(100)         | 50   | 5   | 2.513mb  | 8.677μs   | ±3.26%  |
-| CompositeValidatorsBench | isValidGrouped    | oneOf(100)         | 50   | 5   | 2.516mb  | 10.837μs  | ±2.32%  |
-| CompositeValidatorsBench | isValidGrouped    | anyOf(100)         | 50   | 5   | 2.512mb  | 9.944μs   | ±4.83%  |
-| CompositeValidatorsBench | isValidGrouped    | noneOf(100)        | 50   | 5   | 2.512mb  | 10.604μs  | ±7.74%  |
-| CompositeValidatorsBench | isValidGrouped    | shortCircuit(100)  | 50   | 5   | 2.502mb  | 9.533μs   | ±1.78%  |
-| CompositeValidatorsBench | isValidArrayBased | all(10)            | 50   | 5   | 2.472mb  | 10.372μs  | ±1.33%  |
-| CompositeValidatorsBench | isValidArrayBased | each(10)           | 50   | 5   | 2.473mb  | 18.832μs  | ±1.36%  |
-| CompositeValidatorsBench | isValidArrayBased | all(100)           | 50   | 5   | 2.516mb  | 56.721μs  | ±1.21%  |
-| CompositeValidatorsBench | isValidArrayBased | each(100)          | 50   | 5   | 2.517mb  | 132.881μs | ±8.42%  |
-| CompositeValidatorsBench | isValidDomain     | no dots            | 50   | 5   | 2.627mb  | 7.537μs   | ±2.71%  |
-| CompositeValidatorsBench | isValidDomain     | starts with "-"    | 50   | 5   | 2.627mb  | 7.464μs   | ±3.55%  |
-| CompositeValidatorsBench | isValidDomain     | ends with "-"      | 50   | 5   | 2.627mb  | 7.446μs   | ±3.68%  |
-| CompositeValidatorsBench | isValidDomain     | double "--"        | 50   | 5   | 2.627mb  | 7.486μs   | ±3.93%  |
-| IsoCodesBench            | subdivisionCode   |                    | 5    | 10  | 7.752mb  | 13.240μs  | ±1.56%  |
-| IsoCodesBench            | countryCode       |                    | 5    | 10  | 2.838mb  | 9.269μs   | ±2.68%  |
-| IsoCodesBench            | currencyCode      |                    | 5    | 10  | 2.705mb  | 9.191μs   | ±2.06%  |
-| IsoCodesBench            | languageCode      |                    | 5    | 10  | 9.785mb  | 11.999μs  | ±1.83%  |
-| IsoCodesBench            | phone             |                    | 5    | 10  | 3.774mb  | 36.082μs  | ±1.30%  |
-| PrefixBench              | prefixTransformer | 0                  | 100  | 10  | 2.088mb  | 0.660μs   | ±1.48%  |
-| PrefixBench              | prefixTransformer | 1                  | 100  | 10  | 2.088mb  | 0.660μs   | ±1.85%  |
-| PrefixBench              | prefixTransformer | 2                  | 100  | 10  | 2.088mb  | 0.580μs   | ±1.89%  |
+| ValidatorBench           | evaluate          | Xdigit             | 5    | 10  | 2.087mb  | 1.000μs   | ±0.00%  |
+| CompositeValidatorsBench | isValidGrouped    | allOf(10)          | 50   | 5   | 2.469mb  | 5.162μs   | ±3.51%  |
+| CompositeValidatorsBench | isValidGrouped    | oneOf(10)          | 50   | 5   | 2.472mb  | 6.885μs   | ±0.46%  |
+| CompositeValidatorsBench | isValidGrouped    | anyOf(10)          | 50   | 5   | 2.468mb  | 6.290μs   | ±2.59%  |
+| CompositeValidatorsBench | isValidGrouped    | noneOf(10)         | 50   | 5   | 2.468mb  | 6.119μs   | ±2.69%  |
+| CompositeValidatorsBench | isValidGrouped    | shortCircuit(10)   | 50   | 5   | 2.458mb  | 5.997μs   | ±2.31%  |
+| CompositeValidatorsBench | isValidGrouped    | allOf(100)         | 50   | 5   | 2.513mb  | 8.868μs   | ±18.53% |
+| CompositeValidatorsBench | isValidGrouped    | oneOf(100)         | 50   | 5   | 2.516mb  | 10.993μs  | ±1.61%  |
+| CompositeValidatorsBench | isValidGrouped    | anyOf(100)         | 50   | 5   | 2.512mb  | 10.045μs  | ±0.94%  |
+| CompositeValidatorsBench | isValidGrouped    | noneOf(100)        | 50   | 5   | 2.512mb  | 9.603μs   | ±5.73%  |
+| CompositeValidatorsBench | isValidGrouped    | shortCircuit(100)  | 50   | 5   | 2.502mb  | 9.467μs   | ±7.33%  |
+| CompositeValidatorsBench | isValidArrayBased | all(10)            | 50   | 5   | 2.472mb  | 10.318μs  | ±1.51%  |
+| CompositeValidatorsBench | isValidArrayBased | each(10)           | 50   | 5   | 2.473mb  | 18.875μs  | ±1.21%  |
+| CompositeValidatorsBench | isValidArrayBased | all(100)           | 50   | 5   | 2.516mb  | 56.206μs  | ±11.98% |
+| CompositeValidatorsBench | isValidArrayBased | each(100)          | 50   | 5   | 2.517mb  | 132.321μs | ±0.19%  |
+| CompositeValidatorsBench | isValidDomain     | no dots            | 50   | 5   | 2.627mb  | 7.513μs   | ±0.61%  |
+| CompositeValidatorsBench | isValidDomain     | starts with "-"    | 50   | 5   | 2.627mb  | 7.469μs   | ±2.71%  |
+| CompositeValidatorsBench | isValidDomain     | ends with "-"      | 50   | 5   | 2.627mb  | 7.423μs   | ±3.29%  |
+| CompositeValidatorsBench | isValidDomain     | double "--"        | 50   | 5   | 2.627mb  | 7.464μs   | ±2.09%  |
+| IsoCodesBench            | subdivisionCode   |                    | 5    | 10  | 7.752mb  | 12.670μs  | ±1.82%  |
+| IsoCodesBench            | countryCode       |                    | 5    | 10  | 2.838mb  | 9.207μs   | ±1.69%  |
+| IsoCodesBench            | currencyCode      |                    | 5    | 10  | 2.705mb  | 9.099μs   | ±1.77%  |
+| IsoCodesBench            | languageCode      |                    | 5    | 10  | 9.785mb  | 11.726μs  | ±2.56%  |
+| IsoCodesBench            | phone             |                    | 5    | 10  | 3.774mb  | 35.874μs  | ±1.19%  |
+| PrefixBench              | prefixTransformer | 0                  | 100  | 10  | 2.088mb  | 0.659μs   | ±1.26%  |
+| PrefixBench              | prefixTransformer | 1                  | 100  | 10  | 2.088mb  | 0.659μs   | ±1.49%  |
+| PrefixBench              | prefixTransformer | 2                  | 100  | 10  | 2.088mb  | 0.582μs   | ±1.91%  |
 | PrefixBench              | prefixTransformer | 3                  | 100  | 10  | 2.087mb  | 0.080μs   | ±0.00%  |
-| PrefixBench              | prefixTransformer | 4                  | 100  | 10  | 2.087mb  | 0.190μs   | ±0.00%  |
+| PrefixBench              | prefixTransformer | 4                  | 100  | 10  | 2.087mb  | 0.200μs   | ±2.50%  |
