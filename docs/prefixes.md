@@ -96,15 +96,15 @@ v::minGreaterThan(0)->assert([0, 1, 2]);
 
 Any method starting with `not` will be transformed into `v::not(v::remainingPart())`.
 
-- `v::notEmpty()` → `v::not(v::empty())`
-- `v::notNull()` → `v::not(v::null())`
+- `v::notFalsy()` → `v::not(v::falsy())`
+- `v::notNullType()` → `v::not(v::nullType())`
 
 ```php
-v::notEmpty()->assert('hello')
+v::notFalsy()->assert('hello')
 // Validation passes successfully
 
-v::notEmpty()->assert('');
-// → The value must not be empty
+v::notFalsy()->assert('');
+// → "" must not be falsy
 ```
 
 ### `nullOr`

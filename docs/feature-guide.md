@@ -201,7 +201,7 @@ Placeholder pipes allow you to customize how values are rendered in error messag
 ```php
 v::templated(
     'The {{field|raw}} field is required',
-    v::notEmpty(),
+    v::notFalsy(),
     ['field' => 'email'],
 )->assert('');
 // → The email field is required
