@@ -5296,16 +5296,16 @@
         },
         {
             "name": "sokil/php-isocodes-db-only",
-            "version": "4.0.8",
+            "version": "4.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sokil/php-isocodes-db-only.git",
-                "reference": "43ca965e4c781d743d0ac7c531258d2e9c6d4371"
+                "reference": "2d8a525132c24da55b26d4000ed9f059510c60b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sokil/php-isocodes-db-only/zipball/43ca965e4c781d743d0ac7c531258d2e9c6d4371",
-                "reference": "43ca965e4c781d743d0ac7c531258d2e9c6d4371",
+                "url": "https://api.github.com/repos/sokil/php-isocodes-db-only/zipball/2d8a525132c24da55b26d4000ed9f059510c60b2",
+                "reference": "2d8a525132c24da55b26d4000ed9f059510c60b2",
                 "shasum": ""
             },
             "require": {
@@ -5330,9 +5330,9 @@
             "description": "Database for ISO country, subdivision, language, currency and script definitions and their translations. Based on pythons pycountry and Debian's iso-codes.",
             "support": {
                 "issues": "https://github.com/sokil/php-isocodes-db-only/issues",
-                "source": "https://github.com/sokil/php-isocodes-db-only/tree/4.0.8"
+                "source": "https://github.com/sokil/php-isocodes-db-only/tree/4.0.9"
             },
-            "time": "2025-12-21T22:28:31+00:00"
+            "time": "2026-09-19T13:50:58+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
