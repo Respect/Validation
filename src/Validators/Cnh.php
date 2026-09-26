@@ -59,7 +59,8 @@ final class Cnh extends Simple
         }
 
         $dv1 = $s1 % 11;
-        if ($input[9] != ($dv1 > 9) ? 0 : $dv1) {
+        $digit1 = $dv1 > 9 ? 0 : $dv1;
+        if ($input[9] != $digit1) {
             return false;
         }
 

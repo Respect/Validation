@@ -31,6 +31,7 @@ final class CnhTest extends RuleTestCase
         $validator = new Cnh();
 
         return [
+            [$validator, '96784547943'],
             [$validator, '02650306461'],
             [$validator, '04397322870'],
             [$validator, '04375701302'],
@@ -64,6 +65,7 @@ final class CnhTest extends RuleTestCase
         $validator = new Cnh();
 
         return [
+            [$validator, '96784547953'],
             [$validator, []],
             [$validator, new stdClass()],
             [$validator, '0265131640'],
