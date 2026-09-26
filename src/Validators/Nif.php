@@ -24,6 +24,7 @@ use function is_numeric;
 use function is_string;
 use function mb_substr;
 use function preg_match;
+use function str_contains;
 use function str_split;
 
 /** @see https://es.wikipedia.org/wiki/N%C3%BAmero_de_identificaci%C3%B3n_fiscal */
@@ -35,6 +36,10 @@ use function str_split;
 #[Assurance(type: 'string')]
 final class Nif extends Simple
 {
+    private const string CIF_DIGIT_CONTROL = 'ABEH';
+
+    private const string CIF_LETTER_CONTROL = 'NPQRSW';
+
     public function isValid(mixed $input): bool
     {
         if (!is_string($input)) {
@@ -50,7 +55,7 @@ final class Nif extends Simple
         }
 
         if (preg_match('/^([A-HJNP-SUVW])(\d{7})([0-9A-Z])$/', $input, $matches)) {
-            return $this->validateCif($matches[2], $matches[3]);
+            return $this->validateCif($matches[1], $matches[2], $matches[3]);
         }
 
         return false;
@@ -74,7 +79,7 @@ final class Nif extends Simple
         return $this->validateDni((int) $number, $control);
     }
 
-    private function validateCif(string $number, string $control): bool
+    private function validateCif(string $prefix, string $number, string $control): bool
     {
         $code = 0;
         $position = 1;
@@ -92,11 +97,18 @@ final class Nif extends Simple
         $digits = str_split((string) $code);
         $lastDigit = (int) array_pop($digits);
         $key = $lastDigit === 0 ? 0 : 10 - $lastDigit;
+        $letter = mb_substr('JABCDEFGHI', $key, 1);
+        $digitMatches = is_numeric($control) && (int) $key === (int) $control;
+        $letterMatches = $letter === $control;
 
-        if (is_numeric($control)) {
-            return (int) $key === (int) $control;
+        if (str_contains(self::CIF_DIGIT_CONTROL, $prefix)) {
+            return $digitMatches;
         }
 
-        return mb_substr('JABCDEFGHI', $key % 10, 1) === $control;
+        if (str_contains(self::CIF_LETTER_CONTROL, $prefix)) {
+            return $letterMatches;
+        }
+
+        return $digitMatches || $letterMatches;
     }
 }
