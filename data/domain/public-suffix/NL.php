@@ -3,6 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => ['123WEBSITE.NL', 'CISTRON.NL', 'CO.NL', 'DEMON.NL', 'GOV.NL', 'HOSTING-CLUSTER.NL', 'KHPLAY.NL', 'MYSPREADSHOP.NL'],
+    'rules' => ['123WEBSITE.NL', 'CISTRON.NL', 'CO.NL', 'DEMON.NL', 'GOV.NL', 'HOSTING-CLUSTER.NL', 'KHPLAY.NL', 'MYSPREADSHOP.NL', 'SITE.HOSTING-CLUSTER.NL'],
     'wildcards' => ['TRANSURL.NL'],
 ];
