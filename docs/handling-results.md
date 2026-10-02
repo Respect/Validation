@@ -23,7 +23,7 @@ if ($result->hasFailed()) {
 
 ### hasFailed()
 
-Returns `true` if validation passed, `false` otherwise.
+Returns `true` if validation failed, `false` otherwise.
 
 ```php
 $result = v::email()->validate('user@example.com');
@@ -279,7 +279,7 @@ $result = v::init()
 // Check each item individually
 for ($i = 0; $i < count($items); $i++) {
     $itemResult = $result->findByPath($i);
-    if ($itemResult !== null && !$itemResult->hasFailed()) {
+    if ($itemResult !== null && $itemResult->hasFailed()) {
         echo "Item $i has errors: " . $itemResult->getMessage() . "\n";
     }
 }
