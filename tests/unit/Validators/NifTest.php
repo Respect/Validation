@@ -76,6 +76,9 @@ final class NifTest extends RuleTestCase
             [$validator, 'X3155250B'],
 
             // CIF
+            [$validator, 'Q67716563'],
+            [$validator, 'B5610977J'],
+            [$validator, 'R13326228'],
             [$validator, 'B56109771'],
             [$validator, 'v8002614i'],
             [$validator, 'C0325664D'],
