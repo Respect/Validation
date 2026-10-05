@@ -622,7 +622,6 @@ return [
     'JPMORGAN',
     'JPRS',
     'JUEGOS',
-    'JUNIPER',
     'KAUFEN',
     'KDDI',
     'KE',
