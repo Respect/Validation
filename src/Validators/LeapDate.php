@@ -44,7 +44,9 @@ final class LeapDate extends Simple
         }
 
         if (is_scalar($input)) {
-            return $this->isValid(DateTimeImmutable::createFromFormat($this->format, (string) $input));
+            $date = DateTimeImmutable::createFromFormat($this->format, (string) $input);
+
+            return $date !== false && $this->isValid($date);
         }
 
         return false;

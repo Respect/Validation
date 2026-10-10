@@ -42,6 +42,8 @@ final class LeapDateTest extends RuleTestCase
             [new LeapDate('Y-m-d'), new DateTime('1989-02-29')],
             [new LeapDate('Y-m-d'), new DateTime('1993-02-29')],
             [new LeapDate('Y-m-d'), []],
+            [new LeapDate('Y-m-d'), ''],
+            [new LeapDate('Y-m-d'), '29/02/1988'],
         ];
     }
 }
