@@ -3,6 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => ['KNIGHTPOINT.SYSTEMS', 'MIREN.SYSTEMS'],
+    'rules' => ['MIREN.SYSTEMS'],
     'wildcards' => [],
 ];
