@@ -52,6 +52,8 @@ final class CreditCardTest extends RuleTestCase
             [$master, '5376 7473 9720 8720'],
             [$general, '2223000048400011'], // MasterCard 2 BIN Range
             [$master, '2222 4000 4124 0011'],
+            [$master, '2221000000000009'], // MasterCard 2 BIN Range lower bound
+            [$master, '2720000000000005'], // MasterCard 2 BIN Range upper bound
             [$general, '4024.0071.5336.1885'], // Visa 16
             [$visa, '4024.0071.5336.1885'],
             [$general, '4024 007 193 879'], // Visa 13
@@ -94,6 +96,8 @@ final class CreditCardTest extends RuleTestCase
             [$diners, '4012888888881881'], // Visa
             [$discover, '371449635398431'], // American Express
             [$jcb, '38520000023237'], // Diners Club
+            [$master, '2200000000000004'], // Luhn-valid, below the MasterCard 2 BIN Range (2221)
+            [$master, '2721000000000004'], // Luhn-valid, above the MasterCard 2 BIN Range (2720)
             [$master, '05105105105105100'], // Over-long (17-digit) Luhn-valid number; regression for missing ^ anchor
         ];
     }
