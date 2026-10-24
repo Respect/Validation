@@ -60,7 +60,7 @@ final readonly class CreditCard implements Validator
         self::AMERICAN_EXPRESS => '/^3[47]\d{13}$/',
         self::DINERS_CLUB => '/^3(?:0[0-5]|[68]\d)\d{11}$/',
         self::DISCOVER => '/^6(?:011|5\d{2})\d{12}$/',
-        self::JCB => '/^(?:2131|1800|35\d{3})\d{11}$/',
+        self::JCB => '/^(?:(?:2131|1800)\d{11}|35(?:2[89]|[3-8]\d)\d{12})$/',
         self::MASTERCARD => '/^(5[1-5]|2[2-7])\d{14}$/',
         self::VISA => '/^4\d{12}(?:\d{3})?$/',
         self::RUPAY => '/^6(?!011)(?:0[0-9]{14}|52[12][0-9]{12})$/',
