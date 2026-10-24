@@ -64,6 +64,8 @@ final class CreditCardTest extends RuleTestCase
             [$discover, '6011000990139424'],
             [$general, '3566002020360505'], // JBC
             [$jcb, '3566002020360505'],
+            [$jcb, '3528000000000007'], // JCB 35 BIN Range lower bound
+            [$jcb, '3589000000000003'], // JCB 35 BIN Range upper bound
             [$general, '6522447005971501'], // RuPay
             [$rupay, '6062973831636410'],
         ];
@@ -94,6 +96,8 @@ final class CreditCardTest extends RuleTestCase
             [$diners, '4012888888881881'], // Visa
             [$discover, '371449635398431'], // American Express
             [$jcb, '38520000023237'], // Diners Club
+            [$jcb, '3500000000000009'], // Luhn-valid, below the JCB 35 BIN Range (3528)
+            [$jcb, '3590000000000000'], // Luhn-valid, above the JCB 35 BIN Range (3589)
             [$master, '05105105105105100'], // Over-long (17-digit) Luhn-valid number; regression for missing ^ anchor
         ];
     }
