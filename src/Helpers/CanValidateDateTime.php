@@ -66,7 +66,11 @@ trait CanValidateDateTime
     private function isDateInformation(array $info): bool
     {
         if ($info['day']) {
-            return checkdate((int) $info['month'], $info['day'], (int) $info['year']);
+            return checkdate(
+                $info['month'] === false ? 1 : $info['month'],
+                $info['day'],
+                $info['year'] === false ? 1 : $info['year'],
+            );
         }
 
         return checkdate($info['month'] ?: 1, 1, $info['year'] ?: 1);

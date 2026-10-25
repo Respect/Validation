@@ -51,6 +51,10 @@ final class DateTest extends RuleTestCase
             [new Date('F jS, Y'), 'May 1st, 2017'],
             [new Date('Ydm'), 20173112],
             [new Date(), '2020-02-29'],
+            [new Date('d/m'), '15/03'],
+            [new Date('m/d'), '03/15'],
+            [new Date('d'), '15'],
+            [new Date('F j'), 'March 5'],
         ];
     }
 
@@ -76,6 +80,7 @@ final class DateTest extends RuleTestCase
             [new Date('d'), 1],
             [new Date('Y-m'), '2014-99'],
             [new Date('m'), '99'],
+            [new Date('d/m'), '31/02'],
         ];
     }
 }
