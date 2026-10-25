@@ -43,6 +43,11 @@ final class DateTimeDiffTest extends RuleTestCase
             'years + DateTime' => [new DateTimeDiff('years', Stub::pass(1)), new DateTimeImmutable()],
             'years + string' => [new DateTimeDiff('years', Stub::pass(1)), '2020-01-01'],
             'years + string + format' => [new DateTimeDiff('years', Stub::pass(1), 'Y-m-d'), '2020-01-01'],
+            'years + leap day + format' => [new DateTimeDiff('years', Stub::pass(1), 'Y-m-d'), '2024-02-29'],
+            'years + string + exceptional format' => [
+                new DateTimeDiff('years', Stub::pass(1), 'c'),
+                '2020-01-01T00:00:00+00:00',
+            ],
             'years + string + format + now' => [
                 new DateTimeDiff('years', Stub::pass(1), 'Y-m-d', new DateTimeImmutable()),
                 '2020-01-01',
@@ -79,6 +84,14 @@ final class DateTimeDiffTest extends RuleTestCase
             'invalid date, with failing rule' => [
                 new DateTimeDiff('years', Stub::fail(1), 'Y-m-d'),
                 'invalid date',
+            ],
+            'impossible date, with passing rule' => [
+                new DateTimeDiff('years', Stub::pass(1), 'Y-m-d'),
+                '2023-02-30',
+            ],
+            'impossible date in exceptional format, with passing rule' => [
+                new DateTimeDiff('years', Stub::pass(1), 'c'),
+                '2023-02-30T00:00:00+00:00',
             ],
         ] + array_map(
             static fn(array $args): array => [new DateTimeDiff('years', Stub::fail(1)), new DateTimeImmutable()],

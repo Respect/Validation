@@ -139,6 +139,10 @@ final readonly class DateTimeDiff implements Validator
             }
         }
 
+        if (!$this->isDateTime($this->format, (string) $input)) {
+            return null;
+        }
+
         $format = $this->getExceptionalFormats()[$this->format] ?? $this->format;
         $dateTime = DateTimeImmutable::createFromFormat($format, (string) $input);
         if ($dateTime === false) {
