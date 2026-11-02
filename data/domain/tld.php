@@ -525,7 +525,6 @@ return [
     'HEALTH',
     'HEALTHCARE',
     'HELP',
-    'HELSINKI',
     'HERE',
     'HERMES',
     'HIPHOP',
