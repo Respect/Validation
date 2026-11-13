@@ -28,3 +28,8 @@ test('Scenario #4', catchFullMessage(
     fn() => v::not(v::iban())->assert('HU93 1160 0006 0000 0000 1234 5676'),
     fn(string $fullMessage) => expect($fullMessage)->toBe('- "HU93 1160 0006 0000 0000 1234 5676" must not be an IBAN'),
 ));
+
+test('Scenario #5', catchMessage(
+    fn() => v::not(v::iban())->assert('BJ66 BJ18 5011 0000 1400 0247 0305'),
+    fn(string $message) => expect($message)->toBe('"BJ66 BJ18 5011 0000 1400 0247 0305" must not be an IBAN'),
+));
