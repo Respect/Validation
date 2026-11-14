@@ -39,6 +39,7 @@ final class IbanTest extends RuleTestCase
 
         return [
             'Belgium' => [$sut, 'BE71 0961 2345 6769'],
+            'Costa Rica' => [$sut, 'CR05 0152 0200 1026 2840 66'],
             'France' => [$sut, 'FR76 3000 6000 0112 3456 7890 189'],
             'Germany' => [$sut, 'DE89 3704 0044 0532 0130 00'],
             'Greece' => [$sut, 'GR96 0810 0010 0000 0123 4567 890'],
@@ -69,6 +70,7 @@ final class IbanTest extends RuleTestCase
             'SwitzerlandWrong' => [$sut, 'CH93 5000 5880 7742'],
             'HungaryWrong' => [$sut, 'HU42 5000 5880 7742'],
             'GermanydWrong' => [$sut, 'DE89 5000 5880 7742'],
+            'CostaRicaOldFormat' => [$sut, 'CR05 1520 2001 0262 8406 6'],
         ];
     }
 }
