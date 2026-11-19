@@ -3,6 +3,6 @@
 // SPDX-License-Identifier: MPL-2.0-no-copyleft-exception
 return [
     'exceptions' => [],
-    'rules' => ['LIMA-CITY.ROCKS', 'MYDDNS.ROCKS', 'STACKIT.ROCKS', 'WEBSPACE.ROCKS'],
+    'rules' => ['LIMA-CITY.ROCKS', 'MYDDNS.ROCKS', 'STACKIT.ROCKS', 'V6.ROCKS', 'WEBSPACE.ROCKS'],
     'wildcards' => [],
 ];
