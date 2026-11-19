@@ -4,5 +4,5 @@
 return [
     'exceptions' => [],
     'rules' => ['CO.AM', 'COM.AM', 'COMMUNE.AM', 'NET.AM', 'ORG.AM', 'RADIO.AM'],
-    'wildcards' => [],
+    'wildcards' => ['2NA.AM'],
 ];
