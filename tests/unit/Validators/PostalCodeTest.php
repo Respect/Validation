@@ -87,6 +87,11 @@ final class PostalCodeTest extends RuleTestCase
             [new PostalCode('KH'), '12080'],
             [new PostalCode('KH'), '120802'],
             [new PostalCode('CZ', true), '120 80'],
+            [new PostalCode('BH', true), '123'],
+            [new PostalCode('BH', true), '1234'],
+            [new PostalCode('LB', true), '1234 5678'],
+            [new PostalCode('FK'), 'FIQQ 1ZZ'],
+            [new PostalCode('IE'), 'D02 X285'],
         ];
     }
 
@@ -110,6 +115,14 @@ final class PostalCodeTest extends RuleTestCase
             [new PostalCode('AM'), '375010'],
             [new PostalCode('KH'), '1208'],
             [new PostalCode('CZ', true), '12080'],
+            [new PostalCode('GB'), 'hello SW1A 2AA'],
+            [new PostalCode('GB'), 'GIR 0AA, London'],
+            [new PostalCode('GB', true), 'hello AB1 1AA'],
+            [new PostalCode('BH', true), '1234abc'],
+            [new PostalCode('BH', true), 'xx123'],
+            [new PostalCode('LB', true), 'junk1234'],
+            [new PostalCode('FK'), 'xxFIQQ 1ZZyy'],
+            [new PostalCode('IE'), 'D02 X285 junk'],
         ];
     }
 }

@@ -21,6 +21,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use function count;
 use function explode;
 use function file_get_contents;
+use function preg_replace;
 use function preg_replace_callback;
 use function sprintf;
 use function str_contains;
@@ -100,7 +101,11 @@ final class UpdatePostalCodesCommand extends Command
                 return $regex;
             }, $countryFormat);
 
-            $postalCodes[$countryCode] = ['/^' . $countryFormat . '$/', '/' . $countryRegex . '/'];
+            // Some formats and regexes have alternatives ("####|###") or no
+            // anchors ("FIQQ 1ZZ"), so anchor the whole pattern.
+            $countryRegex = preg_replace('/^\^|\$$/', '', $countryRegex);
+
+            $postalCodes[$countryCode] = ['/^(?:' . $countryFormat . ')$/', '/^(?:' . $countryRegex . ')$/'];
         }
 
         $this->dataSaver->save(
