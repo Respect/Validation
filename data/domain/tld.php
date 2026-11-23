@@ -1262,7 +1262,6 @@ return [
     'WTF',
     'XBOX',
     'XEROX',
-    'XIHUAN',
     'XIN',
     'XN--11B4C3D',
     'XN--1CK2E1B',
