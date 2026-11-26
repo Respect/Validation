@@ -4,5 +4,5 @@
 return [
     'exceptions' => [],
     'rules' => ['APPS.DEVS.AI', 'COM.AI', 'FRAMER.AI', 'KILOAPPS.AI', 'NET.AI', 'OFF.AI', 'ORG.AI', 'UWU.AI'],
-    'wildcards' => [],
+    'wildcards' => ['AIROAPP.AI'],
 ];
